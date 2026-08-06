@@ -684,21 +684,6 @@
     else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
   });
 
-
-  // wheel advances the deck when the current screen has nothing left to scroll
-  var wheelLock = 0;
-  window.addEventListener('wheel', function (e) {
-    var s = slides[current];
-    if (!s) return;
-    var now = Date.now();
-    if (now - wheelLock < 900) return;
-    var atBottom = s.scrollTop + s.clientHeight >= s.scrollHeight - 4;
-    var atTop = s.scrollTop <= 4;
-    if (e.deltaY > 24 && atBottom) { wheelLock = now; goTo(current + 1); }
-    else if (e.deltaY < -24 && atTop && current > 0) { wheelLock = now; goTo(current - 1); }
-  }, { passive: true });
-
-
   // every non-anchor link opens in a new tab
   $$('a[href]').forEach(function (a) {
     var href = a.getAttribute('href');

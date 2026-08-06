@@ -522,9 +522,9 @@
     var maPick = { focus: null, stage: null };
     var maLine = $('#maLine'), maBtn = $('#maBuild'), maStatus = $('#maStatus'), maOut = $('#maOut');
     var MA_FOCUS = {
-      core: 'Exceptional core operations \u2014 speed, agility, and scale that secure talent, resources, and reputation.',
-      bold: 'Bold strategic initiatives \u2014 bets that extend the reach and impact of education and research.',
-      industry: 'Industry leadership \u2014 modeling the essential research university and stimulating industry change.'
+      core: 'Exceptional Core Operations \u2014 speed, agility, and scale that secure talent, resources, and reputation.',
+      bold: 'Bold Strategic Initiatives \u2014 bets that extend the reach and impact of education and research.',
+      industry: 'Values Leadership \u2014 modeling the essential research university and stimulating industry change.'
     };
     var MA_STAGE = {
       inclusion: 'Inclusion \u2014 the newest voices join it early, by name.',

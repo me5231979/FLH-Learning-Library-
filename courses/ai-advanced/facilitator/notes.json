@@ -161,6 +161,19 @@
       "transition": "Seven ideas, and the first one explains half the mysteries you've already met."
     },
     {
+      "id": "s-mission",
+      "title": "The Chancellor's charge",
+      "minutes": 2,
+      "purpose": "Ground the session in the institutional mission before the working content begins: Vanderbilt will define the great university of the 21st Century and be it.",
+      "facilitate": [
+        "Read the vision line verbatim and let it land: Vanderbilt will define the great university of the 21st Century and be it.",
+        "Walk the three Areas of Focus in order: Exceptional Core Operations, Bold Strategic Initiatives, Values Leadership.",
+        "Connect the course to the mission using the statement on the slide, then move on; this moment is short by design."
+      ],
+      "validate": "The room can see why the university cares about this hour before the first working slide appears.",
+      "say": "One minute on why Vanderbilt cares about this session. The Chancellor's vision is a single sentence: Vanderbilt will define the great university of the 21st Century and be it. The university pursues it through three Areas of Focus, and the work in this course is one of the ways staff deliver on the first of them."
+    },
+    {
       "id": "s-agenda",
       "title": "Agenda",
       "minutes": 1,

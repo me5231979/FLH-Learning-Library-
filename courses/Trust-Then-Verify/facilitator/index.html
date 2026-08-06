@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust, Then Verify, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for Vanderbilt staff: learn how AI errors actually look, run the Three Reads (claim, source, slant) on any AI output, size the check to the stakes, and know when to stop trusting a model for a task.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trust, Then Verify | Vanderbilt Learning Series">
+<meta property="og:description" content="Fluent is not the same as true. Spot hallucinations, trace citations, catch slant, size the check to the stakes, and keep AI's speed without the cleanup tax.">
+<meta property="og:url" content="../../../courses/Trust-Then-Verify/">
+<meta property="og:image" content="../../../courses/Trust-Then-Verify/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trust, Then Verify | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/Trust-Then-Verify/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+  /* worked example (section 03) */
+  .worked { margin-top: 2rem; }
+  .worked .sampletext { font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.6;
+    border-left: 3px solid var(--vu-gold-flat); padding: .35rem 0 .35rem 1rem; margin: .75rem 0 0; }
+  .worked .catchrow { display: grid; grid-template-columns: 120px 1fr; gap: .8rem; align-items: baseline;
+    padding: .55rem 0; border-top: 1px solid rgba(0,0,0,.1); font-size: .95rem; }
+  .worked .catchrow:first-of-type { margin-top: .9rem; }
+  .worked .catchrow b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .74rem; color: var(--vu-oak); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-cost">The Cost</a>
+    <a href="#s-failures">Failure Modes</a>
+    <a href="#s-reads">The Three Reads</a>
+    <a href="#s-size">Size the Check</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including building your own verification ritual honestly. You will be asked what output you accept unchecked; a real answer plays far better than a hypothetical.</li><li>Build your own verification card in the capstone for an output you genuinely use. You'll show the structure, never the contents.</li><li>Send the pre-work invite (template on this page) with the calendar invite: bring one recurring AI output you actually use, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Skim SHRM's current AI research page and the latest Stanford AI Index highlights so the numbers in Guess the Number are fresh; the game's reveals carry the framing, but you should be able to say 'the research' with a straight face.</li><li>Practice the worked example out loud once: read the flawed paragraph, then walk the three catches. It is the session's hinge and deserves a rehearsal.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Verification Lab and one trainer so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and verification cards.</li><li>Re-read the tough-questions bank; say the 'doesn't checking cancel the time savings?' response out loud once. That question is coming.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'OUTPUTS AND TASKS, NEVER PEOPLE'S PRIVATE INFORMATION' where the room can see it all session.</li><li>Draw five empty boxes labeled Hallucination, Staleness, Slant, Omission, Faked Math on the whiteboard; you'll fill them live in section 02.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed verification cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart with markers for the worked example underlining and the five failure-mode boxes</li><li>One deliberately flawed AI paragraph of your own, printed or on a slide, as a backup exercise if devices fail</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the five failure modes, the Three Reads, and the stop rules all draw in seconds. Read the worked example aloud from your printed backup paragraph and have the room call the catches. The trainers become room votes on scenarios you read out; the capstone moves to the printed card. You lose polish, not learning.</div><div class="brief__row"><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the ritual builder and capstone move to paper. The lab works as a walk-through: read each move's three options aloud and have the room vote before you reveal the coaching.</div><div class="brief__row"><b>If You're 10+ minutes behind by the Verification Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the ritual builder, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone starts reading out a real output that names a person or contains private details:</b> Protect the norm warmly: 'Hold that. Outputs and tasks, never private information about people. Describe the kind of output; skip the contents.' If it keeps happening, it usually means a real red-light practice is running on their team; restate the traffic light and move the specifics to a private follow-up.</div><div class="brief__row"><b>If The room is skeptical: 'if I have to check everything, the AI saves me nothing':</b> Don't argue; do the arithmetic out loud. The claim read on a page is ninety seconds; the SHRM cleanup tax is four hours a week. The budget section is the whole answer: most outputs need a small check or none, and the expensive misses cluster in the few that travel. Verification is how the time savings survive contact with reality.</div><div class="brief__row"><b>If The room is the opposite: enthusiasts who insist their favorite model no longer hallucinates:</b> Aim the enthusiasm at the data: incident counts keep hitting record highs even as models improve, because trust grows faster than accuracy. Then aim them at the lab; the invented-benchmark slot usually does the sobering for you. Better models make verification cheaper, and automation bias makes it rarer; the skill is holding the first without the second.</div><div class="brief__row"><b>If Someone raises a real data-privacy concern mid-flight:</b> Stop and honor it; this is the one interruption that outranks the agenda. Restate the traffic light (green public, yellow internal in approved VU tools only, red private information about people, never), confirm their case against it, and if it's genuinely ambiguous, park it with a promise to route it to the right owner rather than improvising policy from the front of the room.</div><div class="brief__row"><b>If A learner disputes one of the game's numbers or asks for the exact study:</b> Point at the sources by name: SHRM's workplace AI research for the four-hours figure, the Stanford AI Index for incident counts, both linked in the deck's Go deeper. Model the course's own method: 'Don't take my word; the links are in section 01, open them.' A facilitator who invites the source read is teaching the source read.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>If I have to verify everything, doesn't that cancel the time AI saves?</summary><p>Only if every check is a full check, which is exactly what the budget prevents. A brainstorm gets no check; an internal note gets ninety seconds; only the outputs that travel get all three reads, and those are the ones that were always worth minutes of care. The SHRM finding is the other side of the ledger: people who don't build the checking habit pay around four hours a week in cleanup anyway, at the worst possible time, after the error has traveled. Verification isn't the tax; it's the cheaper way to pay it.</p></details><details class="brief__q"><summary>Models are improving fast. Won't hallucination be solved soon, making this course obsolete?</summary><p>The error rate falls and the exposure rises, and the second is winning: the AI Index keeps recording more incidents, not fewer, because better models get trusted with more consequential work and checked less. And notice that only one of the five failure modes is hallucination. Staleness, slant, omission, and faked math are structural: any system summarizing the world can drop a caveat or frame a fact. The reads also work on human writing, which is why the skill outlives any model generation.</p></details><details class="brief__q"><summary>My manager sends me AI-drafted documents. Am I supposed to verify my boss's output?</summary><p>Verify claims, whoever drafted them, and frame it as protecting the document rather than auditing the person. 'I traced the enrollment figure before we send it up' is diligence in anyone's book, and the sign-off line from the lab works upward too: tell people what you checked. If your team adopts the miss log by task rather than by person, this stops being awkward at all; the log makes checking a shared routine instead of a judgment.</p></details><details class="brief__q"><summary>How do I check output on a topic where I'm not an expert?</summary><p>The claim read and the source read need no domain expertise: anyone can underline a date and open a citation. What needs expertise is the judgment call, and that's stop rule three saying something honest: if you couldn't tell a right answer from a wrong one, you are the wrong verifier for that output, and the check belongs to someone who could. Route it, the way you'd route a legal question to counsel. Knowing which outputs you can't verify is itself a verification skill.</p></details><details class="brief__q"><summary>Isn't the slant read just politics? Facts are facts.</summary><p>The slant read exists precisely because facts can all be true while the output still misleads. The worked example shows it: every surviving fact checked out, and 'long-overdue' was still the summary arguing a position its source never took. The three questions are mechanical, not political: what is this assuming, who is missing, what would the strongest opposite case say. They're the same questions a good editor asks, and putting them on a checklist means they get asked by every reviewer, whatever their temperament.</p></details><details class="brief__q"><summary>What if my whole team already trusts AI output and I'm the only one checking?</summary><p>Start with the ritual, not the lecture: verify your own outputs, use the sign-off line, and say 'caught one' out loud when a check fires. Catches are contagious in a way policy memos aren't; the first time your claim read stops a wrong number from reaching a dean, the team notices. Then propose the miss log as an experiment, framed on tasks, never people. And if you genuinely see red-light data going into unapproved tools, that's not a culture project; raise it with your supervisor, because the light is policy.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Trust, Then Verify session. One thing to bring: one recurring AI output you actually use at work, a drafted email, a meeting summary, a report section, anything you'd normally accept and move on from. You will never be asked to share its contents; every exercise runs on outputs and tasks, and everything you type stays on your screen. Come knowing roughly how often you check that output before using it. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the first verified output ship? Three quick lines, reply whenever: 1) Did you run the Three Reads on the output from your verification card? 2) What did the reads catch, if anything? 3) How long did the check take? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of verifying. Two questions, same scale as the room: 1) Fist to five, how confident are you now that you'd catch a wrong claim before it ships? 2) Is the 90-second check still running, and has any task hit a stop rule? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the first verified output ship? What did the reads catch? How long did they take?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'is the ritual still running, and has any task hit a stop rule?' The count of first verified outputs actually shipped is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Trust, Then Verify session. One thing to bring: one recurring AI output you actually use at work, a drafted email, a meeting summary, a report section, anything you'd normally accept and move on from. You will never be asked to share its contents; every exercise runs on outputs and tasks, and everything you type stays on your screen. Come knowing roughly how often you check that output before using it. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today works on the AI output you actually use, so one norm up front: outputs and tasks, never private information about people. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Verification ritual you'll build</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the norm that makes real-output material safe: outputs and tasks, never private information about people, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is about the skill that decides whether AI saves you time or quietly costs you more: catching its mistakes before they ship. We'll work on the AI outputs you actually use, so one ground rule for the next ninety minutes: outputs and tasks, never private information about people. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: outputs and tasks, never private information about people; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: how many of you used AI for real work this week? And how many of you fully checked the last output before you used it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Nearly every hand up on the first question</li><li>Most hands down on the second, with some laughter</li><li>One or two proud checkers, usually people who got burned once</li></ul><p class="facnote__mini">Respond: Name the gap warmly: 'That gap is the whole session, and it isn't a character flaw; fluent output is built to be believed. By the end you'll have a ninety-second answer to it.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'outputs and tasks, never people's private information' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> Anyone bracing for an anti-AI lecture or an AI cheerleading session. The frame that relaxes both: today is a quality-control skill for people who are keeping AI in their work, and the research is unusually practical.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Trust, Then Verify · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Fluent is not the same<br>as <em class="gold-text">true</em>.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">SHRM's workplace research puts a number on what unverified AI costs: workers who use it spend around four hours a week fixing its output. The reason errors get that far is how they arrive: specific, confident, and in the same polished voice as everything the model gets right. Verification is the trainable skill that closes the gap. The people who check well get AI's speed without the cleanup tax, and this session teaches the checking as a discipline of its own.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Recognize how AI errors actually look in real work: fluent, specific, and wrong</li>
+          <li>Apply the Three Reads (claim, source, slant) to any AI output before it ships</li>
+          <li>Distinguish hallucination, staleness, slant, omission, and faked math by their tells</li>
+          <li>Size the verification to the stakes, from no check at all up to a human expert</li>
+          <li>Decide when to stop using AI for a task entirely, using the three stop rules</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Continuously strives for excellence</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill">Critical Thinking</span>
+        <span class="skillpill">AI Literacy</span>
+        <span class="skillpill">Fact-Checking</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-cost">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in one real recurring output carded for verification with a dated first move.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things by the end. You'll know how AI errors actually look, because they don't look like errors. You'll run the Three Reads, claim, source, slant, on any output in about ninety seconds. You'll name the five failure modes by their tells. You'll size the check to the stakes, from no check at all up to a human expert. And you'll know the three stop rules: the signs that AI should come off a task entirely. It all lands in one artifact: a verification card for an output you actually use, with a date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL verification card, one output, one first move, one date.</li><li>Name the sources once for credibility: SHRM's workplace research for the cleanup number, the Stanford AI Index for the incident trend, and the Three Reads as the method.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one recurring output, one first move, one date).</p><p class="facnote__meta"><b>Watch for:</b> Tool questions arriving early ('which AI is most accurate?'). Park them: the session is deliberately tool-agnostic, and the reads work on any model's output, and on human writing too.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Before the plan, one minute on why the university wants exactly this from you.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 2 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and daring work travels on facts somebody bothered to check.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: AI's speed only counts if the work holds up, and the Three Reads, claim, source, slant, keep the speed without the cleanup tax.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: a bold bet built on a confident hallucination is a fast mistake, so the stakes decide the check: the bigger the decision your work feeds, the harder you verify.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: an institution modeling careful AI use is really thousands of people who can tell fluent from true, and every error you catch before it ships is that model in practice.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: reputation is the flywheel's fuel, and an unverified number in a public report is exactly what burns it. Verification sized to the stakes keeps everything that leaves your desk worthy of the university's name.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Anchor the session in the institution's own plan: the one-sentence vision, the three focus areas in verification terms, and where checked work feeds the reputation flywheel.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Chancellor Diermeier's vision for this university is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The motto has always been the dare, Crescere aude, dare to grow, and daring work travels on facts somebody bothered to check. Reputation is the first word on the flywheel card: it attracts talent, funding, partnerships, and access, and an unverified number in a public report is exactly what burns it. Every output you catch before it ships keeps the university's name worth what it is, which is why the checking discipline you learn today is an all-staff skill.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence exactly as written, then pause; it lands better without commentary.</li><li>Walk the three focus cards in one breath each, landing each at-your-desk line.</li><li>Close on the flywheel card: reputation is the fuel, and verification sized to the stakes is how what leaves every desk protects it.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what verification has to do with the university's reputation, in one sentence.</p><p class="facnote__meta"><b>Watch for:</b> Strategy fatigue: part of the room has heard the vision language elsewhere. Keep it in verification terms; the at-your-desk lines exist so nobody has to squint to find themselves in it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Six ideas, in a deliberate order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute: read the vision sentence, gesture at the three focuses, move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The cost of belief</h3><p>SHRM's four hours a week, and why fluent errors fool smart readers.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Know the failure modes</h3><p>Hallucination, staleness, slant, omission, and faked math, each with a one-line tell.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The Three Reads</h3><p>Claim, source, slant: the whole method, worked on one real example.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Size the check</h3><p>Verification budgets, and the stop rules for when AI leaves the task entirely.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Verification Lab</h3><p>An AI-drafted briefing for a dean, due in an hour. You decide what gets checked.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Make it a habit</h3><p>The 90-second daily version, and the team ritual that keeps the checks alive.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: cost, taxonomy, method, sizing, practice, habit.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first what unverified AI actually costs, then the five ways output goes wrong, then the method, the Three Reads. Then the judgment call of sizing the check to the stakes, a lab where you rescue a briefing under time pressure, and finally how the check becomes a habit you and your team keep.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the six items in one breath each.</li><li>Point out the shape: the evidence (01), knowing the enemy (02), the method (03), sizing it (04), practicing it (05), and keeping it alive (06).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the cost, because some of you think checking is paranoia and some of you think AI is unusable, and the data disagrees with both.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE COST OF BELIEF ============ -->
+  <section class="slide on-light" id="s-cost" data-count data-title="The cost of belief">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Cost</p>
+      <h2 class="h2" data-reveal>Errors don't look like errors. They look <em>right</em>.</h2>
+      <p class="lead" data-reveal>A human who is unsure sounds unsure. A model that is wrong sounds exactly like a model that is right: specific dates, plausible names, clean prose, total confidence. That texture is why AI errors travel so far before anyone catches them, and why the cleanup bill lands hours or weeks later. Before the method, the evidence. Call each number before it's revealed; most rooms miss at least one, and the miss is what makes it stick.</p>
+
+      <div class="quiz" id="statGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the cost of unverified AI is measured, and it is bigger than most people guess. Four findings; call each one before the reveal.</p>
+        <p class="quiz__progress" id="sgProgress"></p>
+        <p class="quiz__q" id="sgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sgOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="sgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="sgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Why do AI errors slip past smart, careful readers?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Fluency is the disguise. The wrong claims arrive in the same specific, confident voice as the right ones, so 'reads well' tells you nothing about 'is true.'"><span class="mark">A</span><span>They arrive fluent and specific, in the same confident voice as the correct parts</span></button>
+          <button class="opt" data-correct="0" data-why="Most tools flag nothing. The output arrives as finished prose with no confidence markings, which is why the reading has to come from you."><span class="mark">B</span><span>The tool usually flags its own uncertain claims</span></button>
+          <button class="opt" data-correct="0" data-why="Length is a distraction. A one-line answer can carry an invented date as easily as a ten-page report; the errors hide in claims, and claims live at every length."><span class="mark">C</span><span>They only show up in long, complex documents</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The four-hours figure comes from <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence" target="_blank" rel="noopener" style="text-decoration:underline">SHRM's workplace AI research</a>, which keeps finding the same pattern: adoption runs fast, checking skills lag behind, and workers absorb the difference as cleanup time. The <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener" style="text-decoration:underline">Stanford AI Index</a> supplies the other half of the picture: publicly reported AI incidents keep setting records even as models improve, because better models earn more trust, get used in more places, and get checked less. Hold both facts at once and the conclusion writes itself: what protects you is a checking habit, sized to the stakes, that survives your busiest week. That habit is this session.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the cleanup tax becomes real the moment you find it in your own week.</p>
+          <ol class="steps">
+            <li>In pairs: tell your partner about the last time an AI output was wrong on something you were working on.</li>
+            <li>Name how the error was caught: before it shipped, or after it reached someone.</li>
+            <li>Hands to the room: caught before, or caught after? Count it out loud. The after-hands are the four hours a week, standing up.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write down your last AI miss: what was wrong, who caught it, and what it cost in time or trust. That miss is your test case for the Three Reads in section 03.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish with guessed-at, missed numbers that unverified AI carries a measured cleanup tax, that errors arrive fluent and confident, and that checking is the trainable skill that keeps the speed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before any method, the evidence, and I want you to guess. SHRM's workplace research keeps finding that people who use AI spend around four hours a week fixing what it produced. Half a workday, every week. And here's why it gets that far: a human who is unsure sounds unsure, but a model that is wrong sounds exactly like a model that is right. Specific dates, plausible names, total confidence. The errors are dressed as answers. Four findings, call your number before each reveal.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the game: four findings on what unverified AI costs, guess each one before it's revealed. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, land the frame: the errors are fluent, specific, and confident, which is why smart people miss them.</li><li>Run the quick check (why errors slip past careful readers), then the pair activity: the last time an AI output was wrong, and whether it was caught before or after it shipped.</li><li>Count the before-versus-after hands out loud and connect the after-count to the four-hours figure.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Think of the last time an AI output was wrong on something you touched. Was it caught before it shipped, or after it reached someone?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Mostly after: a colleague, a recipient, or nobody caught it and it's still out there</li><li>A few before-catches, usually from people who already check citations</li><li>Someone admits they have no idea whether their outputs have been wrong</li></ul><p class="facnote__mini">Respond: For the 'no idea' answer, warmly: 'That's the most honest answer in the room, and it's what unverified looks like from the inside; you'll have a detector by lunch.' For the after-majority: 'After is the expensive time. Everything today is about moving the catch to before.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The tax is measured, the errors are fluent, and the checking is learnable. Which means the question isn't whether to use AI; it's whether you're one of the people who can use it safely at speed.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; the before-after count lands visibly and the room sees its own cleanup tax.</p><p class="facnote__meta"><b>Watch for:</b> A learner litigating the exact SHRM methodology. Don't defend a single number; the case is the convergence: measured cleanup time, record incident counts, and decades of automation-bias research all pointing the same way. Park deep methodology questions and point at the linked sources.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before the method, and it's the sentence this course exists to retire.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, the pair story becomes one show of hands with no discussion.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>The most expensive sentence in AI is "looks right to me."</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the method arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The most expensive sentence in AI is 'looks right to me.'&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So what does wrong actually look like? It turns out there are five kinds, and each one leaves a fingerprint.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 KNOW THE FAILURE MODES ============ -->
+  <section class="slide on-dark" id="s-failures" data-count data-title="Know the failure modes">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Failure Modes</p>
+      <h2 class="h2" data-reveal>Five ways to be wrong, each with a <em>tell</em>.</h2>
+      <p class="lead" data-reveal>"The AI made a mistake" is too vague to act on. Name the species of error and you know exactly where to look, how to check, and how worried to be. Five failure modes cover nearly everything that goes wrong in working AI output, and each one leaves a fingerprint.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Hallucination</span>
+          <h3>Invented facts</h3>
+          <p class="muted">Studies, citations, quotes, dates, and people that never existed. The tell: precise details you cannot find anywhere else. Real facts leave trails; invented ones are orphans.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Staleness</span>
+          <h3>True then, wrong now</h3>
+          <p class="muted">A rate, policy, name, or figure that was correct when the model learned it. The tell: a moving number stated with no date attached, as if the world stopped changing.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · Slant</span>
+          <h3>Real facts, loaded frame</h3>
+          <p class="muted">Everything checks out and the framing still argues a side. The tell: one group gets "concerns" while the other gets "complaints." The adjectives are doing the arguing.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">4 · Omission</span>
+          <h3>What it left out</h3>
+          <p class="muted">The summary that quietly dropped the objection, the caveat, the losing quarter. The tell: the output reads smoother than the source. Reality has friction; a summary that lost it lost something else too.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">5 · Faked math</span>
+          <h3>Numbers by vibes</h3>
+          <p class="muted">Totals, averages, and percent changes the model "calculated" instead of copied. The tell: any arithmetic it did itself. Models predict plausible-looking numbers; they do not compute.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="modeName" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Name the failure</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> each mode has a different fix, so the diagnosis decides your next move. Five real-looking outputs; name what's wrong with each.</p>
+        <p class="quiz__progress" id="mnProgress"></p>
+        <p class="quiz__q" id="mnQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mnOptions" role="group" aria-label="Failure mode choices"></div>
+        <p class="quiz__feedback" id="mnFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="mnNext" style="visibility:hidden">Next output</button>
+        </div>
+        <div id="mnResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The taxonomy earns its keep because each mode maps to a different check. Hallucination falls to the source read: open the citation, find the study, locate the quote. Staleness falls to a date check: when was this true, and is it still? Slant falls to the slant read: strip the adjectives and see what's left. Omission falls to comparison: hold the summary against the source and look for what vanished. And faked math falls to a calculator: redo any arithmetic the model did, every time, because computing is the one thing it only appears to do. Notice what this means for speed: you rarely need every check. Diagnose the likely mode for this kind of output and spend your minutes there.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> building a convincing fake error teaches you more about spotting real ones than any list of tells.</p>
+          <ol class="steps">
+            <li>Pairs. Each person writes one plausible work sentence with one planted failure mode: an invented citation, a stale figure, a loaded frame, a missing caveat, or a wrong average.</li>
+            <li>Swap sentences. Name your partner's mode and point at the tell that gave it away.</li>
+            <li>Best plant goes to the room: read it aloud and let everyone call the mode.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Open the last AI output you actually used. Hunt it for each of the five modes in turn, one minute per mode. Finding nothing is a fine result; now you know what looking feels like.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the five-mode taxonomy (hallucination, staleness, slant, omission, faked math) with a tell for each, so learners can diagnose an error and pick the matching check.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Saying 'the AI made a mistake' is like saying 'the patient is sick.' Useful diagnosis names the disease. Five failure modes cover nearly everything: hallucination, invented facts and citations, and the tell is precise details you can find nowhere else. Staleness, true then and wrong now, and the tell is a moving number with no date on it. Slant, real facts in a loaded frame, and the tell is adjectives doing the arguing. Omission, what got left out, and the tell is a summary smoother than its source. And faked math: any arithmetic the model did itself. It predicts numbers that look right; it does not compute. Learn the tells and your eye starts catching them on its own.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the five cards IN ORDER, filling the five whiteboard boxes with one example each as you go.</li><li>Stress the payoff: naming the mode tells you which check to run, which is what keeps checking fast.</li><li>Give the faked-math card an extra beat: models predict plausible numbers rather than computing, and any arithmetic they did gets redone. This one surprises rooms.</li><li>Send them to Name the Failure: five outputs, name the mode. Fast, on devices.</li><li>Run the plant-a-failure pair drill from Go deeper: each person writes one plausible sentence with a planted mode, partners swap and diagnose, best plant goes to the room.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which of the five modes has actually bitten you or your team? Tell me the mode, not the private details.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Hallucinated citations or links that led nowhere</li><li>Stale rates, old policy names, superseded org details</li><li>A summary that dropped the one caveat that mattered</li></ul><p class="facnote__mini">Respond: Tally the modes on the whiteboard as they're named: 'Notice the spread. Different modes bite different kinds of work, which is why section 04 will have you budget your checks by task rather than checking everything the same way.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Five modes, five tells, and a room full of people who have met most of them personally. Diagnosis is half the skill; the other half is a repeatable way to run the checks, which is next.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; planted failures are diagnosable by partners; the room can recite at least three tells unprompted.</p><p class="facnote__meta"><b>Watch for:</b> Learners treating hallucination as the only failure mode. Keep pulling the conversation to the quieter four: staleness, slant, omission, and faked math survive fact-checking vibes and cause most of the subtle damage. Also watch the plant drill for real private data sneaking into invented sentences; keep plants generic.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The method has a name: the Three Reads. And it takes about ninety seconds once it's a habit.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards fast against the whiteboard boxes, trainer on devices at full length; the plant-a-failure drill becomes a solo hunt through your own last output, 90 seconds.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 THE THREE READS ============ -->
+  <section class="slide on-cream" id="s-reads" data-count data-title="The Three Reads">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Three Reads</p>
+      <h2 class="h2" data-reveal>Three short reads catch what belief <em>misses</em>.</h2>
+      <p class="lead" data-reveal>Here is the whole method. Any AI output, three passes, each one fast and each one looking for something different. Run them in order, because the first read makes the other two cheap.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Read 1 · The claim read</span>
+          <h3>Underline the checkable</h3>
+          <p class="muted">Mark every claim that could be checked: names, numbers, dates, quotes, citations. Those are the fault lines, the places where the output can actually break. Everything else is upholstery.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Read 2 · The source read</span>
+          <h3>Trace the riskiest claims</h3>
+          <p class="muted">Take the fault lines that carry the most weight and trace each to a source you trust. Open it. Confirm it says what the output says. A claim with no source is a guess wearing a suit.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Read 3 · The slant read</span>
+          <h3>Question the frame</h3>
+          <p class="muted">Ask three things: what is this output assuming, who is missing from it, and what would the strongest opposite case say? Facts can all be true while the frame does the lying.</p>
+        </div>
+      </div>
+
+      <div class="card worked" data-reveal style="border-color:rgba(207,174,112,.5)">
+        <span class="tag">Worked example · An AI summary of a policy document</span>
+        <p class="sampletext">"The updated flexible work policy takes effect June 30 and asks staff for three days on campus. Since the 2023 survey found 82 percent of staff prefer hybrid schedules, this long-overdue change finally brings the University in line with its peers."</p>
+        <div class="catchrow"><b>Claim read</b><span>Five fault lines surface: June 30, three days, the 2023 survey, 82 percent, and "in line with its peers." Now you know exactly what to check.</span></div>
+        <div class="catchrow"><b>Source read</b><span>The policy document names no effective date; June 30 is invented. The survey is real, ran in 2021, and found 64 percent; the figure is stale. Two of five claims failed.</span></div>
+        <div class="catchrow"><b>Slant read</b><span>"Long-overdue" and "finally" are the summary arguing for the policy, which the source document never does. Strip the frame before this travels anywhere.</span></div>
+      </div>
+
+      <div class="quiz" id="faultLine" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Find the fault line</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> checking time is scarce, so the skill is knowing which claim to check first: the one that is checkable and carries the most weight. Five sentences; pick the first check.</p>
+        <p class="quiz__progress" id="flProgress"></p>
+        <p class="quiz__q" id="flQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="flOptions" role="group" aria-label="Claim choices"></div>
+        <p class="quiz__feedback" id="flFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="flNext" style="visibility:hidden">Next sentence</button>
+        </div>
+        <div id="flResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The order is the trick. The claim read costs about ninety seconds on a page and turns a wall of prose into a short list of checkable points, which is what makes the source read affordable: you trace the two or three claims that carry real weight instead of everything. "Riskiest" has a working definition: the claim that travels farthest and would cost the most if wrong. A date people will act on outranks a percentage in a background paragraph. And if you took Answers, Faster, this should feel familiar: ask-anchor-check is the Three Reads specialized for research questions. What you're learning here is the general case, ready for any output the model hands you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> calling fault lines out loud, with other people disagreeing, calibrates your eye faster than reading alone ever will.</p>
+          <ol class="steps">
+            <li>Project the worked example paragraph again. As a room, call out every fault line; the facilitator underlines each one.</li>
+            <li>Vote: which single claim gets checked first, and why?</li>
+            <li>Land the definition together: checkable plus load-bearing. The claim that travels farthest wins the first check.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take the AI miss you wrote down in section 01 and run all three reads on it now, from memory. Which read would have caught it, and how long would that read have taken?</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 13 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the session's named method: the claim read (underline every checkable claim), the source read (trace the riskiest to an opened source), and the slant read (assumptions, absences, the opposite case), worked live on one flawed example.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here is the whole method. Read one, the claim read: go through the output underlining every checkable claim. Names, numbers, dates, quotes, citations. Those are the fault lines, the only places the output can actually break; everything else is upholstery. Read two, the source read: take the fault lines carrying the most weight and trace each to a source you trust. Open it. Confirm it says what the output says, because a claim with no source is a guess wearing a suit. Read three, the slant read: three questions. What is this output assuming? Who is missing from it? What would the strongest opposite case say? Watch it work on a real example, because this paragraph reads perfectly, and two of its five claims are wrong.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards in order, and stress the order: the claim read makes the other two cheap.</li><li>Work the example on screen slowly. Read the paragraph aloud once, then run each read against it and let the catches land: the invented June 30 date, the stale 64-versus-82 figure, the 'long-overdue' framing.</li><li>Point at the ratio: five claims, two failed, one frame stripped, all inside two minutes of reading.</li><li>Send them to Find the Fault Line: five sentences, pick the first check.</li><li>Run the room call from Go deeper: project the example again, the room calls fault lines, you underline, then vote on which claim gets checked first.</li><li>If the room took Answers, Faster, name the bridge once: ask-anchor-check is this method specialized for research.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the trainer: what made the right answer the FIRST claim to check in each sentence? What did those claims have in common?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>They were specific: a number, a date, a named study, exact quoted words</li><li>People would act on them: book travel, plan around a deadline, repeat the quote</li><li>The vague options couldn't be checked at all</li></ul><p class="facnote__mini">Respond: Land the definition: 'Checkable plus load-bearing. The claim that travels farthest and costs most if wrong gets the first trace. That one judgment, made in seconds, is what makes the whole method affordable.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Claim, source, slant, in that order, and the example just showed the yield: two real errors and one loaded frame caught in the time a coffee takes to cool. The method exists; what's left is knowing how much of it each output deserves.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the room can define 'riskiest claim' (checkable plus load-bearing, travels farthest) without prompting.</p><p class="facnote__meta"><b>Watch for:</b> Learners equating the claim read with rereading. The difference is the pencil: underlining forces a decision about every sentence, checkable or upholstery. Also watch for source reads that stop at 'the citation is formatted properly'; the read means opening the source, every time.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Because running all three reads on everything would make AI pointless, and running none is how the four hours get paid. Next: sizing.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards and worked example at full strength (this is the hinge), trainer on devices; the room fault-line call shrinks to one volunteer naming the first check.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 SIZE THE CHECK ============ -->
+  <section class="slide on-light" id="s-size" data-count data-title="Size the check">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Size the Check</p>
+      <h2 class="h2" data-reveal>Size the check to the <em>stakes</em>.</h2>
+      <p class="lead" data-reveal>Running every read on every output would make AI slower than no AI, and skipping every read is how the four-hour tax gets paid. The skill in the middle is a verification budget: the check grows with how far the output travels and who it can hurt.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem">
+        <span class="tag">The verification budget</span>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>No check</b><span>A brainstorm, a rough draft for your own eyes, a list of ideas. There are no claims to be wrong yet.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Claim read</b><span>An internal summary or note you will act on. Ninety seconds: underline the fault lines, fix what you know is off.</span></div>
+          <div class="tl__row tl__row--yellow"><b>All three</b><span>Anything that travels: an email to a department, a briefing, a report, a page others will trust. Claim, source, slant.</span></div>
+          <div class="tl__row tl__row--red"><b>Expert</b><span>Legal, medical, financial, or people consequences. A qualified human reviews, no matter how clean it reads. AI can help draft; it cannot carry the accountability.</span></div>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The stop rules</span>
+        <p style="margin:.5rem 0 0" class="measure">Sometimes the right size for the check is abandoning the tool for the task. <b>1. Three misses in a row:</b> the model has failed the same task three straight times; it is telling you it cannot do this one. Take the task back. <b>2. The source does not exist:</b> one invented citation means every citation in the output is now suspect, and re-verifying them all costs more than starting over. <b>3. Judgment you cannot check:</b> if you could not tell a right answer from a wrong one, no read will save you. Verification needs a verifier who knows what wrong looks like.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule still runs</span>
+        <p style="margin:.5rem 0 0" class="measure">The budget sizes the check after the output exists. The traffic light from Start Smarter governs what the tool may see in the first place, and it outranks everything in this course:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">Red data about people never goes into unapproved tools, whatever you plan to verify afterward. No read makes a forbidden input acceptable.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: An AI draft discussing a named employee's performance concern reads perfectly. What actually sizes this check?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="0" data-why="Careful reading doesn't reach the real problem. Private information about a person is red-light data, so the question is what went into the tool, and the light outranks every read."><span class="mark">A</span><span>Run all three reads carefully before it ships</span></button>
+          <button class="opt" data-correct="1" data-why="Right. This call belongs to the traffic light, and it comes before verification: private information about people never goes into unapproved tools. If it already happened, the fix runs through your supervisor and the approved-tool route; checking the output changes nothing."><span class="mark">B</span><span>The traffic light: this is red-light data, and the draft should not exist in an unapproved tool at all</span></button>
+          <button class="opt" data-correct="0" data-why="Internal is the wrong category here. Internal work is yellow; a named person's performance information is red, and red means never, however small the audience."><span class="mark">C</span><span>A quick claim read is enough, since it stays internal</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="shipCheck" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Check, ship, or stop</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the budget only helps if you can size a check in the moment, at speed. Five real situations; make the call for each.</p>
+        <p class="quiz__progress" id="scProgress"></p>
+        <p class="quiz__q" id="scQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="scOptions" role="group" aria-label="Sizing choices"></div>
+        <p class="quiz__feedback" id="scFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="scNext" style="visibility:hidden">Next situation</button>
+        </div>
+        <div id="scResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two habits keep the budget honest. First, decide the check size before you read the output, because a fluent draft will talk you down; the stakes were set the moment you knew where the output was going, and nothing in the prose changes them. Second, keep a private tally of misses per task. The stop rules run on that tally: three misses in a row on the same task is a fact you can only notice if you counted. The tally also runs the other way, and that matters just as much: a task with months of clean checks has earned a smaller budget. Verification is a dial you keep adjusting to the evidence, in both directions.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> sizing gets fast once you've heard a dozen cases called by other people, especially the ones you'd have called differently.</p>
+          <ol class="steps">
+            <li>Popcorn round: each person names one real AI task from their week.</li>
+            <li>The room votes each one, hands up: ship as is, run the reads, or stop and do it yourself.</li>
+            <li>On any split vote, stop and ask what stake or audience the two sides saw differently. The disagreement is the lesson.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> List your three most common AI tasks and write the budget line for each: no check, claim read, all three reads, or expert. Keep the list; it becomes your default settings.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the verification budget (no check, claim read, all three reads, human expert), the three stop rules for abandoning AI on a task, and the traffic light as the rule that outranks everything.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The skill of this section is a budget. A brainstorm for your own eyes gets no check; there are no claims to be wrong yet. An internal summary you'll act on gets the claim read, ninety seconds. Anything that travels, an email to a department, a briefing, a report, gets all three reads. And anything with legal, medical, financial, or people consequences gets a qualified human expert, no matter how clean it reads. Decide the size before you read the output, because a fluent draft will talk you down. Then three stop rules, for when the answer is to take the task back entirely: three misses in a row on the same task. A source that turns out not to exist. And judgment you couldn't check, because if you can't tell right from wrong there, no read will save you. One rule sits above all of this: the traffic light. Green, public, go. Yellow, internal, approved VU tools only. Red, private information about people, never. The light outranks every read in this course.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the budget rows top to bottom, and name the two failure directions: under-checking pays the tax, over-checking teaches people that checking is theater.</li><li>Land the rule of thumb: decide the check size BEFORE reading the output, because fluent drafts talk you down.</li><li>Walk the stop rules card: three misses in a row, the source does not exist, judgment you cannot check. Frame stopping as a verification verdict, not a failure.</li><li>Walk the traffic light and be unambiguous: green public, yellow internal in approved VU tools only, red private information about people, never. The light outranks every read.</li><li>Run the quick check (the red-light draft), then Check, Ship, or Stop on devices.</li><li>Run the popcorn sizing round from Go deeper: real tasks from the room, hands-up votes, stop on splits.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the popcorn round: which task split the room's vote, and what stake did the two sides see differently?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>An internal summary some treated as ship-as-is and others as claim-read, splitting on whether anyone acts on it</li><li>A report where the split was really about how far it travels</li><li>Someone realizes a task they'd been shipping unread actually carries people consequences</li></ul><p class="facnote__mini">Respond: Name the pattern: 'Every split was really a disagreement about travel or consequences, never about the prose. That's the tell that you're sizing correctly: the argument is about stakes. When in doubt, size up one row.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A budget that scales with stakes, three stop rules with a tally behind them, and a light that outranks it all. You now have the complete decision system; what's left is running it under pressure.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the quick check lands (the room can say why no read fixes a red-light input); learners can recite the three stop rules.</p><p class="facnote__meta"><b>Watch for:</b> Two drifts: the perfectionist concluding everything needs all three reads (point at the budget's top row and the theater problem), and the enthusiast treating stop rules as defeat (frame the tally as the model telling you its own limits). The red-light correction matters more than the flow of the room; make it kindly and completely.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So let's apply some pressure. You have a briefing, a dean, and one hour.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: budget and stop rules verbatim, traffic light at full strength, quick check and trainer on devices; the popcorn round drops to two examples.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 THE VERIFICATION LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Verification Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Lab</p>
+      <h2 class="h2" data-reveal>The dean's briefing is due in an <em>hour</em>.</h2>
+      <p class="lead" data-reveal>You asked AI to draft a two-page briefing on your program's enrollment trends for the dean: numbers from the last three years, a cited external benchmark, and a closing paragraph making the case for more support. It came back polished and persuasive, and you have one hour. Decide how you handle it, then see how the next two weeks go.</p>
+
+      <div class="lab" id="verifyLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Verification Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will face this month, under the same time pressure, with the same fluent draft in front of you. Choose all four, then run it forward.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Send it and see</button>
+          <span class="quiz__progress" id="labStatus">Choose all four moves</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice what the hour was actually enough for. The claim read on two pages costs five minutes. Tracing the three load-bearing claims costs fifteen. The slant pass costs five more, and you still had half the hour left. The lab's bad endings never come from lack of time; they come from spending the hour polishing sentences instead of checking claims, because polishing feels like diligence and reads like progress. The other lesson hides in the sign-off slot: what you tell the dean about your checking is itself a claim, and it shapes how much the dean re-verifies. An honest signal ("numbers verified against the enrollment system, benchmark confirmed") lets the reader spend their attention where you didn't.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing how colleagues handle the citation they cannot find tells you what your own team's real standard is.</p>
+          <ol class="steps">
+            <li>Show of hands by tier: who got the strong two weeks, who got burned?</li>
+            <li>One burned learner reads their coaching notes aloud; the room names which single slot cost them.</li>
+            <li>Debate the sign-off slot for two minutes: what do you owe the dean about your checking, in one sentence?</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Run the lab once more, choosing what you would honestly do on your busiest day, and read that outcome. The gap between your two runs is where your real risk lives.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give every learner a full felt rep of the method under time pressure: four verification moves on a real briefing, and a two-week outcome that rewards checking discipline rather than AI enthusiasm. The session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the situation. You asked AI to draft a two-page briefing for your dean on enrollment trends: three years of numbers, an external benchmark with a citation, and a closing paragraph making your case for support. It came back polished and persuasive, and it's due in an hour. Four moves are yours: what you check, what you do with a citation you cannot find, how you handle the paragraph that argues a little too hard, and what you say when you sign it off. Choose honestly. Then the lab runs two weeks forward and shows you what happened in the rooms you weren't in. One warning from everything we've covered: the draft reads beautifully. That is not information.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Set the scenario in one breath: a polished two-page AI briefing for the dean, numbers, a benchmark citation, a persuasive closing, one hour.</li><li>Send them into the lab on devices: choose all four moves, then run it forward.</li><li>Let people get their two-week outcome individually; the mid and weak tiers teach more than the strong one, so don't coach choices in advance.</li><li>Ask for a show of hands by tier: who got the strong two weeks, who got burned. Have one burned learner read their coaching notes aloud; the room learns from the postmortem.</li><li>Push the rerun: strengthen your weakest move and run it again. The delta between runs is the lesson.</li><li>Run the sign-off debate from Go deeper: what do you owe the dean about your checking, in one sentence?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those who hit the mid or weak tier: which single move cost you, and what would you honestly have done at work before today?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Trusting the citation because it was properly formatted</li><li>The read-for-flow check: 'it was drafted from my own numbers'</li><li>An honest 'before today I'd have shipped it as-is'</li></ul><p class="facnote__mini">Respond: Treat that last answer as the room's win: 'That recognition is the whole lab. The weak tier isn't hypothetical; it's a description of normal practice, which is where the four hours a week and the correction emails come from. You now know the three moves that change the ending.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The lab's scoring is the session's thesis in miniature: the hour was always enough, and the endings were decided by whether the reads ran, whether the orphan citation left the document, and what the sign-off told the reader. Your next real briefing gets this exact treatment.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes at least one lab run; most reach the strong tier on a rerun; the room can name the sign-off insight (what you checked is information the reader needs).</p><p class="facnote__meta"><b>Watch for:</b> Learners who game the lab by picking the maximal option everywhere without reading the coaching. The question that re-engages them: 'which of these would you honestly do on your busiest day?' That honest-day run is in Go deeper for a reason. Also watch clock discipline; this section has the least slack.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One thing left: making sure this still happens in week six, on your busiest day, without you having to remember it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one lab run instead of run-plus-rerun (rerun only for learners who hit weak tier), tier hands stay, the sign-off debate drops to one voice. This is the floor; never cut the lab entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 MAKE IT A HABIT ============ -->
+  <section class="slide on-cream" id="s-habit" data-count data-title="Make it a habit">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Habit</p>
+      <h2 class="h2" data-reveal>Make the check a <em>reflex</em>.</h2>
+      <p class="lead" data-reveal>A method you have to remember is a method you'll skip on busy days, and busy days are when the expensive miss ships. The fix is attaching a small check to the moment output arrives, and giving your team a way to talk about misses that makes catching one a win.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">The 90-second version</span>
+          <h3>For every output that leaves your hands</h3>
+          <p class="muted">Underline the fault lines as you read. Trace the one claim that would hurt most if wrong. Ask the slant question when the output will influence a decision. Ninety seconds, most days, and it turns automatic in about two weeks.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">The team ritual</span>
+          <h3>Misses logged, catches celebrated</h3>
+          <p class="muted">Keep a shared miss log that records the task and the failure mode, with no blame attached, and say "caught one" out loud when a check fires. A team that celebrates catches keeps checking; a team that punishes misses learns to stop reporting them.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Everyone's job</span>
+          <h3>Bias review by checklist</h3>
+          <p class="muted">The slant read belongs to whoever holds the document, as a standing question on every review: what is this assuming, and who is missing? Put it on the checklist and every reviewer runs it as routine, whatever their temperament.</p>
+        </div>
+      </div>
+
+      <div class="plan" id="ritualBuild" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your verification ritual, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the output you accept unchecked most often is where your next miss is already scheduled. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="rbOutput"><b>1 · The output.</b> The AI output you most often accept without checking:</label>
+            <input type="text" id="rbOutput" maxlength="120" placeholder="e.g. the meeting summary the AI posts to our channel every Friday" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="rbMiss"><b>2 · The worst plausible miss.</b> The most damaging wrong thing that could hide in it:</label>
+            <input type="text" id="rbMiss" maxlength="120" placeholder="e.g. a decision attributed to someone who argued against it" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="rbCheck"><b>3 · The 90-second check.</b> Which read catches that miss, and what would you open to run it?</label>
+            <input type="text" id="rbCheck" maxlength="120" placeholder="e.g. claim read on names and decisions, against my own meeting notes" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="rbBuild" disabled>Build my ritual</button>
+            <span class="quiz__progress" id="rbStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="rbOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Habits attach to triggers, so pick the trigger deliberately: the moment AI output lands in front of you, before you do anything else with it, the claim read starts. Two weeks of that and the underlining happens without deciding to. The team layer needs one more ingredient: the miss log records the task and the mode, never the person who missed it, because the log's job is pattern-finding. Three staleness misses on the same monthly report is a stop-rule conversation about that report. And the "caught one" ritual does quiet cultural work: it tells everyone the checks are running, makes the checker look sharp rather than slow, and keeps the log honest.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> a ritual your team has said out loud is one it can actually start on Monday.</p>
+          <ol class="steps">
+            <li>Pairs: trade the rituals you just built. Partner's test: would that check really catch that miss?</li>
+            <li>Draft the "caught one" message together: the one line someone posts when a check fires. Keep it light; it has to feel like a win.</li>
+            <li>Two or three rituals to the room, out loud. Spoken plans survive the week better than typed ones.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Set the trigger now: name the exact moment your chosen output arrives each week, and put a two-minute calendar block or reminder on it labeled with your check. The reminder does the remembering so the busy day doesn't have to.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the method into a personal ritual (trigger, 90-second check, miss tally) and a team practice (blame-free miss log, the 'caught one' ritual, slant review as a checklist question), and get every learner a built ritual for their own most-trusted output.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Everything so far dies on a busy Tuesday unless it becomes a reflex, so here's the reflex. The 90-second version: fault lines underlined as you read, one trace on the claim that would hurt most, the slant question when the output will steer a decision. The trigger is the moment output lands, before you do anything else with it; two weeks of that and it runs on its own. Then the team layer. A miss log that records the task and the failure mode, never the person, because the log's job is finding patterns, and blame kills the data. And when a check fires, you say 'caught one,' out loud, like a win, because it is one. In a minute you'll build your own ritual, privately: the output you trust most is the one that gets to go first.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the honest premise first: a method you must remember is a method you'll skip, and busy days are when the expensive miss ships.</li><li>Walk the three cards: the 90-second version, the team ritual, and bias review as a checklist question that belongs to whoever holds the document.</li><li>Stress the log's two rules: task and mode, never the person; and catches get celebrated out loud.</li><li>Send them into the ritual builder: the output they accept unchecked, the worst plausible miss, the 90-second check. Repeat the privacy line before they type.</li><li>Give the builder quiet time; field 2, the worst plausible miss, deserves a full minute.</li><li>Run the pair test from Go deeper: would that check really catch that miss? Then draft the 'caught one' message together.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's the output you named in the builder, roughly, and what made you pick it? Kinds of output only, no contents.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Recurring summaries: meetings, tickets, inbox digests, the things that arrive weekly</li><li>Drafted communications that go out under their own name</li><li>Someone picks the output they LEAST suspect, having realized that's the point</li></ul><p class="facnote__mini">Respond: Reward that last instinct: 'Exactly. The output you'd never think to check is the one automation bias has fully claimed. High trust plus zero checking is where the next miss is scheduled, and your ritual just moved the catch to before.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A trigger, a 90-second check, a tally, and a team that treats catches as wins. That's the whole discipline, sized for real weeks. What's left is proving you have the knowledge, and then putting a date on it.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has a built ritual with a named output, a named worst miss, and a check that would plausibly catch it; the pair test confirms the match.</p><p class="facnote__meta"><b>Watch for:</b> Rituals with vague checks ('I'll review it more carefully'). Push to mechanics: which read, against what opened source, at what trigger moment. And watch for worst-miss answers that reveal red-light practices; handle those privately and kindly after the session.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quiz first, then the card that leaves the room with you.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards in two minutes, builder stays at full length with its quiet minute protected; the pair test becomes a 30-second self-test against the worst miss.</p></aside>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 11 · VERIFICATION CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My verification card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My verification card</p>
+      <h2 class="h2" data-reveal>One output. Three reads. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't build checking habits; a named output with a named first move and a date does. Pick the recurring AI output you'll verify with the Three Reads this week, choose your opening move, and name the line you will not cross.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> the first verified output is the one that turns the method into a reflex, and picking it now costs thirty seconds. Outputs and tasks, never private information about people, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="vcPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The output.</b> The recurring AI output you will verify with the Three Reads this week:</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the weekly program update the AI drafts from our tracker" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Where does the checking start?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="claim"><span>Run the claim read on the very next output</span></button>
+              <button class="opt" data-practice="citation"><span>Trace one citation all the way to its source</span></button>
+              <button class="opt" data-practice="slant"><span>Add the slant question to my standing review</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode as a verifier.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="unread"><span>Ship an output I have not read</span></button>
+              <button class="opt" data-not="citation"><span>Trust a citation I did not open</span></button>
+              <button class="opt" data-not="misses"><span>Keep using AI after three misses in a row</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first verified output ship?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my verification card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: one recurring output, one first move, one named line not to cross, and a dated first verified output. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Sessions don't build checking habits. A named output with a named first move and a date does. Pick the output, the real one, the one that recurs. Choose where the checking starts: the claim read on the very next one, one citation traced all the way to its source, or the slant question added to your standing review. Then the honest field: what you will NOT do, because you know your failure mode; shipping an output you didn't read, trusting a citation you didn't open, or pushing on after three misses in a row. And the date: when does the first verified output ship? A named output with a named first move and a date is a habit starting. Everything less is a good intention.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: sessions don't build checking habits; a named output with a date does.</li><li>Repeat the privacy norm before anyone types: outputs and tasks, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the ritual builder from section 06 is the raw material, and the recurring output they named there is usually the right card.</li><li>Point at field 3, what you will NOT do, as the honest one: every person in the room has one of these three failure modes.</li><li>Push the build moment, then the close-the-loop line: after the first verified output, write down what the reads caught and how long they took.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the first verified output, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the deadline will win</li><li>The output will look clean and checking will feel pointless</li><li>Forgetting entirely once the week starts</li></ul><p class="facnote__mini">Respond: No time: 'The claim read is ninety seconds against a four-hour weekly tax; the math forgives you exactly once.' Looks clean: 'That is the automation-bias voice, and you now know its name; the check size was decided before you read it.' Forgetting: 'Put the reminder on the output's arrival time right now, before you leave this slide.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One recurring output is about to get read like it matters, by someone who knows exactly where it can break. That's how checking cultures start: one person, one output, one caught error at a time.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Grand cards ('verify everything from now on'). Push to ONE recurring output with a real cadence. And date-dodging: 'soon' is not a commitment; help them pick the actual next arrival of their output on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Hallucination, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Hallucination</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Invented facts, citations, quotes, or people, delivered with full confidence. The tell: precise details that exist nowhere outside the output.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Staleness, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Staleness</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A claim that was true when the model learned it and is wrong now. The tell: a moving number or policy stated with no date attached.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Slant, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Slant</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Accurate facts inside a frame that argues a side. The tell: adjectives doing the work, and one side's "concerns" against the other's "complaints."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Omission, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Omission</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>What the output quietly left out: the objection, the caveat, the losing quarter. The tell: a summary smoother than its source.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Fault line, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Fault Line</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A checkable claim in an output: a name, number, date, quote, or citation. The places where output can actually break, and where checking time goes.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The claim read, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Claim Read</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Read one: underline every checkable claim. Ninety seconds on a page, and it turns prose into a short list of things worth checking.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The source read, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Source Read</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Read two: trace the riskiest claims to a source you trust, and open it. A claim with no source is a guess wearing a suit.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The slant read, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Slant Read</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Read three: what is this output assuming, who is missing from it, and what would the strongest opposite case say?</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Stop rules, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Stop Rules</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>When AI leaves the task: three misses in a row, a source that does not exist, or judgment you could not check. Stopping is a verification verdict.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Verification budget, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Verification Budget</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The check sized to the stakes: none for brainstorms, the claim read for internal notes, all three reads for anything that travels, a human expert for consequences.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Automation bias, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Automation Bias</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The documented drift toward accepting a system's output as it keeps being right. The more you trust, the less you check, which is when the miss ships.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Miss log, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Miss Log</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A shared record of AI misses by task and failure mode, never by person. It finds patterns, feeds the stop rules, and makes "caught one" a win.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards, including 'automation bias,' for the next time an output has been right so many times that nobody's reading it anymore.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Automation Bias is a good pick; it names the force everyone just felt in the lab).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all twelve cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One output left to verify: the next one.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go verify the <em>next one</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw what the cleanup tax costs, learned the five failure modes and their tells, ran the Three Reads, sized checks to stakes, survived the dean's briefing, and built a ritual with your name on it. The next AI output that lands on your screen is where all of it becomes real.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">10 minutes</span></div>
+        <h3>The next-output test</h3>
+        <p>Take the very next AI output you would normally accept and run the full Three Reads on it, timed. Underline the fault lines, trace the riskiest claim to its source, ask the slant question. Write down two things: what you caught, and how long it took. Most people find something worth fixing and finish inside ten minutes, and that one data point is what makes the habit feel worth keeping.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say the output you'll verify and your day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the verification card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Claim. Source. Slant. Then ship.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-cost">The Cost of Belief</a></li>
+          <li><a href="#s-failures">Know the Failure Modes</a></li>
+          <li><a href="#s-reads">The Three Reads</a></li>
+          <li><a href="#s-size">Size the Check</a></li>
+          <li><a href="#s-habit">Make It a Habit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Verification Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Trust, Then Verify · Facilitator Edition · learner link: <a href="../../../courses/Trust-Then-Verify/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Course_Library/courses/Trust-Then-Verify</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the errors arrive fluent, the five modes have tells, the Three Reads catch them, the budget sizes the check, the stop rules know when to quit, and the ritual keeps it alive on your busiest day. You have a card. Before you go: your output, and your day. Say it out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the next-output test, the full Three Reads on the very next AI output, timed, with the catch and the clock written down.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you that you'd catch a wrong claim before it ships?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: output and day, out loud or in chat.</li><li>Point at the cheat sheet and verification card buttons; the cheat sheet is built to sit next to the keyboard.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your output, and the day the first verified one ships.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The Friday meeting summary, this Friday'</li><li>'The monthly report draft, Thursday'</li><li>Someone commits to tracing one citation in something already sitting in their inbox</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the citation-tracer, warmly: 'Good instinct. Open it before you leave the building; a traced citation in the next hour beats a planned one next week.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many first verified outputs shipped, what the reads caught, and how long the catching took.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state an output and a day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go read the next one like it matters. And when you catch something, and you will, say it out loud: caught one.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

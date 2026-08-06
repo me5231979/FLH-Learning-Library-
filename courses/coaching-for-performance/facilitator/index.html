@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coaching for Performance — Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: the research case for coaching, the GROW model, powerful questions, Feedforward, and a real coaching conversation planned within the week.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coaching for Performance | Vanderbilt Learning Series">
+<meta property="og:description" content="Grow people, not just tasks: GROW, powerful questions, and Feedforward, practiced live, ending in a real coaching conversation with a date on it.">
+<meta property="og:url" content="../../../courses/coaching-for-performance/">
+<meta property="og:image" content="../../../courses/coaching-for-performance/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coaching for Performance | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/coaching-for-performance/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-case">Why Coach</a>
+    <a href="#s-grow">GROW</a>
+    <a href="#s-questions">Questions</a>
+    <a href="#s-feedforward">Feedforward</a>
+    <a href="#s-models">Models</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including a deliberately bad run of the GROW simulator (pick every advice option; you'll quote the result).</li><li>Build your own coaching plan in the capstone for a real person you manage. You will reference having done it, not the contents.</li><li>Recruit a colleague and run one real GROW conversation before you teach one. Ten minutes; it changes how you debrief the roleplay.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which videos you keep.</li><li>Send the pre-work invite (template on this page); a primed room saves the roleplay five minutes of topic-hunting.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Print 5 to 10 cheat sheets and worksheets, plus this guide's run-of-show.</li><li>Rehearse the Feedforward rules out loud once; the exercise lives or dies on you enforcing 'thank you' warmly.</li><li>Re-read the tough-questions bank; say the 'I don't have time to coach' answer out loud. You will get it.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run one stage of the GROW simulator).</li><li>Write 'PARKING LOT' at the top of the whiteboard.</li><li>Plan the triad math for your headcount; a leftover pair runs Feedforward with two suggestions each instead of four.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed capstone worksheets (worksheet.html) as the no-device and projector-failure fallback</li><li>Movable chairs: pairs for GROW, triads for Feedforward; plan the shuffle before people sit</li><li>Whiteboard or flip chart for the parking lot and the best question conversions</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: GROW's question bank, the three powerful-question tests, and the Feedforward rules all work on a whiteboard. The pair and triad practice needs no screen at all.</div><div class="brief__row"><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: the GROW simulator plays brilliantly on the projector with the room voting A/B/C by hands; private work (ratio, capstone) moves to the printed worksheet. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by Feedforward (Section 05):</b> Declare the Core path silently: cut remaining videos and group debriefs, run one Feedforward rotation instead of three. Never cut the GROW pair roleplay, the recap, or the capstone; they carry objectives 2 and 5.</div><div class="brief__row"><b>If The GROW roleplay coaches keep giving advice:</b> Expected; it's the whole point. Interrupt once, kindly and globally: 'Coaches, if you've said anything that isn't a question, restart from the bank.' Then let pairs self-police. Name it in the debrief as evidence of the default.</div><div class="brief__row"><b>If Someone dominates, or dismisses coaching as 'too slow for the real world':</b> For dominators: 'Hold that; parking lot.' For the skeptic, don't argue; route to Section 07: 'You're right that directing is sometimes correct, and there's a whole section on when. The question is the ratio.' The skeptic usually becomes your best Section 07 voice.</div><div class="brief__row"><b>If A coachee brings a heavy or personal topic into the roleplay:</b> The brief says low-stakes work challenges; re-anchor gently if a pair drifts deep. Coaching practice isn't therapy, and this room isn't private. If someone is genuinely struggling, connect them with EAP resources after, privately.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>I don't have time to coach. Directing is faster.</summary><p>Directing IS faster, once. The same problem returning to your desk every week is the slow path. The math of the session: a ten-minute GROW conversation that builds capability beats sixty one-minute answers that build dependence. Coaching is how a manager buys their calendar back.</p></details><details class="brief__q"><summary>What if they come up with a worse plan than mine?</summary><p>Two honest answers. First, check the stakes: if the cost of their B-minus plan is small, their owned B-minus beats your imposed A, because they'll execute it harder and learn from it. Second, coaching isn't withholding: after their options are on the table, 'may I add one?' is allowed. Yours becomes an option, not the answer.</p></details><details class="brief__q"><summary>Isn't this just therapy? I'm not qualified for that.</summary><p>Coaching is about work goals, forward motion, and their own thinking; it stays on professional ground. If a conversation moves into mental health, personal crisis, or anything clinical, that's your cue to connect them with EAP or HR resources, not to coach harder. Knowing that line IS part of the skill.</p></details><details class="brief__q"><summary>My own manager never coaches me. Why should I go first?</summary><p>Because the research says it's the top behavior of great managers, and you'd rather be one than wait for one. Also: coaching works upward. 'What would make this most useful?' is a question you can ask your boss about your own one-on-ones. Someone starts the culture; managers in this room are the likeliest candidates.</p></details><details class="brief__q"><summary>Can I use these questions in performance or disciplinary conversations?</summary><p>The skills transfer, but the frame changes. A formal performance process has requirements that come first; talk to HR before improvising coaching moves inside one. For everyday performance conversations short of that line, GROW plus honest expectations is exactly the right tool.</p></details><details class="brief__q"><summary>How is coaching different from mentoring?</summary><p>A mentor shares their path: 'here's what worked for me.' A coach helps someone find their own: 'what might work for you?' Both are valuable; the failure mode is mentoring when you meant to coach, because your story quietly becomes their instruction. Notice which one you're doing on purpose.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Coaching for Performance session. Two small things before you arrive: 1) Think of one real, low-stakes work challenge you're currently mulling; you'll be coached on it (nothing sensitive, and you choose what to share). 2) Think of your last five one-on-ones; you'll rate, privately, how many were coaching versus telling. Everything you type in the session stays on your screen.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the coaching conversation happen? Three quick lines, reply whenever: 1) Did you run the conversation you planned? 2) Which model did you use (GROW, CLEAR, OSKAR)? 3) What was different compared to your usual 1:1, in one sentence? Replies come to me only. Not yet? This note is your nudge; the plan you wrote still works.</p></details><details class="brief__q"><summary>30-day ratio re-poll (send a month after)</summary><p>Subject: The five-1:1 question, round two. In the session you privately rated your last five one-on-ones: how many were coaching (they discovered) versus telling (you directed)? Same question, new month: of your LAST five, how many were coaching? Reply with just the number. Movement of one point across the group is the win we designed for.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did you run the coaching conversation? Which model? What was different from your usual 1:1?' Replies are Kirkpatrick Level 3 evidence. At 30 days, re-run the opening ratio poll ('of your last five 1:1s, how many were coaching?'); the shift in that number is the program's headline metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Coaching for Performance session. Two small things before you arrive: 1) Think of one real, low-stakes work challenge you're currently mulling; you'll be coached on it (nothing sensitive, and you choose what to share). 2) Think of your last five one-on-ones; you'll rate, privately, how many were coaching versus telling. Everything you type in the session stays on your screen.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:44ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Every exercise is hands-on.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>7</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real coaching conversation you'll plan</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device, and set the practice norms: real topics, low stakes, roles not names.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today you will coach, and you will be coached, on real work topics you choose. Ground rules: keep your practice topics low-stakes, use roles instead of names, and everything you type stays on your screen.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>State the norms: you'll coach and be coached on REAL but low-stakes topics; roles, never names; nothing typed leaves your screen.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p><p class="facnote__meta"><b>Watch for:</b> Anyone without a device: pair them with a neighbor now and hand them a printed worksheet for the private exercises.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Everyone in? Then here's the promise of the next hour.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, state the norms, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_021301_52afe7ef-97cf-46bc-aeac-9c303a2e1c16.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_021302_77b2b78e-fb13-4daf-8e74-3ee34649bec7.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_021304_13f62d6f-08c9-4678-a6a1-25805e6edd2a.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Coaching for Performance · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>The best managers don't tell.<br><em class="gold-text">They ask.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">You were promoted for having answers. Google's biggest study of its own managers found the number one behavior of the very best is something else entirely: they coach. This session rewires the default.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why coaching, not directing, is the top predictor of great management, and spot your own telling default</li>
+          <li>Structure a full coaching conversation with the GROW model, from goal to committed action</li>
+          <li>Convert closed, leading, and advice-loaded lines into open, powerful questions</li>
+          <li>Give and receive future-focused Feedforward suggestions without judgment or defense</li>
+          <li>Choose your coaching model and commit to one real coaching conversation this week, opening question written</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill">Coaching Techniques</span>
+        <span class="skillpill">Leadership Development</span>
+        <span class="skillpill">Employee Engagement</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-case">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in a real coaching conversation with a date and a written opening question.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You were promoted because you were good at the work, which means you're carrying a habit: when someone brings you a problem, you solve it. Google studied ten thousand of its own managers to find what the best ones do, and the answer wasn't faster solving. By the end of this hour you'll have a coaching structure, a bank of questions that actually work, and one real conversation planned with a date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives briskly, in plain language.</li><li>Land on the fifth: this session ends with a REAL conversation planned, opening question written, date set.</li><li>Name the sources once for credibility: Google's Project Oxygen, McKinsey, the ICF, Whitmore's GROW, Goldsmith, HBR.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Show of hands: who has ever left a one-on-one having done all the talking?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Most hands, with laughter</li><li>A few proud holdouts</li><li>Someone says 'that's every one-on-one'</li></ul><p class="facnote__mini">Respond: Keep it light: 'Good, you're in the right room. By the end of today the goal is that THEY do the talking, and you do the asking.'</p></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (a planned, dated coaching conversation with a written opening question).</p><p class="facnote__meta"><b>Watch for:</b> The 'soft skills' eye-roll. The counter is on the slide: this is the number one behavior in the largest manager study ever run.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Seven ideas get us there. Here's the road.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 2 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a coaching question is that dare handed to the person across the table.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: a coached team solves problems without queueing outside your door, and that unblocked capacity is what speed at scale is made of.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets need people who can think past their manager's answer, and the GROW conversation is where that thinking gets trained.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: a manager who grows people through questions instead of answers is modeling, in miniature, what a teaching institution is for.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: talent joins for the reputation and stays where it grows, and a manager who runs real GROW conversations is that growth in practice. Every direct report who stops needing your answer becomes capacity the university never had to hire.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Tie coaching to the Chancellor's charge: a university built for speed and bold bets needs teams that think without queueing at the manager's door.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;One minute on why this is a university priority and not a management fad. Chancellor Diermeier's vision is one sentence: Vanderbilt will define the great university of the 21st century, and be it. Speed at scale and bold bets both need people who can think past their manager's answer, and coaching is how a team learns to do that. Our motto is 'dare to grow'; a coaching question is that dare handed across the table.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence verbatim; give it a beat.</li><li>Walk the three focus cards, one line each, landing on each 'team translation.'</li><li>Point at the flywheel card: coached teams create capacity the university never had to hire. Then move; the evidence for coaching is the next section.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the institutional why. Here's the road for the session.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: read the vision sentence, gesture at the three focuses, move on; under a minute.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Seven ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The case for coaching</h3><p>Google studied ten thousand of its managers. One behavior topped the list.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Your telling default</h3><p>Why smart managers over-direct, and how to catch yourself doing it.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The GROW conversation</h3><p>Goal, Reality, Options, Will. You'll run one, live, against a virtual coachee.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Powerful questions</h3><p>Converting advice into inquiry, and the six seconds of silence that do the work.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Feedforward</h3><p>Goldsmith's future-only development exchange. No past, no defensiveness.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Choose your model</h3><p>GROW, CLEAR, or OSKAR. Pick the structure that fits how you actually talk.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>When NOT to coach</h3><p>Directing has its place. Knowing when is the difference between a coach and a cliché.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Four moves: why coaching wins, the craft of it, the judgment of when to use it, and your plan to run one this week.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the seven items in one breath each.</li><li>Point out the shape: the case (01-02), the craft (03-05), the judgment (06-07), then the plan.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every framework has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the evidence, because 'be a coach' is advice, and data is a reason.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE CASE FOR COACHING ============ -->
+  <section class="slide on-light" id="s-case" data-count data-title="Why coach">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Case</p>
+      <h2 class="h2" data-reveal>Google measured it.<br>Coaching came <em>first</em>.</h2>
+      <div class="split">
+        <div data-reveal>
+          <p class="lead">Project Oxygen, Google's decade-long study of its own managers, ranked the behaviors of the highest-rated ones. Number one wasn't technical skill or decisiveness. It was <b>"is a good coach."</b> McKinsey describes the same shift: from <em>controller</em>, who has the answers, to <em>coach</em>, who operates with a mindset of discovery.</p>
+          <p class="measure muted" style="margin-top:1rem">Start with an honest mirror. Think of your last five one-on-ones and drag the slider: in how many did THEY do the discovering, rather than you doing the telling?</p>
+        </div>
+        <div class="temp card" id="ratio" data-reveal>
+          <p class="tag" id="ratioVal">2 of 5 were coaching</p>
+          <p class="temp__readout" id="ratioReadout"></p>
+          <input class="slider" type="range" id="ratioSlider" min="0" max="5" value="2" step="1" aria-label="How many of your last five one-on-ones were coaching conversations">
+          <div class="slider-scale"><span>I told</span><span>Mixed</span><span>They discovered</span></div>
+          <p class="why" style="font-size:.85rem;margin-top:.75rem">Private. Remember your number; you'll be asked for it again in 30 days.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/_CJDlB7S7p0" data-yttitle="Project Oxygen: Google's guide to being a better manager">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Project Oxygen in 6 minutes</span>
+          <span class="yt__src">Google's manager research · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=_CJDlB7S7p0" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the whole research case in the time it takes to refill your coffee. Coaching is finding number one.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What did Google's Project Oxygen find at the top of its list of great-manager behaviors?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Ahead of technical expertise, ahead of decisiveness: the best managers coach. They ask, listen, and grow people instead of just directing work."><span class="mark">A</span><span>"Is a good coach"</span></button>
+          <button class="opt" data-correct="0" data-why="Technical skill mattered, but it ranked near the bottom of the list, not the top. The relational behaviors won."><span class="mark">B</span><span>"Has deep technical expertise"</span></button>
+          <button class="opt" data-correct="0" data-why="Speed shows up nowhere near the top. The data pointed at growing people, not processing decisions faster."><span class="mark">C</span><span>"Makes decisions quickly"</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Surgeon Atul Gawande, at the top of his field, hired a coach to watch him operate, and his complication rates dropped. His argument in <a href="https://www.ted.com/talks/atul_gawande_want_to_get_great_at_something_get_a_coach" target="_blank" rel="noopener" style="text-decoration:underline">"Want to get great at something? Get a coach"</a> (TED, 17 min) is the session in one line: it's not how good you are, it's how good you're going to get. That applies to the people who report to you, and it applies to you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> Connecting the research to a manager you actually had makes it yours instead of Google's.</p>
+          <ol class="steps">
+            <li>Think of the best manager you ever had. In pairs: what did they DO in conversations that others didn't?</li>
+            <li>Sort the room's answers as they're called out: how many are coaching behaviors (asked, listened, believed in you) versus directing ones?</li>
+            <li>Notice the ratio. The room almost always rediscovers Project Oxygen from its own experience.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write two things your best-ever manager did in conversation with you. Check them against the coaching behaviors on this slide.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish the research case (Project Oxygen, McKinsey) and capture each learner's private baseline coaching ratio for the 30-day measure.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Google ran the largest study of managers ever done inside one company: Project Oxygen. They ranked what their highest-rated managers actually do. Number one was not technical depth, not decisiveness. It was: is a good coach. McKinsey found the same shift in leaders everywhere, from controller, who has the answers, to coach, who leads with discovery. Before we build the skill, take your own baseline: of your last five one-on-ones, in how many did THEY do the discovering?&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Give the headline: Google ranked its best managers' behaviors; 'is a good coach' came first, ahead of technical skill.</li><li>Demo the ratio slider on the projector, then send them to their devices: your last five 1:1s, honestly.</li><li>Tell them to remember their number; they'll be asked again in 30 days. This is the course's before-photo.</li><li>Play the Project Oxygen video (6 min) on the Full path.</li><li>Run the quick check, then the pair activity: the best manager you ever had; what did they DO in conversations?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Think of the best manager you ever had. What did they do in conversations that others didn't?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'They listened' / 'they actually heard me'</li><li>'They asked me what I thought' / 'made me figure it out'</li><li>'They believed in me before I did'</li></ul><p class="facnote__mini">Respond: Point at the pattern: 'Notice nobody said they had the best answers. You just rediscovered Project Oxygen from your own career.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The best managers you've had were coaching you, whether they called it that or not. Today you get the mechanics.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check answered correctly; every learner has set the slider and noted their number.</p><p class="facnote__meta"><b>Watch for:</b> Ratio inflation. Frame it kindly before they slide: 'coaching means THEY discovered; if you gave the answer nicely, that's telling.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So why isn't everyone coaching already? Because of how managers get made.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep the slider and check; cut the video (assign as follow-up) and the pair share.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>A manager's answer solves today. A manager's question builds tomorrow.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the core idea before the toolkit starts.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;A manager's answer solves today. A manager's question builds tomorrow.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's why the answer keeps winning anyway.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 YOUR TELLING DEFAULT ============ -->
+  <section class="slide on-dark" id="s-default" data-count data-title="Telling default">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Default</p>
+      <h2 class="h2" data-reveal>You were promoted for <em>answers</em>.</h2>
+      <p class="lead" data-reveal>That's the trap. Excellent doers become managers, and under pressure they do what made them excellent: solve it themselves, fast. Daniel Goleman's research names the styles; the coaching style, developing people for the future, is the one great managers reach for most and stressed managers reach for least.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Directing</span>
+          <h3>"Do it this way."</h3>
+          <p class="muted">You hand over the answer. Fast, and right for a crisis. As a habit, it teaches your team to bring you every problem, forever.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Pacesetting</span>
+          <h3>"Watch me do it."</h3>
+          <p class="muted">You take it back and do it yourself, brilliantly. The work ships, the person shrinks, and your calendar becomes the bottleneck.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Coaching</span>
+          <h3>"What do you think?"</h3>
+          <p class="muted">You ask, they discover, they own it. Slower today. Compounding forever. This is the style Project Oxygen found on top.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="styleSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Catch the style</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you can't change a default you can't hear. Five manager lines; name what each one is really doing.</p>
+        <p class="quiz__progress" id="styleProgress"></p>
+        <p class="quiz__q" id="styleQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="styleOptions" role="group" aria-label="Style choices"></div>
+        <p class="quiz__feedback" id="styleFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="styleNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="styleResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>McKinsey calls the shift "from controller to coach": from the leader who provides certainty to the one who leads with discovery. The tell that you're in controller mode is physical: you're talking more than they are, and you feel the itch to interrupt with the answer. The fix costs one breath: swallow the answer, and ask "what have you tried?" For the full styles model, watch <a href="https://www.youtube.com/watch?v=zCMY82sVmW4" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Goleman on the coaching style</a> (13 min) this week.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> The moment you name here becomes your practice case for the rest of the session, and your real conversation in the capstone.</p>
+          <ol class="steps">
+            <li>Write down one recent moment you solved a problem FOR someone instead of coaching them through it.</li>
+            <li>Note what it cost: their learning, your time next time, or both.</li>
+            <li>Write who it was (role, not name). Keep the note in reach; every exercise from here uses it.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Name the telling default without shame, give it Goleman's vocabulary, and have each learner catch it in real manager language.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the trap nobody warns new managers about. You got this job by being excellent at solving problems, so when someone brings you one, every instinct you were promoted for says: solve it. Daniel Goleman's research names the styles. Directing hands over the answer. Pacesetting takes the work back and does it better. Coaching asks, and builds the person who won't need to ask next time. Under pressure, almost everyone drops to the first two.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the three cards: directing, pacesetting, coaching. Spend your emphasis on pacesetting; it's the failure mode that FEELS like helping.</li><li>Be honest about why the default exists: they were promoted for answers, and answers got rewarded for years.</li><li>Send them to 'Catch the style': five manager lines, name what each is doing.</li><li>Call out item 5 (the template hand-off) in the debrief; it fools the most people.</li><li>Run the solo activity: one recent moment you solved it FOR someone. That moment fuels the rest of the session.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What does a team learn when the manager always has the answer?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>To stop thinking / to just ask the manager</li><li>To bring every problem upward</li><li>That their own judgment isn't trusted</li></ul><p class="facnote__mini">Respond: All three, and name the compounding cost: 'You become the bottleneck for a team that was trainable. The queue outside your door is a curriculum you taught.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The default is trained, not chosen, which is good news: trained things can be retrained. That's the rest of today.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; every learner has written their telling moment and who it was with (role only).</p><p class="facnote__meta"><b>Watch for:</b> Guilt spirals. Reframe fast: the default is trained, not a character flaw, and it's correct in plenty of situations. Section 07 gives it a legal home.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Retraining starts with a structure. Four letters, used by more coaches than any other model on earth.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: teach the cards fast, run the trainer, keep the written moment. Skip the Goleman video link mention.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 GROW ============ -->
+  <section class="slide on-light" id="s-grow" data-count data-title="The GROW conversation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Model</p>
+      <h2 class="h2" data-reveal>Four letters run the <em>conversation</em>.</h2>
+      <p class="lead" data-reveal>GROW is the most widely used coaching structure in the world, and the one Google teaches its own managers. Four stages, each powered by questions, ending in commitment.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">G · Goal</span>
+          <h3>Where to?</h3>
+          <p class="muted">"What would make this conversation useful?" Their goal, in their words, before anything else.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">R · Reality</span>
+          <h3>Where now?</h3>
+          <p class="muted">"What's actually happening? What have you tried?" Facts before options; no diagnosis from you.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">O · Options</span>
+          <h3>What could you do?</h3>
+          <p class="muted">"What else?" asked three times. The fourth option is usually better than the first.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">W · Will</span>
+          <h3>What will you do?</h3>
+          <p class="muted">"What, by when, how committed, 1 to 10?" Anything under 8 means the plan isn't theirs yet.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/eIG4ZSqm2S0" data-yttitle="The GROW model with coaching questions">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: GROW with real coaching questions (7 min)</span>
+          <span class="yt__src">GROW model walkthrough · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=eIG4ZSqm2S0" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> hear the questions asked with a real voice before you choose your own below.</p>
+      </div>
+
+      <div class="quiz" id="growSim" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Coach Jordan</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the fastest way to learn coaching is to feel a conversation open up, or shut down, based on what you say. Jordan, a capable analyst on your team, just said they're overwhelmed. Coach them through one full GROW conversation.</p>
+        <p class="quiz__progress" id="growStage"></p>
+        <div class="growsim__coachee" id="growCoachee" aria-live="polite"></div>
+        <div class="quiz__options" id="growOptions" role="group" aria-label="What do you say next?"></div>
+        <p class="quiz__feedback" id="growFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="growNext" style="visibility:hidden">Continue the conversation</button>
+        </div>
+        <div id="growResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>The question bank, yours to keep</h4><p><b>Goal:</b> "What would you like to focus on?" · "What does success look like?" <b>Reality:</b> "What's happening right now?" · "What have you already tried?" · "Where are things, 1 to 10?" <b>Options:</b> "What could you do?" · "What else?" (three times) · "What would you try if nothing stood in the way?" <b>Will:</b> "What will you do, by when?" · "What might get in the way?" · "How committed are you, 1 to 10?"</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 8 min</h4>
+          <p class="why"><b>Why this matters:</b> coaching a real human, with the no-advice rule on, is the rep that changes behavior. The simulator warmed you up; this is the workout.</p>
+          <ol class="steps">
+            <li>Pair up. Coachee: name a real, low-stakes work challenge. Coach: run GROW using ONLY questions from the bank above.</li>
+            <li>The one rule: the coach may not give advice or share what they would do. Questions only.</li>
+            <li>Four minutes, then the coachee gives one line: "you coached me" or "you managed me," and why.</li>
+            <li>Swap roles if time allows.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Self-coach in writing: answer the bank's questions about your own current challenge, one stage at a time. GROW works on paper too.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 16 min · Core 12</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install GROW as the conversation spine, feel it work in the simulator, then run it live in the no-advice pair roleplay: the session's core rep.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;GROW is the most widely used coaching structure in the world, and it's the one Google teaches its own managers. Goal: what do they want from this conversation, in their words. Reality: what's actually happening, explored, not diagnosed. Options: what could they do, and the magic words are 'what else,' asked three times, because the fourth idea usually beats the first. Will: what will they do, by when, and how committed, one to ten. Under an eight, the plan isn't theirs yet. You're about to run one against Jordan, who is having a rough quarter.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the four cards briskly: Goal, Reality, Options, Will, one line each. The question bank in Go deeper is theirs to keep.</li><li>Play the GROW video (7 min) on the Full path.</li><li>Send them to Coach Jordan: the simulator runs one full GROW conversation; their choices open it up or shut it down.</li><li>Debrief the simulator with the room's scores: who got Jordan to a 9-out-of-10 commitment? What did the advice options do?</li><li>Then the main event: pair roleplay. Coachee brings their real low-stakes challenge; coach uses ONLY questions from the bank. Four minutes, verdict, swap.</li><li>Enforce the one rule warmly: if the coach says anything that isn't a question, restart from the bank.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;After the simulator: what happened to the conversation every time you gave Jordan the answer?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'Jordan asked me what to do next' / dependence</li><li>'The energy dropped' / compliance instead of commitment</li><li>'It became my plan, my problem'</li></ul><p class="facnote__mini">Respond: Exactly: 'Advice transferred ownership to you. The question options kept the thinking, and the plan, on Jordan's side of the table. Now feel it with a real human.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One structure, questions only, and a commitment number at the end. If you take a single tool from today, take the bank.</p></div><p class="facnote__meta"><b>Validate:</b> Simulator completed by most of the room; every pair ran at least one direction of the roleplay and heard the coachee's one-line verdict ('you coached me' or 'you managed me').</p><p class="facnote__meta"><b>Watch for:</b> Coaches slipping into advice inside 60 seconds; it will happen and it IS the lesson. Also watch Options getting one answer: prompt 'what else?' from the front if you hear pairs stalling.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The structure is easy to remember and hard to execute, because your questions keep trying to smuggle answers. Let's fix the questions themselves.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cut the video; keep the simulator (it's fast) and ONE direction of the roleplay, no swap.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 POWERFUL QUESTIONS ============ -->
+  <section class="slide on-dark" id="s-questions" data-count data-title="Powerful questions">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Craft</p>
+      <h2 class="h2" data-reveal>Advice wearing a <em>question mark</em>.</h2>
+      <p class="lead" data-reveal>"Have you tried delegating more?" isn't a question; it's your answer with punctuation. The International Coaching Federation calls the real thing a powerful question: open, curious, and aimed at their thinking, not your solution. Most manager questions fail the test.</p>
+
+      <div class="quiz" id="qConvert" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · The converter</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> hearing the difference between advice-in-disguise and real inquiry is the core coaching skill. Five manager lines; pick the rewrite that actually opens thinking.</p>
+        <p class="quiz__progress" id="qcProgress"></p>
+        <p class="quiz__q" id="qcQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="qcOptions" role="group" aria-label="Rewrite choices"></div>
+        <p class="quiz__feedback" id="qcFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="qcNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="qcResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">The six-second rule</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">A powerful question deserves silence to work in. Ask it, then count six seconds in your head before you say anything else. The discomfort you feel is them thinking. Whoever breaks the silence first buys the problem.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Three tests for a powerful question, from the ICF's core competencies. <b>Open:</b> it can't be answered yes or no. <b>Clean:</b> it doesn't smuggle your answer in ("don't you think…", "have you tried…"). <b>Theirs:</b> it aims at their thinking, not your curiosity, so "what matters most to you here?" beats "what did your director say exactly?" And the most reliably powerful question in coaching is also the shortest: "What else?"</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> converting your OWN advice into questions, out loud, is where the skill transfers from the slide to your mouth.</p>
+          <ol class="steps">
+            <li>Solo, one minute: write the advice you most recently gave someone on your team, word for word.</li>
+            <li>Convert it into one open, clean question using the three tests above.</li>
+            <li>Pairs: read your before and after aloud. Partner verdict: does the rewrite pass all three tests?</li>
+            <li>Two or three best conversions get read to the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Do steps 1 and 2, then test your rewrite: could it be answered yes/no? Does it contain your answer? Aim it again if so.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the ICF's three tests (open, clean, theirs) and train the ear to catch advice wearing a question mark.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The International Coaching Federation calls the real thing a powerful question, and it has three tests. Open: can't be answered yes or no. Clean: your answer isn't hiding inside it. Theirs: it aims at their thinking, not your curiosity. Most manager questions fail test two. 'Have you tried delegating more?' isn't a question; it's advice with a question mark, and everyone in the room hears the difference. Then, after you ask a real one: silence. Six seconds. The discomfort you feel is them thinking.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the slide's line: 'have you tried delegating more?' is your answer with punctuation.</li><li>Send them to the converter: five manager lines, pick the rewrite that actually opens thinking.</li><li>Teach the six-second rule from the gold card, and model it: ask the room a question and visibly wait.</li><li>Run the group activity: convert your OWN most recent advice into one clean question, pairs verdict, best two to the room.</li><li>Write the room's best conversion on the whiteboard; it stays up for the rest of the session.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why is the silence after a good question so hard for managers specifically?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>We're used to having the answer ready</li><li>Silence feels like failure / losing control of the meeting</li><li>We assume they're stuck and need rescuing</li></ul><p class="facnote__mini">Respond: Name the reframe: 'Silence isn't the conversation breaking; it's the conversation working. Whoever fills it first buys the problem, and for years that's been you.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three tests and six seconds. Your questions just got more powerful than most professional interviewers'.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the converter; each learner has one before/after conversion of their own advice.</p><p class="facnote__meta"><b>Watch for:</b> Questions that pass 'open' but fail 'clean': 'what do you think about talking to them directly?' is still smuggling. Use the room's examples to show it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Questions coach the present. The next tool coaches the future, and it removes the single biggest source of defensiveness: the past.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: converter plus the six-second rule; the own-advice conversion moves into the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 FEEDFORWARD ============ -->
+  <section class="slide on-cream" id="s-feedforward" data-count data-title="Feedforward">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Feedforward</p>
+      <h2 class="h2" data-reveal>Skip the past. Coach the <em>future</em>.</h2>
+      <p class="lead" data-reveal>Marshall Goldsmith's Feedforward flips development input on its head: instead of feedback about what went wrong, you ask for suggestions about what could go right next time. People can't change the past, so conversations about it breed defense. The future is all options.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Rule 1</span>
+          <h3>Name the behavior</h3>
+          <p class="muted">"I want to get better at running meetings." One behavior, stated by the person who wants to change it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rule 2</span>
+          <h3>Future only</h3>
+          <p class="muted">Suggestions must be about next time. Any sentence starting with "well, last week you…" is against the rules.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rule 3</span>
+          <h3>Only "thank you"</h3>
+          <p class="muted">The receiver may not explain, defend, or even agree. Two words. That's what makes it safe to be honest.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/tFX74GIxca4" data-yttitle="Marshall Goldsmith demonstrates Feedforward">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Goldsmith runs Feedforward live (4 min)</span>
+          <span class="yt__src">Marshall Goldsmith · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=tFX74GIxca4" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> watch the inventor run the exercise you're about to do, in less time than the exercise takes.</p>
+      </div>
+
+      <div class="quiz" id="ffSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Past, future, or advice?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> feedforward fails the moment the past sneaks back in. Train your ear on five real-sounding lines.</p>
+        <p class="quiz__progress" id="ffProgress"></p>
+        <p class="quiz__q" id="ffQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ffOptions" role="group" aria-label="Classification choices"></div>
+        <p class="quiz__feedback" id="ffFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="ffNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="ffResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Goldsmith runs this with rooms of executives and the energy is always the same: fast, generous, and oddly fun, because nobody is being judged. The receiver ends up with four to six concrete ideas in ten minutes, more usable input than most annual reviews deliver. It also works one-on-one: "I'm working on interrupting less. Two ideas for next week?" is a complete feedforward request.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 10 min</h4>
+          <p class="why"><b>Why this matters:</b> this is the highest-energy exercise in the session and the one people take back to their teams verbatim. Run it by the rules and it sells itself.</p>
+          <ol class="steps">
+            <li>Form triads. Each person writes one behavior they genuinely want to improve.</li>
+            <li>Round one: person A states their behavior; B and C each give two future-focused suggestions; A says only "thank you."</li>
+            <li>Rotate until everyone has received. Enforce the rules kindly: no past, no defense.</li>
+            <li>Debrief one question: how did it feel to receive suggestions with no right of reply?</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Send the one-line request above to two colleagues today: your behavior, two ideas for next week. Reply "thank you," nothing else.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run Goldsmith's Feedforward exchange live in triads: the session's highest-energy rep and the tool learners reuse with their teams the same week.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Marshall Goldsmith coaches CEOs, and this is his signature move. Feedback looks backward at what went wrong, and people defend the past because they can't change it. Feedforward flips it: name one behavior you want to improve, collect suggestions about NEXT time, and respond to every one with exactly two words: thank you. No explaining, no defending, no 'that wouldn't work here.' You are about to feel how different input lands when nobody is judging history.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the three rule cards: name the behavior, future only, receiver says only 'thank you.'</li><li>Play the Goldsmith demo (4 min); he runs the exercise faster than you can explain it.</li><li>Send them to the classifier: five lines, past, future, or advice in disguise. It trains the referees.</li><li>Form triads and run the live exchange: one behavior each, two suggestions per partner, 'thank you,' rotate.</li><li>Enforce the rules warmly; the first 'well, last week you' gets a friendly buzzer from you.</li><li>Debrief one question only: how did receiving with no right of reply feel?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;After the triads: what did it feel like to receive suggestions when you weren't allowed to defend yourself?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Relieving / lighter than feedback</li><li>Hard! I wanted to explain so badly</li><li>Fast, we got a lot of ideas in five minutes</li></ul><p class="facnote__mini">Respond: All three are the point: 'The urge to explain is the defensiveness we're engineering out. And the volume of usable ideas per minute beats any performance review you've ever sat through.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The future has no defense attorneys. Take the exercise home: your team can run it in ten minutes at any staff meeting.</p></div><p class="facnote__meta"><b>Validate:</b> Classifier 4+ of 5; every triad completed at least one full rotation and each learner received suggestions and said only 'thank you.'</p><p class="facnote__meta"><b>Watch for:</b> Triads negotiating instead of receiving ('yeah but the reason I do that is...'). The 'thank you' rule is the exercise; guard it. Also watch the leftover pair; give them the two-suggestion variant.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;You now have a structure, sharper questions, and a future-focused exchange. Time to make the toolkit yours: which structure fits YOU?&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cut the video and classifier debrief; one triad rotation instead of three. The live exchange survives every cut.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 CHOOSE YOUR MODEL ============ -->
+  <section class="slide on-dark" id="s-models" data-count data-title="Choose your model">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Your Structure</p>
+      <h2 class="h2" data-reveal>One size fits <em>most</em>.</h2>
+      <p class="lead" data-reveal>GROW is the default for a reason, but it isn't the only structure. Two respected alternatives cover the situations GROW handles less well. The best model is the one you'll actually use.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">GROW</span>
+          <h3>The all-rounder</h3>
+          <p class="muted">Goal, Reality, Options, Will. Best for everyday coaching conversations. Watch for: rushing Options; "what else?" is the whole trick.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">CLEAR</span>
+          <h3>The relationship</h3>
+          <p class="muted">Contract, Listen, Explore, Action, Review. Adds an explicit up-front agreement and a review loop. Best for ongoing coaching relationships.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">OSKAR</span>
+          <h3>The un-stucker</h3>
+          <p class="muted">Outcome, Scaling, Know-how, Affirm &amp; Action, Review. Solution-focused: "you're at a 4; what's already working?" Best for coachees stuck in problem-analysis.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="modelMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Match the model</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> choosing a structure on purpose, instead of defaulting, is what turns a model from trivia into a tool. Four coachees; pick the best-fit model for each.</p>
+        <p class="quiz__progress" id="mmProgress"></p>
+        <p class="quiz__q" id="mmQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mmOptions" role="group" aria-label="Model choices"></div>
+        <p class="quiz__feedback" id="mmFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="mmNext" style="visibility:hidden">Next coachee</button>
+        </div>
+        <div id="mmResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Don't overthink the choice. GROW for most conversations; CLEAR when the relationship needs an explicit contract ("what do you want from me in these sessions?"); OSKAR when someone has analyzed the problem to death and needs to look at what's already working. The models share one spine: their goal, their reality, their plan. Short explainers if you want them: <a href="https://www.youtube.com/watch?v=T-g58OQf7uw" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Peter Hawkins on CLEAR</a> (4 min) and <a href="https://www.youtube.com/watch?v=RPVhm3Eg2qI" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">an OSKAR walkthrough</a> (5 min).</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> saying your choice out loud, with a reason, is a rehearsal for the capstone plan in ten minutes.</p>
+          <ol class="steps">
+            <li>In pairs: which model fits how you naturally talk, and why?</li>
+            <li>Name one person on your team, role only, for whom a DIFFERENT model would work better.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Answer both questions in your notes. Your capstone will ask for the choice in writing.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 7 min · Core 3</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Position CLEAR and OSKAR beside GROW and have each learner choose a structure on purpose, a rehearsal for the capstone.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;GROW is the default for a reason, but two alternatives earn their place. CLEAR, Contract, Listen, Explore, Action, Review, starts with an explicit agreement: what do you want from these sessions, and from me? Perfect for an ongoing coaching relationship. OSKAR is solution-focused: Outcome, Scaling, Know-how, Affirm and Action, Review. For the person who has analyzed the problem to death, 'you're at a four; what's keeping it from being a two?' points them at what's already working. Pick the one that sounds like your voice.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards: GROW the all-rounder, CLEAR for ongoing relationships, OSKAR for the stuck.</li><li>Keep it light: the models share one spine, and the best one is the one they'll use.</li><li>Send them to the matcher: four coachees, pick the best-fit model.</li><li>Run the pair activity: which model fits how you naturally talk, and who on your team needs a different one?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which model sounds most like how you naturally talk, and why?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>GROW, it's simple and I'll remember it</li><li>CLEAR, I like setting the contract up front</li><li>OSKAR, I have exactly that over-analyzer on my team</li></ul><p class="facnote__mini">Respond: Affirm every answer; there's no wrong pick. If someone can't choose: 'GROW. Decided. You can renegotiate with yourself after your first conversation.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The model is vocabulary; the choosing is the skill. You just chose on purpose, which most managers never do.</p></div><p class="facnote__meta"><b>Validate:</b> 3+ of 4 on the matcher; each learner can name their model with a reason.</p><p class="facnote__meta"><b>Watch for:</b> Analysis paralysis. The escape line: 'When in doubt, GROW. You can switch models later; you can't switch not-having-the-conversation.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One more piece of judgment before you build the plan: the times when coaching is the WRONG call.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards in one minute, matcher on devices, skip the pair share; the capstone captures the choice.</p></aside>
+  </section>
+
+  <!-- ============ 10 · 07 WHEN NOT TO COACH ============ -->
+  <section class="slide on-light" id="s-when" data-count data-title="When not to coach">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · Judgment</p>
+      <h2 class="h2" data-reveal>Sometimes, just <em>tell them</em>.</h2>
+      <p class="lead" data-reveal>Coaching is a tool, not a religion. Harvard's leadership research calls the skill situational coaching: knowing when to ask and when to direct. A manager who coaches during a fire alarm is as broken as one who directs everything.</p>
+
+      <div class="cols2" style="margin-top:2rem">
+        <div data-reveal>
+          <p class="tag">Direct when</p>
+          <ul class="listcheck can">
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>There's a genuine emergency or a hard deadline in hours</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Safety, policy, or compliance leaves no discretion</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>The person is brand new and needs instruction, not exploration</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>They've asked for a decision you genuinely own</li>
+          </ul>
+        </div>
+        <div data-reveal>
+          <p class="tag" style="background:#CFAE70;color:#1c1c1c">Coach when</p>
+          <ul class="listcheck can">
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>They're capable of solving it and would grow from doing so</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>The same problem keeps coming back to your desk</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>There's more than one right answer</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>It's a development conversation, not a status update</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: A new hire, day three, asks how to submit a payroll correction before today's cutoff. You…</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="New person, hard deadline, one right answer: this is a directing moment. Show them, and coach them on something with real option-space next month."><span class="mark">A</span><span>Tell them exactly how, step by step</span></button>
+          <button class="opt" data-correct="0" data-why="There is one correct process and a cutoff today. 'What have you tried?' here isn't coaching; it's hazing."><span class="mark">B</span><span>Ask "what options have you considered?"</span></button>
+          <button class="opt" data-correct="0" data-why="Scaling questions are for stuck coachees with real choices, not for a compliance task with a deadline."><span class="mark">C</span><span>Ask them to rate their confidence 1 to 10</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The working heuristic: <b>match the mode to the moment, then default to coaching.</b> Most managers have the ratio backwards, directing most of the time and coaching only when there's spare time, which is never. The research argument for flipping the ratio is Ibarra and Scoular's <a href="https://hbr.org/2019/11/the-leader-as-coach" target="_blank" rel="noopener" style="text-decoration:underline">"The Leader as Coach"</a> (HBR); their situational grid is worth the read this week.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> your telling moment from Section 02 gets its verdict here, with the framework instead of guilt.</p>
+          <ol class="steps">
+            <li>Take the moment you wrote in Section 02, where you solved it for them.</li>
+            <li>Run it against the two lists above: was it honestly a directing moment, or a coaching moment you directed?</li>
+            <li>If it was a coaching moment, write the opening question you WISH you'd asked. You'll want it for the capstone.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install situational judgment (Ibarra &amp; Scoular) so the new coaching habit doesn't overcorrect into coaching fire alarms.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Now the guardrail. Coaching is a tool, not a religion. When there's a fire, you point at the door; you don't ask 'what options do you see?' Direct when there's a genuine emergency, when compliance leaves no discretion, when someone is brand new, or when the decision is honestly yours. Coach when they're capable and would grow, when the same problem keeps returning to your desk, when there's more than one right answer. The skill is matching the mode to the moment, and then defaulting to coach, because your ratio is currently backwards.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the two lists: direct when (emergency, compliance, novice, your decision) and coach when (capable, recurring, multiple answers, development).</li><li>Give the room permission out loud: directing is not a failure; unexamined directing is.</li><li>Run the quick check; the new-hire-payroll scenario lands the point with a laugh.</li><li>Run the solo activity: their Section 02 telling moment gets its verdict against the lists.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's a real situation from YOUR month where directing was the right call?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A compliance or safety deadline</li><li>A brand-new team member's first week</li><li>An escalation the manager genuinely owned</li></ul><p class="facnote__mini">Respond: Validate them: 'Right, and notice how specific those are. The trap isn't directing in those moments; it's letting those moments become the excuse for directing in all the others.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Match the mode to the moment, default to coach. That one sentence is the judgment layer on everything you learned today.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; each learner has classified their own telling moment as a fair direct or a missed coaching moment.</p><p class="facnote__meta"><b>Watch for:</b> The convenient conclusion that most of their directing was justified. Push gently: 'If the same problem has come back three times, it wasn't a directing moment.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Toolkit complete. Let's check what stuck, then aim it at a real person.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: lists plus quick check; the reclassification happens inside the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 11 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per tool. This isn't a grade; it's a check on what's loaded before you aim it at a real conversation.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps one-to-one onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as a mirror, not a race; the real test is a human on their calendar this week.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the reason we're here. One real person, one model, one opening question, one date.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 12 · MY COACHING PLAN (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My coaching plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My coaching plan</p>
+      <h2 class="h2" data-reveal>Now coach a <em>real one</em>.</h2>
+      <p class="lead" data-reveal>You've named your telling default, run a GROW conversation, converted your advice into questions, and chosen a model. Point all of it at one real person on your team, this week.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a coaching conversation with a written opening question and a date happens. Nothing you type here is saved or sent anywhere; it lives only on your screen.</p>
+
+      <div class="plan" id="coachPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The conversation.</b> Who will you coach (role, not name), and about what?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. a senior analyst, about growing into the team-lead role" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · Your model.</b> Pick the structure you'll follow.</span>
+            <div class="plan__chips" id="planModel" role="group" aria-label="Coaching model">
+              <button class="opt" data-model="grow"><span>GROW, the all-rounder</span></button>
+              <button class="opt" data-model="clear"><span>CLEAR, contract first</span></button>
+              <button class="opt" data-model="oskar"><span>OSKAR, they're stuck</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Your telling trap.</b> Be honest; this picks your counter-move.</span>
+            <div class="plan__chips" id="planTrap" role="group" aria-label="Telling trap">
+              <button class="opt" data-trap="advice"><span>I jump in with the answer</span></button>
+              <button class="opt" data-trap="leading"><span>I ask questions that are really advice</span></button>
+              <button class="opt" data-trap="silence"><span>I can't stand the silence</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When will you have it?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my plan</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated, planned coaching conversation with a written opening question: the transfer artifact and Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You've carried one person through this session: the one you keep solving for. Time to give them a better manager. Pick your model, write the opening question in your own words, name your telling trap and its counter-move, and put a date on it inside the next seven days. Then two things that make it real: send the calendar invite before you leave this room, and tell one colleague which model you're using.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: everything they've written today converges here: the person, the model, the trap, the date.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the 'who' wants a role, not a name.</li><li>Push the copy button moment: out of the browser, into their notes.</li><li>Then the commitment mechanics: calendar invite sent before leaving, one colleague told which model.</li><li>Remind them the plan's 'I will NOT' list is the part to re-read right before the conversation.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip this conversation, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The calendar, the week will eat it</li><li>It'll feel awkward to suddenly coach someone I usually direct</li><li>They'll just ask me for the answer anyway</li></ul><p class="facnote__mini">Respond: Take each seriously: the calendar has one fix (book it now); the awkwardness has one script ('I'm trying something: I'm going to ask more and tell less'); and when they ask for the answer: 'I've got thoughts, and I want yours first. What have you considered?'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A coaching conversation with a written opening question and a date happens. Everything else today was preparation for this page.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a plan (all four fields) and copies it out. That artifact plus the 7-day pulse is your Level 3 evidence.</p><p class="facnote__meta"><b>Watch for:</b> Learners picking their easiest report instead of the one who'd benefit most. Nudge once: 'Pick the person you've been solving FOR the most.' Also: anyone whose situation involves formal performance processes gets routed to HR first.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference material in one breath, then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length minus one minute of framing. Never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 13 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="GROW, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>GROW</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Goal, Reality, Options, Will: Whitmore's four-stage coaching structure, the most widely used in the world.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="CLEAR, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>CLEAR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Hawkins' model: Contract, Listen, Explore, Action, Review. Adds explicit agreement and a review loop for ongoing relationships.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="OSKAR, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>OSKAR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Outcome, Scaling, Know-how, Affirm &amp; Action, Review. Solution-focused: builds from what's already working.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Powerful question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Powerful Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Open, clean of your answer, and aimed at their thinking. The ICF's core coaching move.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Feedforward, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Feedforward</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Goldsmith's exchange: name a behavior, receive future-only suggestions, reply only "thank you."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Active listening, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Active Listening</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Listening to understand rather than to reply: paraphrase, notice what's unsaid, and resist rehearsing your answer.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Project Oxygen, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Project Oxygen</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Google's decade-long study of its own managers. Behavior #1 of the best: "is a good coach."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Controller to coach, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Controller → Coach</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>McKinsey's leadership shift: from providing certainty and answers to leading with curiosity and discovery.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Scaling question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Scaling Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>"Where are you, 1 to 10, and what would move you one point?" Turns vague feelings into a workable number.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="What else, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>"What Else?"</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The most powerful two words in coaching. Asked three times in Options, it gets past the first, obvious answer.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Situational coaching, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Situational Coaching</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Ibarra &amp; Scoular's skill of moving between directing and coaching on purpose, matched to the moment.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Coaching versus mentoring, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Coaching vs Mentoring</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A mentor shares their path; a coach helps you find yours. Mentors talk about themselves; coaches almost never do.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here, flip cards, whenever you need them back. It'll still be here the morning of your conversation.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector ('What Else?' is a good pick).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all twelve cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One question left to ask.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 14 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go ask the <em>question</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You have a model, an opening question, a counter-move for your telling trap, and a date. The person you named is about to get a better manager.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">Within 7 days</span></div>
+        <h3>The coaching conversation you just planned</h3>
+        <p>Book the time before you leave this room and tell one colleague which model you're using. In 30 days you'll be asked your coaching ratio again; the plan you just built is how the number moves.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your opening question out loud, or type it in the chat. A question you've said once is a question you'll ask.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the plan worksheet</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Ask. Listen. Grow people.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-case">The Case for Coaching</a></li>
+          <li><a href="#s-grow">The GROW Conversation</a></li>
+          <li><a href="#s-questions">Powerful Questions</a></li>
+          <li><a href="#s-feedforward">Feedforward</a></li>
+          <li><a href="#s-models">Choose Your Model</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Coaching Plan</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Coaching for Performance · Facilitator Edition · learner link: <a href="../../../courses/coaching-for-performance/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Coaching-for-Performance</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 3</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert plans into public commitments, capture the Level 1 reaction check, and close the loop on the one next step.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole session in one breath: the best managers ask, the structure is GROW, the questions are open and clean, the input is feedforward, and the judgment is matching the mode to the moment. You have a model, an opening question, and a date. Before you go: which model, and which day? Say it out loud.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is THE coaching conversation, within 7 days.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how ready do you feel to run your coaching conversation?' Scan and remember the number for your session log.</li><li>Run the commitment round, popcorn style: model and day, out loud or in chat. Opening questions from volunteers if energy is high.</li><li>Point at the cheat sheet and worksheet buttons.</li><li>Tell them about the 7-day pulse and the 30-day ratio re-poll, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: which model, and which day?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'GROW, Thursday morning'</li><li>'OSKAR, tomorrow's one-on-one'</li><li>Some hesitation or 'next week sometime'</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For hesitators: 'Name just the day; the plan already knows the rest.' If someone isn't ready, let it go gracefully; the 7-day pulse gives them a second chance.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the ratio re-poll in 30 days. The conversations this week are how the number moves.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a model-and-day out loud or in chat. Count both; with the pulse and the 30-day ratio, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Commitment dodges ('when things calm down'). Convert one or two gently: 'Which day?' Things never calm down; calendars do.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go ask the question. And when their answer surprises you, and it will, say the two words: what else?&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; the commitment round IS the ending.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=12"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

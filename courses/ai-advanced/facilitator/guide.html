@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilitator Guide (printable) · AI 201: Beyond the Basics — Vanderbilt Learning Series</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-weight: 400;
+    src: url('../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 400;
+    src: url('../assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 600;
+    src: url('../assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-weight: 700;
+    src: url('../assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 12.5px; line-height: 1.5; }
+  .sheet { max-width: 860px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 16px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  h2 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 18px;
+    margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  h3 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 14px 0 4px; }
+  .mins { font-family: 'Antonio', Impact, sans-serif; font-size: 11px; color: #946E24;
+    letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .sec { border: 1px solid #E4E4E4; border-left: 3px solid #CFAE70; border-radius: 4px;
+    padding: 12px 16px; margin-bottom: 12px; break-inside: avoid;
+    display: grid; grid-template-columns: 290px 1fr; gap: 16px; align-items: start; }
+  .sec.noimg { grid-template-columns: 1fr; }
+  .sec.noimg .sec__shot { display: none; }
+  .sec__shot { position: sticky; top: 12px; }
+  .sec__shot img { width: 100%; border: 1px solid #E4E4E4; border-radius: 3px; display: block; }
+  .sec__notes { min-width: 0; }
+  @media (max-width: 700px) { .sec { grid-template-columns: 1fr; } .sec__shot { position: static; max-width: 340px; } }
+  @media print { .sec { grid-template-columns: 240px 1fr; } .sec__shot { position: static; } }
+  .purpose { font-weight: 600; margin: 2px 0 8px; }
+  .tagline { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; margin: 10px 0 2px; color: #1C1C1C;
+    background: #CFAE70; display: inline-block; padding: 2px 7px; border-radius: 2px; }
+  .tagline.ask { background: #8BA18E; }
+  .script { font-family: 'Libre Caslon Display', serif; font-style: italic; font-size: 13.5px;
+    margin: 4px 0 6px; }
+  .mini { margin: 4px 0; color: #444; }
+  .mini.core { border-top: 1px dashed #CFAE70; padding-top: 6px; }
+  ol, ul { margin: 2px 0 8px; padding-left: 20px; }
+  li { margin-bottom: 3px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; }
+  th, td { border: 1px solid #E4E4E4; padding: 5px 9px; text-align: left; }
+  th { font-family: 'Antonio', Impact, sans-serif; text-transform: uppercase; letter-spacing: .06em;
+    font-size: 10px; color: #946E24; }
+  .front { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px;
+    break-inside: avoid; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11px; } .sheet { padding: 0; max-width: none; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · ATD facilitator guide · print edition</p>
+      <h1>AI 201: Beyond the Basics, the <em>facilitator guide</em></h1>
+    </div>
+    <img src="../assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="front">
+    <h3>Run of show</h3>
+    <table><tr><th>Screen</th><th>Full (min)</th><th>Core (min)</th></tr><tr><td>Welcome / QR</td><td>3</td><td>2</td></tr><tr><td>Objectives</td><td>2</td><td>1</td></tr><tr><td>Agenda</td><td>1</td><td>—</td></tr><tr><td>01 · Context &amp; attention</td><td>10</td><td>7</td></tr><tr><td>Manifesto</td><td>1</td><td>—</td></tr><tr><td>02 · Grounding with RAG</td><td>10</td><td>7</td></tr><tr><td>03 · Choosing your method</td><td>10</td><td>7</td></tr><tr><td>04 · Advanced prompt patterns</td><td>11</td><td>7</td></tr><tr><td>05 · Multimodal &amp; agentic AI</td><td>11</td><td>7</td></tr><tr><td>06 · Spot the hallucination</td><td>7</td><td>5</td></tr><tr><td>07 · Governance</td><td>8</td><td>5</td></tr><tr><td>Recap quiz</td><td>4</td><td>4</td></tr><tr><td>Capstone · Team AI workflow</td><td>8</td><td>6</td></tr><tr><td>Glossary</td><td>1</td><td>—</td></tr><tr><td>Closing · commitment</td><td>3</td><td>2</td></tr>
+    <tr><th>Total</th><th>90</th><th>60</th></tr></table>
+    <h3>Audience</h3><p>Anyone who completed AI Basics (101) or equivalent: knowledge workers, managers, L&amp;D and talent teams. 8 to 24 works best for pairs; scales larger with polling instead of breakouts.</p>
+    <h3>Room setup</h3><p>Projector + presenter device; learners on their own devices via the Welcome-slide QR; pairs for the method drill. Virtual: breakouts of 2 for the method and RAG discussions. Optional: a live chat tool open for the long-conversation demo.</p>
+    <h3>Materials</h3><ul><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed workflow cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Optional: a live chat tool open with a long document pasted in, for the context-window demo</li><li>Whiteboard or flip chart for the parking lot and the room's RAG question backlog</li></ul>
+    <h3>A week before</h3><ol><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including a full run of Spot-the-Hallucination (you'll be asked which ones fooled you; honesty plays well).</li><li>Build your own workflow card in the capstone for a real recurring task. You will show the structure, not necessarily the contents.</li><li>Confirm participants took AI Basics or equivalent; send the pre-work invite (template on this page) with the calendar invite.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which videos you keep in class versus assign.</li><li>If you'll run the live context-window demo, rehearse it once: paste a long document, chat 15+ turns, then ask about something near the start.</li></ol><h3>The day before</h3><ol><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Cue and test the three videos (attention, RAG, agents); trim points are in the DO notes.</li><li>Print 5 to 10 cheat sheets and workflow cards, plus this guide's run-of-show.</li><li>Re-read the tough-questions bank; say the 'can I finally trust RAG answers?' response out loud once.</li></ol><h3>30 minutes before</h3><ol><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (drag the context-window slider, toggle the RAG simulator).</li><li>Write 'PARKING LOT' and 'RAG BACKLOG' at the top of the whiteboard.</li><li>Remember the tone: this room already prompts; today they become the people who can explain WHY it worked.</li></ol>
+    <h3>When things go sideways</h3><p><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: the window habits, the method framework, the four patterns, the failure modes, and the tiers all work on a whiteboard. Spot-the-Hallucination runs verbally with the room voting by hand.</p><p><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: the simulators and trainers play well on the projector with the room voting A/B/C by hands; the capstone moves to the printed workflow card. You lose typing, not learning.</p><p><b>If You're 10+ minutes behind by the patterns section (04):</b> Declare the Core path silently: cut remaining videos and shrink debriefs to one voice. Never cut Spot-the-Hallucination, the tier sorter, or the capstone; they carry objectives 5 and 6.</p><p><b>If The room's prerequisite knowledge is shakier than expected:</b> Don't reteach AI Basics; bridge in one line ('a prompt is the instruction; today is what happens after you hit send') and lean on the simulators, which carry novices. Point strugglers at the 101 link in the footer for after.</p><p><b>If A technical expert starts correcting nuances or going deeper than the room:</b> Honor and park: 'That's right, and there's real depth there; parking lot so we keep the room together.' Offer the 3Blue1Brown full video and the White et al. catalog as their level. Experts make great Spot-the-Hallucination judges; deputize them.</p><p><b>If Someone reports their team is already doing something risky (red-tier data in a public tool):</b> Don't shame, don't skip: 'That's exactly the incident pattern this session exists to prevent; the tier sorter in Section 07 is the fix.' Follow up privately after with the governance guidance, and route genuine policy questions to the official channels.</p>
+    <h3>Tough questions, ready answers</h3><p><b>Q: If RAG grounds the answers in our documents, can I finally trust them without checking?</b><br>Trust more, verify still. RAG fixes the raw material, not the reader: the model can misquote or blend what it retrieved. The upgrade is that verification gets fast, because a grounded answer hands you the exact source to check. Click the citation; that's the whole check.</p><p><b>Q: Is fine-tuning something our team could even do?</b><br>Technically yes, practically almost never first. It needs training data you probably haven't curated, compute you'd have to pay for, evaluation to prove it worked, and a redo every time the base model updates. The honest sequence is: exhaust prompting, add RAG, and if you still have evidence fine-tuning is needed, bring in central IT rather than going alone.</p><p><b>Q: Are agents actually safe to use at work right now?</b><br>Scoped, limited, and checkpointed: yes, for low-stakes drafting and compiling. Unsupervised with broad tool access: no. The failure modes are documented and repeatable, which is good news; it means the guardrails are designable. The workflow card you build today IS the safe pattern.</p><p><b>Q: Do I need to memorize the NIST framework?</b><br>No. You need the four questions it encodes: who decides, what are we running, how do we know it works, what do we do about it. If you can ask those about any AI tool your team uses, you're doing risk management; NIST just gives everyone the same vocabulary.</p><p><b>Q: Our vendor says their model doesn't hallucinate. True?</b><br>No model is hallucination-free; grounding and guardrails reduce the rate, sometimes dramatically. The professional response to that claim is: 'show me the evaluation results and red-team findings.' A vendor who has them will love the question, and a vendor who doesn't just told you something important.</p><p><b>Q: Does this session change the data rules from AI Basics?</b><br>It extends them, same colors, same rules. Green, yellow, red still govern what goes INTO a tool. AI 201 adds the workflow view: pattern, checkpoint, and tier travel together, so the rule follows the task instead of living on a poster.</p>
+    <h3>Copy-paste templates</h3><p><b>Pre-work invite (paste into the calendar invite)</b><br>Subject: Before AI 201. Two things before you arrive: 1) This session builds on AI Basics; skim your cheat sheet from that session if it's been a while. 2) Bring one real recurring task from your work (a weekly report, a triage queue, a drafting chore); you'll build a governed AI workflow around it, and nothing you type leaves your screen. Still no code, still no math.</p><p><b>7-day pulse (send one week after)</b><br>Subject: One week later, did the workflow run? Three quick lines, reply whenever: 1) Did you run the workflow you built, checkpoint and all? 2) What did the human checkpoint catch, if anything? 3) Did you use one of the four patterns (Few-Shot, Chain-of-Thought, Template, Flipped) this week? Replies come to me only. Not yet? The card still works; this note is your nudge.</p><p><b>30-day workflow census (send a month after)</b><br>Subject: The workflow census. One question for the group: does your team now have a written, governance-tiered AI workflow for at least one recurring task? Reply yes or no, and if yes, the task in five words. The count is the metric we designed the session around, and the yes-list becomes the example library for the next cohort.</p>
+    <h3>After the session</h3><p>Seven days out, send the pulse: 'Did you run your workflow? What did the human checkpoint catch? Did you use one of the four patterns this week?' At 30/60/90 days, count how many teams have a written, governance-tiered workflow for at least one recurring task; that census is the program's headline metric.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-welcome.jpg" alt="Slide: Welcome / QR" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Welcome / QR <span class="mins">Full 3 min · Core 2</span></h2>
+    <p class="purpose">Get every learner into the experience on their own device and set the frame: same fundamentals as 101, now open the hood.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Welcome back. Point your camera at that code before we start. You've all taken AI Basics, so you can write a prompt. Today we open the hood: why tools forget, where answers actually come from, what happens when AI starts taking actions, and how to run all of it responsibly. Still no code. Still no math.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the frame: builds on AI Basics, still no code, still no math, and everything typed stays on their screen.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Quick recall, shout it out: what's one AI Basics idea you've actually used since that session, and one thing you're still unsure about?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Used: the four-part prompt, the data colors, verify-before-trusting</li><li>Unsure: why it forgets, whether to trust it, what an agent is</li><li>Some quiet; people warm up slowly on recall</li></ul><p class='mini'><b>Respond:</b> Collect three or four of each. The 'unsure' list is your session preview: 'Everything you just named is on today's agenda. Watch for yours.'</p>
+    
+    <p class="mini"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p>
+    <p class="mini"><b>Watch for:</b> Anyone who hasn't taken AI Basics: pair them with a veteran neighbor and point them at the 101 link in the footer for after.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Here's exactly what you'll be able to do in ninety minutes.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: one scan prompt, state the frame, move on.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-hero.jpg" alt="Slide: Objectives" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Objectives <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Set the contract: six capabilities, ending in a real governed workflow with a run date.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Six things by the end: you'll explain why long chats lose the thread, what retrieval actually fixes, when to prompt versus RAG versus fine-tune, four prompt patterns beyond the basics, how agents fail and where the human checkpoint goes, and how to tier information before it ever touches a tool. It all lands in one artifact: a governed workflow card for a task you actually do.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the six objectives briskly, in plain language.</li><li>Land on the sixth: this session ends with a REAL workflow card: task, pattern, checkpoint, tier.</li><li>Name the sources once for credibility: 3Blue1Brown, IBM's research explainers, the Vanderbilt-led prompt pattern catalog, NIST.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Learners can say what the capstone will be (a governed AI workflow for a real recurring task).</p>
+    <p class="mini"><b>Watch for:</b> Anxiety about the word 'governance.' Defuse early: it's three colors and four questions, not a compliance seminar.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Seven ideas, and the first one explains half the mysteries you've already met.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: objectives 1 and 6 out loud; the rest on screen.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-agenda.jpg" alt="Slide: Agenda" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Agenda <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Show the arc once so learners can place each tool as it arrives.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Three moves: how the machine works, what happens when it starts acting on its own, and how you keep all of it honest.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the seven items in one breath each.</li><li>Point out the shape: how it works (01-04), what happens when it acts (05), how you keep it honest (06-07).</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None needed; this is orientation.</p>
+    <p class="mini"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Start with the window, because it explains the single most common complaint about these tools.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip entirely; the deck's structure carries it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-attention.jpg" alt="Slide: 01 · Context &amp; attention" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>01 · Context &amp; attention <span class="mins">Full 10 min · Core 7</span></h2>
+    <p class="purpose">Install the context-window mental model so 'it forgot' becomes a diagnosable, fixable event instead of a mystery.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's the secret that explains half the weird behavior you've seen: the model has no memory. Every single turn, it re-reads your conversation through a window of fixed size, and attention decides which parts of that window matter for the next word. Twenty messages in, your opening instruction can fall out of the window entirely. It's not disobeying you; for that answer, your instruction never existed. Drag the slider and watch it happen.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Teach the one-liner: the model doesn't remember, it RE-READS a finite window every turn, and attention decides what matters inside it.</li><li>Demo the simulator on the projector: drag from short chat to marathon and read the answers aloud as they degrade.</li><li>Send them to their devices to drag it themselves; the instruction falling out of the window is the aha.</li><li>Play the 3Blue1Brown attention video, first ~6 minutes, on the Full path.</li><li>Run the quick check, then the pair activity: diagnose a real 'it forgot' moment with the window model.</li><li>Optional live demo if you rehearsed it: long document, 15 turns, ask about the start.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Why does 'put the important instruction near the end of a long prompt' actually work, mechanically?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Because it's definitely inside the window</li><li>Recent stuff wins the attention contest</li><li>Guesses about the model 'caring more' about endings</li></ul><p class='mini'><b>Respond:</b> Anchor the first two: inside the window, and competing well. Gently mechanize the third: 'Not caring; competing. Attention is a contest, and recency is an advantage.'</p>
+    <p class="mini"><b>Debrief:</b> Three habits fall out of one mechanism: restate the key instruction, put the ask near the end, and start fresh on purpose.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct; pairs can name the fix they'd use (restate, ask-at-the-end, fresh chat).</p>
+    <p class="mini"><b>Watch for:</b> The word 'attention' drifting into psychology. Keep it mechanical: everything in the window competes; the winners shape the next word.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;The window explains forgetting. The next idea explains the other mystery: where answers come from when the model can't possibly know.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: simulator plus check plus one-line habits; cut the video (assign) and the pair share.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-belief.jpg" alt="Slide: Manifesto" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Manifesto <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">One beat of stillness to lock the session's warning label before the tooling continues.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;A wrong answer sounds exactly as confident as a right one.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None; this is pacing.</p>
+    <p class="mini"><b>Watch for:</b> The urge to talk over it. Don't.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Which is why the next tool exists: giving the model receipts.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip; say the line yourself as you pass it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-rag.jpg" alt="Slide: 02 · Grounding with RAG" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>02 · Grounding with RAG <span class="mins">Full 10 min · Core 7</span></h2>
+    <p class="purpose">Install the RAG mental model, retrieval fixes the raw material, not the brain, and surface where it belongs in learners' own work.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;A model's training data is a photograph of the internet, taken a while ago. Ask it about YOUR policies and it does the only thing it can: guess fluently. Retrieval-Augmented Generation changes the supply chain: before answering, the system fetches your real, current documents and hands them to the model. Watch the same question twice. RAG doesn't make the model smarter; it makes the raw material trustworthy, and it hands you a citation you can actually click.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Teach the one-liner: training data is frozen; RAG retrieves your real, current documents and answers from them.</li><li>Demo the simulator on the projector: toggle from general chatbot to RAG and let the difference land: the guess versus the cited answer.</li><li>Send them to their devices to toggle it themselves; point at the retrieved-source panel.</li><li>Play the IBM RAG explainer on the Full path.</li><li>Run the quick check, then the group activity: the question-a-chatbot-would-guess-at exercise, collecting the best on the whiteboard as a RAG backlog.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What's one question at work a general chatbot would confidently guess at, but a tool grounded in OUR documents could actually get right?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Policy and procedure questions</li><li>Current-semester or current-quarter specifics</li><li>Internal system how-tos</li></ul><p class='mini'><b>Respond:</b> Write the best ones on the whiteboard under RAG BACKLOG: 'This list is a project backlog. Every item on it is a real, buildable use case, and now you know its name.'</p>
+    <p class="mini"><b>Debrief:</b> Grounded beats brilliant: same model, trustworthy sources, clickable receipts. And the citation click stays in the job.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct (especially rejecting 'RAG answers can be trusted without checking'); the whiteboard has at least three real RAG candidates.</p>
+    <p class="mini"><b>Watch for:</b> Over-correction into 'so RAG solves hallucination.' The simulator's grounded answer still deserves a click on its citation; say so explicitly.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;So when do you prompt, when do you retrieve, and when do you reach for the heavy machinery? There's a framework, and it starts cheap.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: simulator plus check; cut the video (assign) and collect only two backlog questions.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-method.jpg" alt="Slide: 03 · Choosing your method" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>03 · Choosing your method <span class="mins">Full 10 min · Core 7</span></h2>
+    <p class="purpose">Install the cheapest-first decision framework (prompting → RAG → fine-tuning) and practice it to a one-sentence justification.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Three tools, wildly different price tags. Prompting costs minutes and changes freely. RAG costs a document library and someone to keep it current. Fine-tuning costs training data, compute, evaluation, and doing it all again every time the underlying model updates, which is often. So the framework is three questions asked in order, and most teams should stop at the first yes: can a better prompt fix it? Does the task need current or internal facts? Does it genuinely need a permanent behavior change at scale? Start cheap. Escalate on evidence.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the three cards as three questions asked IN ORDER: can a prompt fix it, does it need current or internal facts, does it need a permanent behavior change.</li><li>Stress the maintenance line: fine-tuning is redone every model update; that cost kills most cases.</li><li>Send them to the method matcher: five requests, pick the lightest method that works.</li><li>Debrief the room's scores; request 5 (the formal email) catches people who over-escalate.</li><li>Run the pair activity: one real AI idea through the framework, ending in the justification sentence.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Where have you seen a team over-invest in heavy machinery before exhausting the cheap fix, in AI or anywhere else?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Buying a platform when a spreadsheet worked</li><li>Custom builds for one-time problems</li><li>Someone names a real AI example</li></ul><p class='mini'><b>Respond:</b> Affirm the pattern: 'Same disease, new tools. The framework is the vaccine: evidence before escalation, and the justification sentence is what you'll say in the meeting where someone proposes the crane.'</p>
+    <p class="mini"><b>Debrief:</b> The one-sentence justification is the takeaway: we chose X because Y. If you can't finish that sentence, you're not done deciding.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the matcher for most of the room; two pairs read a clean justification sentence aloud.</p>
+    <p class="mini"><b>Watch for:</b> The enthusiast who wants to fine-tune everything. The framework is the kind answer: 'show me the evidence the cheaper rungs failed.'</p>
+    <p class="mini"><b>Transition:</b> &ldquo;For most of you, the answer will be 'a better prompt.' So let's upgrade what a better prompt means: four patterns past the basics.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cards fast, matcher on devices, skip the pair activity; the justification habit gets one worked example from you instead.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-patterns.jpg" alt="Slide: 04 · Advanced prompt patterns" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>04 · Advanced prompt patterns <span class="mins">Full 11 min · Core 7</span></h2>
+    <p class="purpose">Install the four patterns as sight-recognizable tools and get each learner one rewrite of a real prompt.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;AI Basics gave you the four-part prompt. These four patterns are the next gear, and each one has a trigger you'll learn to hear. The model keeps formatting things wrong? Stop describing, start showing: Few-Shot. Multi-step logic coming back subtly broken? Make it think out loud: Chain-of-Thought. Same report every week? Hand it your structure once: Template. And my favorite: you don't actually know what you need? Flip it: 'ask me clarifying questions before you attempt this.' The model becomes the consultant.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the four cards with their triggers: examples to imitate → Few-Shot; multi-step or numeric → Chain-of-Thought; recurring structure → Template; don't know what you need → Flipped Interaction.</li><li>Tie the lineage back: Template and Flipped come from the same Vanderbilt-led catalog as the Persona Pattern from AI Basics.</li><li>Send them to the pattern matcher: five tasks, pick the pattern.</li><li>Run the solo drill from Go deeper: rewrite one real prompt from their own work in the best-fit pattern.</li><li>Neighbors swap and try to name each other's pattern; if the neighbor can't tell, the rewrite needs sharpening.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Which of these four would have saved you the most time on something you did last week?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Template, for recurring reports</li><li>Flipped, for fuzzy requests</li><li>Few-Shot, for formatting fights</li></ul><p class='mini'><b>Respond:</b> Whatever they name: 'Good, that's the one you rewrite in the drill. Real prompt, real task, two minutes from now.'</p>
+    <p class="mini"><b>Debrief:</b> Patterns beat improvisation because they're reusable: the rewrite you just did is a work asset, not an exercise.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the matcher; every learner has one rewritten real prompt, and most neighbors correctly named the pattern used.</p>
+    <p class="mini"><b>Watch for:</b> Pattern-collecting without application. The drill is the point; the matcher is just the warm-up. Protect the drill minutes.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Everything so far is a model answering you. Now the bigger shift: what happens when it starts DOING things.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cover Chain-of-Thought and Flipped in voice, all four on screen; matcher stays, drill shrinks to writing the rewrite without the neighbor swap.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-agents.jpg" alt="Slide: 05 · Multimodal &amp; agentic AI" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>05 · Multimodal &amp; agentic AI <span class="mins">Full 11 min · Core 7</span></h2>
+    <p class="purpose">Install the plan-act-observe loop, make the three documented failure modes sight-readable, and set up the checkpoint decision the capstone requires.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Until now, the model answers and you act. An agent flips that: you give it a goal, and it runs a loop: plan the steps, act with tools, observe what happened, repeat until done. Or until it breaks, and here's the useful news: it breaks in specific, documented ways. It calls the wrong tool. It misreads what a tool told it. Or it loops forever because nobody gave it an exit. The fix is never 'trust it more.' It's scoped tools, step limits, and a human checkpoint before anything ships. You're about to read five real-style traces and catch the failures yourself.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>One line on multimodal (chaining steps across text, image, audio, video), then the main event: agents get GOALS, not instructions, and run a loop.</li><li>Walk the three failure cards: wrong tool, misread input or output, infinite loop. These are documented patterns, not speculation.</li><li>Land the gold card: the fix is never 'trust it more'; it's scoped tools, step limits, and a human checkpoint.</li><li>Play the IBM agents video, first ~5 minutes, on the Full path.</li><li>Send them to Babysit the Agent: five traces, name what broke. Trace 4, the healthy one that ends at a checkpoint, is the teaching moment.</li><li>Run the group activity: where would an agent help your unit, and which checkpoint level does it get?</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Where in your own work would you want a FULL review before an agent's output ships, and where would a spot-check honestly be enough?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Full review: anything external, anything with money or people</li><li>Spot-check: internal drafts, summaries, formatting chores</li><li>Debate about email, which is the interesting case</li></ul><p class='mini'><b>Respond:</b> Let the email debate breathe for thirty seconds; it teaches the judgment. Then name the rule of thumb: 'External, consequential, or about people: full review or named approval. Internal volume: spot-check. The silent option, none, is how incidents happen.'</p>
+    <p class="mini"><b>Debrief:</b> A healthy trace ends at a checkpoint, not at 'sent.' You just practiced the exact skill the checkpoint exists to apply.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; groups can name a checkpoint level for their own use case and defend it in a sentence.</p>
+    <p class="mini"><b>Watch for:</b> Both ditches: 'agents are magic' and 'agents are terrifying.' The traces are the antidote to both: specific failures, specific fixes.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Checkpoints catch what the machine gets wrong. But can YOU catch it? Let's find out, six answers, real or invented.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cut the video (assign); failure cards, trainer, and a one-voice version of the checkpoint question stay.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-halluc.jpg" alt="Slide: 06 · Spot the hallucination" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>06 · Spot the hallucination <span class="mins">Full 7 min · Core 5</span></h2>
+    <p class="purpose">Calibrate hallucination detection by hand, then name the discipline that does it at scale: red-teaming and evaluation.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Six answers, all generated by AI, all delivered with identical confidence. Some are accurate. Some are invented. Your job: call each one. And here's why this game matters: a hallucinated answer sounds exactly as confident as a correct one. Fluency and accuracy are separate qualities, and your ear can't always tell them apart, which is precisely why organizations red-team these systems instead of vibing them.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame it as a game with a lesson inside: six AI answers, call each accurate or hallucinated.</li><li>Run it on devices, or as a room vote with hands on the projector; room-vote mode is louder and better.</li><li>After the reveal, ask which ones fooled people; item 6, the Python half-truth, usually gets the best discussion.</li><li>Land the collected tells from the gold card, and the kicker: production hallucinations often have NO tell.</li><li>Introduce red-teaming in one line: what you just did, done as a structured discipline, per NIST's definition.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Which one fooled you, and what would have caught it?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>The fabricated HBR citation, caught only by searching for it</li><li>The Python half-truth, because the logo detail checks out</li><li>Someone got them all and says so</li></ul><p class='mini'><b>Respond:</b> For the perfect scorer: 'Great, now imagine six hundred answers a week instead of six. The habit scales; the instinct doesn't.' For everyone else: 'Notice every catch required a CHECK, not a feeling. That's the lesson wearing a game costume.'</p>
+    <p class="mini"><b>Debrief:</b> Fact, date, number, name, citation: verify at the source. And when a vendor claims their model doesn't hallucinate, ask for the eval results.</p>
+    <p class="mini"><b>Validate:</b> Most of the room at 5+ of 6; everyone can name at least one tell AND repeat the caveat that tells aren't guaranteed.</p>
+    <p class="mini"><b>Watch for:</b> Overconfidence from a good score. The debrief line matters: these were TRYING to be catchable. The habit beats the instinct.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;One skill left: deciding what information is allowed near these tools in the first place. Three colors, four functions, and then you build.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep at nearly full length; this is the session's signature moment. Run it as a fast room vote.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-govern.jpg" alt="Slide: 07 · Governance" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>07 · Governance <span class="mins">Full 8 min · Core 5</span></h2>
+    <p class="purpose">Make NIST's four functions a usable checklist and drill the tiering habit that prevents most real incidents.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Last concept, and it's four questions and three colors. The NIST AI Risk Management Framework sounds like homework; it's actually the questions a reasonable adult asks about any tool: who decides, Govern. What are we running, Map. How do we know it works, Measure. What do we do about what we find, Manage. And the three colors are the ones you already know from AI Basics: green public, yellow internal and company-managed tools only, red sensitive, named approval or no AI at all. Tier first, prompt second. That single habit prevents most of the incidents that make the news.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the four function cards as plain questions: who decides, what are we running, how well does it work, what do we do about it.</li><li>Connect the tiers to AI Basics: same green, yellow, red, now wearing their governance name.</li><li>Send them to the tier sorter: five items, classify each. Item 4, the reorg memo, is the discussion magnet.</li><li>Run the group activity: one real tool through the four functions; the first unanswered question is the governance gap.</li><li>Keep it empowering, not scary: tiering takes three seconds and prevents three-month cleanups.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Pick one AI tool your team already uses, even informally. Which of the four questions can't you answer?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Measure, almost universally: nobody has evaluated it</li><li>Map: shadow tools nobody inventoried</li><li>Govern: no named owner</li></ul><p class='mini'><b>Respond:</b> Name the pattern kindly: 'Measure is the room's gap, and that's normal; evaluation is the least visible function. The point isn't shame. It's that you just found your gap in four minutes, for free, before an auditor or an incident found it for you.'</p>
+    <p class="mini"><b>Debrief:</b> Four questions, three colors, three seconds of tiering. Governance at your level isn't a document; it's a habit.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the sorter; each table can name their tool's first unanswered governance question.</p>
+    <p class="mini"><b>Watch for:</b> Governance fatigue in the room's body language. The energy move: this is the shortest section, and it ends in the capstone they've been building toward all session.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Toolkit complete. Quiz first, then the card that puts all of it on one page.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: function cards in one minute, sorter on devices, skip the four-functions group exercise; the capstone's tier field carries the habit.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-recap.jpg" alt="Slide: Recap quiz" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Recap quiz <span class="mins">Full 4 min · Core 4</span></h2>
+    <p class="purpose">Score the session's knowledge against the six objectives before the capstone applies it (Kirkpatrick Level 2).</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Six questions, one per objective. This is the systems check before you build the workflow that leaves the room with you.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps one-to-one onto the objectives, so misses tell you exactly what to reteach.</p>
+    <p class="mini"><b>Watch for:</b> Racing. Frame it as a systems check before the build, not a race.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now the artifact this whole session was aiming at.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep at full length; this is the objectives' evidence.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-plan.jpg" alt="Slide: Capstone · Team AI workflow" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Capstone · Team AI workflow <span class="mins">Full 8 min · Core 6</span></h2>
+    <p class="purpose">Convert the session into one governed, dated workflow card: the transfer artifact, the Level 3 seed, and the input to the 30-day census.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;One card, five decisions, and everything from today is on it. The trigger: what starts the workflow. The AI step: what the model actually does, and notice the safe verbs are draft, sort, and summarize, not send. The pattern that carries it. The human checkpoint that clears it. And the tier that governs it. Build it for the task you brought. When you're done, show one neighbor and take one piece of feedback; workflows survive contact with a second brain much better than with none.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame it: one real recurring task, five decisions: trigger, AI step, pattern, checkpoint, tier.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the pre-work task they brought is the raw material.</li><li>Watch the tier field: anyone picking red gets the built-in warning; make sure they read it as 'redesign or get written approval,' not 'proceed.'</li><li>Push the copy button moment, then the peer step: share the card with ONE neighbor for one piece of feedback.</li><li>Close the loop: run it once within 7 days and note what the checkpoint catches; that note is the evidence.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What's most likely to make you skip running this for real, and what's your plan for that obstacle?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Time; the week will eat it</li><li>The checkpoint feels like extra work</li><li>Not sure my prompt is good enough yet</li></ul><p class='mini'><b>Respond:</b> Time: book the first run now, it's one calendar block. Checkpoint skepticism: 'run it once WITH the checkpoint; what it catches will settle the argument either way.' Prompt doubts: 'the pattern is the training wheels; Few-Shot with two examples forgives a mediocre prompt.'</p>
+    <p class="mini"><b>Debrief:</b> A workflow with a named checkpoint and a tier survives audits, vendors, and incidents. Everything else today was preparation for this card.</p>
+    <p class="mini"><b>Validate:</b> Every learner builds a card (all five fields) and exchanges feedback with a neighbor. The card plus the 7-day pulse plus the 30-day census is the evidence chain.</p>
+    <p class="mini"><b>Watch for:</b> Red-tier workflows sailing through on autopilot; that warning is the most important sentence some learners will read today. Also watch for AI steps with no checkpoint logic: 'draft' is safe, 'send' is not.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: protect at full length minus the peer-feedback swap; never cut the capstone itself.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-glossary.jpg" alt="Slide: Glossary" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Glossary <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Signpost the reference layer; it lives here for after the session.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Every term from today lives here, flip cards, whenever you need the vocabulary back, including in the meeting where a vendor starts using it at you.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Flip one card on the projector (Human Checkpoint is a good pick).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None; reference material.</p>
+    <p class="mini"><b>Watch for:</b> Don't tour all thirteen cards; one flip makes the point.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Last slide. One run left.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip; point at it verbally from the closing slide.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-close.jpg" alt="Slide: Closing · commitment" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Closing · commitment <span class="mins">Full 3 min · Core 2</span></h2>
+    <p class="purpose">Convert cards into public commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's the whole session in one breath: the window explains the forgetting, retrieval grounds the answers, the framework starts cheap, the patterns upgrade your prompts, agents get checkpoints, your detector needs a habit, and information gets tiered before it gets pasted. You have a card with all five decisions made. Before you go: what's the trigger, and what's the tier? Say it out loud.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the featured card: the one next step is running the workflow, once, checkpoint and all, within 7 days.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how ready do you feel to run your workflow?' Scan and remember the number for your session log.</li><li>Run the commitment round, popcorn style: trigger and tier, out loud or in chat.</li><li>Point at the cheat sheet and workflow card buttons, and the Jules White course for pattern depth.</li><li>Tell them the 7-day pulse and 30-day census are coming, then land the last line and stop on time.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Around the room, one line each: your workflow's trigger, and its tier.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>'Friday status report, yellow'</li><li>'Inbox triage every morning, green'</li><li>Someone admits theirs came out red</li></ul><p class='mini'><b>Respond:</b> Thank each one, no commentary. For the red admission, publicly and warmly: 'That card just did its job. Redesign the AI step or get the named approval, and either way you found out today instead of in an incident report.'</p>
+    <p class="mini"><b>Debrief:</b> The session's success metric isn't in this room; it's the 30-day census: how many teams have a written, tiered workflow running. Your card is one of them.</p>
+    <p class="mini"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a trigger-and-tier out loud or in chat. Count both; with the pulse and census, that's your evidence chain.</p>
+    <p class="mini"><b>Watch for:</b> Cards that quietly skipped the tier decision. The commitment round catches them: no tier, no commitment; help them pick one on the spot.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Go run it. And when the checkpoint catches something, and it will, write it down; that note is the best AI education you'll get all month.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:14px;color:#777">Generated from facilitator/notes.json. The on-screen facilitator edition lives at ./ alongside this guide.</p>
+</div>
+</body>
+</html>

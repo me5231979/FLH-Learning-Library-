@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin, Automated, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for Vanderbilt staff: run the Repeat Audit on a real week, build reusable templates with AI, set up email triage and calendar rules you stay accountable for, and retire the recurring work nobody needs.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Admin, Automated | Vanderbilt Learning Series">
+<meta property="og:description" content="Personal automation and repetitive-task elimination: spot the repeats, template them, route what arrives, retire what nobody reads, and bank the recovered hours.">
+<meta property="og:url" content="../../../courses/Admin-Automated/">
+<meta property="og:image" content="../../../courses/Admin-Automated/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Admin, Automated | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/Admin-Automated/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-repeat">The Repeat Tax</a>
+    <a href="#s-spot">Spot It</a>
+    <a href="#s-template">Template It</a>
+    <a href="#s-route">Route It</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including the recurrence inventory on your own real week. You will be asked what you automated first; a real answer plays far better than a hypothetical.</li><li>Actually build one template from three of your own past emails before you teach. The build takes ten minutes and gives you a live example to describe, structure only, never contents.</li><li>Send the pre-work invite (template on this page) with the calendar invite: notice one task this week you have done more than twice the same way.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Skim Gallup's workplace AI research page so the numbers in Guess the Number are fresh; the game's reveals carry the citations, but you should be able to say 'the research' with a straight face.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Automation Lab and one trainer so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and repeat audit cards, and stock the sticky notes.</li><li>Re-read the tough-questions bank; say the 'is this how jobs get cut?' response out loud once. In a staff room, that question is coming.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'YOUR TASKS, NEVER NAMES' where the room can see it all session.</li><li>Write the four moves on the whiteboard: SPOT, TEMPLATE, ROUTE, RETIRE. You'll point at them all session.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed repeat audit cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart with markers for the candidate list and the keep-shrink-retire calls</li><li>Sticky notes for the section 02 candidate swap (one task per note works well)</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the four moves, the three piles, and the template hygiene rules all draw in seconds. The inventory and capstone move to the printed cards. The lab becomes a group walk-through: read each step's three options aloud and have the room vote by hands.</div><div class="brief__row"><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the private inventory and capstone move to paper. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the Automation Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the inventory, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone types or reads out a message containing a real person's details:</b> Protect the norm warmly: 'Hold on, swap that name for a bracket before it goes anywhere.' Then use it as the live teach: that swap IS slot hygiene, and it is the same move that keeps people data out of AI tools. The interruption becomes the lesson.</div><div class="brief__row"><b>If The room is skeptical: 'AI drafts sound robotic, my messages need a human touch':</b> Agree with the instinct and redirect it: the template is YOUR past writing, distilled; AI just finds the skeleton in it. The voice rule exists for exactly this concern, and the Judge the Template game's too-generic examples show what happens when voice is ignored. The human touch survives in the slots you fill and the read before every send.</div><div class="brief__row"><b>If The room is the opposite: automation enthusiasts who want to auto-send everything today:</b> Aim the enthusiasm at the lab and let it do the sobering: the auto-send option produces the month-two disaster on screen. Then hold the line verbally: read-then-send has no exceptions, and the evaporation trap catches enthusiasts hardest because they save the most hours and name none of them.</div><div class="brief__row"><b>If Someone raises a real data-privacy concern mid-flight:</b> Stop and honor it; this is the one interruption that outranks the agenda. Restate the traffic light (green public, yellow internal in approved VU tools only, red private information about people, never), confirm their case against it, and if it's genuinely ambiguous, park it with a promise to route it to the right owner rather than improvising policy from the front of the room.</div><div class="brief__row"><b>If A learner says 'my whole job is the repetitive layer, is this course automating me away?':</b> Take it seriously and answer honestly, in front of the room if they asked in front of the room: the course automates formats, never judgment, and every exercise ends with a human reading, deciding, and sending. The bank exists precisely so recovered hours become visible higher-value work with the learner's name on it. Then offer the private follow-up; this worry usually has a specific story behind it.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Is this how our jobs get cut? Be honest.</summary><p>The honest answer has two parts. This course moves formats to machines and keeps every decision, every send, and every relationship with the person doing the work; the bank exists so the recovered hours turn into visible, higher-value work with your name on it, which is the opposite of making you disposable. And nobody teaching a 90-minute course can promise what any organization decides years from now. What you control is whether your recovered time becomes named, visible contribution or invisible slack. The first kind builds the case for you; this course is the first kind.</p></details><details class="brief__q"><summary>My messages are all different. I don't really have repeats.</summary><p>That is what almost everyone says before the audit, and the sent folder almost always disagrees. The repeats hide because they arrive one at a time and each one feels like a fresh task. Run the one-week noticing habit, or just scroll yesterday's sent mail and count the messages you have written before in near-identical form. If the count is genuinely zero, congratulations, you have already escaped the repeat tax, and the calendar rules and retirement test still apply to you.</p></details><details class="brief__q"><summary>Doesn't reading every AI draft cancel out the time saved?</summary><p>Reading is fast; composing is slow. A routine reply that took four minutes to write takes thirty seconds to read and correct, and the template did the composing. The math only breaks when the draft is bad enough to need a full rewrite, which is the too-generic template failure, and the fix is a better skeleton, never skipping the read. The read is also carrying your accountability: five minutes a month at the send step is what stood between the lab's strong tier and the auto-sent disaster.</p></details><details class="brief__q"><summary>Am I allowed to put my work email into AI tools?</summary><p>The traffic light answers it: internal work belongs in approved VU tools only (ChatGPT EDU, Amplify, Copilot), and private information about people belongs in no AI tool at all, ever. In practice: de-identified drafts and templates of your own messages are fine in approved tools; a thread containing a student's situation or a colleague's personnel matter is red, and you handle it yourself. When you are unsure which side of the line something is on, treat it as red and ask the data governance owner, not the tool.</p></details><details class="brief__q"><summary>What if I automate something and it makes a mistake?</summary><p>Plan for it, because it will, occasionally, which is exactly why the system keeps your eyes at the send step. Under read-then-send, a mistake in a draft costs you a correction; the same mistake under auto-send costs you a public error with your name on it. So the answer is the design: slots so nothing stale carries over, a read before every send, and a spot check on the numbers that change. Notice the symmetry nobody mentions: your hand-built versions had mistakes too. The template plus the read usually produces fewer.</p></details><details class="brief__q"><summary>My manager measures me by the reports I produce. Retiring one sounds career-limiting.</summary><p>Which is why the test retirement puts the manager in the loop before anything stops; you are proposing an experiment together, never presenting a fait accompli. The two-sentence ask ('I suspect nobody reads this; can we skip one cycle and see?') makes you look like someone who thinks about value, and the outcome is evidence either way: nobody notices and you both recover the hours, or someone notices and you have found the real audience and can shrink the report to what they actually use. Managers overwhelmingly say yes to the version framed as a test.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Admin, Automated session. One thing to do this week: notice one task you have done more than twice the same way. A message you keep retyping, a table you keep rebuilding, a question you keep answering. Just notice it and remember roughly how many minutes it takes each time. You will never be asked to share its contents, and everything you type in the session stays on your screen. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the build session happen? Three quick lines, reply whenever: 1) Did you run the 20-minute build session from your automation card? 2) What did you template, route, or retire? 3) Where did the recovered time actually go, and is it on your calendar? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of automated admin. Two questions, same scale as the room: 1) Fist to five, how confident are you now running templates, triage, and calendar rules on your own work? 2) What does your chosen task cost now, and is the banked hour still yours or did the meetings find it? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the 20-minute build session happen? What did you template, route, or retire? Where did the recovered time actually go?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'what does the task cost now, and is the banked hour still yours?' The count of build sessions actually held is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Admin, Automated session. One thing to do this week: notice one task you have done more than twice the same way. A message you keep retyping, a table you keep rebuilding, a question you keep answering. Just notice it and remember roughly how many minutes it takes each time. You will never be asked to share its contents, and everything you type in the session stays on your screen. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today runs on your own real week of work, so one norm up front: your tasks and templates, never other people's names. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real task you'll automate</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the norm that makes real-work material safe: your tasks and templates, never other people's names, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is about the least glamorous and best-evidenced thing AI does: taking the repetitive layer of your week off your hands. We'll work on your own real tasks, so one ground rule for the next ninety minutes: your tasks and templates, never other people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: your own tasks and templates, never other people's names; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: how many of you sent an email this week that you have sent, in nearly the same words, at least ten times before?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Most hands up, with laughter</li><li>Someone names theirs immediately: the reimbursement answer, the room confirmation</li><li>A few holdouts who 'don't have repeats' (the audit will find them)</li></ul><p class="facnote__mini">Respond: Name the pattern warmly: 'Every one of those hands is holding a template that hasn't been built yet. Ninety minutes from now, one of them will be.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'your tasks, never names' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> People bracing for either a tech tutorial or an AI sales pitch. The frame that relaxes both: today is about getting hours back from the boring layer of the week, and AI is just one of the tools.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Admin, Automated · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Do it twice, fine.<br><em class="gold-text">Twenty times? Automate.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Gallup's workplace AI research keeps landing on the same answer: of everything people do with AI at work, automating repetitive tasks pays off most, with around 77 percent of users reporting clear productivity gains. There is a catch, and Leadership Circle names it: the hour you save has a habit of evaporating into meetings before you ever feel it. This session teaches both halves. You will find the repetitive layer in your own week, hand it to templates, rules, and AI you stay accountable for, and then protect the hours you win back.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Identify the repetitive layer hiding in a real week of your own work</li>
+          <li>Build reusable templates with AI for your recurring messages and reports</li>
+          <li>Set up AI-assisted email triage that you stay accountable for, every send</li>
+          <li>Apply calendar rules that defend focus time from the meetings that refill it</li>
+          <li>Decide which recurring work to retire entirely, and bank the recovered hours</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill skillpill--core">Continuously strives for excellence</span>
+        <span class="skillpill">Personal Productivity</span>
+        <span class="skillpill">AI Literacy</span>
+        <span class="skillpill">Process Improvement</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-repeat">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in one real task carded for automation with a dated 20-minute build session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things by the end. You'll be able to find the repetitive layer in your own week, because it hides. You'll build reusable templates with AI from your own past messages and reports. You'll set up email triage where AI drafts and you stay accountable for every send. You'll put calendar rules in place that defend the time you recover. And you'll make the bravest call in the course: what recurring work should simply stop. It all lands in one artifact: an automation card for a task you actually do, with a date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL automation card, one task, one move, one date.</li><li>Name the sources once for credibility: Gallup for the payoff evidence, Leadership Circle for the evaporation warning.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one task, one move, one dated build session).</p><p class="facnote__meta"><b>Watch for:</b> Tool questions arriving early ('which AI should we use?'). Park them: the moves work in any approved tool, and the traffic light in section 02 answers the which-tool question properly.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One page before the plan: why the university needs those hours back as much as you do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and the first hour any of us can grow into is the one the repeat work is currently eating.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: speed and agility begin with the repeat tax, and every recurring message you template, route, or retire is operations capacity handed back to the vision.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: bold bets need hours, and automating the repetitive layer is where yours come from, provided you bank them before the meetings drink them.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: the model university does not spend its people on twentieth repeats, and automation you stay accountable for, every send, is what that looks like in practice.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition is the flywheel input you feed directly, because an hour reclaimed from the repeat tax and banked where it shows is an hour of capacity the university did not have last month.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Connect the course to the institutional vision: the university's speed is the sum of its staff hours, and automating the repetitive layer is how those hours come back.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the plan, the why. Chancellor Diermeier's vision is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The how is uncommon speed, agility, and scale, and here is the desk-level truth: an institution's speed is the sum of its staff hours, and the repeat tax is quietly spending yours. Automating the twentieth repeat, while you stay accountable for every send, is how a university this ambitious gets its operational capacity back. Our motto is the dare, Crescere aude, dare to grow, and the hour you reclaim this week is the room you grow in.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence off the slide, slowly; it carries the page.</li><li>Walk the three focus cards, landing on the 'At your desk' line in each.</li><li>Point at the flywheel card: recovered hours, banked where they show, are the flywheel's rawest input.</li><li>Keep it under three minutes; this page frames the session, and the sections do the teaching.</li></ol></div><p class="facnote__meta"><b>Validate:</b> The room can connect the vision to the course in one line: the university's speed is made of reclaimed staff hours like theirs.</p><p class="facnote__meta"><b>Watch for:</b> Eye-rolls at strategy language. Ground it fast: the flywheel's inputs are decided at desks like theirs, one retired repeat at a time.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Six ideas, in a deliberate order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute. Read the vision sentence, gesture at the three focus cards, move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The repeat tax</h3><p>How much of a week is repetition, what Gallup found, and why saved time evaporates.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Spot it</h3><p>The Repeat Audit's first move: the recurrence inventory, and your own top three candidates.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Template it</h3><p>Building the reusable skeleton with AI: three past examples in, slots out, your voice intact.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Route it</h3><p>The three-pile triage system and calendar rules. Rules sort, AI drafts, you decide.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Automation Lab</h3><p>Rebuild the monthly report cycle step by step and see how your design holds at month two.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Retire it and bank it</h3><p>The bravest move: some recurring work should stop. Then naming what the hours are for.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: evidence, then the four moves of the Repeat Audit, practiced in the lab, protected by the bank.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first the evidence, then the Repeat Audit's four moves in order. Spot the repeats, template them, route what arrives, and, the brave one, retire what nobody needs. In the middle you'll rebuild a monthly report cycle in the lab and watch your design survive month two, or not. We end with the card that puts a date on your first move.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the six items in one breath each.</li><li>Point out the shape: the case (01), then the audit's four moves (02 spot, 03 template, 04 route, 06 retire), with the lab (05) as the practice run.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the evidence, because the numbers are better than most people expect, and the trap is worse.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE REPEAT TAX ============ -->
+  <section class="slide on-light" id="s-repeat" data-count data-title="The repeat tax">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Repeat Tax</p>
+      <h2 class="h2" data-reveal>Your week is quietly charging you a repeat <em>tax</em>.</h2>
+      <p class="lead" data-reveal>There is the work, and then there is the re-doing of formats around the work: retyping the message you sent last Tuesday, rebuilding the table you built last month, re-answering the question you answered last week. That second layer is the repeat tax, and the research says it is the single best place to point AI. Before the method, the evidence, and most rooms guess these numbers wrong.</p>
+
+      <div class="quiz" id="rtGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a number you guessed at, and missed, sticks far better than one you were shown. Four findings; call each one before the reveal.</p>
+        <p class="quiz__progress" id="rtProgress"></p>
+        <p class="quiz__q" id="rtQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="rtOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="rtFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="rtNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="rtResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: You automate a weekly report and save two hours. What does the evidence say happens to those hours if you do nothing else?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Saved time does not protect itself. Unnamed hours get reabsorbed by meetings and email within weeks, which is why the last section of this course is about banking them."><span class="mark">A</span><span>They evaporate into meetings and email unless you name and defend them</span></button>
+          <button class="opt" data-correct="0" data-why="That is the assumption the evaporation trap feeds on. The calendar fills every vacuum it finds; only a named, visible purpose keeps the hours yours."><span class="mark">B</span><span>They stay free; saved time takes care of itself</span></button>
+          <button class="opt" data-correct="0" data-why="Nothing automatic about it. Time flows to whatever asks loudest, and your most important project asks quietly. The bank at the end of this course exists to fix that."><span class="mark">C</span><span>They automatically flow to your most important project</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two sources shape this session. <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace AI research</a> keeps finding that automating repetitive tasks is where everyday AI use actually pays, with around 77 percent of users reporting clear productivity gains, the strongest result for any common use case. And <a href="https://leadershipcircle.com/" target="_blank" rel="noopener" style="text-decoration:underline">Leadership Circle</a> supplies the warning that shapes the back half of the course: time saved by tools tends to evaporate into meetings and shallow work unless someone deliberately names where it goes. Hold both at once. The payoff is real, the trap is real, and the difference between them is design, which is what the Repeat Audit is for.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the repeat tax stays invisible until you price it out loud, and hearing a room full of prices makes it personal.</p>
+          <ol class="steps">
+            <li>In pairs: each name one task you did this week that you have done, the same way, at least ten times before.</li>
+            <li>Price it out loud: minutes per repeat, times repeats per month. Say the total.</li>
+            <li>Hands to the room: whose repeat costs more than an hour a month? Count the hands. That count is the tax, sitting in this room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Open yesterday's sent mail and count how many messages you have written before in near-identical form. That count is the start of your audit, and section 02 finishes it.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish with guessed-at, missed numbers that repetitive admin is the highest-payoff AI use case (Gallup, around 77 percent) and that saved time evaporates unless banked (Leadership Circle). The tension between those two findings is the whole course.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;There are two layers in your week. There's the work: the judgment, the relationships, the things that need you. And there's the re-doing of formats around the work: retyping the message you sent last Tuesday, rebuilding last month's table, answering the same question for the twelfth time. That second layer is the repeat tax. Gallup's workplace research says pointing AI at exactly that layer is the single highest-payoff use, with around 77 percent of users reporting real productivity gains. And Leadership Circle adds the warning that shapes the whole back half of today: the hour you save will evaporate into meetings unless you deliberately name where it goes. Four findings, call your number before each reveal.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the distinction first: doing the work versus re-doing formats around the work. The tax is the second one.</li><li>Frame the game: four findings, guess each number before it's revealed. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, land the two-sided frame: the payoff is real AND the saved time evaporates. Both findings run the session.</li><li>Run the quick check (what happens to saved hours), then the pair activity: name and price one repeat out loud.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Name your biggest repeat and price it: minutes per repeat, times repeats per month. Who's over an hour a month on a single repeat?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Most of the room over an hour, several over three</li><li>The classics: status reports, scheduling threads, the same policy answer</li><li>Someone realizes their repeat is daily and does the math out loud, alarmed</li></ul><p class="facnote__mini">Respond: For the alarmed one, warmly: 'That number is your best news of the day; the biggest tax means the biggest refund. Hold onto that task, it's your capstone candidate.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The payoff is real, the trap is real, and both are now priced in this room's own numbers. The difference between winning the hour and losing it again is design, which is what the four moves are for.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; the priced repeats land audibly and the room hears its own tax. Most learners can state both findings: the 77 percent and the evaporation.</p><p class="facnote__meta"><b>Watch for:</b> A skeptic litigating the 77 percent. Don't defend a decimal; the direction is the point: across surveys, repetitive-task automation is where everyday AI reliably pays, and the room's own priced repeats just confirmed the tax exists locally.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before the method. It's about the message you've already typed three times.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, the pair pricing becomes one volunteer's number with no discussion.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Anything you have typed three times is a template you have not met yet.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the method arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Anything you have typed three times is a template you have not met yet.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So the first move is learning to notice. Most repeats hide in plain sight.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 SPOT IT ============ -->
+  <section class="slide on-dark" id="s-spot" data-count data-title="Spot it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Spot It</p>
+      <h2 class="h2" data-reveal>You can't automate what you haven't <em>noticed</em>.</h2>
+      <p class="lead" data-reveal>The Repeat Audit has four moves: spot it, template it, route it, retire it. The first move is a noticing habit. The rule of thumb: anything you have done more than twice the same way is a candidate. The repeats hide in plain sight because they arrive one at a time, so learn the three tells that give them away.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Tell 1 · The search</span>
+          <h3>You search for a past email to copy it</h3>
+          <p class="muted">The search is the confession. You already treat that message as a template; it is just unsaved, unslotted, and rebuilt by hand every time.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Tell 2 · The rebuild</span>
+          <h3>You rebuild the same table monthly</h3>
+          <p class="muted">Same columns, same formulas, new numbers. The structure has not changed in a year; only the data has. Structure that repeats is a skeleton waiting to be saved.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Tell 3 · The echo</span>
+          <h3>You type the same three sentences weekly</h3>
+          <p class="muted">The reimbursement answer, the room-booking confirmation, the where-do-I-find-it reply. If your fingers know it by heart, it belongs in a saved reply with slots.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule runs here too</span>
+        <p style="margin:.5rem 0 0" class="measure">Your inventory will include work that touches people. The tasks go on your list; the people data does not go into AI. The traffic light from Start Smarter still decides what any tool may see:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">A name baked into a template is a red flag twice over: it is private data sitting in a reusable file, and it is next month's embarrassing accident. The light outranks every technique in this course.</p>
+      </div>
+
+      <div class="plan" id="raBuild" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Your recurrence inventory, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this session runs on your own repeats, and writing them down is the audit's first move. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="raMsg"><b>1 · The message.</b> The message you send most often, near-identical every time:</label>
+            <input type="text" id="raMsg" maxlength="120" placeholder="e.g. the room-booking confirmation I send five times a week" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="raReport"><b>2 · The report.</b> The report or table you rebuild on a schedule:</label>
+            <input type="text" id="raReport" maxlength="120" placeholder="e.g. the monthly enrollment summary for the program directors" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="raAsk"><b>3 · The request.</b> The request you always answer the same way:</label>
+            <input type="text" id="raAsk" maxlength="120" placeholder="e.g. how do I get reimbursed for conference travel" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="raRank" disabled>Rank my candidates</button>
+            <span class="quiz__progress" id="raStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="raOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Run the audit as a one-week noticing habit: every time a task feels like deja vu, write its name on a running list, ten seconds, no analysis. At the end of the week rank the list by two questions. How often does it repeat, and how identical is each repeat? Frequency times sameness is the payoff math: a daily near-identical message beats a quarterly report that changes shape every time. And keep the boundary bright while you collect: candidates that involve people can go on the list by task name, and the people details stay out of any unapproved tool. The audit needs to know THAT you send the message; it never needs to know who received it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> other people's repeats are easier to spot than your own, and a partner's questions sharpen your ranking fast.</p>
+          <ol class="steps">
+            <li>Pairs. Swap your top candidate from the inventory above: the task name only, never its contents.</li>
+            <li>The partner asks the two payoff questions: how often, and how identical? Push for real numbers.</li>
+            <li>Bring the room the strongest candidate you heard. The list on the board is proof the tax is everywhere, and it becomes the section 03 raw material.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Fill in the inventory above honestly, then star the candidate you would be embarrassed to still be doing by hand in three months. That star is your capstone task.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Teach the recurrence inventory (the audit's first move), install the three tells and the more-than-twice rule, restate the traffic light as the boundary, and get every learner a ranked top-three list of their own automation candidates.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You can't automate what you haven't noticed, and repeats are genuinely hard to notice because they arrive one at a time, each wearing a fresh date. So use the three tells. You search for a past email so you can copy it: that search is a confession, you already treat the message as a template. You rebuild the same table every month: same columns, new numbers, the structure is begging to be saved. You type the same three sentences every week: your fingers know them by heart. The rule of thumb: anything you've done more than twice the same way is a candidate. One boundary before you start collecting: the traffic light from Start Smarter still runs. Your tasks go on the list; private information about people never goes into an AI tool, and a name baked into a template is a red flag twice over. Now build your inventory, privately: the message, the report, the request.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three tell cards: the search, the rebuild, the echo. Ask for a show of hands on each; every hand is a candidate found.</li><li>Walk the traffic light card and be unambiguous: green public, yellow internal in approved VU tools only, red private information about people, never. Names in templates are red flags.</li><li>Send them to the private inventory: three fields, the message, the report, the request. Repeat the privacy line before they type.</li><li>Give the inventory quiet time; the third field (the request you always answer the same way) usually needs the longest think.</li><li>Have them build the ranked output, then run the pair swap from Go deeper: task names only, the two payoff questions, best candidate to the room.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the swap: what was the best candidate you heard, and what made it good?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>High-frequency messages: confirmations, standard answers, weekly updates</li><li>Monthly report rebuilds with unchanged structure</li><li>Someone heard a candidate better than any of their own and says so</li></ul><p class="facnote__mini">Respond: Name the pattern: 'Notice every good candidate has the same two properties: often, and identical. Frequency times sameness is the whole ranking rule, and your number one is the task you'll carry through the rest of today.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Everyone now owns a ranked list and a starred first candidate. The tax has names on it, which means it can be collected.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has a ranked top-three list with a starred first candidate. The room can state the more-than-twice rule and the traffic light unprompted. This list feeds sections 03, 05, and the capstone.</p><p class="facnote__meta"><b>Watch for:</b> Two drifts: people typing message contents instead of task names (redirect to the task level), and the 'I have no repeats' learner. For the second, ask what they did first thing Monday morning; a repeat usually appears within three questions.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Your number one candidate becomes a template in the next ten minutes.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: tells fast with hands, traffic light at full strength, inventory stays at full length with its quiet time protected; the pair swap drops to an optional 90 seconds.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 TEMPLATE IT ============ -->
+  <section class="slide on-cream" id="s-template" data-count data-title="Template it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · Template It</p>
+      <h2 class="h2" data-reveal>Build the skeleton once. Fill the <em>slots</em> forever.</h2>
+      <p class="lead" data-reveal>The second move turns a repeat into a template. The build is simple: collect three past examples of the message or report, strip the names and identifying details, and ask AI for the shared structure with a slot for everything that changes. Then edit until it sounds like you on a good day. Ten minutes of building, repaid every single time the task comes back.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Template hygiene, three rules</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Slots, never leftovers:</b> every name, date, and number becomes a [BRACKET]. A specific left behind is next month's accident. <b>2. Your voice survives:</b> if the template does not sound like you, you will rewrite it every time, and a template you rewrite is just a tax with extra steps. <b>3. De-identified sources only:</b> strip people's details from the examples before AI sees them; the traffic light outranks the build. The cautionary tale is the leftover-name incident: an office reuses last month's update, and last month's client name lands in this month's inboxes. Nobody designs that failure. A missing slot does.</p>
+      </div>
+
+      <div class="quiz" id="tplJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the template</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference between a template that works and one that embarrasses you is visible before you save it, if you know the tells. Five templates; call each one.</p>
+        <p class="quiz__progress" id="tjProgress"></p>
+        <p class="quiz__q" id="tjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tjOptions" role="group" aria-label="Template judgments"></div>
+        <p class="quiz__feedback" id="tjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="tjNext" style="visibility:hidden">Next template</button>
+        </div>
+        <div id="tjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The build session takes one sitting. Pull three past examples of the recurring message or report; three is enough for the pattern to show and few enough to de-identify carefully. Strip every name, email address, and personal detail first; the stripped versions are the only ones AI may see. Then the ask is one sentence: here are three examples of a message I send often, give me the reusable structure with bracketed slots for everything that changes. Edit the result twice: once for the slots (did it miss a date that changes?) and once for voice (would you actually write "per my previous correspondence"? you would not). Save it where your fingers will find it, and give it a name you will remember under deadline pressure.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> slotting one real message out loud installs the hygiene rules better than any list of them.</p>
+          <ol class="steps">
+            <li>Pairs. One volunteers a real recurring message, read aloud de-identified.</li>
+            <li>Together, mark every part that changes between sends. Each changing part gets a bracket: [NAME], [DATE], [ANSWER].</li>
+            <li>Read the slotted skeleton back. The test: could it ship next month with only the brackets filled? If yes, it passes. One pair reads theirs to the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take your first-ranked candidate from section 02, pull three past examples, and bracket what changes. You just built your first template; the lab in section 05 shows the full system it lives in.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the template build (three de-identified past examples in, slotted skeleton out, voice intact) and the three hygiene rules, with the leftover-name incident as the cautionary tale that makes slot discipline stick.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The build takes one sitting. Collect three past examples of your most-repeated message. Strip every name, date, and personal detail first; the stripped versions are the only ones AI ever sees. Then one sentence: here are three examples of a message I send often, give me the reusable structure with bracketed slots for everything that changes. Edit what comes back until it sounds like you on a good day. Three rules keep the template honest. Slots, never leftovers: everything specific becomes a bracket. Your voice survives: a template you always rewrite is just the tax with extra steps. And de-identified sources only, because the traffic light outranks the build. Here's the cautionary tale, and it happens somewhere every month: an office reuses last month's update, nobody catches the un-slotted client name, and last month's client lands in this month's inboxes. Nobody designs that failure. A missing slot does.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the build in one breath: three past examples, strip the names, ask AI for the structure with slots, edit for voice.</li><li>Walk the hygiene card slowly; the three rules are the section. Tell the leftover-name incident like the small horror story it is.</li><li>Send them to Judge the Template: five templates, call each one. The Marcus item lands the whole section.</li><li>Debrief the game by asking which item fooled people; it's usually the 'same as last quarter' one.</li><li>Run the pair drill from Go deeper: slot a real message out loud, bracket by bracket, and test it with the could-it-ship-next-month question.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which of the five templates in the game fooled you, and what was the tell you missed?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The 'same as last quarter' one: it feels reusable and has Dana and the date baked in</li><li>The polite generic one: it reads professionally and says nothing</li><li>Someone defends the Marcus template as 'fine for now', which is the exact trap</li></ul><p class="facnote__mini">Respond: For the 'fine for now' defense: 'It IS fine, right up until the month it isn't, and you won't be looking that month. Slot hygiene is cheap exactly once, at save time. That's the whole argument for doing it now.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Skeleton once, slots forever, voice intact, and nothing specific left behind. Your number-one candidate now has a build plan.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; pair skeletons pass the ship-next-month test; the room can recite the three hygiene rules.</p><p class="facnote__meta"><b>Watch for:</b> The voice objection ('templates sound robotic'). Agree with the instinct: the too-generic trainer items ARE robotic, and the fix is rule two, your voice survives. The template is their own writing, distilled.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Templates handle what you produce. Now the inbox and the calendar: what arrives.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: build and hygiene at full strength, trainer on devices; the pair slotting becomes a solo pass on your own number-one candidate.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 ROUTE IT ============ -->
+  <section class="slide on-light" id="s-route" data-count data-title="Route it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Route It</p>
+      <h2 class="h2" data-reveal>Rules sort. <em>You</em> decide.</h2>
+      <p class="lead" data-reveal>Templates handle what you produce. The third move handles what arrives: the inbox and the calendar. The system is three piles, sorted by one question asked in order: does this need me today, this week, or at all? AI summarizes the long threads, drafts the routine replies from your templates, and flags what looks urgent. You keep two jobs forever: the decisions, and every single send. Nothing leaves until you have read it.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Pile 1</span>
+          <h3>Needs me today</h3>
+          <p class="muted">A real deadline inside the day with your name on it. Small pile, handled first, before anything else gets to make noise.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Pile 2</span>
+          <h3>Needs me this week</h3>
+          <p class="muted">Real asks without a same-day clock. This is where your templates earn their keep: AI drafts the reply, you read it, you send it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Pile 3</span>
+          <h3>Does not need me</h3>
+          <p class="muted">Newsletters, confirmations, automated notices, threads you are only copied on. The biggest pile, and the one rules can sweep before you ever see it.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The calendar gets rules too</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Default lengths:</b> 25 and 50 minutes instead of 30 and 60; the shaved minutes are yours. <b>Focus blocks:</b> two recurring blocks a week, named for what happens in them, defended like meetings. <b>The decline template:</b> two warm sentences with slots for the meeting and the alternative, saved and ready, because declining gets easy exactly when you no longer have to compose it. And the accountability line that runs through all of it: rules sort, you decide. A rule may file a message or shorten a meeting; it may never answer for you.</p>
+      </div>
+
+      <div class="quiz" id="triSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Triage the inbox</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the piles only save time if the sorting is instant, and instant comes from practice. Five incoming items; pick the pile.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Pile choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="tsNext" style="visibility:hidden">Next item</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: In the three-pile system, which job is never AI's?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Sending is where accountability lives, and it stays with you without exception. AI sorts, summarizes, and drafts; you read and you send. That line is what makes the rest of the system safe to run."><span class="mark">A</span><span>Sending anything before you have read it</span></button>
+          <button class="opt" data-correct="0" data-why="Summarizing long threads is exactly what AI is for in this system: it condenses the volume so your attention goes to the decision, and the summary never leaves your screen."><span class="mark">B</span><span>Summarizing a 14-reply thread</span></button>
+          <button class="opt" data-correct="0" data-why="Drafting routine replies from your templates is AI's best job here. The draft is safe precisely because it is only a draft: you read it before it goes anywhere."><span class="mark">C</span><span>Drafting a routine reply from your template</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Set the system up in this order. First, spend one morning sorting by hand so you learn your own piles; the rules you write afterward will be rules you trust. Second, write the sweep rules for pile three: senders and subjects that never need you get filed on arrival, and a weekly ten-minute scan of the swept folder catches the rare miss. Third, bring in AI for pile two: thread summaries before you read, template-based drafts before you write, in approved VU tools only, because an inbox is internal work and often brushes against people data. When a thread contains private details about a person, the summary step is off the table and you read it yourself; the light outranks the system. And the send rule keeps no exceptions for busy days, because busy days are when the leftover slot ships.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> sorting real mail out loud, with a partner challenging your calls, calibrates the piles faster than any definition.</p>
+          <ol class="steps">
+            <li>Pairs. Each pull up, or recall, this morning's first five emails.</li>
+            <li>Sort all ten into the piles out loud. The partner challenges every "needs me today" call: what is the actual deadline?</li>
+            <li>Count the room: how many of the ten were pile three? It is usually about half, and that half is what your sweep rules are for.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Sort your last ten emails into the three piles. Count pile three, then write the one inbox rule that would have swept those messages before you saw them. Set it up today.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the three-pile triage system with the accountability line (rules sort, AI drafts, you decide, read-then-send without exceptions) and the three calendar rules that give recovered time somewhere to live.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Now the direction you don't control: what arrives. The system is three piles, and you sort with one question asked in order: does this need me today, this week, or at all? Pile one is a real deadline inside the day with your name on it; it's small, and it goes first. Pile two is real asks without a same-day clock, and it's where your templates earn their keep: AI drafts the reply from your template, you read it, you send it. Pile three is everything that never needed you: newsletters, confirmations, threads you're copied on. It's the biggest pile, and rules can sweep it before you ever see it. AI gets three jobs in this system: sort, summarize, draft. You keep two, forever: the decisions, and every single send. Nothing leaves until you've read it, and that rule keeps no exceptions on busy days, because busy days are when the leftover slot ships. The calendar gets rules too: 25 and 50 minute defaults, two named focus blocks, and a saved two-sentence decline template, because declining gets easy exactly when you no longer have to compose it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three pile cards in order; stress that the sorting question is asked in order: today, this week, at all?</li><li>Name AI's three jobs (sort, summarize, draft) and your two jobs (decide, send). Say the accountability line twice.</li><li>Walk the calendar card: default lengths, focus blocks, the decline template. The decline template usually gets a laugh; let it, then point out it's a template like any other.</li><li>Send them to Triage the Inbox: five items, pick the pile.</li><li>Run the quick check (which job is never AI's), then the pair drill: sort this morning's real mail out loud.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From your own last ten emails: how many were pile three, and what single rule would have swept them?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Counts of four to seven out of ten, said with mild disbelief</li><li>Rules name themselves: 'anything from the notifications address', 'newsletters to a folder'</li><li>Someone asks if sweeping is rude; they worry about missing something</li></ul><p class="facnote__mini">Respond: For the worrier: 'The weekly ten-minute scan of the swept folder is your safety net, and it catches the rare miss at a fraction of the cost. You're not deleting anything; you're deciding when it gets your attention instead of letting it decide.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Rules sort, AI drafts, you decide, and nothing sends without your eyes. The inbox and calendar now have a design instead of a default.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the quick check lands; the room can say the accountability line unprompted and count how much of their own mail is pile three.</p><p class="facnote__meta"><b>Watch for:</b> The learner who wants pile-one everything ('it's all urgent'). The partner challenge in the drill is the fix: what is the actual deadline? Also watch for inbox shame; normalize it, the system is for exactly the inboxes people are embarrassed about.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Time to pressure-test everything. You have a monthly report cycle to rebuild.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: piles and calendar rules at full strength, trainer on devices, quick check stays; the pair sort becomes a solo pass on your own last ten emails.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 THE AUTOMATION LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Automation Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Automation Lab</p>
+      <h2 class="h2" data-reveal>Rebuild the monthly <em>report</em> cycle.</h2>
+      <p class="lead" data-reveal>Here is a cycle most offices will recognize: the monthly program report eats the first three days of every month. You chase program leads for inputs, rebuild the summary, write the report, send it, and the meetings pile up around all of it. Redesign the cycle one step at a time, then run two months and see what your design did.</p>
+
+      <div class="lab" id="autoLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Automation Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make on your own task this week, and the failure modes are the real ones. Choose how each step runs, then run two months.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run two months</button>
+          <span class="quiz__progress" id="labStatus">Choose all four steps</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice where the lab punishes you. Never for automating too much; always for removing your own eyes: the unread send, the undefended calendar. That mirrors how this goes wrong in real offices. The failure story is almost never "the AI wrote it badly." It is a stale number in an unread draft going out under a real person's name, or two recovered hours dissolving into meetings because nothing was standing guard over them. Month one usually goes fine, which is exactly the trap: the early wins teach you to stop reading, and month two is when the skim lets the leftover through. The counter is structural, never willpower: read-then-send as a standing rule, and calendar rules that hold when you are too busy to defend anything manually.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> running the four-step design on your own task, before you build it, finds the weak step while it is still free to fix.</p>
+          <ol class="steps">
+            <li>Pairs. Take your starred candidate from section 02 and design its four steps out loud: gather, write, send, calendar.</li>
+            <li>The partner hunts the weak step: where would a wrong thing slip through once you stop paying attention, around month two?</li>
+            <li>Fix that step with the pattern: a template, an AI first pass, read-then-send, or a standing rule. Say the fixed version aloud.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the four steps of your own candidate and mark the one where you would stop paying attention by month two. That step gets the standing rule, today.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give every learner a full felt rep of the method: four steps of a recognizable monthly report cycle, one design choice each, and a month-two outcome that rewards accountable design over raw automation enthusiasm. The session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's a cycle most of you will recognize: the monthly program report. It eats the first three days of every month. You chase program leads for inputs, rebuild the summary table, write the report, send it, and the meetings crowd in around all of it. You're going to rebuild it step by step: gather, write, send, calendar. For each one, pick how it runs. Then the lab runs two months and shows you what your design did. One warning from everything we've covered: watch where this punishes you. It is never for automating too much. It is always for taking your eyes off the send, or leaving the recovered time undefended.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Set the scenario in one breath: the monthly program report eats the first three days of the month, four steps, rebuild it.</li><li>Send them into the lab on devices: choose how each step runs, then run two months.</li><li>Let people get their outcome individually; the mid and weak tiers teach more than the strong one, so don't coach choices in advance.</li><li>Ask for a show of hands by tier: who got the strong month two, who got the auto-send disaster. Have one weak-tier learner read their coach notes aloud; the room learns from the postmortem.</li><li>Push the rerun: strengthen your weakest step and run it again. The delta between runs is the lesson.</li><li>Then the pair drill: design the four steps of your own starred candidate and hunt the weak step.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those who hit the mid or weak tier: which single choice cost you the month, and do you run that choice in real life today?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The auto-send: it felt efficient right up until the stale numbers shipped</li><li>The skim-then-send: 'the template has been right for months' fooled them</li><li>An honest 'my real calendar is the accept-everything option'</li></ul><p class="facnote__mini">Respond: Treat the honest answers as the room's win: 'That recognition is the whole lab. The weak options aren't hypothetical; they're how most people run their actual week. You now know the three fixes: the template, the read, the rule.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The lab's scoring is the course's thesis in miniature: the win comes from templates plus rules plus your eyes on every send, and month two is when unread sends and undefended calendars come due. Your own candidate's weak step now has a name.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes at least one lab run; most reach the strong tier on a rerun; every learner can name their own candidate's weak step and the rule that fixes it.</p><p class="facnote__meta"><b>Watch for:</b> Learners who pick the maximal option everywhere without reading the coaching. The question that re-engages them: 'which of these choices would you actually keep doing in week six, when nobody's watching?' Also watch clock discipline; this section has the least slack.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One move left, and it's the bravest one: deciding what should stop entirely.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one lab run instead of run-plus-rerun (rerun only for learners who hit weak tier), tier hands stay, the pair drill becomes a solo weak-step hunt. This is the floor; never cut the lab entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 RETIRE IT AND BANK IT ============ -->
+  <section class="slide on-cream" id="s-retire" data-count data-title="Retire it and bank it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Retire and Bank</p>
+      <h2 class="h2" data-reveal>The bravest move is to <em>stop</em>.</h2>
+      <p class="lead" data-reveal>Some recurring work should not be automated. It should end. The report nobody has replied to in three years, the standing meeting that could be a message: automating those just makes waste faster. The audit's last move has two halves. Retire what nothing needs, safely and with your manager in the loop. Then bank the recovered hours visibly, because the calendar is already circling them.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The safe test, then the bank</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Test retirement:</b> with your manager in the loop, skip one cycle of the suspect report or meeting and watch who notices. Nobody asks? You have your answer, and restart was always one email away. <b>Then bank it:</b> the hour you save is invisible, and the next meeting request is not. Name what the recovered time is for in the same breath that announces the change ("the reporting time now goes to the backlog cleanup"), give it a calendar home, and it survives. Leave it unnamed and it evaporates within weeks.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What makes a test retirement safe?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="One skipped cycle, manager aware, restart one email away. The test converts an opinion about the report into evidence, at a cost of nothing."><span class="mark">A</span><span>Your manager knows, you skip one cycle, and you watch who notices</span></button>
+          <button class="opt" data-correct="0" data-why="Quiet and permanent removes both safety rails at once: nobody agreed to the test, and there is no easy restart when it turns out the finance office was reading it after all."><span class="mark">B</span><span>Stopping quietly and permanently so nobody can object</span></button>
+          <button class="opt" data-correct="0" data-why="Producing work forever because someone might want it someday is the repeat tax at its purest. The test exists so you can find out, safely, instead of wondering."><span class="mark">C</span><span>Keeping it going forever, just in case</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="ksrSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Keep, shrink, or retire</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the sorting instinct is the skill: knowing what deserves your hours, what deserves a template, and what deserves a test. Five recurring obligations; make the call.</p>
+        <p class="quiz__progress" id="ksProgress"></p>
+        <p class="quiz__q" id="ksQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ksOptions" role="group" aria-label="Keep, shrink, or retire choices"></div>
+        <p class="quiz__feedback" id="ksFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="ksNext" style="visibility:hidden">Next obligation</button>
+        </div>
+        <div id="ksResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The retirement conversation with your manager is two sentences: "I suspect nobody reads the monthly activity report. Can we skip one cycle and see who notices?" Managers say yes to that far more often than people expect, because the test costs nothing and the evidence is theirs too. Keep the pieces ready to restart, and if someone does notice, you have learned something better: who the real audience is, which usually shrinks the report to the one section they actually wanted. Banking works the same way at any scale: the moment an automation lands, name the hour's new purpose out loud and put it on the calendar before the meetings find it. A named hour is defensible in a scheduling conversation; a vague "I freed up some time" has already lost.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> saying "this might deserve to stop" out loud, in a room, is the permission most people are waiting for.</p>
+          <ol class="steps">
+            <li>Small groups: each person names one recurring obligation they suspect has no real audience or purpose.</li>
+            <li>The group sorts each one, keep, shrink, or test-retire, with one sentence of reasoning per call.</li>
+            <li>Every test-retire gets its manager ask drafted on the spot, two sentences, ready to send this week.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Pick your most suspicious recurring obligation and draft the two sentences: the ask to your manager for a one-cycle test, and the line naming where the recovered time goes if nobody notices.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the test retirement (skip one cycle, manager in the loop, watch who notices) and visible banking (name the hour's purpose, give it a calendar home), the two halves of the audit's final move.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The bravest move in the audit has nothing to do with AI. Some recurring work should simply stop. The monthly report nobody has replied to in three years. The hour-long meeting that could be a two-minute message. Automating those just makes the waste faster. Here's how you find out safely: with your manager in the loop, skip one cycle and watch who notices. Nobody asks? You have your answer, and restart was always one email away. Someone does ask? Even better: you just found the real audience, and the report usually shrinks to the one section they actually wanted. Then the second half, and it's the one Leadership Circle warns about: bank the hours. The hour you save is invisible; the next meeting request is not. Name what the recovered time is for, out loud, in the same breath: the reporting time now goes to the backlog cleanup. Give it a calendar home the same day. A named hour is defensible. A vague one is already gone.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the reframe first: some recurring work should not be automated, it should end. Automating waste just makes waste faster.</li><li>Walk the safe-test card: manager in the loop, one skipped cycle, restart one email away. Then the bank: name the purpose in the same breath, calendar home the same day.</li><li>Run the quick check (what makes a test retirement safe).</li><li>Send them to Keep, Shrink, or Retire: five obligations, make the call.</li><li>Run the group drill: suspect obligations named out loud, sorted, and the test-retire asks drafted on the spot.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What is the recovered hour FOR, on your calendar, by name? Say the sentence.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Real answers: the backlog project, the documentation, actual lunch</li><li>Vague answers: 'catching up', which is evaporation wearing a nicer coat</li><li>An honest 'I don't know yet', usually from the busiest person in the room</li></ul><p class="facnote__mini">Respond: Push past the vague ones warmly: 'Catching up is what the meetings will call it too. Name work that would make you proud in your next check-in, and give it the calendar slot. If you can't name it yet, that's your homework before the build session.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Retire what nothing needs, and give every recovered hour a name and a home. That's the difference between this course saving you time and this course having felt nice.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the quick check lands; every learner leaves with one suspect obligation named and, for test-retires, a drafted two-sentence manager ask.</p><p class="facnote__meta"><b>Watch for:</b> Fear around the retirement conversation ('I can't just stop doing my job'). Reframe: the test is proposed WITH the manager, framed as an experiment, and managers say yes to experiments. Also guard the keep pile: one-on-ones and required compliance never go in the test.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the full audit. Quiz first, then the card that puts a date on it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: safe test and bank at full strength, quick check and trainer on devices; the group drill becomes a solo pass: name your suspect item and draft the ask.</p></aside>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 11 · AUTOMATION CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My automation card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My automation card</p>
+      <h2 class="h2" data-reveal>One task. One move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't automate anything; people with a card and a date do. Name the one repetitive task you will automate this week, pick the move, name your honest failure mode, and put a date on the 20-minute build session.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named task with a named move and a dated build session becomes a system; everything less becomes a good intention. Your tasks, never other people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="acPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The task.</b> The one repetitive task you will automate this week, and what it costs you now:</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the weekly enrollment update; it eats two hours every Friday" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The move.</b> Which move fits this task?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="The move">
+              <button class="opt" data-practice="template"><span>Template it from three past examples</span></button>
+              <button class="opt" data-practice="triage"><span>Set up the three triage piles</span></button>
+              <button class="opt" data-practice="calendar"><span>Add two calendar rules</span></button>
+              <button class="opt" data-practice="retire"><span>Test-retire one recurring item</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="autosend"><span>Auto-send anything</span></button>
+              <button class="opt" data-not="name"><span>Leave a name baked in a template</span></button>
+              <button class="opt" data-not="evaporate"><span>Let the saved hour evaporate unnamed</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When is the 20-minute build session?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my automation card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: one task, one move, one named failure mode to avoid, and a dated 20-minute build session, with the bank named on the card. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Sessions don't automate anything. People with a card and a date do. Pick the task, your starred candidate, with what it really costs you. Pick the move: template it, set up the piles, add the calendar rules, or test-retire it. Then the honest field: what you will NOT do, because you already know your failure mode. Auto-sending. Leaving a name baked in. Letting the hour evaporate unnamed. And the date: when are the 20 quiet minutes of the build session? A named task with a named move and a dated build session is a system. Everything less is a good intention.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: sessions don't automate anything; people with a card and a date do.</li><li>Repeat the privacy norm before anyone types: your tasks, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the starred candidate from section 02 is the task, and its tell usually picks the move.</li><li>Point at field 3, what you will NOT do, as the honest one: everyone in the room has one of these three failure modes.</li><li>Push the build moment, then point at the bank row on the card: the recovered time needs a name and a calendar home.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the build session, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the week will eat it</li><li>Uncertainty about the tools ('I don't know where to start technically')</li><li>Perfectionism: wanting to design the whole system before starting one template</li></ul><p class="facnote__mini">Respond: No time: 'It's 20 minutes against a task that costs you hours monthly; the math forgives you exactly once.' Tools: 'Start in any approved VU tool with three old emails; the ask is one sentence, and the cheat sheet has it.' Perfectionism: 'One template, shipped and used, beats a system designed and imaginary. The card says one task on purpose.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One task each, one move each, one date each, and the bank named on the card. That's the tax refund, scheduled.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Grand cards ('automate my whole inbox and calendar this week'). Push to ONE task with a real cost. And date-dodging: a build session 'soon' is not a commitment; help them pick the actual day on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The Repeat Audit, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Repeat Audit</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Spot it, template it, route it, retire it: the four-move method for finding repetitive work and handing it to templates, rules, and AI while every decision stays yours.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Repeat tax, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Repeat Tax</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The share of your week spent re-doing formats: retyping the same message, rebuilding the same table, re-answering the same request. Audits typically put it near a third of an admin-heavy week.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Template, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Template</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The reusable skeleton of a recurring message or report, built once from three de-identified past examples, with slots for everything that changes and your voice intact.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Slot, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Slot</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A bracketed blank in a template: [NAME], [DATE], [NUMBER]. Everything specific becomes a slot; a specific left behind becomes next month's accident.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Triage, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Triage</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Sorting what arrives before working on any of it. In this course: the three-pile system, with AI sorting and summarizing, and you reading and deciding.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Three-pile system, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Three-Pile System</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Needs me today, needs me this week, does not need me. Every incoming item lands in one pile, and the third pile is where sweep rules do their best work.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Calendar rule, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Calendar Rule</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A standing decision about your time: default meeting lengths, protected focus blocks, a saved decline template. Rules decide once so willpower doesn't have to decide daily.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Focus block, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Focus Block</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A recurring, defended block of calendar time with a named purpose. Where banked hours live so the meetings can't reabsorb them.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Test retirement, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Test Retirement</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Skipping one cycle of a recurring obligation, with your manager in the loop, to learn who actually notices. Restart stays one email away the whole time.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Evaporated time, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Evaporated Time</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Saved hours that vanished into meetings and email because nobody named what they were for. The default fate of automation gains, and the trap this course ends by closing.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Read-then-send, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Read-Then-Send</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The standing rule of the whole system: nothing AI drafts leaves without your eyes. Reading costs minutes; auto-send costs your name.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The leftover-name incident, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Leftover-Name Incident</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The classic template accident: last month's name or number shipping in this month's message. Prevented by slot hygiene, caught by read-then-send.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards, including the leftover-name incident, for the next time someone forwards you a template with somebody's name still in it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (The Leftover-Name Incident is a good pick; it gets a knowing laugh and reteaches section 03).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all twelve cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One build session left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go automate <em>one thing</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You priced the repeat tax, found your own candidates, learned the template and the piles, survived month two in the lab, and picked something brave to stop doing. One task on your list is about to disappear into a template, and the hour it gives back has a name waiting.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">20 minutes</span></div>
+        <h3>The template build at your desk</h3>
+        <p>Take the message you send most often. Pull three past examples, strip every name and date, and ask AI for the reusable skeleton with slots. Edit it until it sounds like you, save it where your fingers will find it, and send the next one from the template, read before it goes. Then say out loud what the saved minutes are for. That 20 minutes is the whole method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your task and your build day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the audit card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Spot. Template. Route. Retire.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-repeat">The Repeat Tax</a></li>
+          <li><a href="#s-spot">Spot It</a></li>
+          <li><a href="#s-template">Template It</a></li>
+          <li><a href="#s-route">Route It</a></li>
+          <li><a href="#s-retire">Retire It and Bank It</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Automation Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Admin, Automated · Facilitator Edition · learner link: <a href="../../../courses/Admin-Automated/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Course_Library/courses/Admin-Automated</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the research says the repetitive layer is where AI pays, the audit finds yours, templates and piles and rules collect the refund, your eyes on every send keep it honest, and the bank keeps the hours from evaporating. You have a card. Before you go: your task, and your build day. Say it out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the 20-minute template build at your desk, this week.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you that you can run the build session and keep the hour you recover?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: task and build day, out loud or in chat.</li><li>Point at the cheat sheet and audit card buttons; the cheat sheet is built to sit next to a keyboard during the build.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your task, and your build day.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The weekly status update, Thursday'</li><li>'The reimbursement answer, tomorrow morning'</li><li>Someone commits to the retirement test instead, naming the report</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the retirement tester, warmly: 'Good pick. Send the two-sentence ask this week, and enjoy watching who notices.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many build sessions actually ran, and whether the recovered hours still have their names on the calendar.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a task and a day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go book the 20 minutes. And when the template sends its first message and nobody can tell, that quiet is the sound of the tax refund arriving.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

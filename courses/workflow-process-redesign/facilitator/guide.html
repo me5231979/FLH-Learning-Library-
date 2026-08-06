@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilitator Guide (printable) · Workflow &amp; Process Redesign · Vanderbilt Learning Series</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-weight: 400;
+    src: url('../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 400;
+    src: url('../assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 600;
+    src: url('../assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-weight: 700;
+    src: url('../assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 12.5px; line-height: 1.5; }
+  .sheet { max-width: 860px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 16px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  h2 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 18px;
+    margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  h3 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 14px 0 4px; }
+  .mins { font-family: 'Antonio', Impact, sans-serif; font-size: 11px; color: #946E24;
+    letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .sec { border: 1px solid #E4E4E4; border-left: 3px solid #CFAE70; border-radius: 4px;
+    padding: 12px 16px; margin-bottom: 12px; break-inside: avoid;
+    display: grid; grid-template-columns: 290px 1fr; gap: 16px; align-items: start; }
+  .sec.noimg { grid-template-columns: 1fr; }
+  .sec.noimg .sec__shot { display: none; }
+  .sec__shot { position: sticky; top: 12px; }
+  .sec__shot img { width: 100%; border: 1px solid #E4E4E4; border-radius: 3px; display: block; }
+  .sec__notes { min-width: 0; }
+  @media (max-width: 700px) { .sec { grid-template-columns: 1fr; } .sec__shot { position: static; max-width: 340px; } }
+  @media print { .sec { grid-template-columns: 240px 1fr; } .sec__shot { position: static; } }
+  .purpose { font-weight: 600; margin: 2px 0 8px; }
+  .tagline { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; margin: 10px 0 2px; color: #1C1C1C;
+    background: #CFAE70; display: inline-block; padding: 2px 7px; border-radius: 2px; }
+  .tagline.ask { background: #8BA18E; }
+  .script { font-family: 'Libre Caslon Display', serif; font-style: italic; font-size: 13.5px;
+    margin: 4px 0 6px; }
+  .mini { margin: 4px 0; color: #444; }
+  .mini.core { border-top: 1px dashed #CFAE70; padding-top: 6px; }
+  ol, ul { margin: 2px 0 8px; padding-left: 20px; }
+  li { margin-bottom: 3px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; }
+  th, td { border: 1px solid #E4E4E4; padding: 5px 9px; text-align: left; }
+  th { font-family: 'Antonio', Impact, sans-serif; text-transform: uppercase; letter-spacing: .06em;
+    font-size: 10px; color: #946E24; }
+  .front { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px;
+    break-inside: avoid; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11px; } .sheet { padding: 0; max-width: none; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · ATD facilitator guide · print edition</p>
+      <h1>Workflow &amp; Process Redesign, the <em>facilitator guide</em></h1>
+    </div>
+    <img src="../assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="front">
+    <h3>Run of show</h3>
+    <table><tr><th>Screen</th><th>Full (min)</th><th>Core (min)</th></tr><tr><td>Welcome / QR</td><td>3</td><td>2</td></tr><tr><td>Objectives</td><td>2</td><td>1</td></tr><tr><td>Agenda</td><td>1</td><td>—</td></tr><tr><td>01 · The case for redesign</td><td>9</td><td>6</td></tr><tr><td>Manifesto</td><td>1</td><td>—</td></tr><tr><td>02 · See the work as a process</td><td>12</td><td>8</td></tr><tr><td>03 · Draft, verify, decide</td><td>12</td><td>9</td></tr><tr><td>04 · Design the verify</td><td>11</td><td>7</td></tr><tr><td>05 · The Redesign Lab</td><td>14</td><td>10</td></tr><tr><td>06 · Bring the team along</td><td>10</td><td>6</td></tr><tr><td>Recap quiz</td><td>4</td><td>4</td></tr><tr><td>Capstone · My redesign card</td><td>6</td><td>6</td></tr><tr><td>Glossary</td><td>1</td><td>—</td></tr><tr><td>Closing · commitment</td><td>4</td><td>1</td></tr>
+    <tr><th>Total</th><th>90</th><th>60</th></tr></table>
+    <h3>Audience</h3><p>Managers, team leads, and project owners: anyone who owns a repeating team workflow and is deciding where AI fits in it. 8 to 24 works best (the mapping and assignment drills run in pairs); scales larger with room votes. No prerequisites, though AI Basics helps with tool fluency, and the traffic-light data rule from the AI courses is assumed and restated here.</p>
+    <h3>Room setup</h3><p>Projector plus presenter device; learners on their own devices via the Welcome-slide QR; movable seating for pairs. A whiteboard or flip chart matters more than usual: the mapping drills want visible step lists. Virtual: breakouts of 2 for the mapping and assignment swaps. Set the norm in the first minute: workflows and roles, never people's names, and nothing typed is saved or sent.</p>
+    <h3>Materials</h3><ul><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed redesign cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart with markers for the step maps and the announcement rewrites</li><li>Sticky notes or index cards for the pair mapping drill (one step per note works well)</li></ul>
+    <h3>A week before</h3><ol><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including mapping one of your own team's workflows honestly. You will be asked what you'd redesign first; a real answer plays far better than a hypothetical.</li><li>Build your own redesign card in the capstone for a workflow you genuinely own. You'll show the structure, never the contents.</li><li>Send the pre-work invite (template on this page) with the calendar invite: bring one repeating team workflow that eats real hours, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Skim the current McKinsey State of AI report so the numbers in Guess the Number are fresh; the game's reveals carry the citations, but you should be able to say 'the survey' with a straight face.</li></ol><h3>The day before</h3><ol><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Redesign Lab and one trainer so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and redesign cards, and stock the sticky notes.</li><li>Re-read the tough-questions bank; say the 'is this how jobs get cut?' response out loud once. That question is coming.</li></ol><h3>30 minutes before</h3><ol><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'WORKFLOWS AND ROLES, NEVER NAMES' where the room can see it all session.</li><li>Draw four empty boxes labeled Gather, Transform, Judge, Commit on the whiteboard; you'll fill them live in section 02.</li></ol>
+    <h3>When things go sideways</h3><p><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the four step types, the draft-verify-decide pattern, and the verifier's rubric all draw in seconds. The mapping and assignment drills never needed a screen; the capstone moves to the printed card. The lab becomes a group walk-through: read each step's three options aloud and have the room vote.</p><p><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the private mapper and capstone move to paper. You lose typing, not learning.</p><p><b>If You're 10+ minutes behind by the Redesign Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the mapper, or the capstone; they carry the session's practice objectives.</p><p><b>If Someone names a colleague or starts prosecuting a specific person's job:</b> Protect the norm warmly: 'Hold that. Workflows and roles, never names. The redesign works on steps, not people.' If it keeps happening, it usually means a real staffing anxiety is in the room; name the pilot standard's honest-hours rule and move the person to a private follow-up.</p><p><b>If The room is skeptical: 'AI is overhyped, this will blow over':</b> Don't argue futures; play Guess the Number and let the adoption data speak. The frame that lands: whatever you think of the hype, 88 percent adoption means your team is already using it as unmanaged shortcuts, and shortcuts without design is the worst of both worlds. Redesign is the risk-management position, whatever the hype does.</p><p><b>If The room is the opposite: AI enthusiasts who want to automate everything today:</b> Aim the enthusiasm at the pattern: 'Great, you're the pilot owners.' Then hold the line on the two human steps; the Rate the Check trainer and the lab's weak tier usually do the sobering for you. Enthusiasts fail redesigns through soft verification, and the automation-bias material is written for exactly them.</p><p><b>If Someone raises a real data-privacy concern mid-flight:</b> Stop and honor it; this is the one interruption that outranks the agenda. Restate the traffic light (green public, yellow internal in approved VU tools only, red private information about people, never), confirm their case against it, and if it's genuinely ambiguous, park it with a promise to route it to the right owner rather than improvising policy from the front of the room.</p>
+    <h3>Tough questions, ready answers</h3><p><b>Q: Is this how our jobs get cut? Be honest.</b><br>The honest answer has two parts. Managers who run this pattern are moving mechanical volume to machines and moving people toward verification, judgment, and the work that was getting skipped; that is the design, and the pilot standard requires saying out loud what the saved hours are for. And no manager can promise what an organization decides years out. What you can control is whether your team's redesign is done with the people who do the work, with a visible metric, or done to them. The first kind builds the skills that stay valuable; the second kind builds the fear that makes everything fail.</p><p><b>Q: Why not just wait? The models improve every few months; today's redesign will be obsolete.</b><br>The map doesn't expire. Steps, handoffs, checks, and decide points outlive any particular model, and a team that has mapped its work can re-assign steps in an afternoon when capabilities shift. Waiting has a real cost the survey makes visible: the shortcuts spread anyway, unmanaged, and the organizations getting value now are the ones that started designing. You're not betting on a model; you're building the muscle of assignment.</p><p><b>Q: My team already uses AI constantly. Doesn't that mean we've done this?</b><br>Usage and redesign are different things, and the data splits them cleanly: 88 percent use, one in five redesigned. Personal shortcuts have no named verifier, no shared standard, and no metric; when one goes wrong it damages trust in everything. The test: if your best user left tomorrow, would the workflow keep its gains? If not, it's a shortcut. The session's whole job is converting shortcuts into designed, shared workflows.</p><p><b>Q: Doesn't verification just move the work around? We save an hour drafting and spend it checking.</b><br>If the check costs what the work did, that step was a bad draft candidate, and the pattern says so explicitly: verification has a budget. On good draft candidates the math is lopsided: an hour of pulling and formatting becomes minutes of spot-checking against source. The design question is always the ratio, and the miss log tells you over time whether the ratio is holding or the step should go back to a human.</p><p><b>Q: What about hallucinations? If AI makes things up, how can we trust any draft?</b><br>You don't trust drafts; that's the point of the word. The pattern treats every AI output as unverified by definition, which is why the verify step has an owner, sources, and a reject path. Notice the symmetry: human first drafts also contain errors, and mature workflows always had review. What's new is the failure texture: AI errors arrive fluent and confident, which is exactly why the check runs against sources instead of against how the draft reads.</p><p><b>Q: I don't have authority to redesign processes. They come from above.</b><br>Some do, and start where your authority actually is: almost every team runs workflows the org chart never sees, the reports, updates, summaries, and preps that exist because your team invented them. Those are fully yours to map and redesign, and they're where the hours hide anyway. And a manager who arrives at the process-owner's door with a map, a pilot result, and a metric is making a request that tends to get granted.</p>
+    <h3>Copy-paste templates</h3><p><b>Pre-work invite (paste into the calendar invite)</b><br>Subject: Before our Workflow &amp; Process Redesign session. One thing to bring: one piece of repeating work your team produces on a schedule, a weekly report, a review cycle, an onboarding sequence, anything that eats real hours. You will never be asked to name people; every exercise runs on workflows and roles, and everything you type stays on your screen. Come knowing roughly how many hours that workflow costs in a normal week. That's it, no reading, no tools to install.</p><p><b>7-day pulse (send one week after)</b><br>Subject: One week later, did the mapping session happen? Three quick lines, reply whenever: 1) Did you run the 30-minute mapping session from your redesign card? 2) What did the team's map show that your own version missed? 3) What's the pilot's metric, and where is it posted? Replies come to me only. Not yet? The card still works; this note is your nudge.</p><p><b>30-day re-poll (send a month after)</b><br>Subject: Thirty days of the redesign. Two questions, same scale as the room: 1) Fist to five, how confident are you now in the draft-verify-decide assignments you made? 2) What does the workflow cost now, and what have the checks caught? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p>
+    <h3>After the session</h3><p>Seven days out, send the pulse: 'Did the mapping session happen? What did the team's map show that yours missed? What's the pilot's metric?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'what does the workflow cost now, and what have the checks caught?' The count of mapping sessions actually held is the program's headline Level 3 metric.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-welcome.jpg" alt="Slide: Welcome / QR" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Welcome / QR <span class="mins">Full 3 min · Core 2</span></h2>
+    <p class="purpose">Get every learner into the experience on their own device and set the norm that makes real-workflow material safe: workflows and roles, never names, and nothing typed leaves the screen.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Welcome. Point your camera at that code before we start. Today is about the one AI skill the research says actually separates teams that get value from teams that get demos, and it isn't prompting. It's redesigning how work flows. We'll work on your team's real workflows, so one ground rule for the next ninety minutes: workflows and roles, never people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: workflows and roles, never people's names; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Quick calibration, shout it out: how many of you have used AI for actual work in the last week? And how many of your TEAMS have a designed, shared way of using it?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Nearly every hand up on the first question</li><li>Almost every hand down on the second</li><li>Some nervous laughter at the gap</li></ul><p class='mini'><b>Respond:</b> Name the gap warmly: 'That gap in this room is the same gap in the global data, and closing it is a management skill, which is why you're here and the tools aren't.'</p>
+    
+    <p class="mini"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'workflows and roles, never names' norm back to you.</p>
+    <p class="mini"><b>Watch for:</b> Anyone bracing for either an AI sales pitch or an AI panic session. The frame that relaxes both: today is a process-design session that happens to involve AI, and the research is unusually hard-nosed.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: one scan prompt, the norm stated once, move on.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-hero.jpg" alt="Slide: Objectives" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Objectives <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Set the contract: five capabilities, ending in one real workflow carded for redesign with a dated team mapping session.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five things by the end: you'll know why redesign, and only redesign, separates the organizations getting real value from AI. You'll be able to map a workflow into steps and tell mechanical work from judgment work. You'll make the assignment this whole session is named for: where AI drafts, where a human verifies, where a human decides. You'll design verification that actually catches things. And it all lands in one artifact: a redesign card for a workflow your team actually runs, with a date on it.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL redesign card, one workflow, one draft step, one date.</li><li>Name the sources once for credibility: McKinsey's State of AI survey for the numbers, and the draft-verify-decide pattern as the method.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Learners can say what the capstone will be (one workflow, one draft step, one dated mapping session).</p>
+    <p class="mini"><b>Watch for:</b> Tool questions arriving early ('which AI should we use?'). Park them: the session is deliberately tool-agnostic, and the pattern outlives any tool choice.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Six ideas, in a deliberate order.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-agenda.jpg" alt="Slide: Agenda" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Agenda <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Show the arc once so learners can place each tool as it arrives: evidence, map, pattern, check, practice, people.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;The arc is simple: first the evidence, then learning to see your team's work as a process, then the pattern for assigning each step, then the step everyone skips, verification. Then you'll rebuild a workflow in the lab and finish with the part that decides everything: bringing your team along.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the six items in one breath each.</li><li>Point out the shape: the case (01), seeing the work (02), the pattern (03 and 04), practicing it (05), and landing it with humans (06).</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None needed; this is orientation.</p>
+    <p class="mini"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Start with the evidence, because some of you think this is hype and some of you think it's magic, and the data disagrees with both.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip entirely; the deck's structure carries it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-case.jpg" alt="Slide: 01 · The case for redesign" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>01 · The case for redesign <span class="mins">Full 9 min · Core 6</span></h2>
+    <p class="purpose">Establish with guessed-at, missed numbers that AI adoption is nearly universal, value is rare, and workflow redesign is the strongest measured differentiator, which makes it a line-manager job.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Before any method, the evidence, and I want you to guess. McKinsey has been surveying global AI use for years. Adoption is now close to universal: nearly nine organizations in ten use AI somewhere. And the share getting meaningful bottom-line value is around six percent. That gap is not a technology gap; everyone has the same tools. The strongest thing separating the six percent, out of everything measured, is that they fundamentally redesigned workflows. Four findings, call your number before each reveal.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame the game: four findings from McKinsey's State of AI survey, guess each number before it's revealed. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, land the frame: the tool is the cheap part; the redesign is the advantage, and it happens at your level.</li><li>Run the quick check (redesign as the strongest EBIT factor), then the pair activity: where does AI already show up on your team, and is it a redesign or a shortcut?</li><li>Count the shortcut-versus-redesign hands out loud and connect the count to the 88-versus-6 gap.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Where does AI already show up on your team, and be honest: is any of it a designed, shared workflow, or is it all personal shortcuts?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Nearly all shortcuts: drafting emails, summarizing docs, quiet uses nobody reviews</li><li>One or two genuine designed uses, usually from a team that got burned once</li><li>Someone admits they don't actually know what their team uses</li></ul><p class='mini'><b>Respond:</b> For the 'don't know' answer, warmly: 'That answer is the most useful one in the room; the mapping session on your capstone card is where you find out.' For the shortcut majority: 'Shortcuts mean the adoption already happened. The design is the part that's missing, and that part is yours.'</p>
+    <p class="mini"><b>Debrief:</b> Adoption is solved and value isn't, and the difference is redesign. Which means the scarce skill in this game is the one this room already has: knowing how the team's work actually flows.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct; the shortcut count lands visibly and the room sees its own adoption-value gap.</p>
+    <p class="mini"><b>Watch for:</b> A methodology skeptic litigating survey design. Don't defend a single number; the case is the convergence: near-universal adoption, rare value, and redesign as the consistent differentiator across editions of the survey. Park deep methodology questions.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;One sentence before the method, nine words that explain most failed AI projects.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: Guess the Number as a fast room vote, quick check stays, the pair inventory becomes one show of hands with no discussion.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-belief.jpg" alt="Slide: Manifesto" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Manifesto <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">One beat of stillness to lock the session's core idea before the method arrives.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;AI doesn't fix a broken process. It speeds it up.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None; this is pacing.</p>
+    <p class="mini"><b>Watch for:</b> The urge to talk over it. Don't.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;So before we add anything, we have to see the process. Most of us never have.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip; say the line yourself as you pass it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-mapwork.jpg" alt="Slide: 02 · See the work as a process" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>02 · See the work as a process <span class="mins">Full 12 min · Core 8</span></h2>
+    <p class="purpose">Teach learners to see a workflow as a step map (gather, transform, judge, commit) and get every learner one real, privately mapped workflow that the rest of the session will operate on.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;You cannot redesign work you can't see, and almost nobody has ever written down how their team's work actually flows. Every workflow is a chain: a trigger, steps, handoffs, something ships. And every step in the chain is one of four kinds. Gather: collecting inputs, the pulling and assembling that eats hours. Transform: turning inputs into a first version. Judge: checking it against standards, is it right, is it good, is it safe. And commit: send, approve, spend, the step where someone's name goes on the outcome. In a few minutes you'll map a real workflow from your team, privately, and I promise you the map will surprise you. The official version and the real version are never the same document.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the four step-type cards IN ORDER, filling the four whiteboard boxes with one example each as you go.</li><li>Stress the seeing problem: the official process and the real Monday process differ, and the redesign has to work on the real one.</li><li>Send them to Name the Step: five moments, name the type. Fast, on devices.</li><li>Then the section's real work: the private mapper. Three fields: the workflow, the grind, the judgment. Repeat the privacy line before they type.</li><li>Give the mapper quiet time; field 3 (where judgment actually changes the outcome) deserves a full minute.</li><li>Run the pair narration from Go deeper: one narrates their real workflow, the partner writes the steps and reads them back, then tag G, T, J, C together.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Think about your mapped workflow's grind step, the one eating hours. Who on your team knows the most about how that step really works, and when did you last watch them do it?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>The most junior person, and 'honestly, never'</li><li>A specific name arrives with an admission the manager only sees the output</li><li>A few managers realize they ARE the grind step</li></ul><p class='mini'><b>Respond:</b> Land the design rule: 'The person who does the grind is your co-designer, and the mapping session on your card is where you finally watch. Managers consistently misjudge which step eats the hours; the doer can tell you in one sentence.'</p>
+    <p class="mini"><b>Debrief:</b> Four step types, one real workflow on paper, and a grind step with a name. The gather and transform steps you just tagged are exactly where the next section's pattern points.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; every learner has a mapped workflow with a named grind step and a named judgment step. This map feeds sections 03, 04, 05, and the capstone.</p>
+    <p class="mini"><b>Watch for:</b> Maps that are actually org charts or tool lists. Redirect to verbs: what happens first, what happens next. Also the learner who says their work 'has no repeating workflows'; ask what their team did last Monday morning, and a workflow will appear.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now the assignment that gives this session its name.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cards fast against the whiteboard boxes, trainer on devices, mapper stays at full length with its quiet minute protected; the pair narration drops to an optional 90 seconds.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-pattern.jpg" alt="Slide: 03 · Draft, verify, decide" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>03 · Draft, verify, decide <span class="mins">Full 12 min · Core 9</span></h2>
+    <p class="purpose">Install the draft-verify-decide pattern as a per-step assignment made once at design time, with the traffic-light data rule as a hard boundary on every draft assignment.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's the pattern everything else hangs on. For every step on your map, one assignment. AI drafts: the gather and transform volume, because AI is fast, tireless, and confidently wrong just often enough that a draft is all it gets to be. A human verifies: a named person checks the draft against real sources with the power to reject it. A human decides: the judge and commit steps, because decisions carry accountability and accountability doesn't delegate to a tool. You make the assignment once, when you design the workflow, and then everyone knows who does what. One more rule sits above all of this: the traffic light from the AI courses. Green, public or generic, go. Yellow, internal, approved VU tools only. Red, private information about people, never. The light outranks the pattern, every time.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the three cards: AI drafts the volume, a named human verifies against sources, a human decides where accountability lives.</li><li>Stress the design move: the assignment happens once per workflow, at design time, and then everyone knows who does what. That is what separates a redesign from a pile of shortcuts.</li><li>Send them to Assign the Step: five real steps, make the assignment.</li><li>Walk the traffic light card and be unambiguous: green public, yellow internal in approved VU tools only, red private information about people, never. The light outranks the pattern.</li><li>Run the pair swap from Go deeper: assign your partner's mapped workflow, then compare with what the owner would have chosen; surface one sharp disagreement to the room.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;From the pair swap: where did you and your partner disagree on an assignment, and what was the disagreement really about?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Judge steps: one person saw mechanical checking, the other saw judgment</li><li>The owner defended keeping a grind step manual 'because quality'</li><li>Someone wanted AI further into a commit step than their partner would allow</li></ul><p class='mini'><b>Respond:</b> Name the pattern in the disagreements: 'Notice the fights are almost never about gather steps; they're about where judgment starts. That boundary is the real design decision, and the disagreement means you found it. When in doubt, keep the human and revisit after the pilot's miss log has data.'</p>
+    <p class="mini"><b>Debrief:</b> Every step on your map now has an owner: the machine drafts, a named human verifies, a human decides. The weakest link in that chain is the middle one, which is why it gets its own section.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; every learner's mapped workflow has draft-verify-decide assignments on its steps, and the room can state the traffic light unprompted.</p>
+    <p class="mini"><b>Watch for:</b> Two drifts: assigning by person ('Sam is good with AI, Sam does the AI parts'), which the pattern explicitly forbids, and quiet red-light violations in draft enthusiasm ('AI could summarize the candidates!'). Correct both immediately and kindly; the traffic light correction matters more than the flow of the room.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Because a draft without a real check isn't a workflow. It's a rumor with good formatting.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cards and traffic light at full strength, trainer on devices; the pair swap becomes a solo pass on your own map with the least-sure assignment marked.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-verify.jpg" alt="Slide: 04 · Design the verify" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>04 · Design the verify <span class="mins">Full 11 min · Core 7</span></h2>
+    <p class="purpose">Make verification a designed artifact (named owner, real sources, logged reject path) and install automation bias as the failure mode that kills redesigns in week three.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Verification is where redesigns quietly die, and it dies through a well-documented pattern called automation bias: the drift toward accepting a system's output as attention fades. Week one, your verifier reads every line. Week six, the drafts have been right so many times that reading became skimming, and that's precisely when the expensive miss ships. You cannot fix this with 'be careful.' You fix it with design: a named owner whose job includes the check. Claims checked against sources, the tracker, the data, the notes, never against whether it sounds right, because sounding right is the one thing AI always does. And a reject path with a log, because a check that has never caught anything is not evidence of quality; it's evidence that nobody's looking.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Land automation bias first: fluent output plus fading attention equals rubber stamps, and it happens to smart, careful people on schedule.</li><li>Walk the verifier's rubric on the gold card: named owner, source-checked, reject path with a log.</li><li>Land the counterintuitive tell: a check that has never caught anything is a warning light, and the log is how you tell diligence from theater.</li><li>Send them to Rate the Check: five setups, call each one real, rubber stamp, or wrong-sized.</li><li>Run the quick check on automation bias, then the pair drill: design the verify for the ticket-summary step in four lines, and stress-test one pair's design with 'how would this fail quietly?'</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Think of a check that already exists somewhere in your team's work. When it passes something, how would you know whether that was diligence or a rubber stamp?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Silence, then 'honestly, I couldn't tell the difference'</li><li>Someone names a real tell: comments in the doc, questions coming back</li><li>Someone realizes their approval step has never once rejected anything</li></ul><p class='mini'><b>Respond:</b> Anchor the log: 'The only reliable tell is a record of catches. Rejections coming back are the heartbeat of a real check. If an approval step has passed everything for a year, you don't have a check; you have a signature with extra steps.'</p>
+    <p class="mini"><b>Debrief:</b> Owner, sources, reject path, log. Verification designed this way is cheap, and it's the difference between the lab's strong tier and its disasters, which you're about to experience directly.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; the pair designs include all four lines (owner, source, cadence, reject path); the room can explain why zero catches is a warning sign.</p>
+    <p class="mini"><b>Watch for:</b> The over-correction: learners concluding everything needs heavyweight review. Keep the budget idea alive; wrong-sized checks are a real failure mode, and the trainer's agenda item exists to make that legitimate. Verification spends attention, and attention is the scarcest thing your team has.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Enough theory. You have a Monday morning to redesign.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: bias framing in ninety seconds, rubric verbatim, trainer on devices; the pair drill becomes a solo four-line design for your own workflow's draft step.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-lab.jpg" alt="Slide: 05 · The Redesign Lab" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>05 · The Redesign Lab <span class="mins">Full 14 min · Core 10</span></h2>
+    <p class="purpose">Give every learner a full felt rep of the method: four steps of a real workflow, one assignment each, and a four-week outcome that rewards design quality rather than AI enthusiasm. The session's deepest practice block.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's a workflow you all recognize: the weekly client status report. Half of every Monday. Someone pulls numbers from three systems, someone writes the update, a peer glances at it, and the manager sends it. You're going to redesign it step by step: for each of the four steps, pick how it runs. Then the lab runs four weeks and shows you what your design did. One warning from the field data: when these redesigns fail, it is almost never because the AI wasn't good enough. It's because a wrong thing flowed through a soft check and reached a client. Watch where the lab punishes you; it's never for how much AI you used.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Set the scenario in one breath: the weekly client report eats half of every Monday, four steps, redesign it.</li><li>Send them into the lab on devices: choose how each step runs, then run the month.</li><li>Let people get their four-week outcome individually; the mid and weak tiers teach more than the strong one, so don't coach choices in advance.</li><li>Ask for a show of hands by tier: who got the strong month, who got week-three problems. Have one weak-tier learner read their coach notes aloud; the room learns from the postmortem.</li><li>Push the rerun: strengthen your weakest step and run the month again. The delta between runs is the lesson.</li><li>Then the pair drill: find the week-three failure in your OWN mapped workflow and strengthen that one check with the rubric.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;For those who hit the mid or weak tier: which single choice cost you the month, and would your real team have made the same one?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>The soft check: 'reads well' or the peer once-over</li><li>The auto-send: it felt efficient right up until the outcome</li><li>An honest 'my real team runs the weak version of this today'</li></ul><p class='mini'><b>Respond:</b> Treat that last answer as the room's win: 'That recognition is the whole lab. The weak tier isn't a hypothetical; it's a description of unmanaged shortcuts, which is what most AI use looks like today. You now know the three fixes: owner, source, log.'</p>
+    <p class="mini"><b>Debrief:</b> The lab's scoring is the session's thesis in miniature: value comes from the design around the AI, and week three is where soft designs go to die. Your real workflow's week-three failure now has a name and a fix.</p>
+    <p class="mini"><b>Validate:</b> Every learner completes at least one lab run; most reach the strong tier on a rerun; every learner can name their real workflow's week-three failure and the check that catches it.</p>
+    <p class="mini"><b>Watch for:</b> Learners who game the lab by picking the obviously maximal option everywhere without reading the coaching. The question that re-engages them: 'which of these choices would your actual team push back on, and why?' Also watch clock discipline; this section has the least slack.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;One thing left, and it's the thing that decides whether any of this survives contact with your team.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: one lab run instead of run-plus-rerun (rerun only for learners who hit weak tier), tier hands stay, the pair drill becomes a solo week-three-failure hunt. This is the floor; never cut the lab entirely.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-team.jpg" alt="Slide: 06 · Bring the team along" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>06 · Bring the team along <span class="mins">Full 10 min · Core 6</span></h2>
+    <p class="purpose">Install the pilot standard (doers design checks, visible metric, real rollback, honest hours) and drill the announcement line, the first artifact a team actually hears from a redesign.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Everything you've built today can be killed in one sentence, and it's usually the first sentence your team hears about it. A redesign announced from above sounds like 'the machine is coming for your work,' and a team that hears that will make sure the pilot fails, quietly and completely. The same redesign run as a pilot sounds different: one workflow, two to four weeks. The people who do the work design the checks, because they know where it bites. The metric, hours saved and errors caught, posted where everyone can see it. A real rollback, available without shame. And the honest answer, out loud, about what the saved hours are for. Your announcement line is a design artifact. Draft it like one.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Land the emotional reality first: an announced redesign sounds like 'the machine is coming for your work' unless it's designed not to.</li><li>Walk the pilot standard card: one workflow, doers design the checks, visible metric, real rollback, honest answer about the hours.</li><li>Say the hard part plainly: if people suspect saved time converts into cut roles, they will make sure there is no saved time.</li><li>Send them to Judge the Announcement: five lines, call each one good, fear-or-hype, or vague.</li><li>Run the quick check, then the group draft-aloud: each group drafts one announcement line for their lab redesign, the room calls each, and the scariest plus vaguest get rewritten live.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What ARE the saved hours for on your team? Name the real work that's been getting skipped.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Client or stakeholder time that keeps getting cannibalized</li><li>The improvement work: documentation, cleanup, the backlog nobody touches</li><li>An honest 'I don't know yet,' usually from the busiest manager in the room</li></ul><p class='mini'><b>Respond:</b> Push past the first answer: 'Say it as a sentence your team would believe, with the work named. If you can't finish the sentence, that's your homework before the mapping session, because the pilot standard requires saying it out loud in the first minute.'</p>
+    <p class="mini"><b>Debrief:</b> The pilot standard turns a scary announcement into a set of checkable claims, and checkable claims are the only thing teams trust. The doers design the checks; the metric hangs on the wall; the hours have a named destination.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; drafted lines name the workflow, owner, metric, and review date; the room can say what the saved hours are for without the word 'efficiency.'</p>
+    <p class="mini"><b>Watch for:</b> The manager who says 'my team will just be told.' Don't argue authority; point at the lab: the weak tier is what compliance without ownership produces. And keep the hours conversation honest; overpromising job safety you can't guarantee is its own trust failure, and the tough-questions bank has the honest version.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;That's the full method. Quiz first, then the card that puts a date on it.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: pilot standard and the fear line at full strength, trainer on devices, quick check stays; the draft-aloud shrinks to one group's line judged by the room.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-recap.jpg" alt="Slide: Recap quiz" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Recap quiz <span class="mins">Full 4 min · Core 4</span></h2>
+    <p class="purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p>
+    <p class="mini"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now the only part of today that changes anything.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep at full length; this is the objectives' evidence.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-plan.jpg" alt="Slide: Capstone · My redesign card" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Capstone · My redesign card <span class="mins">Full 6 min · Core 6</span></h2>
+    <p class="purpose">Convert the session into one dated commitment: one workflow, one first draft step, one named failure mode to avoid, and a dated team mapping session. The transfer artifact and the Level 3 seed.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Sessions don't redesign workflows. Managers with a card and a date do. Pick the workflow, the real one you mapped today, with its real weekly cost. Choose where AI drafts first, or choose 'map first' honestly if the workflow needs the team's eyes before any assignment. Then the honest field: what you will NOT do, because you know your failure mode; letting AI drift into decisions, running drafts without a named verifier, or announcing this as an efficiency play. And the date: when is the 30-minute mapping session with your team? A named workflow with a named draft step and a dated first move is a redesign. Everything less is a poster.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame it: sessions don't redesign workflows; managers with a card and a date do.</li><li>Repeat the privacy norm before anyone types: workflows and roles, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the mapper from section 02 is the raw material, and 'map first' is a legitimate draft-step choice.</li><li>Point at field 3, what you will NOT do, as the honest one: every manager in the room has one of these three failure modes.</li><li>Push the build moment, then the close-the-loop line: after two weeks, one line of evidence, what does Monday cost now and what did the checks catch.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What's most likely to make you skip the mapping session, and what's your plan for that obstacle?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>No time; the week will eat it</li><li>Fear the team reads it as a layoff signal</li><li>Doubt about authority over the workflow</li></ul><p class='mini'><b>Respond:</b> No time: 'It's 30 minutes against a workflow that eats hours weekly; the math forgives you exactly once.' Fear: 'That's what the announcement line and the honest-hours answer are for; draft them before the invite.' Authority: 'Start with a workflow your team invented; those are fully yours, and they're where the hours hide anyway.'</p>
+    <p class="mini"><b>Debrief:</b> One workflow on your team is about to get mapped by the people who run it, with a metric on the wall. That's how the six percent got there: one designed workflow at a time.</p>
+    <p class="mini"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p>
+    <p class="mini"><b>Watch for:</b> Grand cards ('redesign our whole delivery process'). Push to ONE workflow with a real weekly cost. And date-dodging: a mapping session 'soon' is not a commitment; help them pick the actual day on the spot.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: protect at full length; never cut the capstone.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-glossary.jpg" alt="Slide: Glossary" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Glossary <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Signpost the reference layer; it lives here for after the session.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Every term from today lives here as flip cards, including 'rubber stamp,' for the next time an approval step has passed everything for a year.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Flip one card on the projector (Rubber Stamp is a good pick; it gets a knowing laugh and reteaches section 04).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None; reference material.</p>
+    <p class="mini"><b>Watch for:</b> Don't tour all thirteen cards; one flip makes the point.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Last slide. One mapping session left.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip; point at it verbally from the closing slide.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-close.jpg" alt="Slide: Closing · commitment" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Closing · commitment <span class="mins">Full 4 min · Core 1</span></h2>
+    <p class="purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;The whole session in one breath: the data says redesign is the difference, the map makes the work visible, the pattern assigns every step, the verify keeps the drafts honest, the lab showed you week three, and the pilot standard is how your team comes to trust it. You have a card. Before you go: your workflow, and your mapping day. Say it out loud; spoken commitments stick.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the featured card: the one next step is the 30-minute mapping session with the team, this week, with the doers in the room.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you that you can run the mapping session and make the assignments?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: workflow and mapping day, out loud or in chat.</li><li>Point at the cheat sheet and redesign card buttons; the cheat sheet is built to sit next to a keyboard during the mapping session.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Around the room, one line each: your workflow, and your mapping day.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>'The weekly status report, Thursday'</li><li>'Client onboarding, we map it Monday'</li><li>Someone commits to finding their team's shadow AI use first</li></ul><p class='mini'><b>Respond:</b> Thank each one, no commentary. For the shadow-use hunter, warmly: 'Good instinct. Ask the team what they'd hate to give back; that question surfaces the shortcuts without making anyone confess.'</p>
+    <p class="mini"><b>Debrief:</b> The session's success metric isn't in this room; it's the 7-day pulse: how many mapping sessions actually ran, and what the teams' maps showed that the managers' versions missed.</p>
+    <p class="mini"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a workflow and a day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p>
+    <p class="mini"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Go book the mapping session. And when the team's map surprises you, and it will, that surprise is the sound of the redesign starting.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:14px;color:#777">Generated from facilitator/notes.json. The on-screen facilitator edition lives at ./ alongside this guide.</p>
+</div>
+</body>
+</html>

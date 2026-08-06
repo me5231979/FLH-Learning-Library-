@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pocket Card · Manager Foundations · Vanderbilt</title>
+<meta name="description" content="The one-sheet job aid for Vanderbilt managers: the three lanes, the five-part note, the protective sentences, and who to call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Inter:wght@400;500;600;700&family=Antonio:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#1C1C1C; --tx2:#555; --tx3:#6E6E6E; --gold:#946E24; --gold-lt:#CFAE70; --bd:#E0D8C8; --card:#F7F5F0; --err:#A94438; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.5; font-size:13.5px; }
+  .sheet{ max-width:860px; margin:0 auto; padding:34px 28px 44px; }
+  .mono{ font-family:'Antonio',sans-serif; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }
+  header{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; border-bottom:3px solid var(--ink); padding-bottom:14px; flex-wrap:wrap; }
+  header .kick{ font-size:.68rem; color:var(--gold); }
+  h1{ font-family:'Libre Caslon Display',serif; font-weight:400; font-size:2rem; margin-top:4px; }
+  .no-print a.back{ color:var(--gold); font-size:.8rem; text-decoration:none; border-bottom:1px solid var(--bd); }
+  .printbtn{ font-family:'Antonio',sans-serif; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:.72rem;
+    background:var(--ink); color:#fff; border:0; padding:10px 18px; cursor:pointer; border-radius:3px; }
+  .lede{ margin-top:12px; color:var(--tx2); max-width:72ch; }
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px; }
+  .box{ border:1px solid var(--bd); border-radius:6px; padding:16px 18px; background:#fff; break-inside:avoid; }
+  .box.full{ grid-column:1/-1; }
+  .box .bk{ font-size:.64rem; color:var(--gold); display:block; margin-bottom:8px; }
+  .box h2{ font-family:'Libre Caslon Display',serif; font-weight:400; font-size:1.12rem; margin-bottom:8px; }
+  .lane{ display:flex; gap:10px; padding:7px 0; border-top:1px solid var(--bd); }
+  .lane:first-of-type{ border-top:0; }
+  .lane b{ flex:0 0 118px; font-size:.8rem; }
+  .lane span{ color:var(--tx2); font-size:.8rem; }
+  .lane .l3{ color:var(--err); }
+  ol.steps{ margin-left:18px; color:var(--tx2); font-size:.8rem; display:flex; flex-direction:column; gap:5px; }
+  ol.steps b{ color:var(--ink); }
+  .blank{ display:block; border-bottom:1px solid var(--bd); height:20px; margin-top:3px; }
+  .notegrid label{ font-size:.72rem; font-weight:600; display:block; margin-top:9px; }
+  .notegrid label small{ font-weight:400; color:var(--tx3); }
+  .say{ border-left:3px solid var(--gold-lt); background:var(--card); padding:9px 12px; margin-top:8px; font-size:.8rem; }
+  .say b{ display:block; font-size:.68rem; color:var(--gold); margin-bottom:2px; font-family:'Antonio',sans-serif; letter-spacing:.07em; text-transform:uppercase; }
+  table{ width:100%; border-collapse:collapse; font-size:.78rem; }
+  th{ text-align:left; font-family:'Antonio',sans-serif; font-weight:700; letter-spacing:.07em; text-transform:uppercase; font-size:.64rem; color:var(--gold); padding:6px 8px 6px 0; border-bottom:2px solid var(--ink); }
+  td{ padding:7px 8px 7px 0; border-bottom:1px solid var(--bd); vertical-align:top; color:var(--tx2); }
+  td:first-child{ font-weight:600; color:var(--ink); white-space:nowrap; }
+  .ph{ display:inline-block; font-family:'Antonio',sans-serif; font-weight:700; letter-spacing:.07em; text-transform:uppercase; font-size:.58rem; color:var(--tx3); border:1px dashed var(--tx3); border-radius:999px; padding:2px 8px; }
+  .never{ font-size:.78rem; color:var(--tx2); }
+  .never b{ color:var(--err); }
+  footer{ margin-top:24px; padding-top:12px; border-top:1px solid var(--bd); font-size:.7rem; color:var(--tx3); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  @media (max-width:640px){ .grid{ grid-template-columns:1fr; } }
+  @media print{
+    .no-print{ display:none !important; }
+    body{ font-size:11.5px; }
+    .sheet{ padding:0; max-width:none; }
+    .grid{ gap:12px; margin-top:14px; }
+    .box{ padding:11px 13px; }
+    a{ color:inherit; text-decoration:none; }
+    @page{ margin:1.2cm; }
+  }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <div>
+      <span class="mono kick">Manager Foundations · Manager Voyage · Vanderbilt University</span>
+      <h1>The Pocket Card</h1>
+    </div>
+    <div class="no-print" style="display:flex;gap:14px;align-items:center">
+      <a class="back" href="./">Back to the course</a>
+      <button class="printbtn" onclick="window.print()">Print / save as PDF</button>
+    </div>
+  </header>
+  <p class="lede">The judgment lives in you; this sheet holds the structure. Print it, fold it, keep it where the hard moments happen. Everything here is practiced in full at the Manager Foundations site.</p>
+
+  <div class="grid">
+    <div class="box full">
+      <span class="mono bk">Rule 1 · Whose lane is it?</span>
+      <h2>The three lanes</h2>
+      <div class="lane"><b>1 · Handle it</b><span>Coaching, performance, everyday friction. Most of the job lives here. Escalating it trains your team to route around you.</span></div>
+      <div class="lane"><b>2 · Partner with your EC</b><span>Patterns that persist after coaching. Anything touching pay, leave, or an accommodation request. Counteroffers. You stay involved; you stop deciding alone.</span></div>
+      <div class="lane"><b class="l3">3 · Escalate now</b><span class="l3">Anything touching a protected class, harassment, safety, wage violations, or retaliation. Even when the person asks you to keep it quiet. Same day, every time.</span></div>
+    </div>
+
+    <div class="box">
+      <span class="mono bk">Rule 2 · The first thirty seconds</span>
+      <h2>When someone brings you something hard</h2>
+      <ol class="steps">
+        <li><b>Thank them.</b> What they just did took courage, and your face is teaching the whole team whether to speak up.</li>
+        <li><b>Listen without verdicts.</b> No defending, no diagnosing, no promising outcomes.</li>
+        <li><b>Promise discretion, never secrecy.</b> See the script below.</li>
+        <li><b>Route it the same day</b> using the three lanes.</li>
+      </ol>
+      <div class="say"><b>Say this</b>&ldquo;I&rsquo;ll be discreet, and I&rsquo;ll only involve people who genuinely need to know. But if it&rsquo;s something serious I&rsquo;m required to act on, I have to. I&rsquo;d rather be honest about that up front.&rdquo;</div>
+    </div>
+
+    <div class="box">
+      <span class="mono bk">Rule 3 · If it is not written down, it did not happen</span>
+      <h2>The five-part note</h2>
+      <div class="notegrid">
+        <label>Date <small>· written the same day</small><span class="blank"></span></label>
+        <label>What happened <small>· facts a camera would record, no labels, no &ldquo;always&rdquo;, no medical guesses</small><span class="blank"></span><span class="blank"></span></label>
+        <label>Expectation set<span class="blank"></span></label>
+        <label>Support offered<span class="blank"></span></label>
+        <label>Follow-up date<span class="blank"></span></label>
+      </div>
+    </div>
+
+    <div class="box full">
+      <span class="mono bk">Rule 4 · The protective sentences</span>
+      <h2>Words that protect people, and the university</h2>
+      <div class="say"><b>A health or family event surfaces</b>&ldquo;You may be entitled to job-protected leave. Let me connect you with Leave Administration today.&rdquo; Then stop: no medical questions, no promises about timing or pay.</div>
+      <div class="say"><b>Someone needs a change to how they work</b>Treat it as an accommodation request even if they never say &ldquo;ADA.&rdquo; Take it seriously, skip the diagnosis questions, loop in PCB the same day to start the interactive process.</div>
+      <div class="say"><b>A disclosure touches sexual misconduct</b>You are a responsible employee. Report to the Title IX office the same day. You do not investigate, interview witnesses, or confront anyone.</div>
+      <p class="never" style="margin-top:10px"><b>Never:</b> promise secrecy &middot; collect medical details &middot; approve off-the-books comp time &middot; retaliate, or let anyone else &middot; wait to write the note.</p>
+    </div>
+
+    <div class="box full">
+      <span class="mono bk">Who to call</span>
+      <h2>Your first calls, by situation</h2>
+      <table>
+        <tr><th>Situation</th><th>Call</th><th>Contact</th></tr>
+        <tr><td>Everyday people questions, policy, pay, counteroffers</td><td>Your Engagement Consultant (EC)</td><td><span class="ph">Add contact</span></td></tr>
+        <tr><td>Persistent conduct issues, discipline, grievances</td><td>Employee Relations</td><td><span class="ph">Add contact</span></td></tr>
+        <tr><td>Sexual misconduct, discrimination, protected-class issues</td><td>Title IX / EAD Office</td><td><span class="ph">Add contact</span></td></tr>
+        <tr><td>A health or family event needing time away</td><td>Leave Administration</td><td><span class="ph">Add contact</span></td></tr>
+        <tr><td>An employee visibly struggling or in distress</td><td>EAP / Work-Life resources</td><td><span class="ph">Add contact</span></td></tr>
+        <tr><td>Legal exposure, subpoenas, media, contracts</td><td>Office of General Counsel</td><td><span class="ph">Add contact</span></td></tr>
+      </table>
+      <p style="margin-top:8px;font-size:.7rem;color:var(--tx3)">Contacts are placeholders until launch. Write your unit&rsquo;s live names and numbers in before this goes in the drawer.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Manager Foundations &middot; part of Manager Voyage &middot; People, Culture and Belonging (PCB)</span>
+    <span class="no-print">Full practice site: <a href="./" style="color:var(--gold)">me5231979.github.io/estesstite/learn/managers</a></span>
+  </footer>
+</div>
+</body>
+</html>

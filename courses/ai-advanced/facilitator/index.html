@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 201 — Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience that goes under the prompt box: context and attention, RAG, choosing between prompting, RAG, and fine-tuning, advanced prompt patterns, agentic AI failure modes, and AI governance with the NIST AI RMF.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 201: Beyond the Basics | Vanderbilt Learning Series">
+<meta property="og:description" content="You can prompt. Now open the hood: how models actually work, and how to run them responsibly, ending in a governed AI workflow you build.">
+<meta property="og:url" content="../../../courses/ai-advanced/">
+<meta property="og:image" content="../../../courses/ai-advanced/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 201: Beyond the Basics | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/ai-advanced/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-attention">Attention</a>
+    <a href="#s-rag">RAG</a>
+    <a href="#s-patterns">Patterns</a>
+    <a href="#s-agents">Agents</a>
+    <a href="#s-govern">Governance</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (90 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including a full run of Spot-the-Hallucination (you'll be asked which ones fooled you; honesty plays well).</li><li>Build your own workflow card in the capstone for a real recurring task. You will show the structure, not necessarily the contents.</li><li>Confirm participants took AI Basics or equivalent; send the pre-work invite (template on this page) with the calendar invite.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which videos you keep in class versus assign.</li><li>If you'll run the live context-window demo, rehearse it once: paste a long document, chat 15+ turns, then ask about something near the start.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Cue and test the three videos (attention, RAG, agents); trim points are in the DO notes.</li><li>Print 5 to 10 cheat sheets and workflow cards, plus this guide's run-of-show.</li><li>Re-read the tough-questions bank; say the 'can I finally trust RAG answers?' response out loud once.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (drag the context-window slider, toggle the RAG simulator).</li><li>Write 'PARKING LOT' and 'RAG BACKLOG' at the top of the whiteboard.</li><li>Remember the tone: this room already prompts; today they become the people who can explain WHY it worked.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed workflow cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Optional: a live chat tool open with a long document pasted in, for the context-window demo</li><li>Whiteboard or flip chart for the parking lot and the room's RAG question backlog</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: the window habits, the method framework, the four patterns, the failure modes, and the tiers all work on a whiteboard. Spot-the-Hallucination runs verbally with the room voting by hand.</div><div class="brief__row"><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: the simulators and trainers play well on the projector with the room voting A/B/C by hands; the capstone moves to the printed workflow card. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the patterns section (04):</b> Declare the Core path silently: cut remaining videos and shrink debriefs to one voice. Never cut Spot-the-Hallucination, the tier sorter, or the capstone; they carry objectives 5 and 6.</div><div class="brief__row"><b>If The room's prerequisite knowledge is shakier than expected:</b> Don't reteach AI Basics; bridge in one line ('a prompt is the instruction; today is what happens after you hit send') and lean on the simulators, which carry novices. Point strugglers at the 101 link in the footer for after.</div><div class="brief__row"><b>If A technical expert starts correcting nuances or going deeper than the room:</b> Honor and park: 'That's right, and there's real depth there; parking lot so we keep the room together.' Offer the 3Blue1Brown full video and the White et al. catalog as their level. Experts make great Spot-the-Hallucination judges; deputize them.</div><div class="brief__row"><b>If Someone reports their team is already doing something risky (red-tier data in a public tool):</b> Don't shame, don't skip: 'That's exactly the incident pattern this session exists to prevent; the tier sorter in Section 07 is the fix.' Follow up privately after with the governance guidance, and route genuine policy questions to the official channels.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>If RAG grounds the answers in our documents, can I finally trust them without checking?</summary><p>Trust more, verify still. RAG fixes the raw material, not the reader: the model can misquote or blend what it retrieved. The upgrade is that verification gets fast, because a grounded answer hands you the exact source to check. Click the citation; that's the whole check.</p></details><details class="brief__q"><summary>Is fine-tuning something our team could even do?</summary><p>Technically yes, practically almost never first. It needs training data you probably haven't curated, compute you'd have to pay for, evaluation to prove it worked, and a redo every time the base model updates. The honest sequence is: exhaust prompting, add RAG, and if you still have evidence fine-tuning is needed, bring in central IT rather than going alone.</p></details><details class="brief__q"><summary>Are agents actually safe to use at work right now?</summary><p>Scoped, limited, and checkpointed: yes, for low-stakes drafting and compiling. Unsupervised with broad tool access: no. The failure modes are documented and repeatable, which is good news; it means the guardrails are designable. The workflow card you build today IS the safe pattern.</p></details><details class="brief__q"><summary>Do I need to memorize the NIST framework?</summary><p>No. You need the four questions it encodes: who decides, what are we running, how do we know it works, what do we do about it. If you can ask those about any AI tool your team uses, you're doing risk management; NIST just gives everyone the same vocabulary.</p></details><details class="brief__q"><summary>Our vendor says their model doesn't hallucinate. True?</summary><p>No model is hallucination-free; grounding and guardrails reduce the rate, sometimes dramatically. The professional response to that claim is: 'show me the evaluation results and red-team findings.' A vendor who has them will love the question, and a vendor who doesn't just told you something important.</p></details><details class="brief__q"><summary>Does this session change the data rules from AI Basics?</summary><p>It extends them, same colors, same rules. Green, yellow, red still govern what goes INTO a tool. AI 201 adds the workflow view: pattern, checkpoint, and tier travel together, so the rule follows the task instead of living on a poster.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before AI 201. Two things before you arrive: 1) This session builds on AI Basics; skim your cheat sheet from that session if it's been a while. 2) Bring one real recurring task from your work (a weekly report, a triage queue, a drafting chore); you'll build a governed AI workflow around it, and nothing you type leaves your screen. Still no code, still no math.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the workflow run? Three quick lines, reply whenever: 1) Did you run the workflow you built, checkpoint and all? 2) What did the human checkpoint catch, if anything? 3) Did you use one of the four patterns (Few-Shot, Chain-of-Thought, Template, Flipped) this week? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day workflow census (send a month after)</summary><p>Subject: The workflow census. One question for the group: does your team now have a written, governance-tiered AI workflow for at least one recurring task? Reply yes or no, and if yes, the task in five words. The count is the metric we designed the session around, and the yes-list becomes the example library for the next cohort.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did you run your workflow? What did the human checkpoint catch? Did you use one of the four patterns this week?' At 30/60/90 days, count how many teams have a written, governance-tiered workflow for at least one recurring task; that census is the program's headline metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 90 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before AI 201. Two things before you arrive: 1) This session builds on AI Basics; skim your cheat sheet from that session if it's been a while. 2) Bring one real recurring task from your work (a weekly report, a triage queue, a drafting chore); you'll build a governed AI workflow around it, and nothing you type leaves your screen. Still no code, still no math.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series · AI 201</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome back. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. This session builds on <a href="../../../courses/start-smarter/" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">AI Basics</a>. You know what a prompt is; today we open the hood. Still no code, still no math.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>7</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Governed AI workflow you'll build</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the frame: same fundamentals as 101, now open the hood.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome back. Point your camera at that code before we start. You've all taken AI Basics, so you can write a prompt. Today we open the hood: why tools forget, where answers actually come from, what happens when AI starts taking actions, and how to run all of it responsibly. Still no code. Still no math.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the frame: builds on AI Basics, still no code, still no math, and everything typed stays on their screen.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick recall, shout it out: what's one AI Basics idea you've actually used since that session, and one thing you're still unsure about?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Used: the four-part prompt, the data colors, verify-before-trusting</li><li>Unsure: why it forgets, whether to trust it, what an agent is</li><li>Some quiet; people warm up slowly on recall</li></ul><p class="facnote__mini">Respond: Collect three or four of each. The 'unsure' list is your session preview: 'Everything you just named is on today's agenda. Watch for yours.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p><p class="facnote__meta"><b>Watch for:</b> Anyone who hasn't taken AI Basics: pair them with a veteran neighbor and point them at the 101 link in the footer for after.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll be able to do in ninety minutes.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, state the frame, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_032026_c094eab9-dc3d-4802-a43f-2ae4c6f0d4fb.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_032028_d0d13672-b775-48a2-9ec8-d65e03084eae.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_032030_68952549-25ee-4dce-b5db-1cb4d9df7f60.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>AI 201: Beyond the Basics · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>You can prompt.<br><em class="gold-text">Now open the hood.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Why does a chatbot lose the thread of a long conversation? Why does it invent a citation one day and quote the real policy the next? And once a tool starts acting on its own, who's watching it? Today you get the machinery, and the guardrails.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain how context and attention shape an answer, and why long conversations lose the thread</li>
+          <li>Describe what Retrieval-Augmented Generation fixes, and what it doesn't</li>
+          <li>Choose between prompting, RAG, and fine-tuning for a task, weighing cost, data, and maintenance</li>
+          <li>Apply four advanced prompt patterns: Few-Shot, Chain-of-Thought, Template, and Flipped Interaction</li>
+          <li>Recognize the agent loop, name its documented failure modes, and place the human checkpoint</li>
+          <li>Classify information into governance tiers and build one real, governed AI workflow for your team</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill">Artificial Intelligence</span>
+        <span class="skillpill">Data Governance</span>
+        <span class="skillpill">Risk Management</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-attention">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: six capabilities, ending in a real governed workflow with a run date.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six things by the end: you'll explain why long chats lose the thread, what retrieval actually fixes, when to prompt versus RAG versus fine-tune, four prompt patterns beyond the basics, how agents fail and where the human checkpoint goes, and how to tier information before it ever touches a tool. It all lands in one artifact: a governed workflow card for a task you actually do.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the six objectives briskly, in plain language.</li><li>Land on the sixth: this session ends with a REAL workflow card: task, pattern, checkpoint, tier.</li><li>Name the sources once for credibility: 3Blue1Brown, IBM's research explainers, the Vanderbilt-led prompt pattern catalog, NIST.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (a governed AI workflow for a real recurring task).</p><p class="facnote__meta"><b>Watch for:</b> Anxiety about the word 'governance.' Defuse early: it's three colors and four questions, not a compliance seminar.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Seven ideas, and the first one explains half the mysteries you've already met.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 6 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Seven ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Context &amp; attention</h3><p>The finite window every answer is built from, and why models "forget."</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Grounding with RAG</h3><p>How retrieval connects a model to real, current sources, and what it still can't fix.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Choosing your method</h3><p>Prompting, RAG, or fine-tuning: a decision framework that starts cheap.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Advanced prompt patterns</h3><p>Few-Shot, Chain-of-Thought, Template, and Flipped Interaction.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Multimodal &amp; agentic AI</h3><p>The plan, act, observe loop, and the specific ways it breaks.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Spot the hallucination</h3><p>Fluency is not accuracy. Six answers; you call real or invented.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>Governance that scales</h3><p>Red-teaming, the NIST AI RMF, and the tiering habit that prevents incidents.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Three moves: how the machine works, what happens when it starts acting on its own, and how you keep all of it honest.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the seven items in one breath each.</li><li>Point out the shape: how it works (01-04), what happens when it acts (05), how you keep it honest (06-07).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the window, because it explains the single most common complaint about these tools.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 CONTEXT & ATTENTION ============ -->
+  <section class="slide on-light" id="s-attention" data-count data-title="Context & attention">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Window</p>
+      <h2 class="h2" data-reveal>Every answer has a <em>window</em>.</h2>
+      <p class="lead" data-reveal>A model doesn't remember your conversation; it re-reads it, every single turn, through a finite context window. Attention decides which parts of that window matter for the next word. Anything outside the window doesn't exist for that answer. That's the whole mystery of "it forgot what I said."</p>
+
+      <div class="ctxsim card" id="ctxSim" data-reveal>
+        <p class="tag" id="ctxVal">Message 8 of a conversation</p>
+        <div class="ctxsim__stack" id="ctxStack" aria-hidden="true"></div>
+        <p class="ctxsim__q"><b>You ask:</b> "Quick check: what did I ask you to always do at the start?"</p>
+        <p class="temp__readout" id="ctxAnswer" aria-live="polite"></p>
+        <input class="slider" type="range" id="ctxSlider" min="0" max="120" value="20" aria-label="How deep into the conversation you are">
+        <div class="slider-scale"><span>Short chat</span><span>Long chat</span><span>Marathon</span></div>
+        <p class="why" style="font-size:.85rem;margin-top:.75rem">Simulated for teaching. Drag deeper into the conversation and watch your opening instruction fall out of the window.</p>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/eMlx5fFNoYc" data-yttitle="Attention in transformers, visually explained (3Blue1Brown)">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: attention, visually explained</span>
+          <span class="yt__src">3Blue1Brown · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=eMlx5fFNoYc" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the clearest visual of attention ever made. Play the first six minutes in class; the rest rewards a lunch break.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Twenty messages in, the model ignores an instruction you gave at the start. What most likely happened?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The window is finite. Once your instruction scrolls out of it, the model isn't disobeying; the instruction no longer exists for that answer."><span class="mark">A</span><span>The instruction fell outside the context window</span></button>
+          <button class="opt" data-correct="0" data-why="Models don't get bored or defiant. The mechanism is simpler and more fixable: the window moved past your instruction."><span class="mark">B</span><span>The model decided your instruction wasn't important</span></button>
+          <button class="opt" data-correct="0" data-why="Nothing is saved between turns at all; the model re-reads the visible conversation every time. That's exactly why the window matters."><span class="mark">C</span><span>The model's memory file got corrupted</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Three habits fall straight out of the mechanism. <b>Restate, don't assume:</b> in long chats, repeat the key instruction instead of trusting message three. <b>Put the ask near the end:</b> "important instruction last" isn't superstition; recent tokens compete better for attention. <b>Start fresh on purpose:</b> a new chat with a clean, complete prompt often beats message 40 of a cluttered one. The window is why.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> everyone has felt a tool "forget"; attaching the mechanism to a real memory makes it diagnostic instead of spooky.</p>
+          <ol class="steps">
+            <li>In pairs: describe one real moment a chat tool lost track of something you'd said earlier.</li>
+            <li>Diagnose it together with the window model: what had probably scrolled out?</li>
+            <li>Name the fix you'd use now: restate, move the ask to the end, or start a fresh chat.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Recall your own "it forgot" moment and write the one-line fix you'll use next time.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the context-window mental model so 'it forgot' becomes a diagnosable, fixable event instead of a mystery.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the secret that explains half the weird behavior you've seen: the model has no memory. Every single turn, it re-reads your conversation through a window of fixed size, and attention decides which parts of that window matter for the next word. Twenty messages in, your opening instruction can fall out of the window entirely. It's not disobeying you; for that answer, your instruction never existed. Drag the slider and watch it happen.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the one-liner: the model doesn't remember, it RE-READS a finite window every turn, and attention decides what matters inside it.</li><li>Demo the simulator on the projector: drag from short chat to marathon and read the answers aloud as they degrade.</li><li>Send them to their devices to drag it themselves; the instruction falling out of the window is the aha.</li><li>Play the 3Blue1Brown attention video, first ~6 minutes, on the Full path.</li><li>Run the quick check, then the pair activity: diagnose a real 'it forgot' moment with the window model.</li><li>Optional live demo if you rehearsed it: long document, 15 turns, ask about the start.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why does 'put the important instruction near the end of a long prompt' actually work, mechanically?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Because it's definitely inside the window</li><li>Recent stuff wins the attention contest</li><li>Guesses about the model 'caring more' about endings</li></ul><p class="facnote__mini">Respond: Anchor the first two: inside the window, and competing well. Gently mechanize the third: 'Not caring; competing. Attention is a contest, and recency is an advantage.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three habits fall out of one mechanism: restate the key instruction, put the ask near the end, and start fresh on purpose.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; pairs can name the fix they'd use (restate, ask-at-the-end, fresh chat).</p><p class="facnote__meta"><b>Watch for:</b> The word 'attention' drifting into psychology. Keep it mechanical: everything in the window competes; the winners shape the next word.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The window explains forgetting. The next idea explains the other mystery: where answers come from when the model can't possibly know.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: simulator plus check plus one-line habits; cut the video (assign) and the pair share.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>A wrong answer sounds exactly as confident as a right one.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's warning label before the tooling continues.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;A wrong answer sounds exactly as confident as a right one.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Which is why the next tool exists: giving the model receipts.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 RAG ============ -->
+  <section class="slide on-dark" id="s-rag" data-count data-title="Grounding with RAG">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Grounding</p>
+      <h2 class="h2" data-reveal>Give the model <em>receipts</em>.</h2>
+      <p class="lead" data-reveal>A model's training data is frozen in the past, so it guesses at anything current or internal. Retrieval-Augmented Generation fixes the raw material: before answering, the system retrieves your real, current documents and hands them to the model. RAG doesn't make the model smarter. It makes its sources trustworthy.</p>
+
+      <div class="ragsim card" id="ragSim" data-reveal>
+        <p class="ragsim__q"><b>The question:</b> "How many unused PTO days carry over into next year?"</p>
+        <div class="ragsim__toggle" role="group" aria-label="Answer mode">
+          <button class="opt" id="ragOff" aria-pressed="true"><span>General chatbot</span></button>
+          <button class="opt" id="ragOn" aria-pressed="false"><span>RAG, connected to our policies</span></button>
+        </div>
+        <div class="ragsim__answer" id="ragAnswer" aria-live="polite"></div>
+        <div class="ragsim__source" id="ragSource" hidden></div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/T-D1OfcDW1M" data-yttitle="What is Retrieval-Augmented Generation? (IBM)">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: What is RAG? (6 min)</span>
+          <span class="yt__src">IBM, Marina Danilevsky · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=T-D1OfcDW1M" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the standard explainer the industry itself uses, from the researcher who studies it.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What does RAG actually fix?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Exactly: retrieval grounds the answer in real, current documents. The reasoning engine is unchanged; its raw material gets trustworthy."><span class="mark">A</span><span>The sources: answers get grounded in real, current documents</span></button>
+          <button class="opt" data-correct="0" data-why="RAG doesn't upgrade the model's intelligence at all. Same model, better raw material."><span class="mark">B</span><span>The brain: the model becomes smarter</span></button>
+          <button class="opt" data-correct="0" data-why="Grounding reduces hallucination about covered topics, but the model can still misread or mix up what it retrieved. Verification survives RAG."><span class="mark">C</span><span>Everything: RAG answers can be trusted without checking</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>You already use RAG: chat tools that "search the web first," assistants plugged into your document library, and Amplify workflows grounded in uploaded files are all retrieval in front of a model. The tell of a grounded answer is the citation you can click. Two cautions: retrieval is only as good as the documents (stale library, stale answers), and the model can still misquote what it retrieved, so spot-checking the cited source stays in the job.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> spotting where RAG belongs in YOUR workflow is the difference between understanding the concept and using it.</p>
+          <ol class="steps">
+            <li>In pairs or tables: name one question at work a general chatbot would confidently guess at.</li>
+            <li>Name the document set that a RAG-connected tool would need to actually get it right.</li>
+            <li>Share the best one with the room; collect them on the whiteboard. That list is a project backlog.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your question and its document set. It becomes a candidate for your capstone workflow.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the RAG mental model, retrieval fixes the raw material, not the brain, and surface where it belongs in learners' own work.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;A model's training data is a photograph of the internet, taken a while ago. Ask it about YOUR policies and it does the only thing it can: guess fluently. Retrieval-Augmented Generation changes the supply chain: before answering, the system fetches your real, current documents and hands them to the model. Watch the same question twice. RAG doesn't make the model smarter; it makes the raw material trustworthy, and it hands you a citation you can actually click.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the one-liner: training data is frozen; RAG retrieves your real, current documents and answers from them.</li><li>Demo the simulator on the projector: toggle from general chatbot to RAG and let the difference land: the guess versus the cited answer.</li><li>Send them to their devices to toggle it themselves; point at the retrieved-source panel.</li><li>Play the IBM RAG explainer on the Full path.</li><li>Run the quick check, then the group activity: the question-a-chatbot-would-guess-at exercise, collecting the best on the whiteboard as a RAG backlog.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's one question at work a general chatbot would confidently guess at, but a tool grounded in OUR documents could actually get right?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Policy and procedure questions</li><li>Current-semester or current-quarter specifics</li><li>Internal system how-tos</li></ul><p class="facnote__mini">Respond: Write the best ones on the whiteboard under RAG BACKLOG: 'This list is a project backlog. Every item on it is a real, buildable use case, and now you know its name.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Grounded beats brilliant: same model, trustworthy sources, clickable receipts. And the citation click stays in the job.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct (especially rejecting 'RAG answers can be trusted without checking'); the whiteboard has at least three real RAG candidates.</p><p class="facnote__meta"><b>Watch for:</b> Over-correction into 'so RAG solves hallucination.' The simulator's grounded answer still deserves a click on its citation; say so explicitly.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So when do you prompt, when do you retrieve, and when do you reach for the heavy machinery? There's a framework, and it starts cheap.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: simulator plus check; cut the video (assign) and collect only two backlog questions.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 CHOOSING YOUR METHOD ============ -->
+  <section class="slide on-cream" id="s-method" data-count data-title="Choosing your method">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Decision</p>
+      <h2 class="h2" data-reveal>Start cheap. <em>Escalate on evidence.</em></h2>
+      <p class="lead" data-reveal>Prompting, RAG, and fine-tuning solve different problems at wildly different costs. The framework is three questions, asked in order, and most teams should stop at the first yes.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">1 · Prompting</span>
+          <h3>Can a better prompt fix it?</h3>
+          <p class="muted">Cheapest, fastest, zero infrastructure. Exhaust this first; the four patterns in the next section are the toolkit.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · RAG</span>
+          <h3>Need current or internal facts?</h3>
+          <p class="muted">Add retrieval when the model needs facts it wasn't trained on: your policies, this quarter's data, anything that changes.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · Fine-tuning</span>
+          <h3>Need a permanent behavior change?</h3>
+          <p class="muted">Reserve for a lasting shift in tone, format, or skill at real scale. Budget for real data, real compute, and re-doing it every model update.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="methodMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Pick the method</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the expensive mistake isn't picking wrong once; it's defaulting to the heavy solution before exhausting the cheap one. Five real requests; choose the lightest method that works.</p>
+        <p class="quiz__progress" id="mmProgress"></p>
+        <p class="quiz__q" id="mmQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mmOptions" role="group" aria-label="Method choices"></div>
+        <p class="quiz__feedback" id="mmFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="mmNext" style="visibility:hidden">Next request</button>
+        </div>
+        <div id="mmResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The hidden cost people underestimate is <b>maintenance</b>. A prompt costs minutes and changes freely. A RAG library needs an owner who keeps the documents current, or the answers quietly rot. Fine-tuning needs training data, compute, evaluation, and a redo every time the underlying model updates, which is often. That's why the framework runs cheapest-first: escalate on evidence, not enthusiasm. IBM's side-by-side comparison video is a solid share-out for your team; find it linked from the cheat sheet.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> practicing the justification sentence is what makes the framework usable in a real meeting.</p>
+          <ol class="steps">
+            <li>In pairs: pick one AI idea floating around your unit (or invent a plausible one).</li>
+            <li>Run it through the three questions, in order, and pick the lightest method that works.</li>
+            <li>Write the one-sentence justification: "We chose ___ because ___." Two pairs read theirs to the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Run the exercise on your own idea; the justification sentence goes in your notes for the capstone.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the cheapest-first decision framework (prompting → RAG → fine-tuning) and practice it to a one-sentence justification.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Three tools, wildly different price tags. Prompting costs minutes and changes freely. RAG costs a document library and someone to keep it current. Fine-tuning costs training data, compute, evaluation, and doing it all again every time the underlying model updates, which is often. So the framework is three questions asked in order, and most teams should stop at the first yes: can a better prompt fix it? Does the task need current or internal facts? Does it genuinely need a permanent behavior change at scale? Start cheap. Escalate on evidence.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards as three questions asked IN ORDER: can a prompt fix it, does it need current or internal facts, does it need a permanent behavior change.</li><li>Stress the maintenance line: fine-tuning is redone every model update; that cost kills most cases.</li><li>Send them to the method matcher: five requests, pick the lightest method that works.</li><li>Debrief the room's scores; request 5 (the formal email) catches people who over-escalate.</li><li>Run the pair activity: one real AI idea through the framework, ending in the justification sentence.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Where have you seen a team over-invest in heavy machinery before exhausting the cheap fix, in AI or anywhere else?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Buying a platform when a spreadsheet worked</li><li>Custom builds for one-time problems</li><li>Someone names a real AI example</li></ul><p class="facnote__mini">Respond: Affirm the pattern: 'Same disease, new tools. The framework is the vaccine: evidence before escalation, and the justification sentence is what you'll say in the meeting where someone proposes the crane.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The one-sentence justification is the takeaway: we chose X because Y. If you can't finish that sentence, you're not done deciding.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the matcher for most of the room; two pairs read a clean justification sentence aloud.</p><p class="facnote__meta"><b>Watch for:</b> The enthusiast who wants to fine-tune everything. The framework is the kind answer: 'show me the evidence the cheaper rungs failed.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;For most of you, the answer will be 'a better prompt.' So let's upgrade what a better prompt means: four patterns past the basics.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards fast, matcher on devices, skip the pair activity; the justification habit gets one worked example from you instead.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 ADVANCED PROMPT PATTERNS ============ -->
+  <section class="slide on-dark" id="s-patterns" data-count data-title="Advanced patterns">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Patterns</p>
+      <h2 class="h2" data-reveal>Four moves past the <em>basic prompt</em>.</h2>
+      <p class="lead" data-reveal>AI Basics gave you the four-part prompt. These four patterns, from the same academic catalog behind the Persona Pattern, are the next gear: each one solves a specific, recognizable problem.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Few-Shot</span>
+          <h3>Show, don't tell</h3>
+          <p class="muted">Give two or three examples of the input and output you want before the real ask. The model learns the pattern on the spot, no retraining.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Chain-of-Thought</span>
+          <h3>Think out loud</h3>
+          <p class="muted">"Reason through this step by step before answering." Measurably improves accuracy on multi-step and numeric tasks, and lets you audit the steps.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Template</span>
+          <h3>Fill in my form</h3>
+          <p class="muted">Hand the model your exact output structure: fields, headers, order. The move for anything you'll ask for repeatedly.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Flipped Interaction</span>
+          <h3>Interview me first</h3>
+          <p class="muted">"Ask me clarifying questions before you attempt this." The move for when you don't yet know what you need.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="patternMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Match the pattern</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the patterns only pay off if you reach for the right one without thinking. Five real tasks; pick the pattern that fits.</p>
+        <p class="quiz__progress" id="pmProgress"></p>
+        <p class="quiz__q" id="pmQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="pmOptions" role="group" aria-label="Pattern choices"></div>
+        <p class="quiz__feedback" id="pmFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="pmNext" style="visibility:hidden">Next task</button>
+        </div>
+        <div id="pmResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The research behind each: Few-Shot comes from the original GPT-3 paper (Brown et al.), which showed models learn tasks from in-prompt examples alone. Chain-of-Thought comes from Wei et al., who measured the accuracy jump from step-by-step reasoning. Template and Flipped Interaction come from White et al.'s prompt pattern catalog, the same Vanderbilt-led work behind the Persona Pattern you learned in AI Basics. The patterns stack: a Template prompt with Few-Shot examples is a workhorse.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> rewriting a prompt you actually use is the rep that moves a pattern from trivia into your fingers.</p>
+          <ol class="steps">
+            <li>Pull up one real prompt you've used at work in the last two weeks.</li>
+            <li>Pick the ONE pattern that would improve it most, and rewrite the prompt in that pattern.</li>
+            <li>Share your before and after with a neighbor: can they name which pattern you used?</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the four patterns as sight-recognizable tools and get each learner one rewrite of a real prompt.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;AI Basics gave you the four-part prompt. These four patterns are the next gear, and each one has a trigger you'll learn to hear. The model keeps formatting things wrong? Stop describing, start showing: Few-Shot. Multi-step logic coming back subtly broken? Make it think out loud: Chain-of-Thought. Same report every week? Hand it your structure once: Template. And my favorite: you don't actually know what you need? Flip it: 'ask me clarifying questions before you attempt this.' The model becomes the consultant.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the four cards with their triggers: examples to imitate → Few-Shot; multi-step or numeric → Chain-of-Thought; recurring structure → Template; don't know what you need → Flipped Interaction.</li><li>Tie the lineage back: Template and Flipped come from the same Vanderbilt-led catalog as the Persona Pattern from AI Basics.</li><li>Send them to the pattern matcher: five tasks, pick the pattern.</li><li>Run the solo drill from Go deeper: rewrite one real prompt from their own work in the best-fit pattern.</li><li>Neighbors swap and try to name each other's pattern; if the neighbor can't tell, the rewrite needs sharpening.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which of these four would have saved you the most time on something you did last week?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Template, for recurring reports</li><li>Flipped, for fuzzy requests</li><li>Few-Shot, for formatting fights</li></ul><p class="facnote__mini">Respond: Whatever they name: 'Good, that's the one you rewrite in the drill. Real prompt, real task, two minutes from now.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Patterns beat improvisation because they're reusable: the rewrite you just did is a work asset, not an exercise.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the matcher; every learner has one rewritten real prompt, and most neighbors correctly named the pattern used.</p><p class="facnote__meta"><b>Watch for:</b> Pattern-collecting without application. The drill is the point; the matcher is just the warm-up. Protect the drill minutes.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Everything so far is a model answering you. Now the bigger shift: what happens when it starts DOING things.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cover Chain-of-Thought and Flipped in voice, all four on screen; matcher stays, drill shrinks to writing the rewrite without the neighbor swap.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 MULTIMODAL & AGENTIC ============ -->
+  <section class="slide on-light" id="s-agents" data-count data-title="Agents & the loop">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Autonomy</p>
+      <h2 class="h2" data-reveal>Goals in. Actions out.<br><em>Who's watching?</em></h2>
+      <p class="lead" data-reveal>Multimodal AI chains steps across text, image, audio, and video into real workflows. Agentic AI goes further: you give the model a goal instead of an instruction, and it runs a loop, plan, act, observe, until the goal is met. Or until it breaks, and it breaks in specific, documented ways.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Failure 1</span>
+          <h3>Wrong tool call</h3>
+          <p class="muted">The agent picks the wrong tool for the step: searching the calendar for a file, emailing when it should file a ticket.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Failure 2</span>
+          <h3>Misread input or output</h3>
+          <p class="muted">The tool works; the agent misunderstands it. "0 results found" becomes "the report shows zero incidents."</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Failure 3</span>
+          <h3>Infinite loop</h3>
+          <p class="muted">No exit condition. The same failing step retries forever, burning time and budget without escalating.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The fix is never "trust it more"</span>
+        <p style="margin:.5rem 0 0" class="measure">Scoped tools (only what the job needs), step limits (a loop that must end), and a <b>human checkpoint before anything ships</b>. Where that checkpoint goes is a judgment call you'll make in the capstone.</p>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/F8NKVhkZZWI" data-yttitle="What are AI agents? (IBM)">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: what AI agents actually do (12 min)</span>
+          <span class="yt__src">IBM · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=F8NKVhkZZWI" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the plan-act-observe loop drawn clearly. Play the first five minutes; the failure modes below are what the diagrams leave out.</p>
+      </div>
+
+      <div class="quiz" id="agentSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Babysit the agent</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> reading an agent's trace and spotting the failure is exactly the skill the human checkpoint exists to apply. Five traces; name what broke, if anything.</p>
+        <p class="quiz__progress" id="agProgress"></p>
+        <p class="quiz__q" id="agQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="agOptions" role="group" aria-label="Failure mode choices"></div>
+        <p class="quiz__feedback" id="agFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="agNext" style="visibility:hidden">Next trace</button>
+        </div>
+        <div id="agResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The checkpoint question has three honest answers, and your capstone will ask you to pick one. <b>Spot-check:</b> a human samples some outputs; right for low-stakes volume. <b>Full review:</b> a human reads everything before it ships; right for external or consequential output. <b>Named approval:</b> a specific accountable person signs off; right for anything touching money, people, or commitments. The pattern to avoid is the silent fourth option: no checkpoint at all, discovered only after the incident.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> checkpoint placement is a judgment your team should agree on BEFORE an agent ships something embarrassing, not after.</p>
+          <ol class="steps">
+            <li>Name one place in your unit's work where an agent could genuinely help (drafting, filing, compiling).</li>
+            <li>Decide together: spot-check, full review, or named approval? Defend the choice in one sentence.</li>
+            <li>Name the failure mode from this slide you'd most expect there, and the tell you'd watch for.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Answer all three for your own workflow; it's a first draft of your capstone card.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the plan-act-observe loop, make the three documented failure modes sight-readable, and set up the checkpoint decision the capstone requires.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Until now, the model answers and you act. An agent flips that: you give it a goal, and it runs a loop: plan the steps, act with tools, observe what happened, repeat until done. Or until it breaks, and here's the useful news: it breaks in specific, documented ways. It calls the wrong tool. It misreads what a tool told it. Or it loops forever because nobody gave it an exit. The fix is never 'trust it more.' It's scoped tools, step limits, and a human checkpoint before anything ships. You're about to read five real-style traces and catch the failures yourself.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>One line on multimodal (chaining steps across text, image, audio, video), then the main event: agents get GOALS, not instructions, and run a loop.</li><li>Walk the three failure cards: wrong tool, misread input or output, infinite loop. These are documented patterns, not speculation.</li><li>Land the gold card: the fix is never 'trust it more'; it's scoped tools, step limits, and a human checkpoint.</li><li>Play the IBM agents video, first ~5 minutes, on the Full path.</li><li>Send them to Babysit the Agent: five traces, name what broke. Trace 4, the healthy one that ends at a checkpoint, is the teaching moment.</li><li>Run the group activity: where would an agent help your unit, and which checkpoint level does it get?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Where in your own work would you want a FULL review before an agent's output ships, and where would a spot-check honestly be enough?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Full review: anything external, anything with money or people</li><li>Spot-check: internal drafts, summaries, formatting chores</li><li>Debate about email, which is the interesting case</li></ul><p class="facnote__mini">Respond: Let the email debate breathe for thirty seconds; it teaches the judgment. Then name the rule of thumb: 'External, consequential, or about people: full review or named approval. Internal volume: spot-check. The silent option, none, is how incidents happen.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A healthy trace ends at a checkpoint, not at 'sent.' You just practiced the exact skill the checkpoint exists to apply.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; groups can name a checkpoint level for their own use case and defend it in a sentence.</p><p class="facnote__meta"><b>Watch for:</b> Both ditches: 'agents are magic' and 'agents are terrifying.' The traces are the antidote to both: specific failures, specific fixes.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Checkpoints catch what the machine gets wrong. But can YOU catch it? Let's find out, six answers, real or invented.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cut the video (assign); failure cards, trainer, and a one-voice version of the checkpoint question stay.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 SPOT THE HALLUCINATION ============ -->
+  <section class="slide on-dark" id="s-halluc" data-count data-title="Spot the hallucination">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Evaluation</p>
+      <h2 class="h2" data-reveal>Fluency is not <em>accuracy</em>.</h2>
+      <p class="lead" data-reveal>A hallucinated answer sounds exactly as confident as a correct one; that's why it's dangerous, and why organizations red-team AI systems: structured testing to find the flaws before users do. Time to calibrate your own detector.</p>
+
+      <div class="quiz" id="hallSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Spot the hallucination</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you can't verify everything, so you need a calibrated sense of WHERE models fail. Six AI answers; call each one accurate or hallucinated.</p>
+        <p class="quiz__progress" id="hsProgress"></p>
+        <p class="quiz__q" id="hsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="hsOptions" role="group" aria-label="Real or hallucinated"></div>
+        <p class="quiz__feedback" id="hsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="hsNext" style="visibility:hidden">Next answer</button>
+        </div>
+        <div id="hsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">The tells, collected</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">Suspiciously specific numbers and citations you can't find. Details slightly adjacent to the truth. Absolute rules where reality has exceptions. And no tell at all, sometimes, which is why the check is a habit, not a vibe: <b>fact, date, number, name, citation: verify against the source.</b></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>What you just did by hand, organizations do as a discipline. <b>Red-teaming</b>, in NIST's definition, is a structured testing effort to find flaws and vulnerabilities in an AI system, often with the developers in the loop. <b>Evaluation</b> is its steady-state sibling: measuring accuracy on known test sets before and after every change. When a vendor says "our model doesn't hallucinate," the right response is: "show me the eval results and the red-team findings."</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> naming where a wrong answer would hurt most turns abstract risk into a checkable list.</p>
+          <ol class="steps">
+            <li>As a table: name the ONE place in your work where a confident wrong answer would cost the most.</li>
+            <li>Agree on the verification that catches it, and how long that check actually takes.</li>
+            <li>Compare: is the check faster than the incident? It almost always is; say so out loud.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your highest-stakes wrong-answer scenario and its check. It feeds the checkpoint field of your capstone.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 7 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Calibrate hallucination detection by hand, then name the discipline that does it at scale: red-teaming and evaluation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six answers, all generated by AI, all delivered with identical confidence. Some are accurate. Some are invented. Your job: call each one. And here's why this game matters: a hallucinated answer sounds exactly as confident as a correct one. Fluency and accuracy are separate qualities, and your ear can't always tell them apart, which is precisely why organizations red-team these systems instead of vibing them.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it as a game with a lesson inside: six AI answers, call each accurate or hallucinated.</li><li>Run it on devices, or as a room vote with hands on the projector; room-vote mode is louder and better.</li><li>After the reveal, ask which ones fooled people; item 6, the Python half-truth, usually gets the best discussion.</li><li>Land the collected tells from the gold card, and the kicker: production hallucinations often have NO tell.</li><li>Introduce red-teaming in one line: what you just did, done as a structured discipline, per NIST's definition.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which one fooled you, and what would have caught it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The fabricated HBR citation, caught only by searching for it</li><li>The Python half-truth, because the logo detail checks out</li><li>Someone got them all and says so</li></ul><p class="facnote__mini">Respond: For the perfect scorer: 'Great, now imagine six hundred answers a week instead of six. The habit scales; the instinct doesn't.' For everyone else: 'Notice every catch required a CHECK, not a feeling. That's the lesson wearing a game costume.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Fact, date, number, name, citation: verify at the source. And when a vendor claims their model doesn't hallucinate, ask for the eval results.</p></div><p class="facnote__meta"><b>Validate:</b> Most of the room at 5+ of 6; everyone can name at least one tell AND repeat the caveat that tells aren't guaranteed.</p><p class="facnote__meta"><b>Watch for:</b> Overconfidence from a good score. The debrief line matters: these were TRYING to be catchable. The habit beats the instinct.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One skill left: deciding what information is allowed near these tools in the first place. Three colors, four functions, and then you build.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at nearly full length; this is the session's signature moment. Run it as a fast room vote.</p></aside>
+  </section>
+
+  <!-- ============ 10 · 07 GOVERNANCE ============ -->
+  <section class="slide on-cream" id="s-govern" data-count data-title="Governance">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · Governance</p>
+      <h2 class="h2" data-reveal>Four functions. <em>Three tiers.</em></h2>
+      <p class="lead" data-reveal>The NIST AI Risk Management Framework is voluntary, but it's fast becoming the shared vocabulary regulators, auditors, and vendors use for AI risk. Four functions, no code required, and one of them you can practice right now.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));display:grid;gap:1.25rem">
+        <div class="card" data-reveal>
+          <span class="tag">Govern</span>
+          <h3>Who decides?</h3>
+          <p class="muted">Policies, roles, and accountability for AI across the organization. Culture, not just documents.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Map</span>
+          <h3>What are we running?</h3>
+          <p class="muted">Inventory the AI in use, its context, and who it affects. You can't manage what you haven't mapped.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Measure</span>
+          <h3>How well does it work?</h3>
+          <p class="muted">Evaluate and red-team: accuracy, bias, failure modes, tracked over time, not assumed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Manage</span>
+          <h3>What do we do about it?</h3>
+          <p class="muted">Act on what you measured: prioritize risks, add checkpoints, retire what can't be fixed.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="tierSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Tier the information</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> this single habit, tiering information BEFORE it goes into an AI tool, prevents most of the real incidents that make the news. Five items; classify each.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Governance tier choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="tsNext" style="visibility:hidden">Next item</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The tiers here are the same green, yellow, red rules from AI Basics, now wearing their governance name. <b>Green:</b> public or generic, any approved tool. <b>Yellow:</b> internal content, company-managed tools only (Amplify, VU-signed Copilot). <b>Red:</b> sensitive data, named approval required, or no AI tool at all: FERPA, HIPAA, personnel, donors, credentials, unpublished research, contracts. The NIST framing adds the org-level view: someone should be able to answer "what AI are we running, and how do we know it works?" For your team, that someone might be you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> running one real tool through the four functions makes NIST a checklist instead of an acronym.</p>
+          <ol class="steps">
+            <li>Pick one AI tool your team already uses, even informally.</li>
+            <li>Run the four functions as questions: who owns it, is it inventoried anywhere, has anyone measured it, what would we do if it misbehaved?</li>
+            <li>Note the first unanswered question. That's your team's governance gap, found in four minutes.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Same four questions, your most-used tool. The unanswered one goes in your notes.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Make NIST's four functions a usable checklist and drill the tiering habit that prevents most real incidents.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Last concept, and it's four questions and three colors. The NIST AI Risk Management Framework sounds like homework; it's actually the questions a reasonable adult asks about any tool: who decides, Govern. What are we running, Map. How do we know it works, Measure. What do we do about what we find, Manage. And the three colors are the ones you already know from AI Basics: green public, yellow internal and company-managed tools only, red sensitive, named approval or no AI at all. Tier first, prompt second. That single habit prevents most of the incidents that make the news.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the four function cards as plain questions: who decides, what are we running, how well does it work, what do we do about it.</li><li>Connect the tiers to AI Basics: same green, yellow, red, now wearing their governance name.</li><li>Send them to the tier sorter: five items, classify each. Item 4, the reorg memo, is the discussion magnet.</li><li>Run the group activity: one real tool through the four functions; the first unanswered question is the governance gap.</li><li>Keep it empowering, not scary: tiering takes three seconds and prevents three-month cleanups.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Pick one AI tool your team already uses, even informally. Which of the four questions can't you answer?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Measure, almost universally: nobody has evaluated it</li><li>Map: shadow tools nobody inventoried</li><li>Govern: no named owner</li></ul><p class="facnote__mini">Respond: Name the pattern kindly: 'Measure is the room's gap, and that's normal; evaluation is the least visible function. The point isn't shame. It's that you just found your gap in four minutes, for free, before an auditor or an incident found it for you.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Four questions, three colors, three seconds of tiering. Governance at your level isn't a document; it's a habit.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the sorter; each table can name their tool's first unanswered governance question.</p><p class="facnote__meta"><b>Watch for:</b> Governance fatigue in the room's body language. The energy move: this is the shortest section, and it ends in the capstone they've been building toward all session.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Toolkit complete. Quiz first, then the card that puts all of it on one page.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: function cards in one minute, sorter on devices, skip the four-functions group exercise; the capstone's tier field carries the habit.</p></aside>
+  </section>
+
+  <!-- ============ 11 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the six objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per objective. This is the systems check before you build the workflow that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps one-to-one onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as a systems check before the build, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the artifact this whole session was aiming at.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 12 · TEAM AI WORKFLOW (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My AI workflow">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · Team AI workflow</p>
+      <h2 class="h2" data-reveal>Build the <em>governed workflow</em>.</h2>
+      <p class="lead" data-reveal>Everything from today converges on one card: a real recurring task, the AI step, the pattern, the human checkpoint, and the governance tier. This is the artifact that makes AI safe AND useful on your team.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a workflow with a named checkpoint and a tier survives audits, vendors, and incidents. Nothing you type here is saved or sent anywhere; it lives only on your screen.</p>
+
+      <div class="plan" id="flowPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planTask"><b>1 · The recurring task, and its trigger.</b> What starts this workflow?</label>
+            <input type="text" id="planTask" maxlength="140" placeholder="e.g. every Friday, compiling the weekly status report from team updates" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="planStep"><b>2 · The AI step.</b> What does the model actually do?</label>
+            <input type="text" id="planStep" maxlength="140" placeholder="e.g. draft the first version from the raw updates" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · The pattern.</b> Which advanced pattern carries the AI step?</span>
+            <div class="plan__chips" id="planPattern" role="group" aria-label="Prompt pattern">
+              <button class="opt" data-pattern="fewshot"><span>Few-Shot, show it examples</span></button>
+              <button class="opt" data-pattern="cot"><span>Chain-of-Thought, reason stepwise</span></button>
+              <button class="opt" data-pattern="template"><span>Template, fill my structure</span></button>
+              <button class="opt" data-pattern="flipped"><span>Flipped, interview me first</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · The human checkpoint.</b> What clears output to ship?</span>
+            <div class="plan__chips" id="planCheck" role="group" aria-label="Human checkpoint">
+              <button class="opt" data-check="spot"><span>Spot-check a sample</span></button>
+              <button class="opt" data-check="full"><span>Full review, every output</span></button>
+              <button class="opt" data-check="named"><span>Named approval required</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>5 · The governance tier.</b> What's the most sensitive information this touches?</span>
+            <div class="plan__chips" id="planTier" role="group" aria-label="Governance tier">
+              <button class="opt" data-tier="green"><span>🟢 Public or generic</span></button>
+              <button class="opt" data-tier="yellow"><span>🟡 Internal content</span></button>
+              <button class="opt" data-tier="red"><span>🔴 Sensitive (FERPA, HIPAA, personnel…)</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my workflow card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all five parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one governed, dated workflow card: the transfer artifact, the Level 3 seed, and the input to the 30-day census.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;One card, five decisions, and everything from today is on it. The trigger: what starts the workflow. The AI step: what the model actually does, and notice the safe verbs are draft, sort, and summarize, not send. The pattern that carries it. The human checkpoint that clears it. And the tier that governs it. Build it for the task you brought. When you're done, show one neighbor and take one piece of feedback; workflows survive contact with a second brain much better than with none.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: one real recurring task, five decisions: trigger, AI step, pattern, checkpoint, tier.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the pre-work task they brought is the raw material.</li><li>Watch the tier field: anyone picking red gets the built-in warning; make sure they read it as 'redesign or get written approval,' not 'proceed.'</li><li>Push the copy button moment, then the peer step: share the card with ONE neighbor for one piece of feedback.</li><li>Close the loop: run it once within 7 days and note what the checkpoint catches; that note is the evidence.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip running this for real, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Time; the week will eat it</li><li>The checkpoint feels like extra work</li><li>Not sure my prompt is good enough yet</li></ul><p class="facnote__mini">Respond: Time: book the first run now, it's one calendar block. Checkpoint skepticism: 'run it once WITH the checkpoint; what it catches will settle the argument either way.' Prompt doubts: 'the pattern is the training wheels; Few-Shot with two examples forgives a mediocre prompt.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A workflow with a named checkpoint and a tier survives audits, vendors, and incidents. Everything else today was preparation for this card.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all five fields) and exchanges feedback with a neighbor. The card plus the 7-day pulse plus the 30-day census is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Red-tier workflows sailing through on autopilot; that warning is the most important sentence some learners will read today. Also watch for AI steps with no checkpoint logic: 'draft' is safe, 'send' is not.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length minus the peer-feedback swap; never cut the capstone itself.</p></aside>
+  </section>
+
+  <!-- ============ 13 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Context window, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Context Window</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The finite amount of conversation and documents a model can "see" while generating an answer. Outside the window, nothing exists.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Attention, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Attention</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The mechanism that decides which parts of the window matter most for the next word. Everything in the window competes for it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="RAG, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>RAG</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Retrieval-Augmented Generation: fetch real, current documents first, then answer from them. Trustworthy raw material, same model.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Fine-tuning, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Fine-tuning</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Additional training that permanently changes a model's behavior or style. Powerful, expensive, and redone with every model update.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Few-shot, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Few-Shot</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Two or three worked examples inside the prompt, before the real ask. The model learns the pattern on the spot.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Chain of thought, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Chain-of-Thought</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Asking the model to reason step by step before answering. Measurably better on multi-step problems, and auditable.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Template pattern, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Template Pattern</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Giving the model your exact output structure to fill in, every time. From White et al.'s prompt pattern catalog.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Flipped interaction, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Flipped Interaction</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Asking the model to interview YOU with clarifying questions before attempting the task. For when you don't know what you need yet.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Multimodal AI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Multimodal AI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Systems that take in or produce more than one kind of data: text, image, audio, video. The value is chaining small steps into workflows.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Agentic AI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Agentic AI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A model given a goal instead of an instruction, running a plan, act, observe loop with tools. More autonomy means more checkpoints.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Red teaming, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Red-Teaming</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>NIST: structured testing to find flaws and vulnerabilities in an AI system, often in collaboration with its developers. Exists because fluency and accuracy are separate.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="NIST AI RMF, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>NIST AI RMF</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The AI Risk Management Framework: Govern, Map, Measure, Manage. Voluntary, and becoming the shared vocabulary of AI risk.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Human checkpoint, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Human Checkpoint</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The review that clears AI output to ship: spot-check, full review, or named approval. The silent fourth option, none, is how incidents happen.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here, flip cards, whenever you need the vocabulary back, including in the meeting where a vendor starts using it at you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Human Checkpoint is a good pick).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all thirteen cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One run left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 14 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now run the <em>workflow</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You can see inside the machine now: the window, the retrieval, the loop, and the checkpoints. The card you built is the difference between using AI and running it responsibly.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">Within 7 days</span></div>
+        <h3>Run the workflow you just built, once, checkpoint and all</h3>
+        <p>One real pass: trigger, AI step with your chosen pattern, human checkpoint, ship. Note what the checkpoint catches; that note is worth more than another hour of theory. Want to go deeper on the patterns? Dr. Jules White's <a href="https://www.coursera.org/learn/prompt-engineering" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Coursera course</a> is the source they came from.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your workflow's trigger and tier out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the workflow card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Under the hood, above the risk.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-attention">Context &amp; Attention</a></li>
+          <li><a href="#s-rag">Grounding with RAG</a></li>
+          <li><a href="#s-patterns">Advanced Patterns</a></li>
+          <li><a href="#s-agents">Agents &amp; the Loop</a></li>
+          <li><a href="#s-govern">Governance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My AI Workflow</a></li>
+          <li><a href="../../../courses/start-smarter/">AI Basics (101)</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · AI 201 · Facilitator Edition · learner link: <a href="../../../courses/ai-advanced/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/AI-Advanced</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into public commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole session in one breath: the window explains the forgetting, retrieval grounds the answers, the framework starts cheap, the patterns upgrade your prompts, agents get checkpoints, your detector needs a habit, and information gets tiered before it gets pasted. You have a card with all five decisions made. Before you go: what's the trigger, and what's the tier? Say it out loud.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is running the workflow, once, checkpoint and all, within 7 days.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how ready do you feel to run your workflow?' Scan and remember the number for your session log.</li><li>Run the commitment round, popcorn style: trigger and tier, out loud or in chat.</li><li>Point at the cheat sheet and workflow card buttons, and the Jules White course for pattern depth.</li><li>Tell them the 7-day pulse and 30-day census are coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your workflow's trigger, and its tier.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'Friday status report, yellow'</li><li>'Inbox triage every morning, green'</li><li>Someone admits theirs came out red</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the red admission, publicly and warmly: 'That card just did its job. Redesign the AI step or get the named approval, and either way you found out today instead of in an incident report.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 30-day census: how many teams have a written, tiered workflow running. Your card is one of them.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a trigger-and-tier out loud or in chat. Count both; with the pulse and census, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the tier decision. The commitment round catches them: no tier, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go run it. And when the checkpoint catches something, and it will, write it down; that note is the best AI education you'll get all month.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=12"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

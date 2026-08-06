@@ -1,0 +1,253 @@
+/* =====================================================================
+   VANDERBILT LEARNING SERIES — COURSE LIBRARY
+   FLH system: black / white / flat gold, engraved not bubbly.
+   ===================================================================== */
+
+/* ---------- 1. Fonts (self-hosted) ---------- */
+@font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+  src: url('../fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Libre Caslon Display'; font-style: italic; font-weight: 400;
+  src: url('../fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+  src: url('../fonts/inter-latin-400-normal.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 500;
+  src: url('../fonts/inter-latin-500-normal.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+  src: url('../fonts/inter-latin-600-normal.woff2') format('woff2'); font-display: swap; }
+@font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+  src: url('../fonts/antonio-latin-700-normal.woff2') format('woff2'); font-display: swap; }
+
+/* ---------- 2. Tokens ---------- */
+:root {
+  --vu-black: #1C1C1C;
+  --vu-white: #FFFFFF;
+  --vu-gold-flat: #CFAE70;
+  --vu-gold-grad: linear-gradient(135deg, #FEEEB6 0%, #CFAE70 45%, #B49248 100%);
+  --vu-oak: #946E24;
+  --cream: #F5F3EF;
+  --line: #E4E4E4;
+  --ink-soft: #555;
+  --font-serif: 'Libre Caslon Display', 'Times New Roman', serif;
+  --font-sans: 'Inter', Arial, sans-serif;
+  --font-condensed: 'Antonio', Impact, sans-serif;
+  --ease: cubic-bezier(.25, .46, .45, .94);
+  --radius: 6px;
+  --pad-x: clamp(1.25rem, 5vw, 4rem);
+  --nav-h: 84px;
+}
+
+/* ---------- 3. Base ---------- */
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { font-family: var(--font-sans); color: var(--vu-black); background: var(--vu-white);
+  line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; }
+a { color: inherit; }
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: var(--pad-x); }
+.skip-link { position: absolute; left: -999px; top: 0; background: var(--vu-gold-flat); color: var(--vu-black);
+  padding: .6rem 1rem; z-index: 100; }
+.skip-link:focus { left: 0; }
+
+/* ---------- 4. Type ---------- */
+.eyebrow { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; font-size: .82rem; color: var(--vu-oak); margin-bottom: 1rem; }
+.on-dark .eyebrow { color: var(--vu-gold-flat); }
+.h-hero { font-family: var(--font-serif); font-weight: 400; font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  line-height: 1.05; letter-spacing: -.01em; }
+.h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(1.9rem, 4.4vw, 3rem);
+  line-height: 1.12; }
+.h2 em, .h-hero em { font-style: italic; }
+.gold-text { background: var(--vu-gold-grad); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; }
+.lead { font-size: clamp(1.02rem, 1.5vw, 1.2rem); max-width: 62ch; margin-top: 1.25rem; color: var(--ink-soft); }
+.on-dark .lead { color: rgba(255,255,255,.78); }
+
+/* ---------- 5. Reveal ---------- */
+[data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .4s var(--ease), transform .4s var(--ease); }
+[data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { [data-reveal] { opacity: 1; transform: none; } }
+
+/* ---------- 6. Nav ---------- */
+.nav { position: fixed; inset: 0 0 auto 0; height: var(--nav-h); display: flex; align-items: center;
+  justify-content: space-between; padding-inline: var(--pad-x); z-index: 50;
+  background: rgba(20,20,20,.55); backdrop-filter: blur(10px); transition: background .3s var(--ease); }
+.nav.scrolled { background: rgba(20,20,20,.95); border-bottom: 1px solid rgba(207,174,112,.25); }
+.nav__brand { display: inline-flex; align-items: center; text-decoration: none; }
+.nav__lockup { width: 250px; height: auto; display: none; }
+.nav__vicon { width: 34px; height: auto; }
+@media (min-width: 1280px) { .nav__lockup { display: block; } .nav__vicon { display: none; } }
+.nav__links { display: flex; align-items: center; gap: 1.75rem; }
+.nav__links a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .95rem; font-weight: 500; }
+.nav__links a:hover { color: var(--vu-gold-flat); }
+.nav__links a.btn { color: var(--vu-black); }
+@media (max-width: 640px) { .nav__links a:not(.btn) { display: none; } }
+
+/* ---------- 7. Buttons ---------- */
+.btn { display: inline-block; background: var(--vu-gold-flat); color: var(--vu-black); text-decoration: none;
+  font-weight: 600; font-size: .95rem; padding: .8rem 1.6rem; border-radius: 4px; border: 1px solid var(--vu-gold-flat);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(207,174,112,.35); }
+.btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+.btn--ghost:hover { border-color: var(--vu-gold-flat); color: var(--vu-gold-flat); box-shadow: none; }
+.btn--dark { background: var(--vu-black); color: #fff; border-color: var(--vu-black); }
+.btn--dark:hover { box-shadow: 0 6px 18px rgba(28,28,28,.3); }
+.btn--ghost-dark { background: transparent; color: var(--vu-black); border-color: rgba(28,28,28,.35); }
+.btn--ghost-dark:hover { border-color: var(--vu-oak); color: var(--vu-oak); box-shadow: none; }
+.btn--soon { background: transparent; color: var(--ink-soft); border: 1px dashed rgba(28,28,28,.3);
+  opacity: .55; cursor: not-allowed; }
+.btn--soon:hover { transform: none; box-shadow: none; }
+
+/* ---------- 8. Sections ---------- */
+.hero { min-height: 92vh; display: grid; align-items: center; background: var(--vu-black); color: #fff;
+  padding: calc(var(--nav-h) + 4rem) 0 5rem; text-align: center; }
+.hero .wrap { max-width: 900px; }
+.hero .lead { margin-inline: auto; }
+.hero__mark { width: clamp(56px, 6vw, 80px); height: auto; margin: 0 auto 1.75rem; display: block; }
+.hero__cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.25rem; }
+.section { padding: clamp(4rem, 9vw, 7rem) 0; }
+.on-cream { background: var(--cream); }
+.on-dark { background: var(--vu-black); color: #fff; }
+
+/* ---------- 9. Course cards ---------- */
+.courses { display: grid; gap: 1.5rem; margin-top: 3rem; grid-template-columns: 1fr; }
+@media (min-width: 980px) { .courses { grid-template-columns: repeat(3, 1fr); } }
+.course { background: #fff; border: 1px solid var(--line); border-top: 3px solid var(--vu-gold-flat);
+  border-radius: var(--radius); padding: 1.9rem 1.9rem 1.7rem; display: flex; flex-direction: column;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.course:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(28,28,28,.09); }
+.course__tag { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .74rem; color: var(--vu-oak); margin-bottom: .8rem; }
+.course h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.65rem; line-height: 1.15;
+  margin-bottom: .75rem; }
+.course__desc { color: var(--ink-soft); font-size: .96rem; }
+.course__meta { list-style: none; padding: 0; margin: 1.1rem 0 1rem; display: grid; gap: .35rem; }
+.course__meta li { font-size: .85rem; color: var(--ink-soft); padding-left: 1.1rem; position: relative; }
+.course__meta li::before { content: ''; position: absolute; left: 0; top: .52em; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--vu-gold-flat); }
+.course__cta { display: flex; gap: .6rem; flex-wrap: wrap; }
+.course__cta .btn { padding: .7rem 1.15rem; font-size: .88rem; }
+.course__extras { margin-top: 1rem; font-size: .82rem; color: var(--ink-soft); }
+.course__extras a { color: var(--vu-oak); }
+.course--soon { border-top-color: transparent; border-style: dashed; background: transparent; }
+.course--soon:hover { transform: none; box-shadow: none; }
+
+/* ---------- 10. Features ---------- */
+.grid3 { display: grid; gap: 2.25rem; margin-top: 3rem; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+.feature__num { font-family: var(--font-condensed); font-weight: 700; font-size: .85rem;
+  letter-spacing: .1em; color: var(--vu-gold-flat); }
+.feature h3 { font-family: var(--font-serif); font-weight: 400; font-size: 1.4rem; margin: .6rem 0 .6rem; }
+.feature p { color: rgba(255,255,255,.72); font-size: .95rem; }
+
+/* ---------- 11. Footer ---------- */
+.footer { background: #141414; color: #fff; padding: 4rem 0 2.5rem; }
+.footer__grid { display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
+.footer .brandline { font-family: var(--font-serif); font-style: italic; font-size: 1.4rem;
+  color: var(--vu-gold-flat); margin: 1rem 0 0; }
+.footer h4 { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .05em;
+  font-size: .82rem; color: var(--vu-gold-flat); margin: 0 0 1rem; }
+.footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; }
+.footer a { color: rgba(255,255,255,.7); font-size: .98rem; }
+.footer a:hover { color: #fff; }
+.footer__legal { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.1);
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: .85rem;
+  color: rgba(255,255,255,.5); }
+.footer__legal a { color: rgba(255,255,255,.7); text-decoration: underline; }
+
+/* ---------- 12. Print ---------- */
+@media print { .nav { display: none; } body { background: #fff; } }
+
+/* ---------- 13. Objectives expander + syllabus link ---------- */
+.course__obj { margin: 0 0 1.2rem; border-top: 1px solid var(--line); padding-top: .8rem; }
+.course__obj summary { cursor: pointer; font-family: var(--font-condensed); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em; font-size: .76rem; color: var(--vu-oak);
+  list-style-position: inside; }
+.course__obj summary:hover { color: var(--vu-black); }
+.course__obj ol { margin: .6rem 0 0; padding-left: 1.2rem; display: grid; gap: .35rem;
+  font-size: .85rem; color: var(--ink-soft); }
+.course__extras b { font-weight: 600; }
+
+/* ---------- 14. Prominent syllabus link ---------- */
+.course__syllabus { display: flex; align-items: center; gap: .45rem; font-weight: 600; font-size: .92rem;
+  color: var(--vu-oak); text-decoration: none; border: 1px solid rgba(148,110,36,.35); border-radius: 4px;
+  padding: .55rem .85rem; margin: auto 0 1.1rem; transition: all .2s var(--ease); }
+.course__syllabus svg { width: 16px; height: 16px; flex-shrink: 0; transition: transform .2s var(--ease); }
+.course__syllabus:hover { background: rgba(207,174,112,.12); border-color: var(--vu-gold-flat); }
+.course__syllabus:hover svg { transform: translateX(3px); }
+
+/* ============ topic filter + skill pills ============ */
+.filterbar { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.75rem; }
+.filterchip { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; font-size: .74rem; padding: .5rem 1rem; border-radius: 999px;
+  border: 1px solid rgba(28,28,28,.3); background: transparent; color: var(--vu-black);
+  cursor: pointer; transition: all .2s var(--ease); }
+.filterchip:hover { border-color: var(--vu-black); }
+.viewgroup { display: inline-flex; gap: .6rem; margin-left: auto; }
+.viewchip { display: inline-flex; align-items: center; gap: .4rem; }
+.viewchip svg { width: 13px; height: 13px; }
+
+/* list layout: same cards, condensed to uniform left-aligned rows */
+.courses--list { display: block !important; }
+.courses--list article.course { display: grid; text-align: left;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: "tag actions toggle" "title actions toggle" "syl actions toggle";
+  gap: .1rem 1.1rem; align-items: center; padding: .85rem 1.4rem; margin-bottom: .7rem; }
+.courses--list article.course[hidden] { display: none !important; }
+.courses--list .course__tag { grid-area: tag; margin: 0; }
+.courses--list article.course h3 { grid-area: title; margin: 0; font-size: 1.2rem; }
+.courses--list .course__length { grid-area: syl; display: inline-flex; align-items: center; gap: .35rem;
+  margin: .15rem 0 0; font-size: .8rem; justify-self: start; }
+.courses--list .course__cta { grid-area: actions; margin: 0; display: flex; flex-wrap: wrap;
+  gap: .5rem; justify-content: flex-end; align-items: center; }
+.courses--list .course__cta .btn { padding: .5rem .9rem; font-size: .78rem; }
+.courses--list .course__skills, .courses--list .course__desc, .courses--list .course__meta,
+.courses--list .course__obj, .courses--list .course__extras, .courses--list .course__syllabus,
+.courses--list .course__voyage { display: none; }
+
+/* expandable rows: the chevron reveals the card-view details inline */
+.course__toggle { display: none; }
+.courses--list .course__toggle { grid-area: toggle; display: inline-flex; align-items: center;
+  justify-content: center; width: 38px; height: 38px; padding: 0; border: 1px solid var(--line);
+  border-radius: 50%; background: transparent; color: var(--vu-black); cursor: pointer; }
+.courses--list .course__toggle:hover { border-color: var(--vu-gold-flat); background: rgba(207,174,112,.12); }
+.courses--list .course__toggle svg { width: 15px; height: 15px; transition: transform .2s var(--ease); }
+.courses--list .course--open .course__toggle svg { transform: rotate(180deg); }
+.courses--list .course--open .course__skills, .courses--list .course--open .course__desc,
+.courses--list .course--open .course__meta, .courses--list .course--open .course__syllabus,
+.courses--list .course--open .course__obj, .courses--list .course--open .course__extras,
+.courses--list .course--open .course__voyage { grid-column: 1 / -1; }
+.courses--list .course--open .course__skills { display: flex; margin: .6rem 0 0; }
+.courses--list .course--open .course__desc { display: block; margin: .5rem 0 0; }
+.courses--list .course--open .course__meta { display: grid; margin: .8rem 0 0; }
+.courses--list .course--open .course__syllabus { display: flex; justify-self: start; margin: .8rem 0 0; }
+.courses--list .course--open .course__obj { display: block; margin: .8rem 0 0; padding-top: .8rem; }
+.courses--list .course--open .course__extras { display: block; margin: .6rem 0 0; }
+.courses--list .course--open .course__voyage { display: block; margin: .5rem 0 0; }
+@media (max-width: 760px) {
+  .courses--list article.course { grid-template-columns: 1fr auto;
+    grid-template-areas: "tag toggle" "title toggle" "syl toggle" "actions actions"; }
+  .courses--list .course__cta { justify-content: flex-start; margin-top: .5rem; }
+}
+.filterchip[aria-pressed="true"] { background: var(--vu-black); color: #fff; border-color: var(--vu-black); }
+.course[hidden] { display: none; }
+.course__skills { display: flex; flex-wrap: wrap; gap: .4rem; margin: .65rem 0 .35rem; }
+.skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; font-size: .6rem; line-height: 1.35;
+  padding: .22rem .55rem; border-radius: 999px; border: 1px solid rgba(148,110,36,.45);
+  color: var(--vu-oak); }
+.skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+
+/* visible course length badge */
+.course__length { display: inline-flex; align-items: center; gap: .4rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; font-size: .72rem; color: var(--vu-black);
+  background: rgba(207,174,112,.28); border: 1px solid rgba(148,110,36,.35);
+  border-radius: 4px; padding: .3rem .6rem; margin: .5rem 0 .25rem; }
+.course__length svg { color: var(--vu-oak); flex-shrink: 0; }
+
+/* Manager Voyage program marker */
+.course__voyage { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .66rem; color: var(--vu-oak); margin: 0 0 .25rem; }
+.course__voyage::before { content: "\2726  "; color: var(--vu-gold-flat); }

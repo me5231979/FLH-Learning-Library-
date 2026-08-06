@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 201 Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .light { padding: 6px 9px; border-radius: 3px; margin-bottom: 5px; }
+  .g { background: #eef3ee; border: 1px solid #8BA18E; }
+  .y { background: #fdf6e3; border: 1px solid #ECB748; }
+  .r { background: #faeeec; border: 1px solid #c76b5a; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this by your keyboard</p>
+      <h1>AI 201, the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The window, in three habits</h2>
+      <ul>
+        <li><b>Restate, don't assume:</b> in long chats, repeat the key instruction.</li>
+        <li><b>Ask near the end:</b> recent tokens win the attention contest.</li>
+        <li><b>Start fresh on purpose:</b> a clean prompt beats message 40 of a cluttered chat.</li>
+        <li><b>Why:</b> the model re-reads a finite window every turn. Outside it, nothing exists.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Method decision, in order</h2>
+      <ol>
+        <li><b>Can a better prompt fix it?</b> → Prompting. Cheapest, fastest, no infrastructure.</li>
+        <li><b>Needs current or internal facts?</b> → Add RAG. It grounds answers in real documents; it doesn't make the model smarter.</li>
+        <li><b>Needs a permanent behavior change at scale?</b> → Consider fine-tuning, and budget for redoing it every model update.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The four advanced patterns</h2>
+      <ul>
+        <li><b>Few-Shot:</b> 2–3 worked examples before the real ask.</li>
+        <li><b>Chain-of-Thought:</b> "reason step by step before answering" for anything multi-step or numeric.</li>
+        <li><b>Template:</b> hand it your exact output structure for anything recurring.</li>
+        <li><b>Flipped Interaction:</b> "ask me clarifying questions first" when you don't know what you need.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Agent failure modes &amp; fixes</h2>
+      <ul>
+        <li><b>Wrong tool call</b> · <b>misread input/output</b> · <b>infinite loop</b>.</li>
+        <li><b>The fix is never "trust it more":</b> scoped tools, step limits, and a human checkpoint before anything ships.</li>
+        <li><b>Checkpoints:</b> spot-check (low stakes) · full review (external) · named approval (money, people, commitments).</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Hallucination tells</h2>
+      <ul>
+        <li>Suspiciously specific citations you can't find.</li>
+        <li>Plausible numbers off by 10x.</li>
+        <li>Absolute rules ("any," "always") where reality has exceptions.</li>
+        <li>Half-true answers whose checkable half checks out.</li>
+        <li><b>And often no tell at all:</b> verify facts, dates, numbers, names, citations at the source.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Governance tiers 🟢🟡🔴</h2>
+      <div class="light g"><b>🟢 Green:</b> public or generic. Any approved tool.</div>
+      <div class="light y"><b>🟡 Yellow:</b> internal content. Company-managed tools only (Amplify, VU-signed Copilot).</div>
+      <div class="light r"><b>🔴 Red:</b> FERPA, HIPAA, personnel, donors, credentials, unpublished research, contracts. Named approval, or no AI tool at all.</div>
+    </div>
+
+    <div class="box full">
+      <h2>NIST AI RMF, as four questions</h2>
+      <p style="margin:0"><b>Govern:</b> who decides and who's accountable? · <b>Map:</b> what AI are we running, and who does it affect? · <b>Measure:</b> has anyone evaluated or red-teamed it? · <b>Manage:</b> what do we do about what we found? The first question your team can't answer is your governance gap.</p>
+    </div>
+
+    <div class="box full">
+      <h2>Your workflow card, fill in the blanks</h2>
+      <p class="prompt">Trigger: [what starts it] → AI step: [what the model drafts or does] → Pattern: [Few-Shot / Chain-of-Thought / Template / Flipped] → Human checkpoint: [spot-check / full review / named approval] → Tier: [🟢/🟡/🔴] → Output ships only after the checkpoint clears.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>AI 201: Beyond the Basics · Vanderbilt Learning Series · <a href="../../courses/ai-advanced/">me5231979.github.io/AI-Advanced</a></span>
+    <span>Go deeper: <a href="https://www.coursera.org/learn/prompt-engineering">Prompt Engineering for ChatGPT, Dr. Jules White</a></span>
+  </footer>
+</div>
+</body>
+</html>

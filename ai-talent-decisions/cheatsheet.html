@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talent Calls, Sharper Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this by the interview kit</p>
+      <h1>Talent Calls, Sharper: the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The line</h2>
+      <ul>
+        <li><b>AI drafts instruments:</b> rubrics, interview questions, skills taxonomies, succession profiles.</li>
+        <li><b>Humans make verdicts:</b> hire, promote, rate, succeed. Every time.</li>
+        <li><b>The tell:</b> the moment a draft starts ordering or scoring people, it became a verdict. Stop.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The data rules (strictest here)</h2>
+      <ul>
+        <li><b>Red:</b> resumes, reviews, ratings, anything with a name. Never in unapproved tools.</li>
+        <li><b>Yellow:</b> job descriptions, role criteria. Approved VU tools only.</li>
+        <li><b>Candidate-facing work runs with HR</b>, in HR's systems, before AI touches it.</li>
+        <li><b>De-identify maps:</b> roles and levels, never names beside scores.</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>The interview kit prompt (steal this)</h2>
+      <p class="prompt">"Here is a job description. Give me the five competencies this role actually needs, two behavioral questions per competency (tell me about a time...), and a three-level anchored scoring guide per question with a concrete example of a 1, a 2, and a 3. Then flag any criterion that is hard to observe in an interview."</p>
+      <p style="margin:6px 0 0"><b>Then the human passes:</b> cut the unobservable, verify anchors against real answers, flag bias magnets, score independently.</p>
+    </div>
+
+    <div class="box">
+      <h2>The 9-box, made defensible</h2>
+      <ol>
+        <li>Criteria from the roles' real outcomes, observable only.</li>
+        <li>Anchors a stranger could apply (concrete examples per level).</li>
+        <li>Independent scoring; differences discussed, never averaged away.</li>
+        <li>AI drafts and stress-tests. It never places anyone.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>Bias magnets (rewrite or cut)</h2>
+      <ul>
+        <li>"Culture fit" · "polish" · "executive presence": vague criteria that let similarity in dressed as standards.</li>
+        <li><b>The camera test:</b> if a camera couldn't check it, it can't be a criterion.</li>
+        <li>Ask AI to flag the magnets in your final rubric.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Skills map recipe</h2>
+      <ol>
+        <li>Taxonomy from the team's JDs (approved tool).</li>
+        <li>Self-ratings: people are the source of truth on their own skills.</li>
+        <li>De-identified map vs next year's goals; AI drafts the gap list.</li>
+        <li>Per gap: <b>grow · borrow · hire</b>. Most closes are the first two.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>Succession, done right</h2>
+      <ul>
+        <li>AI drafts the <b>profile</b>: capabilities, experiences, readiness criteria for the role.</li>
+        <li>It never names the successor, scores candidates, or reads reviews.</li>
+        <li>The succession call: conversations, evidence, and a signature with a name.</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>My toolkit card, fill in the blanks</h2>
+      <p class="prompt">The talent work: [the decision coming up]. First instrument: [interview kit / 9-box rubric / skills map / succession profile]. I will NOT: [let AI rank people / paste names or reviews into unapproved tools / keep unobservable criteria]. Build session: 45 min on [day], approved tools, human passes done. Standard: a stranger could score with it.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Talent Calls, Sharper · Vanderbilt Learning Series · <a href="../ai-talent-decisions/">me5231979.github.io/Course_Library/ai-talent-decisions</a></span>
+    <span>Context: <a href="https://peoplemanagingpeople.com">People Managing People</a> on AI across the talent pipeline</span>
+  </footer>
+</div>
+</body>
+</html>

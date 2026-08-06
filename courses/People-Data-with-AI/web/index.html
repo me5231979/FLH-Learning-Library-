@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People Data, Safely: Self-Paced | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: apply the Aggregate Rule to every people-data case, use AI to find themes in engagement results and your own notes at team level, rehearse hard feedback without outsourcing the judgment, and turn survey data into real conversations.">
+<link rel="canonical" href="../../../courses/People-Data-with-AI/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="People Data, Safely | Vanderbilt Learning Series">
+<meta property="og:description" content="Coaching feedback and people-data literacy for managers: the Aggregate Rule, the Coach's Loop, AI as rehearsal partner, and the review cycle people call fair.">
+<meta property="og:url" content="../../../courses/People-Data-with-AI/">
+<meta property="og:image" content="../../../courses/People-Data-with-AI/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="People Data, Safely | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/People-Data-with-AI/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-expectation">The Expectation</a>
+    <a href="#s-rule">The Rule</a>
+    <a href="#s-themes">The Themes</a>
+    <a href="#s-feedback">The Rehearsal</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 14</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>People Data, Safely · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Read the patterns.<br><em class="gold-text">Coach</em> the person.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Your HR tools are getting an AI upgrade whether you asked for one or not. <a href="https://www.cultureamp.com/" target="_blank" rel="noopener" style="text-decoration:underline">Culture Amp</a> now ships an AI coach for managers, with Lattice and 15Five close behind, and all of it points at the same person: you, sitting between the dashboard and the humans. Meanwhile the older problem has not moved. <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace research</a> traces most of the difference in team engagement back to the manager, yet on most teams survey results arrive, get a meeting, and change nothing. This session teaches the data side of coaching: reading people data with AI's help, inside hard privacy lines, until the numbers turn into conversations.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Apply the Aggregate Rule to every people-data case before any of it goes near an AI tool</li>
+          <li>Use AI to find themes in engagement results and your own meeting notes, at team level with names removed</li>
+          <li>Draft hard feedback with AI as a rehearsal partner while the judgment stays yours, in your words</li>
+          <li>Prepare a review cycle where AI organizes your evidence and you write every verdict</li>
+          <li>Run the follow-up conversation the data was collected for, and measure that it actually happened</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill">People Analytics</span>
+        <span class="skillpill">Coaching Techniques</span>
+        <span class="skillpill">AI Literacy</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-expectation">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and people grow under managers who act on what their teams tell them.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: the talent the vision needs is already sitting on your team, and engagement data read at the aggregate, then acted on in a real conversation, is how it stays.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets are carried by engaged teams, and the follow-up conversation the survey was collected for is where engagement actually moves.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: a university modeling responsible AI needs managers who let AI find themes in team-level data and never let it judge a named person. That line is this course.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: values-driven leadership shows in how you handle what your people tell you. Reading the patterns inside the Aggregate Rule and coaching the person yourself keeps the talent the flywheel attracts, and keeps the trust the data depends on.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The new expectation</h3><p>AI coaches arrived in the HR tools, and managers now sit between dashboards and humans. The gap: most survey results change nothing.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The Aggregate Rule</h3><p>The traffic light applied to people data, with teeth: what may never touch an AI tool, and the small-team trap.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Themes from the noise</h3><p>Interrogating aggregated results: themes, contrasts with last cycle, and the question behind the question.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Feedback, rehearsed</h3><p>AI as rehearsal partner for the hard conversation. The judgment stays yours, from your evidence, in your words.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Review Prep Lab</h3><p>Run review season for a team of eight and see which cycle you get: the one people call fair, or the grievance.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>From data to conversation</h3><p>Closing the loop: the share-back, the 1:1 question bank, and measuring conversations instead of dashboards.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 THE NEW EXPECTATION ============ -->
+  <section class="slide on-light" id="s-expectation" data-count data-title="The new expectation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Expectation</p>
+      <h2 class="h2" data-reveal>The dashboard arrived. The <em>conversation</em> didn't.</h2>
+      <p class="lead" data-reveal>The HR-tech industry has decided that managers should read people data with AI at their elbow: <a href="https://www.cultureamp.com/" target="_blank" rel="noopener" style="text-decoration:underline">Culture Amp's AI Coach</a> summarizes your team's results and suggests actions, and Lattice and 15Five ship similar copilots. Vanderbilt is on the same road; between Summit and VAULT, people data is already part of a manager's week here. The tooling is the easy half. The hard half shows up in the research on what happens after a survey closes, and most rooms guess these numbers wrong.</p>
+
+      <div class="quiz" id="gnGame" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks far better than one you were shown. Four findings from Gallup's workplace research; call each number before it's revealed.</p>
+        <p class="quiz__progress" id="gnProgress"></p>
+        <p class="quiz__q" id="gnQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="gnOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="gnFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="gnNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="gnResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: An engagement survey closes and your team's results land in your inbox. On most teams, what does the research say happens next?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Nothing the team can see. The results get read, maybe presented once, and filed. That gap between data and conversation is the manager skill this whole session trains."><span class="mark">A</span><span>Nothing the team can see: the results never become a conversation</span></button>
+          <button class="opt" data-correct="0" data-why="HR runs the survey and hands you the mirror; the follow-through was always the manager's job. Gallup's research keeps landing on the manager as the biggest lever on engagement."><span class="mark">B</span><span>HR fixes the low scores centrally, so the manager can stand by</span></button>
+          <button class="opt" data-correct="0" data-why="Scores that get no conversation tend to sag, and response rates sag with them: people stop telling the truth to a survey that never changes anything."><span class="mark">C</span><span>Scores drift up on their own as people settle in</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sources for the game are <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace research on AI and engagement</a> and the vendor wave led by <a href="https://www.cultureamp.com/" target="_blank" rel="noopener" style="text-decoration:underline">Culture Amp</a>. Read together, they describe a squeeze: engagement runs through the manager, AI use is growing far faster than guidance about it, and the new HR tools assume you will let an AI help you read your team. Saying no to all of it means staying slow at a job the research says is yours. Saying yes carelessly means putting private information about people where it must never go. The way through is a rule, and it gets the next section to itself.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write down the last signal your team's data sent you and what you did about it. If the honest answer is nothing, good: you just found the working material for the rest of this session.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Data can find the theme. Only you can have the conversation.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE AGGREGATE RULE ============ -->
+  <section class="slide on-dark" id="s-rule" data-count data-title="The Aggregate Rule">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Rule</p>
+      <h2 class="h2" data-reveal>Interpret patterns. Never feed it <em>people</em>.</h2>
+      <p class="lead" data-reveal>Every AI course in this series carries one traffic light, and people data is where it has the most teeth. The Aggregate Rule is that light applied to your team's data: you may use AI to interpret patterns; you may never feed it people. Before any people data goes near a tool, it passes exactly one test: could this point at a person?</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The Aggregate Rule</span>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Published benchmarks and generic information. No one on your team is in it. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work, including aggregated, de-identified team-level results. Approved VU tools only: ChatGPT EDU, Amplify, Copilot.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people: names, individual scores, identifiable comments, your notes about a person. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The light outranks every technique in this course. If a case is red, no theme, no deadline, and no efficiency argument changes the answer.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:1.25rem">
+        <span class="tag">The small-team trap</span>
+        <p style="margin:.5rem 0 0" class="measure">A "team-level" average from a team of three identifies its people; the label says aggregated and the math says disclosure. Count heads before you call anything aggregate: under five respondents, treat it as red. De-identification works the same way: it is a verb, done and checked, never a checkbox on someone else's export.</p>
+      </div>
+
+      <div class="quiz" id="tlSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Red, yellow, or green</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rule is easy to recite and the real cases arrive in disguise. Five people-data situations; give each one its light.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Traffic light choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="tsNext" style="visibility:hidden">Next case</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>De-identifying for real takes about four moves. Names out, obviously. Identifying roles out: "the only designer on the team" is a name with extra steps. Identifying events out: "after the March escalation" narrows the cast fast. Then the head count: under five respondents in any slice, the slice stays red however clean it looks. One more habit worth building: do the de-identification pass yourself, in a plain document, before anything opens an AI tool. The pass takes minutes, it is where you catch the near-misses, and it means the first thing the tool ever sees is already safe. When a case stays genuinely ambiguous after all that, the answer is a person: ask HR or your privacy office before a tool sees anything.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Take the most recent people-data artifact you actually have, survey export, retro board, your own notes, and sort each part of it: green, yellow, or red. Write the red parts down; that list is what never touches a tool.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 THEMES FROM THE NOISE ============ -->
+  <section class="slide on-cream" id="s-themes" data-count data-title="Themes from the noise">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Themes</p>
+      <h2 class="h2" data-reveal>Ask the data a better <em>question</em>.</h2>
+      <p class="lead" data-reveal>Once your data is safely at team level, AI becomes a genuinely useful interrogator. It reads a hundred de-identified comments in seconds and proposes patterns you would have missed at 5 pm on a Friday. The craft is in the questions you ask it, and there are three that pay every time.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Themes</span>
+          <h3>What patterns are here?</h3>
+          <p class="muted">"What are the strongest themes in these team-level results, and what in the data supports each one?" Forces volume into shape, with receipts.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Contrasts</span>
+          <h3>What changed?</h3>
+          <p class="muted">"Compare with last cycle: what moved, what stayed stuck?" A score means little on its own; movement is where the story lives.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · The question behind the question</span>
+          <h3>What explains both?</h3>
+          <p class="muted">"What would explain both the high autonomy score and the low recognition score?" The contradiction in your data is usually the finding.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:1.5rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Humanize: the ground truth test</span>
+        <p style="margin:.5rem 0 0" class="measure">Every theme the AI proposes gets tested against what you have actually seen: can you name one concrete example from your own experience of this team? A theme with an example is a finding worth acting on. A theme without one is a hypothesis, and hypotheses go to the team as questions, never as announcements. Data proposes; the manager disposes.</p>
+      </div>
+
+      <div class="plan" id="intPlan" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your interrogation plan, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the three questions only earn their keep pointed at your own data, and you leave this section with the exact plan to run this week. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="intSignal"><b>1 · The signal.</b> One number or pattern from your last survey, retro, or pulse:</label>
+            <input type="text" id="intSignal" maxlength="120" placeholder="e.g. recognition scored lowest for the second cycle running" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="intSuspect"><b>2 · The suspicion.</b> What you suspect is behind it:</label>
+            <input type="text" id="intSuspect" maxlength="120" placeholder="e.g. we ship constantly and I only celebrate the big launches" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="intGap"><b>3 · The mystery.</b> The part you cannot explain:</label>
+            <input type="text" id="intGap" maxlength="120" placeholder="e.g. the same cycle, the workload score actually improved" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="intBuild" disabled>Build my interrogation plan</button>
+            <span class="quiz__progress" id="intStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="intOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two habits keep the interrogation honest. First, ask for evidence with every theme: "and quote the de-identified data that supports each one." An AI asked only for themes will find some in random noise; an AI asked for support has to show its work, and weak themes collapse on contact. Second, treat your suspicion as a hypothesis in the same queue as the AI's. Managers tend to interrogate data until it confirms what they already believed and then stop; putting your own theory through the same ground truth test is what separates reading the data from decorating your hunch. And the rule from section 02 rides along the whole way: aggregated, de-identified, approved VU tools, head count checked.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write two candidate explanations for your own mystery line, then write the 1:1 question that would test the more likely one. Put that question at the top of next week's 1:1 agenda.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 FEEDBACK, REHEARSED ============ -->
+  <section class="slide on-light" id="s-feedback" data-count data-title="Feedback, rehearsed">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Rehearsal</p>
+      <h2 class="h2" data-reveal>AI rehearses. You <em>judge</em>.</h2>
+      <p class="lead" data-reveal>Hard feedback gets postponed, and postponed feedback arrives late, vague, or never. Here AI genuinely helps, as a rehearsal partner: describe the situation with roles instead of names, draft against a real framework, stress-test the tone, practice the pushback. One line never moves: AI rehearses the conversation; it never generates the judgment. Your assessment of a person comes from your evidence, in your words.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The rehearsal pattern</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Roles, never names:</b> "a senior analyst on my team," never anyone a tool could identify. <b>2. Framework first:</b> draft against SBI (situation, behavior, impact) or feedforward (name the pattern, design the next attempt together). <b>3. Stress-test:</b> "Where is this vague? What will they hear that I didn't say?" <b>4. Anticipate:</b> "Give me the three hardest reasonable responses, and let me practice mine."</p>
+      </div>
+
+      <div class="quiz" id="draftJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the draft</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> AI-assisted feedback fails in recognizable ways, and your ear learns them fastest by judging. Five lines from managers using AI on feedback; call each one.</p>
+        <p class="quiz__progress" id="djProgress"></p>
+        <p class="quiz__q" id="djQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="djOptions" role="group" aria-label="Draft judgments"></div>
+        <p class="quiz__feedback" id="djFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="djNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="djResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What may AI contribute to a hard feedback conversation?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Structure, tone, and practice are exactly what a rehearsal partner is for, and the roles-not-names rule keeps the person out of the tool. The judgment itself never goes to the machine."><span class="mark">A</span><span>The rehearsal: framing, tone, and practice against likely reactions, with roles instead of names</span></button>
+          <button class="opt" data-correct="0" data-why="An 'objective read on the person' requires feeding it the person, which is red before it is anything else. And the assessment is the one part of the job that must stay yours."><span class="mark">B</span><span>The verdict: an objective read on how the person is really performing</span></button>
+          <button class="opt" data-correct="0" data-why="Neutral wording without your evidence is generic mush, and people can hear it. Feedback lands because it is specific and owned; the draft can be polished, the substance cannot be borrowed."><span class="mark">C</span><span>The delivery: send its draft unchanged so the wording stays neutral</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The rehearsal prompt pattern in full: "A [role] on my team [the observable pattern, no names, no identifying detail]. I want to give this feedback using [SBI or feedforward]. Here is my draft. Stress-test it: where is it vague, what could be heard as blame, and what are the three hardest reasonable responses I should be ready for?" Notice what the pattern assumes: you already have the evidence. If you cannot write the situation and the behavior yourself, the problem is upstream of wording, and no tool fixes thin evidence. This course pairs with Coaching for Performance, which teaches the human method, GROW and feedforward; today covers what happens at the keyboard before that conversation starts.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Take one piece of feedback you have been postponing. Write the SBI line yourself, then use AI only to stress-test the tone and generate the three hardest responses. Notice the division of labor: your evidence and judgment, its rehearsal.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 THE REVIEW PREP LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Review Prep Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Lab</p>
+      <h2 class="h2" data-reveal>Run review season for a team of <em>eight</em>.</h2>
+      <p class="lead" data-reveal>Review season: eight people, two weeks, and every tool vendor promising to write it all for you. This is where the whole course either holds or folds, because reviews are people data, judgment, and AI temptation in one package. Choose how each stage runs, then see which cycle you get.</p>
+
+      <div class="lab" id="reviewLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Review Prep Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make in your next real cycle, and the failure modes are the ones that generate real grievances. Choose all four stages, then run the cycle.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the review cycle</button>
+          <span class="quiz__progress" id="labStatus">Choose all four stages</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice where the lab punishes you. Never for using AI; always for the two unforgivables: AI touching the verdict, and evidence that does not exist. The strong path runs the Coach's Loop end to end: notes kept all year, aggregated and de-identified before any tool sees them, AI on structure and recall, your name on every judgment, and rehearsal spent on the conversations that need it most. When a rating is genuinely hard to call, that is a judgment problem more than a data problem; the Decisions, Sharper course in this series works those calls directly. One more real-world note: if your organization runs a formal review system, its rules and its approved tools outrank anything a vendor demo showed you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Score your own last cycle against the four stages honestly. Circle your weakest stage and write the one change that upgrades it before the next cycle starts.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 FROM DATA TO CONVERSATION ============ -->
+  <section class="slide on-cream" id="s-conversation" data-count data-title="From data to conversation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Conversation</p>
+      <h2 class="h2" data-reveal>Close the <em>loop</em>.</h2>
+      <p class="lead" data-reveal>Everything so far produced themes. This section is where they earn their keep, because a theme that never becomes a conversation is a chart. Three moves close the loop: the share-back, the question bank, and measuring the right thing.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">1 · The share-back</span>
+          <h3>What we heard</h3>
+          <p class="muted">Three parts, said in public: what we heard, what we will try, and what we will not change and why. The third part builds the most trust, because it proves you actually decided something.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · The question bank</span>
+          <h3>Themes become questions</h3>
+          <p class="muted">Turn each theme into one question you will actually ask in 1:1s. Recognition low? "What did you do last month that nobody noticed?" The theme sets the agenda; the person fills it in.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · The measure</span>
+          <h3>Count conversations</h3>
+          <p class="muted">Track conversations held and experiments started, never dashboard views. If every theme has a conversation or an experiment attached within a month, the process works.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Which measure tells you your team's survey process is actually working?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="0" data-why="Response rate measures whether people still bother to answer, and it stays high only while they believe answering changes something. It follows the conversations; it cannot replace them."><span class="mark">A</span><span>A response rate above 90 percent</span></button>
+          <button class="opt" data-correct="1" data-why="Conversations and experiments are the product; everything else is exhaust. This measure also keeps you honest: it can hit zero, which is exactly what makes it a real check."><span class="mark">B</span><span>Every theme has a conversation or an experiment attached within a month</span></button>
+          <button class="opt" data-correct="0" data-why="Viewing a dashboard is reading, and the gap this course keeps pointing at sits between reading and talking. Views can be perfect while nothing changes for anyone."><span class="mark">C</span><span>Every manager opened the results dashboard</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="shareJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the share-back</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the scenario is real: results are in, your team is watching how you handle them. Five ways a manager presents survey themes; call each one.</p>
+        <p class="quiz__progress" id="sbProgress"></p>
+        <p class="quiz__q" id="sbQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sbOptions" role="group" aria-label="Share-back judgments"></div>
+        <p class="quiz__feedback" id="sbFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sbNext" style="visibility:hidden">Next share-back</button>
+        </div>
+        <div id="sbResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The share-back has one non-negotiable and one secret weapon. The non-negotiable: never speculate about who said what, even warmly, even once. The moment a team suspects comments get traced, every future survey collects fiction, and the data side of this entire course stops working. The secret weapon is the third line, "what we will not change and why." Teams do not expect managers to fix everything; they expect to be leveled with. A manager who says "the release pace stays, here is why, and here is what I can move instead" earns more trust than one who promises six improvements and delivers one. AI can help draft the share-back the same way it helps with feedback: structure and tone, on team-level themes, with the decisions already yours.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Draft your three-line share-back for your real signal, then test it: does it name what was heard, commit to one visible try, and level with the team about one thing that stays? If yes, schedule the meeting where you will say it.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · PEOPLE-DATA CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My people-data card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My people-data card</p>
+      <h2 class="h2" data-reveal>One source. One move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't change how anyone coaches; a card with a date does. Name the people data you will actually work this month, pick the first move, name the line you will not cross, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named source with a named first move and a date is a practice; everything less is a poster. Patterns and roles, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="pdPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The source.</b> Which people data will you work this month?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the spring engagement results, still sitting in my inbox" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Where do you start?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="aggregate"><span>Aggregate and de-identify it: names out, small groups out</span></button>
+              <button class="opt" data-practice="interrogate"><span>Run the three-question interrogation on the aggregate</span></button>
+              <button class="opt" data-practice="rehearse"><span>Rehearse one hard feedback conversation, roles not names</span></button>
+              <button class="opt" data-practice="bank"><span>Build the 1:1 question bank from the themes</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode with people data.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="named"><span>Put a named person's data in any AI tool</span></button>
+              <button class="opt" data-not="verdict"><span>Let AI write the verdict on a person</span></button>
+              <button class="opt" data-not="smalln"><span>Treat small-team data as safe because it is technically aggregated</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When do you start?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my people-data card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The Aggregate Rule, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Aggregate Rule</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The traffic light applied to people data: individual and identifiable is red, never; aggregated, de-identified team data is yellow, approved VU tools only; published benchmarks are green.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The Coach's Loop, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Coach's Loop</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Aggregate, interrogate, humanize, converse. Data goes to team level, AI proposes themes, you test them against what you have seen, and the output is always a conversation.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Small-n trap, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Small-n Trap</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A "team-level" number from a tiny group identifies its people. Under five respondents, the average is the individuals, so it stays red however aggregated the label sounds.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="De-identification, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>De-identification</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A verb, never a checkbox: names out, identifying roles out, identifying events out, head count checked. Done and verified by you before any AI tool sees the data.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Theme, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Theme</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A pattern AI proposes across aggregated data. It graduates from proposal to finding only after passing the ground truth test.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Ground truth test, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Ground Truth Test</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Every AI theme must match one concrete example you have actually seen. No example means hypothesis, and hypotheses go to the team as questions, never announcements.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Rehearsal partner, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Rehearsal Partner</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The right job for AI in feedback: structure, tone, and practice against hard responses, always with roles instead of names. Never the source of the judgment.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="SBI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, behavior, impact: "In Thursday's review (S), the demo ran ten minutes over (B), and the client checked out (I)." Specific enough to act on Monday.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Feedforward, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Feedforward</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Feedback aimed at next time: name the observed pattern, then design the next attempt together. Pairs with GROW from Coaching for Performance.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Calibration, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Calibration</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Checking your ratings as a set: the same evidence bar for the same performance, recency and visibility bias called out, reasons written down.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Verdict vs rehearsal, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Verdict vs Rehearsal</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The line that never moves: AI may rehearse the conversation; the assessment of a person comes from your evidence, in your words, under your name.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Engagement survey, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Engagement Survey</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A recurring, anonymous read on how work feels for a team. Useful exactly as often as its themes become conversations, and poisoned the first time anyone hunts a respondent.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go have the <em>conversation</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You guessed the numbers, installed the Aggregate Rule, built your interrogation plan, judged the drafts, survived review season, and drafted a share-back. Somewhere in your inbox is people data waiting to become a conversation.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">45 minutes</span></div>
+        <h3>The theme-to-conversation session</h3>
+        <p>Take the source from your card. Run the de-identification pass yourself, head count included. Ask the three questions in an approved VU tool: themes, contrasts, and the question behind the question. Keep the one theme that passes the ground truth test, and put the conversation it deserves on the calendar: a share-back, a 1:1 question, or the feedback you have been postponing. That 45 minutes is the whole method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your data source and your start day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the people-data card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Aggregate. Interrogate. Humanize. Converse.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-expectation">The New Expectation</a></li>
+          <li><a href="#s-rule">The Aggregate Rule</a></li>
+          <li><a href="#s-themes">Themes from the Noise</a></li>
+          <li><a href="#s-feedback">Feedback, Rehearsed</a></li>
+          <li><a href="#s-conversation">From Data to Conversation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My People-Data Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · People Data, Safely · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+</body>
+</html>

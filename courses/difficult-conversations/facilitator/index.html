@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Difficult Conversations — Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: the three conversations inside every hard exchange, SBI feedback, STATE openers, BRAVING trust, Radical Candor, and a real conversation plan.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Navigating Difficult Conversations | Vanderbilt Learning Series">
+<meta property="og:description" content="Candor, trust, and courage for people managers: hands-on practice with SBI, STATE, BRAVING, and Radical Candor, ending in a real conversation plan.">
+<meta property="og:url" content="../../../courses/difficult-conversations/">
+<meta property="og:image" content="../../../courses/difficult-conversations/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Navigating Difficult Conversations | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/difficult-conversations/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-three">Three Conversations</a>
+    <a href="#s-sbi">SBI Feedback</a>
+    <a href="#s-state">STATE</a>
+    <a href="#s-braving">Trust</a>
+    <a href="#s-candor">Radical Candor</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 18</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise yourself, including a deliberately weak run of the Feedback Lab.</li><li>Build your own conversation plan in the capstone using a real conversation you're avoiding. You will reference having done it, not the contents.</li><li>Book a room where pairs can talk without shouting, and confirm guest wifi works for personal devices.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which group debriefs you keep.</li><li>Rehearse three scripted moments out loud: the Section 01 avoidance framing, the STATE opener read-aloud, and the contrast-statement demo in Section 08.</li><li>Send the pre-work invite (template on this page) with the calendar invite; primed rooms start five minutes faster.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Print 5 to 10 cheat sheets and this guide's run-of-show.</li><li>Re-read the tough-questions bank; say the answers out loud once, especially the 'what if it's my boss' one. You will get it.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (tap a ring of the SBI anatomy, run one Lab option).</li><li>Write 'PARKING LOT' at the top of the whiteboard.</li><li>Set the tone for yourself: this room is about to talk about conversations they're afraid of. Calm is contagious.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed capstone worksheets (worksheet.html) for anyone without a device, and as the projector-failure fallback</li><li>Whiteboard or flip chart for the parking lot and the room's quadrant vote</li><li>Sticky notes and pens: the private-notes fallback, and several exercises here are deliberately private</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: SBI, STATE, the three conversations, and the quadrant grid all work on a whiteboard. The pair practice needs no screen at all.</div><div class="brief__row"><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: interactions happen on the projector with volunteers calling choices; private exercises (avoidance slider, BRAVING, the capstone) move to the printed capstone worksheet or sticky notes. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by Radical Candor (Section 06):</b> Declare the Core path silently: cut remaining group debriefs and the in-class videos. Never cut the STATE pair rep, the recap, or the capstone; they carry objectives 3 and 5.</div><div class="brief__row"><b>If Silence after you ask a question:</b> Count seven full seconds before rescuing; in this course especially, silence is people deciding whether to be honest. If it holds, narrow it: 'This table: Ruinous Empathy or Obnoxious Aggression?' Never answer your own question first.</div><div class="brief__row"><b>If One voice dominates, or someone starts naming real colleagues:</b> For dominators: 'Hold that; parking lot,' then invite two unheard voices. For naming names: step in immediately and kindly: 'Roles, not names, protects everyone in this room, including you.' Repeat the no-names norm; it is load-bearing.</div><div class="brief__row"><b>If Someone gets emotional or discloses a live, serious conflict:</b> Do not process it in the room. Acknowledge briefly ('That sounds genuinely hard, and I want to do it justice; find me at the break'), continue, and follow up privately. If it involves policy violations, harassment, or safety, route them to HR, not to this toolkit.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>What if the difficult conversation I need is with my own boss?</summary><p>The tools point up as well as down. STATE was built for high-stakes talks with people who outrank you: facts first, story owned tentatively, a genuine ask. Pick your timing, be extra generous in interpretation, and remember McKinsey's frame: surfacing a real problem is part of your job, not insubordination.</p></details><details class="brief__q"><summary>I've let it slide for a year. Isn't it too late and too awkward now?</summary><p>It's more awkward, and still worth it. Name the delay honestly as yours: 'I should have raised this months ago, and that's on me.' That one sentence takes the ambush out of it and models the accountability you're about to ask for.</p></details><details class="brief__q"><summary>What about the person who cries or blows up every single time?</summary><p>A predictable reaction doesn't erase the standard; it changes your preparation. Plan the pause, have your contrast statement ready, pick a private time with slack after it. If the pattern repeats across many conversations, bring in your HR partner; that's a support structure, not an escalation.</p></details><details class="brief__q"><summary>Isn't scripting a conversation manipulative?</summary><p>You script yourself, not them. The opener and contrast statement exist because adrenaline makes everyone a worse version of themselves in the first 30 seconds. Preparing to be clear and kind under stress is care, not control. The other person still gets to change your mind; that's what the Ask step is for.</p></details><details class="brief__q"><summary>What if it turns out I'm the one who's wrong?</summary><p>Then the conversation worked. You traded a resentment for information. That's why STATE ends with 'encourage testing'; if you weren't willing to be wrong, it was a lecture with a question mark.</p></details><details class="brief__q"><summary>When does this stop being a conversation and become an HR matter?</summary><p>The toolkit covers performance, behavior, and working-relationship conversations. Policy violations, anything touching protected classes, safety concerns, or formal performance processes belong with HR from the start. When in doubt, consult HR before the conversation, not after it goes wrong.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Difficult Conversations session. We're spending the session on the work conversations we avoid. Before you arrive, think of ONE conversation you've been putting off: a role, not a name, and you will never be asked to share the details. Bring it in your head; every exercise uses it. Nothing you type in the session leaves your screen.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did it happen? Three quick lines, reply whenever: 1) Did you have the conversation you planned? 2) Which tool did you reach for (SBI, STATE, contrast statement)? 3) What happened, in one sentence? Replies come to me only. If it hasn't happened yet, that's useful to know too, and this note is your nudge.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send a three-line pulse: 'Did you have the conversation? Which tool did you use? What happened?' Replies are your Kirkpatrick Level 3 evidence. At 30/60/90 days, ask managers-of-managers whether SBI language is showing up in regular 1:1s.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Difficult Conversations session. We're spending the session on the work conversations we avoid. Before you arrive, think of ONE conversation you've been putting off: a role, not a name, and you will never be asked to share the details. Bring it in your head; every exercise uses it. Nothing you type in the session leaves your screen.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:44ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Every exercise is hands-on.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>8</b> Core skills</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real conversation you'll plan</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device, and set the privacy norm that makes honesty possible.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Two ground rules for the next hour: nothing you type leaves your screen, and every example we touch uses roles, never names. That's what makes it safe to work on the real thing.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>State the two norms: everything typed stays on their screen, and all examples today use roles, never names.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p><p class="facnote__meta"><b>Watch for:</b> Anyone without a device: pair them with a neighbor now, and point them at the printed cheat sheet for the private exercises.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Everyone in? Then let me tell you what you'll walk out with.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, state the two norms, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_234744_b40b99cb-38d3-4fbe-b537-aa520266436f.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_234745_83a57ed8-54b3-4837-9af5-0d857aafadc1.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_234747_fe1bada0-4ffe-468e-93a2-f3da325bba33.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Navigating Difficult Conversations · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Say the hard thing,<br><em class="gold-text">and keep the trust.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">You already know what needs to be said. This session is about how: a shared, research-backed toolkit for the conversations you've been putting off.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Name the three conversations hiding inside any hard exchange, and spot the one that trips you up</li>
+          <li>Turn a vague concern into specific, fair feedback using the SBI model</li>
+          <li>Open a candid conversation in a way that keeps the other person safe, using STATE</li>
+          <li>Assess your own trust-building behaviors with the BRAVING inventory and pick one to strengthen</li>
+          <li>Plan one real conversation you've been avoiding, and commit to having it within seven days</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill">Conflict Resolution</span>
+        <span class="skillpill">De-escalation Techniques</span>
+        <span class="skillpill">Influencing Skills</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-cost">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in a real conversation with a date on it.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Most managers already know WHAT they need to say. Where it falls apart is HOW. In the next hour you get one shared toolkit from the best research there is, and you leave with one real conversation planned and dated. Not a hypothetical. Yours.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives in plain language, briskly.</li><li>Land hard on the fifth: this session ends with a plan for a REAL conversation, not a worksheet.</li><li>Name the sources once for credibility: Harvard's negotiation faculty, CCL, Crucial Conversations, Brené Brown, Kim Scott, McKinsey, SHRM.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Show of hands, no details: who has a conversation they've been putting off for more than a month?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Most hands go up, some sheepishly</li><li>A few brave laughs and 'more than one'</li><li>Some hands stay down out of caution</li></ul><p class="facnote__mini">Respond: Acknowledge the hands: 'That's normal, and that's the raw material for today.' If hands stay down, add: 'If yours is down, either you're current, which is rare, or it's private, which is fine. Everything today works either way.'</p></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (a planned, dated conversation).</p><p class="facnote__meta"><b>Watch for:</b> Eye-rolls at 'another soft-skills training': the objectives are the counter, every one is a concrete behavior.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's the road: eight ideas, each one building toward that conversation.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and the conversation you have been putting off is exactly that kind of dare.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: problems move at the speed they are spoken, and SBI feedback gets a concern to the person who can fix it while it is still small.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: a bold bet needs the truth early, and a manager who can open a hard conversation with STATE is how the truth arrives before the deadline does.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: a team whose manager pairs candor with care, and keeps trust through the hard conversations, is the working model other institutions get shown.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: talent stays where trust is real, and trust is built or spent in exactly the conversations this course teaches. Every hard thing said early, with SBI's fairness and STATE's care, is a problem that never grows big enough to reach the reputation.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Connect the course to the institutional vision: at a university committed to speed and bold bets, a manager's candor is infrastructure, not a personal preference.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the toolkit, one minute on why the institution cares whether you have this conversation. Chancellor Diermeier's vision is one sentence: Vanderbilt will define the great university of the 21st century, and be it. That takes speed, bold bets, and industry leadership, and all three run through teams where hard things get said early and trust survives the saying. The conversation you have been avoiding matters beyond your team.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence verbatim; give it a beat.</li><li>Walk the three focus cards, one line each, landing on each 'team translation.'</li><li>Point at the flywheel card: trust-heavy teams keep problems small, and small problems never reach the reputation. Don't linger; the evidence comes next.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So the university needs this conversation to happen. Here's the road we'll take to get you there.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: read the vision sentence, gesture at the three focuses, move on; under a minute.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Eight ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The cost of avoiding</h3><p>Why we put these conversations off, and what the silence actually costs.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The three conversations</h3><p>What Happened, Feelings, and Identity: the layers inside every hard exchange.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>SBI feedback</h3><p>Situation, Behavior, Impact: turning a vague concern into something fair and specific.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Opening with STATE</h3><p>How to start candidly without triggering defensiveness.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Trust comes first</h3><p>The BRAVING inventory: seven behaviors that make hard feedback hearable.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Radical Candor</h3><p>Care personally, challenge directly, and the three ways managers miss.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>The first 30 seconds</h3><p>Three questions and one opening line that set the whole conversation's course.</p></div></li>
+        <li data-reveal><span class="num">08</span><div><h3>When it goes sideways</h3><p>Tears, anger, silence: how to restore safety without dropping the message.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Eight ideas, four moves: why these talks are hard, what to actually say, what makes people able to hear it, and how to open, and recover, in the room.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the eight items in one breath each.</li><li>Point out the shape: why it's hard (01-02), what to say (03-04), what makes it hearable (05-06), how to open and recover (07-08).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here. If you're explaining a framework on the agenda slide, you're stealing time from its real slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the uncomfortable math of putting it off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE COST OF AVOIDING ============ -->
+  <section class="slide on-light" id="s-cost" data-count data-title="The cost">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Cost</p>
+      <h2 class="h2" data-reveal>Silence is a <em>decision</em>.</h2>
+      <div class="split">
+        <div data-reveal>
+          <p class="lead">Think of one difficult conversation you're avoiding right now. Almost everyone in this room has one. McKinsey's research on courageous conversations reframes the choice: speaking up isn't a personality trait, it's an <b>obligation to dissent</b>. Staying quiet is not neutral; it's a vote for things staying exactly as they are.</p>
+          <p class="measure muted" style="margin-top:1rem">Drag the slider to how long you've been sitting on yours, and watch what the delay is doing.</p>
+        </div>
+        <div class="temp card" id="avoid" data-reveal>
+          <p class="tag" id="avoidVal">About 2 weeks</p>
+          <p class="temp__readout" id="avoidReadout"></p>
+          <input class="slider" type="range" id="avoidSlider" min="0" max="120" value="30" aria-label="How long you have avoided the conversation">
+          <div class="slider-scale"><span>Days</span><span>Weeks</span><span>Months</span></div>
+          <p class="why" style="font-size:.85rem;margin-top:.75rem">Private. Nothing you touch here is saved or shared.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2rem">
+        <p class="quiz__q">Quick check: What usually happens to a difficult conversation you postpone?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The behavior becomes a pattern, your silence reads as approval, and the eventual conversation is bigger and harder."><span class="mark">A</span><span>It compounds: the issue grows and the talk gets harder</span></button>
+          <button class="opt" data-correct="0" data-why="Occasionally, but the research pattern is the opposite: avoided issues escalate while trust quietly erodes."><span class="mark">B</span><span>It usually resolves itself if you wait</span></button>
+          <button class="opt" data-correct="0" data-why="The discomfort you feel doesn't fade with time. The stakes rise while the discomfort stays."><span class="mark">C</span><span>It gets easier to raise later</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>McKinsey splits every hard conversation into <b>hardware</b> (the facts, examples, and standards you bring) and <b>software</b> (tone, timing, safety, and intent). Most conversations fail on software, not hardware. Managers usually have the facts; what they haven't planned is the delivery. That's exactly what the next hour builds. Want the source? Read <a href="https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/courageous-conversations-how-to-lead-with-heart" target="_blank" rel="noopener" style="text-decoration:underline">"Courageous conversations: how to lead with heart"</a>.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> The conversation you name here becomes your working example for every exercise today, and your capstone plan at the end.</p>
+          <ol class="steps">
+            <li>Write down, privately, the one conversation you're avoiding: who it's with and what it's about.</li>
+            <li>Note what avoiding it has already cost: to the work, the team, or the relationship.</li>
+            <li>Keep the note in reach. You'll use it in every section from here.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Make avoidance feel expensive instead of safe, and get each learner to privately name their real conversation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Think of the conversation you're avoiding right now. Here's the uncomfortable part: while you wait, the behavior becomes a pattern, your silence tells them it's fine, and the conversation you eventually have is bigger than the one you skipped. McKinsey's researchers put it bluntly: speaking up isn't a personality trait, it's part of the job.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Give the McKinsey reframe: courage isn't a trait, it's an obligation to dissent. Silence is a decision.</li><li>Demo the avoidance slider on the projector; drag it slowly from days to months and let the readout land.</li><li>Send them to their devices: drag it to YOUR number. Emphasize it's private.</li><li>Run the quick check, then the 3-minute solo activity: write down the conversation, who and what, on paper or notes app.</li><li>Insist they keep the note in reach; every section from here uses it.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What do we tell ourselves in the moment we decide not to raise it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'It's not the right time' / 'I'll do it after the busy season'</li><li>'Maybe it'll fix itself' / 'It's not that big a deal'</li><li>'I don't want to demotivate them' / 'They're going through a lot'</li></ul><p class="facnote__mini">Respond: Collect three or four, then name the pattern: every one of these is a kindness story we tell about a decision that isn't kind. The person never gets the chance to fix what they can't see.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The cheapest version of this conversation is the one you have earliest. Every week of delay raises the price.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check answered correctly by the room; every learner has visibly written something down.</p><p class="facnote__meta"><b>Watch for:</b> Learners writing nothing because 'mine's too messy.' Reframe: messy is exactly what the toolkit is for; start with the least messy one you've got.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So why do we still avoid them? Because there's more happening in a hard conversation than the topic. Three things, actually.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip the slider demo on the projector; straight to their devices, then the written note. The note is non-negotiable.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>A difficult conversation avoided does not disappear. It compounds.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the core idea before the toolkit starts.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;A difficult conversation avoided does not disappear. It compounds.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's the model that explains why they feel so hard.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 THE THREE CONVERSATIONS ============ -->
+  <section class="slide on-dark" id="s-three" data-count data-title="Three conversations">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Model</p>
+      <h2 class="h2" data-reveal>Every hard talk is <em>three</em> talks.</h2>
+      <p class="lead" data-reveal>The Harvard Negotiation Project found that inside every difficult conversation, three conversations run at once. "Just stick to the facts" fails because the facts are only one of them.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Conversation 1</span>
+          <h3>What Happened</h3>
+          <p class="muted">The battle over the facts: who said what, who's right, who's to blame. Each of you holds a different, sincere story about the same events.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Conversation 2</span>
+          <h3>Feelings</h3>
+          <p class="muted">The emotions underneath: frustration, hurt, anxiety. Unspoken, they leak into tone and word choice anyway. Named, they lose their grip.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Conversation 3</span>
+          <h3>Identity</h3>
+          <p class="muted">The quiet one you have with yourself: "What does this say about me?" Am I competent? Am I a good manager? This one drives the avoidance.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/xIJapLzlYw4" data-yttitle="How to Have Difficult Conversations, Simon Sinek">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Simon Sinek on how to have difficult conversations</span>
+          <span class="yt__src">Simon Sinek · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=xIJapLzlYw4" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> practical and squarely on today's topic. Play the first five minutes in class; the model on this slide comes from the book <em>Difficult Conversations</em> (Stone, Patton &amp; Heen), the deeper read.</p>
+      </div>
+
+      <div class="quiz" id="threeTrainer" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Name that conversation</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> in the room, these three layers blur together. Learning to tell them apart is what lets you respond to the right one.</p>
+        <p class="quiz__progress" id="threeProgress"></p>
+        <p class="quiz__q" id="threeQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="threeOptions" role="group" aria-label="Conversation type choices"></div>
+        <p class="quiz__feedback" id="threeFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="threeNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="threeResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The escape from the What Happened battle is the <b>third story</b>: the version a neutral observer would tell, where both views are real. "I think we see the deadline differently, and I'd like to understand your side" opens a door. "You missed the deadline" closes one. And when a facts argument keeps going in circles, it's usually an identity argument in disguise. The circle is the tell.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> Hearing which conversation trips up other managers normalizes yours, and the pattern in the room is always the same: Identity.</p>
+          <ol class="steps">
+            <li>In pairs or threes, no names and no details: share which of the three conversations trips you up most.</li>
+            <li>Ask each other: what does that conversation sound like in your head?</li>
+            <li>One line back to the room per group: which conversation, and one word why.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Label your avoided conversation from Section 01: which of the three is loudest, and what is it saying?</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the session's diagnostic lens: every hard exchange runs a facts, a feelings, and an identity conversation at once.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The Harvard Negotiation Project studied thousands of hard conversations and found the same three running underneath every one. There's the What Happened conversation, the battle over facts. There's the Feelings conversation, the emotion underneath that leaks into your tone whether you name it or not. And there's the Identity conversation, the one you have with yourself: what does raising this say about me? That third one is usually why the conversation isn't happening.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the three cards briskly: What Happened, Feelings, Identity. Spend your emphasis on Identity; it powers avoidance.</li><li>Play the first ~5 minutes of the Simon Sinek video if on the Full path; preview your stop point in advance.</li><li>Send them to 'Name that conversation' on their devices: five lines, label each.</li><li>Watch the room's scores; item 4 (hurt wearing a fact costume) catches the most people. Call that out.</li><li>Run the group activity: pairs share which conversation trips them up most, one line back per pair.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why does 'just stick to the facts' fail as advice?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Because the other person has different facts</li><li>Because feelings come out anyway, in tone</li><li>Because the real fight isn't about the facts</li></ul><p class="facnote__mini">Respond: All three are right. Facts are one conversation out of three; the advice ignores two-thirds of what's happening. And when a facts argument loops in circles, it's almost always an identity argument in disguise.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">You can't respond to the right conversation until you can tell which one you're in. That's the skill you just practiced.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the labeler for most of the room; pairs can name their trip-wire conversation.</p><p class="facnote__meta"><b>Watch for:</b> The word 'Identity' getting read as jargon. Translate it every time: it's the 'what does this say about me?' voice.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the toolkit turns practical: how do you say the hard content itself? Three letters: SBI.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cut the video (assign as follow-up) and the pair share; keep the teach and the labeler.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 SBI ============ -->
+  <section class="slide on-light" id="s-sbi" data-count data-title="SBI feedback">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · SBI Feedback</p>
+      <h2 class="h2" data-reveal>Specific beats <em>vague</em>.</h2>
+      <p class="lead" data-reveal style="margin-bottom:2rem">"You're always late" starts a fight. The Center for Creative Leadership's SBI model turns the same concern into something a person can actually hear and act on. Hover or tap each part to find it in a real example.</p>
+      <div class="split" id="sbiAnatomy">
+        <div class="prompt-box" data-reveal>
+          <span class="ppart" data-part="situation">In Monday's client review,</span>
+          <span class="ppart" data-part="behavior">you presented the draft numbers before we'd agreed on the final version,</span>
+          <span class="ppart" data-part="impact">and the client saw two different totals. It cost us credibility in the room, and I spent the afternoon repairing it.</span>
+        </div>
+        <div class="pkey" data-reveal>
+          <button data-target="situation"><span class="sw" style="background:#B3C9CD"></span><span><b>Situation</b><p class="muted">Anchor it in time and place. "Always" and "never" are accusations; Monday is a fact.</p></span></button>
+          <button data-target="behavior"><span class="sw" style="background:#CFAE70"></span><span><b>Behavior</b><p class="muted">What a camera would have seen. Not "you were careless"; what they actually did.</p></span></button>
+          <button data-target="impact"><span class="sw" style="background:#8BA18E"></span><span><b>Impact</b><p class="muted">The concrete effect on the work, the team, or you. This is why it matters, without a verdict.</p></span></button>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2rem">
+        <p class="quiz__q">Quick check: Which of these is a Behavior statement, the way SBI means it?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="A camera could have recorded it. That's the test: observable, specific, no verdict attached."><span class="mark">A</span><span>"You arrived twenty minutes after the meeting started"</span></button>
+          <button class="opt" data-correct="0" data-why="That's a judgment about character, not an observation. It invites a debate about who they are."><span class="mark">B</span><span>"You're unreliable"</span></button>
+          <button class="opt" data-correct="0" data-why="That's mind-reading their motive. You can observe actions; you can only guess at intent."><span class="mark">C</span><span>"You clearly don't respect the team's time"</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two upgrades once SBI is habit. First, <b>SBI-I</b>: after the impact, ask about <b>intent</b>: "What was going on for you?" It replaces your guess about their motive with their answer. Second, ATD's three Rs: feedback is <b>reinforcing</b> (do more of this), <b>redirecting</b> (change this), or <b>reprimanding</b> (this crossed a line). Most managers underuse the first and blur the last two. Prefer video to prose? <a href="https://www.youtube.com/watch?v=Q27eQvLZCzk" target="_blank" rel="noopener" style="text-decoration:underline">SBI with worked examples</a> (8 min).</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> Your avoided conversation almost certainly contains a vague accusation. This turns it into something hearable before you're in the room.</p>
+          <ol class="steps">
+            <li>Take the conversation you named in Section 01 and write the concern as you'd blurt it ("they keep missing deadlines").</li>
+            <li>Rewrite it as SBI: one specific situation, the observable behavior, the concrete impact.</li>
+            <li>Read both versions. Notice which one you could actually say to their face.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 7 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Replace vague accusation with the Situation-Behavior-Impact structure, and install the camera test for behavior.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;'You're always late' starts a fight. Not because it's too honest, but because it's not honest enough: no time, no place, no specifics, just a verdict. The Center for Creative Leadership's fix has three parts. Situation: when and where, so it's a fact, not a pattern-accusation. Behavior: what a camera would have seen. Impact: what it cost, concretely. Watch what happens to the same complaint when it goes through that machine.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the anatomy on the projector: hover Situation, then Behavior, then Impact, reading each highlighted piece.</li><li>Teach the camera test out loud: if a camera couldn't have recorded it, it's a judgment, not a behavior.</li><li>Run the quick check; option C ('you clearly don't respect the team's time') is the useful wrong answer, it's a mind-read.</li><li>Send them to the solo activity: rewrite their own avoided concern as SBI, next to their note from Section 01.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's the actual difference between 'you're unreliable' and 'the report went out with last quarter's numbers'?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>One is opinion, one is fact</li><li>You can argue with a label but not with the numbers</li><li>One attacks the person, one describes the work</li></ul><p class="facnote__mini">Respond: Exactly: one is contestable and one is checkable. People defend themselves against verdicts; they solve problems. SBI keeps the problem the problem.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The camera test is the whole slide: if a camera couldn't have seen it, don't say it as if it's a fact.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; learners have a written SBI version of their own concern.</p><p class="facnote__meta"><b>Watch for:</b> SBI statements that smuggle the verdict back in ('...and it was really disappointing'). Flag it kindly: impact is a cost, not a grade.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Structure alone isn't enough; you can deliver a perfect SBI and still watch it land like an attack. Let's feel that difference.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: anatomy plus quick check, and the rewrite happens inside the Lab next slide instead of separately.</p></aside>
+  </section>
+
+  <!-- ============ 7 · FEEDBACK LAB ============ -->
+  <section class="slide on-cream" id="s-lab" data-title="Feedback Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Practice · Feedback Lab</p>
+      <h2 class="h2" data-reveal>Build one that <em>lands</em>.</h2>
+      <p class="lead" data-reveal>Your task: a teammate has come to your last two planning meetings unprepared, and you need to say so. Choose one option for each part of the feedback, then deliver it and see how it lands.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> feeling the reaction change as each part sharpens is the fastest way to internalize SBI before you write your own. The graded reactions are illustrative, not a simulation of any real person.</p>
+      <div class="lab" id="feedbackLab" data-reveal>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn btn--dark" id="labRun" disabled>Deliver the feedback</button>
+          <span class="quiz__progress" id="labStatus">Choose all three parts to deliver</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Let learners feel how the reaction changes as each SBI part sharpens; the reaction is the teacher.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Same concern, three ways to say each part. Your job: assemble the feedback and watch how it lands. I'll go first, and I'm going to do it badly on purpose, because you've all heard this version.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the scenario: a teammate came unprepared to the last two planning meetings, and you're saying so.</li><li>On the projector, deliberately build the WORST version (A-A-A) and deliver it. Let the defensive reaction land on the room.</li><li>Send them to their devices: build and deliver their own, iterate until it lands.</li><li>Circulate. Ask people showing a mid-tier result which part is costing them.</li><li>Pull the room back and ask who got the strong reaction, and what they changed to get it.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;When I delivered the worst version, what did the reply defend: the work, or the person's character?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Their character, they brought up staying late</li><li>They never addressed the actual problem</li><li>They counter-attacked</li></ul><p class="facnote__mini">Respond: Right. Attack character, and character is what gets defended. The status doc never came up. Vague feedback isn't gentler; it just changes the subject from the problem to the person.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The reaction you get is diagnostic: defending the work means your feedback was about the work. Defending themselves means it wasn't.</p></div><p class="facnote__meta"><b>Validate:</b> Most of the room reaches the strong (8-9/9) outcome within the time box.</p><p class="facnote__meta"><b>Watch for:</b> Option-B-everywhere players getting a mediocre result and shrugging: push them to find WHICH slot is weakest, that's the diagnostic habit.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;You now have the content. The next tool is the delivery: how you open your mouth without raising their shields.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip your projector demo of the worst run; one sentence of framing, straight to devices.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 04 STATE ============ -->
+  <section class="slide on-dark" id="s-state" data-count data-title="Opening with STATE">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Opening</p>
+      <h2 class="h2" data-reveal>Candid, <em>not combative</em>.</h2>
+      <p class="lead" data-reveal style="margin-bottom:2rem">SBI gives you the content. The Crucial Conversations STATE model gives you the delivery: a way to say something honest while keeping the other person safe enough to hear it. Hover or tap each move to see it in the opener.</p>
+      <div class="split" id="stateAnatomy">
+        <div class="prompt-box" data-reveal>
+          <span class="ppart" data-part="share">The last two releases went out four days after the date we committed to.</span>
+          <span class="ppart" data-part="tell">I'm starting to worry that we're overcommitting, and that it's putting us in a bad spot with the client.</span>
+          <span class="ppart" data-part="tentative">I might be missing part of the picture.</span>
+          <span class="ppart" data-part="ask">How does it look from where you sit?</span>
+          <span class="ppart" data-part="encourage">If you see it differently, I genuinely want to hear it.</span>
+        </div>
+        <div class="pkey" data-reveal>
+          <button data-target="share"><span class="sw" style="background:#B3C9CD"></span><span><b>Share the facts</b><p class="muted">Start with what's least controversial: the observable record.</p></span></button>
+          <button data-target="tell"><span class="sw" style="background:#8BA18E"></span><span><b>Tell your story</b><p class="muted">Your interpretation, owned as yours: "I'm starting to think…"</p></span></button>
+          <button data-target="tentative"><span class="sw" style="background:#ECB748"></span><span><b>Talk tentatively</b><p class="muted">Hold your story as a story, not a verdict. Confidence in facts, humility in interpretation.</p></span></button>
+          <button data-target="ask"><span class="sw" style="background:#CFAE70"></span><span><b>Ask for their path</b><p class="muted">A real question, asked because you want the answer.</p></span></button>
+          <button data-target="encourage"><span class="sw" style="background:#B49248"></span><span><b>Encourage testing</b><p class="muted">Invite disagreement out loud. It's the strongest safety signal there is.</p></span></button>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/swrnRLvspDA" data-yttitle="Crucial Conversations preview">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Crucial Conversations in 6 minutes</span>
+          <span class="yt__src">Crucial Learning · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=swrnRLvspDA" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> it shows a high-stakes talk going wrong and then right, using exactly the moves above.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Why does STATE open with the facts instead of your conclusion?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Facts are the least controversial starting point. Leading with your verdict makes them defend; leading with the record lets you both look at the same thing."><span class="mark">A</span><span>Facts are hardest to argue with, so the talk starts on shared ground</span></button>
+          <button class="opt" data-correct="0" data-why="Facts aren't a softener, they're a foundation. The point is shared ground, not cushioning."><span class="mark">B</span><span>It softens the blow before the real accusation</span></button>
+          <button class="opt" data-correct="0" data-why="STATE isn't about winning. Conclusion-first is exactly what triggers defensiveness."><span class="mark">C</span><span>It builds a stronger case so you win the argument</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Pair with a neighbor. One of you reads the opener on this slide aloud; the other listens for one thing only: did it feel safe, or did it feel like an accusation? Then swap. The listener's ear, not the speaker's intent, is the measure. You'll use the same test on your own opener in the capstone.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> Saying a STATE opener out loud once, to a real face, is worth ten silent rehearsals. This is the practice rep the research says drives behavior change.</p>
+          <ol class="steps">
+            <li>In pairs: take the SBI statement you wrote in Section 03 and open it with STATE, out loud, to your partner.</li>
+            <li>Partner gives exactly one line of feedback: "that felt safe" or "that felt like an accusation," and why.</li>
+            <li>Swap roles. Then each of you adjusts one word or phrase based on what you heard.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Say your opener out loud to the mirror or record it on your phone, then listen as the receiver. Same test: safe, or accusation?</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give learners a safe-opening pattern (STATE) and one real out-loud rep of their own opener.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;SBI is what you say. STATE is how you say it without raising their shields. Start with facts, because facts are the least controversial thing you own. Then your story, held as a story: 'I'm starting to think,' not 'clearly you.' Then a real question. The magic words are the tentative ones; they're not weakness, they're accuracy. You're sure about the dates; you're guessing about the why.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the anatomy: Share facts, Tell your story, Talk tentatively, Ask, Encourage testing. Read the full opener aloud once, straight through.</li><li>Play the Crucial Conversations 6-minute preview on the Full path.</li><li>Run the quick check on why facts come first.</li><li>Then the main event: the pair rep. Each person opens THEIR conversation (from their note) out loud; partner answers with exactly one line: 'felt safe' or 'felt like an accusation,' and why.</li><li>Time it tightly: 2 minutes each plus swap.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Listen to the difference: 'You don't care about deadlines' versus 'I'm starting to worry we're overcommitting.' What changed?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The second one owns it as your view</li><li>First one is about them, second is about the situation</li><li>The second leaves room to be wrong</li></ul><p class="facnote__mini">Respond: All of that. The first sentence is a verdict they must overturn; the second is a hypothesis they can add to. Same concern, opposite conversations.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Candor is measured at the listener's ear. The pair rep you just did is the only reliable test of your opener; the mirror lies to you.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has said their opener out loud once and received the one-line verdict.</p><p class="facnote__meta"><b>Watch for:</b> Pairs slipping into discussing the situation instead of practicing the opener. Redirect: 'The content isn't the exercise; the first four sentences are.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;But here's the catch: the best opener in the world lands on deaf ears if the trust account is empty. That's the next stop.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cut the video; keep the anatomy, the check, and ONE round of the pair rep (one partner speaks, not both) if minutes allow, else assign the mirror version as homework.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 05 BRAVING / TRUST ============ -->
+  <section class="slide on-light" id="s-braving" data-count data-title="Trust first">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Trust</p>
+      <h2 class="h2" data-reveal>Feedback lands on <em>trust</em>.</h2>
+      <p class="lead" data-reveal>Brené Brown's research says trust isn't one big thing; it's seven small behaviors, built or broken in tiny moments. Simon Sinek adds the leadership frame: people can only hear hard feedback inside a circle of safety. Rate yourself, privately, on each behavior below.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> your lowest score is usually the reason your hardest conversation feels risky. Strengthen the behavior and the conversation gets easier before you say a word. Nothing here is saved or shared.</p>
+
+      <div class="braving" id="braving" data-reveal></div>
+      <div class="lab__outcome" id="bravingOut" hidden aria-live="polite" style="margin-top:1.5rem"></div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The inventory works in both directions: it's also the checklist for how trust gets <em>broken</em>. Sharing what wasn't yours to share (Vault), promising what you can't deliver (Reliability), judging someone for asking for help (Nonjudgment). Before a hard conversation, ask: which of these have I banked with this person, and which have I broken? Go to the source: <a href="https://www.youtube.com/watch?v=OqB5CEkPlI4" target="_blank" rel="noopener" style="text-decoration:underline">Brené Brown, "The Anatomy of Trust"</a> (9 min) and <a href="https://www.youtube.com/watch?v=lmyZMtPVodo" target="_blank" rel="noopener" style="text-decoration:underline">Sinek, "Why good leaders make you feel safe"</a> (12 min).</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> Trust talk gets abstract fast. Anchoring it to one behavior makes it a to-do, not a virtue.</p>
+          <ol class="steps">
+            <li>Pair up. Without sharing scores, each person names the ONE behavior they'd strengthen this quarter.</li>
+            <li>Ask each other: what would strengthening it look like this week, concretely?</li>
+            <li>Around the room, popcorn style: behaviors only, no stories. Listen for the room's pattern.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Circle your lowest score and write one sentence: the first small thing you'll do about it this week.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Shift trust from an abstraction to seven rateable behaviors, and have each learner privately find their growth edge.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Why does the same sentence land fine from one manager and like a knife from another? The difference isn't the sentence; it's the account it's drawn on. Brené Brown's research breaks trust into seven behaviors, small, boring, daily ones. Rate yourself honestly on each; nobody sees your numbers. Your lowest score is probably the reason your hardest conversation feels dangerous.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame with Sinek: people hear hard feedback only inside a circle of safety, and the circle is built before the conversation, not during.</li><li>Introduce BRAVING as Brené Brown's anatomy of trust: seven behaviors, built or broken in small moments.</li><li>Send them to the scorecard: rate all seven, privately. Emphasize nobody will share numbers.</li><li>When the growth edge appears, give a quiet minute to read their behavior's suggestion.</li><li>Run the pair activity: name ONE behavior to strengthen this quarter, no scores, no stories, then popcorn behaviors to the room and name the pattern you hear.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Without sharing scores: which of the seven behaviors, when a MANAGER breaks it, kills trust fastest?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Vault, they repeat what you told them in confidence</li><li>Reliability, they promise and don't deliver</li><li>Nonjudgment, asking for help gets held against you</li></ul><p class="facnote__mini">Respond: Vault usually wins the vote, and notice why: one leak reclassifies every future conversation as unsafe. Whatever the room picks, the lesson is the same: trust breaks by behavior, so it rebuilds by behavior too.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Trust isn't a vibe, it's seven behaviors, which means it's trainable. Pick one; that's your quarter.</p></div><p class="facnote__meta"><b>Validate:</b> All seven rows rated (the tool won't show a result otherwise); each learner can name their one behavior.</p><p class="facnote__meta"><b>Watch for:</b> This is where someone may go quiet or emotional; trust inventories touch real relationships. Don't spotlight anyone; the exercise is private by design.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;With trust as the ground, here's the map for the feedback itself: two axes, four quadrants, one worth aiming at.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: scorecard only, skip the pair share; assign both videos (Anatomy of Trust, Sinek) as the week's watch list.</p></aside>
+  </section>
+
+  <!-- ============ 10 · 06 RADICAL CANDOR ============ -->
+  <section class="slide on-dark" id="s-candor" data-count data-title="Radical Candor">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Radical Candor</p>
+      <h2 class="h2" data-reveal>Care personally.<br><em>Challenge directly.</em></h2>
+      <p class="lead" data-reveal>Kim Scott's two axes sort every piece of feedback a manager gives. Do both and you get Radical Candor. Drop one and you land in a failure quadrant, and each has a name.</p>
+
+      <div class="quad" data-reveal role="img" aria-label="Radical Candor two-by-two grid: care personally versus challenge directly">
+        <div class="quad__axis quad__axis--y">Care personally ↑</div>
+        <div class="quad__grid">
+          <div class="quad__cell quad__cell--bad"><h4>Ruinous Empathy</h4><p>Care without challenge. You spare their feelings today and their career pays tomorrow. The most common manager failure.</p></div>
+          <div class="quad__cell quad__cell--good"><h4>Radical Candor</h4><p>Care and challenge together. "I'm telling you because I want you to succeed." Kind and clear.</p></div>
+          <div class="quad__cell quad__cell--bad"><h4>Manipulative Insincerity</h4><p>Neither care nor challenge. Praise to the face, complaints behind the back. Poison for trust.</p></div>
+          <div class="quad__cell quad__cell--bad"><h4>Obnoxious Aggression</h4><p>Challenge without care. Technically honest, delivered like a verdict, often in public. It's heard as an attack.</p></div>
+        </div>
+        <div class="quad__axis quad__axis--x">Challenge directly →</div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/YLBDkz0TwLM" data-yttitle="Radical Candor in 6 minutes">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Radical Candor in 6 minutes</span>
+          <span class="yt__src">Kim Scott · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=YLBDkz0TwLM" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> Scott tells the story the whole framework grew from, in the time it takes to pour a coffee.</p>
+      </div>
+
+      <div class="quiz" id="candorSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Sort the quadrant</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you'll never label your own feedback in the moment unless you've practiced labeling someone else's first.</p>
+        <p class="quiz__progress" id="candorProgress"></p>
+        <p class="quiz__q" id="candorQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="candorOptions" role="group" aria-label="Quadrant choices"></div>
+        <p class="quiz__feedback" id="candorFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="candorNext" style="visibility:hidden">Next scenario</button>
+        </div>
+        <div id="candorResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Scott's sharpest line: candor is measured at the listener's ear, not the speaker's mouth. "I was just being honest" is not a defense if it landed as an attack. And the fix for Ruinous Empathy isn't harshness; it's remembering that withholding the feedback is the unkind option. The kindest thing you can do for someone's career is tell them the truth while there's still time to act on it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> Knowing your default failure quadrant under stress is the single most useful piece of self-knowledge this framework offers.</p>
+          <ol class="steps">
+            <li>Private vote, hands or chat: under stress, do you drift toward Ruinous Empathy (soften too much) or Obnoxious Aggression (push too hard)?</li>
+            <li>In pairs: what triggers your drift? Deadline pressure, seniority of the other person, being tired?</li>
+            <li>Trade one counter-move each: the thing you do to pull yourself back to candor.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Name your drift and its trigger, then write the counter-move on the same note as your conversation from Section 01.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give learners the two-axis map for feedback and the self-knowledge of their own failure quadrant under stress.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Kim Scott's grid has two axes: do you care personally, and do you challenge directly. Do both and you get Radical Candor. Care without challenge is Ruinous Empathy, the most common manager failure, where your comfort gets protected and their career pays. Challenge without care is Obnoxious Aggression, technically true and completely unhearable. Neither is Manipulative Insincerity, and that one's poison. Every piece of feedback you've ever given lives somewhere on this grid.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the grid from the slide: the two axes first, then the failure quadrants by name. Spend your emphasis on Ruinous Empathy; it's the room's most common drift.</li><li>Play the 6-minute Kim Scott video on the Full path (or trim to the story of getting the 'um' feedback).</li><li>Send them to the quadrant sort: four scenarios, label each.</li><li>Run the group activity: private vote on their stress-drift (soften vs. push), pairs name the trigger, trade one counter-move.</li><li>Close with Scott's line: candor is measured at the listener's ear.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Private vote, then hands: under stress, which way do YOU drift, soften too much, or push too hard?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A softener majority in most rooms</li><li>A few honest pushers</li><li>Some 'depends who it is', seniority changes the drift</li></ul><p class="facnote__mini">Respond: The 'depends who it is' answer is gold: name it for the room. Most of us soften upward and push downward, which means the axis you're missing changes with the org chart. Your counter-move has to know that.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The grid's punchline: withholding the feedback is the unkind option. Ruinous Empathy feels like kindness and costs them their growth.</p></div><p class="facnote__meta"><b>Validate:</b> 3+ of 4 on the sort for most of the room; each learner can name their drift and one counter-move.</p><p class="facnote__meta"><b>Watch for:</b> Someone proudly claiming Obnoxious Aggression as 'just being honest.' Use the axis language, not judgment: honesty was never the missing axis; care was.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;You know the what, the how, and the ground it lands on. Now compress it into the moment that decides everything: the first 30 seconds.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cut the video and shrink the group activity to the private vote plus one volunteered counter-move.</p></aside>
+  </section>
+
+  <!-- ============ 11 · 07 THE FIRST 30 SECONDS ============ -->
+  <section class="slide on-cream" id="s-open" data-count data-title="First 30 seconds">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · The Opening Line</p>
+      <h2 class="h2" data-reveal>The first 30 seconds set the <em>course</em>.</h2>
+      <p class="lead" data-reveal>SHRM's field guidance gives the conversation its spine: three questions, in order. Answer them before you walk in and the talk has a direction. Skip them and it becomes a feelings spiral with no exit.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Question 1</span>
+          <h3>Where are we now?</h3>
+          <p class="muted">The current situation, in SBI terms: what's happening, observably, and what it's costing. This is your opening line's raw material.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Question 2</span>
+          <h3>Where are we going?</h3>
+          <p class="muted">The outcome you both want: the standard met, the relationship intact. If you can't name it, you're not ready to start.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Question 3</span>
+          <h3>How do we get there?</h3>
+          <p class="muted">Built together, not delivered. The other person owns the plan they helped write. Yours alone, they comply at best.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The opener, assembled</span>
+        <p style="margin:.5rem 0 0" class="measure">"I want to talk about <em>[the topic]</em>, because I want <em>[the shared outcome]</em>. Here's what I've noticed: <em>[situation, behavior, impact]</em>. I might not have the full picture. How do you see it?"</p>
+        <p class="why" style="margin-top:.6rem">Purpose first, facts second, their view invited before yours hardens. Every framework today is inside that one paragraph.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2rem">
+        <p class="quiz__q">Quick check: Which first sentence gives the conversation the best chance?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Topic, shared purpose, and an invitation. It opens the three conversations gently instead of detonating them."><span class="mark">A</span><span>"I'd like to talk about the deadline, because I want this project to work for both of us. I think we may see it differently."</span></button>
+          <button class="opt" data-correct="0" data-why="Four words that trigger every alarm the other person has, and you haven't even named the topic."><span class="mark">B</span><span>"We need to talk."</span></button>
+          <button class="opt" data-correct="0" data-why="A verdict about their character before they've said a word. The conversation is now about defending, not solving."><span class="mark">C</span><span>"You have a problem with deadlines."</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two delivery details that outweigh any script. <b>Timing:</b> hard conversations go better scheduled and private, never ambushed and never in front of an audience. "Do you have 20 minutes tomorrow morning? I want to talk through the project timeline" is respect in one sentence. <b>Feedforward:</b> McKinsey's research favors spending most of the talk on the future ("what would make the next one land on time?") over relitigating the past. The past gets two minutes; the future gets the rest.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> An opener written now, calm, is what your mouth reaches for later, stressed. This is the single highest-leverage artifact of the session.</p>
+          <ol class="steps">
+            <li>Take the assembled opener above and fill in the brackets for YOUR conversation from Section 01.</li>
+            <li>Answer SHRM's three questions in one line each: where are we, where are we going, how do we get there.</li>
+            <li>Read your opener out loud once, quietly. If a word makes you wince, change it now.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Assemble everything into one rehearsable opener, structured by SHRM's three questions.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;SHRM's field guidance boils the whole conversation down to three questions: where are we now, where are we going, and how do we get there. Answer them before you walk in and you have a spine. Skip them and you have a feelings spiral with no exit. Look at the opener on the card: purpose first, facts second, their view invited before yours hardens. Every framework from today is inside that one paragraph.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the three questions as the conversation's spine: where are we, where are we going, how do we get there.</li><li>Read the assembled opener from the gold card aloud, slowly. Point out each framework inside it.</li><li>Run the quick check ('We need to talk' is the beloved wrong answer; let the room laugh at it).</li><li>Solo activity: fill the opener's brackets for THEIR conversation and answer the three questions in a line each.</li><li>Push the timing point: scheduled and private beats ambushed and public, every time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why does 'We need to talk' fail before the conversation even starts?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>It triggers panic, they imagine the worst</li><li>No topic, no purpose, just threat</li><li>It gives them hours to build defenses</li></ul><p class="facnote__mini">Respond: All three. Four words that maximize dread and minimize information. The fix costs one sentence: name the topic and the shared purpose in the same breath.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">An opener written now, calm, is what your mouth reaches for later, stressed. That's why we write it in the room.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; each learner has a written, bracket-filled opener.</p><p class="facnote__meta"><b>Watch for:</b> Perfectionism stalls: learners polishing the opener instead of finishing it. A B-plus opener said out loud beats an A-plus one still in drafts.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One more tool. Because even the perfect opener sometimes meets tears, anger, or dead silence.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: teach the card and the check; the bracket-filling merges into the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · 08 WHEN IT GOES SIDEWAYS ============ -->
+  <section class="slide on-dark" id="s-sideways" data-count data-title="When it goes sideways">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 08 · Recovery</p>
+      <h2 class="h2" data-reveal>Plan for the <em>reaction</em>.</h2>
+      <p class="lead" data-reveal>Even a perfect opener can meet tears, anger, or silence. None of those mean you were wrong to raise it. They mean the other person stopped feeling safe, and safety is the thing you restore first, before any more content.</p>
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Tears / distress</span>
+          <h3>Pause. Don't retract.</h3>
+          <p style="color:rgba(255,255,255,.7)">Acknowledge the emotion, offer a moment or a break, and stay kind. But don't take the message back to stop the tears; that trades their growth for your comfort.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Anger / defensiveness</span>
+          <h3>Contrast, then continue.</h3>
+          <p style="color:rgba(255,255,255,.7)">Use a contrast statement: "I don't mean you're failing at this job. I do mean these two deadlines slipped and we need a plan." Kill the wrong conclusion, keep the real one.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Silence</span>
+          <h3>Ask, then wait.</h3>
+          <p style="color:rgba(255,255,255,.7)">Ask a real question and count to six in your head. Silence is often processing, not stonewalling. Whoever fills the silence first learns nothing.</p>
+        </div>
+      </div>
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">The permission slip</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">If safety collapses, you can pause the conversation without dropping the standard: "Let's take a break and pick this up tomorrow at 10." A paused conversation resumed is a success. An abandoned one is Ruinous Empathy with extra steps.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Then it's their turn · Listen like it matters</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">You asked how they see it. What you do with the answer decides whether they ever answer honestly again. Three moves:</p>
+        <ol style="margin:.75rem 0 0;padding-left:1.2rem;color:rgba(255,255,255,.8);display:grid;gap:.45rem">
+          <li><b style="color:var(--vu-gold-flat)">Paraphrase before you reply.</b> "So what I'm hearing is…" Prove you heard it before you answer it.</li>
+          <li><b style="color:var(--vu-gold-flat)">Ask one real follow-up.</b> "What else should I know?" The second answer is usually the real one.</li>
+          <li><b style="color:var(--vu-gold-flat)">Acknowledge before you counter.</b> You don't have to agree to say "that makes sense from where you sit." It costs nothing and buys the rest of the conversation.</li>
+        </ol>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: They snap back, "So you're saying I'm bad at my job?" Best response?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="That's a contrast statement: it names what you don't mean, restores safety, and restates the real message without retreating from it."><span class="mark">A</span><span>"No. I don't think that. I do think these two deadlines slipped, and I want us to fix what's causing it."</span></button>
+          <button class="opt" data-correct="0" data-why="Retracting the message to end the discomfort is Ruinous Empathy. The problem survives; only the conversation dies."><span class="mark">B</span><span>"No, no, forget it, it's not a big deal."</span></button>
+          <button class="opt" data-correct="0" data-why="Escalating meets defensiveness with aggression. Now you're both defending identities and nobody's solving anything."><span class="mark">C</span><span>"Well, if the shoe fits."</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Simon Sinek's framing is the one to carry out of the room: your job in the hard moment is to keep the person inside the circle of safety while the problem stands outside it. "You and me against the problem" survives tears, anger, and silence. "Me against you" survives nothing. And the whole meeting has an arc; ATD's CLEAR model names it: <b>Connect</b> (purpose first), <b>Listen</b> (the moves above), <b>Explain</b> (your SBI), <b>Act</b> (build the plan together), <b>Review</b> (agree what happens next and when you'll check in). Most managers over-invest in Explain and skip Listen and Review.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> You can't improvise a contrast statement mid-adrenaline, and you can't fake listening. Both get one rep here, while it's cheap.</p>
+          <ol class="steps">
+            <li>For your Section 01 conversation, predict the most likely hard reaction: tears, anger, or silence.</li>
+            <li>Draft your contrast statement: "I don't mean ___. I do mean ___." Say it to a partner: safety, or lawyer's disclaimer?</li>
+            <li>Now the listening rep: partner talks for 60 seconds about a mild work frustration of their own.</li>
+            <li>You may respond ONLY with a paraphrase and one follow-up question. No advice, no rebuttal. Then swap.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Draft the contrast statement, then write the paraphrase opener you'll use: "So what I'm hearing is ___." You now have an opener, a recovery line, and a listening plan.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Pre-load the three recovery moves so a hard reaction doesn't end the conversation, and install the listening turn that follows your ask.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Your opener can be perfect and still meet tears, anger, or silence. None of those mean you were wrong to raise it. They mean safety dropped, and safety is what you restore first. And when they finally answer your question, the conversation flips: it's your turn to listen. What you do in that turn, paraphrase, follow up, acknowledge, decides whether they're ever honest with you again.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three reaction cards: tears (pause, don't retract), anger (contrast statement), silence (ask, then count to six).</li><li>Demo a contrast statement out loud with real delivery: 'I don't mean you're failing. I do mean these two deadlines slipped and we need a plan.'</li><li>Read the permission slip card: pausing a conversation is not losing it.</li><li>Then the listening turn: teach the three moves on the gold card (paraphrase first, one real follow-up, acknowledge before countering).</li><li>Run the quick check, then the pair drill: contrast statement plus the 60-second listen-only rep (paraphrase and one question, no advice).</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why is 'forget it, it's not a big deal' the worst possible response to someone getting upset?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The problem survives, only the conversation dies</li><li>It teaches them that emotion ends feedback</li><li>You'll be back here in a month, angrier</li></ul><p class="facnote__mini">Respond: All true, and there's a quieter cost: it converts their trust in your word. If this wasn't a big deal, what else have you said that you didn't mean?</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A paused conversation resumed is a success, and the listening turn is where trust gets banked for the next one.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; each learner has a drafted contrast statement, and the pair drill's listeners stayed inside paraphrase-plus-question.</p><p class="facnote__meta"><b>Watch for:</b> Contrast statements that retract the message, and 'listeners' who slide into advice within ten seconds. Name both kindly; they're the two default failures.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the toolkit, all of it. Let's see what stuck.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: teach the cards, the listening card, and the check; the contrast statement gets drafted inside the capstone, and the listen drill becomes the week's homework with their accountability partner.</p></aside>
+  </section>
+
+  <!-- ============ 13 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per tool. This isn't a grade; it's a check on what's loaded before you build the plan that matters.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps one-to-one onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing ahead to finish first. Frame it as a mirror, not a race; wrong answers here are free, wrong answers in the real conversation aren't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the reason we're all here. Everything you've written today converges on one page.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 14 · MY CONVERSATION PLAN (capstone) ============ -->
+  <section class="slide on-cream" id="s-plan" data-title="My conversation plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My conversation plan</p>
+      <h2 class="h2" data-reveal>Now plan the <em>real one</em>.</h2>
+      <p class="lead" data-reveal>You've carried one avoided conversation through this whole session. Time to give it a plan: an opener, a recovery line, and a date. This is the conversation you'll have within seven days.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a conversation with a written opener and a date happens. A good intention doesn't. Nothing you type here is saved or sent anywhere; it lives only on your screen.</p>
+
+      <div class="plan" id="convoPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The conversation.</b> Who is it with (role, not name) and what's it about?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. a direct report, about deadlines that keep slipping" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · Which of the three conversations is loudest for you?</b></span>
+            <div class="plan__chips" id="planLoud" role="group" aria-label="Loudest conversation">
+              <button class="opt" data-loud="what"><span>What Happened, we disagree on the facts</span></button>
+              <button class="opt" data-loud="feel"><span>Feelings, there's emotion I haven't named</span></button>
+              <button class="opt" data-loud="identity"><span>Identity, it says something about me</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Under stress, you tend to…</b> Be honest; this picks your counter-move.</span>
+            <div class="plan__chips" id="planDrift" role="group" aria-label="Stress default">
+              <button class="opt" data-drift="soft"><span>Soften it until the message disappears</span></button>
+              <button class="opt" data-drift="hard"><span>Push too hard and win the argument</span></button>
+              <button class="opt" data-drift="avoid"><span>Avoid it entirely and hope</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When will you have it?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="planBuild" disabled>Build my plan</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated, planned, real conversation: the transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You've carried one conversation through this whole session. Now it gets a plan: your opener, your drift and its counter-move, your recovery line, and a date inside the next seven days. Fill it in honestly, copy it somewhere you'll see tomorrow, and then do the two things that make it real: send the calendar invite, and tell one colleague you're having it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: the notes they've kept all session become a plan with an opener, a counter-move, a recovery line, and a date.</li><li>Give quiet time. This is individual work; resist the urge to talk over it.</li><li>Circulate for stuck learners: the 'who' field wants a role, not a name.</li><li>When plans are built, push the copy button moment: get it out of the browser and into their notes or email.</li><li>Then the commitment mechanics: calendar invite sent before they leave the room, and one colleague told.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What makes a planned conversation actually happen, when a good intention doesn't?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A date on the calendar</li><li>Someone else knowing about it</li><li>Having the first sentence ready</li></ul><p class="facnote__mini">Respond: You just listed the plan's last three rows. Social accountability roughly doubles follow-through; that's why telling one colleague is in the commitment, not optional garnish.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A conversation with a written opener and a date happens. Everything else was preparation for this page.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a plan (all four fields) and copies it out. That artifact is your Level 3 seed; the 7-day pulse follows up on it.</p><p class="facnote__meta"><b>Watch for:</b> Red flags in circulation: if someone's conversation involves policy violations, harassment, or safety, quietly route them to HR as the first step, not the toolkit.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Two minutes of reference material, and then the only step that matters.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect this at full length minus one minute of framing. Never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 15 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Three Conversations, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Three Conversations</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Stone, Patton &amp; Heen's model: every hard exchange runs a What Happened, a Feelings, and an Identity conversation at once.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The Third Story, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Third Story</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The version of events a neutral observer would tell. The safest place to start a hard conversation.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="S B I, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, Behavior, Impact: CCL's structure for feedback that is specific, observable, and fair.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="S B I hyphen I, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI-I</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>SBI plus Intent: after the impact, ask what was going on for them. Their answer replaces your guess.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="STATE, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>STATE</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Share facts, Tell your story, Ask for their path, Talk tentatively, Encourage testing. Crucial Conversations' delivery model.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="BRAVING, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>BRAVING</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Brené Brown's seven trust behaviors: Boundaries, Reliability, Accountability, Vault, Integrity, Nonjudgment, Generosity.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Radical Candor, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Radical Candor</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Kim Scott's target quadrant: care personally AND challenge directly, at the same time.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Ruinous Empathy, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Ruinous Empathy</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Care without challenge: sparing feelings now at the cost of growth later. The most common manager failure mode.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Obnoxious Aggression, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Obnoxious Aggression</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Challenge without care: honest content delivered as an attack. Right message, ruined delivery.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Manipulative Insincerity, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Manipulative Insincerity</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Neither care nor challenge: praise to the face, criticism behind the back. The fastest trust-killer on the grid.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Contrast statement, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Contrast Statement</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>"I don't mean ___. I do mean ___." Kills the wrong conclusion, keeps the real message. Restores safety without retreat.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Feedforward, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Feedforward</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Spending the conversation on what would make the future work instead of relitigating the past. Two minutes on then; the rest on next.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Circle of Safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Circle of Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Sinek's frame: people hear hard things only when they feel safe. Keep the person inside the circle; put the problem outside it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Obligation to dissent, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Obligation to Dissent</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>McKinsey's reframe: speaking up about problems isn't bravery, it's part of the job. Silence is a choice with costs.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="O F N R, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>OFNR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Nonviolent Communication's four steps: Observation, Feeling, Need, Request. A cousin of SBI that adds the ask: "would you be willing to…?"</p></div></div></button>
+        <button class="flip" data-reveal aria-label="CLEAR, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>CLEAR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>ATD's arc for the whole meeting: Connect, Listen, Explain, Act, Review. Most managers over-invest in Explain and skip Listen and Review.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here, flip cards, whenever you need the vocabulary back. It'll still be here the night before your conversation.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Contrast Statement is a good pick).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all fourteen cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One step left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 16 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go have the <em>conversation</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You have an opener, a recovery line, and a date. The only step left is the one this room can't do for you.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">Within 7 days</span></div>
+        <h3>The conversation you just planned</h3>
+        <p>Before you leave this room: put it on your calendar and tell one colleague you're having it. Social accountability roughly doubles follow-through. When it's done, tell that same colleague how it went; that's the debrief that makes the skill stick.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say who and when out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+        <a class="btn btn--ghost" href="#top">Back to start</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Candor, with care.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-three">The Three Conversations</a></li>
+          <li><a href="#s-sbi">SBI Feedback</a></li>
+          <li><a href="#s-state">Opening with STATE</a></li>
+          <li><a href="#s-braving">Trust &amp; BRAVING</a></li>
+          <li><a href="#s-candor">Radical Candor</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Conversation Plan</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Navigating Difficult Conversations · Facilitator Edition · learner link: <a href="../../../courses/difficult-conversations/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Difficult_Conversations</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 3</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert plans into public commitments and close the loop on the session's one next step.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's everything in one sentence: name the real conversation, open with facts, hold your story lightly, keep them safe, and don't let your silence vote for the problem. You have an opener, a recovery line, and a date. The only step left is the one this room can't do for you. Before you go: who, and when? Say it out loud.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is THE conversation, within 7 days.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how ready do you feel to have your conversation?' Scan and remember the room's number for your session log.</li><li>Run the commitment round: who (role) and when, out loud or in the chat. Keep it fast, popcorn style.</li><li>Point at the cheat sheet button; suggest printing it and keeping it by the keyboard.</li><li>Tell them the 7-day pulse is coming and what it will ask.</li><li>Land the last line and stop talking on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Who, and when? Around the room, one line each.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'A direct report, Thursday morning'</li><li>'A peer, before Friday'</li><li>Some hesitation or 'I need to think about it'</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For hesitators: 'Name just the day; the rest is already in your plan.' If someone genuinely isn't ready, let it go gracefully; the 7-day pulse gives them a second chance to close the loop.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the conversations that happen this week. The pulse in seven days collects it.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (reaction, Level 1); a majority state a who-and-when out loud or in chat (transfer seed). Count both; with the 7-day pulse they're your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Commitment dodges ('I'll find the right moment'). Gently convert one or two: 'Which day?' A day makes it real; a moment never arrives.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go have it. And when it's done, tell the colleague you named how it went. That debrief is where the skill becomes yours.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; the commitment round IS the ending.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=12"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

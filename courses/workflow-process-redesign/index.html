@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workflow &amp; Process Redesign | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: map your team's workflows, apply the draft-verify-decide pattern to choose where AI drafts, where humans verify, and where humans decide, then pilot one real redesign with a metric your team can see.">
+<link rel="canonical" href="../../courses/workflow-process-redesign/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Workflow &amp; Process Redesign | Vanderbilt Learning Series">
+<meta property="og:description" content="Redesign the work, then add the AI: process mapping, the draft-verify-decide pattern, verification with teeth, and a two-week pilot your team will trust.">
+<meta property="og:url" content="../../courses/workflow-process-redesign/">
+<meta property="og:image" content="../../courses/workflow-process-redesign/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Workflow &amp; Process Redesign | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../courses/workflow-process-redesign/assets/img/social-card.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-96.png">
+
+<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches AI Basics and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-case">The Case</a>
+    <a href="#s-mapwork">The Map</a>
+    <a href="#s-pattern">The Pattern</a>
+    <a href="#s-verify">The Verify</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 14</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Follow along on your own device. Today works on your team's real workflows, so one norm up front: workflows and roles, never people's names. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real workflow you'll redesign</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Workflow &amp; Process Redesign · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Redesign the work.<br><em class="gold-text">Then add the AI.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Nearly every organization now uses AI somewhere, and almost none are getting real value from it. McKinsey's State of AI research found one practice separating the ones that are: they redesigned their workflows. That work happens at your level. The highest-impact managerial use of AI is mapping how your team's work flows and deciding, step by step, where AI drafts, where a human verifies, and where a human decides.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why workflow redesign separates AI high performers from the crowd seeing no bottom-line impact</li>
+          <li>Map one of your team's workflows into steps and separate the mechanical work from the judgment work</li>
+          <li>Apply the draft-verify-decide pattern to assign every step: AI drafts, a human verifies, a human decides</li>
+          <li>Design verification with teeth: a named owner, real sources, and a reject path that gets used</li>
+          <li>Build a redesign card for one real workflow and commit to a piloted first step with a visible metric</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill">Process Mapping</span>
+        <span class="skillpill">AI Literacy</span>
+        <span class="skillpill">Change Management</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-case">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The case for redesign</h3><p>McKinsey's numbers: adoption is everywhere, value is rare, and redesign is the difference.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>See the work as a process</h3><p>Mapping a workflow into steps: gather, transform, judge, commit. You'll map a real one.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Draft, verify, decide</h3><p>The pattern: assign every step to AI drafting, human verification, or human decision.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Design the verify</h3><p>The step everyone skips. Automation bias, rubber stamps, and checks with teeth.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Redesign Lab</h3><p>Rebuild a real workflow step by step and watch how your design performs at week four.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Bring the team along</h3><p>Pilots, metrics, and the announcement line that decides whether anyone trusts it.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 THE CASE FOR REDESIGN ============ -->
+  <section class="slide on-light" id="s-case" data-count data-title="The case for redesign">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Case</p>
+      <h2 class="h2" data-reveal>The tool is the cheap part. The redesign is the <em>advantage</em>.</h2>
+      <p class="lead" data-reveal>Before the method, the evidence. Every number in this game comes from McKinsey's State of AI research, the long-running global survey of how organizations actually use AI, and most rooms guess them wrong. The gap between what people expect and what the data says is exactly where this session lives.</p>
+
+      <div class="quiz" id="statGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks far better than one you were shown. Four findings; call each number before it's revealed.</p>
+        <p class="quiz__progress" id="sgProgress"></p>
+        <p class="quiz__q" id="sgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sgOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="sgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="sgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Of everything McKinsey measured, which practice showed the strongest link to bottom-line impact from gen AI?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Fundamentally redesigning workflows had the biggest effect on an organization's ability to see EBIT impact from gen AI. The tools are table stakes; the redesign is the differentiator."><span class="mark">A</span><span>Fundamentally redesigning workflows</span></button>
+          <button class="opt" data-correct="0" data-why="Model choice matters far less than most teams assume. Everyone has access to roughly the same models; almost nobody has redesigned the work around them."><span class="mark">B</span><span>Buying access to the most capable AI model</span></button>
+          <button class="opt" data-correct="0" data-why="Talent helps, and the survey still points elsewhere: the differentiator is changing how the work itself flows, which is a line-manager job rather than a hiring plan."><span class="mark">C</span><span>Hiring more AI engineers</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The source for the game is <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener" style="text-decoration:underline">McKinsey's State of AI survey</a>: 88 percent of organizations now use AI in at least one function, yet only around 6 percent clear the bar for high performers, where AI drives meaningful bottom-line impact. The high performers are 2.8 times more likely to have fundamentally redesigned workflows (55 percent versus 20 percent), and of everything the survey measured, workflow redesign showed the strongest link to EBIT impact. The careers publication <a href="https://www.metaintro.com" target="_blank" rel="noopener" style="text-decoration:underline">Metaintro</a> draws the managerial conclusion: mapping the team's processes and deciding where AI fits is becoming the manager's core job. Notice what the data is really saying: your team almost certainly uses AI already. The open question is whether anyone has designed how.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the adoption-value gap becomes personal the moment you look for it on your own team.</p>
+          <ol class="steps">
+            <li>In pairs: name one task where someone on your team already uses AI, officially or quietly.</li>
+            <li>Call it: is that a redesigned workflow, or a personal shortcut nobody else can see?</li>
+            <li>Hands to the room: shortcuts or redesigns? Count it out loud. Most rooms are nearly all shortcuts, which is the 88-versus-6 gap sitting in your own team.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> List three tasks your team repeats every week. Mark any where AI already shows up, officially or not. Those marks are your redesign candidates for the rest of this session.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>AI doesn't fix a broken process. It speeds it up.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 SEE THE WORK AS A PROCESS ============ -->
+  <section class="slide on-dark" id="s-mapwork" data-count data-title="See the process">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Map</p>
+      <h2 class="h2" data-reveal>You can't redesign work you can't <em>see</em>.</h2>
+      <p class="lead" data-reveal>Every workflow is a chain: something triggers it, steps run, handoffs happen, something ships. Most teams have never written theirs down, and the official version rarely matches what actually happens on a Monday. So the first managerial move has nothing to do with AI: map one workflow as it really runs. Once it's on paper, every step turns out to be one of four kinds.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Gather</span>
+          <h3>Collect the inputs</h3>
+          <p class="muted">Pulling numbers from systems, rereading threads, assembling context. High volume, low judgment, and usually the step that eats the hours.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Transform</span>
+          <h3>Make the draft</h3>
+          <p class="muted">Turning inputs into a first version: the written update, the summary, the formatted deck. Mechanical shaping, done to a standard someone else defined.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · Judge</span>
+          <h3>Check it against standards</h3>
+          <p class="muted">Is it accurate, is it good, is it safe to ship? Judging takes a human who knows the sources, the audience, and what wrong looks like.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">4 · Commit</span>
+          <h3>Decide and own it</h3>
+          <p class="muted">Send, approve, spend, hire. The step where accountability lives. Whoever commits answers for the outcome, which is why this step behaves differently from all the others.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="stepSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Name the step</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the four kinds only help if you can spot them in real work. Five moments from ordinary workflows; name the step type.</p>
+        <p class="quiz__progress" id="ssProgress"></p>
+        <p class="quiz__q" id="ssQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ssOptions" role="group" aria-label="Step type choices"></div>
+        <p class="quiz__feedback" id="ssFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="ssNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="ssResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="plan" id="wfMap" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Map one workflow, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this session runs on a real workflow from your team, and writing it down is the first act of the redesign. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="wfName"><b>1 · The workflow.</b> One thing your team produces on a repeating schedule:</label>
+            <input type="text" id="wfName" maxlength="120" placeholder="e.g. the weekly client status report, every Monday morning" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="wfGrind"><b>2 · The grind.</b> The step that eats the most hours:</label>
+            <input type="text" id="wfGrind" maxlength="120" placeholder="e.g. pulling the numbers out of three different systems" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="wfJudge"><b>3 · The judgment.</b> The step where a human's standards actually change the outcome:</label>
+            <input type="text" id="wfJudge" maxlength="120" placeholder="e.g. deciding which risks the client needs to hear about this week" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="wfBuild" disabled>Map my workflow</button>
+            <span class="quiz__progress" id="wfStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="wfOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Three rules make a workable map. Map one real instance, following what actually happened last Monday rather than the official process doc; the two usually differ, and the redesign has to work on the real one. Keep it at five to nine steps; finer than that and you're documenting keystrokes, coarser and the draft candidates hide inside vague blobs like "prepare the report." And interview the person who actually does the work, because the grind is invisible from one level up. Managers consistently misjudge which step eats the hours, and the person doing it can tell you in one sentence.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing your own workflow read back to you is the fastest way to find the steps you forgot you do.</p>
+          <ol class="steps">
+            <li>Pairs. One person narrates the workflow they just mapped, start to finish, as it really runs.</li>
+            <li>The partner writes the steps as a numbered list and reads them back. Fix what's missing; there's usually a hidden step.</li>
+            <li>Together, tag each step G, T, J, or C. Count the tags: the G and T steps are tomorrow's draft candidates.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your workflow's steps as a numbered list and tag each one G, T, J, or C. Count how many are gather and transform; that number is the size of your redesign opportunity.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 DRAFT, VERIFY, DECIDE ============ -->
+  <section class="slide on-light" id="s-pattern" data-count data-title="Draft, verify, decide">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Pattern</p>
+      <h2 class="h2" data-reveal>Draft. Verify. <em>Decide.</em></h2>
+      <p class="lead" data-reveal>Here is the pattern the whole session turns on. For every step on your map, make one assignment: AI drafts it, a human verifies it, or a human decides it. The assignment happens once, when you design the workflow, and then everyone knows who does what. That is the difference between a redesigned process and a pile of personal shortcuts.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">AI drafts</span>
+          <h3>The volume</h3>
+          <p class="muted">Gather and transform steps: pulling, assembling, summarizing, first-pass writing. AI is fast, tireless, and confidently wrong just often enough that a draft is all it gets to be.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">A human verifies</span>
+          <h3>The check</h3>
+          <p class="muted">A named person checks the draft against real sources and real standards, with the power to reject it. Verification is the hinge of the whole pattern; section 04 is entirely about it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">A human decides</span>
+          <h3>The call</h3>
+          <p class="muted">Judge and commit steps: what ships, what's spent, who's hired, what the client hears. Decisions carry accountability, and accountability doesn't delegate to a tool.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="assignStep" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Assign the step</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the pattern is easy to recite and harder to apply. Five steps from real workflows; make the assignment.</p>
+        <p class="quiz__progress" id="asProgress"></p>
+        <p class="quiz__q" id="asQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="asOptions" role="group" aria-label="Assignment choices"></div>
+        <p class="quiz__feedback" id="asFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="asNext" style="visibility:hidden">Next step</button>
+        </div>
+        <div id="asResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule still runs</span>
+        <p style="margin:.5rem 0 0" class="measure">The pattern decides where AI helps. The traffic light from AI Basics decides what it may see, and it applies to every draft step you assign:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">If a step touches red data, the draft assignment is off the table in unapproved tools, whatever the efficiency case. The light outranks the pattern.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two questions sort almost every step. First, volume against stakes: high-volume, low-stakes work drafts freely; low-volume, high-stakes work usually isn't worth drafting at all. Second, the error question: if this step is wrong, who gets hurt, and how fast would we find out? Fast-caught, cheap errors are safe to draft; slow, expensive ones need a human earlier. And one design principle worth saying out loud: assignments attach to steps, never to people. Nobody's job becomes "watch the machine all day." A good redesign leaves every person with a mix of verifying, deciding, and the work only they can do.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> assigning someone else's workflow is easier than assigning your own, and the disagreements are where the real learning is.</p>
+          <ol class="steps">
+            <li>Pairs. Swap the workflows you mapped in section 02.</li>
+            <li>Assign every step of your partner's workflow: draft, verify, or decide. Five minutes, gut calls allowed.</li>
+            <li>Compare with what the owner would have chosen. Bring your sharpest disagreement to the room; disagreements almost always sit on a judge step, which is exactly where they should.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Assign every step of your own mapped workflow, then mark the one assignment you're least sure of. That step is your pilot's first design question.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 DESIGN THE VERIFY ============ -->
+  <section class="slide on-cream" id="s-verify" data-count data-title="Design the verify">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Verify</p>
+      <h2 class="h2" data-reveal>A check that can't fail isn't a <em>check</em>.</h2>
+      <p class="lead" data-reveal>Verification is where redesigns quietly die. AI output arrives fluent and confident, week one's careful reader becomes week six's skimmer, and researchers have a name for the drift: automation bias, the documented human tendency to accept a system's output as attention fades. The fix is never "try harder." The fix is designing the check so it can actually fail.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The verifier's rubric</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. A named owner:</b> one person verifies this step, and it's in their job, not their spare time. <b>2. Source-checked:</b> claims are checked against the tracker, the data, the meeting notes, never against "sounds right." <b>3. A reject path with a log:</b> when the check fails, the draft goes back, and the miss gets written down. A check that has never caught anything is evidence that nobody's looking, and the log is how you tell the difference.</p>
+      </div>
+
+      <div class="quiz" id="checkRate" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Rate the check</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> rubber stamps look exactly like verification from a distance. Five setups; call each one real verification, a rubber stamp, or a wrong-sized check.</p>
+        <p class="quiz__progress" id="crProgress"></p>
+        <p class="quiz__q" id="crQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="crOptions" role="group" aria-label="Check judgments"></div>
+        <p class="quiz__feedback" id="crFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="crNext" style="visibility:hidden">Next setup</button>
+        </div>
+        <div id="crResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What actually counters automation bias in a workflow?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Structure beats intention: a named owner, spot checks against real sources, and a log of misses keep the check alive after the novelty wears off."><span class="mark">A</span><span>Designed checks: a named owner, source sampling, and a logged reject path</span></button>
+          <button class="opt" data-correct="0" data-why="Everyone plans to stay vigilant, and the research says vigilance decays anyway. That's why the countermeasure has to live in the process, where it survives a busy week."><span class="mark">B</span><span>Reminding people to stay vigilant</span></button>
+          <button class="opt" data-correct="0" data-why="Better models shrink the error rate and grow the complacency. The more often the output is right, the stronger the drift toward not checking, which is exactly when the expensive miss ships."><span class="mark">C</span><span>Using a better model so checking matters less</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Verification has a budget. If checking the draft costs as much as doing the work did, the step was never a draft candidate; send it back to a human and spend your verification budget where drafting actually pays. Sampling is the usual answer at volume: check three claims against source every time, rotate which three, and log every miss. The log turns verification from a vibe into a metric, because catch rate over time tells you whether the checks are working, whether the drafts are improving, and whether the verifier has gone to sleep. All three are things a manager can act on; "we trust it now" is not.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> designing a check from scratch, once, makes rubber stamps visible everywhere afterward.</p>
+          <ol class="steps">
+            <li>Pairs. Take this step: AI summarizes 40 open customer tickets into themes for the ops meeting.</li>
+            <li>Design its verify in four lines: who owns it, what they check against, how often, and what happens on a miss.</li>
+            <li>One pair reads theirs; the room stress-tests it with one question: how would this check fail quietly?</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Design the verify for the draft step of your own mapped workflow: owner, source, cadence, reject path. Four lines, written down.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 THE REDESIGN LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Redesign Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Lab</p>
+      <h2 class="h2" data-reveal>Rebuild the Monday <em>report</em>.</h2>
+      <p class="lead" data-reveal>Your team ships a weekly client status report, and it eats half of every Monday: someone pulls numbers from three systems, someone writes the update, a peer glances at it, and it goes out. Redesign it one step at a time, then see how your design is performing four weeks in.</p>
+
+      <div class="lab" id="redesignLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Redesign Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on your real workflow this week, and the failure modes are the ones that actually happen. Choose how each step runs, then run the month.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run four weeks</button>
+          <span class="quiz__progress" id="labStatus">Choose all four steps</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice where the lab punishes you. Never for using AI too much or too little; always for the design around it: drafts with no real check, checks with no owner, and commits handed to automation. That mirrors the field data: when redesigns fail, the postmortem almost never says "the model wasn't good enough." It says a wrong thing flowed through a soft check and reached someone who mattered, and then the tool took the blame for the design. Week three is the classic failure window: late enough that vigilance has faded, early enough that the checks haven't been made structural yet.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> finding the week-three failure in your own design, before it happens, is the cheapest fix you will ever make.</p>
+          <ol class="steps">
+            <li>Pairs. Put your mapped, assigned workflow from sections 02 and 03 on the table.</li>
+            <li>Find its week-three failure: the specific wrong thing most likely to slip through your verify step once attention fades.</li>
+            <li>Strengthen that one check using the rubric: owner, source, cadence, reject path. Say the fixed version out loud.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Same drill on your own: name your redesign's week-three failure and rewrite the one check that catches it.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 BRING THE TEAM ALONG ============ -->
+  <section class="slide on-light" id="s-team" data-count data-title="Bring the team along">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Team</p>
+      <h2 class="h2" data-reveal>Redesign is a <em>team</em> sport.</h2>
+      <p class="lead" data-reveal>A redesign announced from above sounds like "the machine is coming for your work." The same redesign run as a pilot with the people who do the work sounds like "we're buying back your Monday mornings." McKinsey's high performers pair workflow change with visible leadership attention, and Metaintro's point lands here: the line manager is where a redesign lives or dies. Your announcement line is the first design decision your team will actually hear.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The pilot standard</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>One workflow</b>, two to four weeks. <b>The doers design the checks</b>, because they know where the process bites. <b>A visible metric</b>: hours saved and errors caught, posted where the team can see both. <b>A real rollback</b>, genuinely available without shame. <b>An honest answer</b> to what the saved hours are for, said out loud. If people suspect saved time converts into cut roles, they will make sure there is no saved time.</p>
+      </div>
+
+      <div class="quiz" id="sayJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the announcement</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the scenario is real: you're announcing the report pilot to your team on Monday. Five opening lines; call each one a good setup, fear or hype, or too vague to change anything.</p>
+        <p class="quiz__progress" id="sjProgress"></p>
+        <p class="quiz__q" id="sjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sjOptions" role="group" aria-label="Announcement judgments"></div>
+        <p class="quiz__feedback" id="sjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sjNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="sjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Why should the people who do the work design the verify step?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="They know where the process actually fails, and owning the checks turns the pilot from something done to them into something they run. Both halves matter."><span class="mark">A</span><span>They know where it breaks, and ownership makes the redesign stick</span></button>
+          <button class="opt" data-correct="0" data-why="The manager stays accountable for the workflow; delegating check design is about knowledge and ownership, never about stepping away."><span class="mark">B</span><span>So the manager doesn't have to be involved</span></button>
+          <button class="opt" data-correct="0" data-why="Speed is a side effect at best. The real reasons are that the doers can see failure modes the map can't, and people defend what they designed."><span class="mark">C</span><span>Because it's faster than the manager doing it</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The trust math is simple and unforgiving. A pilot that names its workflow, its owner, its metric, and its review date can be believed, because every claim in it is checkable. An announcement built from "leverage," "efficiency," and "transformation" cannot, so people fill the vagueness with the scariest available story. And the review meeting is half the point: the team looks at the metric together and decides what happens next, which means the redesign's second iteration belongs to them. That is how one pilot becomes a habit instead of an initiative.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing announcement lines called out loud calibrates yours before Monday, when it counts.</p>
+          <ol class="steps">
+            <li>Small groups: draft ONE announcement line for the workflow you redesigned in the lab drill.</li>
+            <li>Groups read their lines aloud. After each, the room calls it: good setup, fear or hype, or vague.</li>
+            <li>Rewrite the room's scariest line and its vaguest line, live, until both pass the checkable-claims test.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Draft your announcement line, then test it: does it name the workflow, the owner, the metric, the review date, and what the saved hours are for?</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · REDESIGN CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My redesign card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My redesign card</p>
+      <h2 class="h2" data-reveal>One workflow. One draft step. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't redesign workflows; managers with a card and a date do. Pick the workflow, choose the first step AI will draft, name what you refuse to get wrong, and put a date on the mapping session with your team.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named workflow with a named draft step and a dated first move is a redesign; everything less is a poster. Workflows and roles, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="rdPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The workflow.</b> What repeating work is it, and what does it cost today?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the weekly client report; it eats half of every Monday" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first draft step.</b> Where does AI draft first?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First draft step">
+              <button class="opt" data-practice="gather"><span>The gather step: pulling and formatting the inputs</span></button>
+              <button class="opt" data-practice="write"><span>The transform step: the first written pass</span></button>
+              <button class="opt" data-practice="summarize"><span>A summary step: condensing volume into themes</span></button>
+              <button class="opt" data-practice="map"><span>Map first: this workflow needs the step map before any assignment</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode as the manager of this redesign.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="decide"><span>Let AI drift into the decide step</span></button>
+              <button class="opt" data-not="noverify"><span>Run drafts without a named verifier</span></button>
+              <button class="opt" data-not="efficiency"><span>Announce it as an efficiency play</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When is the mapping session with your team?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my redesign card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Workflow redesign, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Workflow Redesign</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Restructuring a workflow's steps, handoffs, and checks around what AI changes. McKinsey's strongest measured link to bottom-line impact from gen AI.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The adoption value gap, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Adoption-Value Gap</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>88 percent of organizations use AI; around 6 percent get significant bottom-line value. The difference is design, and it lives at the manager level.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Draft verify decide, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Draft, Verify, Decide</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The assignment pattern: for every step, AI drafts, a human verifies, or a human decides. Made once per workflow, so everyone knows who does what.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Step map, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Step Map</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A workflow written as its real steps, five to nine of them, following one actual instance rather than the official process doc.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Gather step, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Gather Step</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Collecting inputs: pulling numbers, rereading threads, assembling context. High volume, low judgment, usually the grind, usually the first draft candidate.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Transform step, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Transform Step</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Turning inputs into a first version: the written update, the summary, the formatted deck. Mechanical shaping to someone else's standard.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Judge step, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Judge Step</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Checking work against standards: accurate, good, safe to ship. Takes a human who knows the sources, the audience, and what wrong looks like.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Commit step, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Commit Step</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Send, approve, spend, hire: the step where accountability lives. Stays with a human, because accountability doesn't delegate to a tool.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Automation bias, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Automation Bias</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The documented drift toward accepting a system's output as attention fades. Countered by process design, never by intentions.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Rubber stamp, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Rubber Stamp</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A check with no owner, no source, and no reject path. Looks like verification from a distance; fails in week three, quietly.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Verification with teeth, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Verification with Teeth</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A named owner, claims checked against real sources, and a logged reject path. The log turns checking into a metric: catch rate over time.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The pilot standard, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Pilot Standard</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>One workflow, two to four weeks, doers design the checks, a visible metric, a real rollback, and an honest answer about what the saved hours are for.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never. The light outranks the pattern.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go redesign <em>one workflow</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw the evidence, mapped a real workflow, made the assignments, designed a check that can fail, survived the lab's week three, and drafted the announcement. One Monday morning on your team is about to get shorter.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">30 minutes</span></div>
+        <h3>The mapping session with your team</h3>
+        <p>One whiteboard, the workflow from your card, the people who actually do it. Map the real steps, tag them gather, transform, judge, commit, and let the doers pick the first draft step and design its check. Leave with the pilot's metric and review date written where everyone can see them. That half hour is the whole method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your workflow and your mapping day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="worksheet.html" target="_blank" rel="noopener">Print the redesign card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Map. Assign. Verify. Pilot.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-case">The Case for Redesign</a></li>
+          <li><a href="#s-mapwork">See the Process</a></li>
+          <li><a href="#s-pattern">Draft, Verify, Decide</a></li>
+          <li><a href="#s-verify">Design the Verify</a></li>
+          <li><a href="#s-team">Bring the Team Along</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Redesign Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="web/">Self-paced version</a></li>
+          <li><a href="../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Workflow &amp; Process Redesign · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="assets/js/qrcode.js?v=1"></script>
+<script src="assets/js/main.js?v=1"></script>
+</body>
+</html>

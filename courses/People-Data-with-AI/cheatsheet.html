@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People Data, Safely Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to the keyboard</p>
+      <h1>People Data, Safely: the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The Aggregate Rule (the traffic light)</h2>
+      <ul>
+        <li><b>Green:</b> published benchmarks and generic information. Go.</li>
+        <li><b>Yellow:</b> internal work, including aggregated, de-identified team-level data. Approved VU tools only (ChatGPT EDU, Amplify, Copilot).</li>
+        <li><b>Red:</b> private information about people: names, individual scores, identifiable comments, your notes about a person. Never.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks every technique on this sheet,</b> whatever the deadline.</p>
+    </div>
+
+    <div class="box">
+      <h2>The Coach's Loop</h2>
+      <ol>
+        <li><b>Aggregate:</b> get the data to team level yourself, names out, head count checked.</li>
+        <li><b>Interrogate:</b> ask AI for themes, contrasts, and the question behind the question.</li>
+        <li><b>Humanize:</b> test every theme against what you have actually seen.</li>
+        <li><b>Converse:</b> the output is always a conversation, never an automated verdict.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>De-identify like you mean it</h2>
+      <ul>
+        <li><b>Names out</b>, obviously.</li>
+        <li><b>Identifying roles out:</b> "the only designer" is a name with extra steps.</li>
+        <li><b>Identifying events out:</b> "after the March escalation" narrows the cast.</li>
+        <li><b>Head count:</b> under 5 respondents in any slice, the slice stays red.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The small-n trap:</b> a "team-level" average from 3 people is a disclosure with a label.</p>
+    </div>
+
+    <div class="box">
+      <h2>The three interrogation questions</h2>
+      <ol>
+        <li><b>Themes:</b> "What are the strongest themes, and quote the data that supports each one?"</li>
+        <li><b>Contrast:</b> "What moved since last cycle, and what stayed stuck?"</li>
+        <li><b>The question behind the question:</b> "What would explain both X and Y?"</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Ground truth test:</b> a theme with no example you have seen is a hypothesis, and hypotheses go to the team as questions.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The rehearsal prompt pattern (roles, never names)</h2>
+      <p class="prompt">"A [role] on my team [observable pattern, no names, no identifying detail]. I want to give this feedback using [SBI or feedforward]. Here is my draft. Stress-test it: where is it vague, what could be heard as blame, and what are the three hardest reasonable responses I should be ready for?" <b>AI rehearses; you judge.</b> Every sentence that evaluates a person comes from your evidence, in your words.</p>
+    </div>
+
+    <div class="box">
+      <h2>Review prep, the division of labor</h2>
+      <ol>
+        <li><b>Evidence:</b> notes all year; de-identified themes by role, checked against dated examples.</li>
+        <li><b>Drafting:</b> AI structures; you write every judgment sentence.</li>
+        <li><b>Calibration:</b> check the ratings as a set: one bar, recency and visibility named.</li>
+        <li><b>Delivery:</b> rehearse the two hardest conversations, roles not names.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The numbers, for the skeptics</h2>
+      <ul>
+        <li>About <b>70%</b> of the variance in team engagement traces to the manager (Gallup).</li>
+        <li>Only about <b>1 in 5</b> employees worldwide is engaged at work (Gallup).</li>
+        <li>About <b>1 in 3</b> US employees now uses AI at work; only about <b>a fifth</b> say their org has a clear AI plan (Gallup).</li>
+        <li>The HR tools already assume AI-assisted managers (Culture Amp AI Coach; Lattice and 15Five close behind).</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>The share-back, three lines</h2>
+      <p class="prompt"><b>What we heard:</b> [the theme, in plain words]. <b>What we will try:</b> [one visible change with a date]. <b>What we will not change, and why:</b> [the honest one; it builds the most trust]. Never speculate about who said what: one hunted respondent poisons every future survey. Then measure the right thing: conversations held and experiments started, never dashboard views.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>People Data, Safely · Vanderbilt Learning Series · <a href="../../courses/People-Data-with-AI/">Course link</a></span>
+    <span>The evidence: <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx">Gallup, AI in the workplace</a> · <a href="https://www.cultureamp.com/">Culture Amp</a></span>
+  </footer>
+</div>
+</body>
+</html>

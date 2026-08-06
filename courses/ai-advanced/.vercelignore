@@ -1,0 +1,15 @@
+# Files that should never be served publicly.
+# The three editions are pre-generated and committed, so none of this is
+# needed at runtime; excluding it keeps the runbook source and the
+# generators out of the deployed site.
+tools/
+facilitator/notes.json
+.claude/
+.agents/
+.github/
+skills-lock.json
+CLAUDE.md
+CONCEPT.md
+FACILITATION.md
+README.md
+evals/

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delegating, Rethought | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: the same task can now go to AI, to a junior as a stretch assignment, or stay with you. Learn the Routing Test, keep the apprenticeship pipeline alive, redesign roles as AI absorbs the routine layer, and brief every delegation so it lands.">
+<link rel="canonical" href="../../courses/Delegating-with-AI/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Delegating, Rethought | Vanderbilt Learning Series">
+<meta property="og:description" content="Routing work in the age of AI without hollowing out your team: the Routing Test, stretch versus grunt, role math, and the handoff brief.">
+<meta property="og:url" content="../../courses/Delegating-with-AI/">
+<meta property="og:image" content="../../courses/Delegating-with-AI/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Delegating, Rethought | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../courses/Delegating-with-AI/assets/img/social-card.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-96.png">
+
+<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-triage">The Triage</a>
+    <a href="#s-routing">The Routing Test</a>
+    <a href="#s-stretch">Stretch vs Grunt</a>
+    <a href="#s-rolemath">Role Math</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Follow along on your own device. Today works on the real tasks crossing your desk and the real roles on your team, so one norm up front: tasks and roles, never people's names. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real task you'll route</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Delegating, Rethought · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Who gets the work is now<br>a <em class="gold-text">design</em> decision.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">The same task can now go three places: to AI, to a team member who would grow on it, or it stays with you. <a href="https://www.gsb.stanford.edu/insights" target="_blank" rel="noopener" style="text-decoration:underline">Stanford GSB's research</a> describes the shift plainly: leaders in the AI era redesign roles and processes rather than simply oversee execution. Route everything routine to AI and you hollow out the apprenticeship your juniors learn by. Route nothing and you burn your team's hours on work a machine finishes in minutes. This session teaches the routing decision, and the role redesign behind it.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Apply the Routing Test's three questions, growth, judgment, volume, to the real tasks crossing your desk</li>
+          <li>Distinguish stretch work from grunt work before you route either one</li>
+          <li>Protect the apprenticeship pipeline as AI absorbs the tasks juniors used to learn by</li>
+          <li>Redesign a role around what grows, judgment reps, client contact, verification ownership, instead of just shrinking its task list</li>
+          <li>Brief a delegation, to a person or to AI, so it lands with a clear outcome and named checks</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill">Delegation</span>
+        <span class="skillpill">Role Design</span>
+        <span class="skillpill">AI Literacy</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-triage">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and your juniors can only take that dare if the routing decisions on your desk leave them real work to grow on.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: speed comes from routing the routine to AI, and scale comes from doing it without starving the apprenticeship that grows your next senior people.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets need people ready for bigger work, and every task you hand over as a stretch assignment instead of a shortcut is that readiness being built.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: the model university has to show what AI-era roles look like, and a role redesigned around judgment reps and client contact is your piece of that demonstration.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: talent is the first thing reputation attracts and the first thing careless routing wastes. Every task you send to AI, hand to a junior as stretch, or keep for your own judgment decides whether the university's talent compounds or hollows out.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The new triage</h3><p>Every task now has three destinations: AI, a person who'd grow on it, or you. Both easy defaults fail.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The Routing Test</h3><p>Three questions per task, asked in order: growth, judgment, volume. The order is the method.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Stretch vs grunt</h3><p>The distinction that decides careers, and why yesterday's stretch keeps turning into today's AI lane.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Role math</h3><p>As the routine layer drains out of a role, what backfills the space, and the conversation about it.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Routing Lab</h3><p>A quarter's work arrives: route four real tasks, then see what your team looks like at quarter end.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>The handoff</h3><p>Briefing the delegation either way: outcome and checkpoints for a person, a named verifier for AI.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 THE NEW TRIAGE ============ -->
+  <section class="slide on-light" id="s-triage" data-count data-title="The new triage">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Triage</p>
+      <h2 class="h2" data-reveal>Every task has three <em>destinations</em>.</h2>
+      <p class="lead" data-reveal>A task lands on your desk. The old question was who has capacity. The new question is where the task should live: with AI, with a person it would grow, or with you. Nobody trained managers for this triage, and both reflexes fail. Default everything routine to AI and the tasks your juniors learn by quietly disappear. Default everything to people and your team spends hours on work a machine finishes in minutes. Before the method, the evidence: play the pattern and see how fast this landed on your desk.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">To AI</span>
+          <h3>The mechanical layer</h3>
+          <p class="muted">Repetition with catchable errors: pulls, formats, first-pass summaries. Fast and tireless, and it only works with a named human verifier behind it.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">To a person, as stretch</span>
+          <h3>The growth layer</h3>
+          <p class="muted">Work that is hard because it is new. Slower today, and it builds capability that compounds. This is the layer default-to-AI managers quietly delete.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Keep it</span>
+          <h3>The judgment layer</h3>
+          <p class="muted">Context, relationships, accountability that is genuinely yours. Smaller than it feels: most managers keep far more than this layer actually holds.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="patGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the pattern</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a finding you guessed at, and missed, sticks far better than one you were shown. Four findings on how fast this triage arrived; call each one before the reveal.</p>
+        <p class="quiz__progress" id="pgProgress"></p>
+        <p class="quiz__q" id="pgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="pgOptions" role="group" aria-label="Pattern choices"></div>
+        <p class="quiz__feedback" id="pgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="pgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="pgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: A task lands that AI could do in minutes and a junior could learn from in days. What does the default-to-AI reflex actually cost?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Speed today traded against capability that compounds. The trade is invisible in the week you make it and expensive in the year that follows, which is why it needs a deliberate question instead of a reflex."><span class="mark">A</span><span>The junior's rep: the task was a lesson, and it just went to a machine</span></button>
+          <button class="opt" data-correct="0" data-why="Watching is not a rep. Capability comes from attempts plus feedback, and reading someone else's finished answer supplies neither."><span class="mark">B</span><span>Almost nothing, since the junior can learn by reading the AI's output</span></button>
+          <button class="opt" data-correct="0" data-why="Quality is not the real cost here; the AI's draft may be perfectly fine. The cost is a person who is now one rep further from being able to do the work at all."><span class="mark">C</span><span>A little quality, which a quick review can restore</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The numbers in the game come from <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace AI research</a>: US employees using AI at work at least a few times a year nearly doubled in two years to about 40 percent, daily use doubled to about 8 percent, and only around 22 percent say their organization has communicated a clear plan for it. The management gap is the story: the routing is already happening on your team, mostly by reflex. <a href="https://www.gsb.stanford.edu/insights" target="_blank" rel="noopener" style="text-decoration:underline">Stanford GSB's insights</a> on leading through the AI shift name where the fix lives: leaders redesign roles and processes rather than simply oversee execution. Which means the triage on this slide is not extra work on top of your job. Increasingly, it is the job.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the hollow-team failure mode becomes real the moment you find a reflex-routing on your own team.</p>
+          <ol class="steps">
+            <li>In pairs: name one task that moved to AI on your team in the last few months, officially or quietly.</li>
+            <li>Ask the question nobody asked at the time: could a junior have grown on it, and what would they have learned?</li>
+            <li>Hands to the room: how many of those moves were decisions, and how many were reflexes? Count it out loud. Most rooms are nearly all reflexes, which is exactly the gap in Gallup's plan number.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> List three tasks that moved to AI around you in the last few months. For each, write one line: what would a junior have learned by doing it? Any task with a real answer goes on your watch list for the rest of this session.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Every task you route is a lesson you give or take away.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE ROUTING TEST ============ -->
+  <section class="slide on-dark" id="s-routing" data-count data-title="The Routing Test">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Routing Test</p>
+      <h2 class="h2" data-reveal>Three questions, and the order <em>matters</em>.</h2>
+      <p class="lead" data-reveal>Here is the method. For every task, three questions, always in this order: growth first, judgment second, volume last. The order is the whole trick. Volume is the loudest question and the least important, because speed is visible this week and growth is visible next year. Ask growth first and the meeting minutes and the junior's first memo stop looking identical.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">1 · The growth question</span>
+          <h3>Would doing this grow a person?</h3>
+          <p class="muted">If yes, stretch beats speed: the task goes to a person even when AI is faster. Speed today is not worth a team that never learns. This is the question AI-era managers forget.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · The judgment question</span>
+          <h3>Does it need context, relationships, or accountability?</h3>
+          <p class="muted">Then it stays human, and sometimes stays yours. Relationships hear who shows up; accountability keeps a name on the outcome.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · The volume question</span>
+          <h3>Is it mechanical repetition with catchable errors?</h3>
+          <p class="muted">That is AI's lane, and it comes with a rule: a named verifier, every time. AI's lane is real; it is just the last lane you check, never the first.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="routeTask" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Route the task</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the test is easy to recite and harder to run under time pressure. Five tasks from a manager's real week; run the three questions in order and route each one.</p>
+        <p class="quiz__progress" id="rtProgress"></p>
+        <p class="quiz__q" id="rtQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="rtOptions" role="group" aria-label="Routing choices"></div>
+        <p class="quiz__feedback" id="rtFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="rtNext" style="visibility:hidden">Next task</button>
+        </div>
+        <div id="rtResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule outranks the test</span>
+        <p style="margin:.5rem 0 0" class="measure">The Routing Test decides where a task goes. The traffic light from Start Smarter decides what AI may see, and it applies before any task enters the AI lane:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">If a task touches private information about people, performance notes, salaries, health, anything, the AI lane is closed, whatever the volume question says. The light outranks the test.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Run the questions out of order once and you'll see why the order is the method. Volume-first makes the meeting minutes and the junior analyst's first board memo look identical: both are mechanical enough for a machine to draft. Growth-first separates them in one breath: nobody grows on transcription, and the memo is a rep the junior needs to earn. The other trap is treating "keep it" as the safe default. Keeping is also a routing decision, and it has a cost: every familiar task you hold is either judgment or hoarding, and the test tells you which. When a task passes the growth question, the test is over; you do not get to keep asking until you hear the answer you wanted.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> the test only becomes a habit once you have run it aloud on your own work, disagreements included.</p>
+          <ol class="steps">
+            <li>Pairs. Each person picks two real tasks from their current week: one they were about to hand to AI, one they were planning to keep.</li>
+            <li>Run each task through the three questions out loud, in order. Your partner holds you to the order.</li>
+            <li>Flag any task where question one and question three disagree, and bring the sharpest one to the room. That disagreement is where managers earn their pay.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take two tasks from your week: one headed for AI, one you planned to keep. Write the three answers for each, in order. If growth and volume disagree on either task, mark it: that task is your capstone candidate.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 STRETCH VS GRUNT ============ -->
+  <section class="slide on-cream" id="s-stretch" data-count data-title="Stretch vs grunt">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · Stretch vs Grunt</p>
+      <h2 class="h2" data-reveal>Hard because it's new, or hard because it's <em>long</em>?</h2>
+      <p class="lead" data-reveal>This distinction decides careers. Stretch work is hard because it is new: the first client call, the first memo with your name on it. Grunt work is hard because it is long: the fortieth identical data pull. The growth question runs on telling them apart, and there is a trap built into this decade: the tasks juniors used to learn the trade on, first drafts, research passes, are exactly the tasks AI absorbs first. Yesterday's apprenticeship is today's AI lane.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Stretch work</span>
+          <h3>Hard because it's new</h3>
+          <p class="muted">Scary in a useful way, feedback attached, and it leaves a capability behind. Slower than AI today, and it is how seniors get made.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Grunt work</span>
+          <h3>Hard because it's long</h3>
+          <p class="muted">Repetition with no lesson after the early reps. The honest test: what did rep 30 teach that rep 3 did not? If the answer is nothing, it is grunt.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">The trap</span>
+          <h3>Yesterday's stretch is today's AI lane</h3>
+          <p class="muted">First drafts and research passes taught the trade for decades. AI now does them in minutes. Route them away without building new stretch and you get seniors with no successors.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="stretchGrunt" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Stretch or grunt</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> managers grade tasks from the manager's chair, and the distinction only works from the junior's. Five tasks seen through a junior's eyes; call each one.</p>
+        <p class="quiz__progress" id="sgProgress"></p>
+        <p class="quiz__q" id="sgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sgOptions" role="group" aria-label="Stretch or grunt choices"></div>
+        <p class="quiz__feedback" id="sgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sgNext" style="visibility:hidden">Next task</button>
+        </div>
+        <div id="sgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The junior-pipeline problem deserves an honest statement: the industry has not solved it. The tasks that made today's seniors, the first drafts, the research grind, the long apprenticeship of low-stakes attempts, are being absorbed by AI faster than anyone is building replacements. What a single manager can control is building new stretch deliberately, one role at a time. Three reliable sources of it: verification ownership, where checking the AI's output against sources becomes a judgment rep with a signature on it; earlier client exposure, because AI absorbing the prep frees calendar for the meetings themselves; and judgment reps with feedback, small real calls made by the junior, reasoning shown, correction heard. None of these existed on the old task list. All of them are better teachers than the fortieth data pull ever was.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> naming the reps you learned by, and noticing which ones AI now does, makes the pipeline problem concrete enough to fix.</p>
+          <ol class="steps">
+            <li>Pairs: each person names the two or three tasks they personally learned the most from, coming up in their field.</li>
+            <li>Mark the ones AI now does in minutes. Most pairs mark more than half.</li>
+            <li>For each marked task, invent its replacement rep: what could a junior own today that teaches the same judgment? Bring your best replacement to the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the three tasks you learned the most from early in your career, and mark any AI now does. For each mark, write the replacement rep you could hand a junior this month: verification ownership, a client seat, or a real call with feedback.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 ROLE MATH ============ -->
+  <section class="slide on-light" id="s-rolemath" data-count data-title="Role math">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Role Math</p>
+      <h2 class="h2" data-reveal>Redesign the role, not just the <em>task list</em>.</h2>
+      <p class="lead" data-reveal>As AI absorbs a role's routine layer, something has to fill the space. Weak redesign just shrinks the list, and the person hears the honest version of it fast: part of my job is gone. Role math is the stronger move: name what drains out, name what backfills, judgment reps, client contact, verification ownership, and have the conversation about the role's new shape, including the sentence managers keep skipping: what the freed capacity is for.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The role-math rule</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>For every routine chunk AI absorbs, name the backfill before you announce the change.</b> What backfills is what grows: more judgment reps, more verification ownership, more human contact. Design it so what remains is more valuable than what left, and say out loud what the freed capacity is for. A role redesigned with its owner grows; a role shrunk from a distance quietly starts job hunting.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: AI just absorbed a third of a role's routine work. What is the role-math move?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Absorption and backfill get announced in the same breath, so the role's story is growth instead of shrinkage. The order matters: backfill named first, change announced second."><span class="mark">A</span><span>Name what backfills the space, judgment reps, client contact, verification ownership, before announcing the change</span></button>
+          <button class="opt" data-correct="0" data-why="A shrunk task list with nothing named to replace it reads as a role on its way out, and the person will start acting accordingly. The savings are real; the silence around them is the mistake."><span class="mark">B</span><span>Shrink the task list and bank the savings</span></button>
+          <button class="opt" data-correct="0" data-why="People notice their own workload. Say nothing and they will write the story themselves, and the version they write is always scarier than the truth."><span class="mark">C</span><span>Change nothing officially and let the role's owner adjust on their own</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="plan" id="roleMath" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Sketch one role's math, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> role math stays abstract until you run it on a role you actually manage. Roles and tasks, never people's names, and nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="rmRole"><b>1 · The role.</b> One role on your team (the role, never the person's name):</label>
+            <input type="text" id="rmRole" maxlength="120" placeholder="e.g. the junior analyst role on the reporting team" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="rmChunk"><b>2 · The routine chunk.</b> Its biggest block of mechanical, repeating work:</label>
+            <input type="text" id="rmChunk" maxlength="120" placeholder="e.g. assembling the Monday metrics pack from three systems" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="rmGrow"><b>3 · The growth.</b> What the person in the role wants to grow toward:</label>
+            <input type="text" id="rmGrow" maxlength="120" placeholder="e.g. client-facing work and owning an analysis end to end" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="rmBuild" disabled>Sketch the role math</button>
+            <span class="quiz__progress" id="rmStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="rmOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The role-math conversation has three sentences, delivered together. What drains: here is the routine chunk AI is taking, with a named verifier from day one. What backfills: here is what you get back, tied to where you told me you want to grow. What the freed capacity is for: here is the work we can finally do. Skip the third sentence and the person invents a scarier version, because everyone knows freed hours go somewhere. One boundary keeps the conversation honest: do not promise what the organization decides above you. What you can promise is the part you control: that this role's redesign happens with its owner, that the backfill is real work with feedback attached, and that the person leaves the conversation more valuable than they entered it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> the conversation is easy to plan and hard to say; hearing it out loud once is worth three plans.</p>
+          <ol class="steps">
+            <li>Pairs. One person is the manager and delivers the three sentences for the role they just sketched; the partner plays the role's owner hearing it for the first time.</li>
+            <li>The partner answers honestly: which sentence did you believe least?</li>
+            <li>Swap and repeat, then bring the room the sentence that was hardest to say convincingly. It is almost always the third.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the three sentences for the role you sketched: what drains, what backfills, what the freed capacity is for. Read them aloud once. Whichever sentence you stumbled on is the one to rewrite before the real conversation.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 THE ROUTING LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Routing Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Lab</p>
+      <h2 class="h2" data-reveal>Route the <em>quarter</em>.</h2>
+      <p class="lead" data-reveal>Week one of the quarter, and four tasks land at once: the recurring data pull, the new client's kickoff deck, the process documentation nobody owns, and an escalation from an angry partner. You have AI, a junior analyst hungry for real work, a senior analyst ready for more, and yourself. Route all four, then see your team at quarter end.</p>
+
+      <div class="lab" id="routingLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Routing Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every routing here is one you will make on real work this month, and the quarter-end outcomes are the ones that actually happen. Route each task, then run the quarter.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the quarter</button>
+          <span class="quiz__progress" id="labStatus">Route all four tasks</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice where the lab punishes you. Never for using AI too much or too little; always for routing by reflex: the comfort-keep, the capacity-dump, the AI handoff with no verifier. And notice how the two big failure modes sound at quarter end. The overloaded manager fails loudly: missed dates, visible bottlenecks, everyone can hear it. The hollowed team fails silently: everything ships, the junior is bored, nobody grew, and the cost only becomes audible a year later when there is no one ready for the next role. Silence is the more dangerous sound, which is why the growth question goes first.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> the hardest routing on your real plate is the one that feels too senior to share, and it deserves the room's eyes.</p>
+          <ol class="steps">
+            <li>Pairs. Each person names the task from their own plate most like the partner escalation: it feels like it must stay with you.</li>
+            <li>Partner runs the test on it out loud: is it truly the judgment layer, or is a piece of it shareable, an observer seat, the follow-up plan, the next one like it?</li>
+            <li>Bring the room the best split you found: what stays, what becomes someone's stretch.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Name the task on your plate that feels least routable. Write what makes it yours in one line, then write the piece of it someone could own: the observer seat, the follow-up, or the next one like it. If you cannot find any piece, you found the judgment layer; if you found one, you found a stretch assignment.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 THE HANDOFF ============ -->
+  <section class="slide on-cream" id="s-handoff" data-count data-title="The handoff">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Handoff</p>
+      <h2 class="h2" data-reveal>The routing is half. The <em>handoff</em> is the rest.</h2>
+      <p class="lead" data-reveal>A right routing with a bad handoff still fails. Delegation to a person needs four things said out loud: the outcome, the context, the checkpoints, and the right to struggle productively without being rescued. Delegation to AI needs two: the draft assignment and the named verifier, because a delegation to AI is really a delegation to the verifier. And one thing never changes, whichever way you route: you own what ships.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Briefing a person</span>
+          <h3>Four lines, said out loud</h3>
+          <p class="muted">The outcome: what done looks like. The context: why it matters and where it fits. The checkpoints: when you will look, agreed up front. The struggle room: no rescue at the first wobble; the struggle is the lesson.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Briefing AI</span>
+          <h3>A draft and a verifier</h3>
+          <p class="muted">The draft assignment: what it produces, from which inputs, to what standard. The named verifier: who checks, against what source, with the power to reject. No verifier, no handoff.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">What never changes</span>
+          <h3>You own what ships</h3>
+          <p class="muted">Delegation moves the work, never the accountability. The junior's memo, the AI's summary, the verifier's miss: when it reaches the world, it carries your name.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What is a delegation to AI, really?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The AI produces; the verifier owns. Until a person knows the check is theirs, with a source and the power to reject, nothing has been handed off; it has only been set loose."><span class="mark">A</span><span>A delegation to the named verifier who checks the output</span></button>
+          <button class="opt" data-correct="0" data-why="Skipping the briefing is exactly how AI handoffs fail. The machine needs the same clarity a person does: what to produce, from what inputs, to what standard."><span class="mark">B</span><span>A way to skip the briefing, since machines don't need context</span></button>
+          <button class="opt" data-correct="0" data-why="Accountability never transfers to a tool. Whatever the AI drafts and the verifier passes, the name on the outcome is still yours."><span class="mark">C</span><span>A transfer of accountability to the tool</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="handoffJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the handoff</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> your team can already tell these apart; this is your calibration. Five delegation briefs, to people and to AI; call each one.</p>
+        <p class="quiz__progress" id="hjProgress"></p>
+        <p class="quiz__q" id="hjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="hjOptions" role="group" aria-label="Handoff judgments"></div>
+        <p class="quiz__feedback" id="hjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="hjNext" style="visibility:hidden">Next brief</button>
+        </div>
+        <div id="hjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Productive struggle has a calibration: space checkpoints by stakes, closer when a client is watching, wider when the cost of a wobble is private. And learn the tell that separates struggling from drowning: struggle produces attempts, drowning produces silence. Check for attempts, never for comfort; a stretch assignment is supposed to be uncomfortable. On the AI side, the verifier's craft, checking a draft against sources, sizing the check to the stakes, logging the misses, gets a full session of its own: the Workflow &amp; Process Redesign course in this series teaches the draft, verify, decide pattern that runs the AI lane. <a href="../../courses/workflow-process-redesign/" target="_blank" rel="noopener" style="text-decoration:underline">It pairs well with this one</a>.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> a brief that sounds complete in your head almost always has a missing line, and the room can hear which one.</p>
+          <ol class="steps">
+            <li>One volunteer drafts aloud the brief for the lab's kickoff deck, going to the senior analyst as stretch. Four lines: outcome, context, checkpoints, struggle room.</li>
+            <li>The room checks the lines off as it hears them, then names the missing or weakest one.</li>
+            <li>Rebuild the weak line together, then a second volunteer briefs the AI version of the data pull: draft assignment plus named verifier, sources and reject path included.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the four-line brief for the task you flagged in section 02: outcome, context, checkpoints, struggle room. If it is going to AI, write the two-line version instead: the draft assignment, then the verifier with their source and their power to reject.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · ROUTING CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My routing card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My routing card</p>
+      <h2 class="h2" data-reveal>One task. One destination. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't reroute work; managers with a card and a date do. Name the task you have been holding, choose its destination, name the failure mode you refuse to repeat, and put a date on the handoff conversation.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named task with a chosen destination and a dated handoff is a delegation; everything less is a good intention. Tasks and roles, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="rdPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The task.</b> The one you have been holding that you will route this week:</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the monthly pipeline report I still build myself every first Friday" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The destination.</b> Where does it go?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="Destination">
+              <button class="opt" data-practice="ai"><span>To AI, with a named verifier</span></button>
+              <button class="opt" data-practice="stretch"><span>To a team member, as a stretch assignment</span></button>
+              <button class="opt" data-practice="split"><span>Split it: AI drafts, the junior verifies and finishes</span></button>
+              <button class="opt" data-practice="keep"><span>Keep it: it is genuinely mine, and now I can say why</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode as a router of work.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="speed"><span>Route away a junior's learning rep for speed</span></button>
+              <button class="opt" data-not="noverifier"><span>Hand AI work with no named verifier</span></button>
+              <button class="opt" data-not="habit"><span>Keep work out of habit that someone could grow on</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When is the handoff conversation?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my routing card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The Routing Test, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Routing Test</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Three questions per task, in a fixed order: growth, judgment, volume. Growth goes first because it is the question AI-era managers forget.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The growth question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Growth Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Would doing this grow a person? If yes, stretch beats speed: the task goes to a person even when AI is faster.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The judgment question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Judgment Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Does this need context, relationships, or accountability? Then it stays human, and sometimes stays yours.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The volume question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Volume Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Is this mechanical repetition with catchable errors? That is AI's lane, always with a named verifier. The last question asked, never the first.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Stretch work, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Stretch Work</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Hard because it is new. Comes with feedback, builds a capability the person keeps. The raw material of careers.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Grunt work, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Grunt Work</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Hard because it is long. Repeats without teaching: rep 30 taught nothing rep 3 did not. Removing it is a favor; removing stretch is a theft.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Apprenticeship pipeline, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Apprenticeship Pipeline</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The chain of learn-by-doing tasks that turns juniors into seniors. AI absorbs the old links, so managers must build new ones or the pipeline hollows.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Role math, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Role Math</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>When AI absorbs a role's routine layer, name what backfills, judgment reps, client contact, verification ownership, never just shrink the list.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Judgment reps, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Judgment Reps</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Small, repeated chances to make a real call, show the reasoning, and hear the correction. The core unit of the new apprenticeship.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Named verifier, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Named Verifier</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The person who owns checking an AI output against sources, with the power to reject it. No verifier, no handoff.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Productive struggle, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Productive Struggle</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The difficulty that teaches. Preserved with checkpoints instead of rescues. The tell: struggle produces attempts, drowning produces silence.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The handoff brief, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Handoff Brief</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>To a person: outcome, context, checkpoints, struggle room. To AI: draft assignment plus named verifier. Either way, you own what ships.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go route <em>one task</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw how fast the triage arrived, learned the three questions and their order, sorted stretch from grunt, sketched a role's new math, routed a quarter in the lab, and judged the briefs. One task on your desk already has a better destination.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">15 minutes</span></div>
+        <h3>The handoff conversation</h3>
+        <p>The task from your card, and the person or the verifier it needs. Say the outcome, the context, and the checkpoint; if it is going to AI, name the verifier in the same breath. Then let go of it on purpose, and watch what the freed hours and the new rep each turn into. That quarter hour is the whole method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your task and its destination out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="worksheet.html" target="_blank" rel="noopener">Print the routing card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Ask. Route. Brief. Grow.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-triage">The New Triage</a></li>
+          <li><a href="#s-routing">The Routing Test</a></li>
+          <li><a href="#s-stretch">Stretch vs Grunt</a></li>
+          <li><a href="#s-rolemath">Role Math</a></li>
+          <li><a href="#s-handoff">The Handoff</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Routing Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="web/">Self-paced version</a></li>
+          <li><a href="../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a> · Delegating, Rethought · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="assets/js/qrcode.js?v=1"></script>
+<script src="assets/js/main.js?v=1"></script>
+</body>
+</html>

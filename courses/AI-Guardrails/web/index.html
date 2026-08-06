@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardrails &amp; Responsible Use: Self-Paced | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for Vanderbilt staff: write the Four Lines, a team's one-page AI agreement covering what data goes in, when a human verifies, when AI use is disclosed, and who owns the output.">
+<link rel="canonical" href="../../../courses/AI-Guardrails/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guardrails &amp; Responsible Use | Vanderbilt Learning Series">
+<meta property="og:description" content="Turn responsible AI use from a poster into a one-page working agreement: the traffic light with its hard cases, right-sized verification, honest disclosure, and output ownership.">
+<meta property="og:url" content="../../../courses/AI-Guardrails/">
+<meta property="og:image" content="../../../courses/AI-Guardrails/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guardrails &amp; Responsible Use | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/AI-Guardrails/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-why">Written Rules</a>
+    <a href="#s-datain">What Goes In</a>
+    <a href="#s-check">The Check</a>
+    <a href="#s-disclose">Disclosure</a>
+    <a href="#s-write">The Agreement</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 14</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Guardrails &amp; Responsible Use · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Speed is optional.<br><em class="gold-text">Trust</em> is not.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Stanford's AI Index tracks AI incidents worldwide, and the misuse cases it counts nearly doubled year over year, climbing right alongside adoption. At a university that handles FERPA-protected student records and health-adjacent data, "we'll be careful" is not a policy. This session gives your team the Four Lines: a one-page written agreement covering what goes into AI tools, when a human verifies, when readers are told, and who owns the output.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why written guardrails protect a team in ways good intentions can't once AI use scales</li>
+          <li>Classify data with the traffic light, including the hard cases: student work, meeting notes, letters about people</li>
+          <li>Decide which outputs need a named human check and when AI use must be disclosed to the reader</li>
+          <li>Assign ownership of every AI-assisted output to the human who ships it</li>
+          <li>Draft the Four Lines, a starter one-page agreement for your own team's real work</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Responsible AI</span>
+        <span class="skillpill">Data Privacy</span>
+        <span class="skillpill">Risk Management</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-why">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a university growing at this pace needs its AI rules written down before the deadline hits.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: uncommon speed with FERPA-protected records in the room only works when the lines are written, because a team moving fast on vibes is one paste away from an incident.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: every bold bet runs on data somebody handled correctly, and a written line on what enters which tool keeps the bet from becoming the headline.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: modeling responsible AI use starts with one page per team that says what goes in, who checks, who is told, and who owns it.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: reputation is exactly what an AI incident spends, and your team's written lines protect the trust the loop runs on. Every output that ships checked, disclosed, and owned keeps the flywheel turning.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six steps to one <em>page</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Why written rules</h3><p>Incidents rise with adoption, and the difference between a team with written lines and a team with vibes.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Line one: what goes in</h3><p>The traffic light from Start Smarter, now with the hard cases: student work, meeting notes, letters about people.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Line two: when a human verifies</h3><p>Size the check to the blast radius: from no check at all to the full source check.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Line three: when we disclose</h3><p>One test settles it: would the reader feel misled if they learned AI helped?</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Line four: who owns it</h3><p>The byline is a promise. Then the Guardrails Lab: write the lines for a real rollout and see month one.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Write your Four Lines</h3><p>Draft lines one and two for your own team and leave with a starter agreement to edit together.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 WHY WRITTEN RULES ============ -->
+  <section class="slide on-light" id="s-why" data-count data-title="Why written rules">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · Written Rules</p>
+      <h2 class="h2" data-reveal>Careful is a mood. Written is a <em>policy</em>.</h2>
+      <p class="lead" data-reveal>Before the method, the evidence. Stanford's AI Index counts AI incidents worldwide, and the numbers move one direction: more use, more incidents. Meanwhile the careers publication Metaintro keeps making the same observation from the workplace side: AI policy is turning into line-manager work, because the useful rules are the ones close enough to the work to be followed. Most rooms guess these numbers wrong, and the gap between the guess and the data is where this session lives.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">The pattern</span>
+          <h3>Incidents rise with adoption</h3>
+          <p class="muted">Reported AI misuse incidents nearly doubled year over year in the AI Index count. Nothing about the people changed; the volume of use did. Risk scales with use, whatever the intentions.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Team A</span>
+          <h3>The team with vibes</h3>
+          <p class="muted">Everyone means well. Each person quietly draws their own line about what to paste, when to double-check, and whether to mention AI at all. Six people, six invisible rulebooks.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Team B</span>
+          <h3>The team with lines</h3>
+          <p class="muted">Same tools, same pressures, one page. When the hard case lands on a deadline, the answer is already written down, and every new hire inherits it on day one.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="gnGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks far better than one you were shown. Four findings; call each one before it's revealed.</p>
+        <p class="quiz__progress" id="gnProgress"></p>
+        <p class="quiz__q" id="gnQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="gnOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="gnFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="gnNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="gnResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What actually changes the day a team writes its AI rules down?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="A written line can be pointed at, taught to a new hire, and challenged when it's wrong. Those are the three things intentions cannot do, and all three matter more as use scales."><span class="mark">A</span><span>Everyone works from the same line, and the line survives busy weeks and new hires</span></button>
+          <button class="opt" data-correct="0" data-why="Behavior shifts slowly, and that's fine. The immediate win is smaller and more valuable: the guessing stops, because the answer to 'can I paste this?' exists somewhere findable."><span class="mark">B</span><span>People stop using AI for anything risky</span></button>
+          <button class="opt" data-correct="0" data-why="Accountability stays with the humans doing the work; that's line four of the agreement you'll write. The page distributes clarity, never blame."><span class="mark">C</span><span>Responsibility moves to whoever wrote the page</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The evidence lives at <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener" style="text-decoration:underline">Stanford's AI Index</a>, the long-running annual measurement of AI's trajectory, which tracks reported AI incidents alongside adoption; the misuse count nearly doubled year over year, and both curves point up. <a href="https://www.metaintro.com" target="_blank" rel="noopener" style="text-decoration:underline">Metaintro</a> supplies the workplace half of the picture: quiet, unmanaged AI use is now ordinary, and policy that lives three levels up governs none of it, which is why the usable rules are moving to the team level. Put the two together and the conclusion writes itself: your team already uses AI, the risk grows with the use, and the one variable you control this month is whether the lines are written down. This course builds on Start Smarter, which taught the traffic light; today the light becomes line one of a page your whole team can point to.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> List three ways AI touches your work in a normal month. Next to each, write where the rule covering it lives. Every blank is a line your team's agreement needs.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Unwritten rules get rewritten every day, by whoever is in a hurry.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 LINE ONE: WHAT GOES IN ============ -->
+  <section class="slide on-dark" id="s-datain" data-count data-title="Line one: what goes in">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Line One</p>
+      <h2 class="h2" data-reveal>What goes <em>in</em> decides everything after.</h2>
+      <p class="lead" data-reveal>Line one answers the question every other question depends on: which data may enter which tools. Start Smarter gave you the traffic light, and the light still runs everything. What this session adds is the part that trips real teams: the hard cases, where ordinary-looking work turns out to be about a person.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Line one starts here</span>
+        <p style="margin:.5rem 0 0" class="measure">The traffic light, exactly as Start Smarter taught it. Line one is this light written down for your team's actual work:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The light outranks everything else in this course. Whatever a later section teaches about checking or disclosing, red data never enters an unapproved tool.</p>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Red hides in plain sight</span>
+          <h3>About a person means red</h3>
+          <p class="muted">A student's essay is about a student. Meeting notes naming colleagues are about colleagues, until the names come out. A recommendation letter is about its subject. Ask "who is this about" before "how sensitive does it feel."</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Yellow has a home</span>
+          <h3>Internal work, approved tools</h3>
+          <p class="muted">Budget drafts, grant drafts, internal policies: yellow. ChatGPT EDU, Amplify, and Copilot are approved because their agreements keep university work inside university walls. Yellow in a personal account is a rule already broken.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Green is narrower than it looks</span>
+          <h3>Public on purpose, or generic</h3>
+          <p class="muted">Published research, public web copy, and generic questions with nothing of yours pasted in. If it appeared in public on purpose, or contains nothing about your work or your people, go.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="tlSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Green, yellow, or red</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the light is easy on a poster and harder at 4:55 on a deadline. Five hard cases; call the light on each.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Traffic light choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="tsNext" style="visibility:hidden">Next case</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Your meeting notes name three colleagues. What makes them safe to bring into an approved tool?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="De-identification changes what the data is. With the names and identifying details out, what remains is internal work product: yellow, approved VU tools only. With them in, it stays red."><span class="mark">A</span><span>Taking out the names and anything that identifies who said what</span></button>
+          <button class="opt" data-correct="0" data-why="A prompt is a request. Confidentiality comes from the tool's agreement and from what you chose to enter, and asking nicely changes neither. The light doesn't negotiate."><span class="mark">B</span><span>Adding a line asking the tool to keep the names confidential</span></button>
+          <button class="opt" data-correct="0" data-why="Approved tools are the yellow lane, and red doesn't enter any lane. Approval widens where internal work can go; it changes nothing about private information about people."><span class="mark">C</span><span>Using an approved tool, since approval covers whatever you enter</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sorting question that catches the hard cases is "who is this about," asked before "how sensitive does it feel." FERPA protects student education records broadly: grades, schedules, advising notes, and in some contexts the fact of enrollment itself, which is why student work defaults to red however routine it looks. Health-adjacent information plays by stricter rules still. On the yellow lane, remember what approval means: ChatGPT EDU, Amplify, and Copilot are approved for internal work because of their agreements, never as a loophole for people data. And when a case genuinely will not classify, the move belongs in the agreement itself: treat it as red for today and ask the policy owner. Improvising under deadline is how the AI Index gets its numbers.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> List the five data types you touch most and classify each. The one you hesitated on goes at the top of the team conversation this course ends with.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 LINE TWO: WHEN A HUMAN VERIFIES ============ -->
+  <section class="slide on-cream" id="s-check" data-count data-title="Line two: the check">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · Line Two</p>
+      <h2 class="h2" data-reveal>Size the check to the blast <em>radius</em>.</h2>
+      <p class="lead" data-reveal>Line two says which outputs need a named human check before they travel. The wrong answer is "all of them," because a team that checks everything equally soon checks nothing well. The right answer scales with blast radius: how far the output travels, and who acts on it when it lands.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">No check needed</span>
+          <h3>Stays on your screen</h3>
+          <p class="muted">Brainstorms, idea lists, drafts nobody else will see. If it never leaves your screen, the only reader it can mislead is you, and you were in the room when it was made.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Quick read</span>
+          <h3>Travels to a few</h3>
+          <p class="muted">Internal notes, agendas, summaries a colleague will skim. One attentive pass by the person who ships it: does this say what I mean, and is anything off?</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Full source check</span>
+          <h3>Numbers, names, dates, policy</h3>
+          <p class="muted">Anything a student acts on, anything external, anything carrying figures or policy claims. Checked against the source system by a named person before it moves.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Line two, written down</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Who checks:</b> a named person, usually whoever ships it. <b>Against what:</b> the actual source: the policy page, the data system, the calendar. Memory is not a source, and neither is "it reads right," because reading right is the one thing AI output always does. <b>Before it goes where:</b> the check happens before the output reaches anyone who will act on it. A check that happens after has a different name: a correction.</p>
+      </div>
+
+      <div class="quiz" id="szCheck" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Size the check</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> over-checking burns the attention your student-facing work needs, and under-checking ships the wrong deadline. Five outputs; size each check.</p>
+        <p class="quiz__progress" id="szProgress"></p>
+        <p class="quiz__q" id="szQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="szOptions" role="group" aria-label="Check size choices"></div>
+        <p class="quiz__feedback" id="szFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="szNext" style="visibility:hidden">Next output</button>
+        </div>
+        <div id="szResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: One question sizes the verification. Which is it?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Blast radius sets the check. A private brainstorm and a student-facing answer are different animals even when the text looks similar, and the difference is who acts on it."><span class="mark">A</span><span>How far does this travel, and who will act on it?</span></button>
+          <button class="opt" data-correct="0" data-why="Length is effort, and effort is a poor proxy for risk. One wrong date in a two-line email to a student outdamages ten sloppy pages of private brainstorm."><span class="mark">B</span><span>How long is the output?</span></button>
+          <button class="opt" data-correct="0" data-why="Human drafts carry errors too, and mature teams always checked what travels. Origin changes the flavor of likely errors; blast radius still sets the size of the check."><span class="mark">C</span><span>Did AI write it, or did a human?</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two things keep line two alive after week one. First, the name: a check assigned to "someone" dies on the first busy Friday, quietly, and looks fine right up to the correction, which is why the written line names who checks each output type. Second, the source: AI errors arrive fluent and confident, so the check runs against the policy page, the data system, or the calendar, never against how the draft reads. And the line has a budget clause worth writing down: if verifying an output costs what producing it did, that output was a bad candidate for AI drafting in the first place. Send it back to a human and spend the checking attention where drafting actually pays.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Same drill on paper: your team's three most-shipped outputs, a check size for each, and a named checker plus source for the biggest one.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 LINE THREE: WHEN WE DISCLOSE ============ -->
+  <section class="slide on-light" id="s-disclose" data-count data-title="Line three: disclosure">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Line Three</p>
+      <h2 class="h2" data-reveal>Would the reader feel <em>misled</em>?</h2>
+      <p class="lead" data-reveal>Line three answers the question teams find most awkward: when do we tell readers that AI helped? One test settles nearly every case. Imagine the reader learning, later, exactly how this was made. If they would feel misled, disclose. If you can't say no with a straight face, disclose. The test works because you have to face an actual reader to run it.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Disclose</span>
+          <h3>The reader is owed it</h3>
+          <p class="muted">External documents, anything carrying the university's voice, and any assessment or feedback on a person's work. People have a right to know how judgment about them was formed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">No disclosure needed</span>
+          <h3>You own the words</h3>
+          <p class="muted">Brainstorms, outlines, and first drafts you rewrote until they're genuinely yours. Disclosure follows the reader's expectations, and no reader expects a memo to list its brainstorming partners.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">The honest middle</span>
+          <h3>Unsure? Say so and ask</h3>
+          <p class="muted">Funder rules, journal policies, and brand-new formats produce genuinely unclear cases. Ask the policy owner instead of improvising, then write the answer into the agreement so nobody asks twice.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="dcCall" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Disclose or not</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the misled test only becomes instinct through reps. Five scenarios; make the call on each.</p>
+        <p class="quiz__progress" id="dcProgress"></p>
+        <p class="quiz__q" id="dcQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="dcOptions" role="group" aria-label="Disclosure choices"></div>
+        <p class="quiz__feedback" id="dcFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="dcNext" style="visibility:hidden">Next scenario</button>
+        </div>
+        <div id="dcResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: The dependable test for disclosure is…</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The test tracks what disclosure is for: the reader's trust. And it scales, because it works on formats and tools that didn't exist when any written policy was drafted."><span class="mark">A</span><span>Whether the reader would feel misled if they learned AI helped</span></button>
+          <button class="opt" data-correct="0" data-why="Percentages miss the point in both directions. A fully AI-drafted brainstorm owes nobody anything, and a lightly AI-edited assessment of a person may still owe its subject the truth."><span class="mark">B</span><span>What share of the words AI produced</span></button>
+          <button class="opt" data-correct="0" data-why="That's a bet, and the stake is your office's credibility. Disclosure costs one sentence; discovered concealment costs trust in everything you ship next."><span class="mark">C</span><span>Whether anyone is likely to find out</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Disclosure in the wild is one plain sentence: "Drafted with AI assistance and reviewed by the events team." Cheap, honest, and forgettable, which is the point; the goal is a reader who never feels tricked, never a ceremony. The asymmetry is the whole argument: the sentence costs nothing, and discovered concealment taxes everything your office publishes afterward. Assessments are the strictest case and worth naming in your agreement explicitly: when AI helps evaluate a person's work, the person is owed that fact, because they're entitled to know how judgment about them was formed. And when a format's rules are genuinely unclear, grant proposals being the classic case, the agreement's answer is already written: say so and ask the owner of the rules.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Take your most public output, run the misled test, and draft the one-line disclosure you would actually print. Say it out loud once; your ear will catch what your eye missed.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 LINE FOUR: WHO OWNS IT ============ -->
+  <section class="slide on-dark" id="s-own" data-count data-title="Line four: ownership">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Line Four</p>
+      <h2 class="h2" data-reveal>The byline is a <em>promise</em>.</h2>
+      <p class="lead" data-reveal>Line four is the shortest, and it carries the other three. The human who ships an output answers for it: every claim, every error, every reading of its tone. "The AI wrote it" has never once worked as an accountability answer, here or anywhere, which leads to the plainest rule in this course: you cannot ship what you have not read.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Line four, written down</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>One name per output:</b> whoever hits send, publish, or submit has read every word and answers for all of them. <b>The tool never appears in the accountability chain:</b> if the output is wrong, the correction carries a person's name and the fix belongs to that person. <b>Ownership powers the other lines:</b> a person who must answer for an output suddenly cares what went into it, who checked it, and whether the reader was told.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: An AI-drafted FAQ answer ships with a wrong deadline and a student misses it. Who answers for that?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The byline was theirs, so the promise was theirs. So is the fix: correct it under their own name, then strengthen the verify line so the next wrong date gets caught before posting."><span class="mark">A</span><span>The person who published the answer</span></button>
+          <button class="opt" data-correct="0" data-why="The vendor sold a drafting tool, and drafts are unverified by definition. Nothing in the chain of trust between the university and that student runs through a vendor."><span class="mark">B</span><span>The AI vendor</span></button>
+          <button class="opt" data-correct="0" data-why="Tools do make mistakes, which is exactly why the design puts a human between the tool and the reader. When that human ships unread output, the mistake becomes theirs."><span class="mark">C</span><span>Nobody; tools make mistakes</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="lab" id="guardLab" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Guardrails Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> your team is rolling out AI help on two regular outputs: the weekly staff newsletter and a student-facing FAQ page. Write the four lines for the rollout, then see where the team stands at month one. Every choice here is one a real team has made, one way or the other.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run month one</button>
+          <span class="quiz__progress" id="labStatus">Write all four lines</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice what the lab punishes. Never AI use itself; always the missing line around it: data with no rule, checks with no name, disclosure left to chance, errors with no owner. That matches how real incidents read after the fact: the postmortem almost never says the tool failed, it says nobody had decided who was responsible for what the tool touched. Line four is the enforcement mechanism the other three borrow. When a team skips it, lines one through three decay into suggestions; when it's real, the named owner personally audits the rest, because their name is the one on the correction. That's also why collective ownership fails so reliably: an output everyone owns has nobody who must read it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Run your most frequent output down the four lines on paper and mark the line currently left to chance. That line is the first sentence of your team's agreement.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 WRITE YOUR FOUR LINES ============ -->
+  <section class="slide on-cream" id="s-write" data-count data-title="Write your Four Lines">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Agreement</p>
+      <h2 class="h2" data-reveal>One page, written <em>together</em>.</h2>
+      <p class="lead" data-reveal>You have all four lines. Now write them for your actual team: one page, drafted with the people it covers, living somewhere findable, revisited quarterly. When a case doesn't fit the lines, the page says who to ask, because improvised policy under deadline is how incidents happen. And where VU policy already answers a question, your page points to it instead of competing with it.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The working agreement standard</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Written with the team,</b> never announced at it; people follow lines they helped draw. <b>One page, findable:</b> it lives where work starts, the team drive's front page or the onboarding doc, never in an email from March. <b>Revisited quarterly:</b> tools change, cases accumulate, and a stale agreement teaches people to ignore it. <b>Unclear cases route, never improvise:</b> the page names who to ask, and every answered question becomes a new line.</p>
+      </div>
+
+      <div class="plan" id="flBuild" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Draft your Four Lines, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a starter draft turns the team conversation from a blank page into an edit, and edits actually happen. Nothing you type is saved or sent anywhere; tools and situations, never people's names.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="flLine1"><b>1 · Line one: what goes in.</b> For your team's real work, which data may enter which tools?</label>
+            <input type="text" id="flLine1" maxlength="140" placeholder="e.g. drafts and internal docs in ChatGPT EDU only; nothing naming a student or colleague, ever" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="flLine2"><b>2 · Line two: when a human verifies.</b> Which outputs need a named check before they travel?</label>
+            <input type="text" id="flLine2" maxlength="140" placeholder="e.g. anything student-facing or with numbers: checked against the source by whoever ships it" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Line three: your team's disclosure default.</b></span>
+            <div class="plan__chips" id="flDisc" role="group" aria-label="Disclosure default">
+              <button class="opt" data-disc="voice"><span>Disclose whenever the university's voice or judgment of a person's work is involved</span></button>
+              <button class="opt" data-disc="external"><span>Disclose on everything external by default; internal drafts we rewrote and own need nothing</span></button>
+              <button class="opt" data-disc="test"><span>Run the misled test case by case, and ask the policy owner whenever it's unclear</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="flMake" disabled>Draft my Four Lines</button>
+            <span class="quiz__progress" id="flStatus">Write both lines and pick a default</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="flOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Your page doesn't compete with university policy; it fills the space between policy and Tuesday afternoon. FERPA questions already have the registrar's guidance. The approved-tool list is IT's to maintain, and today it reads ChatGPT EDU, Amplify, Copilot; your page points at the list rather than copying it, so it can't go stale. Research and funder rules belong to the research office. What none of those documents can reach is the everyday call: can this meeting summary go in, who reads the newsletter before it ships, does the FAQ carry a disclosure line. That's the agreement's territory, and it's why the page works best written by the people who make those calls daily. One habit worth stealing: every time an unclear case gets routed and answered, the answer becomes a new line on the page. Agreements that grow this way stay trusted, because every line earned its place.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Stress-test your own draft against the hardest case from the traffic-light trainer in section 02, and tighten each line until it answers cleanly.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · FOUR LINES CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My Four Lines card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My Four Lines card</p>
+      <h2 class="h2" data-reveal>One team. One page. <em>Four lines.</em></h2>
+      <p class="lead" data-reveal>Sessions don't write team agreements; a person with a starter card and a date does. Name the team or workflow this covers, pick your first move, name the thing you refuse to do, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named team, a first move, and a date is a rollout; everything less is a poster. Tools and situations, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="capPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The team or workflow this agreement covers.</b> Whose work, which outputs?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the advising front office: email replies, the FAQ page, the weekly newsletter" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Where does the agreement start?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="draft"><span>Draft the Four Lines and bring them to the team as an edit, never an announcement</span></button>
+              <button class="opt" data-practice="agenda"><span>Put the Four Lines on the next team meeting agenda: 20 minutes, hard cases welcome</span></button>
+              <button class="opt" data-practice="route"><span>Route one unclear case we already have to the right policy owner, in writing</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode, named in advance.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="paste"><span>Paste anything about a person into an unapproved tool</span></button>
+              <button class="opt" data-not="unread"><span>Ship AI output I haven't read to the last word</span></button>
+              <button class="opt" data-not="silent"><span>Treat disclosure as optional when the university's voice is involved</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first move happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my Four Lines card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The Four Lines, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Four Lines</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A team's one-page AI agreement: what goes in, when a human verifies, when we disclose, who owns the output. Written with the team, revisited quarterly.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal work, approved VU tools only. Red: private information about people, never. Line one starts here, and the light outranks everything.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="FERPA, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>FERPA</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The federal law protecting student education records: grades, schedules, advising notes and more. The reason "it's about a student" almost always means red.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Approved VU tools, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Approved VU Tools</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>ChatGPT EDU, Amplify, and Copilot: tools whose agreements keep university work inside university walls. The yellow lane, never a loophole for people data.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Verification, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Verification</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A named person checking an output against a real source before it travels. Sized to blast radius, and memory never counts as a source.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Blast radius, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Blast Radius</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>How far an output travels and who acts on it when it lands. The measure that sizes the check: none, quick read, or full source check.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Disclosure, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Disclosure</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Telling readers AI helped make something. Owed on external documents, the university's voice, and judgments of people's work. Tested by one question: would the reader feel misled?</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Output ownership, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Output Ownership</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Line four: the human who ships it answers for every claim, error, and tone. One name per output, and the tool never appears in the accountability chain.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Data misuse incident, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Data Misuse Incident</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Data reaching tools or readers it should never have reached. Stanford's AI Index counts these nearly doubling year over year, tracking adoption.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Shadow AI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Shadow AI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI use nobody talks about: quiet, unofficial, outside any rule. Roughly half of workplace AI use in survey after survey, and the strongest argument for written lines.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Working agreement, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Working Agreement</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A short, team-authored page of rules the team actually follows. Lives somewhere findable, gets revisited on a schedule, and names who to ask when it runs out.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go write the <em>four lines</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw why written beats careful, called the traffic light's hard cases, sized the checks, learned the misled test, put a name on every output, and drafted your starter lines. One team conversation stands between this session and a working agreement.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">20 minutes</span></div>
+        <h3>The Four Lines conversation with your team</h3>
+        <p>Bring the starter card. Walk the four lines, five minutes each, and let the team argue the hard cases; the arguing is what makes the page theirs. Before anyone leaves: the agreement has a home everyone can name, and the quarterly revisit is on the calendar. That's the whole method, on one page, owned by the people it covers.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your team and your meeting day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the team agreement</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">What goes in. Who checks. Who is told. Who owns it.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-why">Why Written Rules</a></li>
+          <li><a href="#s-datain">Line One: What Goes In</a></li>
+          <li><a href="#s-check">Line Two: The Check</a></li>
+          <li><a href="#s-disclose">Line Three: Disclosure</a></li>
+          <li><a href="#s-own">Line Four: Ownership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Four Lines Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Guardrails &amp; Responsible Use · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+</body>
+</html>

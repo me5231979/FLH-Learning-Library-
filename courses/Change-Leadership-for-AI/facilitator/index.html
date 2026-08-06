@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Change That Sticks, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: name the fear an AI change puts in the room, answer the job-security question honestly, build psychological safety around experimenting, host your team's ethics conversation, and hold the change steady over months.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Change That Sticks | Vanderbilt Learning Series">
+<meta property="og:description" content="Naming fear, building safety, leading the conversation: the human side of AI change, with the Name, Frame, Invite, Hold method and a six-month Change Lab.">
+<meta property="og:url" content="../../../courses/Change-Leadership-for-AI/">
+<meta property="og:image" content="../../../courses/Change-Leadership-for-AI/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Change That Sticks | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/Change-Leadership-for-AI/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-why">Why It Fails</a>
+    <a href="#s-fear">Name the Fear</a>
+    <a href="#s-safety">Safety</a>
+    <a href="#s-ethics">Ethics</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including building a conversation plan for a change you genuinely face. You will be asked to say a naming line out loud; a real one plays far better than a hypothetical.</li><li>Write your own honest two-part answer to the job question for your own team, and say it aloud once. Someone will ask you the question directly, as a test, and your answer is the demonstration.</li><li>Send the pre-work invite (template on this page) with the calendar invite: come knowing the one AI change nearest your team and your guess at the loudest worry, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Skim the Accenture leadership research and the linked Gallup article so the Guess the Number reveals are fresh; the game carries the citations, but you should be able to say 'the research' with a straight face.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Change Lab and one trainer so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and change cards.</li><li>Re-read the tough-questions bank; say the 'is this how jobs get cut?' response out loud once. In this course, that question is not a risk, it is the curriculum.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'SITUATIONS AND ROLES, NEVER NAMES' where the room can see it all session.</li><li>Write NAME / FRAME / INVITE / HOLD as four empty boxes on the whiteboard; you'll fill them in section 02.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed change cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart with markers for the method's four words and the naming-line rewrites</li><li>Your own naming line, written in advance, for a change you genuinely face; you will say it out loud as the model</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the four method words, the honesty rules, and the traffic light all draw in seconds. The naming-line drill and the fumble-story drill never needed a screen; the capstone moves to the printed card. The lab becomes a group walk-through: read each moment's three options aloud and have the room vote, then read the coaching for what they chose.</div><div class="brief__row"><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the conversation-plan builder and capstone move to paper. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the Change Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the builder, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone names a colleague or starts describing a specific person's fear or resistance:</b> Protect the norm warmly: 'Hold that. Situations and roles, never names. The method works on moments, not on people.' If it keeps happening, a real team conflict is probably in the room; offer a private follow-up and steer the exercises to the role level.</div><div class="brief__row"><b>If Someone in the room is visibly living the fear, not managing it: their own role is the one changing:</b> Do not teach past them. Acknowledge it plainly and briefly: 'Some of you are on the receiving end of this change too, and everything here works in both directions.' Offer the honest two-part answer as something they deserve to hear from their own leadership, and check in privately at the break. Their presence makes the room more honest, not less.</div><div class="brief__row"><b>If The room is skeptical: 'AI is overhyped, this will blow over':</b> Don't argue futures; the course doesn't depend on any AI prediction. The frame that lands: whatever the technology does, your team's fear about it is already real, and unmanaged fear costs you today. Change leadership pays off even if the tools plateau tomorrow.</div><div class="brief__row"><b>If The room is the opposite: enthusiasts who think fear talk slows everything down:</b> Aim the enthusiasm at the arithmetic from section 03: the enthusiasts were always coming along; the change is decided by the watchful and the worried. Then let the lab do the sobering: enthusiast instincts (push adoption, declare victory) score weak, and the coaching explains why.</div><div class="brief__row"><b>If A manager says 'I can't be honest; leadership hasn't told ME what's happening':</b> Validate it; this is common and real. The honest frame still works with a bigger unknown box: 'here's what I know, here's what I don't, and here's what I'm doing to find out' is a naming conversation a manager at any level can run. What you cannot do is transmit false certainty downward; that borrows trust you'll need later.</div><div class="brief__row"><b>If Someone raises a real data-privacy concern mid-flight:</b> Stop and honor it; this is the one interruption that outranks the agenda. Restate the traffic light (green public, yellow internal in approved VU tools only, red private information about people, never), confirm their case against it, and if it's genuinely ambiguous, park it with a promise to route it to the right owner rather than improvising policy from the front of the room.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Is this how our jobs get cut? Be honest.</summary><p>The honest answer has two parts, and this course exists to teach it. Part one, what anyone can know: AI changes tasks before it changes roles, and in most organizations no role decision has been made when the tools arrive. Part two, what a manager can promise: that any news about the team's roles comes from the manager first, with the team in the room, and that saved hours get a named, visible destination. What no one should promise is that nothing will change; that promise cannot be kept, and the room knows it. The difference between a team in dread and a team in motion is usually whether someone answered this question honestly, early, and as many times as it was asked.</p></details><details class="brief__q"><summary>Isn't naming the fear just making people anxious about something they hadn't worried about yet?</summary><p>The fear is already there; the research and every hallway conversation say so. Gallup finds most employees have heard no clear AI plan from leadership, and people do not fill silence with calm. Naming does not create the fear; it moves it from the hallway, where it grows, to the room, where it can be answered. The one real risk is naming without framing: if you say 'I know this is scary' and change the subject, you've confirmed the fear and answered nothing. The move is always name, then frame, in the same breath.</p></details><details class="brief__q"><summary>What if I honestly don't know whether roles will change? Leadership hasn't told me either.</summary><p>Then say exactly that, because it is the honest frame: 'Here's what I know, here's what I don't, and here's what I'm doing to find out.' A manager who admits the unknown and visibly chases the answer builds more trust than one who transmits reassurances they don't believe. The promise you can always keep is procedural: whatever I learn, you hear it from me first. Teams forgive uncertainty; they do not forgive discovering that certainty was faked.</p></details><details class="brief__q"><summary>My team is small and busy. Do we really need an ethics 'session'? Can't I just forward the policy?</summary><p>The policy sets the floor; it cannot tell your team what the floor means for your work, and it cannot host disagreement. The session can be one hour, once, plus a revisit date; the output is one page. What the hour buys you: the team's real reasoning out loud, the ambiguous cases surfaced before they become incidents, and shared ownership of the lines instead of quiet private interpretations. A forwarded PDF teaches your team that ethics is someone else's job, and the next hard call gets made alone, in silence, by whoever is most rushed that day.</p></details><details class="brief__q"><summary>What do I do about my one hard resister? They refuse to touch AI at all.</summary><p>First, reframe: resistance is information, not insubordination. Under 'not for me' there is usually a specific worry: quality, craft identity, or the suspicion that using the tool digs their own grave. Ask what specifically feels off, in a 1:1, and listen without defending. Then offer a low-stakes experiment they design; people rarely sabotage what they built. And protect them from becoming the room's example; a resister shamed in public becomes a resister forever. If nothing moves after real listening and real invitation, that becomes an ordinary performance conversation about the role's requirements, held honestly, which is a different conversation from change leadership.</p></details><details class="brief__q"><summary>Doesn't all this fear talk assume the worst? Plenty of people are excited about AI.</summary><p>Both are in your room at once, and the excited ones need you less. The arithmetic from section 03: enthusiasts experiment no matter what you do; the change is decided by the watchful and the worried, who are checking what happens to the first person who fumbles. Leading the excited is easy and loud; leading the worried is quiet and decisive. And enthusiasm has its own failure mode: it can silence the anxious, which is one of the three capstone failure modes, so channel it into experiments and keep the microphone available for the quiet.</p></details><details class="brief__q"><summary>How is this different from generic change management training?</summary><p>The bones are shared; the specifics are not. Three things are distinctive about AI change: the fear is existential rather than procedural (the unsaid question is about being replaced, which is why naming matters more than usual), the ground keeps moving (capabilities shift quarterly, so decisions need revisit dates and the ethics container stays open), and there is a hard data floor (the traffic light) that no amount of enthusiasm may cross. Generic change models assume the change finishes; this one is built for a change that keeps changing.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Change That Sticks session. One thing to bring, in your head: the AI change nearest your team, whether it's a tool arriving, a workflow shifting, or just a rumor with momentum. Come with your honest guess at the worry your team feels most and says least. You will never be asked to name people; every exercise runs on situations and roles, and everything you type stays on your screen. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the conversation happen? Three quick lines, reply whenever: 1) Did you have the naming conversation (or your chosen first move) from your change card? 2) What did your team say that surprised you? 3) When is the ethics session, and what's on its agenda? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of holding. Two questions, same scale as the room: 1) Fist to five, how confident are you now leading your team through this change? 2) What are the quiet signals showing: who speaks in meetings, what surfaces in 1:1s, and has the job question come back? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the naming conversation happen? What did your team say that surprised you? When is the ethics session?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'what are the quiet signals showing, and has the job question come back yet?' The count of naming conversations actually held is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Change That Sticks session. One thing to bring, in your head: the AI change nearest your team, whether it's a tool arriving, a workflow shifting, or just a rumor with momentum. Come with your honest guess at the worry your team feels most and says least. You will never be asked to name people; every exercise runs on situations and roles, and everything you type stays on your screen. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today works on the real change in front of your real team, so one norm up front: situations and roles, never people's names. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real conversation you'll plan</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the norm that makes real-change material safe: situations and roles, never names, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is not about AI tools; it's about the part of AI change the tools can't touch: the fear in the room, the question nobody asks out loud, and what a leader does about both. We'll work on the real change in front of your real team, so one ground rule for the next ninety minutes: situations and roles, never people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: situations and roles, never people's names; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: how many of you have an AI change already in motion on your team, or coming this year? And how many of you have talked with your team, directly, about what it means for them?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Nearly every hand up on the first question</li><li>Most hands down on the second, with some sheepish looks</li><li>One or two who have had the conversation, usually because someone forced it</li></ul><p class="facnote__mini">Respond: Name the gap warmly: 'That gap between change arriving and change being talked about is where fear grows, and closing it is a learnable skill, which is the next ninety minutes.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'situations and roles, never names' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> Anyone bracing for an AI tools workshop. The frame that relaxes the room: today has almost no AI in it; it is a leadership session about the humans the AI lands on.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Change That Sticks · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>The hard part of AI change<br>was never the <em class="gold-text">AI</em>.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Accenture's research on leadership in the AI era finds that only around 18 percent of leaders lead AI investments effectively, and what separates them has almost nothing to do with tool fluency. The differentiators are human: curiosity, courage, and connection. Your team's AI change will be decided in conversations: in the question nobody asks out loud, in whether people feel safe to stumble, and in whether you host the hard topics or hide from them. This session trains you to lead those conversations.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why AI change fails on human ground rather than technical ground, and what the effective 18 percent do differently</li>
+          <li>Name the fear and the job-security question directly, without false promises, using the honesty rules</li>
+          <li>Build psychological safety around experimenting with AI: public experiments, no-blame misses, and going first</li>
+          <li>Facilitate your team's own ethics and governance conversation instead of outsourcing it to a policy document</li>
+          <li>Sustain change leadership over months: the revisit cadence, the quiet signals, and measuring trust alongside usage</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill skillpill--core">Develops and implements University strategy</span>
+        <span class="skillpill">Change Management</span>
+        <span class="skillpill">Psychological Safety</span>
+        <span class="skillpill">Communication</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-why">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in one real change carded with a first conversation and a date.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things by the end. You'll know why AI change fails on human ground, and what the effective eighteen percent of leaders do differently. You'll be able to name the fear in the room, including the job question, without promising anything you can't keep. You'll know how to build safety around experimenting, so trying and missing is survivable on your team. You'll be ready to host your team's own ethics conversation instead of forwarding a policy. And it all lands in one artifact: a change card for the change your team is actually facing, with a date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL change card, one change, one conversation, one date.</li><li>Name the sources once for credibility: Accenture for the 18 percent and the differentiators, Gallup for the employee side.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one change, one first conversation, one date).</p><p class="facnote__meta"><b>Watch for:</b> Tool questions arriving early ('which AI is coming?'). Park them: the session is deliberately tool-agnostic, and the method outlives any tool.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One page before the plan: why the university's whole bet depends on how you lead this change.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 2 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and daring to grow is precisely what you are asking a nervous team to do when AI arrives.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: operational speed follows trust, and a team whose fears have been named out loud adopts new tools faster than a team quietly bracing for bad news.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: every bold bet asks people to change how they work, and the leaders who land that ask do it with curiosity, courage, and connection rather than a rollout memo.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: you model what you host, and a manager who runs the team's own ethics conversation instead of forwarding a policy is the institution's leadership in miniature.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: values-driven leadership is the flywheel input your change work feeds directly, and measuring trust alongside usage tells you it is turning. A team led through AI change on human ground stays whole enough to deliver the ambition.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Connect the course to the institutional vision: a university cannot move at uncommon speed unless its managers lead AI change on human ground, with curiosity, courage, and connection.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the plan, the institutional stakes. Chancellor Diermeier's vision is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The how is uncommon speed, agility, and scale, and notice that all three are change words. A university cannot move at uncommon speed if its teams meet every new tool with quiet dread, which is why the research keeps finding that the effective AI leaders differ on human ground: curiosity, courage, connection. Our motto is the dare, Crescere aude, dare to grow, and your team will only take that dare if you make it safe to take. That is this session.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence off the slide, slowly; it carries the page.</li><li>Walk the three focus cards, landing on the 'The team translation' line in each.</li><li>Point at the flywheel card: values-driven leadership is a named flywheel input, and it is the one this course trains.</li><li>Keep it under three minutes; this page frames the session, and the sections do the teaching.</li></ol></div><p class="facnote__meta"><b>Validate:</b> The room can connect the vision to the course in one line: the university's speed depends on teams that feel safe enough to change.</p><p class="facnote__meta"><b>Watch for:</b> Eye-rolls at strategy language. Ground it fast: the flywheel's values-driven input is decided in team meetings like the ones they run every week.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Six ideas, in a deliberate order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute. Read the vision sentence, gesture at the three focus cards, move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Why AI change fails</h3><p>The 18 percent finding: change announced as technology, experienced as threat, and what the effective leaders do instead.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Name the fear</h3><p>The unsaid question in every AI meeting, the naming move with scripts, and the honesty rules.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Safety to stumble</h3><p>Psychological safety applied to AI adoption: public experiments, no-blame misses, and the leader going first.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>The ethics conversation</h3><p>Hosting your team's own session on where AI is fine, where it is not, and why. You'll build your conversation plan.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Change Lab</h3><p>Six months of leading an AI rollout, four decisive moments, and what your choices do to the team.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Hold for the long arc</h3><p>The revisit cadence, the quiet signals, and measuring trust rather than just usage.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: evidence, naming, safety, ethics, practice, endurance.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first the evidence about why AI change fails, then the naming move, the conversation most managers never have. Then the two conditions that make change survivable: safety to stumble and an honest ethics conversation. Then the Change Lab, where you lead six months of a rollout and see what your choices do. And we end where real change lives: the long arc, months after the announcement.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the six items in one breath each.</li><li>Point out the shape: the evidence (01), the first conversation (02), the conditions (03 and 04), six months of practice (05), and the long haul (06).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the evidence, because the numbers are worse than most of you think, and more hopeful.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 WHY AI CHANGE FAILS ============ -->
+  <section class="slide on-light" id="s-why" data-count data-title="Why AI change fails">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · Why Change Fails</p>
+      <h2 class="h2" data-reveal>Announced as technology. Experienced as a <em>threat</em>.</h2>
+      <p class="lead" data-reveal>Here is the pattern behind most failed AI rollouts. Leadership announces a technology: licenses, features, timelines. The team experiences something else entirely: a question about their own future that nobody in charge seems willing to say out loud. The tools were never the hard part. Before the method, the evidence, and most rooms guess these numbers wrong.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">The announcement</span>
+          <h3>A technology story</h3>
+          <p class="muted">Rollout comms talk about capabilities, licenses, and productivity. All true, and none of it answers the question actually forming in the room.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">The experience</span>
+          <h3>A threat assessment</h3>
+          <p class="muted">Every person hears the same unsaid question: is this how my job changes? Unanswered, that question converts into quiet resistance that no training session can reach.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">The 18 percent</span>
+          <h3>Led on human ground</h3>
+          <p class="muted">The leaders whose AI change works differ in curiosity, courage, and connection, Accenture finds. They ask real questions, say uncomfortable truths early, and stay close enough to hear the fear.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="gapGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks far better than one you were shown. Four findings about AI change; call each one before it's revealed.</p>
+        <p class="quiz__progress" id="ggProgress"></p>
+        <p class="quiz__q" id="ggQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ggOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="ggFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="ggNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="ggResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: When an AI change arrives as a pure technology story, what does the team actually hear?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="A change with no answer to the human question gets read as a threat, and threat converts into quiet resistance. That is why the human work comes first."><span class="mark">A</span><span>A threat to be assessed, starting with their own role</span></button>
+          <button class="opt" data-correct="0" data-why="A few enthusiasts hear exciting news. The people who will decide whether the change sticks hear something much heavier, and they rarely say so in the meeting."><span class="mark">B</span><span>Exciting news about better tools</span></button>
+          <button class="opt" data-correct="0" data-why="Silence in the room is not neutrality. The question about their own future is forming either way; the only choice you get is whether it is answered out loud or in private."><span class="mark">C</span><span>Nothing much; announcements wash over people</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The evidence base for this session: <a href="https://www.accenture.com/us-en/insights" target="_blank" rel="noopener" style="text-decoration:underline">Accenture's research</a> on leadership in the age of AI finds only around 18 percent of leaders lead AI investments effectively, and the differentiators it names are curiosity, courage, and connection rather than technical depth. <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace research</a> fills in the employee side: most employees say leadership has communicated no clear plan for AI, and trust in leadership runs low enough that a vague announcement gets filled with the scariest available story. This course is the human layer of a pair: <a href="../../../courses/workflow-process-redesign/" target="_blank" rel="noopener" style="text-decoration:underline">Workflow &amp; Process Redesign</a> covers the mechanics of where AI fits in the work, and Leading the Shift in the <a href="../../../" target="_blank" rel="noopener" style="text-decoration:underline">Course Library</a> covers modeling the behavior yourself. Today is about the conversations neither of those can have for you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the announced-versus-experienced gap becomes personal the moment you look for it in your own history.</p>
+          <ol class="steps">
+            <li>In pairs: recall one workplace change you lived through that was announced as good news and received as bad news.</li>
+            <li>Name what the announcement talked about, and what the room actually worried about. Two lists, usually with no overlap.</li>
+            <li>Hands to the room: how many of those worries were ever addressed out loud? Count. The silence you just counted is the job this session trains.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write down the AI change nearest your team. Two columns: what the official story says, and what your most anxious team member is probably thinking. The gap between the columns is your first conversation.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish with guessed-at, missed numbers that AI change fails on human ground: few leaders lead it well, most teams hear no plan, trust is low, and the differentiators are curiosity, courage, and connection.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before any method, the evidence, and I want you to guess. Accenture has studied how leaders actually handle AI, and the effective share is small: fewer than one in five. Here's the interesting part: what separates them isn't technical. It's curiosity, courage, and connection, three things everyone in this room can practice. Meanwhile Gallup has been asking employees what they're hearing from leadership about AI, and the answer is mostly: nothing. Silence, plus low baseline trust, plus a technology that sounds like it replaces people. That's the ground every AI announcement lands on. Four findings, call your number before each reveal.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three pattern cards first: announced as technology, experienced as threat, led on human ground by the 18 percent.</li><li>Frame the game: four findings, guess each before the reveal. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, land the frame: the tools spread everywhere; the leadership stayed rare, and the differentiators are learnable.</li><li>Run the quick check, then the pair activity: the change that was announced as good news and received as bad news.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Think of a change you lived through that was announced as good news and landed as bad news. What did the announcement talk about, and what did the room actually worry about?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Announcements about efficiency, tools, and timelines; worries about jobs, competence, and status</li><li>Someone recalls a 'nothing will change' promise that aged badly</li><li>A manager admits they gave one of these announcements themselves</li></ul><p class="facnote__mini">Respond: For the self-aware manager, warmly: 'That admission is the most useful thing said so far, and notice nobody here thinks less of you; the announcement playbook we all inherited was written for a different kind of change.' Then land it: the two lists never overlap, and leading the second list is the job.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The tools are everywhere and the leadership is rare, which is bad news for organizations and good news for you: the differentiators are conversations, and conversations can be practiced. Starting now.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; in the pair debrief, learners can articulate the gap between what an announcement said and what the room worried about.</p><p class="facnote__meta"><b>Watch for:</b> A methodology skeptic litigating survey design. Don't defend a single number; the case is the convergence: little effective leadership, little communicated planning, low baseline trust. Park deep methodology questions.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before the method, the oldest line in organizational development, because it explains everything you just guessed wrong.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, the pair recall becomes one volunteer story with no pair round.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The old organizational-development saying</p>
+      <p>People don't resist change. They resist being changed.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the method arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;People don't resist change. They resist being changed.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So the method starts by giving people the thing being-changed takes away: the truth, out loud, first.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 NAME THE FEAR ============ -->
+  <section class="slide on-dark" id="s-fear" data-count data-title="Name the fear">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Name the Fear</p>
+      <h2 class="h2" data-reveal>Say the fear out loud before it says <em>itself</em>.</h2>
+      <p class="lead" data-reveal>In every meeting about AI, one question sits under the table: am I being automated? Left unnamed, it does not go away; it converts into quiet resistance, polite nodding, and pilots that mysteriously stall. The naming move takes the question off the table and puts it in the room, on your terms, with honesty rules that keep you from promising what you can't. It is the first move of the method you'll use all session: Name, Frame, Invite, Hold.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Name</span>
+          <h3>Say the fear first</h3>
+          <p class="muted">"Some of you are wondering if this is how your job changes. Let's talk about that directly." Naming it costs you nothing and buys the room's attention back from its own dread.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Frame</span>
+          <h3>Honest scope</h3>
+          <p class="muted">What is changing, what is not, and what you don't know yet. All three parts said out loud. Pretended certainty reads as either a lie or a threat, and the room can tell.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · Invite</span>
+          <h3>Into the design</h3>
+          <p class="muted">People support what they help build. Curiosity is the stance, questions are contributions, and the team shapes how the change lands. Section 03 builds the safety this needs.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">4 · Hold</span>
+          <h3>For months</h3>
+          <p class="muted">Change leadership outlives the announcement. Revisit, re-answer, protect the strugglers, keep the ethics conversation open as capabilities shift. Section 06 makes it a practice.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="lineJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the opening line</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> your first sentence about an AI change sets the ceiling on everything after it. Five manager lines announcing an AI change; call each one.</p>
+        <p class="quiz__progress" id="ljProgress"></p>
+        <p class="quiz__q" id="ljQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ljOptions" role="group" aria-label="Opening line judgments"></div>
+        <p class="quiz__feedback" id="ljFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="ljNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="ljResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The honesty rules</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Never promise that nothing will change.</b> You can't keep it, and when anything changes, your credibility goes with it. <b>Promise how change will be handled:</b> with the team in the room, visibly, with any role news heard from you first. <b>Answer the saved-hours question out loud:</b> if AI buys back time, say what that time is for. A team that suspects saved hours convert into cut roles will make sure there are no saved hours.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The naming move has a shape worth practicing: state the fear as a normal thing reasonable people feel, in the second person plural ("some of you are wondering"), then go straight to the honest frame. Two traps. First, naming without framing: saying "I know this is scary" and then changing the subject is worse than silence, because you confirmed the fear and answered nothing. Second, over-promising to end the discomfort: the room's short-term relief costs you every future announcement. The <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup data</a> is blunt about the vacuum: where leaders communicate no clear AI plan, employees write their own, and the story they write is rarely generous.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> the naming line feels risky until you've said one out loud and watched it land.</p>
+          <ol class="steps">
+            <li>Pairs. Each person drafts one naming line for a real AI change near their team: the fear said plainly, then the honest frame in a sentence.</li>
+            <li>Say it to your partner as if they were your team. The partner answers with the hardest follow-up question they can think of.</li>
+            <li>Two or three volunteers say their line to the room. After each, the room calls it: would you believe this manager?</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your naming line and say it out loud twice. Then write the hardest question your team could ask back, and draft your honest answer to it, both parts: what you know, and what you promise.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the naming move and the honesty rules: say the fear before it says itself, frame with honest scope, never promise what you can't keep. Introduce the full method: Name, Frame, Invite, Hold.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the question sitting under every AI meeting you will ever run: am I being automated? Nobody asks it out loud, and it doesn't need to be asked out loud to run the room. Unnamed, it becomes quiet resistance: polite nodding, stalled pilots, and a team that agrees with everything and changes nothing. The move is to say it first. 'Some of you are wondering if this is how your job changes. Let's talk about that directly.' Then the frame, three honest parts: what is changing, what is not, and what I don't know yet. And the rules that keep the frame honest: never promise that nothing will change, because you can't keep it. Promise how change will be handled: with you in the room, and any role news from me first. And answer the saved-hours question before it's asked, because if people suspect saved hours become cut roles, they will make sure there are no saved hours.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Fill the four whiteboard boxes as you walk the method cards: Name, Frame, Invite, Hold. Today's section is the first two.</li><li>Say a real naming line yourself, for a change you genuinely face. The room needs to hear one land before they judge five.</li><li>Send them to Judge the Opening Line: five manager lines, call each one.</li><li>Walk the honesty rules on the gold card and be blunt about the saved-hours question: unanswered, it gets answered by fear.</li><li>Run the pair drill from Go deeper: draft a naming line, say it to your partner, take the hardest follow-up. Then two or three lines to the room, judged warmly: would you believe this manager?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What makes this conversation so hard that most managers never have it? Honest answers.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Fear of making the anxiety worse by naming it</li><li>Not having answers: 'what if they ask what I can't answer?'</li><li>Feeling exposed: naming the fear means admitting the manager feels it too</li></ul><p class="facnote__mini">Respond: Take each seriously. The first: the fear is already there; silence is what feeds it. The second: 'I don't know yet, and here's how I'll find out' is a complete, honest answer. The third: yes, and that exposure is exactly what makes the line believable. Courage is one of the three differentiators for a reason.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Name, then frame, in the same breath. The fear moves from the hallway to the room, where it can finally be answered, and your credibility survives because you promised only what you can keep.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; drafted naming lines contain a named fear and an honest frame, and the room can state the first honesty rule unprompted (never promise nothing will change).</p><p class="facnote__meta"><b>Watch for:</b> Two drifts: naming lines that are really reassurance ('I know some of you worry, but honestly there's nothing to worry about'), and managers who want a script to read verbatim. Push both toward their own words; a borrowed line reads as borrowed.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Naming the fear opens the door. Whether anyone walks through it depends on what happens to the first person who stumbles.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: method cards fast against the whiteboard boxes, trainer on devices, your model line stays; the pair drill drops to solo drafting with one volunteer line judged by the room.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 SAFETY TO STUMBLE ============ -->
+  <section class="slide on-cream" id="s-safety" data-count data-title="Safety to stumble">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · Safety to Stumble</p>
+      <h2 class="h2" data-reveal>The team that can <em>stumble</em> can change.</h2>
+      <p class="lead" data-reveal>Learning a new way of working means being publicly bad at something for a while, and adults avoid that at almost any cost. So here is the uncomfortable arithmetic of AI adoption: your enthusiasts will experiment no matter what you do, and the change is actually decided by the anxious quiet ones, the people watching to see what happens to the first person who fumbles. Psychological safety is the name for what they're checking, and it is built out of visible moves, yours first.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Public experiments</span>
+          <h3>Trying is normal here</h3>
+          <p class="muted">Experiments happen in the open, in a named low-stakes sandbox, so nobody has to succeed in secret or fail in private. What gets demoed is the attempt, and misses are part of the demo.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">No-blame misses</span>
+          <h3>The miss teaches the team</h3>
+          <p class="muted">When AI gets something wrong, the debrief asks what the process let through, never who to blame. One person punished for an AI miss ends every experiment on the team, permanently.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">The leader goes first</span>
+          <h3>Your fumbles, out loud</h3>
+          <p class="muted">Nothing builds safety faster than the boss saying "I tried it on my own summary and it mangled it; here's what I learned." Going first is the one move only you can make.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="roomRead" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Read the room</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> safety is built or spent in small moments that arrive without warning. Five moments from an AI rollout; pick the response that builds it.</p>
+        <p class="quiz__progress" id="rrProgress"></p>
+        <p class="quiz__q" id="rrQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="rrOptions" role="group" aria-label="Response choices"></div>
+        <p class="quiz__feedback" id="rrFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="rrNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="rrResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Watch the quiet ones, because they are the real vote. Enthusiast energy is loud and misleading; a rollout can look thriving while half the team has silently opted out. The tell is participation drift: who has stopped speaking in meetings, who never mentions the tool, who does their real work the old way after hours. Those people are rarely stubborn; they are usually protecting themselves from a fumble they believe is unaffordable. The fix is connection, one conversation at a time, and modeling: Leading the Shift, this course's sibling in the <a href="../../../" target="_blank" rel="noopener" style="text-decoration:underline">Course Library</a>, goes deep on going first. And if your team needs the full workshop on speaking up, Building Brave Teams runs as this course's companion session.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> a fumble story you've told once in a safe room is available forever after in the rooms that count.</p>
+          <ol class="steps">
+            <li>Pairs. Tell your partner one real story of you getting something wrong with AI, or with any new tool. Thirty seconds, ordinary voice.</li>
+            <li>Partner reflects back what the story made them feel about experimenting near you.</li>
+            <li>Room round: what makes a leader's fumble story land as safety rather than as performance? Collect three answers.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the fumble story you would tell your team, three sentences: what you tried, what went wrong, what you do differently now. Say it out loud once. That story is now in your pocket for the next team meeting.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Apply psychological safety to AI adoption: public experiments, no-blame misses, and the leader going first, with the quiet ones named as the real vote on whether change sticks.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Learning a new way of working means being publicly bad at something for a while, and adults will do almost anything to avoid that. So here's the arithmetic that should reorganize your attention: your enthusiasts will experiment no matter what you do. The change is decided by the anxious quiet ones, and what they're watching is one thing: what happens to the first person who fumbles. If the answer is embarrassment, the experiments end, quietly and permanently. So safety gets built out of visible moves. Experiments happen in the open, misses included. When AI gets something wrong, the debrief asks what the process let through, never who to blame. And the highest-leverage move belongs to you alone: your own fumble, told plainly. I'll go first, so you can hear what it sounds like.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the arithmetic first: enthusiasts experiment no matter what; the change is decided by the anxious quiet ones, watching what happens to the first fumble.</li><li>Walk the three cards: public experiments, no-blame misses, the leader goes first.</li><li>Tell your own fumble story, briefly and plainly. It models the exact move and costs you thirty seconds.</li><li>Send them to Read the Room: five moments, pick the safety-building response.</li><li>Run the pair drill from Go deeper: each person tells a real fumble story, partner reflects what it made them feel about experimenting nearby, then collect three answers to what makes a leader's fumble story land as safety rather than performance.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Think of your own team's last three meetings. Who spoke least, and what do you actually know about how they feel about this change?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A pause, then honest admissions of not knowing</li><li>Someone realizes their quietest person is also their most essential</li><li>A manager notices the quiet started when the AI talk started</li></ul><p class="facnote__mini">Respond: Land the instrument: 'The 1:1 is where you find out, and the fear question is how: what about this change worries you that you wouldn't say in the team meeting? Ask it, then listen without defending anything.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Safety is built out of moves the team can see: open experiments, no-blame debriefs, and your fumbles first. The quiet ones are watching, which means every one of those moves is being counted.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; every learner has a told-once fumble story in their pocket; the room can explain why the quiet ones, and never the enthusiasts, decide the change.</p><p class="facnote__meta"><b>Watch for:</b> Fumble stories that are actually humble-brags ('I fumbled by working too hard'). Gently model the real thing again: a genuine miss, plainly told, with what changed. Also watch for the manager who says their team has no quiet ones; ask who spoke least in their last three meetings.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;There's one conversation even safe teams avoid, and it's the one where someone finally asks: should we even be doing this?&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: arithmetic and cards at full strength, your fumble story stays, trainer on devices; the pair story-swap becomes a solo write of the fumble story with one volunteer telling theirs.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 THE ETHICS CONVERSATION ============ -->
+  <section class="slide on-light" id="s-ethics" data-count data-title="The ethics conversation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Ethics Conversation</p>
+      <h2 class="h2" data-reveal>The ethics conversation needs a <em>host</em>.</h2>
+      <p class="lead" data-reveal>Every team using AI is already making ethics calls: what gets pasted into a tool, what ships without review, what feels wrong even though no rule forbids it. The only question is whether those calls happen in the open. Hosting the conversation means your team sits down, together, and works out where AI is fine for your work, where it is not, and why. Policy documents set the floor; the conversation decides what the floor means here. Outsourcing it to a PDF teaches your team that ethics is someone else's job.</p>
+
+      <div class="grid grid-2" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Disagreement is material</span>
+          <h3>Mine it, gently</h3>
+          <p class="muted">When two people disagree about whether an AI use is acceptable, you've found exactly where your team's line needs drawing. Treat the disagreement as the agenda, never as an obstruction to get past.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Escalate the real ones</span>
+          <h3>Know what's yours to decide</h3>
+          <p class="muted">Some questions belong to policy owners: legal exposure, student data, anything the university governs centrally. The host's job is sorting: settle what's local, route what isn't, and never improvise policy from the front of the room.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The floor under every conversation</span>
+        <p style="margin:.5rem 0 0" class="measure">Your team's ethics session starts from the traffic light, the data rule shared across all the AI courses. Whatever your team decides, it decides above this floor:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The light outranks enthusiasm, deadlines, and every technique in this course. If a proposed use touches private information about people, the conversation is over before it starts.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: In the ethics session, someone proposes running advising notes about named students through an AI tool to save time. What's the call?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Red light: private information about people, never, whatever the efficiency case. The host says so plainly and credits the person for surfacing it, so the next question still gets asked."><span class="mark">A</span><span>Red light. The light outranks the time savings, and saying so is the host's job</span></button>
+          <button class="opt" data-correct="0" data-why="Approved tools govern yellow, internal work. Notes about named students are private information about people, which is red, and red means never."><span class="mark">B</span><span>Fine if the team uses an approved VU tool</span></button>
+          <button class="opt" data-correct="0" data-why="A team vote can't lower the floor. The traffic light is the boundary the conversation happens above; local decisions apply to the space over it."><span class="mark">C</span><span>Put it to a team vote; that's what the session is for</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="plan" id="convoPlan" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your conversation plan, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this course runs on a real change in front of your real team, and writing the plan is the first act of leading it. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="cpChange"><b>1 · The change.</b> The AI change in front of your team, one line:</label>
+            <input type="text" id="cpChange" maxlength="140" placeholder="e.g. AI drafting is coming to our weekly reports this quarter" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="cpFear"><b>2 · The fear.</b> The worry you suspect is loudest, even if nobody has said it:</label>
+            <input type="text" id="cpFear" maxlength="140" placeholder="e.g. that the reporting part of the analyst role quietly disappears" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="cpAsk"><b>3 · The ethics question.</b> The question your team would actually ask, given the chance:</label>
+            <input type="text" id="cpAsk" maxlength="140" placeholder="e.g. do we tell recipients when a report was drafted by AI?" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="cpBuild" disabled>Build my conversation plan</button>
+            <span class="quiz__progress" id="cpStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="cpOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>A workable first ethics session runs an hour and produces one page: the uses we're comfortable with, the uses we're not, the open questions we're escalating, and the date we'll revisit. Two hosting rules carry it. Ask before ruling: "where would you draw the line, and why?" gets you the team's real reasoning; announcing your line first gets you compliance and silence. And date the output: capabilities shift every few months, so a decision without a revisit date quietly becomes wrong. The revisit is where this connects to section 06, because the ethics container is one of the things you hold, for months, as the ground moves.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing where other reasonable people draw the line recalibrates your own faster than any policy read-through.</p>
+          <ol class="steps">
+            <li>Pairs. One scenario: AI drafts your team's stakeholder updates, and a recipient asks whether a machine wrote what they received. What does your team say?</li>
+            <li>Each person answers, then defends the answer for thirty seconds. Notice where you differ; that difference is what a real ethics session mines.</li>
+            <li>Room round: collect the split. Then the harder question: who should decide this, your team or a policy owner? Sort it out loud.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Answer the disclosure question yourself, in writing: would your team tell recipients when AI drafted an update, and why? Then mark whether that call is local or belongs to a policy owner. You've just run the first two minutes of your ethics session.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Make the manager the host of the team's own ethics conversation: disagreement as material, escalation sorted honestly, the traffic light as the immovable floor, and a private conversation plan built for their real change.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every team using AI is already making ethics calls: what gets pasted in, what ships without review, what feels wrong even though no rule forbids it. Right now those calls are being made quietly, alone, by whoever is most rushed. Hosting the conversation means your team decides together: where is AI fine for our work, where is it not, and why. Two rules make you a host instead of a judge. Disagreement is material: when two people draw the line differently, you've found exactly what needs discussing. And know what's yours: some questions belong to policy owners, and the host's job is to route them, never to improvise policy. Underneath all of it, one floor that doesn't move: the traffic light. Green, public or generic, go. Yellow, internal, approved VU tools only. Red, private information about people, never. Whatever your team decides, it decides above that floor.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the reframe: your team is already making ethics calls, quietly, alone. Hosting moves the calls into the open.</li><li>Walk the two cards: disagreement is material, and know what's yours to decide versus what escalates to policy owners.</li><li>Walk the traffic light and be unambiguous: green public, yellow internal in approved VU tools only, red private information about people, never. The light is the floor and it outranks everything, including everything taught today.</li><li>Run the quick check (the advising-notes proposal) and make sure the room hears why a team vote can't lower the floor.</li><li>Then the section's real work: the private builder. Three fields: the change, the loudest fear, the ethics question their team would actually ask. Repeat the privacy line before they type, and give it quiet time; field two deserves a full minute.</li><li>If time allows, run the disclosure drill from Go deeper as a fast pair round.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's the ethics question your team would actually ask, if they believed the question was welcome?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Disclosure: do we tell people when AI wrote this?</li><li>Quality and craft: does using AI make our work worse, or make us worse?</li><li>Fairness questions: who gets the saved time, and whose work changes most?</li></ul><p class="facnote__mini">Respond: Collect three or four, then point at the builder: 'Whatever you just thought of goes in field three, and it becomes item one on your first ethics agenda. The team question, honored first, is what makes the session theirs.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">You are the host, the disagreement is the agenda, the light is the floor, and your conversation plan now exists. The ethics container stays open from here on, because the capabilities will keep moving.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; every learner has a built conversation plan with a naming line, frame, invitation, and first ethics agenda. This plan feeds the capstone directly.</p><p class="facnote__meta"><b>Watch for:</b> The room treating ethics as compliance. The reframe: compliance is the floor (the light), ethics is the conversation above it, and the interesting questions (disclosure, quality bars, what stays human) have no policy answer. Also watch for improvised policy rulings from the front of the room; model the escalation move instead.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Time to pressure-test everything. Six months, one team, four moments, your calls.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: reframe and traffic light at full strength, quick check stays, builder stays at full length with its quiet minute protected; the pair disclosure drill drops.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 THE CHANGE LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Change Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Change Lab</p>
+      <h2 class="h2" data-reveal>Six months. One team. Your <em>calls</em>.</h2>
+      <p class="lead" data-reveal>Your department is rolling out an AI tool that drafts the team's routine reports. You lead a team of six: two enthusiasts, three watchful, one openly worried. The rollout will hand you four moments over six months, and each one is a fork. Choose how you play each moment, then see where the team stands at month six.</p>
+
+      <div class="lab" id="changeLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Change Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every one of these moments is coming for you in some form, and the weak plays feel reasonable in the moment. Choose all four, then run the six months.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run six months</button>
+          <span class="quiz__progress" id="labStatus">Choose all four moments</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice what the lab rewards. Never enthusiasm, and never caution; always the container: fear named before it names itself, the job question answered with both honest parts, the fumble turned into the team's lesson instead of one person's shame, and the drift met with re-invitation instead of enforcement. Notice also what the weak outcomes share: the dashboard looks fine. Compliance theater is the signature failure of AI change because usage is easy to mandate and trust is not, so a team can perform adoption for months while quietly routing around the tool. If your rollout metrics look perfect and your meetings have gone quiet, the lab says you're in the weak timeline and don't know it yet.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> finding the moment you'd most likely fumble, before it arrives, is the cheapest leadership improvement available.</p>
+          <ol class="steps">
+            <li>Pairs. Compare your lab runs: where did your choices differ, and which moment cost you points?</li>
+            <li>Each person names the real-life moment they're most likely to play weak, and says why: usually time pressure, discomfort, or wanting the meeting to end well.</li>
+            <li>Swap counter-moves: your partner tells you what they'd want to hear from their manager in that exact moment. Write the line down.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Rerun the lab and deliberately play your honest self, the choices you'd actually make under pressure, then read what month six looks like. The gap between that run and your best run is your development edge, named.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give every learner a full felt rep of the method under pressure: four decisive moments across six months of an AI rollout, with month-six outcomes that reward the container rather than enthusiasm. The session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the situation: your department is rolling out an AI tool that drafts the team's routine reports. Your team of six: two people are thrilled, three are watching quietly, one has said out loud that they're worried. Over six months, the rollout hands you four moments: the announcement, the job question asked point blank in week two, a public fumble in month two, and the quiet drift in month four. Each one is a fork, and the weak options will feel reasonable when you read them, because they're the ones managers actually pick. Choose all four, run the six months, and read what your team looks like at the end. Then look at the coaching for every moment, especially the ones that cost you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Set the scenario in one breath: an AI tool that drafts routine reports, a team of six, two enthusiasts, three watchful, one openly worried.</li><li>Send them into the lab on devices: choose all four moments, then run the six months.</li><li>Let people get their month-six outcome individually; the mid and weak tiers teach more than the strong one, so don't coach choices in advance.</li><li>Ask for a show of hands by tier: who got the owned change, who got compliance theater. Have one weak-tier learner read their coaching aloud; the room learns from the postmortem.</li><li>Push the rerun: strengthen your weakest moment and run it again. The delta between runs is the lesson.</li><li>Then the pair debrief from Go deeper: which real-life moment would you play weak, and what would you want to hear from your own manager in it?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those whose month six came back mid or weak: which single choice cost you, and would you have made the same one in real life?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The forwarded memo or the features-first announcement</li><li>The false-certainty answer to the job question: 'it felt kind'</li><li>An honest 'my real answer would have been the weak one, and now I know why'</li></ul><p class="facnote__mini">Respond: Treat that last answer as the room's win: 'That recognition is the whole lab. The weak options aren't hypothetical; they're the defaults, which is why the month-six numbers look the way they do out in the world. You now know the pattern: name, both-parts honesty, no-blame debrief, re-invite.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The lab's scoring is the session's thesis in miniature: the change is decided by whether the container held at four ordinary moments, and the dashboard couldn't see any of them. Your real change has the same four moments coming.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes at least one lab run; most reach the strong tier on a rerun; every learner can name the real-life moment they'd most likely fumble and the counter-move for it.</p><p class="facnote__meta"><b>Watch for:</b> Learners who game the lab by picking the longest option everywhere without reading the coaching. The re-engaging question: 'which of these would be hardest for you to actually say in the room, and why?' Also watch clock discipline; this section has the least slack.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One idea left, and it's the one that separates change leadership from change announcement: what you do in months two through six.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one lab run instead of run-plus-rerun (rerun only for learners who hit the weak tier), tier hands stay, the pair debrief becomes a solo moment-of-weakness hunt. This is the floor; never cut the lab entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 HOLD FOR THE LONG ARC ============ -->
+  <section class="slide on-cream" id="s-arc" data-count data-title="Hold for the long arc">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Hold the Arc</p>
+      <h2 class="h2" data-reveal>The announcement was day one. The change takes <em>months</em>.</h2>
+      <p class="lead" data-reveal>Most change leadership ends when the announcement does, and that is why most change fails politely, months later, where nobody is looking. Holding is the fourth move of the method and the least glamorous: keeping the container steady while capabilities shift, attention fades, and the fear comes back wearing new clothes. It runs on four habits, and on measuring the right thing: trust, alongside usage.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">The revisit cadence</span>
+          <h3>Reopen on purpose</h3>
+          <p class="muted">A monthly pulse on the change: what's working, what isn't, what the tool can do now that it couldn't. Decisions get revisit dates, because a line drawn for last quarter's capabilities is quietly wrong by this one.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">The quiet signals</span>
+          <h3>Watch who stopped talking</h3>
+          <p class="muted">Who has gone silent in meetings, who never mentions the tool, who brings you polish and never problems. Silence is the loudest data a team produces, and dashboards can't hear it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Courage as a habit</span>
+          <h3>Say the true thing early</h3>
+          <p class="muted">The uncomfortable update, delivered before it's forced: what's behind schedule, what the tool still gets wrong, what you don't know yet. Every early truth makes the next one cheaper.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Connection as the multiplier</span>
+          <h3>The 1:1 is the instrument</h3>
+          <p class="muted">Real fears surface one-on-one, months after the meeting where everyone nodded. The fear question, asked plainly and heard without defensiveness, is your best sensor for how the change is actually going.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Four months in, which of these says the change is actually healthy?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Questions, pushback, and misses arriving in the open are trust made visible. A healthy change is noisy in exactly this way."><span class="mark">A</span><span>People still bring questions, pushback, and misses to you in the open</span></button>
+          <button class="opt" data-correct="0" data-why="Usage numbers measure compliance, and compliance is easy to mandate. The lab's weak timeline has a green dashboard too."><span class="mark">B</span><span>The usage dashboard is green</span></button>
+          <button class="opt" data-correct="0" data-why="Silence about the tool usually means the conversation moved somewhere you can't hear it. Quiet is a signal to investigate, never a signal to relax."><span class="mark">C</span><span>Nobody mentions the tool anymore</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="arcMove" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · The long-arc move</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> months in, the right move is rarely the comfortable one. Five moments from deep in a rollout; pick the move that sustains the change.</p>
+        <p class="quiz__progress" id="amProgress"></p>
+        <p class="quiz__q" id="amQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="amOptions" role="group" aria-label="Move choices"></div>
+        <p class="quiz__feedback" id="amFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="amNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="amResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Measuring trust sounds soft until you operationalize it. Three countable signals: who speaks in team meetings (count it across a month; the trend is the data), what surfaces in 1:1s (fears and misses arriving means the channel works; polish means it doesn't), and whether problems reach you directly instead of through someone else. Pair those with usage and you can actually see the difference between adoption and the performance of adoption. And re-answer the job question every time it comes back. It will come back, because fear doesn't file your previous answers; the manager who answers it fresh in month five, both parts, as patiently as on day one, is doing the highest-leverage minute of change leadership there is.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the quiet signals are easy to agree with and hard to actually watch; naming yours in front of a witness makes it real.</p>
+          <ol class="steps">
+            <li>Pairs. Each person names, as a role only, the team member they'd watch first: who would go quiet if this change frightened them?</li>
+            <li>Say what "quiet" specifically looks like for that person: shorter answers, camera off, no questions.</li>
+            <li>Trade first moves: what would you do in the next two weeks to open that channel? The 1:1 fear question is the default; find a better one if you can.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your two quietest people as roles, and next to each: what their silence would look like, and the date of your next 1:1 with them. If that date is more than two weeks out, move it.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Make holding a practice: the revisit cadence, the quiet signals, courage as a habit, connection as the multiplier, and trust measured alongside usage.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The announcement was day one, and most managers stop leading the change somewhere around day ten. Then it fails politely in month four, where nobody is looking. Holding is the fourth move of the method and the least glamorous. Four habits carry it. The revisit cadence: a monthly pulse, and every decision gets a revisit date, because the tool's capabilities will move and your lines were drawn for the old ones. The quiet signals: who stopped speaking in meetings, who never mentions the tool, who brings you polish and never problems. Silence is the loudest data your team produces, and no dashboard can hear it. Courage as a habit: the true thing said early, including upward. And connection as the multiplier: the 1:1 fear question, months in, asked as patiently as on day one. Measure trust alongside usage, because usage measures compliance, and the lab just showed you what compliance without trust looks like.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the uncomfortable truth first: most change leadership ends with the announcement, and that's why most change fails politely, months later.</li><li>Walk the four habit cards: revisit cadence, quiet signals, courage as a habit, connection as the multiplier.</li><li>Run the quick check (what says the change is healthy at month four) and let the green-dashboard answer fail publicly.</li><li>Send them to The Long-Arc Move: five months-later moments, pick the sustaining move.</li><li>Run the pair drill from Go deeper: who on your team would go quiet, what would quiet look like, and what's your first channel-opening move.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;The job question comes back in month five, from someone you answered thoroughly in week two. What does the re-ask actually mean?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Something changed: a rumor, a headline, a capability update</li><li>The first answer didn't fully land, or trust has dipped</li><li>Someone new is testing whether the old answer still holds</li></ul><p class="facnote__mini">Respond: All plausible, and the response is the same: answer it fresh and fully, as if for the first time. Fear doesn't file your previous answers. The manager who sighs and points backward just told the room the honesty had a warranty period.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Revisit on purpose, hear the silence, tell the truth early, and re-answer the job question every time. Holding is what turns a successful announcement into an actual change.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; every learner has named (as a role) who they'd watch and what their silence would look like; the room can say why usage alone can't measure the change.</p><p class="facnote__meta"><b>Watch for:</b> The despair reading: 'so this never ends?' Reframe: it ends by becoming ordinary management. The revisit cadence and the 1:1 fear question fold into rhythms you already run; holding is a posture, never a second job.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the full method. Quiz first, then the card that puts a date on it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: habits walked fast, quick check stays, trainer on devices; the pair drill becomes the solo version (two roles, silence described, 1:1 dates checked).</p></aside>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 11 · CHANGE CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My change card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My change card</p>
+      <h2 class="h2" data-reveal>One change. One conversation. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Announcements don't lead change; managers with a card and a date do. Name the AI change in front of your team, pick the conversation you'll open with, name the failure mode you refuse to fall into, and put a date on the first move.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named change with a named first conversation and a date is change leadership; everything less is intention. Situations and roles, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="clPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The change.</b> The AI change your team is facing, one line:</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. AI drafting is coming to our weekly reports, and the team knows it's coming" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Which conversation opens it?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="naming"><span>Have the naming conversation with the whole team this week</span></button>
+              <button class="opt" data-practice="jobq"><span>Answer the job-security question honestly in the next team meeting</span></button>
+              <button class="opt" data-practice="ethics"><span>Schedule the team ethics session</span></button>
+              <button class="opt" data-practice="oneone"><span>Open the next 1:1 with the fear question</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode as this change's leader.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="promise"><span>Promise that nothing will change</span></button>
+              <button class="opt" data-not="silence"><span>Let enthusiasm silence the anxious</span></button>
+              <button class="opt" data-not="outsource"><span>Outsource the ethics conversation to a policy document</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first move happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my change card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: one change, one first conversation, one named failure mode to refuse, and a date. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Announcements don't lead change. Managers with a card and a date do. Name the change, the real one in front of your real team. Pick the first conversation: the naming conversation with everyone, the honest job answer in the next team meeting, the ethics session, or the fear question in your next 1:1. Then the honest field: what you will NOT do, because you know your failure mode; promising nothing will change, letting enthusiasm silence the anxious, or outsourcing the ethics conversation to a policy document. And the date. A named change with a named conversation and a date is change leadership. Everything less is intention.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: announcements don't lead change; managers with a card and a date do.</li><li>Repeat the privacy norm before anyone types: situations and roles, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the conversation plan from section 04 is the raw material.</li><li>Point at field 3, what you will NOT do, as the honest one: every manager in the room owns one of these three failure modes.</li><li>Push the build moment, then the copy button, then the long-arc line: the 30-day revisit goes on the calendar with the first move.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the conversation, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the week will eat it</li><li>Fear of the follow-up questions I can't answer</li><li>Waiting for more certainty from above before saying anything</li></ul><p class="facnote__mini">Respond: No time: 'It's twenty minutes against months of quiet resistance; the math forgives you exactly once.' The follow-ups: 'I don't know yet, and you'll hear it from me first, is a complete answer; write it on your card.' Certainty: 'The honest frame works with a big unknown box, and your team would rather hear the honest unknown from you than the silence they're currently filling.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One team is about to hear its manager say the quiet part out loud, with honest edges around it. That's how the eighteen percent got there: one held conversation at a time.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards with grand changes ('lead our whole AI transformation'). Push to ONE change with a real team attached. And date-dodging: a conversation 'soon' is not a commitment; help them pick the actual day on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Name Frame Invite Hold, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Name, Frame, Invite, Hold</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The method: say the fear first, give the honest scope, bring the team into the design, and keep the container steady over months.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The unsaid question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Unsaid Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>"Am I being automated?" It sits under every AI meeting, and unnamed it converts into quiet resistance no training session can reach.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="False certainty, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>False Certainty</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Promising what you can't know: "nothing will change," "no jobs affected, ever." Buys relief today at the cost of every future announcement.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The honest frame, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Honest Frame</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Three parts, all said out loud: what is changing, what is not, and what you don't know yet. The only scope a team can actually believe.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Psychological safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Psychological Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The shared belief that trying, asking, and missing here won't be punished. Built from visible moves: public experiments, no-blame debriefs, the leader going first.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="No-blame debrief, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The No-Blame Debrief</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>After an AI miss: what did the process let through, what changes, and thanks to whoever surfaced it. The person is never the finding.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The quiet signals, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Quiet Signals</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Who stopped speaking in meetings, who never mentions the tool, who brings polish and never problems. Silence is data; dashboards can't hear it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Compliance theater, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Compliance Theater</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A rollout that looks adopted: green dashboard, mandated usage, quiet meetings, while the team routes around the tool and the dread stays private.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The revisit cadence, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Revisit Cadence</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The monthly pulse that reopens the change on purpose: what's working, what isn't, what the tool can do now. Decisions get revisit dates.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Curiosity courage connection, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Curiosity, Courage, Connection</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Accenture's differentiators for the roughly 18 percent of leaders who lead AI change effectively. Human capabilities, and all three are trainable.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The ethics container, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Ethics Container</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The team's own hosted, dated, revisited conversation about where AI is fine for its work and where it is not. Policy sets the floor; the container decides what it means here.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never. The light outranks everything in this course.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards, including 'compliance theater,' for the next time a dashboard is green and a meeting is silent.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Compliance Theater is a good pick; it gets a knowing laugh and reteaches the lab).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all twelve cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One conversation left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:24ch;margin-inline:auto">Now go say the quiet part <em>out loud</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw why AI change fails on human ground, practiced the naming line, built safety one move at a time, planned the ethics conversation, led six simulated months, and learned what holding looks like. One conversation with your team is waiting for a date.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">20 minutes</span></div>
+        <h3>The naming conversation</h3>
+        <p>One team meeting, no slides. Say what is changing, what is not, and what you don't know yet. Answer the job question before anyone asks it, both parts: what you know, and what you promise. Then invite the team in: the ethics session gets scheduled in the room, with the team choosing what's on its agenda. Twenty minutes, and it's the whole method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your change and your conversation day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the change card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Name. Frame. Invite. Hold.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-why">Why AI Change Fails</a></li>
+          <li><a href="#s-fear">Name the Fear</a></li>
+          <li><a href="#s-safety">Safety to Stumble</a></li>
+          <li><a href="#s-ethics">The Ethics Conversation</a></li>
+          <li><a href="#s-arc">Hold for the Long Arc</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Change Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Change That Sticks · Facilitator Edition · learner link: <a href="../../../courses/Change-Leadership-for-AI/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Course_Library/courses/Change-Leadership-for-AI</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the research says the human side is the differentiator, the naming move puts the fear where it can be answered, safety decides whether anyone tries, the ethics conversation belongs to your team with you as host, the lab showed you the four moments, and holding is what makes it real. You have a card. Before you go: your change, and your conversation day. Say it out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the twenty-minute naming conversation, this week, no slides.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you leading your team through this change?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: change and conversation day, out loud or in chat.</li><li>Point at the cheat sheet and change card buttons; the cheat sheet is built to sit next to your 1:1 notes.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your change, and your conversation day.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The reporting tool rollout, naming conversation Thursday'</li><li>'The job question, answered properly at Monday's team meeting'</li><li>Someone commits to the 1:1 fear question first because their team is already anxious</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the 1:1-first person, warmly: 'Good read. When the fear is already loud, the private channel opens before the public one.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many naming conversations actually happened, and what the teams said that their managers didn't expect.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a change and a day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go book the conversation. And when your team says something that surprises you, and they will, that surprise is the sound of the change starting to belong to them.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

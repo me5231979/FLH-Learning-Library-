@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emotional Intelligence — Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for leading yourself before you lead others: Goleman's EI domains, the Johari Window, affect labeling, active listening, Nonviolent Communication, and psychological safety, ending in one committed behavior change.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Emotional Intelligence &amp; Interpersonal Skills | Vanderbilt Learning Series">
+<meta property="og:description" content="Lead yourself before you lead others: self-awareness, listening, NVC, and candor with care, practiced live, ending in one real committed behavior change.">
+<meta property="og:url" content="../../../courses/emotional-intelligence/">
+<meta property="og:image" content="../../../courses/emotional-intelligence/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Emotional Intelligence &amp; Interpersonal Skills | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/emotional-intelligence/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-map">The Model</a>
+    <a href="#s-johari">Self-Awareness</a>
+    <a href="#s-listening">Listening</a>
+    <a href="#s-nvc">NVC</a>
+    <a href="#s-candor">Safety</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise — including mapping your own Johari Window honestly. You'll be asked what's in your blind quadrant; having a real answer ready plays better than a deflection.</li><li>Build your own commitment card in the capstone for a real relationship. You'll show the structure, never the contents.</li><li>Send the pre-work invite (template on this page) with the calendar invite: bring one real working relationship with recurring friction, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which videos you keep in class versus assign.</li><li>Ask a trusted colleague the Eurich question yourself this week: 'What's one thing I do that gets in my own way?' Telling the room you did it, and that it stung a little, is the most credible minute of the session.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Cue and test both videos (Goleman, Edmondson); trim points are in the DO notes. Spot-check both start-to-trim so nothing surprises the room.</li><li>Print 5 to 10 cheat sheets and commitment cards, plus index cards for the triad rubric.</li><li>Re-read the tough-questions bank; say the 'isn't this just being manipulative?' response out loud once.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a round of Guess the Number, open the NVC lab).</li><li>Arrange seating so triads can form without furniture-moving theater.</li><li>Write 'PARKING LOT' on the whiteboard, and 'ROLES, NEVER NAMES' where the room can see it all session.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed commitment cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Index cards or paper for the triad drill's Observer rubric scores</li><li>Whiteboard or flip chart for the parking lot and the candor draft-aloud rewrites</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: the four domains, name-it-to-tame-it, the listening rubric, OFNR, and the candor moves all work on a whiteboard. The triad drill and pair conversions never needed a screen; the capstone moves to the printed card.</div><div class="brief__row"><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the Johari mapper and capstone move to paper (the printed card covers both). You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the listening section (05):</b> Declare the Core path silently: one triad rotation instead of three, cut remaining videos, and shrink debriefs to one voice. Never cut the triad drill entirely, the NVC lab, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone starts sharing something too personal or names a colleague:</b> Protect them and the norm in one warm move: 'Hold that — roles, not names, and you don't owe the room the details. The exercise works on the pattern, not the person.' Check in with them privately at the break; if something serious surfaced, point them to the EAP or HR privately, not from the front of the room.</div><div class="brief__row"><b>If The room is skeptical — 'soft skills' eye-rolls, arms crossed:</b> Don't argue; play Guess the Number and let the McKinsey wage data and the SHRM finding do the arguing. The frame that lands with skeptics: 'underpriced and in rising demand is an arbitrage, and the research is unusually one-sided.' Then get them into the trainers fast; skeptics convert through doing, not through claims.</div><div class="brief__row"><b>If A learner treats affect labeling or NVC as therapy and starts processing live:</b> Honor and bound it: 'That's real, and this room is a practice space, not a processing space.' Redirect to the structure (the label, the four parts) and move the emotional weight to the parking lot and a private follow-up. Keep the session about workplace skills.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Isn't all this — NVC, candor formulas, labeling — just manipulation with better branding?</summary><p>Manipulation is engineering someone's response for YOUR benefit while hiding what you're doing. Everything today is the opposite: it makes your honest position MORE visible — the observation, the feeling, the need, the request are all disclosed. The test is simple: would the technique still work if the other person could see exactly what you're doing? NVC works better when they can. Manipulation dies in daylight.</p></details><details class="brief__q"><summary>Is EQ even real science, or is it consultant-ware?</summary><p>Both exist, which is why the session teaches two models. The Mayer-Salovey ability model is peer-reviewed, measurable science; Goleman's four domains are its workplace translation, and his 'twice as important' finding came from competency studies across nearly 200 companies. The consultant-ware is real too — which is why the honest move with any EQ assessment is to ask which model it's built on.</p></details><details class="brief__q"><summary>Can adults actually change these behaviors, or is personality fixed by now?</summary><p>Personality is fairly stable; behaviors are trainable at any age, and EI is behaviors — noticing, labeling, paraphrasing, requesting. That's exactly why the session ends in one practice aimed at one relationship instead of a personality overhaul. Nobody rewires; everybody can run one different behavior for two weeks, and that's how the research says this actually moves.</p></details><details class="brief__q"><summary>What if I name my feeling and the other person weaponizes it?</summary><p>Calibrate disclosure to safety — that's the Hidden quadrant working as designed. 'I feel anxious about the timeline' discloses enough to be honest without handing anyone ammunition. And if a relationship reliably punishes any disclosure, that's real information: the psychological-safety section is about that climate, and some conversations belong with your manager or HR, not in an NVC frame.</p></details><details class="brief__q"><summary>Isn't psychological safety just lowering the bar so nobody can be criticized?</summary><p>Edmondson is blunt about this: psychological safety is NOT niceness and not comfort. It's a climate where candid feedback can be given and heard — safety exists so you can RAISE the bar without people hiding mistakes. Safety without standards is a book club; standards without safety is fear. The target is both, and the candor section is literally practice at holding both.</p></details><details class="brief__q"><summary>My manager needs this more than I do. What am I supposed to do with that?</summary><p>Probably true for someone in every room, and you still only control one node of the network: you. Two honest moves: model it — paraphrase and label in meetings, because behavior is contagious sideways and upward — and use the practices to manage the relationship you have, not the manager you wish you had. And notice the trap: 'they need it more' is exactly what a blind spot sounds like from the inside.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Emotional Intelligence session. One thing to bring: a real working relationship with some recurring friction — a check-in that keeps turning tense, feedback you've been avoiding, a peer you talk past. You will never be asked to name the person or share details; every exercise runs on roles, and everything you type stays on your screen. Come ready to work on it privately. That's it — no reading, no assessment.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later — did the first rep happen? Three quick lines, reply whenever: 1) Did you run the practice from your commitment card in the real conversation? 2) What did you NOT do that you usually do? 3) What did the other person do differently, if anything? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day self-check re-poll (send a month after)</summary><p>Subject: Thirty days of the practice. Two questions, same scale as the room: 1) Fist to five — how confident are you now in the practice you committed to? 2) Has anyone answered your blind-spot question ('what's one thing I do that gets in my own way?'), and what came back? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did you run your first rep? What did you NOT do that you usually do? What did they do differently?' At 30 days, send the self-check re-poll: the same fist-to-five confidence question from the close, plus 'has anyone asked the blind-spot question yet, and what came back?' The count of completed first reps is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Emotional Intelligence session. One thing to bring: a real working relationship with some recurring friction — a check-in that keeps turning tense, feedback you've been avoiding, a peer you talk past. You will never be asked to name the person or share details; every exercise runs on roles, and everything you type stays on your screen. Come ready to work on it privately. That's it — no reading, no assessment.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today touches real relationships, so two norms: roles, never names, and everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>7</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Committed behavior change you'll name</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the two norms that make personal material safe: roles never names, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is about the skill that research keeps finding at the center of leadership — and it touches real relationships, so two ground rules for the next ninety minutes: we use roles, never names. And everything you type today stays on your screen; nothing is saved or sent anywhere. This is a practice room.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the two norms explicitly and early: roles, never names; private exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: when someone says 'emotional intelligence,' what's your honest first reaction — useful skill, corporate buzzword, or therapy at work?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A mix; at least one confident 'buzzword'</li><li>Useful-but-vague is the most common answer</li><li>Someone mentions a great (or terrible) boss</li></ul><p class="facnote__mini">Respond: Welcome the skeptics by name: 'Perfect — the first game is built for you. Four research findings, real numbers, and most rooms guess them wrong.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'roles, not names' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> Anyone visibly bracing for a 'feelings workshop.' The frame that relaxes them: today is skills and reps, and the research is unusually hard-nosed.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, both norms stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_034146_bf429025-3dfc-4214-8f32-ddaeececb156.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_034132_16501f30-ca06-4b9d-bfec-6a720ccff2ea.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_034134_708cff01-498c-4058-8ca4-98fd6a2a2480.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Emotional Intelligence &amp; Interpersonal Skills · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Lead yourself.<br><em class="gold-text">Then lead others.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">When researchers studied what separates star performers from average ones, the answer wasn't IQ or technical mastery. Goleman's research found emotional intelligence roughly twice as important as both combined, and it's learnable. That's today.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain Goleman's four EI domains and map your own blind spots with the Johari Window</li>
+          <li>Identify the Mayer-Salovey ability model, the research foundation beneath the applied one</li>
+          <li>Name emotions precisely and use affect labeling to turn reactivity into regulation</li>
+          <li>Practice active listening, paraphrase, clarify, withhold judgment, against a real rubric</li>
+          <li>Reframe an accusation into Nonviolent Communication's Observation, Feeling, Need, Request</li>
+          <li>Raise a hard truth with candor AND care, and commit one practice to a real relationship this week</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Radically collaborates and cultivates belonging</span>
+        <span class="skillpill">Conflict Management</span>
+        <span class="skillpill">Communication Strategies</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-case">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: six capabilities, ending in one committed practice aimed at one real relationship, with a date.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six things by the end: you'll know the four-domain map and where your own blind spots hide, the science underneath it, how naming an emotion precisely turns reactivity into a choice, how to listen so people actually feel heard — scored against a rubric, not vibes — how to rebuild an accusation into a request that works, and how to say a hard thing so it can be heard. It all lands in one artifact: a commitment card for a relationship you actually have.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the six objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL commitment card — one relationship, one practice, one date.</li><li>Name the sources once for credibility: Goleman's HBR research, Mayer-Salovey, Eurich, UCLA's affect-labeling studies, Rosenberg, Edmondson.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one practice aimed at one real relationship, dated).</p><p class="facnote__meta"><b>Watch for:</b> The montage pulling attention; advance once the objectives have been read, not when the video loops.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Seven ideas, in a deliberate order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 6 out loud; the rest on screen.</p></aside>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and the growing this course asks of you starts with seeing yourself clearly.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The personal translation: work moves at the speed of its working relationships, and listening that paraphrases before it judges keeps colleagues moving together instead of past each other.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The personal translation: bold work runs on hard feedback, and candor with care is how a hard truth gets said without spending the relationship that has to act on it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The personal translation: an institution is modeled one interaction at a time, and shrinking your Johari blind spot is how your interactions stay worth modeling.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: talent, funding, and partnerships all arrive through relationships, and relationships are kept by people who name their reactions before acting on them and listen before they judge. The habits in this course are small and personal, and the flywheel is built out of exactly that scale.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Place the course inside the institutional vision: relationships carry the university's speed, bets, and reputation, and emotional intelligence is how relationships hold.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;One minute of altitude before the skills. Chancellor Diermeier's vision is one sentence: Vanderbilt will define the great university of the 21st century, and be it. Universities move through working relationships: speed, bold bets, and reputation all travel through people who can hear each other. Self-awareness and listening look like private skills, and they are also how an institution this ambitious holds together. Our motto is 'dare to grow,' and the first growth is seeing yourself clearly.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence verbatim; give it a beat.</li><li>Walk the three focus cards, one line each, landing on each 'personal translation.'</li><li>Point at the flywheel card: relationships carry every resource the university attracts. Don't teach it; the model comes next.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the why. Here's the plan for the session.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: read the vision sentence, gesture at the three focuses, move on; under a minute.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Seven ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The case for EI</h3><p>The numbers behind the "soft" skill: Goleman, McKinsey, Deloitte, SHRM.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The map</h3><p>Goleman's four domains, and the Mayer-Salovey science underneath them.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Self-awareness &amp; the Johari Window</h3><p>Only 10 to 15 percent of us are actually self-aware. Mapping the blind quadrant.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Name it to tame it</h3><p>The UCLA neuroscience of affect labeling, and why precise words regulate.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Active listening</h3><p>Paraphrase, clarify, withhold judgment: rated against a rubric, then practiced live.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>The NVC reframe</h3><p>Rosenberg's Observation, Feeling, Need, Request: accusation in, connection out.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>Candor with care</h3><p>Edmondson's psychological safety: the strongest predictor Google ever measured.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: evidence, map, self, then others.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first the evidence, then the map, then you — noticing and naming your own weather — and then the other person: listening, reframing, and saying the hard thing well.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the seven items in one breath each.</li><li>Point out the shape: the case (01), the map (02), yourself (03–04), the other person (05–07).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the evidence, because half of you just called this a buzzword.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE CASE FOR EI ============ -->
+  <section class="slide on-light" id="s-case" data-count data-title="The case for EI">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Case</p>
+      <h2 class="h2" data-reveal>The "soft" skill with <em>hard numbers</em>.</h2>
+      <p class="lead" data-reveal>Before the tools, the evidence. Every number in this game comes from published research, and most rooms guess them wrong, which is exactly the point: we underestimate this skill in the same way the market underprices it.</p>
+
+      <div class="quiz" id="statGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks ten times better than one you were shown. Four research findings; call each number before it's revealed.</p>
+        <p class="quiz__progress" id="sgProgress"></p>
+        <p class="quiz__q" id="sgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sgOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="sgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="sgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: In Goleman's research, how did emotional intelligence compare to IQ and technical skill as an ingredient of outstanding performance?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Roughly twice as important as IQ and technical skill combined, across job levels, and the gap widened at senior leadership."><span class="mark">A</span><span>About twice as important as both combined</span></button>
+          <button class="opt" data-correct="0" data-why="The finding was stronger than parity, and it's the reason this session exists."><span class="mark">B</span><span>About equal to technical skill</span></button>
+          <button class="opt" data-correct="0" data-why="The research points the other way: EI mattered more, not less, as roles got bigger."><span class="mark">C</span><span>Important early in a career, negligible for leaders</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sources behind the game: Goleman's "What Makes a Leader?" (Harvard Business Review) on EI versus IQ; McKinsey's skill-shift research projecting demand for social and emotional skills to grow roughly 26 percent in the U.S. by 2030, and its wage analysis of 10.2 million job postings showing hard skills still paying about double; Deloitte's high-performing-teams research, where members ranked emotional and social intelligence the top success factor; and SHRM's finding that respectful treatment at work outranks even pay as a satisfaction driver. Underpriced and in rising demand is an arbitrage; that's the professional case for this hour.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the research becomes personal when it matches (or collides with) the best leader you've actually had.</p>
+          <ol class="steps">
+            <li>Think of the best leader you've ever worked for. In pairs: was their edge technical, or how they made people feel?</li>
+            <li>Quick hands to the room: how many said technical? Count it out loud.</li>
+            <li>Connect the count to Goleman's finding. The room's own history usually replicates the study.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write two behaviors of your best-ever leader. Check them against the four domains coming on the next slide.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert skeptics with published numbers they guess at (and miss), establishing EI as an underpriced, rising-demand professional skill.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before any tools, the evidence — and I want you to guess. When researchers studied what separates star performers from average ones across nearly two hundred companies, emotional intelligence came out roughly twice as important as IQ and technical skill combined, and the gap widened at senior levels. Most rooms guess those numbers wrong, which is exactly the point: we underestimate this skill the same way the market underprices it. Four findings, call your number before the reveal.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the game: four research findings, guess each number before it's revealed. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, land the arbitrage frame: underpriced by the market, rising in demand — that's the professional case.</li><li>Run the quick check (the 'twice as important' finding), then the pair activity: best leader you ever had — technical edge or how they made people feel?</li><li>Count the hands and connect the count to Goleman: the room's own history usually replicates the study.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Think of the best leader you ever worked for. Was their edge technical mastery — or how they made people feel and perform?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A heavy majority on 'how they made people feel'</li><li>One or two genuine 'technical' answers, usually early-career memories</li><li>Stories start to surface; energy rises</li></ul><p class="facnote__mini">Respond: Count the hands out loud and name it: 'The room just replicated Goleman's study from memory. Hold onto that leader — you'll check them against a map in two slides.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Four sources, one direction: EI predicts performance, empathy predicts leadership, demand is rising, and respect outranks pay. Underpriced and in demand is an arbitrage.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; the best-leader vote lands visibly on the 'how they made people feel' side and the room sees it.</p><p class="facnote__meta"><b>Watch for:</b> A statistics skeptic litigating one study's methodology. Don't defend a single number; the case is the convergence — four independent sources, one direction. Park deep methodology questions.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So if it matters that much, what exactly IS it? One sentence first — the whole session in nine words.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, best-leader activity becomes one show of hands with no pair discussion.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>You can't manage an emotion you haven't named.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the model arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You can't manage an emotion you haven't named.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Everything today unpacks that sentence. Here's the map.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 THE MAP ============ -->
+  <section class="slide on-dark" id="s-map" data-count data-title="The model">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Map</p>
+      <h2 class="h2" data-reveal>Four domains, one <em>sequence</em>.</h2>
+      <p class="lead" data-reveal>Goleman's applied model runs in order: you can't manage what you haven't noticed, and you can't manage a relationship before you can read a room. Underneath it sits the Mayer-Salovey ability model, the peer-reviewed foundation: perceiving, using, understanding, and managing emotion.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Self-awareness</span>
+          <h3>Notice it</h3>
+          <p class="muted">Knowing what you're feeling as it happens, and what it does to your judgment. The foundation everything else stands on.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Self-management</span>
+          <h3>Steer it</h3>
+          <p class="muted">Regulating the reaction between stimulus and response: the pause, the label, the chosen reply instead of the reflex.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · Social awareness</span>
+          <h3>Read the room</h3>
+          <p class="muted">Empathy as a skill: picking up what others feel from tone, face, and what isn't said. DDI found empathetic leaders perform 40 percent higher at coaching and engaging.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">4 · Relationship management</span>
+          <h3>Move together</h3>
+          <p class="muted">Where the first three pay off: influence, feedback, conflict, and trust, built conversation by conversation.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/Y7m9eNoB3NU" data-yttitle="Daniel Goleman introduces emotional intelligence">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Goleman introduces emotional intelligence (5 min)</span>
+          <span class="yt__src">Daniel Goleman, Big Think · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=Y7m9eNoB3NU" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the researcher himself, in five minutes, including why EI keeps growing when IQ has plateaued.</p>
+      </div>
+
+      <div class="quiz" id="domainSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Name the domain</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the model only helps if you can see it in real moments. Five workplace scenes; name the domain at work (or missing).</p>
+        <p class="quiz__progress" id="dsProgress"></p>
+        <p class="quiz__q" id="dsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="dsOptions" role="group" aria-label="Domain choices"></div>
+        <p class="quiz__feedback" id="dsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="dsNext" style="visibility:hidden">Next scene</button>
+        </div>
+        <div id="dsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Why two models? Mayer, Salovey, and Caruso built the ability model that made EI measurable science: perceiving emotion, using it to aid thinking, understanding how emotions evolve, and managing them. Goleman translated the science into the leadership language organizations use. Knowing both keeps you honest: EI is a testable ability, not a horoscope, and the four domains are its workplace application. If a vendor sells you an "EQ assessment," ask which model it's built on; the good ones can answer.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> ranking your own domains, honestly, tells you which half of today matters most for you.</p>
+          <ol class="steps">
+            <li>Rank the four domains for yourself, strongest to weakest. Gut call, ten seconds each.</li>
+            <li>Write one recent moment your weakest domain cost you something.</li>
+            <li>Keep the note; the capstone will ask you to aim a practice at exactly that spot.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Goleman's four domains as a sequence (notice → steer → read → move together) with the Mayer-Salovey science named underneath, and make the model sight-readable in real moments.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Four domains, and the order is the insight. Self-awareness: noticing what you're feeling while it's happening. Self-management: the pause between stimulus and response. Social awareness: reading what everyone else is feeling — empathy as a skill, not a trait. And relationship management, where the first three pay off. It runs in sequence: you can't steer what you haven't noticed, and you can't manage a relationship before you can read the room. Underneath this sits Mayer and Salovey's ability model — the peer-reviewed science that made EI measurable — and knowing both keeps you honest: this is a testable ability, not a horoscope.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the four cards IN ORDER and stress the sequence: you can't manage what you haven't noticed; you can't manage a relationship before you can read a room.</li><li>Name the two models honestly: Mayer-Salovey is the peer-reviewed ability model; Goleman is its workplace translation. One line each.</li><li>Play the Goleman video (5 min) on the Full path.</li><li>Send them to Name the Domain: five workplace scenes, name the domain at work or missing.</li><li>Run the solo activity from Go deeper: rank your own four domains, strongest to weakest, and write one moment the weakest one cost you something.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Gut call, ten seconds: which of the four is your weakest domain — and what did it cost you most recently?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Self-management confessions: the sharp email, the interruption</li><li>Social awareness: 'I miss the room's temperature'</li><li>A few 'I don't know' — which IS the self-awareness answer</li></ul><p class="facnote__mini">Respond: For the 'I don't know's, warmly: 'That answer places you — domain one is where you start, and the next section is built for you.' Everyone: write the moment down; the capstone will aim a practice at exactly that spot.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Four domains, one sequence, and each of you now has a target. The next two sections work the self side; the three after that work the people side.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; every learner has a written weakest-domain moment (it feeds the capstone).</p><p class="facnote__meta"><b>Watch for:</b> The model turning into a personality test ('I'm a self-awareness person'). Keep it behavioral: these are four trainable skill sets, not four types of people.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Domain one first — and the research on it is genuinely uncomfortable.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards fast, trainer on devices, cut the video (assign as the week's watch); the self-ranking shrinks to thirty silent seconds.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 JOHARI WINDOW ============ -->
+  <section class="slide on-light" id="s-johari" data-count data-title="Self-awareness">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · Self-Awareness</p>
+      <h2 class="h2" data-reveal>95 percent think they're self-aware.<br><em>10 to 15 percent are.</em></h2>
+      <p class="lead" data-reveal>That gap is organizational psychologist Tasha Eurich's research, and it's why self-awareness can't be self-certified. The Johari Window maps the problem: what's known to you and others (Open), known only to you (Hidden), known only to others (your Blind spot), and known to no one yet. Feedback is the only tool that shrinks the blind quadrant.</p>
+
+      <div class="plan" id="johariMap" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Map your window, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> naming one suspected blind spot, in writing, is the first honest act of self-awareness most people have done all year. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="johOpen"><b>1 · Open quadrant.</b> One strength you know about yourself that others clearly see too:</label>
+            <input type="text" id="johOpen" maxlength="120" placeholder="e.g. I stay calm when deadlines slip" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="johHidden"><b>2 · Hidden quadrant.</b> One thing true of you at work that most colleagues don't know:</label>
+            <input type="text" id="johHidden" maxlength="120" placeholder="e.g. I rehearse hard conversations for days" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="johBlind"><b>3 · Blind quadrant, the honest one.</b> Feedback you've heard more than once but haven't fully accepted:</label>
+            <input type="text" id="johBlind" maxlength="120" placeholder="e.g. that I take over discussions when I'm excited" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="johBuild" disabled>Map my window</button>
+            <span class="quiz__progress" id="johStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="johOut" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: In the Johari Window, what actually shrinks your Blind quadrant?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Only feedback moves knowledge from 'others know' to 'I know.' Introspection alone can't see what introspection can't see."><span class="mark">A</span><span>Asking for and receiving feedback</span></button>
+          <button class="opt" data-correct="0" data-why="Self-reflection grows insight about the Hidden and Unknown quadrants, but the Blind one is, by definition, invisible from inside."><span class="mark">B</span><span>More self-reflection</span></button>
+          <button class="opt" data-correct="0" data-why="Time alone changes nothing; people carry the same blind spot for decades. Someone has to tell you, and you have to hear it."><span class="mark">C</span><span>Experience; blind spots fade with seniority</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Eurich's research adds a twist worth knowing: there are two self-awareness types, internal (knowing yourself) and external (knowing how others experience you), and they don't correlate. Power makes it worse; senior people get less honest feedback every year. Her practical fix is one question asked of people who see you weekly: "What's one thing I do that gets in my own way?" Her short talk, <a href="https://www.youtube.com/watch?v=tGdsOXZpyWE" target="_blank" rel="noopener" style="text-decoration:underline">"Increase your self-awareness with one simple fix"</a> (TEDx, 17 min), is this week's watch.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> testing one Open-quadrant item with a real person is a low-stakes rehearsal for the blind-spot question that actually matters.</p>
+          <ol class="steps">
+            <li>Pairs, trust permitting: share ONE item from your Open quadrant ("I think I'm known for X").</li>
+            <li>Partner confirms or gently adjusts: "that matches" or "here's what I'd add."</li>
+            <li>Optional brave move: ask your partner the Eurich question: "what's one thing people like me tend to miss about ourselves?"</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Text a trusted colleague the Eurich question this week. The answer goes in your Blind quadrant, with gratitude.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Land the Eurich gap (95% believe, 10–15% are), install the Johari Window, and get each learner one written suspected blind spot plus the one feedback question that shrinks it.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the most uncomfortable statistic of the day: ninety-five percent of people believe they're self-aware. When organizational psychologist Tasha Eurich actually measured it, ten to fifteen percent were. Which means most of us are wrong about the thing we're most confident about — ourselves. The Johari Window maps why: there's a quadrant of you that others can see and you can't, and it is invisible to introspection by definition. You cannot journal your way into your blind spot. Someone has to tell you — and the next three minutes, entirely on your own screen, is where you write down what you suspect they'd say.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the gap first: 95 percent believe they're self-aware; 10 to 15 percent are. Let it sit for a beat.</li><li>Walk the four quadrants in one line each: Open, Hidden, Blind, Unknown — and the mechanism: feedback shrinks Blind, disclosure shrinks Hidden.</li><li>Send them to the private mapper: three fields, nothing saved or sent. Repeat the privacy line before they type.</li><li>Field 3 is the session's most honest moment: feedback heard more than once but not fully accepted. Give it quiet time.</li><li>Run the pair activity, trust permitting: share ONE Open-quadrant item, partner confirms or gently adjusts. The brave option — asking the Eurich question — is optional and should stay optional.</li><li>Run the quick check: what shrinks the Blind quadrant.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why can't self-reflection alone shrink the Blind quadrant — what's the mechanism that makes feedback the only tool that reaches it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'Because you can't see what you can't see' — the definitional answer</li><li>Others have data about you that you don't: your face, your patterns, your impact</li><li>Someone notes power makes it worse: senior people get less honest feedback</li></ul><p class="facnote__mini">Respond: Anchor the definitional answer and add Eurich's twist: internal and external self-awareness don't correlate — knowing yourself and knowing how others experience you are different skills. And yes: every promotion buys you less honest feedback, which is why you have to ask for it on purpose.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One question shrinks the quadrant: 'What's one thing I do that gets in my own way?' Asked of someone who sees you weekly. The answer goes in the window — with gratitude, not a rebuttal.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct (feedback, not introspection); every learner has typed or written a suspected blind spot privately.</p><p class="facnote__meta"><b>Watch for:</b> Oversharing in the pair round — the exercise is calibrated to the Open quadrant for a reason. Also watch the cynic who writes nothing: invite them to map a former colleague instead; the model installs either way.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So you've mapped what you don't know about yourself. Next: the skill of catching what you're feeling while it's still happening — and the neuroscience is on your side.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: gap, quadrants, and the private mapper stay (protect field 3's quiet minute); the pair share drops to an optional 60 seconds; assign the Eurich TEDx as the week's watch.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 NAME IT TO TAME IT ============ -->
+  <section class="slide on-dark" id="s-nameit" data-count data-title="Name it to tame it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Self-Management</p>
+      <h2 class="h2" data-reveal>Name it to <em>tame it</em>.</h2>
+      <p class="lead" data-reveal>UCLA neuroscientists scanned brains while people labeled emotions and found something useful: putting a feeling into words reduces activity in the amygdala, the brain's alarm system, and engages the prefrontal cortex that does deliberate thinking. Labeling doesn't switch the feeling off; it turns the volume down enough to choose your response. And precision matters: "frustrated because the decision keeps moving" regulates better than "stressed."</p>
+
+      <div class="quiz" id="labelUp" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Upgrade the label</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> vague words hide the information an emotion carries. Five moments described in fog; pick the precise label, because the precise one tells you what to do next.</p>
+        <p class="quiz__progress" id="luProgress"></p>
+        <p class="quiz__q" id="luQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="luOptions" role="group" aria-label="Emotion label choices"></div>
+        <p class="quiz__feedback" id="luFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="luNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="luResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">The 90-second version</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">Feel the spike → name it, precisely and silently ("I'm feeling defensive because that landed as criticism") → one breath → choose the response. The label is doing real neurological work in that pause; the science calls it affect labeling, your grandmother called it counting to ten, and both were right.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The study is Lieberman and colleagues, "Putting Feelings Into Words" (Psychological Science, 2007): labeling an emotion reduced amygdala response while engaging the prefrontal cortex, and participants weren't even trying to regulate; the naming alone did it. Two honest caveats: the effect turns intensity down, not off, and it works best with a rich emotional vocabulary, which is why psychologists prize emotional granularity: the difference between "mad" and "disappointed, and a little embarrassed I didn't push back" is the difference between a reflex and a plan.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> the label you draft now, calm, is the one your brain reaches for later, spiked.</p>
+          <ol class="steps">
+            <li>Recall your last flash of workplace emotion: the email, the meeting, the interruption.</li>
+            <li>Label it three levels deep: the vague word, the precise word, and the "because" clause.</li>
+            <li>Notice what the precise version suggests doing that the vague one didn't. Write that move down.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install affect labeling as a 90-second usable move — spike, precise silent label, breath, chosen response — backed by the UCLA evidence, with emotional granularity as the multiplier.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;UCLA scanned brains while people labeled emotions and found something you can use by Thursday: putting a feeling into words reduces activity in the amygdala — the alarm system — and engages the prefrontal cortex, the part that thinks. The label doesn't switch the feeling off; it turns the volume down enough to choose your response. And precision matters: 'stressed' gives you nothing to act on, but 'frustrated because the decision keeps moving' tells you exactly what conversation to have. Your grandmother called it counting to ten. She was right, and now there's a brain scan.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the science in one line: naming a feeling reduces amygdala activity and engages the prefrontal cortex — volume down, not off.</li><li>Stress precision: 'frustrated because the decision keeps moving' regulates better than 'stressed.' Granularity is the multiplier.</li><li>Send them to Upgrade the Label: five foggy moments, pick the precise label — because the precise one tells you what to do next.</li><li>Walk the 90-second version on the gold card: spike → silent precise label → one breath → chosen response.</li><li>Run the solo activity: last workplace emotional flash, labeled three levels deep — vague word, precise word, 'because' clause.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why would the PRECISE label — 'defensive because that landed as criticism' — beat the vague one, 'stressed,' as a guide to what you do next?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The precise one contains the cause, so it points at an action</li><li>Vague words blur different feelings that need different responses</li><li>Someone says it just feels truer — closer to the actual thing</li></ul><p class="facnote__mini">Respond: Anchor the first: an emotion is information, and precision is the resolution of that information. 'Stressed' is a check-engine light; 'defensive because…' is the diagnostic code. One gets you a shrug, the other gets you a fix.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Spike, silent precise label, one breath, chosen response. Ninety seconds, real neurology, no one even knows you did it.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; learners can recite the 90-second sequence and have one three-level label written.</p><p class="facnote__meta"><b>Watch for:</b> Two ditches: 'so I should suppress it' (no — labeling is the opposite of suppression; it's acknowledgment with a handle) and 'I should announce my feelings constantly' (the label is silent; disclosure is a separate, calibrated choice).</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the inward half of the session. Now we turn outward — and the first outward skill is the one everyone thinks they're good at.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: science in one line, trainer on devices, 90-second card verbatim; the solo drill shrinks to naming the precise word only.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 ACTIVE LISTENING ============ -->
+  <section class="slide on-cream" id="s-listening" data-count data-title="Active listening">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Listening</p>
+      <h2 class="h2" data-reveal>Listen to understand,<br><em>not to reply</em>.</h2>
+      <p class="lead" data-reveal>Active listening has three trainable moves: paraphrase what you heard, ask clarifying questions, and withhold judgment (and advice) until asked. Research on workplace listening keeps finding the same thing: the speaker can tell which mode you're in, faster than you think.</p>
+
+      <div class="quiz" id="replyRate" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Rate the reply</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference between listening and waiting to talk is easiest to hear in someone else's replies first. Five moments; pick the reply that's actually listening.</p>
+        <p class="quiz__progress" id="rrProgress"></p>
+        <p class="quiz__q" id="rrQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="rrOptions" role="group" aria-label="Reply choices"></div>
+        <p class="quiz__feedback" id="rrFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="rrNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="rrResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The rubric, for the triad drill</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Attention:</b> eyes and body on the speaker, no glances at devices. <b>2. Paraphrase accuracy:</b> "so what I'm hearing is…" lands close enough that the speaker says "yes, that." <b>3. Judgment withheld:</b> no advice, no "that happened to me too," no fixing. Score each 1 to 3; the Observer holds the card.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Why "no advice" is the hard rule: the moment you offer a fix, the speaker stops exploring and starts evaluating your fix, and the conversation becomes about you. The silence right after someone finishes is where the real material surfaces; count three seconds before the paraphrase. And notice the connection to coaching: if your team took Coaching for Performance, this is the same muscle GROW runs on.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 9 min</h4>
+          <p class="why"><b>Why this matters:</b> being scored on listening, once, by a human holding a rubric, changes how you hear yourself in every conversation after.</p>
+          <ol class="steps">
+            <li>Triads: Speaker, Listener, Observer. Speaker takes a real, low-stakes work frustration.</li>
+            <li>Three minutes: Listener may only paraphrase, clarify, and reflect emotion. No advice, no me-too, no interrupting.</li>
+            <li>Observer scores the rubric (1 to 3 each) and gives 30 seconds of feedback.</li>
+            <li>Rotate until everyone has sat in all three seats. The Observer seat teaches the most; notice that.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> In your next real conversation, run the rubric on yourself: one paraphrase, one clarifying question, zero advice. Score yourself honestly after.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 13 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the three trainable moves (paraphrase, clarify, withhold judgment) and give every learner one scored rep in the triad drill — the session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Everyone in this room believes they're a good listener, and the last section told you what that belief is worth unaudited. Active listening is three trainable moves: paraphrase what you heard until they say 'yes, that.' Ask questions that open rather than steer. And the hard one — withhold judgment AND advice until asked. The moment you offer a fix, the speaker stops exploring and starts evaluating your fix, and the conversation quietly becomes about you. In a minute you'll each get scored on this by a human holding a rubric. Being scored once changes how you hear yourself in every conversation after — that's why we do it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the three moves and the hard rule: no advice, no 'me too,' no fixing — until asked.</li><li>Send them to Rate the Reply first: five moments, pick the reply that's actually listening. It calibrates ears before the drill.</li><li>Walk the rubric on the gold card: attention, paraphrase accuracy, judgment withheld — scored 1 to 3 each.</li><li>Run the triad drill: Speaker (real, low-stakes work frustration), Listener (paraphrase, clarify, reflect only), Observer (scores the rubric, gives 30 seconds of feedback). Three minutes per round.</li><li>Rotate all three seats on the Full path. Call the three-second silence rule out loud during round one.</li><li>Debrief the Observer seat specifically: it teaches the most, and learners should notice that.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;After the drill, Observers first: what was the hardest rubric line for your Listener — and Listeners, did you feel the pull to fix?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Judgment-withheld fails most: advice leaked in as questions</li><li>Listeners confess the fix-it itch was nearly physical</li><li>Paraphrases drifted into interpretation rather than reflection</li></ul><p class="facnote__mini">Respond: Name the pattern with affection: 'The fix-it reflex is competence trying to help — it's just mistimed. Paraphrase first, and the fix earns its slot later, if they ask. And notice the silence: three seconds after they finish is where the real material surfaced.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The Observer seat taught the most — you could see the moves because you weren't in the current. That observing ear is the one to keep; run the rubric on yourself in your next real conversation.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on Rate the Reply; every learner has been scored once as Listener and can name their weakest rubric line.</p><p class="facnote__meta"><b>Watch for:</b> Advice leaking in dressed as questions ('have you tried…?' is advice with a question mark). Observers grading soft — remind them the score is a gift. Groups of two where the room doesn't divide by three: drop the Observer and self-score.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Listening earns you the right to be heard. Now the harder move: saying a charged thing without handing over ammunition.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: trainer stays, ONE triad rotation instead of three (everyone still sits in one seat), debrief in one voice. This is the floor — never cut the drill entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 NVC REFRAME ============ -->
+  <section class="slide on-dark" id="s-nvc" data-count data-title="The NVC reframe">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Reframe</p>
+      <h2 class="h2" data-reveal>Accusation in.<br><em>Connection out.</em></h2>
+      <p class="lead" data-reveal>Marshall Rosenberg's Nonviolent Communication rebuilds a charged statement in four parts: an Observation a camera would agree with, the Feeling it raises in you, the Need underneath, and a specific Request. Same honesty, none of the ammunition.</p>
+
+      <div class="lab" id="nvcLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Reframe Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> feeling the reply change as each part sharpens is how OFNR moves from acronym to instinct. The charged version: <em>"You never tell me what's going on with this project."</em> Rebuild it, one part at a time, and see how your colleague responds.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Say it</button>
+          <span class="quiz__progress" id="labStatus">Choose all four parts</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The two failure points, in Rosenberg's own teaching: observations that are secretly judgments ("you're always late" is a verdict; "the last two meetings started without you" is a camera), and requests that are secretly demands (a request survives hearing "no"; a demand punishes it). Faux feelings are the sneaky third: "I feel ignored" is a diagnosis of them, "I feel anxious" is a report about you. The four parts live at <a href="https://www.cnvc.org/" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">the Center for Nonviolent Communication</a> if you want the source.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> converting fresh accusations, out loud, under light time pressure, is the rep that makes the structure automatic.</p>
+          <ol class="steps">
+            <li>Pairs. Convert these two, splitting the work: "You're always late to my meetings." and "You just don't listen to my ideas."</li>
+            <li>Each conversion needs all four parts: camera-true observation, owned feeling, the need, a specific request.</li>
+            <li>Read the best one aloud to the room. Listen for the difference in your own chest when you hear it.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Convert the accusation YOU'RE most tempted to make this week. Keep it; the capstone may want it.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Rosenberg's Observation-Feeling-Need-Request structure through the graded lab (feel the reply change as parts sharpen) and one pair conversion of a fresh accusation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the move for the moment you're upset and about to say something true in the most flammable possible way. Marshall Rosenberg's Nonviolent Communication rebuilds the charged statement in four parts. An Observation a camera would agree with — 'the last two status meetings happened without an update' — not 'you never tell me anything,' which is a verdict. A Feeling you actually own: 'I feel anxious,' not 'I feel ignored' — ignored is a diagnosis of them wearing a feeling's clothes. The Need underneath: 'I need to be able to plan reliably.' And a Request specific enough to act on, that survives hearing no. Same honesty. None of the ammunition. The lab lets you feel the reply change as each part sharpens — go break it and fix it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the four parts with the tests attached: an Observation a camera would agree with; a Feeling you own (not a diagnosis of them); the Need underneath; a Request that survives hearing 'no.'</li><li>Send them to the Reframe Lab: rebuild 'you never tell me what's going on with this project,' one part at a time, and watch the colleague's response change with the quality of the parts.</li><li>Debrief the lab's teaching moments: judgments smuggled into observations, and 'I feel ignored' as a faux feeling — a verdict wearing a feeling's clothes.</li><li>Run the pair conversion: 'you're always late to my meetings' and 'you just don't listen to my ideas,' split between partners, all four parts each.</li><li>Have the best conversions read aloud; tell the room to listen for the difference in their own chest.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;The lab gave you a weak reply and a strong one. What exactly changed in the colleague's response when your observation went from verdict to camera-footage?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>They stopped defending and started explaining</li><li>The 'always/never' version triggered a counter-attack about MY behavior</li><li>The request got a real answer instead of a vague 'fine, whatever'</li></ul><p class="facnote__mini">Respond: Anchor it: 'A verdict invites a defense attorney; an observation invites a witness. You can hear the moment the other person stops preparing their rebuttal and starts actually processing — that's the whole return on the structure.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Four parts, two traps: judgments dressed as observations, demands dressed as requests. A request survives hearing no; a demand punishes it — and the other person can always tell which one they got.</p></div><p class="facnote__meta"><b>Validate:</b> Most learners reach the strong reply in the lab; two pair conversions read aloud contain all four parts with a camera-true observation.</p><p class="facnote__meta"><b>Watch for:</b> The two failure points from Rosenberg's own teaching: observations that are secretly judgments ('always,' 'never' are verdicts), and requests that are secretly demands. Also the objection 'this sounds robotic' — answer honestly: scaffolding sounds like scaffolding; fluency comes with reps, and the structure matters more than the phrasing.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;OFNR works one conversation at a time. The last section is about the climate that decides whether hard truths can be said at all.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: lab stays at full length (it IS the instruction); pair conversion shrinks to one accusation converted solo, no read-aloud round.</p></aside>
+  </section>
+
+  <!-- ============ 10 · 07 CANDOR WITH CARE ============ -->
+  <section class="slide on-light" id="s-candor" data-count data-title="Candor with care">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · Psychological Safety</p>
+      <h2 class="h2" data-reveal>Safe enough to say the <em>hard thing</em>.</h2>
+      <p class="lead" data-reveal>When Google studied its own teams to find what made the best ones best (Project Aristotle), the strongest predictor wasn't talent density or seniority; it was psychological safety. Amy Edmondson, who named the concept, is blunt about what it isn't: it is not being nice. It's a climate where candid feedback can be given and heard, because the point is learning.</p>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/LhoLuui9gX8" data-yttitle="Amy Edmondson: building a psychologically safe workplace">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Edmondson on psychological safety (11 min)</span>
+          <span class="yt__src">Amy Edmondson, TEDx · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=LhoLuui9gX8" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the researcher who defined the field, on why safety and standards rise together. Play the first five minutes in class.</p>
+      </div>
+
+      <div class="quiz" id="candorJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the opener</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the scenario is real: a peer's approach to a shared project isn't working, and the deadline is close. Five opening lines; call each one candor with care, harshness, or avoidance dressed as kindness.</p>
+        <p class="quiz__progress" id="cjProgress"></p>
+        <p class="quiz__q" id="cjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="cjOptions" role="group" aria-label="Opener judgments"></div>
+        <p class="quiz__feedback" id="cjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="cjNext" style="visibility:hidden">Next opener</button>
+        </div>
+        <div id="cjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Edmondson's formula for candor with care has three moves you can hear in every good opener: name the shared goal ("we both want this launch to land"), state the concern as an observation about the WORK, not the person, and invite their view as a genuine question. Safety plus standards is the target quadrant; safety without standards is a book club, standards without safety is fear, and neither ships great work. If your team took Navigating Difficult Conversations, you'll recognize the DNA; this is the climate those tools work inside.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> drafting the line as a group, then hearing it read aloud, shows exactly where candor tips into harshness or dissolves into niceness.</p>
+          <ol class="steps">
+            <li>Small groups: draft ONE opening line for the scenario above: direct about the problem, unmistakably on the same team.</li>
+            <li>Groups read their lines aloud. After each, the room calls it: candid AND caring, or missing one?</li>
+            <li>Rewrite the room's harshest line and its softest line, live, until both land in the target quadrant.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Draft your line for a real shared-work concern, then test it: does it name the goal, the observable issue, and end in a question?</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Edmondson's psychological safety accurately (not niceness; safety plus standards) and drill the three-move opener: shared goal, work-focused observation, genuine question.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;When Google studied its own teams to find what made the best ones best, the strongest predictor wasn't talent density or seniority. It was psychological safety — and here's where everyone gets it wrong. Amy Edmondson, who named the concept, is blunt: it is not being nice. Niceness is often avoidance wearing a smile. Psychological safety is a climate where the hard thing can be SAID — candidly — and heard, because the point is learning. The skill is candor with care, and it has three moves you can hear in every good opener: name the shared goal, state the concern as an observation about the work, and end in a genuine question.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land Project Aristotle first: Google's strongest predictor of team effectiveness wasn't talent — it was psychological safety.</li><li>Correct the misread immediately: Edmondson is blunt that safety is NOT niceness; it's a climate where candor is safe because the point is learning.</li><li>Play the Edmondson video, first ~5 minutes, on the Full path.</li><li>Send them to Judge the Opener: five opening lines for a real scenario — candor with care, harshness, or avoidance dressed as kindness.</li><li>Walk the three moves: name the shared goal, state the concern as an observation about the WORK, invite their view as a genuine question.</li><li>Run the group draft-aloud: small groups draft ONE opener, room calls each one, then rewrite the harshest and softest live until both land.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which is more common on your team, honestly: harshness — or avoidance dressed as kindness?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Avoidance wins in most rooms, often by a landslide</li><li>Someone defends niceness as culture or respect</li><li>A brave voice names the cost: the problem everyone knew about for a year</li></ul><p class="facnote__mini">Respond: For the niceness defense, gently: 'Kindness tells someone the truth while caring about them. Niceness protects YOUR comfort and calls it protecting theirs.' Then land the cost: unsaid truths don't disappear; they compound.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Safety plus standards is the target quadrant. Your opener names the goal, observes the work, and asks a real question — direct about the problem, unmistakably on the same team.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the room can correctly call a 'nice' avoidant line as avoidance, and both live rewrites land in the target quadrant.</p><p class="facnote__meta"><b>Watch for:</b> The quadrant collapse: rooms hear 'safety' and settle into niceness. Keep the 2x2 alive: safety without standards is a book club; standards without safety is fear. Neither ships great work.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the full toolkit. Quiz first, then the card that aims one of these tools at one real relationship.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Aristotle + not-niceness in ninety seconds, trainer on devices, cut the video (assign); the draft-aloud shrinks to one group's line judged by the room.</p></aside>
+  </section>
+
+  <!-- ============ 11 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the six objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as a check before the commitment, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 12 · EI COMMITMENT CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My commitment card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · EI commitment card</p>
+      <h2 class="h2" data-reveal>One relationship. One practice. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Frameworks don't change relationships; practiced behaviors do. Pick one real relationship or recurring friction, choose the one practice from today you'll bring to it, and put a date on the first rep.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named practice aimed at a named relationship with a date attached is a behavior change; everything less is a poster. Roles, not names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="eqPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The relationship or friction.</b> Who is it with (role, not name), and what keeps happening?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. a peer lead; our project check-ins keep turning tense" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · Your practice.</b> The one move you'll bring to it.</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="EI practice">
+              <button class="opt" data-practice="listen"><span>The listening habit, paraphrase first</span></button>
+              <button class="opt" data-practice="nvc"><span>The NVC reframe, OFNR</span></button>
+              <button class="opt" data-practice="candor"><span>Candor with care, the safe hard truth</span></button>
+              <button class="opt" data-practice="label"><span>Name it to tame it, in the moment</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What you will NOT do.</b> Your honest failure mode in this relationship.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="interrupt"><span>Interrupt and finish their sentences</span></button>
+              <button class="opt" data-not="advise"><span>Jump in with unsolicited advice</span></button>
+              <button class="opt" data-not="avoid"><span>Avoid the conversation entirely</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When is the first rep?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my commitment card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated behavioral commitment: one relationship, one practice, one named failure mode to avoid, one date. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Frameworks don't change relationships; practiced behaviors do. Pick one real relationship or recurring friction — role, not name. Choose the ONE practice from today you'll bring to it: the listening habit, the reframe, candor with care, or name-it-to-tame-it. Then the honest field: what you will NOT do, because you know your failure mode in this relationship — and finally, when the first rep happens. A named practice aimed at a named relationship with a date attached is a behavior change. Everything less is a poster.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: frameworks don't change relationships; practiced behaviors do. One relationship, one practice, one date.</li><li>Repeat the privacy norm before anyone types: roles not names, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the weakest-domain moment from Section 02 is the raw material.</li><li>Point at field 3 — what you will NOT do — as the honest one: the failure mode is half the commitment.</li><li>Push the build moment, then the close-the-loop line: after the first rep, write one line about what went differently. That line is the evidence.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the first rep — and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The moment will be tense and I'll default to old habits</li><li>No natural opening; the conversation might not come up</li><li>Fear the other person will notice something's different</li></ul><p class="facnote__mini">Respond: Old habits: 'that's what the NOT field is for — you only have to catch yourself once.' No opening: 'the listening practice needs no opening; every conversation is a rep.' Being noticed: 'they'll notice you paraphrased before arguing. That's not a risk; that's the intervention working.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One relationship is about to get a different version of you for two weeks. That's how this research says change actually happens — one practiced behavior at a time, not a personality overhaul.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Vague relationships ('everyone at work') — push to ONE role and ONE recurring friction. And practice-shopping: the right practice is the one aimed at their weakest domain, not the one that sounds most impressive.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 13 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Emotional intelligence, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Emotional Intelligence</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The ability to perceive, understand, and manage emotions, yours and others'. Goleman found it roughly twice as predictive of outstanding performance as IQ and technical skill combined.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Four domains, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Four Domains</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Goleman's applied model, in sequence: self-awareness, self-management, social awareness, relationship management.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Mayer Salovey model, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Mayer-Salovey Model</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The ability model that made EI measurable science: perceiving, using, understanding, and managing emotion.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Johari window, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Johari Window</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Four quadrants of self-knowledge: Open, Blind, Hidden, Unknown. Feedback shrinks Blind; disclosure shrinks Hidden.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Blind spot, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Blind Spot</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>What others know about you that you don't. Invisible to introspection by definition; only feedback reaches it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Affect labeling, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Affect Labeling</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Naming an emotion in words, shown at UCLA to reduce amygdala reactivity and engage deliberate thinking. Volume down, not off.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Emotional granularity, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Emotional Granularity</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The precision of your emotional vocabulary. "Disappointed and a little embarrassed" regulates and informs better than "bad."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Active listening, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Active Listening</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Paraphrase, clarify, reflect emotion, withhold judgment and advice. Listening to understand, not to reply.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="O F N R, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>OFNR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Rosenberg's Nonviolent Communication structure: Observation, Feeling, Need, Request. A request survives hearing no.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Faux feeling, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Faux Feeling</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A judgment wearing a feeling's clothes: "I feel ignored" diagnoses them; "I feel anxious" reports on you.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Psychological safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Psychological Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Edmondson: a climate where candor is safe, so people can learn. Not niceness. The strongest predictor in Google's Project Aristotle.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Project Aristotle, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Project Aristotle</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Google's internal study of what makes teams effective. Psychological safety beat talent density, seniority, and everything else.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Empathy, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Empathy</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Reading and honoring what others feel. DDI's research: leaders who master it perform 40 percent higher at coaching and engaging.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards — including 'faux feeling,' for the next time someone tells you they feel ignored.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Faux Feeling is a good pick; it gets a laugh and reteaches NVC).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all thirteen cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One rep left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 14 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now bring it to the <em>relationship</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You mapped a blind spot, upgraded your labels, practiced the listening, rebuilt an accusation, and drafted the caring hard truth. One relationship is about to notice the difference.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">Within 7 days</span></div>
+        <h3>The first rep of the practice you committed to</h3>
+        <p>One conversation, one practice, exactly as your card says. Afterward, write one line about what went differently; that line is your evidence. And ask one trusted colleague the Eurich question this week: "What's one thing I do that gets in my own way?" The answer is a gift; treat it like one.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your practice and your day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the commitment card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Notice. Name. Listen. Connect.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-map">The Four Domains</a></li>
+          <li><a href="#s-johari">Self-Awareness</a></li>
+          <li><a href="#s-listening">Active Listening</a></li>
+          <li><a href="#s-nvc">The NVC Reframe</a></li>
+          <li><a href="#s-candor">Candor with Care</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Commitment Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Emotional Intelligence · Facilitator Edition · learner link: <a href="../../../courses/emotional-intelligence/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Emotional-Intelligence</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the evidence says this skill is underpriced, the map says start with noticing, the window says ask for the feedback you can't generate yourself, the label turns the volume down, the rubric makes listening real, the four parts disarm the accusation, and candor with care is how teams get better instead of quieter. You have a card. Before you go: your practice, and your day. Say it out loud — spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the first rep of the committed practice, within 7 days, plus the Eurich question to one trusted colleague.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you in your practice?' Scan and note the number for your session log; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: practice and day, out loud or in chat.</li><li>Point at the cheat sheet and commitment card buttons, and the Eurich TEDx as the week's watch.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your practice, and your day.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The listening habit, tomorrow's one-on-one'</li><li>'The reframe, Thursday's check-in'</li><li>Someone commits to the blind-spot question itself</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the blind-spot committer, warmly: 'That's the bravest card in the room — remember, the answer is a gift. Say thank you, not "but."'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many first reps actually ran, and what the other person did differently.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a practice-and-day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go run the rep. And when the answer to your blind-spot question comes back — and it will sting a little — write it down. That sting is the sound of the window opening.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=12"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

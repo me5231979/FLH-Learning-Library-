@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leading the Shift: Self-Paced | Vanderbilt</title>
+<meta name="description" content="A short interactive course for managers on the highest-leverage adoption behavior: using AI visibly, setting the three team guardrails (data, sign-off, ownership), and running the AI-enabled work audit on your own team.">
+<link rel="canonical" href="../../leading-ai-adoption/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leading the Shift | Vanderbilt Learning Series">
+<meta property="og:description" content="Your team adopts what you model: visible use, three guardrails, and the AI-enabled work audit. Classroom 40 min, self-paced ~15.">
+<meta property="og:url" content="../../leading-ai-adoption/">
+<meta property="og:image" content="../../leading-ai-adoption/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leading the Shift | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../leading-ai-adoption/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-model">The Model</a>
+    <a href="#s-rails">The Guardrails</a>
+    <a href="#s-audit">The Audit</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 11</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Leading the Shift · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Your team adopts<br><em class="gold-text">what you model</em>.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Gallup's workplace research keeps finding the same thing: the strongest predictors of a team actually using AI are the manager visibly championing it and the tools being integrated into real workflows. Tools and mandates barely move the needle. Accenture's leadership research adds the uncomfortable part: only about 18 percent of leaders are doing this well, and what separates them is curiosity, courage, and connection. This session makes you one of them, starting with an honest audit of your own team.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why manager modeling and workflow integration predict team AI use better than tools or mandates</li>
+          <li>Model AI use visibly: narrate real uses, show the checks, share the misses</li>
+          <li>Set the three team guardrails: what data goes in, when human sign-off is required, who owns the result</li>
+          <li>Run the AI-enabled work audit on your team and leave with a dated first move</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Change Management</span>
+        <span class="skillpill">AI Literacy</span>
+        <span class="skillpill">Team Development</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-model">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a team only dares what it watches its manager do first.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: uncommon speed arrives one adopted workflow at a time, and the work audit in this session finds the workflows on your team where AI belongs first.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets land on teams that are already fluent, and the modeling you do this month, narrated uses, visible checks, misses included, is where that fluency comes from.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: an institution can't model the essential university on teams that use AI in secret, so your narrated uses and three posted guardrails are the demonstration, run at team scale.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition is a team that actually adopts its tools, and Gallup puts the lever in your hands: teams take up AI when the manager models it inside real workflows, which is exactly what your audit and first move set up.</p>
+      </div>
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Source:</b> <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Three ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Model it, visibly</h3><p>What Gallup found about manager modeling, and what visible use actually looks like.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The three guardrails</h3><p>Data, sign-off, ownership: the rules that make it safe for your team to try.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The work audit</h3><p>Five honest questions about your team's AI reality, scored, with your first three moves.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 MODEL IT, VISIBLY ============ -->
+  <section class="slide on-light" id="s-model" data-count data-title="Model it, visibly">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Model</p>
+      <h2 class="h2" data-reveal>They watch what you <em>do</em>.</h2>
+      <p class="lead" data-reveal>Most managers who use AI use it invisibly, and invisible use teaches the team nothing except that the subject is unspoken. Visible modeling is specific: narrate a real use in a real meeting, show the check that caught the error, and share a miss now and then. Gallup finds employees whose managers actively champion AI use it dramatically more, and are more engaged; a mandate without modeling mostly produces quiet resistance and hidden shortcuts.</p>
+
+      <div class="quiz" id="modelJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Model, mandate, or undermine?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference between modeling and mandating is easy to see in someone else's behavior first. Five leader moves; call each one.</p>
+        <p class="quiz__progress" id="mjProgress"></p>
+        <p class="quiz__q" id="mjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mjOptions" role="group" aria-label="Judgment choices"></div>
+        <p class="quiz__feedback" id="mjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="mjNext" style="visibility:hidden">Next move</button>
+        </div>
+        <div id="mjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The three C's, from the 18 percent</span>
+        <p style="margin:.5rem 0 0" class="measure">Accenture's research on leaders who actually deliver on AI names three differentiators. <b>Curiosity:</b> staying openly interested, asking "what did you try?" instead of pretending fluency. <b>Courage:</b> using it before certainty arrives, and letting the team see the misses. <b>Connection:</b> making adoption a team practice with trust in it, never a compliance program. Notice all three are visible behaviors; none of them is a tool decision.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The evidence base: <a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's 2026 workplace research</a> finds manager championing and integration with real workflows are the top drivers of frequent AI use, with big engagement gaps between teams whose managers actively guide AI use and teams left alone with the tools. <a href="https://www.accenture.com/us-en/blogs/business-functions-blog/leadership-edge-ai" target="_blank" rel="noopener" style="text-decoration:underline">Accenture's leadership research</a> puts the share of organizations leading well at about 18 percent and names curiosity, courage, and connection as what separates them. The practical translation is small and weekly: one narrated use in a team meeting ("here's what I drafted, here's the number the check caught"), one show-your-prompts round a month, misses included. Fifteen minutes of visibility beats any policy memo you will ever forward.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write the three sentences of your Monday narration: the use, the check, the miss or win. You'll want them for the capstone.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Teams adopt what you model, not what you mandate.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE THREE GUARDRAILS ============ -->
+  <section class="slide on-dark" id="s-rails" data-count data-title="The three guardrails">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Guardrails</p>
+      <h2 class="h2" data-reveal>Make it safe to <em>try</em>.</h2>
+      <p class="lead" data-reveal>People hold back from AI for a sensible reason: nobody told them what's safe. Three written guardrails remove the guesswork, and they fit on one page. What data goes in. When a human signs off. Who owns the result. Write them with the team, post them, and watch experimentation start.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Rail 1 · Data</span>
+          <h3>What goes in</h3>
+          <p class="muted">The traffic light, written where everyone can see it. Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Rail 2 · Sign-off</span>
+          <h3>When a human approves</h3>
+          <p class="muted">Anything outbound, high-stakes, or about people gets human review before it moves. Internal drafts and personal productivity don't. Name the line so nobody has to guess it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rail 3 · Ownership</span>
+          <h3>Who answers for it</h3>
+          <p class="muted">You own what you ship, whoever drafted it. "The AI got it wrong" is not a sentence this team uses; a named human stands behind every output that leaves.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="railSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Which rail is missing?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every AI incident on a team is a missing rail wearing a costume. Five situations; name the rail that would have prevented each.</p>
+        <p class="quiz__progress" id="rsProgress"></p>
+        <p class="quiz__q" id="rsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="rsOptions" role="group" aria-label="Guardrail choices"></div>
+        <p class="quiz__feedback" id="rsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="rsNext" style="visibility:hidden">Next situation</button>
+        </div>
+        <div id="rsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Write the rails with the team, in thirty minutes, and keep them to one page: the light, the sign-off line ("outbound, high-stakes, or about people gets eyes"), and the ownership sentence ("you own what you ship"). Two additions earn their place fast. An amnesty: the shortcuts people already run get grandfathered in for redesign, never punished, because punishing early adopters teaches everyone to hide. And a revision date: the rails are version one, reviewed in a quarter, which tells the team the rules will learn as they do. Guardrails written this way read as permission, and permission is what most teams are actually waiting for.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Draft all three rails for your team in three sentences. That's the artifact your capstone move posts on the wall.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 THE WORK AUDIT ============ -->
+  <section class="slide on-cream" id="s-audit" data-count data-title="The work audit">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Audit</p>
+      <h2 class="h2" data-reveal>Your team's AI reality, <em>scored</em>.</h2>
+      <p class="lead" data-reveal>Before you can lead adoption, you need to know where your team actually stands, and most managers are guessing. This audit is five questions, answered honestly, scored live. It measures the things the research says matter: where AI shows up in the work, how visibly you model it, whether guardrails exist, and whether AI has entered your performance and coaching conversations. Nothing you enter is saved or sent anywhere.</p>
+
+      <div class="plan" id="workAudit" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Practice · The AI-enabled work audit</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the audit turns "we should do more with AI" into a scored snapshot and a first move. Answer for your real team, current state, not aspirations.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="auWork"><b>1 · The repeated work.</b> Name your team's three most repeated outputs (reports, updates, summaries, reviews...):</label>
+            <input type="text" id="auWork" maxlength="160" placeholder="e.g. weekly status report, ticket triage, monthly board summary" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · Where does AI show up in that work today?</b></span>
+            <div class="plan__chips" id="auUse" role="group" aria-label="AI usage state">
+              <button class="opt" data-v="0"><span>Nowhere I can see</span></button>
+              <button class="opt" data-v="1"><span>Personal shortcuts, unmanaged</span></button>
+              <button class="opt" data-v="2"><span>One designed workflow with checks</span></button>
+              <button class="opt" data-v="3"><span>Several designed workflows</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · When did your team last SEE you use AI?</b></span>
+            <div class="plan__chips" id="auModel" role="group" aria-label="Modeling state">
+              <button class="opt" data-v="3"><span>This week, checks and all</span></button>
+              <button class="opt" data-v="2"><span>This month, in passing</span></button>
+              <button class="opt" data-v="1"><span>They know I use it; they've never seen it</span></button>
+              <button class="opt" data-v="0"><span>Never</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · The guardrails: data, sign-off, ownership?</b></span>
+            <div class="plan__chips" id="auRails" role="group" aria-label="Guardrails state">
+              <button class="opt" data-v="3"><span>Written, shared, posted</span></button>
+              <button class="opt" data-v="1"><span>Discussed once, verbally</span></button>
+              <button class="opt" data-v="0"><span>Everyone guesses</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>5 · Is AI part of your performance and coaching conversations?</b></span>
+            <div class="plan__chips" id="auTalk" role="group" aria-label="Conversation state">
+              <button class="opt" data-v="3"><span>Yes: uses and skills come up in 1:1s and reviews</span></button>
+              <button class="opt" data-v="1"><span>Occasionally, ad hoc</span></button>
+              <button class="opt" data-v="0"><span>It never comes up</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="auRun" disabled>Score my audit</button>
+            <span class="quiz__progress" id="auStatus">Answer all five</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="auOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The audit's five dimensions come straight from the research: repeated outputs are where workflow integration pays (Gallup's second predictor), visible modeling is the first predictor, guardrails are what make trying safe, and AI in coaching conversations is how adoption becomes a skill you develop in people rather than a tool you issued once. Run it again with your team in the room, that's the braver version, and let them score you on question 3. The gap between your answer and theirs is the most useful number the audit produces. Repeat quarterly; rising scores are your adoption metric, and they cost nothing to collect.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write down your lowest dimension and the one-level move. The capstone will ask for a date.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · ADOPTION PLAN (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My adoption plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My adoption plan</p>
+      <h2 class="h2" data-reveal>One visible move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>The audit told you where your team stands. Now pick the work you'll model on, the first visible move, the failure mode you refuse, and the date. Adoption starts the first time your team watches you work.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named move with a date, done visibly, is what Gallup's data says actually moves a team; everything less is a forwarded policy. Teams and roles, never names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="adPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The work you'll model on.</b> Which real task or workflow, and what will you use AI for in it?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the monthly board summary; AI drafts, I verify against the tracker" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first visible move.</b></span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First visible move">
+              <button class="opt" data-practice="narrate"><span>Narrate one real AI use at the next team meeting, checks included</span></button>
+              <button class="opt" data-practice="prompts"><span>Run a 15-minute show-your-prompts round, me first, misses welcome</span></button>
+              <button class="opt" data-practice="rails"><span>Write the three guardrails with the team and post them</span></button>
+              <button class="opt" data-practice="oneone"><span>Add an AI check-in question to my 1:1s and reviews</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="mandate"><span>Mandate use without modeling it</span></button>
+              <button class="opt" data-not="unwritten"><span>Leave the guardrails unwritten</span></button>
+              <button class="opt" data-not="polish"><span>Show only wins and hide the misses</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first move happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="meeting"><span>At the next team meeting</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+              <button class="opt" data-when="twoweeks"><span>Within 14 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my adoption plan</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Manager modeling, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Manager Modeling</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Using AI visibly: narrated uses, shown checks, shared misses. Gallup's strongest human predictor of whether a team adopts.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Workflow integration, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Workflow Integration</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI built into the team's real repeated work, with checks, rather than issued as a tool. The other top predictor of frequent use.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The three guardrails, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Three Guardrails</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Data (what goes in), sign-off (when a human approves), ownership (who answers for it). One page, written with the team, posted.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The data rail, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Data Rail</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The traffic light: green public or generic, go; yellow internal, approved VU tools only; red private information about people, never.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The sign-off rail, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Sign-Off Rail</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Outbound, high-stakes, or about people: a human reviews before it moves. Internal drafts and personal productivity: go.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The ownership rail, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Ownership Rail</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>You own what you ship, whoever drafted it. "The AI got it wrong" is a missing name, and a missing rail.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Show your prompts, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Show Your Prompts</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A 15-minute team round: real uses, real prompts, real misses, manager first. The cheapest adoption program that exists.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Curiosity courage connection, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Curiosity, Courage, Connection</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Accenture's three differentiators of the ~18 percent of leaders doing this well. All three are visible behaviors, none is a tool decision.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The work audit, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Work Audit</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Five scored questions on your team's AI reality: repeated work, usage state, modeling, guardrails, coaching conversations. Quarterly; rising scores are the metric.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Amnesty, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Amnesty</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Existing shortcuts get grandfathered into redesign, never punished. Punishing early adopters teaches everyone to hide.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Monday, they're <em>watching</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw the evidence, wrote the rails, and scored your team's reality honestly. One visible move is on your card, and the research says that move matters more than any tool your organization will ever buy.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">15 minutes</span></div>
+        <h3>The first visible move</h3>
+        <p>Run your card's move exactly as written: the narrated use with its check, the show-your-prompts round, the guardrails session, or the 1:1 question. Then rerun the audit in a month and watch which dimension moved. Adoption is a score that rises one visible move at a time.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your move and your day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the audit + plan</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Model it. Rail it. Audit it. Repeat.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-model">Model It, Visibly</a></li>
+          <li><a href="#s-rails">The Three Guardrails</a></li>
+          <li><a href="#s-audit">The Work Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Adoption Plan</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Leading the Shift · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+</body>
+</html>

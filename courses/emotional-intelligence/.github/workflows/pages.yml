@@ -1,0 +1,30 @@
+name: Publish site to gh-pages
+
+# Pages serves this site from the gh-pages branch. Every push to main
+# republishes the site so the branch can never silently go stale.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-sync
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish main to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan pages-tmp
+          git add -A
+          git commit -m "Publish site from ${GITHUB_SHA::7}"
+          git push origin pages-tmp:gh-pages --force

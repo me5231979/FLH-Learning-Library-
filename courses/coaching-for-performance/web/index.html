@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coaching for Performance: Self-Paced | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: the research case for coaching, the GROW model, powerful questions, Feedforward, and a real coaching conversation planned within the week.">
+<link rel="canonical" href="../../../courses/coaching-for-performance/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coaching for Performance | Vanderbilt Learning Series">
+<meta property="og:description" content="Grow people, not just tasks: GROW, powerful questions, and Feedforward, practiced live, ending in a real coaching conversation with a date on it.">
+<meta property="og:url" content="../../../courses/coaching-for-performance/">
+<meta property="og:image" content="../../../courses/coaching-for-performance/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Coaching for Performance | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/coaching-for-performance/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-case">Why Coach</a>
+    <a href="#s-grow">GROW</a>
+    <a href="#s-questions">Questions</a>
+    <a href="#s-feedforward">Feedforward</a>
+    <a href="#s-models">Models</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_021301_52afe7ef-97cf-46bc-aeac-9c303a2e1c16.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_021302_77b2b78e-fb13-4daf-8e74-3ee34649bec7.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_021304_13f62d6f-08c9-4678-a6a1-25805e6edd2a.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Coaching for Performance · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>The best managers don't tell.<br><em class="gold-text">They ask.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">You were promoted for having answers. Google's biggest study of its own managers found the number one behavior of the very best is something else entirely: they coach. This session rewires the default.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why coaching, not directing, is the top predictor of great management, and spot your own telling default</li>
+          <li>Structure a full coaching conversation with the GROW model, from goal to committed action</li>
+          <li>Convert closed, leading, and advice-loaded lines into open, powerful questions</li>
+          <li>Give and receive future-focused Feedforward suggestions without judgment or defense</li>
+          <li>Choose your coaching model and commit to one real coaching conversation this week, opening question written</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill">Coaching Techniques</span>
+        <span class="skillpill">Leadership Development</span>
+        <span class="skillpill">Employee Engagement</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-case">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a coaching question is that dare handed to the person across the table.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: a coached team solves problems without queueing outside your door, and that unblocked capacity is what speed at scale is made of.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets need people who can think past their manager's answer, and the GROW conversation is where that thinking gets trained.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: a manager who grows people through questions instead of answers is modeling, in miniature, what a teaching institution is for.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: talent joins for the reputation and stays where it grows, and a manager who runs real GROW conversations is that growth in practice. Every direct report who stops needing your answer becomes capacity the university never had to hire.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Seven ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The case for coaching</h3><p>Google studied ten thousand of its managers. One behavior topped the list.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Your telling default</h3><p>Why smart managers over-direct, and how to catch yourself doing it.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The GROW conversation</h3><p>Goal, Reality, Options, Will. You'll run one, live, against a virtual coachee.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Powerful questions</h3><p>Converting advice into inquiry, and the six seconds of silence that do the work.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Feedforward</h3><p>Goldsmith's future-only development exchange. No past, no defensiveness.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Choose your model</h3><p>GROW, CLEAR, or OSKAR. Pick the structure that fits how you actually talk.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>When NOT to coach</h3><p>Directing has its place. Knowing when is the difference between a coach and a cliché.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 THE CASE FOR COACHING ============ -->
+  <section class="slide on-light" id="s-case" data-count data-title="Why coach">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Case</p>
+      <h2 class="h2" data-reveal>Google measured it.<br>Coaching came <em>first</em>.</h2>
+      <div class="split">
+        <div data-reveal>
+          <p class="lead">Project Oxygen, Google's decade-long study of its own managers, ranked the behaviors of the highest-rated ones. Number one wasn't technical skill or decisiveness. It was <b>"is a good coach."</b> McKinsey describes the same shift: from <em>controller</em>, who has the answers, to <em>coach</em>, who operates with a mindset of discovery.</p>
+          <p class="measure muted" style="margin-top:1rem">Start with an honest mirror. Think of your last five one-on-ones and drag the slider: in how many did THEY do the discovering, rather than you doing the telling?</p>
+        </div>
+        <div class="temp card" id="ratio" data-reveal>
+          <p class="tag" id="ratioVal">2 of 5 were coaching</p>
+          <p class="temp__readout" id="ratioReadout"></p>
+          <input class="slider" type="range" id="ratioSlider" min="0" max="5" value="2" step="1" aria-label="How many of your last five one-on-ones were coaching conversations">
+          <div class="slider-scale"><span>I told</span><span>Mixed</span><span>They discovered</span></div>
+          <p class="why" style="font-size:.85rem;margin-top:.75rem">Private. Remember your number; you'll be asked for it again in 30 days.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/_CJDlB7S7p0" data-yttitle="Project Oxygen: Google's guide to being a better manager">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Project Oxygen in 6 minutes</span>
+          <span class="yt__src">Google's manager research · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=_CJDlB7S7p0" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the whole research case in the time it takes to refill your coffee. Coaching is finding number one.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What did Google's Project Oxygen find at the top of its list of great-manager behaviors?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Ahead of technical expertise, ahead of decisiveness: the best managers coach. They ask, listen, and grow people instead of just directing work."><span class="mark">A</span><span>"Is a good coach"</span></button>
+          <button class="opt" data-correct="0" data-why="Technical skill mattered, but it ranked near the bottom of the list, not the top. The relational behaviors won."><span class="mark">B</span><span>"Has deep technical expertise"</span></button>
+          <button class="opt" data-correct="0" data-why="Speed shows up nowhere near the top. The data pointed at growing people, not processing decisions faster."><span class="mark">C</span><span>"Makes decisions quickly"</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Surgeon Atul Gawande, at the top of his field, hired a coach to watch him operate, and his complication rates dropped. His argument in <a href="https://www.ted.com/talks/atul_gawande_want_to_get_great_at_something_get_a_coach" target="_blank" rel="noopener" style="text-decoration:underline">"Want to get great at something? Get a coach"</a> (TED, 17 min) is the session in one line: it's not how good you are, it's how good you're going to get. That applies to the people who report to you, and it applies to you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write two things your best-ever manager did in conversation with you. Check them against the coaching behaviors on this slide.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>A manager's answer solves today. A manager's question builds tomorrow.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 YOUR TELLING DEFAULT ============ -->
+  <section class="slide on-dark" id="s-default" data-count data-title="Telling default">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Default</p>
+      <h2 class="h2" data-reveal>You were promoted for <em>answers</em>.</h2>
+      <p class="lead" data-reveal>That's the trap. Excellent doers become managers, and under pressure they do what made them excellent: solve it themselves, fast. Daniel Goleman's research names the styles; the coaching style, developing people for the future, is the one great managers reach for most and stressed managers reach for least.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Directing</span>
+          <h3>"Do it this way."</h3>
+          <p class="muted">You hand over the answer. Fast, and right for a crisis. As a habit, it teaches your team to bring you every problem, forever.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Pacesetting</span>
+          <h3>"Watch me do it."</h3>
+          <p class="muted">You take it back and do it yourself, brilliantly. The work ships, the person shrinks, and your calendar becomes the bottleneck.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Coaching</span>
+          <h3>"What do you think?"</h3>
+          <p class="muted">You ask, they discover, they own it. Slower today. Compounding forever. This is the style Project Oxygen found on top.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="styleSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Catch the style</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you can't change a default you can't hear. Five manager lines; name what each one is really doing.</p>
+        <p class="quiz__progress" id="styleProgress"></p>
+        <p class="quiz__q" id="styleQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="styleOptions" role="group" aria-label="Style choices"></div>
+        <p class="quiz__feedback" id="styleFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="styleNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="styleResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>McKinsey calls the shift "from controller to coach": from the leader who provides certainty to the one who leads with discovery. The tell that you're in controller mode is physical: you're talking more than they are, and you feel the itch to interrupt with the answer. The fix costs one breath: swallow the answer, and ask "what have you tried?" For the full styles model, watch <a href="https://www.youtube.com/watch?v=zCMY82sVmW4" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Goleman on the coaching style</a> (13 min) this week.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> The moment you name here becomes your practice case for the rest of the session, and your real conversation in the capstone.</p>
+          <ol class="steps">
+            <li>Write down one recent moment you solved a problem FOR someone instead of coaching them through it.</li>
+            <li>Note what it cost: their learning, your time next time, or both.</li>
+            <li>Write who it was (role, not name). Keep the note in reach; every exercise from here uses it.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 GROW ============ -->
+  <section class="slide on-light" id="s-grow" data-count data-title="The GROW conversation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Model</p>
+      <h2 class="h2" data-reveal>Four letters run the <em>conversation</em>.</h2>
+      <p class="lead" data-reveal>GROW is the most widely used coaching structure in the world, and the one Google teaches its own managers. Four stages, each powered by questions, ending in commitment.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">G · Goal</span>
+          <h3>Where to?</h3>
+          <p class="muted">"What would make this conversation useful?" Their goal, in their words, before anything else.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">R · Reality</span>
+          <h3>Where now?</h3>
+          <p class="muted">"What's actually happening? What have you tried?" Facts before options; no diagnosis from you.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">O · Options</span>
+          <h3>What could you do?</h3>
+          <p class="muted">"What else?" asked three times. The fourth option is usually better than the first.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">W · Will</span>
+          <h3>What will you do?</h3>
+          <p class="muted">"What, by when, how committed, 1 to 10?" Anything under 8 means the plan isn't theirs yet.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/eIG4ZSqm2S0" data-yttitle="The GROW model with coaching questions">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: GROW with real coaching questions (7 min)</span>
+          <span class="yt__src">GROW model walkthrough · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=eIG4ZSqm2S0" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> hear the questions asked with a real voice before you choose your own below.</p>
+      </div>
+
+      <div class="quiz" id="growSim" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Coach Jordan</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the fastest way to learn coaching is to feel a conversation open up, or shut down, based on what you say. Jordan, a capable analyst on your team, just said they're overwhelmed. Coach them through one full GROW conversation.</p>
+        <p class="quiz__progress" id="growStage"></p>
+        <div class="growsim__coachee" id="growCoachee" aria-live="polite"></div>
+        <div class="quiz__options" id="growOptions" role="group" aria-label="What do you say next?"></div>
+        <p class="quiz__feedback" id="growFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="growNext" style="visibility:hidden">Continue the conversation</button>
+        </div>
+        <div id="growResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>The question bank, yours to keep</h4><p><b>Goal:</b> "What would you like to focus on?" · "What does success look like?" <b>Reality:</b> "What's happening right now?" · "What have you already tried?" · "Where are things, 1 to 10?" <b>Options:</b> "What could you do?" · "What else?" (three times) · "What would you try if nothing stood in the way?" <b>Will:</b> "What will you do, by when?" · "What might get in the way?" · "How committed are you, 1 to 10?"</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Self-coach in writing: answer the bank's questions about your own current challenge, one stage at a time. GROW works on paper too.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 POWERFUL QUESTIONS ============ -->
+  <section class="slide on-dark" id="s-questions" data-count data-title="Powerful questions">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Craft</p>
+      <h2 class="h2" data-reveal>Advice wearing a <em>question mark</em>.</h2>
+      <p class="lead" data-reveal>"Have you tried delegating more?" isn't a question; it's your answer with punctuation. The International Coaching Federation calls the real thing a powerful question: open, curious, and aimed at their thinking, not your solution. Most manager questions fail the test.</p>
+
+      <div class="quiz" id="qConvert" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · The converter</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> hearing the difference between advice-in-disguise and real inquiry is the core coaching skill. Five manager lines; pick the rewrite that actually opens thinking.</p>
+        <p class="quiz__progress" id="qcProgress"></p>
+        <p class="quiz__q" id="qcQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="qcOptions" role="group" aria-label="Rewrite choices"></div>
+        <p class="quiz__feedback" id="qcFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="qcNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="qcResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">The six-second rule</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">A powerful question deserves silence to work in. Ask it, then count six seconds in your head before you say anything else. The discomfort you feel is them thinking. Whoever breaks the silence first buys the problem.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Three tests for a powerful question, from the ICF's core competencies. <b>Open:</b> it can't be answered yes or no. <b>Clean:</b> it doesn't smuggle your answer in ("don't you think…", "have you tried…"). <b>Theirs:</b> it aims at their thinking, not your curiosity, so "what matters most to you here?" beats "what did your director say exactly?" And the most reliably powerful question in coaching is also the shortest: "What else?"</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Do steps 1 and 2, then test your rewrite: could it be answered yes/no? Does it contain your answer? Aim it again if so.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 FEEDFORWARD ============ -->
+  <section class="slide on-cream" id="s-feedforward" data-count data-title="Feedforward">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Feedforward</p>
+      <h2 class="h2" data-reveal>Skip the past. Coach the <em>future</em>.</h2>
+      <p class="lead" data-reveal>Marshall Goldsmith's Feedforward flips development input on its head: instead of feedback about what went wrong, you ask for suggestions about what could go right next time. People can't change the past, so conversations about it breed defense. The future is all options.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Rule 1</span>
+          <h3>Name the behavior</h3>
+          <p class="muted">"I want to get better at running meetings." One behavior, stated by the person who wants to change it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rule 2</span>
+          <h3>Future only</h3>
+          <p class="muted">Suggestions must be about next time. Any sentence starting with "well, last week you…" is against the rules.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rule 3</span>
+          <h3>Only "thank you"</h3>
+          <p class="muted">The receiver may not explain, defend, or even agree. Two words. That's what makes it safe to be honest.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/tFX74GIxca4" data-yttitle="Marshall Goldsmith demonstrates Feedforward">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Goldsmith runs Feedforward live (4 min)</span>
+          <span class="yt__src">Marshall Goldsmith · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=tFX74GIxca4" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> watch the inventor run the exercise you're about to do, in less time than the exercise takes.</p>
+      </div>
+
+      <div class="quiz" id="ffSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Past, future, or advice?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> feedforward fails the moment the past sneaks back in. Train your ear on five real-sounding lines.</p>
+        <p class="quiz__progress" id="ffProgress"></p>
+        <p class="quiz__q" id="ffQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ffOptions" role="group" aria-label="Classification choices"></div>
+        <p class="quiz__feedback" id="ffFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="ffNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="ffResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Goldsmith runs this with rooms of executives and the energy is always the same: fast, generous, and oddly fun, because nobody is being judged. The receiver ends up with four to six concrete ideas in ten minutes, more usable input than most annual reviews deliver. It also works one-on-one: "I'm working on interrupting less. Two ideas for next week?" is a complete feedforward request.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Send the one-line request above to two colleagues today: your behavior, two ideas for next week. Reply "thank you," nothing else.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 CHOOSE YOUR MODEL ============ -->
+  <section class="slide on-dark" id="s-models" data-count data-title="Choose your model">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Your Structure</p>
+      <h2 class="h2" data-reveal>One size fits <em>most</em>.</h2>
+      <p class="lead" data-reveal>GROW is the default for a reason, but it isn't the only structure. Two respected alternatives cover the situations GROW handles less well. The best model is the one you'll actually use.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">GROW</span>
+          <h3>The all-rounder</h3>
+          <p class="muted">Goal, Reality, Options, Will. Best for everyday coaching conversations. Watch for: rushing Options; "what else?" is the whole trick.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">CLEAR</span>
+          <h3>The relationship</h3>
+          <p class="muted">Contract, Listen, Explore, Action, Review. Adds an explicit up-front agreement and a review loop. Best for ongoing coaching relationships.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">OSKAR</span>
+          <h3>The un-stucker</h3>
+          <p class="muted">Outcome, Scaling, Know-how, Affirm &amp; Action, Review. Solution-focused: "you're at a 4; what's already working?" Best for coachees stuck in problem-analysis.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="modelMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Match the model</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> choosing a structure on purpose, instead of defaulting, is what turns a model from trivia into a tool. Four coachees; pick the best-fit model for each.</p>
+        <p class="quiz__progress" id="mmProgress"></p>
+        <p class="quiz__q" id="mmQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mmOptions" role="group" aria-label="Model choices"></div>
+        <p class="quiz__feedback" id="mmFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="mmNext" style="visibility:hidden">Next coachee</button>
+        </div>
+        <div id="mmResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Don't overthink the choice. GROW for most conversations; CLEAR when the relationship needs an explicit contract ("what do you want from me in these sessions?"); OSKAR when someone has analyzed the problem to death and needs to look at what's already working. The models share one spine: their goal, their reality, their plan. Short explainers if you want them: <a href="https://www.youtube.com/watch?v=T-g58OQf7uw" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Peter Hawkins on CLEAR</a> (4 min) and <a href="https://www.youtube.com/watch?v=RPVhm3Eg2qI" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">an OSKAR walkthrough</a> (5 min).</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Answer both questions in your notes. Your capstone will ask for the choice in writing.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · 07 WHEN NOT TO COACH ============ -->
+  <section class="slide on-light" id="s-when" data-count data-title="When not to coach">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · Judgment</p>
+      <h2 class="h2" data-reveal>Sometimes, just <em>tell them</em>.</h2>
+      <p class="lead" data-reveal>Coaching is a tool, not a religion. Harvard's leadership research calls the skill situational coaching: knowing when to ask and when to direct. A manager who coaches during a fire alarm is as broken as one who directs everything.</p>
+
+      <div class="cols2" style="margin-top:2rem">
+        <div data-reveal>
+          <p class="tag">Direct when</p>
+          <ul class="listcheck can">
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>There's a genuine emergency or a hard deadline in hours</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Safety, policy, or compliance leaves no discretion</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>The person is brand new and needs instruction, not exploration</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>They've asked for a decision you genuinely own</li>
+          </ul>
+        </div>
+        <div data-reveal>
+          <p class="tag" style="background:#CFAE70;color:#1c1c1c">Coach when</p>
+          <ul class="listcheck can">
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>They're capable of solving it and would grow from doing so</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>The same problem keeps coming back to your desk</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>There's more than one right answer</li>
+            <li><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>It's a development conversation, not a status update</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: A new hire, day three, asks how to submit a payroll correction before today's cutoff. You…</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="New person, hard deadline, one right answer: this is a directing moment. Show them, and coach them on something with real option-space next month."><span class="mark">A</span><span>Tell them exactly how, step by step</span></button>
+          <button class="opt" data-correct="0" data-why="There is one correct process and a cutoff today. 'What have you tried?' here isn't coaching; it's hazing."><span class="mark">B</span><span>Ask "what options have you considered?"</span></button>
+          <button class="opt" data-correct="0" data-why="Scaling questions are for stuck coachees with real choices, not for a compliance task with a deadline."><span class="mark">C</span><span>Ask them to rate their confidence 1 to 10</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The working heuristic: <b>match the mode to the moment, then default to coaching.</b> Most managers have the ratio backwards, directing most of the time and coaching only when there's spare time, which is never. The research argument for flipping the ratio is Ibarra and Scoular's <a href="https://hbr.org/2019/11/the-leader-as-coach" target="_blank" rel="noopener" style="text-decoration:underline">"The Leader as Coach"</a> (HBR); their situational grid is worth the read this week.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> your telling moment from Section 02 gets its verdict here, with the framework instead of guilt.</p>
+          <ol class="steps">
+            <li>Take the moment you wrote in Section 02, where you solved it for them.</li>
+            <li>Run it against the two lists above: was it honestly a directing moment, or a coaching moment you directed?</li>
+            <li>If it was a coaching moment, write the opening question you WISH you'd asked. You'll want it for the capstone.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 11 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · MY COACHING PLAN (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My coaching plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My coaching plan</p>
+      <h2 class="h2" data-reveal>Now coach a <em>real one</em>.</h2>
+      <p class="lead" data-reveal>You've named your telling default, run a GROW conversation, converted your advice into questions, and chosen a model. Point all of it at one real person on your team, this week.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a coaching conversation with a written opening question and a date happens. Nothing you type here is saved or sent anywhere; it lives only on your screen.</p>
+
+      <div class="plan" id="coachPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The conversation.</b> Who will you coach (role, not name), and about what?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. a senior analyst, about growing into the team-lead role" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · Your model.</b> Pick the structure you'll follow.</span>
+            <div class="plan__chips" id="planModel" role="group" aria-label="Coaching model">
+              <button class="opt" data-model="grow"><span>GROW, the all-rounder</span></button>
+              <button class="opt" data-model="clear"><span>CLEAR, contract first</span></button>
+              <button class="opt" data-model="oskar"><span>OSKAR, they're stuck</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Your telling trap.</b> Be honest; this picks your counter-move.</span>
+            <div class="plan__chips" id="planTrap" role="group" aria-label="Telling trap">
+              <button class="opt" data-trap="advice"><span>I jump in with the answer</span></button>
+              <button class="opt" data-trap="leading"><span>I ask questions that are really advice</span></button>
+              <button class="opt" data-trap="silence"><span>I can't stand the silence</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When will you have it?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my plan</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="GROW, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>GROW</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Goal, Reality, Options, Will: Whitmore's four-stage coaching structure, the most widely used in the world.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="CLEAR, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>CLEAR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Hawkins' model: Contract, Listen, Explore, Action, Review. Adds explicit agreement and a review loop for ongoing relationships.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="OSKAR, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>OSKAR</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Outcome, Scaling, Know-how, Affirm &amp; Action, Review. Solution-focused: builds from what's already working.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Powerful question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Powerful Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Open, clean of your answer, and aimed at their thinking. The ICF's core coaching move.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Feedforward, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Feedforward</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Goldsmith's exchange: name a behavior, receive future-only suggestions, reply only "thank you."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Active listening, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Active Listening</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Listening to understand rather than to reply: paraphrase, notice what's unsaid, and resist rehearsing your answer.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Project Oxygen, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Project Oxygen</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Google's decade-long study of its own managers. Behavior #1 of the best: "is a good coach."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Controller to coach, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Controller → Coach</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>McKinsey's leadership shift: from providing certainty and answers to leading with curiosity and discovery.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Scaling question, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Scaling Question</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>"Where are you, 1 to 10, and what would move you one point?" Turns vague feelings into a workable number.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="What else, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>"What Else?"</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The most powerful two words in coaching. Asked three times in Options, it gets past the first, obvious answer.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Situational coaching, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Situational Coaching</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Ibarra &amp; Scoular's skill of moving between directing and coaching on purpose, matched to the moment.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Coaching versus mentoring, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Coaching vs Mentoring</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A mentor shares their path; a coach helps you find yours. Mentors talk about themselves; coaches almost never do.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go ask the <em>question</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You have a model, an opening question, a counter-move for your telling trap, and a date. The person you named is about to get a better manager.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">Within 7 days</span></div>
+        <h3>The coaching conversation you just planned</h3>
+        <p>Book the time before you leave this room and tell one colleague which model you're using. In 30 days you'll be asked your coaching ratio again; the plan you just built is how the number moves.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your opening question out loud, or type it in the chat. A question you've said once is a question you'll ask.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the plan worksheet</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Ask. Listen. Grow people.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-case">The Case for Coaching</a></li>
+          <li><a href="#s-grow">The GROW Conversation</a></li>
+          <li><a href="#s-questions">Powerful Questions</a></li>
+          <li><a href="#s-feedforward">Feedforward</a></li>
+          <li><a href="#s-models">Choose Your Model</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Coaching Plan</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Coaching for Performance · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=12"></script>
+</body>
+</html>

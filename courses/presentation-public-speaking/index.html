@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentation &amp; Public Speaking | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for presenting to a room or a leadership audience: Duarte's Big Idea and Sparkline, Minto's SCQA, delivery technique from Anderson and Gallo, and tough-question handling, ending in one real presentation rebuilt.">
+<link rel="canonical" href="../../courses/presentation-public-speaking/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Presentation &amp; Public Speaking | Vanderbilt Learning Series">
+<meta property="og:description" content="Build and deliver to a room or a leadership audience: one Big Idea, the right structure, delivery that lands, and composure under tough questions.">
+<meta property="og:url" content="../../courses/presentation-public-speaking/">
+<meta property="og:image" content="../../courses/presentation-public-speaking/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presentation &amp; Public Speaking | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../courses/presentation-public-speaking/assets/img/social-card.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-96.png">
+
+<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-bigidea">Big Idea</a>
+    <a href="#s-sparkline">Sparkline</a>
+    <a href="#s-scqa">SCQA</a>
+    <a href="#s-delivery">Delivery</a>
+    <a href="#s-quest">Q&amp;A</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Follow along on your own device. You'll draft for a real upcoming presentation today, and everyone speaks out loud at least once. Your drafts stay on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>7</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real presentation you'll rebuild</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_040842_1931d719-c8d4-406d-b6a0-e5bef20857a6.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_040854_5f92ded9-0250-428f-9dd1-0b2cd435aa10.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_040905_8de4a588-85a3-4984-b7e7-2795af61ce41.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Presentation &amp; Public Speaking · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Build the talk.<br><em class="gold-text">Command the room.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Public speaking isn't even in America's top 50 fears anymore, so fear was never the real barrier. What separates presenters a room remembers is structure and presence, and both are learnable. Today you rebuild a real presentation with the frameworks the best talks in the world are built on.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why gravitas and communication, not technical mastery alone, decide how a leader's message lands, and name your own executive-presence growth edge</li>
+          <li>Distill a real presentation into one resonant sentence with Duarte's Big Idea: point of view plus what's at stake</li>
+          <li>Structure a talk with Duarte's Sparkline, alternating What Is and What Could Be toward New Bliss</li>
+          <li>Structure an executive briefing with Minto's Pyramid Principle and SCQA, leading with the answer</li>
+          <li>Apply the delivery techniques of Anderson, Gallo, and the AMA in a live, timed speaking round</li>
+          <li>Handle pointed questions with the bridge, and commit to rebuilding one real upcoming presentation, opening line written word for word</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Continuously strives for excellence</span>
+        <span class="skillpill">Public Speaking</span>
+        <span class="skillpill">Storytelling</span>
+        <span class="skillpill">Strategic Communication</span>
+        <span class="skillpill">Stakeholder Communications</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-case">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a vision this size travels only as far as the people who can stand up and make its case.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: speed includes the meeting, and a briefing built on SCQA, answer first, gets a decision in the room instead of a follow-up on the calendar.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets are won in rooms that have to be persuaded, and a Big Idea with a point of view and stakes gives the decision-maker something to grab.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: modeling the essential university happens on stages and in briefings, and the executive presence you build here is what makes the audience believe the model.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: funding, partnerships, and access are won in rooms where someone presents the university's case, and this course trains you to be that someone. A clear Big Idea, delivered with presence, is the reputation making its rounds.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Seven ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The myth &amp; the case</h3><p>Public speaking isn't the #1 fear (Chapman), and what actually decides careers: gravitas and communication.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Executive presence</h3><p>Hewlett's three pillars, weighed by 268 senior executives, and your own growth edge.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The Big Idea</h3><p>Duarte's one-sentence discipline: your point of view plus what's at stake.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>The Sparkline</h3><p>What Is, What Could Be, and the tension-and-release shape of the world's great talks.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>SCQA, for the executive room</h3><p>Minto's Pyramid Principle: lead with the answer, because their attention is scarce.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Delivery</h3><p>Anderson's five keys, Gallo's five tips, AMA's seven principles, and a live timed round.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>The tough question</h3><p>The bridge: acknowledge, answer, return to the Big Idea, with composure.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 THE MYTH & THE CASE ============ -->
+  <section class="slide on-light" id="s-case" data-count data-title="The myth &amp; the case">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Case</p>
+      <h2 class="h2" data-reveal>The fear is a myth.<br><em>The stakes are not.</em></h2>
+      <p class="lead" data-reveal>Every number in this game comes from published research, and most rooms guess them wrong. The pattern they add up to: what's holding presenters back isn't nerve, and what's at stake in presenting well is bigger than most people think.</p>
+
+      <div class="quiz" id="statGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks ten times better than one you were shown. Four findings; call each number before the reveal.</p>
+        <p class="quiz__progress" id="sgProgress"></p>
+        <p class="quiz__q" id="sgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sgOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="sgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="sgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: If fear isn't what's actually holding most presenters back, what did the research point to instead?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Structure and presence: a distilled idea, a deliberate shape, and the gravitas-plus-communication that makes leadership visible. All learnable, which is why this session exists."><span class="mark">A</span><span>Structure and presence, both learnable</span></button>
+          <button class="opt" data-correct="0" data-why="Charisma is the folklore answer. Anderson's TED research says the opposite: delivery can be coached; the idea and its structure are what can't be faked."><span class="mark">B</span><span>Innate charisma, you have it or you don't</span></button>
+          <button class="opt" data-correct="0" data-why="Slide polish is where most prep time goes, and the research says it's the least of it. Gallo would have you cut most of those slides anyway."><span class="mark">C</span><span>Better slide design software</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sources: the Chapman University Survey of American Fears (2024 wave: public speaking 59th of 85, at 29 percent, a few points below sharks; the myth has outlived the data by decades). Coqual's Executive Presence research, led by Sylvia Ann Hewlett, surveying nearly 4,000 professionals including 268 senior executives. And Deloitte's CFO research, where "good communication skills, the ability to explain results in clear, simple terms" topped the list of qualities for the next CFO at 39 percent, ahead of every technical competency. Presenting well is not a stage skill; it's how the people who decide careers see your thinking.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the research becomes personal when it matches the best presentation you've actually watched.</p>
+          <ol class="steps">
+            <li>Think of the best presentation you've ever watched a leader give. In pairs: was it the content or the delivery that stuck with you?</li>
+            <li>Name ONE specific thing that made it land: an opening line, a moment of composure, a picture you still remember.</li>
+            <li>Collect a few out loud. Notice the answers are almost never "the slides were thorough." They're structure and presence, every time.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the one thing that made it land. Check it against the frameworks coming; it will map to one of them.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>You can coach out a weak delivery. You can't coach in a weak idea.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 EXECUTIVE PRESENCE ============ -->
+  <section class="slide on-dark" id="s-presence" data-count data-title="Executive presence">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Presence</p>
+      <h2 class="h2" data-reveal>Three pillars, weighed by the people <em>who promote you</em>.</h2>
+      <p class="lead" data-reveal>Hewlett's team asked 268 senior executives what signals leadership readiness. Gravitas, confidence, decisiveness, grace under fire, took 67 percent of the vote. Communication took 28, and it's the pillar that makes gravitas visible. Appearance took 5, but filters the other two. A presentation is the one moment all three are on display at once.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Gravitas · 67%</span>
+          <h3>How you hold pressure</h3>
+          <p class="muted">Confidence, decisiveness, grace under fire. Going "six questions deep" in your domain without flinching. The core signal of readiness.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Communication · 28%</span>
+          <h3>How the room sees it</h3>
+          <p class="muted">Great speaking, commanding a room, reading an audience. Gravitas that can't be communicated might as well not exist.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Appearance · 5%</span>
+          <h3>The filter</h3>
+          <p class="muted">The smallest pillar, but a real filter: polish failures distract the room from the two pillars that matter. Manage it so it disappears.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="pillarSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Spot the pillar</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the model only helps if you can see it in real moments, especially the moments where a pillar is missing. Five presentation scenes; name the pillar at work or at fault.</p>
+        <p class="quiz__progress" id="psProgress"></p>
+        <p class="quiz__q" id="psQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="psOptions" role="group" aria-label="Pillar choices"></div>
+        <p class="quiz__feedback" id="psFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="psNext" style="visibility:hidden">Next scene</button>
+        </div>
+        <div id="psResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two nuances worth carrying out of the room. First, the appearance paradox: executives rated appearance least important, yet cited unkempt attire among the most damaging presence errors. Both are true: appearance can't win the room, but it can lose it, so the professional move is making it a non-event. Second, executives put presence at roughly 26 percent of what it takes to get promoted, which means every presentation is quietly a promotion interview. Hewlett's full talk on the research is this week's optional watch (search "Sylvia Ann Hewlett Executive Presence Talks at Google").</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> naming your own weakest pillar, honestly, tells you which half of today matters most for you.</p>
+          <ol class="steps">
+            <li>Rank the three pillars for yourself, strongest to weakest. Gut call, ten seconds each.</li>
+            <li>Write one recent presentation moment your weakest pillar cost you something.</li>
+            <li>Keep the note; the capstone will aim the rebuild at exactly that spot.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 THE BIG IDEA ============ -->
+  <section class="slide on-light" id="s-bigidea" data-count data-title="The Big Idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Big Idea</p>
+      <h2 class="h2" data-reveal>One sentence, or it isn't <em>ready</em>.</h2>
+      <p class="lead" data-reveal>Nancy Duarte studied the structure of history's great talks and found they all rest on one thing: a single Big Idea, your point of view plus what's at stake, in one sentence. "Our Q3 results" is a topic. "Double down on enterprise, because SMB churn just outpaced our new-logo growth" is a Big Idea. If you can't say it in a sentence, the deck isn't unclear. The thinking is.</p>
+
+      <div class="quiz" id="topicJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Topic or Big Idea?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference is easiest to hear in other people's sentences first. Five openers; call each one.</p>
+        <p class="quiz__progress" id="tjProgress"></p>
+        <p class="quiz__q" id="tjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tjOptions" role="group" aria-label="Judgments"></div>
+        <p class="quiz__feedback" id="tjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="tjNext" style="visibility:hidden">Next sentence</button>
+        </div>
+        <div id="tjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="plan" id="bigIdea" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Practice · Draft your Big Idea, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you brought a real upcoming presentation; this is where it starts becoming a talk. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="biView"><b>1 · Your point of view.</b> The stance you're taking, that a reasonable colleague could disagree with:</label>
+            <input type="text" id="biView" maxlength="160" placeholder="e.g. We should move new-hire onboarding to a hybrid model now" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="biStake"><b>2 · What's at stake.</b> What's lost if the room doesn't act, ideally with a number:</label>
+            <input type="text" id="biStake" maxlength="160" placeholder="e.g. our all-virtual approach is costing us 20% of new hires in their first 90 days" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="biBuild" disabled>Assemble my Big Idea</button>
+            <span class="quiz__progress" id="biStatus">Fill in both halves</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="biOut" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/1nYFpuc2Umk" data-yttitle="Nancy Duarte: the secret structure of great talks">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Duarte, "The Secret Structure of Great Talks" (18 min, play 8–10)</span>
+          <span class="yt__src">Nancy Duarte, TEDxEast · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=1nYFpuc2Umk" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the researcher herself, mapping the same shape under MLK's Dream speech and the great product launches. It sets up the next section.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Duarte's two tests for a real Big Idea: it must articulate YOUR point of view (not a neutral subject), and it must convey what's at stake (why the audience should care enough to act). The discipline is the compression itself: if the sentence needs an "and also," you have two talks. Her <a href="https://www.duarte.com/resources/talks/the-secret-structure-of-great-talks/" target="_blank" rel="noopener" style="text-decoration:underline">talk page at Duarte, Inc.</a> and the HBR Guide to Persuasive Presentations carry the full method. The Big Idea also becomes your Q&amp;A anchor in Section 07: every tough question gets bridged back to it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> pressure-testing a Big Idea out loud, kindly, is the fastest way to find the fog in it.</p>
+          <ol class="steps">
+            <li>Two or three volunteers read their drafted Big Idea to the room.</li>
+            <li>The room applies the tests: Is it one idea, or three? Could anyone disagree? Are the stakes real?</li>
+            <li>Rewrite the fuzziest one live, together. Watch it get shorter and sharper at the same time.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Read yours out loud. If it takes two breaths, cut it. Then try it on a colleague cold: "does this make you want the evidence?"</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 THE SPARKLINE ============ -->
+  <section class="slide on-cream" id="s-sparkline" data-count data-title="The Sparkline">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Structure I</p>
+      <h2 class="h2" data-reveal>What is. What could be.<br><em>Again and again.</em></h2>
+      <p class="lead" data-reveal>Duarte's Presentation Sparkline is the shape she found under the great persuasive talks: alternate between today's reality (What Is) and the future you're proposing (What Could Be), raising the stakes with each pass, and end on New Bliss, the picture of the world once the room says yes. The alternation is the engine; the gap between the two is what makes an audience want to move.</p>
+
+      <div class="quiz" id="beatTag" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Tag the beat</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> once you can tag the beats in someone else's talk, you can storyboard your own. Five beats from one onboarding pitch, in order; tag each.</p>
+        <p class="quiz__progress" id="btProgress"></p>
+        <p class="quiz__q" id="btQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="btOptions" role="group" aria-label="Beat labels"></div>
+        <p class="quiz__feedback" id="btFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="btNext" style="visibility:hidden">Next beat</button>
+        </div>
+        <div id="btResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The storyboard template</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>What Is</b> (today's pain, concrete) → <b>What Could Be</b> (the vision) → <b>What Is</b> (the honest obstacle) → <b>What Could Be</b> (the bigger vision) → <b>New Bliss</b> (the world after they say yes). Storyboard these five beats on sticky notes BEFORE touching slides; the deck is the last step, not the first.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Duarte traces the shape through MLK's "I Have a Dream" (the alternation between the broken promise of America as it is and the dream of what it could be) and Steve Jobs' iPhone launch (the clunky phones of 2007 against the device in his pocket). The craft points: make the What Is beats concrete enough to sting, return to reality after each vision (that return is what builds credibility), and never end on an obstacle. New Bliss is the last thing they hear.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> storyboarding beats before slides is the single biggest process change most presenters take from this session.</p>
+          <ol class="steps">
+            <li>Small groups of 3 to 4: pick one member's Big Idea from the last section.</li>
+            <li>Storyboard 3 to 4 beats on sticky notes or a shared doc: What Is → What Could Be → What Is → New Bliss.</li>
+            <li>Read the beats aloud as one paragraph. Does the gap between reality and vision widen each pass? If not, sharpen the What Is.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Storyboard your own four beats on paper now. The capstone will ask which structure you chose; this is your audition for the Sparkline.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 SCQA ============ -->
+  <section class="slide on-dark" id="s-scqa" data-count data-title="SCQA">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Structure II</p>
+      <h2 class="h2" data-reveal>For executives:<br><em>lead with the answer</em>.</h2>
+      <p class="lead" data-reveal>Barbara Minto built the Pyramid Principle at McKinsey for one audience: senior people with brutal calendars. SCQA runs Situation (facts the room accepts), Complication (what makes now untenable), Question, then the Answer, stated first and supported top-down. The Sparkline builds tension; SCQA respects scarce attention. Choosing between them IS the audience analysis.</p>
+
+      <div class="lab" id="scqaLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Exec Briefing Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> feeling the executive room react as each part sharpens is how SCQA moves from acronym to instinct. The scenario: your support team is drowning and you have four sentences of leadership attention. Build the briefing, one part at a time.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Brief the room</button>
+          <span class="quiz__progress" id="labStatus">Choose all four parts</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: You have 10 minutes with the executive committee to get a decision. Sparkline or SCQA?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="SCQA: with scarce executive attention and a decision on the table, lead with the answer. Save the tension-and-release for keynotes, all-hands, and change stories."><span class="mark">A</span><span>SCQA, answer first</span></button>
+          <button class="opt" data-correct="0" data-why="The Sparkline's suspense is a luxury of time and captive attention. Ten minutes into a build-up, an executive will interrupt with 'what are you asking for?' — and they'd be right."><span class="mark">B</span><span>Sparkline, build the tension</span></button>
+          <button class="opt" data-correct="0" data-why="Structure isn't optional at that altitude; it's the difference between a decision and a 'send us the deck.' Ten unstructured minutes is how good ideas die politely."><span class="mark">C</span><span>Neither, just talk through the slides</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two Minto craft points. First, the pyramid: the Answer sits on top, supported by grouped arguments that are MECE, mutually exclusive, collectively exhaustive, so no argument overlaps and nothing is missing. Second, the Situation trap: most presenters over-build it. It's the SHORTEST part, only what the room already agrees is true. And the honest tension with Duarte is worth naming: McKinsey optimizes for scarce attention, Duarte for emotional movement. Senior room and a decision needed: SCQA. A room you need to inspire toward change: Sparkline. Know both; choose deliberately.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> converting the same idea between structures shows you what each one is for.</p>
+          <ol class="steps">
+            <li>Take the group storyboard from the Sparkline activity and re-cast it as SCQA: what's the Situation, the Complication, the Question, the one-sentence Answer?</li>
+            <li>Read both versions aloud, back to back.</li>
+            <li>Debrief: which made the idea feel more urgent, and which would the CFO rather hear? (Those answers usually differ, and that IS the lesson.)</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the four SCQA sentences for your own presentation. If the Answer can't be one sentence, revisit your Big Idea.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 DELIVERY ============ -->
+  <section class="slide on-cream" id="s-delivery" data-count data-title="Delivery">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Delivery</p>
+      <h2 class="h2" data-reveal>Be a person, talking <em>to people</em>.</h2>
+      <p class="lead" data-reveal>Chris Anderson has coached every TED speaker of the modern era; Carmine Gallo studied hundreds of them; the AMA has trained executive speakers for decades. Their advice converges: be conversational, never read bullet walls, modulate the voice, don't over-apologize, and rehearse out loud. Nothing on the list requires talent. All of it requires reps, and yours start on this slide.</p>
+
+      <div class="quiz" id="deliveryFix" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Fix the delivery</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you'll hear these exact problems in the live round in a few minutes, and one of them is probably yours. Five moments; pick the fix the research would prescribe.</p>
+        <p class="quiz__progress" id="dfProgress"></p>
+        <p class="quiz__q" id="dfQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="dfOptions" role="group" aria-label="Fix choices"></div>
+        <p class="quiz__feedback" id="dfFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="dfNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="dfResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/-FOCpMAww28" data-yttitle="Chris Anderson: TED's secret to great public speaking">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Anderson, "TED's Secret to Great Public Speaking" (8 min)</span>
+          <span class="yt__src">Chris Anderson, TED · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=-FOCpMAww28" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the head of TED on the one thing all great talks share, and why delivery polish can't rescue a talk without it.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The live round, rules</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>60 to 90 seconds each, strictly timed:</b> your Big Idea sentence plus your opening line, delivered to the group. Feedback is exactly ONE specific, actionable note per speaker, drawn from today's frameworks ("you read it instead of said it," "great pause before the ask," "cut the second sentence"). The goal is reps, not perfection.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The condensed playbook. Anderson's five keys: frame the story as a journey, plan delivery deliberately (never memorize into deadness), work on stage presence, plan multimedia last, and put the idea first. Gallo's five tips: be concise (18 minutes beats 60), never use bullet points, modulate your voice, give the audience something extra, and rehearse relentlessly. AMA's seven principles add the mindset: perception beats perfection ("no one cares about your mistake but you"), visualize success, and speak to serve the audience, not to perform. Full text: Anderson's "How to Give a Killer Presentation" and Gallo's "What It Takes to Give a Great Presentation," both Harvard Business Review.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 12 min</h4>
+          <p class="why"><b>Why this matters:</b> one timed rep with one honest note changes more than an hour of theory. This is the session's centerpiece; protect it.</p>
+          <ol class="steps">
+            <li>Every participant, in turn: stand (or unmute), deliver your Big Idea and opening line. 60 to 90 seconds, timed visibly.</li>
+            <li>The group gives exactly one specific note per speaker, framework-anchored, starting with what worked.</li>
+            <li>Facilitator keeps momentum; no re-dos, no pile-ons. Reps over perfection.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Deliver it to your phone camera, timed. Watch it once. Give yourself the one note; you'll know what it is.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · 07 THE TOUGH QUESTION ============ -->
+  <section class="slide on-light" id="s-quest" data-count data-title="The tough question">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · Q&amp;A</p>
+      <h2 class="h2" data-reveal>The question is not <em>an attack</em>.</h2>
+      <p class="lead" data-reveal>The moment presenters fear most is the pointed question from a senior stakeholder, and it's also the moment gravitas is most visible. The AMA's executive-speaking curriculum trains one move for it: the bridge. Acknowledge the question honestly, answer it directly (or commit to a date you will), then return to your Big Idea. Composed is not the same as defensive, and the room can tell.</p>
+
+      <div class="quiz" id="bridgeJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the bridge</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the drill after this is live rapid-fire; calibrate your ear first. Five pointed questions; pick the composed bridge each time.</p>
+        <p class="quiz__progress" id="bjProgress"></p>
+        <p class="quiz__q" id="bjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="bjOptions" role="group" aria-label="Response choices"></div>
+        <p class="quiz__feedback" id="bjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="bjNext" style="visibility:hidden">Next question</button>
+        </div>
+        <div id="bjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Before you present: SHRM's six questions</span>
+        <p style="margin:.5rem 0 0" class="measure">Who's the audience? What's the goal? What are the messages? What's the content? Where's the feedback? How do I refine it? Six questions, asked before you build, and half the tough questions never get asked because you answered them in the talk.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The prep that makes the bridge easy: before any leadership presentation, write the three questions you're most afraid of, and draft one-sentence answers. (You already know what they are; the fear is the tell.) The honest deferral is a full member of the toolkit: "I don't want to guess; I'll have it to you by Thursday" reads as gravitas, a fluent guess that collapses in the follow-up reads as the opposite. And if your team took Navigating Difficult Conversations, you'll recognize the DNA: acknowledge before you answer is the same move as paraphrase before you argue.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> composure under fire is trainable, and the training is fire.</p>
+          <ol class="steps">
+            <li>Facilitator (or a volunteer playing a skeptical executive) fires 2 to 3 pointed questions at each presenter from the live round: "What's this going to cost us?" "Why hasn't this been done already?"</li>
+            <li>Presenter practices the bridge: acknowledge → answer directly → return to the Big Idea.</li>
+            <li>The room calls out one thing per exchange: bridge landed, or where it wobbled.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your three most-feared questions for your real presentation, and the one-sentence answers. Keep them; the capstone assumes you have them.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 11 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · PRESENTATION REBUILD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My rebuild">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · The presentation rebuild</p>
+      <h2 class="h2" data-reveal>One talk. One structure. <em>One opening line.</em></h2>
+      <p class="lead" data-reveal>Frameworks don't change presentations; rebuilt presentations do. Pick the real talk you brought, commit to a structure, write the literal first sentence you'll say, and name the one thing you're cutting.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named talk with a written opening line and a rehearsal on the calendar is a behavior change; everything less is good intentions. Your drafts stay on your screen; nothing is saved or sent.</p>
+
+      <div class="plan" id="rebuildPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWhat"><b>1 · The presentation.</b> What is it, when is it, and who's the audience?</label>
+            <input type="text" id="planWhat" maxlength="160" placeholder="e.g. Q1 budget review, end of month, to the department leadership team" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="planIdea"><b>2 · Your Big Idea.</b> Point of view plus stakes, one sentence (paste it from Section 03):</label>
+            <input type="text" id="planIdea" maxlength="220" placeholder="e.g. We should consolidate the three tools — because we're paying twice for features nobody uses" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Your structure.</b> Chosen for THIS audience.</span>
+            <div class="plan__chips" id="planStructure" role="group" aria-label="Structure">
+              <button class="opt" data-structure="sparkline"><span>Sparkline: What Is ↔ What Could Be → New Bliss</span></button>
+              <button class="opt" data-structure="scqa"><span>SCQA: lead with the answer</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <label for="planOpen"><b>4 · Your literal opening line.</b> The exact first sentence out of your mouth:</label>
+            <input type="text" id="planOpen" maxlength="220" placeholder="e.g. Last quarter we lost eleven new hires in their first 90 days — today I'm asking for the fix" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>5 · What you will CUT.</b> Your honest deck vice.</span>
+            <div class="plan__chips" id="planCut" role="group" aria-label="What to cut">
+              <button class="opt" data-cut="bullets"><span>The bullet-wall slide</span></button>
+              <button class="opt" data-cut="apology"><span>The apologetic opener</span></button>
+              <button class="opt" data-cut="warmup"><span>The ten-slide warm-up</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>6 · When is the talk?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Timing">
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+              <button class="opt" data-when="twoweeks"><span>Within 2 weeks</span></button>
+              <button class="opt" data-when="month"><span>Within the month</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my rebuild card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all six parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Big Idea, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Big Idea™</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Duarte: your point of view plus what's at stake, in one sentence. A topic informs; a Big Idea gives the talk a job.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Sparkline, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Presentation Sparkline™</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Duarte's shape for persuasive talks: alternate What Is and What Could Be, raising stakes each pass, ending in New Bliss.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="What Is What Could Be, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>What Is / What Could Be</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The two alternating beats: today's concrete reality against the proposed future. The gap between them is the persuasion engine.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="New Bliss, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>New Bliss</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The closing beat: the picture of the world after the audience says yes. Sparklines end here, never on an obstacle.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Pyramid Principle, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Pyramid Principle</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Minto (McKinsey): answer on top, grouped supporting arguments below. Built for readers and rooms with no time.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="S C Q A, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SCQA</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, Complication, Question, Answer. For executives, the Answer is stated first; the rest earns it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="M E C E, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>MECE</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Mutually Exclusive, Collectively Exhaustive: supporting arguments that don't overlap and don't leave gaps.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Executive presence, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Executive Presence</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Hewlett/Coqual: gravitas (67%), communication (28%), appearance (5%). Roughly a quarter of what it takes to get promoted.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Gravitas, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Gravitas</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Confidence, decisiveness, grace under fire; going six questions deep without flinching. The core signal of leadership readiness.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The bridge, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Bridge</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Q&amp;A move from AMA's executive curriculum: acknowledge → answer directly → return to the Big Idea.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="No bullet points, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>"Never Use Bullet Points"</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Gallo's hardest rule: a slide people read is a slide they don't listen through. One idea per slide; detail goes to the handout.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Rehearsal, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Rehearsal</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Out loud, timed, on your feet, at least once before one honest human. Re-reading slides is not rehearsal.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Seven principles, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>AMA's Seven Principles</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Perception, Perfection, Visualization, Discipline, Description, Inspiration, Anticipation — and the mantra: no one cares about your mistake but you.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 14 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go give the <em>talk</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You busted the myth, found your pillar, compressed the idea, chose the structure, took a live rep, and survived the rapid fire. One real presentation is about to get rebuilt.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · Before the talk</span><span class="vidcard__dur">Per your card</span></div>
+        <h3>Rebuild it, rehearse it out loud, deliver the opening line cold</h3>
+        <p>Storyboard the beats before touching slides. Rehearse out loud, timed, once with one honest human. Open with the exact line on your card — no apology, no warm-up. Afterward, write one line: did the opening land, and did the structure hold under questions? That line is your evidence.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your opening line out loud, or type it in the chat. A spoken opening line survives the walk to the podium.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="worksheet.html" target="_blank" rel="noopener">Print the rebuild worksheet</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">One idea. One structure. One opening line.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-presence">Executive Presence</a></li>
+          <li><a href="#s-bigidea">The Big Idea</a></li>
+          <li><a href="#s-sparkline">The Sparkline</a></li>
+          <li><a href="#s-scqa">SCQA</a></li>
+          <li><a href="#s-delivery">Delivery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Rebuild</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="web/">Self-paced version</a></li>
+          <li><a href="../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Presentation &amp; Public Speaking · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="assets/js/qrcode.js?v=1"></script>
+<script src="assets/js/main.js?v=12"></script>
+</body>
+</html>

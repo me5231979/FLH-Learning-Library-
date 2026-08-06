@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>People Data, Safely, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers: apply the Aggregate Rule to every people-data case, use AI to find themes in engagement results and your own notes at team level, rehearse hard feedback without outsourcing the judgment, and turn survey data into real conversations.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="People Data, Safely | Vanderbilt Learning Series">
+<meta property="og:description" content="Coaching feedback and people-data literacy for managers: the Aggregate Rule, the Coach's Loop, AI as rehearsal partner, and the review cycle people call fair.">
+<meta property="og:url" content="../../../courses/People-Data-with-AI/">
+<meta property="og:image" content="../../../courses/People-Data-with-AI/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="People Data, Safely | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/People-Data-with-AI/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-expectation">The Expectation</a>
+    <a href="#s-rule">The Rule</a>
+    <a href="#s-themes">The Themes</a>
+    <a href="#s-feedback">The Rehearsal</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including building an interrogation plan for a real signal from your own team. You will be asked what your own data has been waiting for; a real answer plays far better than a hypothetical.</li><li>Build your own people-data card in the capstone for a source you genuinely own. You'll show the structure, never the contents.</li><li>Send the pre-work invite (template on this page) with the calendar invite: bring one people-data source that has been sitting unworked, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Confirm the approved VU tool list with IT and skim the Gallup workplace research so the numbers in Guess the Number are fresh; the game's reveals carry the citations, but you should be able to say 'the research' with a straight face.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Review Prep Lab and one trainer so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and people-data cards.</li><li>Re-read the tough-questions bank; say the 'is my data anonymous?' response out loud once. That question is coming.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'PATTERNS AND ROLES, NEVER NAMES' where the room can see it all session.</li><li>Draw the empty traffic light (three rows: green, yellow, red) on the whiteboard; you'll fill it live in section 02.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed people-data cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart with markers for the traffic light and the share-back rewrites</li><li>The current approved VU tool list (ChatGPT EDU, Amplify, Copilot) confirmed with IT the week before</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the traffic light, the Coach's Loop (aggregate, interrogate, humanize, converse), and the rehearsal pattern all draw in seconds. The trainers become read-aloud room votes, the builder and capstone move to the printed card, and the lab becomes a group walk-through: read each stage's three options aloud and have the room vote.</div><div class="brief__row"><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the private builder and capstone move to paper. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the Review Prep Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the builder, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone names a colleague or starts reading a real survey comment aloud:</b> Protect the norm warmly and immediately: 'Hold that. Patterns and roles, never names, and real comments stay off the air; they can identify their authors.' If it keeps happening, a real conflict is usually underneath; offer a private follow-up and point them at Coaching for Performance for the conversation itself.</div><div class="brief__row"><b>If Someone announces they already run 1:1 notes or survey comments through a personal AI account:</b> Thank them for the honesty, because half the room is quietly doing something similar, then draw the line without shaming: named people in personal tools is the exact red case, and today gives them the compliant version that gets them the same value (de-identified pattern lists, approved tools). Follow up privately if it sounded like an active habit involving identifiable people.</div><div class="brief__row"><b>If The room is skeptical: 'AI has no place near people decisions, full stop':</b> Agree with the core of it, then sharpen: the course bans AI from exactly the places they're worried about (verdicts, named people, individual records) and uses it only where a fast reader helps (aggregated patterns, rehearsal). The Judge the Draft trainer usually converts this room: they can hear the difference between rehearsal and outsourced judgment.</div><div class="brief__row"><b>If The room is the opposite: enthusiasts who want AI to draft the actual reviews:</b> Aim the enthusiasm at the lab: let them pick the AI-writes-everything option and read the grievance outcome aloud. The weak tier does the sobering for you. Then hand them the strong version: AI on structure and recall is faster anyway, and it survives an HR appeal.</div><div class="brief__row"><b>If A real, live privacy incident surfaces ('I think this already happened on my team'):</b> Stop and honor it; this outranks the agenda. Restate the Aggregate Rule, confirm the case against it without collecting details in the room, and route it: this goes to HR or the privacy office today, not to a workshop. Offer to stay after and help them frame the report.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Is my survey data actually anonymous? Can managers see who said what?</summary><p>Answer for your context honestly: at Vanderbilt, engagement platforms report at aggregate levels with minimum group sizes precisely so individuals cannot be identified, and this course adds the manager-side duty: never try to reverse it. The moment a manager speculates about authorship, even warmly, anonymity is dead retroactively and every future survey collects fiction. If someone needs the exact reporting thresholds for a specific platform, take it offline and get the real answer from HR rather than guessing from the front of the room.</p></details><details class="brief__q"><summary>Culture Amp's AI Coach is built into the tool and reads individual comments. If the vendor does it, why can't I?</summary><p>Because the vendor's AI runs inside a contracted, access-controlled platform that the institution vetted, with the survey's anonymity model intact. The rule this course teaches governs what YOU paste into tools: taking people data out of its governed home and putting it into an AI tool is a different act from the platform processing data inside its own walls. Use the built-in features of approved platforms freely; the Aggregate Rule is about what leaves them.</p></details><details class="brief__q"><summary>My 1:1 notes are mine. Why is it red to ask AI about my own notes?</summary><p>The notes are yours; the information in them is about someone else, and that is what the red light protects. 'My notes about Jordan' is a person's performance record wearing your handwriting. The compliant version costs you five minutes: build a de-identified pattern list, roles and recurring topics, no names, no identifying events, and that list is yellow in an approved tool. You keep the value of theme-spotting; Jordan keeps the dignity of not being in a prompt.</p></details><details class="brief__q"><summary>If AI can't write the verdict, what is it actually saving me? This sounds like the same work plus extra steps.</summary><p>The hours in people work were never in the judging; they were in the reading, recalling, structuring, and dreading. AI collapses those: a hundred comments become themes in a minute, a year of de-identified notes becomes a structured evidence file, and the conversation you dreaded gets rehearsed before you have it once. The judgment was always minutes of work resting on hours of preparation. You keep the minutes; the machine eats the hours.</p></details><details class="brief__q"><summary>What if the AI's theme is wrong and I act on it?</summary><p>That is exactly what the ground truth test exists to catch: no theme gets acted on until you can name a concrete example you have seen yourself, and a theme without one goes to the team as a question, which is safe even when the theme is wrong, because asking a genuine question never damaged a team. The failure mode to fear is the confident wrong theme announced as fact, and the test blocks precisely that. Data proposes; the manager disposes.</p></details><details class="brief__q"><summary>Small teams are my whole life; everything I manage is under ten people. Is this course useless for me?</summary><p>The rule bites hardest for you, and the techniques still work. Under five respondents, skip the aggregate interrogation of scores and use what you legitimately have: your own de-identified pattern list across time rather than across people, published benchmarks as green context, and the rehearsal pattern, which needs no team data at all. Small-team managers actually get the most from sections 04 and 06; the conversation techniques scale down perfectly even where the statistics do not.</p></details><details class="brief__q"><summary>Doesn't HR or my HCM system already forbid all of this? Why is a course drawing these lines?</summary><p>Policy sets the floor and moves slower than the tools; this course trains the judgment for the cases policy has not enumerated yet. Where Vanderbilt policy or your platform's rules are stricter than today's material, they win, always. What the course adds is the manager-level instinct: the head count before the paste, the ground truth test before the announcement, the roles-not-names habit at the keyboard. Those keep you safe in the gap between what tools make possible and what policy has caught up to.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our People Data, Safely session. One thing to bring: one people-data source that has been sitting unworked, your last engagement results, a retro board, a pulse, or your own 1:1 notes. You will never be asked to share it or to name anyone; every exercise runs on patterns and roles, and everything you type stays on your screen. Come knowing roughly what that data has been waiting for. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the session happen? Three quick lines, reply whenever: 1) Did you run the 45-minute theme-to-conversation session from your card? 2) Which theme survived the ground truth test? 3) Which conversation is on the calendar because of it? Replies come to me only, and I never need the contents of your data. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of people data, worked. Two questions, same scale as the room: 1) Fist to five, how confident are you now reading your team's data with AI inside the lines? 2) Which conversations happened because of the data, and what did they change? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the theme-to-conversation session happen? Which theme survived the ground truth test? Which conversation is on the calendar?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'which conversations happened, and what did they change?' The count of theme-to-conversation sessions actually held is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our People Data, Safely session. One thing to bring: one people-data source that has been sitting unworked, your last engagement results, a retro board, a pulse, or your own 1:1 notes. You will never be asked to share it or to name anyone; every exercise runs on patterns and roles, and everything you type stays on your screen. Come knowing roughly what that data has been waiting for. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today works on your team's real signals, surveys, retros, and your own notes, so one norm up front: patterns and roles, never people's names. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> People-data source you'll put to work</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the norm that makes real people-data material safe: patterns and roles, never names, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is about the newest part of the manager job: the dashboards, survey results, and AI coaches that keep arriving, and how to use them without ever putting a person where a person must not go. We'll work close to your team's real data, so one ground rule for the next ninety minutes: patterns and roles, never people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: patterns and roles, never people's names; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: how many of you got engagement survey results in the last year? And how many of your teams saw something visibly change because of them?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Nearly every hand up on the first question</li><li>Most hands down on the second</li><li>Some knowing laughter at the gap</li></ul><p class="facnote__mini">Respond: Name the gap warmly: 'That gap in this room is the same gap in the global data, and closing it is a coaching skill, which is why you're here and the dashboards aren't.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'patterns and roles, never names' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> Anyone bracing for either an AI sales pitch or a compliance lecture. The frame that relaxes both: today is a coaching course that happens to involve data, and the privacy rules make the useful parts safe rather than forbidden.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>People Data, Safely · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Read the patterns.<br><em class="gold-text">Coach</em> the person.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Your HR tools are getting an AI upgrade whether you asked for one or not. <a href="https://www.cultureamp.com/" target="_blank" rel="noopener" style="text-decoration:underline">Culture Amp</a> now ships an AI coach for managers, with Lattice and 15Five close behind, and all of it points at the same person: you, sitting between the dashboard and the humans. Meanwhile the older problem has not moved. <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace research</a> traces most of the difference in team engagement back to the manager, yet on most teams survey results arrive, get a meeting, and change nothing. This session teaches the data side of coaching: reading people data with AI's help, inside hard privacy lines, until the numbers turn into conversations.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Apply the Aggregate Rule to every people-data case before any of it goes near an AI tool</li>
+          <li>Use AI to find themes in engagement results and your own meeting notes, at team level with names removed</li>
+          <li>Draft hard feedback with AI as a rehearsal partner while the judgment stays yours, in your words</li>
+          <li>Prepare a review cycle where AI organizes your evidence and you write every verdict</li>
+          <li>Run the follow-up conversation the data was collected for, and measure that it actually happened</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill">People Analytics</span>
+        <span class="skillpill">Coaching Techniques</span>
+        <span class="skillpill">AI Literacy</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-expectation">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in one real people-data source carded for work with a dated first move.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things by the end. You'll be able to run every people-data case through the Aggregate Rule before it goes near a tool. You'll use AI to pull themes out of engagement results and your own notes, at team level, names out. You'll rehearse hard feedback with AI without ever letting it write the judgment. You'll prep a review cycle where the machine does structure and you do every verdict. And you'll run the conversation the data was collected for, which is the whole point. It all lands in one artifact: a people-data card for a source you actually have, with a date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL card, one data source, one first move, one date.</li><li>Name the sources once for credibility: Gallup's workplace research for the numbers, the Aggregate Rule and the Coach's Loop as the method.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one source, one first move, one date).</p><p class="facnote__meta"><b>Watch for:</b> Tool questions arriving early ('is Copilot approved? what about the survey vendor's AI?'). Park them: section 02 answers the approved-tools question, and the pattern outlives any tool list.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Before the plan, one minute on why the university wants exactly this from you.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and people grow under managers who act on what their teams tell them.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: the talent the vision needs is already sitting on your team, and engagement data read at the aggregate, then acted on in a real conversation, is how it stays.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets are carried by engaged teams, and the follow-up conversation the survey was collected for is where engagement actually moves.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: a university modeling responsible AI needs managers who let AI find themes in team-level data and never let it judge a named person. That line is this course.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: values-driven leadership shows in how you handle what your people tell you. Reading the patterns inside the Aggregate Rule and coaching the person yourself keeps the talent the flywheel attracts, and keeps the trust the data depends on.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Anchor the session in the institution's own plan: the one-sentence vision, the three focus areas in people terms, and where a manager who reads patterns and coaches people feeds the reputation flywheel.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Chancellor Diermeier's vision for this university is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The motto has always been the dare, Crescere aude, dare to grow, and people grow under managers who act on what their teams tell them. The talent this vision needs is mostly already here, sitting on your teams, and whether it stays tracks the manager more than anything else. The bottom card is the reputation flywheel: reputation attracts talent, funding, partnerships, and access, and values-driven leadership shows in how you handle what your people tell you. Inside the privacy lines, that is exactly what today teaches.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence exactly as written, then pause; it lands better without commentary.</li><li>Walk the three focus cards in one breath each, landing each team translation line.</li><li>Close on the flywheel card: the flywheel attracts talent, and the coaching this course teaches is how the talent already here stays.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can connect one focus area to their own team's engagement data, in one sentence.</p><p class="facnote__meta"><b>Watch for:</b> Strategy fatigue: part of the room has heard the vision language elsewhere. Keep it in people terms; the translation lines exist so nobody has to squint to find themselves in it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Six ideas, in a deliberate order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute: read the vision sentence, gesture at the three focuses, move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The new expectation</h3><p>AI coaches arrived in the HR tools, and managers now sit between dashboards and humans. The gap: most survey results change nothing.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The Aggregate Rule</h3><p>The traffic light applied to people data, with teeth: what may never touch an AI tool, and the small-team trap.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Themes from the noise</h3><p>Interrogating aggregated results: themes, contrasts with last cycle, and the question behind the question.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Feedback, rehearsed</h3><p>AI as rehearsal partner for the hard conversation. The judgment stays yours, from your evidence, in your words.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Review Prep Lab</h3><p>Run review season for a team of eight and see which cycle you get: the one people call fair, or the grievance.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>From data to conversation</h3><p>Closing the loop: the share-back, the 1:1 question bank, and measuring conversations instead of dashboards.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: expectation, rule, themes, rehearsal, lab, conversation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first why this landed on your desk, then the rule that makes everything else safe, the Aggregate Rule. Then the two techniques: interrogating aggregated data and rehearsing feedback. Then you'll run a full review season in the lab, and we finish where the data was always pointing: the conversation.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the six items in one breath each.</li><li>Point out the shape: the squeeze (01), the rule that makes everything safe (02), the techniques (03 and 04), the practice rep (05), and the payoff (06).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with why the HR tools suddenly have opinions.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE NEW EXPECTATION ============ -->
+  <section class="slide on-light" id="s-expectation" data-count data-title="The new expectation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Expectation</p>
+      <h2 class="h2" data-reveal>The dashboard arrived. The <em>conversation</em> didn't.</h2>
+      <p class="lead" data-reveal>The HR-tech industry has decided that managers should read people data with AI at their elbow: <a href="https://www.cultureamp.com/" target="_blank" rel="noopener" style="text-decoration:underline">Culture Amp's AI Coach</a> summarizes your team's results and suggests actions, and Lattice and 15Five ship similar copilots. Vanderbilt is on the same road; between Summit and VAULT, people data is already part of a manager's week here. The tooling is the easy half. The hard half shows up in the research on what happens after a survey closes, and most rooms guess these numbers wrong.</p>
+
+      <div class="quiz" id="gnGame" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks far better than one you were shown. Four findings from Gallup's workplace research; call each number before it's revealed.</p>
+        <p class="quiz__progress" id="gnProgress"></p>
+        <p class="quiz__q" id="gnQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="gnOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="gnFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="gnNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="gnResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: An engagement survey closes and your team's results land in your inbox. On most teams, what does the research say happens next?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Nothing the team can see. The results get read, maybe presented once, and filed. That gap between data and conversation is the manager skill this whole session trains."><span class="mark">A</span><span>Nothing the team can see: the results never become a conversation</span></button>
+          <button class="opt" data-correct="0" data-why="HR runs the survey and hands you the mirror; the follow-through was always the manager's job. Gallup's research keeps landing on the manager as the biggest lever on engagement."><span class="mark">B</span><span>HR fixes the low scores centrally, so the manager can stand by</span></button>
+          <button class="opt" data-correct="0" data-why="Scores that get no conversation tend to sag, and response rates sag with them: people stop telling the truth to a survey that never changes anything."><span class="mark">C</span><span>Scores drift up on their own as people settle in</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sources for the game are <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace research on AI and engagement</a> and the vendor wave led by <a href="https://www.cultureamp.com/" target="_blank" rel="noopener" style="text-decoration:underline">Culture Amp</a>. Read together, they describe a squeeze: engagement runs through the manager, AI use is growing far faster than guidance about it, and the new HR tools assume you will let an AI help you read your team. Saying no to all of it means staying slow at a job the research says is yours. Saying yes carelessly means putting private information about people where it must never go. The way through is a rule, and it gets the next section to itself.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the data-to-nothing gap stops being abstract the moment you look for it on your own team.</p>
+          <ol class="steps">
+            <li>In pairs: when did your team last receive survey or retro results, and what changed afterward that the team could actually see?</li>
+            <li>Call it honestly: conversation held, or results filed?</li>
+            <li>Hands to the room: held or filed? Count it out loud. Most rooms are heavily filed, and that count is the gap this session closes.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write down the last signal your team's data sent you and what you did about it. If the honest answer is nothing, good: you just found the working material for the rest of this session.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish with guessed-at, missed numbers that engagement runs through the manager, that AI use is outrunning guidance, and that survey results changing nothing is the real gap this course closes.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before any method, the evidence, and I want you to guess. Gallup has measured workplaces for decades, and one finding towers over the rest: about seventy percent of the difference in team engagement traces to one variable, the manager. Not the perks, not the survey, the manager. Meanwhile AI use at work has roughly tripled in white-collar roles in two years while guidance crawls behind it, and your HR tools now ship AI coaches that assume you'll use them. Four findings, call your number before each reveal.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the game: four findings from Gallup's workplace research, guess each number before it's revealed. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, land the squeeze: the tools assume an AI-assisted manager, the engagement lever IS the manager, and the guidance hasn't caught up. That's why the rule comes before any technique.</li><li>Run the quick check (what happens after a survey closes), then the pair activity: when did your team last get results, and what visibly changed?</li><li>Count the held-versus-filed hands out loud and connect the count to the Gallup engagement numbers.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;When your team last got survey or retro results, what changed afterward that the team could actually see, and be honest: held or filed?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Mostly filed: a meeting happened, then nothing visible</li><li>One or two real examples of a change the team could point at</li><li>Someone admits they never opened the results at all</li></ul><p class="facnote__mini">Respond: For the never-opened answer, warmly: 'That honesty is worth more than a dashboard; your card today gives that data its first real appointment.' For the filed majority: 'Filed is the default everywhere. The rest of today is the un-filing method.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Engagement runs through you, the data alone has never moved it, and the tools arrived before the rules. So the first thing this course installs is the rule.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; the held-versus-filed count lands visibly and the room sees its own data-to-nothing gap.</p><p class="facnote__meta"><b>Watch for:</b> A methodology skeptic litigating Gallup's survey design. Don't defend a single number; the case is the convergence: the manager effect, flat engagement, and AI adoption outrunning guidance all point the same way. Park deep methodology questions.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before the method, and it's the whole course in eleven words.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, the pair inventory becomes one show of hands with no discussion.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Data can find the theme. Only you can have the conversation.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the method arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Data can find the theme. Only you can have the conversation.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;And before AI touches any of it, one rule decides what it may see.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 THE AGGREGATE RULE ============ -->
+  <section class="slide on-dark" id="s-rule" data-count data-title="The Aggregate Rule">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Rule</p>
+      <h2 class="h2" data-reveal>Interpret patterns. Never feed it <em>people</em>.</h2>
+      <p class="lead" data-reveal>Every AI course in this series carries one traffic light, and people data is where it has the most teeth. The Aggregate Rule is that light applied to your team's data: you may use AI to interpret patterns; you may never feed it people. Before any people data goes near a tool, it passes exactly one test: could this point at a person?</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The Aggregate Rule</span>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Published benchmarks and generic information. No one on your team is in it. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work, including aggregated, de-identified team-level results. Approved VU tools only: ChatGPT EDU, Amplify, Copilot.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people: names, individual scores, identifiable comments, your notes about a person. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The light outranks every technique in this course. If a case is red, no theme, no deadline, and no efficiency argument changes the answer.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:1.25rem">
+        <span class="tag">The small-team trap</span>
+        <p style="margin:.5rem 0 0" class="measure">A "team-level" average from a team of three identifies its people; the label says aggregated and the math says disclosure. Count heads before you call anything aggregate: under five respondents, treat it as red. De-identification works the same way: it is a verb, done and checked, never a checkbox on someone else's export.</p>
+      </div>
+
+      <div class="quiz" id="tlSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Red, yellow, or green</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rule is easy to recite and the real cases arrive in disguise. Five people-data situations; give each one its light.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Traffic light choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="tsNext" style="visibility:hidden">Next case</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>De-identifying for real takes about four moves. Names out, obviously. Identifying roles out: "the only designer on the team" is a name with extra steps. Identifying events out: "after the March escalation" narrows the cast fast. Then the head count: under five respondents in any slice, the slice stays red however clean it looks. One more habit worth building: do the de-identification pass yourself, in a plain document, before anything opens an AI tool. The pass takes minutes, it is where you catch the near-misses, and it means the first thing the tool ever sees is already safe. When a case stays genuinely ambiguous after all that, the answer is a person: ask HR or your privacy office before a tool sees anything.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> the dangerous cases are the ones that look yellow, and inventing them is the fastest way to learn to spot them.</p>
+          <ol class="steps">
+            <li>Pairs: invent the sneakiest case you can that LOOKS yellow but is actually red. Small teams, identifying roles, and quotable comments are fair game.</li>
+            <li>Pairs trade cases and call the light, with the reason.</li>
+            <li>The two best traps go to the room. Call each one together, out loud, and name the tell that gives it away.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take the most recent people-data artifact you actually have, survey export, retro board, your own notes, and sort each part of it: green, yellow, or red. Write the red parts down; that list is what never touches a tool.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the Aggregate Rule as the traffic light applied to people data, with the small-n trap and the 1:1-notes case as the two traps every manager must be able to spot cold.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here is the rule that makes everything else in this course safe, and it's the same traffic light from the AI courses, aimed at people data. Green: published benchmarks and generic information, nobody on your team is in it, go. Yellow: internal work, and that includes your team's aggregated, de-identified results, in approved VU tools only: ChatGPT EDU, Amplify, Copilot. Red: private information about people. Names, individual scores, comments that could identify someone, your notes about a person. Never, in any tool, for any reason. One test sorts every case: could this point at a person? And two traps to burn in now. A team-level average from three people is those three people wearing a trench coat; under five respondents, treat it as red. And your 1:1 notes about Jordan are red however much they feel like your notes; the de-identified pattern list you build FROM them, roles and topics, no names, that list is yellow.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Fill the whiteboard traffic light as you walk the rule: published benchmarks green, aggregated de-identified team data yellow in approved VU tools only, anything that could point at a person red.</li><li>Say the one test out loud twice: could this point at a person?</li><li>Land the small-team trap with the trench coat line; it sticks. Under five respondents, aggregated is a label, not a protection.</li><li>Land the notes case: your notes about a named person are red; your own de-identified pattern list is yellow. That pair is the most-used distinction in the course.</li><li>Send them to Red, Yellow, or Green: five cases on devices.</li><li>Run the trap-invention pair drill from Go deeper and surface the two best traps to the room.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the trap drill: what was the sneakiest looks-yellow-but-red case your pair invented, and what's the tell?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Small groups hiding inside big exports: 'the marketing slice is two people'</li><li>Identifying roles: 'the only remote engineer said...'</li><li>Time-based identification: 'comments from whoever joined in March'</li></ul><p class="facnote__mini">Respond: Name the pattern in the traps: 'Notice every trap works the same way: the label says group, the details say person. That's why the test is could this point at a person, never does this look aggregated. When a case survives the test and still feels wrong, ask HR before any tool sees it.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One light, one test, two traps. Everything AI does for you from here on happens inside the lines you can now draw cold.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; the room can state the rule unprompted and explain why a team of three is red. This rule feeds sections 03, 04, 05, and the capstone.</p><p class="facnote__meta"><b>Watch for:</b> Two drifts: relief-driven overreach ('so team data is fine!' without the approved-tool and head-count conditions) and quiet confessions of current red-light habits. Correct the first immediately; handle the second warmly but privately (the contingency has the script). The rule correction matters more than the flow of the room.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So let's go earn something with it: your data is safe at team level, and now AI gets to be genuinely useful.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: rule and both traps at full strength, trainer on devices; the trap-invention drill becomes a solo pass: sort your own most recent people-data artifact.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 THEMES FROM THE NOISE ============ -->
+  <section class="slide on-cream" id="s-themes" data-count data-title="Themes from the noise">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Themes</p>
+      <h2 class="h2" data-reveal>Ask the data a better <em>question</em>.</h2>
+      <p class="lead" data-reveal>Once your data is safely at team level, AI becomes a genuinely useful interrogator. It reads a hundred de-identified comments in seconds and proposes patterns you would have missed at 5 pm on a Friday. The craft is in the questions you ask it, and there are three that pay every time.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Themes</span>
+          <h3>What patterns are here?</h3>
+          <p class="muted">"What are the strongest themes in these team-level results, and what in the data supports each one?" Forces volume into shape, with receipts.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Contrasts</span>
+          <h3>What changed?</h3>
+          <p class="muted">"Compare with last cycle: what moved, what stayed stuck?" A score means little on its own; movement is where the story lives.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · The question behind the question</span>
+          <h3>What explains both?</h3>
+          <p class="muted">"What would explain both the high autonomy score and the low recognition score?" The contradiction in your data is usually the finding.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:1.5rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Humanize: the ground truth test</span>
+        <p style="margin:.5rem 0 0" class="measure">Every theme the AI proposes gets tested against what you have actually seen: can you name one concrete example from your own experience of this team? A theme with an example is a finding worth acting on. A theme without one is a hypothesis, and hypotheses go to the team as questions, never as announcements. Data proposes; the manager disposes.</p>
+      </div>
+
+      <div class="plan" id="intPlan" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your interrogation plan, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the three questions only earn their keep pointed at your own data, and you leave this section with the exact plan to run this week. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="intSignal"><b>1 · The signal.</b> One number or pattern from your last survey, retro, or pulse:</label>
+            <input type="text" id="intSignal" maxlength="120" placeholder="e.g. recognition scored lowest for the second cycle running" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="intSuspect"><b>2 · The suspicion.</b> What you suspect is behind it:</label>
+            <input type="text" id="intSuspect" maxlength="120" placeholder="e.g. we ship constantly and I only celebrate the big launches" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="intGap"><b>3 · The mystery.</b> The part you cannot explain:</label>
+            <input type="text" id="intGap" maxlength="120" placeholder="e.g. the same cycle, the workload score actually improved" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="intBuild" disabled>Build my interrogation plan</button>
+            <span class="quiz__progress" id="intStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="intOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two habits keep the interrogation honest. First, ask for evidence with every theme: "and quote the de-identified data that supports each one." An AI asked only for themes will find some in random noise; an AI asked for support has to show its work, and weak themes collapse on contact. Second, treat your suspicion as a hypothesis in the same queue as the AI's. Managers tend to interrogate data until it confirms what they already believed and then stop; putting your own theory through the same ground truth test is what separates reading the data from decorating your hunch. And the rule from section 02 rides along the whole way: aggregated, de-identified, approved VU tools, head count checked.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> another manager's read on your mystery is the cheapest second opinion you will ever get.</p>
+          <ol class="steps">
+            <li>Pairs: trade your "mystery" lines from the builder, the part of your data you cannot explain.</li>
+            <li>Your partner proposes two explanations for yours; you propose two for theirs. No names, patterns and roles only.</li>
+            <li>Each of you picks the one explanation you could actually test in a 1:1 this week, and says the question you would ask.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write two candidate explanations for your own mystery line, then write the 1:1 question that would test the more likely one. Put that question at the top of next week's 1:1 agenda.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Teach the three-question interrogation of aggregated data (themes with support, contrasts, the question behind the question) plus the ground truth test, and get every learner a private interrogation plan for their own real signal.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Your data is at team level, names out, in an approved tool. Now AI earns its keep, because reading a hundred de-identified comments is exactly what it's fast at, and there are three questions that pay every time. One: what are the strongest themes, and quote the data that supports each one. The quoting matters; an AI asked only for themes will find some in pure noise. Two: what changed since last cycle, what stayed stuck? Movement is where the story is. Three, the question behind the question: what would explain both this and that? The contradiction in your data, high autonomy and low recognition, better workload and worse morale, is usually the finding. Then the step that keeps you the manager: the ground truth test. Every theme has to match one example you have actually seen. With an example, it's a finding. Without one, it's a hypothesis, and hypotheses go to your team as questions, never announcements.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three question cards IN ORDER and read each example question aloud; the phrasing is the technique.</li><li>Stress the receipts habit: always ask the AI to quote the data supporting each theme; unsupported themes get dropped.</li><li>Land the ground truth test hard: a theme you cannot match to one seen example is a hypothesis, and hypotheses go to the team as questions.</li><li>Then the section's real work: the private builder. Three fields: the signal, the suspicion, the mystery. Repeat the privacy line before they type.</li><li>Give the builder quiet time; field 3, the part you cannot explain, deserves a full minute.</li><li>Run the mystery swap from Go deeper: pairs trade mysteries, propose explanations, pick the testable one.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the swap: whose partner proposed an explanation for their mystery that they had genuinely never considered?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Several hands; second perspectives reliably crack mysteries</li><li>Someone found their suspicion didn't survive their partner's questions</li><li>A pair discovered their mysteries were the same pattern from different teams</li></ul><p class="facnote__mini">Respond: Land the method point: 'A colleague did for you what the AI does with the data: proposed patterns you couldn't see from inside. And notice what you did next, automatically: you tested it against what you know. That test is the humanize step, and it's yours alone.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three questions, receipts required, ground truth test at the end. You now have an interrogation plan for a real signal, and the capstone will put a date on it.</p></div><p class="facnote__meta"><b>Validate:</b> 3+ of 4 on the earlier trainer patterns holding; every learner has a built interrogation plan with a real signal and a real mystery. This plan feeds the capstone and the 7-day pulse.</p><p class="facnote__meta"><b>Watch for:</b> Learners whose 'signal' is actually a person ('my analyst seems disengaged'). Redirect to team-level signals: scores, retro patterns, participation trends. Also the manager who wants AI to explain the data instead of interrogating it; the difference is who holds the hypothesis.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the team's data handled. Now the harder case: the conversation with one person.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards fast, ground truth test verbatim, builder stays at full length with its quiet minute protected; the mystery swap drops to an optional 90 seconds.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 FEEDBACK, REHEARSED ============ -->
+  <section class="slide on-light" id="s-feedback" data-count data-title="Feedback, rehearsed">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Rehearsal</p>
+      <h2 class="h2" data-reveal>AI rehearses. You <em>judge</em>.</h2>
+      <p class="lead" data-reveal>Hard feedback gets postponed, and postponed feedback arrives late, vague, or never. Here AI genuinely helps, as a rehearsal partner: describe the situation with roles instead of names, draft against a real framework, stress-test the tone, practice the pushback. One line never moves: AI rehearses the conversation; it never generates the judgment. Your assessment of a person comes from your evidence, in your words.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The rehearsal pattern</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Roles, never names:</b> "a senior analyst on my team," never anyone a tool could identify. <b>2. Framework first:</b> draft against SBI (situation, behavior, impact) or feedforward (name the pattern, design the next attempt together). <b>3. Stress-test:</b> "Where is this vague? What will they hear that I didn't say?" <b>4. Anticipate:</b> "Give me the three hardest reasonable responses, and let me practice mine."</p>
+      </div>
+
+      <div class="quiz" id="draftJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the draft</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> AI-assisted feedback fails in recognizable ways, and your ear learns them fastest by judging. Five lines from managers using AI on feedback; call each one.</p>
+        <p class="quiz__progress" id="djProgress"></p>
+        <p class="quiz__q" id="djQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="djOptions" role="group" aria-label="Draft judgments"></div>
+        <p class="quiz__feedback" id="djFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="djNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="djResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What may AI contribute to a hard feedback conversation?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Structure, tone, and practice are exactly what a rehearsal partner is for, and the roles-not-names rule keeps the person out of the tool. The judgment itself never goes to the machine."><span class="mark">A</span><span>The rehearsal: framing, tone, and practice against likely reactions, with roles instead of names</span></button>
+          <button class="opt" data-correct="0" data-why="An 'objective read on the person' requires feeding it the person, which is red before it is anything else. And the assessment is the one part of the job that must stay yours."><span class="mark">B</span><span>The verdict: an objective read on how the person is really performing</span></button>
+          <button class="opt" data-correct="0" data-why="Neutral wording without your evidence is generic mush, and people can hear it. Feedback lands because it is specific and owned; the draft can be polished, the substance cannot be borrowed."><span class="mark">C</span><span>The delivery: send its draft unchanged so the wording stays neutral</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The rehearsal prompt pattern in full: "A [role] on my team [the observable pattern, no names, no identifying detail]. I want to give this feedback using [SBI or feedforward]. Here is my draft. Stress-test it: where is it vague, what could be heard as blame, and what are the three hardest reasonable responses I should be ready for?" Notice what the pattern assumes: you already have the evidence. If you cannot write the situation and the behavior yourself, the problem is upstream of wording, and no tool fixes thin evidence. This course pairs with Coaching for Performance, which teaches the human method, GROW and feedforward; today covers what happens at the keyboard before that conversation starts.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing drafts called out loud calibrates your ear before the real conversation, when it counts.</p>
+          <ol class="steps">
+            <li>The room takes one shared scenario: a capable teammate whose last three handoffs each needed rework, roles only.</li>
+            <li>Everyone drafts ONE feedback line for it, SBI or feedforward, two minutes.</li>
+            <li>A few volunteers read theirs; the room calls each: specific and owned, generic mush, or crosses the line. Rewrite the mushiest one together.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take one piece of feedback you have been postponing. Write the SBI line yourself, then use AI only to stress-test the tone and generate the three hardest responses. Notice the division of labor: your evidence and judgment, its rehearsal.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install AI as a rehearsal partner for hard feedback (roles not names, framework first, stress-test, anticipate) with the verdict line as the boundary that never moves: your assessment, your evidence, your words.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Now the conversation with one person, because that's where feedback actually lives and where it most often dies of postponement. AI is a genuinely good rehearsal partner here, if you hold the pattern. Roles, never names: 'a senior analyst on my team,' and nothing that could identify them. Framework first: SBI, situation, behavior, impact, or feedforward, name the pattern and design the next attempt together. Then use the machine for what it's good at: stress-test the draft, where is it vague, what could be heard as blame? And anticipate: give me the three hardest reasonable responses and let me practice mine. One line never moves, and I'll say it twice today. AI rehearses the conversation; it never generates the judgment. Your assessment of a person comes from your evidence, in your words. The moment a manager says 'the AI flagged you,' that manager has resigned from the job while keeping the title.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the emotional truth first: hard feedback gets postponed, and postponed feedback punishes everyone. Rehearsal is what makes it deliverable.</li><li>Walk the rehearsal pattern card: roles never names, framework first (SBI or feedforward), stress-test, anticipate.</li><li>Draw the verdict line in the air: AI rehearses the conversation; it never generates the judgment. Say it twice.</li><li>Send them to Judge the Draft: five lines on devices.</li><li>Run the quick check, then the group drill: one shared scenario, everyone drafts one SBI line, volunteers read, the room calls each one.</li><li>Cross-reference Coaching for Performance once: GROW and feedforward run the conversation; today is the keyboard work before it.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the drill: what made the strongest line in the room strong?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A real, dated situation you could picture</li><li>Impact stated plainly without blame language</li><li>A next move the person owns</li></ul><p class="facnote__mini">Respond: Tie it to the division of labor: 'Everything you just praised came from a human who was there. Notice nothing on that list is wording; wording is the part AI can help polish. Evidence and judgment first, rehearsal second, and it delivers on time instead of never.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Roles not names, framework first, and the verdict stays home. The feedback you've been postponing now has a rehearsal method waiting for it.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; drafted lines in the drill name a situation, a behavior, and an impact; the room can say the verdict line unprompted.</p><p class="facnote__meta"><b>Watch for:</b> The learner who wants AI to 'check whether I'm being fair to this person.' That is the verdict in disguise, and it usually requires feeding the person in. Redirect: fairness checks are what calibration (next section) and your own evidence are for; AI can stress-test your wording, never your judgment of a human.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the stress test for everything so far: review season, eight people, two weeks.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: rehearsal pattern and verdict line at full strength, trainer on devices, quick check stays; the drafting drill becomes one volunteer line judged by the room.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 THE REVIEW PREP LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Review Prep Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Lab</p>
+      <h2 class="h2" data-reveal>Run review season for a team of <em>eight</em>.</h2>
+      <p class="lead" data-reveal>Review season: eight people, two weeks, and every tool vendor promising to write it all for you. This is where the whole course either holds or folds, because reviews are people data, judgment, and AI temptation in one package. Choose how each stage runs, then see which cycle you get.</p>
+
+      <div class="lab" id="reviewLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Review Prep Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make in your next real cycle, and the failure modes are the ones that generate real grievances. Choose all four stages, then run the cycle.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the review cycle</button>
+          <span class="quiz__progress" id="labStatus">Choose all four stages</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice where the lab punishes you. Never for using AI; always for the two unforgivables: AI touching the verdict, and evidence that does not exist. The strong path runs the Coach's Loop end to end: notes kept all year, aggregated and de-identified before any tool sees them, AI on structure and recall, your name on every judgment, and rehearsal spent on the conversations that need it most. When a rating is genuinely hard to call, that is a judgment problem more than a data problem; the Decisions, Sharper course in this series works those calls directly. One more real-world note: if your organization runs a formal review system, its rules and its approved tools outrank anything a vendor demo showed you.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> your real review prep already runs one of these paths, and finding its weakest stage now is cheaper than finding it in a grievance.</p>
+          <ol class="steps">
+            <li>Pairs: walk your partner through how your last review cycle actually ran, stage by stage: evidence, drafting, calibration, delivery.</li>
+            <li>Together, score each stage against the lab's options: which letter did your real cycle pick?</li>
+            <li>Name your weakest stage and the single change that moves it up one letter. Say the change out loud; that is your review-season commitment.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Score your own last cycle against the four stages honestly. Circle your weakest stage and write the one change that upgrades it before the next cycle starts.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give every learner a full felt rep of the method under pressure: four review-season stages, one choice each, and a two-weeks-later outcome that rewards evidence and owned judgment over both AI abstinence and AI outsourcing. The session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Review season: eight people, two weeks, and the strongest temptation in this whole course, because the tools will genuinely offer to write the reviews for you. You're going to run the season stage by stage: how you gather the evidence, how you draft, whether you calibrate, and how you prepare the delivery. Then the lab runs the cycle forward two weeks and shows you what your choices bought. One warning from everything we've built today: the lab never punishes you for using AI. Watch what it actually punishes.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Set the scenario in one breath: eight people, two weeks, every vendor promising to write it for you. Choose how each stage runs.</li><li>Send them into the lab on devices: four stages, then run the cycle.</li><li>Let people get their outcome individually; the mid and weak tiers teach more than the strong one, so don't coach choices in advance.</li><li>Ask for a show of hands by tier: who got the fair cycle, who got the grievance. Have one weak-tier learner read the grievance outcome aloud; the room learns from the postmortem.</li><li>Push the rerun: strengthen your weakest stage and run it again. The delta between runs is the lesson.</li><li>Then the pair drill: score your REAL last review cycle against the four stages and name the one change.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those who hit the mid or weak tier: which single choice cost you the cycle, and is it the choice your real review prep makes today?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The AI-writes-it option: it felt efficient right up to the grievance</li><li>Skipping calibration: nobody had ever named it as a stage</li><li>An honest 'my real prep is the weak version of at least two stages'</li></ul><p class="facnote__mini">Respond: Treat that last answer as the room's win: 'That recognition is the whole lab. The weak cycle isn't a hypothetical; it's what review season looks like under deadline pressure without a design. You now have the four stages and the strong option for each.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The lab's scoring is the course's thesis under pressure: evidence kept all year, aggregation before any tool, AI on structure, your name on every judgment, rehearsal where it pays. That's what fair costs, and it's cheaper than a grievance.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes at least one lab run; most reach the strong tier on a rerun; every learner can name their real cycle's weakest stage and the change that upgrades it.</p><p class="facnote__meta"><b>Watch for:</b> Learners who game the lab by picking C everywhere without reading the coaching. The question that re-engages them: 'which of these C options would actually cost you the most to do for real, and why?' Also watch clock discipline; this section has the least slack.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One piece left, and it's the one the data was always for: giving it back to the team.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one lab run instead of run-plus-rerun (rerun only for learners who hit weak tier), tier hands stay, the pair drill becomes a solo score of your own last cycle. This is the floor; never cut the lab entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 FROM DATA TO CONVERSATION ============ -->
+  <section class="slide on-cream" id="s-conversation" data-count data-title="From data to conversation">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Conversation</p>
+      <h2 class="h2" data-reveal>Close the <em>loop</em>.</h2>
+      <p class="lead" data-reveal>Everything so far produced themes. This section is where they earn their keep, because a theme that never becomes a conversation is a chart. Three moves close the loop: the share-back, the question bank, and measuring the right thing.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">1 · The share-back</span>
+          <h3>What we heard</h3>
+          <p class="muted">Three parts, said in public: what we heard, what we will try, and what we will not change and why. The third part builds the most trust, because it proves you actually decided something.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · The question bank</span>
+          <h3>Themes become questions</h3>
+          <p class="muted">Turn each theme into one question you will actually ask in 1:1s. Recognition low? "What did you do last month that nobody noticed?" The theme sets the agenda; the person fills it in.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · The measure</span>
+          <h3>Count conversations</h3>
+          <p class="muted">Track conversations held and experiments started, never dashboard views. If every theme has a conversation or an experiment attached within a month, the process works.</p>
+        </div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Which measure tells you your team's survey process is actually working?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="0" data-why="Response rate measures whether people still bother to answer, and it stays high only while they believe answering changes something. It follows the conversations; it cannot replace them."><span class="mark">A</span><span>A response rate above 90 percent</span></button>
+          <button class="opt" data-correct="1" data-why="Conversations and experiments are the product; everything else is exhaust. This measure also keeps you honest: it can hit zero, which is exactly what makes it a real check."><span class="mark">B</span><span>Every theme has a conversation or an experiment attached within a month</span></button>
+          <button class="opt" data-correct="0" data-why="Viewing a dashboard is reading, and the gap this course keeps pointing at sits between reading and talking. Views can be perfect while nothing changes for anyone."><span class="mark">C</span><span>Every manager opened the results dashboard</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="shareJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the share-back</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the scenario is real: results are in, your team is watching how you handle them. Five ways a manager presents survey themes; call each one.</p>
+        <p class="quiz__progress" id="sbProgress"></p>
+        <p class="quiz__q" id="sbQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sbOptions" role="group" aria-label="Share-back judgments"></div>
+        <p class="quiz__feedback" id="sbFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sbNext" style="visibility:hidden">Next share-back</button>
+        </div>
+        <div id="sbResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The share-back has one non-negotiable and one secret weapon. The non-negotiable: never speculate about who said what, even warmly, even once. The moment a team suspects comments get traced, every future survey collects fiction, and the data side of this entire course stops working. The secret weapon is the third line, "what we will not change and why." Teams do not expect managers to fix everything; they expect to be leveled with. A manager who says "the release pace stays, here is why, and here is what I can move instead" earns more trust than one who promises six improvements and delivers one. AI can help draft the share-back the same way it helps with feedback: structure and tone, on team-level themes, with the decisions already yours.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> drafting the share-back in the room, against your real signal, means the loop starts closing before the session ends.</p>
+          <ol class="steps">
+            <li>Solo, two minutes: draft the opening of YOUR share-back for the signal from your section 03 builder: what we heard, one thing to try, one thing that will not change and why.</li>
+            <li>Pairs: read them to each other. The listener calls it: closes the loop, breeds distrust, or says nothing.</li>
+            <li>One or two volunteers read theirs to the room. Tighten the vaguest line together.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Draft your three-line share-back for your real signal, then test it: does it name what was heard, commit to one visible try, and level with the team about one thing that stays? If yes, schedule the meeting where you will say it.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the loop-closing moves: the three-part share-back (heard, try, won't change and why), the 1:1 question bank, and measuring conversations held instead of dashboards viewed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Everything today has produced themes, and a theme that never becomes a conversation is a chart. Three moves close the loop. The share-back, three parts, said to the whole team: what we heard, what we will try, and what we will not change and why. That third part feels dangerous and builds the most trust, because it proves you actually decided something instead of performing agreement. The question bank: every theme becomes one question you actually ask in 1:1s. Recognition scored low? 'What did you do last month that nobody noticed?' And the measure: count conversations held and experiments started. Never dashboard views. One rule guards all of it: never speculate about who said what in a survey, even warmly, even once. The moment your team suspects comments get traced, every future survey collects fiction.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the point first: a theme that never becomes a conversation is a chart, and teams can tell the difference.</li><li>Walk the three cards: the share-back, the question bank, the measure.</li><li>Spend an extra beat on 'what we will not change and why'; it's counterintuitive and it builds the most trust.</li><li>Say the anonymity rule plainly: never speculate about who said what, even warmly. One hunted respondent poisons every future survey.</li><li>Run the quick check, then Judge the Share-back: five lines on devices.</li><li>Run the drafting drill: everyone drafts their own share-back opening for their section 03 signal, pairs judge, one or two go to the room.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's the one thing on your team you already know you would have to put in the 'will not change' line, and could you say the why out loud?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Workload or pace during a known crunch</li><li>A structural thing above the manager's authority</li><li>An honest 'I've never said the why out loud'</li></ul><p class="facnote__mini">Respond: Push to the sentence: 'Say the why as one sentence your team would recognize as true. If you can't finish it, that's your homework before the share-back, because an unexplained no reads as a filed survey, and an explained no reads as leadership.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Heard, try, won't change and why. Questions in the 1:1s, conversations on the scoreboard. The loop is closed when the team can see it closing.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; drafted share-backs contain all three parts; the room can say the measure (conversations and experiments, never views) unprompted.</p><p class="facnote__meta"><b>Watch for:</b> The manager who says 'my team would see a share-back as corporate theater.' Don't argue; point at the third line: theater promises everything, the share-back refuses something out loud, and that refusal is what makes the rest believable. Also keep the drill lines short; share-backs bloat fast.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the full method. Quiz first, then the card that puts a date on it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards and anonymity rule at full strength, trainer on devices, quick check stays; the draft-aloud shrinks to one volunteer's line judged by the room.</p></aside>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 11 · PEOPLE-DATA CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My people-data card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My people-data card</p>
+      <h2 class="h2" data-reveal>One source. One move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't change how anyone coaches; a card with a date does. Name the people data you will actually work this month, pick the first move, name the line you will not cross, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named source with a named first move and a date is a practice; everything less is a poster. Patterns and roles, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="pdPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The source.</b> Which people data will you work this month?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the spring engagement results, still sitting in my inbox" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Where do you start?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="aggregate"><span>Aggregate and de-identify it: names out, small groups out</span></button>
+              <button class="opt" data-practice="interrogate"><span>Run the three-question interrogation on the aggregate</span></button>
+              <button class="opt" data-practice="rehearse"><span>Rehearse one hard feedback conversation, roles not names</span></button>
+              <button class="opt" data-practice="bank"><span>Build the 1:1 question bank from the themes</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode with people data.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="named"><span>Put a named person's data in any AI tool</span></button>
+              <button class="opt" data-not="verdict"><span>Let AI write the verdict on a person</span></button>
+              <button class="opt" data-not="smalln"><span>Treat small-team data as safe because it is technically aggregated</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When do you start?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my people-data card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: one people-data source, one first move, one line never crossed, one start date. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Sessions don't change how anyone coaches. A card with a date does. Pick the source, the real one: the survey results in your inbox, the retro board, your own notes. Choose the first move: aggregate and de-identify, run the interrogation, rehearse the feedback, or build the question bank. Then the honest field: what you will NOT do, because you know your failure mode; a named person in a tool, a verdict from a machine, or a small team treated as safe because the label said aggregated. And the date. A named source with a named move and a date is a practice. Everything less is a poster.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: sessions don't change how anyone coaches; a card with a date does.</li><li>Repeat the privacy norm before anyone types: patterns and roles, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the signal from the section 03 builder is the raw material, and 'aggregate and de-identify first' is a legitimate first move.</li><li>Point at field 3, what you will NOT do, as the honest one: every manager in the room has one of these three failure modes.</li><li>Push the build moment, then the finish line: the output is a conversation on the calendar, and two weeks out, one line on which conversations happened.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the theme-to-conversation session, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the week will eat it</li><li>Nervousness about the share-back landing badly</li><li>Doubt the data is good enough to bother</li></ul><p class="facnote__mini">Respond: No time: 'It's 45 minutes against data your team spent hours giving you; the math forgives you exactly once.' Nervousness: 'That's what the rehearsal pattern is for, and a share-back with a won't-change line is the safest version.' Data quality: 'A thin signal plus the ground truth test still yields one honest question for a 1:1, and one honest question is a working loop.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One source on your team is about to get worked properly: aggregated, interrogated, humanized, and turned into a conversation with a date. That's the whole loop, once, for real.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Grand cards ('fix engagement across the department'). Push to ONE source that actually exists in their inbox. And date-dodging: 'soon' is not a commitment; help them pick the actual day on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The Aggregate Rule, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Aggregate Rule</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The traffic light applied to people data: individual and identifiable is red, never; aggregated, de-identified team data is yellow, approved VU tools only; published benchmarks are green.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The Coach's Loop, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Coach's Loop</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Aggregate, interrogate, humanize, converse. Data goes to team level, AI proposes themes, you test them against what you have seen, and the output is always a conversation.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Small-n trap, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Small-n Trap</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A "team-level" number from a tiny group identifies its people. Under five respondents, the average is the individuals, so it stays red however aggregated the label sounds.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="De-identification, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>De-identification</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A verb, never a checkbox: names out, identifying roles out, identifying events out, head count checked. Done and verified by you before any AI tool sees the data.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Theme, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Theme</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A pattern AI proposes across aggregated data. It graduates from proposal to finding only after passing the ground truth test.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Ground truth test, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Ground Truth Test</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Every AI theme must match one concrete example you have actually seen. No example means hypothesis, and hypotheses go to the team as questions, never announcements.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Rehearsal partner, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Rehearsal Partner</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The right job for AI in feedback: structure, tone, and practice against hard responses, always with roles instead of names. Never the source of the judgment.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="SBI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, behavior, impact: "In Thursday's review (S), the demo ran ten minutes over (B), and the client checked out (I)." Specific enough to act on Monday.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Feedforward, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Feedforward</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Feedback aimed at next time: name the observed pattern, then design the next attempt together. Pairs with GROW from Coaching for Performance.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Calibration, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Calibration</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Checking your ratings as a set: the same evidence bar for the same performance, recency and visibility bias called out, reasons written down.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Verdict vs rehearsal, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Verdict vs Rehearsal</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The line that never moves: AI may rehearse the conversation; the assessment of a person comes from your evidence, in your words, under your name.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Engagement survey, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Engagement Survey</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A recurring, anonymous read on how work feels for a team. Useful exactly as often as its themes become conversations, and poisoned the first time anyone hunts a respondent.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards, including the small-n trap, for the next time a dashboard offers you a team-level number about three people.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Small-n Trap is a good pick; the trench coat line gets a laugh and reteaches section 02).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all twelve cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One conversation left to schedule.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go have the <em>conversation</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You guessed the numbers, installed the Aggregate Rule, built your interrogation plan, judged the drafts, survived review season, and drafted a share-back. Somewhere in your inbox is people data waiting to become a conversation.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">45 minutes</span></div>
+        <h3>The theme-to-conversation session</h3>
+        <p>Take the source from your card. Run the de-identification pass yourself, head count included. Ask the three questions in an approved VU tool: themes, contrasts, and the question behind the question. Keep the one theme that passes the ground truth test, and put the conversation it deserves on the calendar: a share-back, a 1:1 question, or the feedback you have been postponing. That 45 minutes is the whole method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your data source and your start day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the people-data card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Aggregate. Interrogate. Humanize. Converse.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-expectation">The New Expectation</a></li>
+          <li><a href="#s-rule">The Aggregate Rule</a></li>
+          <li><a href="#s-themes">Themes from the Noise</a></li>
+          <li><a href="#s-feedback">Feedback, Rehearsed</a></li>
+          <li><a href="#s-conversation">From Data to Conversation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My People-Data Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · People Data, Safely · Facilitator Edition · <a href="../../../courses/People-Data-with-AI/" style="color:rgba(255,255,255,.7);text-decoration:underline">learner link</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the manager moves engagement, the Aggregate Rule decides what AI may see, the three questions find the themes, the ground truth test keeps you honest, the rehearsal makes the hard conversation deliverable, and the loop closes when your team can see it closing. You have a card. Before you go: your source, and your start day. Say it out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the 45-minute theme-to-conversation session, this week, ending with a conversation on the calendar.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you that you can work your data source inside the lines and land the conversation?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: source and start day, out loud or in chat.</li><li>Point at the cheat sheet and people-data card buttons; the cheat sheet is built to sit next to the keyboard during the session.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your data source, and your start day.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The spring survey results, Thursday'</li><li>'My 1:1 notes, de-identified this weekend'</li><li>Someone commits to the postponed feedback conversation first</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the postponed-feedback answer, warmly: 'Good instinct. Rehearse it once with roles, not names, and it stops being postponable.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many theme-to-conversation sessions actually ran, and which conversations landed on calendars because the data finally got worked.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a source and a day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go put the 45 minutes on your calendar. And when a theme surprises you, and one will, take it to the team as a question. That question is the sound of the loop closing.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Decisions, sharper (self-paced) · The CHART Program</title>
+<meta name="description" content="Part of Vanderbilt's CHART Program and Manager Voyage: a 15-minute method for managers. The AI widens the view with scenarios, premortems, and assumption checks, and the decision stays yours." />
+<meta name="theme-color" content="#1C1C1C" />
+<meta property="og:title" content="Decisions, sharper · The CHART Program" />
+<meta property="og:description" content="A 15-minute course for managers on testing decisions with AI: widen, weigh, decide. Part of The CHART Program and Manager Voyage at Vanderbilt." />
+<meta property="og:type" content="website" />
+
+<!--
+  ══════════════════════════════════════════════════════════════════════════
+  DECISIONS, SHARPER — a CHART Program course for managers (Manager Voyage)
+  A sibling of the Working Smarter course: same design system,
+  same book-mode pager, same guardrails. Ten pages, ~15 minutes self-paced.
+  MODES: the course runs in two modes — 'class' (instructor + group) and
+  'web' (self-paced). The picker on page two stores decisions-mode; body gets
+  data-mode, and CSS shows .mode-class or .mode-web blocks accordingly.
+  Web is the default until chosen; the bottom bar holds the switch. With
+  no JS both variants render, each under its own label.
+  Storage: decisions-page (last open page), decisions-mode ('class'|'web'), and
+  decisions-progress-<section> booleans. The Reset control in the footer
+  clears every decisions-* key. Nothing typed is ever stored or sent.
+  PRINT: "Print your takeaway" swaps the app for #printSummary via
+  @media print — one clean page with the method, template, prompts,
+  guardrails, tools, and a mode-aware notes block.
+  The QR on page one encodes the hosted URL and is drawn client-side by
+  ../assets/js/qrcode.js (vendored, no network).
+  BOOK MODE: the pager script groups sections into .page articles; the bottom
+  bar holds section dots + prev/next; arrows, swipe, and #p/<section>/<n>
+  hashes turn pages. Without JS the scroll layout remains as the fallback.
+  SCORM PACKAGING: search "[EDIT · SCORM]" — four spots hold the GitHub URL
+  (QR data-url, printed takeaway header, printed takeaway links, and the
+  calendar-invite refresher). Swap each for the course's LMS link once it
+  lives in Oracle Learning. The LMS provides the Level 1 evaluation and
+  completion tracking; nothing is built into this file for either.
+  This is an internal training prototype — NOT an official Vanderbilt site.
+  ══════════════════════════════════════════════════════════════════════════
+-->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C1C1C'/%3E%3Cpath d='M14 16h11l7 20 7-20h11L36 50h-8z' fill='%23CFAE70'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@0;1&family=Inter:wght@400;500;600&family=Antonio:wght@700&display=swap" rel="stylesheet" />
+
+<script>document.documentElement.classList.add('js','paged'); /* 'paged' arms book mode; the pager script removes it if it cannot build, restoring the scroll fallback */</script>
+
+<style>
+/* ═══════════════════ TOKENS (shared with the Working Smarter course) ═══════════════════ */
+:root{
+  --vu-black:#1C1C1C; --vu-white:#FFFFFF;
+  --vu-gold:#CFAE70; --vu-highlight:#ECB748; --vu-oak:#946E24;
+  --vu-cream:#F5F3EF; --vu-sand:#E0D5C0;
+  --vu-gray-l:#E4E4E4; --vu-gray-d:#777;
+  --vu-sky:#B3C9CD; --vu-sage:#8BA18E; --vu-err:#A94438;
+  --metal:linear-gradient(135deg,#FEEEB6 0%,#CFAE70 45%,#B49248 100%);
+  --maxw:1200px; --r:4px;
+  --ease:cubic-bezier(.33,1,.68,1);
+  --serif:'Libre Caslon Display','Libre Caslon Text','Times New Roman',serif;
+  --serif-i:'Libre Caslon Text','Times New Roman',serif;
+  --sans:'Inter',Arial,system-ui,sans-serif;
+  --cond:'Antonio','Arial Narrow',Impact,sans-serif;
+}
+/* theme scopes — every component reads these vars, so each section theme recolors everything */
+.th-dark{
+  background:var(--vu-black); color:#FFFFFF;
+  --tx:#FFFFFF; --tx2:rgba(255,255,255,.74); --tx3:rgba(255,255,255,.64);
+  --bd:rgba(255,255,255,.15); --bdg:rgba(207,174,112,.35);
+  --card:#262624; --card2:#212120; --field:#141414; --field-bd:rgba(255,255,255,.2);
+  --eyebrow:#CFAE70; --link:#CFAE70; --strong:#ECB748; --focus:#ECB748; --acc:#CFAE70;
+  --btn-bg:#CFAE70; --btn-tx:#1C1C1C; --btn-hv:#ECB748;
+  --gold:#CFAE70; --champ:#ECB748; --muted:rgba(255,255,255,.74); --faint:rgba(255,255,255,.56); --ink:#1C1C1C;
+}
+.th-light, .th-cream{
+  background:var(--vu-white); color:var(--vu-black);
+  --tx:#1C1C1C; --tx2:#555555; --tx3:#6E6E6E;
+  --bd:#E4E4E4; --bdg:rgba(148,110,36,.4);
+  --card:#FFFFFF; --card2:#F5F3EF; --field:#FFFFFF; --field-bd:#D6D0C4;
+  --eyebrow:#946E24; --link:#946E24; --strong:#946E24; --focus:#946E24; --acc:#946E24;
+  --btn-bg:#1C1C1C; --btn-tx:#FFFFFF; --btn-hv:#946E24;
+  --gold:#946E24; --champ:#946E24; --muted:#555555; --faint:#6E6E6E; --ink:#1C1C1C;
+}
+.th-cream{ background:var(--vu-cream); --card2:#FFFFFF; --bd:#E0D8C8;
+  --eyebrow:#7A5C1E; --link:#7A5C1E; --strong:#7A5C1E; --focus:#7A5C1E; --acc:#7A5C1E;
+  --gold:#7A5C1E; --champ:#7A5C1E; }
+
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:118px; }
+body{ font-family:var(--sans); font-size:1.0625rem; background:var(--vu-black); color:#fff; line-height:1.6;
+  overflow-x:hidden; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; min-height:100dvh; }
+h1,h2{ font-family:var(--serif); font-weight:400; line-height:1.1; letter-spacing:-.01em; color:var(--tx,#fff); }
+h3,h4,h5{ font-family:var(--sans); font-weight:600; line-height:1.3; letter-spacing:-.01em; color:var(--tx,#fff); }
+h1 em,h2 em,em.s{ font-family:var(--serif-i); font-style:italic; font-weight:400; letter-spacing:0; }
+h2 em.s{ color:var(--strong); }
+p{ max-width:65ch; }
+a{ color:inherit; text-decoration:none; } img{ max-width:100%; display:block; height:auto; }
+button{ font:inherit; color:inherit; } input,select,textarea{ font:inherit; }
+::selection{ background:rgba(207,174,112,.55); color:#1C1C1C; }
+:focus-visible{ outline:2px solid var(--focus,#ECB748); outline-offset:3px; border-radius:2px; }
+.wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:clamp(20px,5vw,48px); }
+.skip{ position:absolute; left:-999px; top:10px; z-index:400; background:var(--vu-gold); color:#1C1C1C; padding:12px 20px; border-radius:var(--r); font-weight:500; }
+.skip:focus{ left:16px; }
+.sr{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* Antonio microlabel */
+.mono{ font-family:var(--cond); font-weight:700; font-size:.8125rem; letter-spacing:.04em; text-transform:uppercase; color:var(--eyebrow,#CFAE70); }
+.eyebrow{ display:inline-flex; align-items:center; gap:12px; }
+.eyebrow .tick{ width:26px; height:2px; background:var(--vu-gold); }
+.you-are{ display:block; font-family:var(--cond); font-weight:700; font-size:.75rem; letter-spacing:.05em; text-transform:uppercase; color:var(--tx3); margin-bottom:14px; }
+
+/* metallic headline — white words, gold italic emphasis */
+.metal{ color:var(--vu-white); }
+.metal em{ color:var(--vu-gold); font-style:italic; }
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .metal em{ background:var(--metal); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; padding-bottom:.14em; margin-bottom:-.14em; }
+}
+
+/* superscript citations */
+sup.cite{ font-size:.66em; line-height:0; vertical-align:super; }
+sup.cite a{ color:var(--link); font-weight:600; padding:2px; }
+sup.cite a:hover{ color:var(--strong); }
+
+/* ═══════════════════ NAV ═══════════════════ */
+header.nav{ position:fixed; inset:0 0 auto 0; z-index:200; background:var(--vu-black); border-bottom:1px solid transparent; transition:border-color .3s; }
+header.nav.scrolled{ border-bottom-color:rgba(207,174,112,.2); }
+header.nav .wrap{ max-width:1440px; }
+header.nav .bar{ display:flex; align-items:center; justify-content:space-between; gap:clamp(16px,2vw,36px); height:96px; }
+.logo{ display:flex; align-items:center; flex-shrink:1; min-width:0; }
+.logo img{ height:48px; width:auto; display:block; }
+.bar-r{ display:flex; align-items:center; gap:10px; min-width:0; }
+nav.links{ display:flex; align-items:center; flex-wrap:nowrap; gap:clamp(0px,.5vw,10px); }
+nav.links a{ position:relative; padding:10px clamp(9px,.9vw,16px); color:#fff; font-size:.9rem; font-weight:500; letter-spacing:.02em; white-space:nowrap; }
+nav.links a::after{ content:''; position:absolute; left:12px; right:12px; bottom:5px; height:2px; background:var(--vu-gold);
+  transform:scaleX(0); transform-origin:left; transition:transform .2s var(--ease); }
+nav.links a:hover::after,nav.links a:focus-visible::after{ transform:scaleX(1); }
+nav.links .nav-cta{ margin-left:clamp(8px,1vw,20px); } nav.links .nav-cta::after{ display:none; }
+nav.links a.nav-cta{ color:#1C1C1C; min-height:50px; padding:13px clamp(20px,1.8vw,30px); font-size:.9rem; letter-spacing:0; }
+.menu-btn{ display:none; background:transparent; border:1px solid rgba(255,255,255,.25); color:#fff;
+  width:46px; height:46px; border-radius:var(--r); cursor:pointer; place-items:center; }
+.menu-btn .b{ display:block; width:18px; height:2px; background:currentColor; transition:transform .3s var(--ease),opacity .2s; }
+.menu-btn .b + .b{ margin-top:4px; }
+body.menu-open .menu-btn .b1{ transform:translateY(6px) rotate(45deg); }
+body.menu-open .menu-btn .b2{ opacity:0; }
+body.menu-open .menu-btn .b3{ transform:translateY(-6px) rotate(-45deg); }
+.mobile-menu{ position:fixed; inset:0; z-index:150; background:var(--vu-black); overflow-y:auto;
+  display:flex; flex-direction:column; justify-content:flex-start; padding:96px clamp(24px,8vw,60px) 56px;
+  opacity:0; visibility:hidden; transition:opacity .3s var(--ease), visibility 0s .3s; }
+.mobile-menu::before,.mobile-menu::after{ content:''; display:block; margin:auto; }
+body.menu-open .mobile-menu{ opacity:1; visibility:visible; transition:opacity .3s var(--ease); }
+body.menu-open{ overflow:hidden; }
+.mobile-menu a.mlink{ font-family:var(--serif); font-size:clamp(1.5rem,7vw,2.4rem); color:#fff;
+  padding:12px 0; border-bottom:1px solid rgba(255,255,255,.12); display:flex; align-items:baseline; gap:18px; }
+.mobile-menu a.mlink .mono{ font-size:.75rem; color:var(--vu-gold); }
+.mobile-menu .mfoot{ margin-top:30px; color:rgba(255,255,255,.55); font-size:.85rem; }
+
+/* ═══════════════════ BUTTONS ═══════════════════ */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:var(--sans); font-size:.95rem; font-weight:500;
+  min-height:48px; padding:12px 26px; border-radius:var(--r); cursor:pointer; border:1px solid transparent; text-align:center;
+  transition:background-color .2s ease-out, border-color .2s ease-out, color .2s ease-out; }
+.btn svg{ width:17px; height:17px; flex-shrink:0; }
+.btn-primary{ background:var(--btn-bg,#CFAE70); color:var(--btn-tx,#1C1C1C); }
+.btn-primary:hover{ background:var(--btn-hv,#ECB748); color:var(--btn-tx,#1C1C1C); }
+.btn-gold{ background:var(--vu-gold); color:#1C1C1C; }
+.btn-gold:hover{ background:var(--vu-highlight); }
+.btn-ghost{ background:transparent; color:var(--tx,#fff); border-color:var(--bd,rgba(255,255,255,.25)); }
+.btn-ghost:hover{ border-color:var(--strong,#CFAE70); color:var(--strong,#CFAE70); }
+.btn-sm{ min-height:44px; padding:9px 18px; font-size:.875rem; }
+.btn[disabled]{ opacity:.45; cursor:not-allowed; }
+.copied{ color:var(--strong) !important; }
+
+/* ═══════════════════ HERO / QR WELCOME ═══════════════════ */
+.hero{ position:relative; min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding:140px 0 96px; overflow:hidden; }
+.hero .wrap{ position:relative; z-index:2; }
+.hero-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(28px,5vw,72px); align-items:center; }
+.hero h1{ font-size:clamp(2.75rem,7vw,5.25rem); line-height:1.05; letter-spacing:-.01em; margin-top:28px; max-width:1000px; }
+.hero .lead{ font-size:1.125rem; color:rgba(255,255,255,.78); max-width:54ch; margin-top:22px; }
+.hero .lead b{ color:#fff; font-weight:600; }
+.hero .meta-line{ font-family:var(--cond); font-weight:700; font-size:.8125rem; letter-spacing:.03em; text-transform:uppercase;
+  color:rgba(255,255,255,.55); margin-top:22px; }
+.hero .meta-line b{ color:var(--vu-gold); font-weight:700; }
+.hero .lframe{ margin-top:20px; }
+.hw-mini{ display:none; }
+html.paged .hero .hw-mini{ display:flex; flex-wrap:wrap; gap:4px 22px; list-style:none; margin:14px 0 0; padding:9px 0 0;
+  border-top:1px solid rgba(255,255,255,.16); counter-reset:hm; max-width:none; }
+html.paged .hero .hw-mini li{ display:inline-flex; align-items:baseline; gap:8px; counter-increment:hm;
+  color:rgba(255,255,255,.62); font-size:.78rem; line-height:1.45; }
+html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); font-family:var(--cond); font-weight:700;
+  font-size:.68rem; letter-spacing:.05em; color:var(--vu-gold); }
+/* QR card — the pattern from the Brave Teams facilitator deck, on Working Smarter tokens */
+.qr-side{ text-align:center; justify-self:center; }
+.qr-side .qr-label{ display:block; margin-bottom:14px; color:var(--vu-gold); }
+.qr-card{ display:inline-block; background:var(--vu-white); border-radius:var(--r);
+  border:1px solid rgba(207,174,112,.55); padding:1.1rem 1.1rem .8rem;
+  box-shadow:0 0 0 6px rgba(207,174,112,.08), 0 20px 60px rgba(0,0,0,.45); }
+.qr-card__code{ width:clamp(180px,22vh,250px); height:auto; margin-inline:auto; }
+.qr-card__code svg{ display:block; width:100%; height:auto; }
+.qr-card__url{ margin:.6rem 0 0; font-family:var(--cond); font-weight:700; text-transform:uppercase;
+  letter-spacing:.05em; font-size:.8rem; color:var(--vu-oak); word-break:break-all; max-width:none; }
+.qr-side .qr-sub{ margin:14px auto 0; font-size:.85rem; color:rgba(255,255,255,.62); max-width:30ch; }
+
+/* ═══════════════════ SECTIONS / SHARED ═══════════════════ */
+section{ position:relative; padding:clamp(64px,10vw,150px) 0; }
+section + section{ border-top:1px solid transparent; }
+.th-light + .th-light,.th-light + .th-cream,.th-cream + .th-light{ border-top-color:var(--vu-gray-l); }
+.sec-head{ max-width:840px; margin-bottom:clamp(36px,6vw,64px); }
+.sec-head h2{ font-size:clamp(2rem,4.5vw,3.5rem); margin-top:18px; }
+.sec-head p{ color:var(--tx2); margin-top:18px; font-size:1.125rem; }
+.chip{ display:inline-flex; align-items:center; gap:8px; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--tx2); border:1px solid var(--bd); border-radius:var(--r); padding:6px 12px; }
+.honest{ display:inline-flex; align-items:flex-start; gap:10px; margin-top:18px; padding:14px 16px; border-radius:var(--r);
+  border:1px dashed var(--bdg); color:var(--tx2); font-size:.9rem; max-width:660px; }
+.honest svg{ width:16px; height:16px; flex-shrink:0; color:var(--eyebrow); margin-top:3px; }
+.honest b{ color:var(--tx); font-weight:600; }
+.lframe{ display:block; margin-top:18px; }
+.lf-chip{ display:inline-flex; align-items:baseline; gap:9px; margin:0 6px 8px 0; border:1px solid var(--bd); border-radius:var(--r); vertical-align:top;
+  padding:8px 12px; font-size:.85rem; color:var(--tx2); background:var(--card2); }
+.lf-chip b{ font-family:var(--cond); font-weight:700; font-size:.68rem; letter-spacing:.05em; text-transform:uppercase; color:var(--eyebrow); white-space:nowrap; }
+.hero .lf-chip{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.18); color:rgba(255,255,255,.78); }
+.hero .lf-chip b{ color:var(--vu-gold); }
+.hinttxt{ font-size:.8rem; color:var(--tx3); max-width:none; }
+
+/* concept block — the mental model before every activity */
+.concept{ margin:0 0 26px; padding:2px 0 2px 20px; border-left:3px solid var(--vu-gold); max-width:780px; }
+.concept .c-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:8px; }
+.concept p{ color:var(--tx2); font-size:.9575rem; line-height:1.75; max-width:68ch; }
+.concept p + p{ margin-top:10px; }
+.concept p b{ color:var(--tx); font-weight:600; }
+.concept p em{ font-family:var(--serif-i); font-style:italic; }
+
+/* bridge — one connective sentence handing a section to the next */
+.bridge{ display:flex; align-items:baseline; flex-wrap:wrap; gap:10px 18px; margin-top:clamp(44px,6vw,64px); padding-top:24px; border-top:1px solid var(--bd); }
+.bridge .b-label{ display:inline-flex; align-items:center; gap:10px; font-family:var(--cond); font-weight:700; font-size:.75rem; letter-spacing:.08em; text-transform:uppercase; color:var(--eyebrow); }
+.bridge .b-label::before{ content:''; width:26px; height:2px; background:var(--vu-gold); }
+.bridge p{ font-family:var(--serif); font-size:clamp(1.05rem,2.2vw,1.3rem); line-height:1.45; color:var(--tx); max-width:none; }
+.bridge p em{ font-family:var(--serif-i); font-style:italic; color:var(--strong); }
+
+/* evidence — a real citation, named and linked, grounding the module */
+.evidence{ margin-top:24px; border:1px solid var(--bd); border-left:3px solid var(--vu-gold); border-radius:var(--r); background:var(--card); padding:20px 22px; max-width:820px; }
+.evidence .e-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:10px; }
+.evidence p{ color:var(--tx2); font-size:.9375rem; line-height:1.75; max-width:none; }
+.evidence p + p{ margin-top:10px; }
+.evidence p b{ color:var(--tx); font-weight:600; }
+.evidence p em{ font-family:var(--serif-i); font-style:italic; }
+.evidence .e-num{ font-family:var(--cond); font-weight:700; font-size:1.6rem; line-height:1; color:var(--vu-gold); display:block; margin-bottom:10px; }
+.evidence .e-src{ display:block; margin-top:12px; padding-top:10px; border-top:1px solid var(--bd); font-size:.83rem; color:var(--tx3); }
+.ev-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:26px; }
+.ev-grid .evidence{ margin-top:0; max-width:none; display:flex; flex-direction:column; }
+.ev-grid .evidence p{ flex:1; }
+.honest a,.evidence a,.rstep a,.concept p a,.src a,.prov a{ color:var(--link); border-bottom:1px solid var(--bdg); }
+.honest a:hover,.evidence a:hover,.rstep a:hover,.concept p a:hover,.src a:hover,.prov a:hover{ color:var(--strong); }
+
+/* method / guardrail cards */
+.roadmap{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.roadmap.three{ grid-template-columns:repeat(3,1fr); }
+.rstep{ border:1px solid var(--bd); border-radius:var(--r); padding:22px 20px; background:var(--card2); }
+.rstep .rno{ font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--eyebrow); }
+.rstep h5{ font-size:1rem; margin-top:8px; }
+.rstep h3{ font-family:var(--serif); font-weight:400; font-size:1.35rem; margin-top:8px; }
+.rstep p{ color:var(--tx2); font-size:.875rem; margin-top:8px; }
+.rstep p b{ color:var(--tx); font-weight:600; }
+.rstep p em{ font-family:var(--serif-i); font-style:italic; }
+.rstep ul{ list-style:none; margin-top:10px; display:flex; flex-direction:column; gap:9px; }
+.rstep li{ display:flex; gap:9px; align-items:flex-start; color:var(--tx2); font-size:.85rem; }
+.rstep li svg{ width:14px; height:14px; flex-shrink:0; color:var(--eyebrow); margin-top:4px; }
+.rstep .cr-chips{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }
+.rstep .cr-chips span{ font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--vu-oak); border:1px solid var(--vu-gold); border-radius:2px; padding:4px 9px; }
+/* the cited proof point inside a method step: pinned to the card bottom so
+   the three columns align; a compact labeled stat, not a second headline */
+.roadmap .rstep{ display:flex; flex-direction:column; }
+.rstep .rs-ev{ margin-top:auto; padding-top:12px; border-top:1px solid var(--bd); }
+.rstep .rs-ev > *:first-child{ margin-top:14px; }
+.rstep .rs-stat{ display:flex; align-items:baseline; gap:8px; margin-top:14px; }
+.rstep .rs-num{ font-family:var(--cond); font-weight:700; font-size:1.55rem; line-height:1; color:var(--vu-gold); }
+.rstep .rs-lab{ font-family:var(--cond); font-weight:700; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-oak); }
+.rstep .rs-ev p{ margin-top:7px; font-size:.85rem; color:var(--tx2); }
+.rstep .rs-ev .e-src{ display:block; margin-top:7px; font-size:.75rem; color:var(--tx3); }
+.th-dark .rstep .cr-chips span{ color:var(--vu-gold); }
+
+/* ═══════════════════ MODES: class vs web ═══════════════════
+   body[data-mode] is set by JS (web is the default until chosen).
+   Without JS there is no data-mode, so BOTH variants render, each
+   under its own label — the no-JS fallback. */
+body[data-mode="class"] .mode-web{ display:none !important; }
+body[data-mode="web"] .mode-class{ display:none !important; }
+/* QR is a classroom-only device: solo learners get a full-width welcome */
+body[data-mode="web"] .hero-grid{ grid-template-columns:1fr; }
+.mode-lead{ font-family:var(--serif); font-size:clamp(1.6rem,3.7vw,2.4rem); line-height:1.28; color:var(--tx);
+  margin-top:12px; max-width:36ch; padding-bottom:12px; border-bottom:2px solid var(--vu-gold); }
+/* the same statement on the welcome page, white on the dark hero */
+.hero-state{ font-family:var(--serif); font-size:clamp(1.4rem,3vw,2rem); line-height:1.3; color:var(--vu-white);
+  margin-top:14px; max-width:40ch; padding-bottom:12px; border-bottom:2px solid var(--vu-gold); }
+html.paged .hero-state{ font-size:clamp(1.25rem,2.7vh,1.7rem); margin-top:10px; padding-bottom:8px; }
+.mode-q{ font-family:var(--serif); font-weight:400; font-size:clamp(1.4rem,2.8vw,1.9rem); margin:18px 0 6px; }
+/* the opening page fits with as little scrolling as possible in book mode */
+html.paged #mode .sec-head h2{ font-size:clamp(1.7rem,3vh + .8rem,2.7rem); }
+html.paged #mode .mode-lead{ margin-top:8px; padding-bottom:8px; font-size:clamp(1.45rem,3.3vh,2rem); }
+html.paged #mode .sec-head p{ margin-top:10px; }
+html.paged #mode .mode-q{ margin:12px 0 4px; font-size:clamp(1.2rem,2.4vh,1.6rem); }
+html.paged .mode-card{ padding:14px 16px; gap:5px; }
+html.paged .mode-card .mc-ic{ width:34px; height:34px; margin-bottom:2px; }
+html.paged #mode .moment{ margin-top:12px; padding:11px 14px; }
+html.paged #mode .bridge{ margin-top:12px; }
+.mode-q b{ font-weight:400; font-style:italic; color:var(--vu-oak); }
+.mode-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:900px; }
+.mode-card{ border:1px solid var(--bd); border-radius:var(--r); background:var(--card); cursor:pointer; text-align:left;
+  padding:26px 24px; display:flex; flex-direction:column; gap:8px; transition:border-color .2s ease-out, background-color .2s ease-out; }
+.mode-card:hover{ border-color:var(--bdg); }
+.mode-card .mc-tag{ font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--eyebrow); }
+.mode-card h3{ font-family:var(--serif); font-weight:400; font-size:clamp(1.25rem,2.4vw,1.6rem); }
+.mode-card p{ color:var(--tx2); font-size:.9rem; max-width:none; }
+.mode-card .mc-ic{ width:44px; height:44px; border-radius:var(--r); display:grid; place-items:center; margin-bottom:6px;
+  background:rgba(207,174,112,.14); border:1px solid var(--bdg); color:var(--eyebrow); }
+.mode-card .mc-ic svg{ width:22px; height:22px; }
+.mode-card[aria-pressed="true"]{ border-color:var(--strong); background:rgba(207,174,112,.12); }
+.mode-card[aria-pressed="true"] .mc-tag::after{ content:' · chosen'; color:var(--strong); }
+@media (max-width:760px){ .mode-grid{ grid-template-columns:1fr; } }
+
+/* moment — the adult-learning beat, one per major page, bifurcated by mode */
+.moment{ display:flex; gap:14px; align-items:flex-start; margin-top:26px; max-width:720px;
+  border:1px solid var(--bdg); border-left:3px solid var(--vu-gold); border-radius:var(--r); background:var(--card2); padding:16px 20px; }
+.moment .m-ic{ width:38px; height:38px; border-radius:var(--r); display:grid; place-items:center; flex-shrink:0;
+  background:rgba(207,174,112,.14); border:1px solid var(--bdg); color:var(--eyebrow); }
+.moment .m-ic svg{ width:18px; height:18px; }
+.moment .m-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); }
+.moment p{ color:var(--tx2); font-size:.9375rem; margin-top:6px; max-width:60ch; }
+.moment p b{ color:var(--tx); font-weight:600; }
+html.paged .moment{ margin-top:18px; padding:13px 16px; }
+/* the two modes look different on purpose: classroom beats are gold and lively,
+   self-paced beats are sage and quiet, so each experience has its own signature */
+.moment.mode-class{ background:rgba(207,174,112,.10); }
+.moment.mode-web{ border-left-color:var(--vu-sage); background:rgba(139,161,142,.09); }
+.moment.mode-web .m-ic{ background:rgba(139,161,142,.16); border-color:rgba(139,161,142,.5); color:#5F7A63; }
+.moment.mode-web .m-label{ color:#5F7A63; }
+.th-dark .moment.mode-web .m-ic{ color:var(--vu-sage); }
+.th-dark .moment.mode-web .m-label{ color:var(--vu-sage); }
+
+/* the typed CRIT brief: three fields feed the live preview and the printout */
+.crit-form{ display:flex; flex-direction:column; gap:10px; margin:14px 0 16px; }
+.crit-form label{ display:flex; flex-direction:column; gap:5px; }
+.cf-l{ font-family:var(--cond); font-weight:700; font-size:.7rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); }
+.crit-form textarea, .crit-form input, #cfNote{ font:inherit; font-size:.9rem; color:var(--tx);
+  background:var(--card); border:1px solid var(--bd); border-radius:var(--r); padding:9px 12px; width:100%; resize:vertical; }
+.crit-form textarea:focus, .crit-form input:focus, #cfNote:focus{ outline:2px solid var(--vu-gold); outline-offset:1px; }
+.cf-fixed{ display:flex; flex-direction:column; gap:5px; font-size:.9rem; color:var(--tx2); }
+.cf-note{ color:var(--tx3, var(--tx2)); font-size:.8rem; }
+/* try-it-in: the three approved tools under each example. One is recommended
+   with the reason stated; a tool that shouldn't carry the example is shown
+   greyed out with the reason, not hidden. */
+.ttry{ margin-top:14px; }
+.ttry-row{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-top:8px; }
+@media (max-width:720px){ .ttry-row{ grid-template-columns:1fr; } }
+.ttry-card{ display:flex; flex-direction:column; gap:4px; border:1px solid var(--bd); border-radius:var(--r);
+  background:var(--card); padding:10px 12px; color:inherit; text-decoration:none; transition:border-color .15s ease-out; }
+a.ttry-card:hover{ border-color:var(--bdg); }
+.ttry-card .tt-name{ font-family:var(--cond); font-weight:700; font-size:.78rem; letter-spacing:.04em; text-transform:uppercase; color:var(--tx);
+  display:inline-flex; align-items:center; gap:6px; }
+.ttry-card .tt-name svg{ width:11px; height:11px; color:var(--vu-oak); }
+.ttry-card .tt-tag{ font-family:var(--cond); font-weight:700; font-size:.62rem; letter-spacing:.07em; text-transform:uppercase; color:var(--vu-oak); }
+.ttry-card .tt-why{ font-size:.8rem; color:var(--tx2); line-height:1.45; }
+.ttry-card.rec{ border-color:var(--vu-gold); background:rgba(207,174,112,.10); }
+.ttry-card.off{ opacity:.6; border-style:dashed; cursor:not-allowed; }
+.ttry-card.off .tt-tag{ color:var(--vu-err); }
+.ttry-note{ margin-top:8px; font-size:.8rem; color:var(--tx3); }
+/* the fictional practice report folds away so the page stays short */
+.prep summary{ cursor:pointer; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em;
+  text-transform:uppercase; color:var(--vu-oak); padding:4px 0; }
+.prep summary:hover{ color:var(--tx); }
+.prep[open] summary{ margin-bottom:8px; }
+.prep .pcode{ max-height:320px; overflow-y:auto; }
+#cfNote{ margin-top:10px; }
+/* keep learning: the Oracle Learning shelf */
+.keepl{ margin-top:26px; max-width:720px; border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:18px 22px; }
+.keepl p{ color:var(--tx2); font-size:.9375rem; margin-top:8px; }
+.keepl ul{ list-style:none; margin:10px 0 0; padding:0; display:flex; flex-direction:column; gap:7px; }
+.keepl li{ font-size:.9375rem; }
+.keepl a{ color:var(--vu-oak); text-decoration:underline; text-decoration-color:var(--vu-gold);
+  text-decoration-thickness:1px; text-underline-offset:3px; }
+.keepl a:hover{ color:var(--tx); text-decoration-thickness:2px; }
+.keepl li a::after{ content:"\2197"; font-size:.75em; margin-left:4px; color:var(--vu-oak); }
+.keepl li .mono{ font-size:.7rem; color:var(--tx2); margin-left:8px; letter-spacing:.04em; }
+/* knowledge check: pick an answer, see how you did, nothing leaves the page */
+.qz{ max-width:760px; border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:18px 22px; margin-top:16px; }
+.qz-q{ font-size:.9375rem; color:var(--tx); }
+.qopt{ display:block; width:100%; text-align:left; font:inherit; font-size:.9rem; color:var(--tx2);
+  background:var(--card2); border:1px solid var(--bd); border-radius:var(--r); padding:10px 14px; margin-top:9px; cursor:pointer;
+  transition:border-color .15s ease-out; }
+.qopt:hover{ border-color:var(--bdg); }
+.qopt.ok{ border-color:var(--vu-gold); background:rgba(207,174,112,.14); color:var(--tx); }
+.qopt.no{ border-color:var(--vu-err); opacity:.72; }
+.qz-x{ margin-top:12px; font-size:.9rem; color:var(--tx2); border-left:3px solid var(--vu-gold); padding-left:12px; }
+/* recap: the three next steps */
+.next-steps{ margin-top:26px; max-width:760px; border:1px solid var(--bdg); border-left:3px solid var(--vu-gold); border-radius:var(--r); background:var(--card2); padding:18px 22px; }
+.next-steps ol{ margin:10px 0 0 18px; padding:0; display:flex; flex-direction:column; gap:8px; font-size:.9375rem; color:var(--tx2); }
+.next-steps li b{ color:var(--tx); }
+
+/* the one rule */
+.rule-strip{ margin-top:28px; border-radius:var(--r); border:2px solid var(--vu-gold); padding:20px 26px; display:flex; flex-wrap:wrap; gap:14px 34px;
+  align-items:center; justify-content:center; background:var(--card2); text-align:center; }
+.rule-strip .r{ font-family:var(--serif); font-size:clamp(1.1rem,2.4vw,1.5rem); color:var(--tx); max-width:none; }
+.rule-strip .r b{ font-weight:400; color:var(--strong); font-family:var(--serif-i); font-style:italic; }
+
+/* ═══════════════════ WORKED EXAMPLES ═══════════════════ */
+.ex-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(22px,4vw,44px); align-items:start; }
+.pcard{ border:1px solid var(--bdg); border-radius:var(--r); background:var(--card2); padding:clamp(18px,3vw,26px); }
+.pc-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
+.pcode{ display:block; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.84rem; line-height:1.75; color:var(--tx);
+  background:var(--field); border:1px solid var(--field-bd); border-radius:var(--r); padding:14px 18px; white-space:pre-wrap; word-break:break-word; overflow-x:auto; }
+.pcard .hinttxt{ margin-top:12px; }
+.ret{ padding:2px 0 2px 20px; border-left:3px solid var(--vu-gold); }
+.ret .c-label,.edit .c-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:8px; }
+.ret p{ color:var(--tx2); font-size:.9575rem; line-height:1.75; max-width:68ch; }
+.ret p b{ color:var(--tx); font-weight:600; }
+.edit{ margin-top:24px; border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:20px 22px; }
+.edit ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.edit li{ display:flex; gap:10px; align-items:flex-start; color:var(--tx2); font-size:.9375rem; }
+.edit li svg{ width:15px; height:15px; flex-shrink:0; color:var(--eyebrow); margin-top:4px; }
+.edit li b{ color:var(--tx); font-weight:600; }
+.launch-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+
+/* ═══════════════════ SOURCES ═══════════════════ */
+.src-list{ list-style:none; display:flex; flex-direction:column; gap:12px; max-width:900px; counter-reset:src; }
+.src{ counter-increment:src; display:grid; grid-template-columns:40px 1fr; gap:16px; align-items:start; border:1px solid var(--bd);
+  border-radius:var(--r); padding:18px 20px; background:var(--card); }
+.src::before{ content:counter(src); font-family:var(--cond); font-weight:700; font-size:.85rem; color:#1C1C1C; background:var(--vu-gold);
+  width:30px; height:30px; border-radius:2px; display:grid; place-items:center; margin-top:2px; }
+.src p{ color:var(--tx2); font-size:.9375rem; line-height:1.7; max-width:none; }
+.src p em{ font-family:var(--serif-i); font-style:italic; }
+.src .e-src{ display:block; margin-top:8px; font-size:.83rem; color:var(--tx3); }
+.prov{ margin-top:22px; padding-top:16px; border-top:1px solid var(--bd); font-size:.9rem; color:var(--tx2); max-width:900px; }
+.prov em{ font-family:var(--serif-i); font-style:italic; }
+
+/* ═══════════════════ FOOTER ═══════════════════ */
+footer{ background:var(--vu-black); color:#fff; border-top:1px solid rgba(207,174,112,.2); padding:clamp(36px,5vw,52px) 0 36px;
+  --tx:#fff; --tx2:rgba(255,255,255,.7); --tx3:rgba(255,255,255,.64); --link:#CFAE70; --strong:#ECB748; --focus:#ECB748; --bdg:rgba(207,174,112,.35); }
+.fcenter{ text-align:center; }
+.fcenter img{ margin:0 auto; }
+.fprogram{ font-family:var(--cond); font-weight:700; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-gold); margin-top:18px; max-width:none; }
+.flegal{ color:rgba(255,255,255,.55); font-size:.83rem; margin:18px auto 0; max-width:640px; }
+.flegal a{ color:var(--vu-gold); border-bottom:1px solid rgba(207,174,112,.4); }
+.flegal b{ color:rgba(255,255,255,.8); }
+.preset{ display:inline-flex; align-items:center; gap:8px; margin:18px 0 0; min-height:44px; background:none; border:0; cursor:pointer;
+  color:rgba(255,255,255,.55); font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  transition:color .2s ease-out; }
+.preset:hover{ color:#fff; }
+.preset svg{ width:14px; height:14px; }
+.fcenter > span{ display:inline-flex; flex-wrap:wrap; justify-content:center; gap:0 22px; }
+
+/* ═══════════════════ BOOK MODE: STAGE + PAGES ═══════════════════
+   One .page visible in a fixed stage, pages turning right-to-left.
+   Scoped under html.paged so the scroll layout remains the no-JS fallback. */
+html.paged{ --nav-h:96px; --bar-h:64px; }
+@media (max-width:960px){ html.paged{ --nav-h:72px; --bar-h:56px; } }
+html.paged, html.paged body{ height:100%; overflow:hidden; overscroll-behavior:none; }
+html.paged main#main{ position:fixed; top:var(--nav-h); bottom:var(--bar-h); left:0; right:0;
+  overflow:hidden; background:var(--vu-black); z-index:1; }
+.page{ position:absolute; inset:0; overflow-y:auto; overflow-x:hidden; visibility:hidden; z-index:1;
+  display:flex; flex-direction:column; -webkit-overflow-scrolling:touch; outline:none; }
+.page.cur{ visibility:visible; z-index:2; }
+.page > section{ flex:1 0 auto; width:100%; }
+.page > footer{ flex:0 0 auto; width:100%; }
+.page.pg-in-r{ animation:pgInR .35s var(--ease) both; }
+.page.pg-in-l{ animation:pgInL .35s var(--ease) both; }
+.page.pg-out{ visibility:visible; z-index:1; }
+.page.pg-out-l{ animation:pgOutL .35s var(--ease) both; }
+.page.pg-out-r{ animation:pgOutR .35s var(--ease) both; }
+@keyframes pgInR{ from{ transform:translateX(100%); } }
+@keyframes pgInL{ from{ transform:translateX(-100%); } }
+@keyframes pgOutL{ to{ transform:translateX(-100%); } }
+@keyframes pgOutR{ to{ transform:translateX(100%); } }
+/* fit-the-viewport rhythm: tighter vertical spacing inside pages */
+html.paged section{ padding:clamp(24px,4vh,48px) 0; }
+html.paged .hero{ min-height:100%; padding:clamp(8px,1.6vh,24px) 0; }
+html.paged .hero h1{ font-size:clamp(1.9rem,3.6vh + 1rem,3.6rem); margin-top:14px; }
+html.paged .hero .lead{ margin-top:12px; }
+html.paged .hero .meta-line{ margin-top:12px; }
+html.paged .hero .lframe{ margin-top:12px; }
+html.paged .qr-card__code{ width:clamp(150px,20vh,230px); }
+html.paged .sec-head{ margin-bottom:clamp(16px,2.8vh,32px); }
+html.paged .sec-head h2{ font-size:clamp(1.65rem,2.2vh + 1rem,2.7rem); }
+html.paged .concept{ margin-bottom:18px; }
+html.paged .bridge{ margin-top:clamp(18px,3vh,32px); padding-top:16px; }
+html.paged .evidence{ padding:15px 18px; }
+html.paged .ev-grid{ margin-top:18px; }
+html.paged .rstep{ padding:18px 16px; }
+html.paged .rule-strip{ margin-top:18px; padding:16px 20px; }
+html.paged .pcard{ padding:16px 18px; }
+html.paged .edit{ margin-top:16px; padding:16px 18px; }
+html.paged .src{ padding:13px 16px; }
+html.paged .lframe{ margin-top:12px; }
+html.paged footer{ padding:clamp(10px,1.8vh,18px) 0; }
+html.paged .flegal{ font-size:.8rem; }
+/* the condensed strip runs horizontal inside the last page so the send-off fits the stage */
+html.paged .fcenter{ display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:2px 20px; text-align:left; }
+html.paged .fcenter img{ width:56px; height:59px; margin:0; grid-row:1 / span 2; }
+html.paged .fprogram{ grid-column:2; margin:0; }
+html.paged .flegal{ grid-column:2; margin:4px 0 0; max-width:none; }
+html.paged .fcenter > span{ grid-column:3; grid-row:1 / span 2; display:flex; flex-direction:column; align-items:flex-end; gap:0; }
+html.paged .preset{ margin:0; min-height:36px; }
+@media (max-width:760px){
+  html.paged .fcenter{ display:block; text-align:center; }
+  html.paged .fcenter img{ margin:0 auto; }
+  html.paged .fprogram{ margin-top:10px; }
+  html.paged .flegal{ margin-top:8px; }
+  html.paged .fcenter > span{ display:inline-flex; flex-direction:row; gap:0 22px; margin-top:6px; }
+  html.paged .preset{ margin-top:0; }
+}
+/* "more below" affordance: floats over the stage when the page scrolls internally */
+#pgMore{ position:absolute; z-index:6; right:clamp(10px,2vw,22px); bottom:10px; display:none; align-items:center; gap:7px;
+  pointer-events:none; font-family:var(--cond); font-weight:700; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--vu-gold); background:rgba(28,28,28,.85); border:1px solid rgba(207,174,112,.45); border-radius:var(--r); padding:7px 11px; }
+#pgMore svg{ width:12px; height:12px; }
+html.paged main#main.more #pgMore{ display:inline-flex; }
+
+/* ═══════════════════ BOTTOM BOOK BAR ═══════════════════ */
+.book-bar{ position:fixed; left:0; right:0; bottom:0; height:var(--bar-h,64px); z-index:210; background:var(--vu-black);
+  border-top:1px solid rgba(207,174,112,.25); display:none; align-items:center; gap:clamp(8px,2vw,26px);
+  padding:0 clamp(8px,2.5vw,28px); }
+html.paged .book-bar{ display:flex; }
+.bb-left{ flex:1 1 0; min-width:0; display:flex; align-items:center; gap:clamp(8px,1.4vw,16px); }
+.bb-sec{ flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-family:var(--cond); font-weight:700; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-gold); }
+.bb-done{ display:inline-flex; align-items:center; justify-content:center; gap:7px; height:44px; padding:0 13px; flex-shrink:0;
+  border:1px solid rgba(255,255,255,.25); border-radius:var(--r); background:transparent; color:#fff; cursor:pointer;
+  font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap;
+  transition:border-color .2s ease-out, color .2s ease-out, background-color .2s ease-out; }
+.bb-done:hover{ border-color:var(--vu-gold); color:var(--vu-gold); }
+.bb-done[aria-pressed="true"]{ border-color:var(--vu-gold); background:var(--vu-gold); color:var(--vu-black); }
+.bb-done[aria-pressed="true"]:hover{ background:var(--vu-highlight); border-color:var(--vu-highlight); color:var(--vu-black); }
+.bb-done:focus-visible{ outline:2px solid var(--vu-highlight); outline-offset:1px; }
+.bb-done svg{ width:14px; height:14px; flex-shrink:0; }
+.bb-done svg[hidden]{ display:none; } /* [hidden] has no UA default on inline SVG; the mode switch swaps its two icons with it */
+.bb-done[hidden]{ display:none; }
+.bb-dots{ display:flex; align-items:center; justify-content:center; gap:2px; flex-shrink:0; }
+a.bb-dot{ display:grid; place-items:center; width:22px; height:44px; border-radius:2px; }
+a.bb-dot .dot{ display:block; width:9px; height:9px; border-radius:50%; border:1.5px solid var(--vu-gold); background:transparent;
+  transition:background-color .2s ease-out, transform .2s ease-out, box-shadow .2s ease-out; }
+a.bb-dot.done .dot{ background:var(--vu-gold); }
+a.bb-dot.cur .dot{ transform:scale(1.35); box-shadow:0 0 0 2px rgba(236,183,72,.55); }
+a.bb-dot:hover .dot{ background:rgba(207,174,112,.5); }
+a.bb-dot.done:hover .dot{ background:var(--vu-highlight); }
+a.bb-dot:focus-visible{ outline:2px solid var(--vu-highlight); outline-offset:1px; }
+.bb-ctl{ flex:1 1 0; display:flex; align-items:center; justify-content:flex-end; gap:clamp(6px,1vw,12px); }
+.bb-count{ font-family:var(--cond); font-weight:700; font-size:.78rem; letter-spacing:.05em; color:rgba(255,255,255,.72); white-space:nowrap; }
+.bb-btn{ display:grid; place-items:center; width:44px; height:44px; flex-shrink:0; border:1px solid rgba(255,255,255,.25); border-radius:var(--r);
+  background:transparent; color:#fff; cursor:pointer; transition:border-color .2s ease-out,color .2s ease-out; }
+.bb-btn:hover{ border-color:var(--vu-gold); color:var(--vu-gold); }
+.bb-btn[disabled]{ opacity:.35; cursor:default; }
+.bb-btn[disabled]:hover{ border-color:rgba(255,255,255,.25); color:#fff; }
+.bb-btn svg{ width:16px; height:16px; }
+@media (max-width:1000px){ .bb-done .bb-done-t{ display:none; } .bb-done{ width:44px; padding:0; } }
+@media (max-width:760px){ .bb-sec{ display:none; } .bb-left{ flex:0 0 auto; } .bb-dots{ flex:1; } .bb-ctl{ flex:0 0 auto; } }
+@media (max-width:420px){ a.bb-dot{ width:14px; } .bb-btn{ width:40px; } .bb-done{ width:40px; height:44px; } .bb-count{ font-size:.72rem; } .book-bar{ gap:6px; } }
+
+/* ═══════════════════ RESPONSIVE ═══════════════════ */
+@media (max-width:1280px){
+  .logo img{ height:42px; }
+  nav.links a{ font-size:.86rem; letter-spacing:.01em; }
+  nav.links a.nav-cta{ font-size:.875rem; min-height:46px; padding:11px 20px; }
+}
+@media (max-width:1099px){
+  nav.links{ display:none; } .menu-btn{ display:grid; }
+}
+@media (max-width:1024px){
+  .ev-grid{ grid-template-columns:1fr; }
+  .roadmap.three{ grid-template-columns:1fr; }
+}
+@media (max-width:960px){
+  header.nav .bar{ height:72px; }
+  .logo img{ height:36px; }
+  html{ scroll-padding-top:92px; }
+  .hero-grid{ grid-template-columns:1fr; }
+  .qr-side{ justify-self:start; text-align:left; }
+  .qr-side .qr-sub{ margin-inline:0; }
+  .ex-grid{ grid-template-columns:1fr; }
+}
+@media (max-width:640px){
+  .src{ grid-template-columns:1fr; } .src::before{ margin-top:0; }
+  .logo img{ height:30px; }
+}
+@media (max-width:480px){
+  .launch-row .btn{ flex:1; }
+}
+
+/* ═══════════════════ PRINT TAKEAWAY ═══════════════════
+   #printSummary is display:none on screen; @media print swaps the whole
+   app out for it: one clean black-on-white page. The mode rules above
+   still apply in print, so the notes block matches the chosen mode. */
+#printSummary{ display:none; }
+@media print{
+  html, body{ height:auto !important; overflow:visible !important; background:#fff !important; }
+  body > *:not(#printSummary){ display:none !important; }
+  #printSummary{ display:block !important; color:#000; background:#fff;
+    font-family:-apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size:9.5pt; line-height:1.45; }
+  #printSummary .ps-head{ border-bottom:2pt solid #000; padding-bottom:6pt; }
+  #printSummary .ps-title{ font-family:Georgia, "Times New Roman", serif; font-size:15pt; margin:0; color:#000; }
+  #printSummary .ps-meta{ margin:2pt 0 0; font-size:8pt; color:#333; max-width:none; }
+  #printSummary h2{ font-family:Georgia, "Times New Roman", serif; font-weight:700; color:#000; font-size:10.5pt; margin:9pt 0 3pt;
+    border-bottom:.75pt solid #999; padding-bottom:1pt; break-after:avoid; page-break-after:avoid; }
+  #printSummary p{ margin:2pt 0; max-width:none; }
+  #printSummary ol{ margin:2pt 0 2pt 14pt; padding:0; }
+  #printSummary li{ margin:1pt 0; break-inside:avoid; page-break-inside:avoid; }
+  #printSummary .ps-rule{ font-family:Georgia, "Times New Roman", serif; font-style:italic; font-size:10pt; margin:4pt 0; }
+  #printSummary .ps-pre{ white-space:pre-wrap; font-family:"Courier New", monospace; font-size:7.5pt; line-height:1.4;
+    border:.75pt solid #999; padding:4pt 6pt; margin:3pt 0; break-inside:avoid; page-break-inside:avoid; }
+  #printSummary .ps-plabel{ font-size:8pt; font-weight:700; margin:5pt 0 1pt; }
+  #printSummary .ps-block{ break-inside:avoid; page-break-inside:avoid; }
+  #printSummary .ps-line{ height:16pt; border-bottom:.75pt solid #999; }
+  #printSummary .ps-fine{ font-size:7.5pt; color:#444; margin-top:8pt; border-top:.75pt solid #999; padding-top:4pt; max-width:none; }
+}
+
+/* ═══════════════════ REDUCED MOTION ═══════════════════ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+  html{ scroll-behavior:auto !important; }
+}
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <div class="bar">
+      <a class="logo" href="#top" aria-label="Vanderbilt University, Decisions sharper home">
+        <img src="../assets/v-lockup-white@2x.png" alt="Vanderbilt University" width="166" height="36" decoding="async" />
+      </a>
+      <div class="bar-r">
+        <nav class="links" aria-label="Primary">
+          <a href="#evidence">Evidence</a>
+          <a href="#method">Method</a>
+          <a href="#ex-recs">Examples</a>
+          <a href="#guardrails">Guardrails</a>
+          <a href="#practice">Practice</a>
+          <a href="#recap">Recap</a>
+          <a href="#sources">Appendix</a>
+          <a class="btn btn-gold btn-sm nav-cta" href="../">The Working Smarter course</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="b b1" aria-hidden="true"></span><span class="b b2" aria-hidden="true"></span><span class="b b3" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- mobile overlay menu -->
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+  <a class="mlink" href="#top"><span class="mono">01</span>Welcome</a>
+  <a class="mlink" href="#s-mission"><span class="mono">02</span>The Chancellor&rsquo;s charge</a>
+  <a class="mlink" href="#evidence"><span class="mono">03</span>The evidence</a>
+  <a class="mlink" href="#method"><span class="mono">04</span>The method</a>
+  <a class="mlink" href="#ex-recs"><span class="mono">05</span>Example: the recommendations</a>
+  <a class="mlink" href="#ex-scenario"><span class="mono">06</span>Example: the scenario test</a>
+  <a class="mlink" href="#ex-assume"><span class="mono">07</span>Example: the assumptions check</a>
+  <a class="mlink" href="#guardrails"><span class="mono">08</span>Guardrails</a>
+  <a class="mlink" href="#practice"><span class="mono">09</span>Practice now</a>
+  <a class="mlink" href="#check"><span class="mono">10</span>Knowledge check</a>
+  <a class="mlink" href="#recap"><span class="mono">11</span>Recap</a>
+  <a class="mlink" href="#sources"><span class="mono">12</span>Appendix</a>
+  <a class="mlink" href="../"><span class="mono" aria-hidden="true">&rarr;</span>The Working Smarter course</a>
+  <div class="mfoot">matthew.estes@vanderbilt.edu</div>
+</nav>
+
+<main id="main"><span id="top"></span>
+
+<!-- ═══════════ PAGE 1 · WELCOME / QR ═══════════ -->
+<section class="hero th-dark" aria-label="Welcome">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="mono">Vanderbilt University &middot; The CHART Program &middot; A Managers Voyage course</span>
+        <h1 class="metal">Decisions, <em>sharper</em>.</h1>
+        <p class="hero-state">Widen the view before the call: test scenarios, surface hidden assumptions, and decide with more confidence.</p>
+        <p class="lead">If your job includes making the calls other people wait on (schedules, budgets, coverage, a plan to pitch), this course is for you.
+          You&rsquo;ll learn a simple way to use <b>AI to widen what you can see</b> before you decide: test the scenarios, run a premortem,
+          and hear the case against your favorite option, while the decision stays yours. It takes about fifteen minutes, and you&rsquo;ll
+          finish by laying out a real decision you own. In Deloitte&rsquo;s latest survey of 3,235 leaders, <b>60% named better decision-making</b> among the benefits they&rsquo;re seeing from AI<sup class="cite"><a href="#src1" aria-label="Source 1">1</a></sup>.</p>
+        <p class="meta-line">Part of CHART: Cultivating Human-AI Readiness and Thinking &middot; A Managers Voyage course</p>
+        <div class="lframe">
+          <span class="lf-chip"><b>Time</b>About 15 minutes, self-paced</span>
+          <span class="lf-chip"><b>You&rsquo;ll leave with</b>A three-step method for testing a decision before you make it</span>
+        </div>
+        <ol class="hw-mini mode-web" aria-label="How this course works, self-paced">
+          <li>Turn pages with the arrows below, your keyboard arrows, or a swipe</li>
+          <li>Keep your AI tool open in another tab; the prompts here copy straight into it</li>
+          <li>Mark pages done in the bottom bar; progress stays in this browser</li>
+        </ol>
+        <ol class="hw-mini mode-class" aria-label="How this course works, in a classroom">
+          <li>Your instructor leads the pages up front; scan the QR to follow along on your phone</li>
+          <li>The gold Together cards are for the room: discuss, pair up, share</li>
+          <li>You&rsquo;ll leave with a one-page takeaway; print it or save it at the end</li>
+        </ol>
+      </div>
+      <div class="qr-side mode-class">
+        <span class="mono qr-label">Scan to open this course on your phone</span>
+        <!-- [EDIT · SCORM] repoint data-url to the course's LMS / Oracle Learning link before packaging; the QR renders from it -->
+        <div class="qr-card" id="qrCard">
+          <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this course"></div>
+          <p class="qr-card__url" id="qrUrl"></p>
+        </div>
+        <p class="qr-sub">The course runs in your browser. Nothing you type or do here is tracked or sent anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ THE CHANCELLOR'S CHARGE ═══════════ -->
+<section id="s-mission" class="th-dark" aria-label="The Chancellor's charge">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Why the university is asking managers to decide this way.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">The institutional why &middot; Crescere aude</span></span>
+      <h2>Define the great university. <em class="s">Then be it.</em></h2>
+      <p>Chancellor Diermeier&rsquo;s institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society&rsquo;s challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b><sup class="cite"><a href="#src5" aria-label="Source 5">5</a></sup>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and the dare lands on managers like you, one open decision at a time.</p>
+    </div>
+    <div class="roadmap three">
+      <div class="rstep">
+        <span class="rno">Focus 1 &middot; Exceptional core operations</span>
+        <h3>Speed, agility, scale</h3>
+        <p>Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: speed and agility live in how fast your open calls close, and widen, weigh, decide is how a schedule or coverage decision closes quickly without closing blind.</p>
+      </div>
+      <div class="rstep">
+        <span class="rno">Focus 2 &middot; Bold strategic initiatives</span>
+        <h3>Core ops as fuel</h3>
+        <p>Increasingly bold bets that extend the reach and impact of education and research. The team translation: a bold bet is a decision made under uncertainty, and the premortem and the case against your favorite option are how your piece of one gets weighed before it is real.</p>
+      </div>
+      <div class="rstep">
+        <span class="rno">Focus 3 &middot; Industry leadership</span>
+        <h3>Model the essential university</h3>
+        <p>Stimulate industry change by modeling what a research university should be. The team translation: the model includes how managers use AI around people, and this course&rsquo;s strictest rules carry that: roles, never names, and personnel matters go to HR.</p>
+      </div>
+    </div>
+    <div class="rstep" style="margin-top:14px;border-color:rgba(207,174,112,.5)">
+      <span class="rno">The reputation flywheel</span>
+      <p>Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here&rsquo;s your place in it: values-driven leadership is visible in how decisions get made, and a manager who widens the view, writes the reasoning down, and owns the call is what it looks like on an ordinary Tuesday.</p>
+    </div>
+    <div class="bridge"><span class="b-label">Next</span><p>Now the case for widening the view, <em>in two studies and one piece of advice</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · THE EVIDENCE ═══════════ -->
+<section id="evidence" class="th-light" aria-label="Why bother: the evidence">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">The case for learning this, in two studies and one piece of advice.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">The evidence / 01</span></span>
+      <h2>Why this is worth <em class="s">your time</em>.</h2>
+      <p>Think about the last decision you sat on for a week. Not because the choice was hard to say out loud,
+        but because you couldn&rsquo;t be sure what you were missing. Researchers have started measuring what happens
+        when people bring AI into that moment, and the pattern is consistent: used as an extra set of eyes,
+        it widens the thinking, and the deciding stays human. Here is the case, in two studies and one piece of advice from Stanford.</p>
+    </div>
+    <div class="ev-grid">
+      <div class="evidence">
+        <span class="e-label">Global survey &middot; Deloitte</span>
+        <span class="e-num" aria-hidden="true">60%</span>
+        <p>In Deloitte&rsquo;s <em>State of AI in the Enterprise</em> survey of <b>3,235 leaders</b> across 24 countries,
+          <b>60% report enhanced decision-making and data-driven insights</b> among the benefits their organization has achieved with AI.
+          Only improved efficiency ranks higher.</p>
+        <span class="e-src">Deloitte, <em>State of AI in the Enterprise</em> (2026)<sup class="cite"><a href="#src1" aria-label="Source 1">1</a></sup></span>
+      </div>
+      <div class="evidence">
+        <span class="e-label">Leadership framing &middot; Stanford GSB</span>
+        <span class="e-num" aria-hidden="true">&ldquo;You&rsquo;re in charge&rdquo;</span>
+        <p>Stanford GSB&rsquo;s advice to leaders is in the title: <b>you&rsquo;re in charge</b>. Judge AI by the job it does
+          in a decision (supplying information and analysis so your call is better informed), and design that job yourself.
+          The call never moves to the machine.</p>
+        <span class="e-src">Stanford GSB Insights, &ldquo;You&rsquo;re in Charge&rdquo; (2024)<sup class="cite"><a href="#src2" aria-label="Source 2">2</a></sup></span>
+      </div>
+      <div class="evidence">
+        <span class="e-label">Field experiment &middot; Harvard / BCG</span>
+        <span class="e-num" aria-hidden="true">+40%</span>
+        <p>In a field experiment with 758 consultants, people working with AI on tasks it handles well finished
+          <b>12.2% more tasks</b>, <b>25.1% faster</b>, at <b>more than 40% higher quality</b>. The same study warns
+          the frontier is jagged: on work beyond the AI&rsquo;s reach, leaning on it hurts, which is why your judgment stays in the loop.</p>
+        <span class="e-src">Dell&rsquo;Acqua et al., HBS Working Paper (2023)<sup class="cite"><a href="#src3" aria-label="Source 3">3</a></sup></span>
+      </div>
+    </div>
+    <div class="moment mode-class">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <div><span class="m-label">Together</span>
+      <p>Share with the room, in one sentence and in roles, never names: what decision is your team waiting on you for right now?</p></div>
+    </div>
+    <div class="moment mode-web">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <div><span class="m-label">Pause + reflect</span>
+      <p>Take a moment: name a decision you own that is still open. Keep it in mind. You&rsquo;ll lay it out at the end of this course.</p></div>
+    </div>
+    <div class="bridge"><span class="b-label">Next</span><p>The method those findings point to. It fits on <em>one page</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · THE METHOD ═══════════ -->
+<section id="method" class="th-cream" aria-label="The method: widen, weigh, decide">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">The one method this course teaches.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">The method / 02</span></span>
+      <h2>Widen, weigh, <em class="s">decide</em>.</h2>
+      <p>Here is the whole method. When a real decision lands on you, do three things in order:
+        lay it out for the AI so it can widen what you see, weigh it by testing scenarios and assumptions,
+        then make the call yourself and write down why. The next three pages show it working on real decisions.</p>
+    </div>
+    <div class="roadmap three">
+      <div class="rstep">
+        <span class="rno">01 &middot; Widen</span>
+        <h3>Lay the decision out</h3>
+        <p>Brief the AI the way you&rsquo;d brief a trusted advisor, using <b>CRIT</b>:
+          <b>Context</b> (the situation, with every person described by role, never by name),
+          <b>Role</b> (who should advise you), <b>Interview</b> (have it ask before it answers), and <b>Task</b> (what you want back).</p>
+        <div class="cr-chips" aria-hidden="true"><span>Context</span><span>Role</span><span>Interview</span><span>Task</span></div>
+        <p>Load the Context with what a skeptic would say about your favorite option and what information you don&rsquo;t have.
+          Then let the Interview line work: <em>&ldquo;ask me about anything I have not considered.&rdquo;</em></p>
+        <div class="rs-ev">
+          <span class="rs-stat"><span class="rs-num">4</span><span class="rs-lab">parts to every brief</span></span>
+          <p>The four-part brief comes from Geoff Woods; <a href="../">the Working Smarter course</a> teaches it in full.</p>
+          <span class="e-src">Geoff Woods, <em>The AI-Driven Leader</em></span>
+        </div>
+      </div>
+      <div class="rstep">
+        <span class="rno">02 &middot; Weigh</span>
+        <h3>Test it before it&rsquo;s real</h3>
+        <p>Ask for the <b>best case, the expected case, and the worst case</b>, and what would have to be true for each.
+          Run a <b>premortem</b>: tell it that six months have passed, the decision failed, and you want the honest retrospective.
+          Then ask for <b>second-order effects</b>, and who is affected that is not in the room.</p>
+        <div class="rs-ev">
+          <span class="rs-stat"><span class="rs-num">30%</span><span class="rs-lab">more causes named</span></span>
+          <p>Imagining an event has already happened raises people&rsquo;s ability to correctly identify reasons for future outcomes by 30%. That is the premortem&rsquo;s whole trick<sup class="cite"><a href="#src4" aria-label="Source 4">4</a></sup>.</p>
+          <span class="e-src">Klein, <em>Harvard Business Review</em> (2007)</span>
+        </div>
+      </div>
+      <div class="rstep">
+        <span class="rno">03 &middot; Decide</span>
+        <h3>The call is yours</h3>
+        <p>Design the AI&rsquo;s role for each decision: it <b>informs</b>, it can <b>recommend</b>, and it <b>never decides</b>.
+          Then make the call, <b>write down your reasoning</b> while it is fresh, and <b>disclose substantive AI help</b>
+          to the people who rely on the decision.</p>
+        <div class="rs-ev">
+          <span class="rs-stat"><span class="rs-num">0</span><span class="rs-lab">decisions the AI makes</span></span>
+          <p>Stanford GSB&rsquo;s advice to leaders says it in the title: you&rsquo;re in charge. The AI&rsquo;s job is to inform your call, and you choose that job for every decision<sup class="cite"><a href="#src2" aria-label="Source 2">2</a></sup>.</p>
+          <span class="e-src">Stanford GSB Insights (2024)</span>
+        </div>
+      </div>
+    </div>
+    <div class="rule-strip" role="note">
+      <p class="r">The AI widens what you can see, and <b>the decision stays yours</b>.</p>
+    </div>
+    <div class="moment mode-class">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <div><span class="m-label">Together</span>
+      <p>Turn to a partner and explain Widen &rarr; Weigh &rarr; Decide back to each other in under a minute. Explaining it out loud is the fastest way to make it stick.</p></div>
+    </div>
+    <div class="moment mode-web">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <div><span class="m-label">Pause + reflect</span>
+      <p>Before you turn the page, look away from the screen and name the three steps out loud. If you can recall them now, you&rsquo;ll remember them when a real decision lands.</p></div>
+    </div>
+    <div class="bridge"><span class="b-label">Next</span><p>The method applied to dueling recommendations, a coverage change, and <em>a budget pitch</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · EXAMPLE 1: THE CONFLICTING RECOMMENDATIONS ═══════════ -->
+<section id="ex-recs" class="th-light" aria-label="Worked example one: the conflicting recommendations">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Worked example 1 of 3: the conflicting recommendations.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Example / 03 &middot; Recommendations</span></span>
+      <h2>Two trusted leads, <em class="s">two opposite answers</em>.</h2>
+    </div>
+    <div class="concept">
+      <span class="c-label">The situation</span>
+      <p>Two team leads have each recommended a scheduling system for the same front desk, and they point in opposite directions. Both are careful people, both wrote solid one-pagers, and both are waiting on you. Picking one by gut feel means telling the other that careful homework lost a coin flip.</p>
+    </div>
+    <div class="moment mode-class" style="margin-top:0;margin-bottom:26px">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <div><span class="m-label">Together</span>
+      <p>Do this one together: the instructor lays the disagreement out live, and the room supplies the questions for each lead.</p></div>
+    </div>
+    <div class="moment mode-web" style="margin-top:0;margin-bottom:26px">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <div><span class="m-label">Pause + reflect</span>
+      <p>Try it now: copy this prompt into Amplify and run it. Then compare what comes back with the judgment pass below.</p></div>
+    </div>
+    <div class="ex-grid">
+      <div class="pcard">
+        <div class="pc-head">
+          <span class="mono">The prompt &middot; CRIT shape</span>
+          <button type="button" class="btn btn-ghost btn-sm copy-btn" data-copy="p1code">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        </div>
+        <pre class="pcode" id="p1code">Context: Two experienced team leads who run the same service point have recommended opposite scheduling systems. One argues for a fixed-block schedule that gives staff predictable weeks. The other argues for a demand-based schedule that follows our busiest hours. Both cite coverage gaps this term. I supervise both leads and I owe them a decision.
+Role: You are a neutral operations advisor who has seen both approaches succeed and fail.
+Interview: Before you answer, ask me about anything I have not considered.
+Task: Map where the two recommendations actually agree, where they truly differ, and which facts would settle each difference. Then give me three questions to ask each lead. Do not pick a winner.</pre>
+        <div class="ttry">
+          <span class="c-label">Try it in</span>
+          <div class="ttry-row">
+            <a class="ttry-card rec" href="https://www.vanderbilt.ai/" target="_blank" rel="noopener">
+              <span class="tt-name">Amplify <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+              <span class="tt-tag">Recommended</span>
+              <span class="tt-why">The prompt carries internal operational detail and two colleagues&rsquo; positions. Vanderbilt&rsquo;s own platform is the right home, and the when-in-doubt choice.</span>
+            </a>
+            <a class="ttry-card" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
+              <span class="tt-name">Copilot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+              <span class="tt-tag">Also fine</span>
+              <span class="tt-why">Also approved for internal operational detail through your Vanderbilt account.</span>
+            </a>
+            <span class="ttry-card off" role="note" aria-label="ChatGPT EDU sits this one out">
+              <span class="tt-name">ChatGPT EDU</span>
+              <span class="tt-tag">Sits this one out</span>
+              <span class="tt-why">Internal operations stay in Amplify or Copilot, and this prompt describes staffing at your own service point.</span>
+            </span>
+          </div>
+          <p class="ttry-note">The recommendation follows the data in the prompt, not habit. Two of these three examples stay inside Vanderbilt tools on purpose.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ret">
+          <span class="c-label">What comes back</span>
+          <p>A tidy map of the disagreement that treats both memos evenly, plus questions you may not have thought to ask. It does not know your people, your busiest Tuesday, or the history between these two leads. <b>It found the shape of the disagreement; only you know the room it lives in.</b></p>
+        </div>
+        <div class="edit">
+          <span class="c-label">Your judgment pass</span>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Check the map against the memos.</b> If it lists an agreement neither lead actually wrote, cut it; a clean-looking summary can smooth over the real dispute.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Take the three questions to each lead before you decide.</b> The goal is a better-informed call, not a faster one.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Chase the settling facts first.</b> If one fact would settle the biggest difference, go get that fact before anything else.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · EXAMPLE 2: THE SCENARIO TEST ═══════════ -->
+<section id="ex-scenario" class="th-cream" aria-label="Worked example two: the scenario test">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Worked example 2 of 3: the scenario test.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Example / 03 &middot; Scenario test</span></span>
+      <h2>Changing the coverage hours <em class="s">before you commit</em>.</h2>
+    </div>
+    <div class="concept">
+      <span class="c-label">The situation</span>
+      <p>Your service desk closes at five, and the requests to extend it keep coming. You&rsquo;re weighing coverage until seven, two evenings a week. The change touches student workers&rsquo; schedules, staff rotations, and a budget line you would have to defend. Once announced, it is very hard to un-announce.</p>
+    </div>
+    <div class="moment mode-class" style="margin-top:0;margin-bottom:26px">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <div><span class="m-label">Together</span>
+      <p>Run this one as a room: the instructor takes real constraints from the floor and runs the prompt live. Tables split the output (best case, worst case, the premortem) and each reports one finding back.</p></div>
+    </div>
+    <div class="moment mode-web" style="margin-top:0;margin-bottom:26px">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <div><span class="m-label">Pause + reflect</span>
+      <p>Try it now: copy the prompt, swap in a change you&rsquo;re actually weighing, and run it. Read the premortem twice; it&rsquo;s the part managers skip and shouldn&rsquo;t.</p></div>
+    </div>
+    <div class="ex-grid">
+      <div class="pcard">
+        <div class="pc-head">
+          <span class="mono">The prompt &middot; CRIT shape</span>
+          <button type="button" class="btn btn-ghost btn-sm copy-btn" data-copy="p2code">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        </div>
+        <pre class="pcode" id="p2code">Context: I manage a service desk that closes at 5 p.m. I am weighing extended coverage to 7 p.m. two evenings a week. The desk is staffed by student workers and two full-time staff members, described here by role only. Demand after 5 p.m. is real but not well measured. The budget for the extra hours would need my director's approval.
+Role: You are an experienced service operations manager who has run coverage changes like this one.
+Interview: Before you answer, ask me about anything I have not considered.
+Task: Give me the best case, the expected case, and the worst case for this change, and what would have to be true for each. Then run a premortem: it is six months later and the extended hours failed; write the honest retrospective. Finish with the second-order effects on the students and staff affected, including anyone not in the room for this decision.</pre>
+        <div class="ttry">
+          <span class="c-label">Try it in</span>
+          <div class="ttry-row">
+            <a class="ttry-card rec" href="https://www.vanderbilt.ai/" target="_blank" rel="noopener">
+              <span class="tt-name">Amplify <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+              <span class="tt-tag">Recommended</span>
+              <span class="tt-why">Staffing and budget detail about your own operation. Vanderbilt&rsquo;s platform is the right home, and the when-in-doubt choice.</span>
+            </a>
+            <a class="ttry-card" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
+              <span class="tt-name">Copilot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+              <span class="tt-tag">Also fine</span>
+              <span class="tt-why">Also approved for internal work through your Vanderbilt account, and handy if the staffing plan already lives in Excel.</span>
+            </a>
+            <span class="ttry-card off" role="note" aria-label="ChatGPT EDU sits this one out">
+              <span class="tt-name">ChatGPT EDU</span>
+              <span class="tt-tag">Sits this one out</span>
+              <span class="tt-why">Internal operations stay in Amplify or Copilot, and this prompt carries staffing and budget detail.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="ret">
+          <span class="c-label">What comes back</span>
+          <p>Three plausible futures, a retrospective that reads uncomfortably well, and at least one effect you had not priced in, like what evening shifts do to student workers&rsquo; course schedules. Some of it will be generic. <b>The point is not that it&rsquo;s right. The point is that your view of the decision just got wider.</b></p>
+        </div>
+        <div class="edit">
+          <span class="c-label">Your judgment pass</span>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Score each scenario against what you actually know.</b> The AI guessed at demand; you have the door counts, the emails, and the complaints.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Treat the premortem as a to-check list.</b> Every failure reason you can&rsquo;t rule out becomes a question to answer before you commit.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Walk the second-order effects to real roles.</b> Which student worker loses hours, who covers the late shift. If you can&rsquo;t name the role, the thinking isn&rsquo;t finished.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · EXAMPLE 3: THE ASSUMPTIONS CHECK ═══════════ -->
+<section id="ex-assume" class="th-light" aria-label="Worked example three: the assumptions check">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Worked example 3 of 3: the assumptions check.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Example / 03 &middot; Assumptions</span></span>
+      <h2>Stress-testing the plan <em class="s">before the director does</em>.</h2>
+    </div>
+    <div class="concept">
+      <span class="c-label">The situation</span>
+      <p>You&rsquo;re pitching a budget request to your director next week: new equipment, a modest staffing change, savings that show up in year two. The plan is solid in your head. That is exactly the problem, because your head is where the untested assumptions live.</p>
+    </div>
+    <p class="honest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+      <span><b>Before you paste anything:</b> the plan carries internal figures, so it stays in Copilot or Amplify through your Vanderbilt account. ChatGPT EDU is fine only if the plan contains nothing internal, and a budget plan almost always does.</span></p>
+    <div class="ex-grid" style="margin-top:26px">
+      <div class="pcard">
+        <div class="pc-head">
+          <span class="mono">The prompt &middot; CRIT shape</span>
+          <button type="button" class="btn btn-ghost btn-sm copy-btn" data-copy="p3code">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        </div>
+        <pre class="pcode" id="p3code">Context: Pasted below is my draft budget request. I present it to my director next week. I want the weaknesses found now, in private, not in the meeting.
+Role: You are a skeptical budget director who has heard a hundred pitches and approved twelve.
+Interview: Before you answer, ask me about anything I have not considered.
+Task: List every assumption this plan makes, stated or unstated. Rank them from most fragile to most solid, and say what evidence would firm up the top three. Then write the three hardest questions my director will ask, and name the parts of the plan they will probe.
+
+[paste your draft request here]</pre>
+        <div class="ttry">
+          <span class="c-label">Try it in</span>
+          <div class="ttry-row">
+            <a class="ttry-card rec" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
+              <span class="tt-name">Copilot <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+              <span class="tt-tag">Recommended</span>
+              <span class="tt-why">The plan already lives in Word and Excel, and Copilot works on it through your Vanderbilt account without the copy-paste round trip.</span>
+            </a>
+            <a class="ttry-card" href="https://www.vanderbilt.ai/" target="_blank" rel="noopener">
+              <span class="tt-name">Amplify <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></span>
+              <span class="tt-tag">Equally right</span>
+              <span class="tt-why">Exactly as approved for internal figures. Pick whichever of the two you&rsquo;ll actually open.</span>
+            </a>
+            <span class="ttry-card off" role="note" aria-label="ChatGPT EDU sits this one out">
+              <span class="tt-name">ChatGPT EDU</span>
+              <span class="tt-tag">Only if nothing internal</span>
+              <span class="tt-why">Fine only if the plan contains nothing internal. A budget request almost never qualifies, so treat this as Copilot or Amplify work.</span>
+            </span>
+          </div>
+          <p class="ttry-note">No draft of your own this week? Use the practice request below; it&rsquo;s fictional, so it&rsquo;s safe to paste anywhere.</p>
+        </div>
+      </div>
+      <div>
+        <div class="ret">
+          <span class="c-label">What comes back</span>
+          <p>A ranked list that usually includes two or three assumptions you did not know you were making, such as year-two savings assuming current volumes hold. The hardest questions will sting a little. <b>Better here than in the meeting.</b></p>
+        </div>
+        <div class="edit">
+          <span class="c-label">Your judgment pass</span>
+          <ul>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Answer the three hardest questions in writing.</b> If one has no good answer yet, that&rsquo;s your homework, not a reason to soften the question.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Re-rank the fragile assumptions against real numbers.</b> The AI ranked them by how they read; you rank them by what you know.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Fold the fixes into the plan and note what changed.</b> Your director gets the stress-tested version, and your record shows the reasoning.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+      <div class="pcard" style="margin-top:14px">
+        <div class="pc-head">
+          <span class="mono">The practice request &middot; fictional</span>
+          <button type="button" class="btn btn-ghost btn-sm copy-btn" data-copy="fakePlan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy request</span></button>
+        </div>
+        <details class="prep">
+          <summary>Read the practice budget request (every name and number is invented)</summary>
+          <pre class="pcode" id="fakePlan">BUDGET REQUEST: SERVICE DESK EQUIPMENT REFRESH (DRAFT)
+Practice document. Fictional; prepared for the Decisions, Sharper
+course. Every name and number is invented.
+
+Request. Replace the service desk's six public workstations and add
+one staffed evening support shift, two evenings a week, for the
+spring term. Total ask: $41,800 in one-time equipment and $6,200 in
+term wages.
+
+Case. The six workstations are seven years old; average boot time is
+four minutes, and two units failed last term. Ticket volume at the
+desk rose 12% this year. The evening shift answers the most
+requested change in our service survey: help after 5 p.m., cited by
+58% of respondents.
+
+Savings. Retiring the old units ends an extended-warranty contract
+($3,900 per year). Fewer hardware failures should reduce loaner
+laptop purchases, estimated at $2,500 per year starting in year two.
+
+Staffing. The evening shift would be covered by one existing student
+worker per evening at current wage rates. No new positions are
+requested.
+
+Risks noted. Equipment prices are quoted through January. Spring
+student-worker availability is not yet confirmed.
+
+Decision requested by November 15 so equipment arrives before the
+spring term.</pre>
+        </details>
+        <p class="hinttxt">Copy the prompt, paste this request in its place, and run it. Then check the ranked assumptions against the request&rsquo;s own Risks section: the AI should find more than the draft admits to.</p>
+      </div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · GUARDRAILS ═══════════ -->
+<section id="guardrails" class="th-dark" aria-label="Guardrails">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">The rules that keep the method safe.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Guardrails / 04</span></span>
+      <h2>The four <em class="s">rules</em>.</h2>
+      <p>Decisions touch people, money, and records, so this course carries the strictest guardrails in the program. The first rule is the one that matters most.</p>
+    </div>
+    <div class="roadmap">
+      <div class="rstep">
+        <span class="rno">Rule 01</span>
+        <h5>Never personal or sensitive data</h5>
+        <p>No Social Security numbers, no health information, no performance records, and <b>no names in people decisions</b>. Describe situations as <b>roles, never names</b>. Personnel matters go to HR and your HR business partner, not a chatbot. <b>When in doubt, Amplify. When it&rsquo;s about a person, HR.</b></p>
+      </div>
+      <div class="rstep">
+        <span class="rno">Rule 02</span>
+        <h5>It informs or recommends; it never decides</h5>
+        <p>You design the AI&rsquo;s role for each decision: it can <b>inform</b> your view or <b>recommend</b> options, and the call stays with you. Stanford GSB&rsquo;s advice to leaders says it in the title: <b>you&rsquo;re in charge</b><sup class="cite"><a href="#src2" aria-label="Source 2">2</a></sup>.</p>
+      </div>
+      <div class="rstep">
+        <span class="rno">Rule 03</span>
+        <h5>Interrogate confident answers</h5>
+        <p>Ask what&rsquo;s missing, and check any factual claim before it moves your decision. The model can <b>argue any side persuasively</b>; confidence is its writing style, not its accuracy.</p>
+      </div>
+      <div class="rstep">
+        <span class="rno">Rule 04</span>
+        <h5>Own it and show your work</h5>
+        <p>The decision and its consequences are <b>yours</b>. Keep your reasoning in the record, and <b>disclose substantive AI help</b> to the people who rely on the call.</p>
+      </div>
+    </div>
+    <div class="launch-row">
+      <a class="btn btn-ghost btn-sm" href="https://www.vanderbilt.ai/" target="_blank" rel="noopener">Open Amplify
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <a class="btn btn-ghost btn-sm" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Open Copilot
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <a class="btn btn-ghost btn-sm" href="https://chat.openai.com" target="_blank" rel="noopener">Open ChatGPT EDU
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+    </div>
+    <div class="bridge"><span class="b-label">Last step</span><p>Lay out one real decision you own, <em>right now</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ PAGE · PRACTICE NOW ═══════════ -->
+<section id="practice" class="th-cream" aria-label="Practice now">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Your turn: one real decision.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Practice / 05</span></span>
+      <h2>Lay out the decision <em class="s">sitting on your desk</em>.</h2>
+      <p>Think of a decision you own that is still open: a schedule change, a request you have to rule on, a plan you&rsquo;re about to pitch.
+        Type its brief into the three fields below, roles not names, copy it into your tool, and let the Interview line go to work.
+        That is the whole habit this course is trying to build.</p>
+    </div>
+    <div class="pcard" style="max-width:820px">
+      <div class="pc-head">
+        <span class="mono">Your decision brief &middot; type it here</span>
+        <button type="button" class="btn btn-ghost btn-sm copy-btn" data-copy="tplcode">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy your brief</span></button>
+      </div>
+      <div class="crit-form">
+        <label><span class="cf-l">Context</span>
+          <textarea id="cfContext" rows="2" placeholder="The decision and the situation. Describe every person by role (a team lead, a student worker), never by name."></textarea></label>
+        <label><span class="cf-l">Role</span>
+          <input id="cfRole" type="text" placeholder="Who should advise you, e.g. a neutral operations advisor, or a skeptical budget director." /></label>
+        <p class="cf-fixed"><span class="cf-l">Interview</span>Before you answer, ask me about anything I have not considered. <span class="cf-note">(built in)</span></p>
+        <label><span class="cf-l">Task</span>
+          <textarea id="cfTask" rows="2" placeholder="What you want back: best, expected, and worst case; a premortem; the assumptions ranked by fragility; the case against your favorite option."></textarea></label>
+      </div>
+      <pre class="pcode" id="tplcode">Context: ___
+Role: ___
+Interview: Before you answer, ask me about anything I have not considered.
+Task: ___</pre>
+      <p class="hinttxt">Roles, never names: if your decision involves a person, describe the role and keep the name out. What you type stays in this browser, appears on your printed takeaway, and is never sent anywhere; Reset in the footer clears it.</p>
+      <div class="launch-row">
+        <a class="btn btn-ghost btn-sm" href="https://www.vanderbilt.ai/" target="_blank" rel="noopener">Open Amplify
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        <a class="btn btn-ghost btn-sm" href="https://copilot.microsoft.com" target="_blank" rel="noopener">Open Copilot
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        <a class="btn btn-ghost btn-sm" href="https://chat.openai.com" target="_blank" rel="noopener">Open ChatGPT EDU
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+        <button type="button" class="btn btn-ghost btn-sm print-btn">Print your takeaway
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 19h16"/></svg></button>
+      </div>
+      <p class="hinttxt" style="margin-top:10px">The takeaway is one page: the method, your decision brief, all three prompts, the guardrails, and the tools. Your browser&rsquo;s print dialog will open; choose Save as PDF if you&rsquo;d rather keep it digital.</p>
+    </div>
+    <div class="moment mode-class">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <div><span class="m-label">Together</span>
+      <p>In pairs: interview your partner about their open decision and fill in the brief for them, roles not names, then swap. When both briefs are done, trade assumption lists: write the three biggest assumptions in your partner&rsquo;s plan and hand them over.</p></div>
+    </div>
+    <div class="moment mode-web">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <div><span class="m-label">Pause + reflect</span>
+      <p>Make it real: lay out the decision that&rsquo;s been sitting on your desk, then put your commitment in your own words below; it prints on your takeaway.</p>
+      <textarea id="cfNote" rows="2" placeholder="My commitment: the next decision I owe someone gets a scenario test and a premortem before I make the call. I'll start with&hellip;"></textarea></div>
+    </div>
+    <div class="bridge"><span class="b-label">Next</span><p>Three quick questions to check <em>it stuck</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ KNOWLEDGE CHECK ═══════════ -->
+<section id="check" class="th-dark" aria-label="Knowledge check">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Three questions, none of them tricks.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Knowledge check / 06</span></span>
+      <h2>Did it <em class="s">stick</em>?</h2>
+      <p>Pick an answer on each; you&rsquo;ll see right away how you did. Nothing here is scored or sent anywhere. If the LMS version of this course includes a graded check, it replaces this one.</p>
+    </div>
+    <div class="qz" data-q>
+      <p class="qz-q"><b>1.</b> Two briefs for the same decision. Which one gets the more useful answer?</p>
+      <button type="button" class="qopt" data-ok="0">&ldquo;Which scheduling system should I pick?&rdquo;</button>
+      <button type="button" class="qopt" data-ok="1">&ldquo;Context: two team leads recommend opposite scheduling systems for the same desk; here is each side, in roles only. Role: a neutral operations advisor. Interview: ask me about anything I have not considered. Task: map where they agree and differ, which facts would settle it, and three questions for each lead. Do not pick a winner.&rdquo;</button>
+      <p class="qz-x" hidden>The second. It widens the view instead of outsourcing the call: the AI maps the disagreement and asks about what you missed, and the decision stays with you.</p>
+    </div>
+    <div class="qz" data-q>
+      <p class="qz-q"><b>2.</b> A manager pastes a team member&rsquo;s performance review into an AI tool to help think through a role change. What went wrong?</p>
+      <button type="button" class="qopt" data-ok="0">Nothing, as long as the tool was Amplify, which is approved for internal data</button>
+      <button type="button" class="qopt" data-ok="1">A person&rsquo;s performance record went into a chatbot. People decisions are described as roles, never names, and personnel matters go to HR and your HR business partner</button>
+      <button type="button" class="qopt" data-ok="0">The prompt was missing the Interview line</button>
+      <p class="qz-x" hidden>Rule one, the strictest in the program. Approved tools are for operational detail, not personal records, and no prompt fix makes a performance review safe to paste. Take the matter to HR, and if you use AI to think about the situation at all, describe it as a role, never a name.</p>
+    </div>
+    <div class="qz" data-q>
+      <p class="qz-q"><b>3.</b> You asked for options and the AI strongly recommends option A. What&rsquo;s your next move?</p>
+      <button type="button" class="qopt" data-ok="0">Go with A; a clear recommendation is what decision support is for</button>
+      <button type="button" class="qopt" data-ok="1">Ask for the strongest case against A and what information would change the answer, then decide yourself</button>
+      <button type="button" class="qopt" data-ok="0">Ask it to confirm A one more time in a fresh chat</button>
+      <p class="qz-x" hidden>The model argues any side persuasively, so a strong case for A tells you little until you have heard the strongest case against it. Get the counter-case and the facts that would change the answer. Then the call is yours to make, and yours to own.</p>
+    </div>
+    <div class="bridge"><span class="b-label">Next</span><p>The recap: what you learned and <em>what happens next</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ RECAP / FINISH ═══════════ -->
+<section id="recap" class="th-cream" aria-label="Recap and next steps">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">The finish line.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Recap / 07</span></span>
+      <h2>What you learned, and <em class="s">what&rsquo;s next</em>.</h2>
+    </div>
+    <div class="roadmap three">
+      <div class="rstep">
+        <span class="rno">You learned</span>
+        <h3>One method</h3>
+        <p><b>Widen, weigh, decide.</b> Lay the decision out with CRIT, roles not names. Test best, expected, and worst case, run the premortem, ask for second-order effects. Then make the call yourself and write down why.</p>
+      </div>
+      <div class="rstep">
+        <span class="rno">You learned</span>
+        <h3>Four rules</h3>
+        <p>Never personal or sensitive data, and when it&rsquo;s about a person, HR. The AI informs or recommends; it never decides. Interrogate confident answers. Own the call and show your work.</p>
+      </div>
+      <div class="rstep">
+        <span class="rno">You learned</span>
+        <h3>Why it&rsquo;s worth it</h3>
+        <p>In Deloitte&rsquo;s survey of 3,235 leaders, 60% named better decision-making and data-driven insights among AI&rsquo;s benefits<sup class="cite"><a href="#src1" aria-label="Source 1">1</a></sup>, and a premortem alone helps people correctly name 30% more reasons an outcome could happen<sup class="cite"><a href="#src4" aria-label="Source 4">4</a></sup>.</p>
+      </div>
+    </div>
+    <div class="next-steps">
+      <span class="c-label">Do these three things</span>
+      <ol>
+        <li><b>Test the decision on your desk.</b> Your brief is saved on the Practice page; run it, then take the three hardest questions to the people involved.</li>
+        <li><b>Print your plan.</b> One page with the method, your brief, all three prompts, the guardrails, and the tools.</li>
+        <li><b>Book a 15-minute check-in with yourself</b> two weeks out: did the AI widen the view, and did the calls stay yours?</li>
+      </ol>
+      <div class="launch-row" style="margin-top:14px">
+        <button type="button" class="btn btn-primary print-btn">Print your plan
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="15" width="12" height="6"/></svg></button>
+        <button type="button" class="btn btn-ghost btn-sm" id="icsBtn">Add the check-in to your calendar
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></button>
+      </div>
+    </div>
+    <div class="keepl">
+      <span class="c-label">Keep learning</span>
+      <p>Ten more minutes some week? These four live in Oracle Learning, Vanderbilt&rsquo;s training home; each link opens the course directly.</p>
+      <ul>
+        <li><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002856890241" target="_blank" rel="noopener">Making Key Decisions as a Manager</a> <span class="mono">OLC3613209</span></li>
+        <li><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002856813902" target="_blank" rel="noopener">Critical Thinking for Better Judgment and Decision-Making</a> <span class="mono">OLC3602569</span></li>
+        <li><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002856480667" target="_blank" rel="noopener">Decision-Making Strategies</a> <span class="mono">OLC3558886</span></li>
+        <li><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002856975303" target="_blank" rel="noopener">Overcoming Decision-Making Traps</a> <span class="mono">OLC3627617</span></li>
+      </ul>
+      <p style="margin-top:10px">Leading people as well as decisions? <a href="../managers/">Manager Foundations, the Manager Voyage course</a>, pairs with this one. And <a href="../">the CHART program continues here</a>.</p>
+    </div>
+    <div class="bridge"><span class="b-label">Appendix</span><p>Every number in this course, <em>cited in full</em>.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ APPENDIX · SOURCES ═══════════ -->
+<section id="sources" class="th-light" aria-label="Appendix: sources">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="you-are">Every number in this course, cited in full.</span>
+      <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Appendix</span></span>
+      <h2>Where the numbers <em class="s">come from</em>.</h2>
+    </div>
+    <ol class="src-list">
+      <li class="src" id="src1">
+        <p>Deloitte, <em>State of AI in the Enterprise</em> (January 2026). Survey of 3,235 director- to C-suite leaders across 24 countries and six industries, fielded August to September 2025.
+          <span class="e-src">Cited for: 60% of organizations report enhanced decision-making and data-driven insights among the benefits achieved with AI; improved efficiency and productivity ranks first at 66%. <a href="https://www.deloitte.com/global/en/issues/generative-ai/state-of-ai-in-enterprise.html" target="_blank" rel="noopener">deloitte.com/global/en/issues/generative-ai/state-of-ai-in-enterprise.html</a></span></p>
+      </li>
+      <li class="src" id="src2">
+        <p>Stanford Graduate School of Business, &ldquo;You&rsquo;re in Charge: How to Use AI as a Powerful Decision-Making Tool,&rdquo; <em>Stanford GSB Insights</em> (February 2024). An If/Then podcast conversation with Kuang Xu, associate professor of operations, information, and technology.
+          <span class="e-src">Cited for: the framing that leaders should judge AI by the job it does in a decision (supplying information so the call is better informed) and stay in charge of the decision itself. <a href="https://www.gsb.stanford.edu/insights/youre-charge-how-use-ai-powerful-decision-making-tool" target="_blank" rel="noopener">gsb.stanford.edu/insights/youre-charge-how-use-ai-powerful-decision-making-tool</a></span></p>
+      </li>
+      <li class="src" id="src3">
+        <p>Fabrizio Dell&rsquo;Acqua et al., &ldquo;Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality,&rdquo; Harvard Business School Working Paper 24-013 (2023). Field experiment with 758 Boston Consulting Group consultants.
+          <span class="e-src">Cited for: on the 18 tasks within AI&rsquo;s capability, consultants using AI finished 12.2% more tasks, 25.1% faster, at more than 40% higher quality; on work beyond that frontier, relying on AI hurt performance. <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700" target="_blank" rel="noopener">hbs.edu/faculty/Pages/item.aspx?num=64700</a></span></p>
+      </li>
+      <li class="src" id="src4">
+        <p>Gary Klein, &ldquo;Performing a Project Premortem,&rdquo; <em>Harvard Business Review</em> 85, no. 9 (September 2007): 18&ndash;19.
+          <span class="e-src">Cited for: the premortem technique (assume the plan has already failed and write the reasons), and the finding that prospective hindsight increases the ability to correctly identify reasons for future outcomes by 30% (research by Mitchell, Russo &amp; Pennington, 1989). <a href="https://hbr.org/2007/09/performing-a-project-premortem" target="_blank" rel="noopener">hbr.org/2007/09/performing-a-project-premortem</a></span></p>
+      </li>
+      <li class="src" id="src5">
+        <p>Chancellor Daniel Diermeier, &ldquo;Daring to Grow,&rdquo; Vanderbilt University (July 2022).
+          <span class="e-src">Cited for: the vision the Chancellor&rsquo;s charge page draws from: Vanderbilt will define the great university of the 21st century and be it, operating at uncommon speed, agility, and scale; the three focus areas; and the reputation flywheel. <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener">news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century</a></span></p>
+      </li>
+    </ol>
+    <p class="prov"><b>CRIT</b> (Context, Role, Interview, Task) comes from Geoff Woods, best-selling author of <em>The AI-Driven Leader</em>; companion resources at <a href="https://aileadership.com" target="_blank" rel="noopener">aileadership.com</a>. The framework is taught in full, with the builder and grader, in <a href="../">the Working Smarter course</a>.</p>
+  </div>
+</section>
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="fcenter">
+      <img src="../assets/vu-centered-white@2x.png" alt="Vanderbilt University" width="100" height="105" loading="lazy" decoding="async" />
+      <p class="fprogram">Vanderbilt University &middot; The CHART Program &middot; A Managers Voyage course</p>
+      <p class="flegal">&copy; <span id="yr">2026</span> The CHART Program &middot; Vanderbilt. Content reviewed August 2026 &middot; program owner: Matt Estes. Teaching this live? <a href="../decisions-class/">Use the classroom edition</a>. An internal training prototype, <b>not an official Vanderbilt University site</b>. Product names (ChatGPT, Amplify, Microsoft Copilot) belong to their respective owners. Questions: <a href="mailto:matthew.estes@vanderbilt.edu">matthew.estes@vanderbilt.edu</a></p>
+      <span>
+        <button type="button" class="preset" id="progReset">Reset progress<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7M21 3v6h-6"/></svg></button>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════ PRINT-ONLY TAKEAWAY ═══════════════════
+     Hidden on screen; @media print swaps the app for this one page.
+     The mode classes below obey body[data-mode], so a classroom
+     printout carries Discussion notes and a self-paced one carries
+     the reflection/commitment block. Nothing here is stored or sent. -->
+<div id="printSummary" aria-hidden="true">
+  <div class="ps-head">
+    <p class="ps-title">Decisions, sharper</p>
+    <p class="ps-meta">Vanderbilt University &middot; The CHART Program &middot; A Managers Voyage course &middot; me5231979.github.io/estesstite/learn/decisions<!-- [EDIT · SCORM] swap for the LMS course link --></p>
+  </div>
+  <h2>The method: Widen &rarr; Weigh &rarr; Decide</h2>
+  <p><b>Widen:</b> lay the decision out with CRIT: Context (roles, never names), Role, Interview (&ldquo;before you answer, ask me about anything I have not considered&rdquo;), Task.</p>
+  <p><b>Weigh:</b> best, expected, and worst case; the premortem (&ldquo;it is six months later and this failed; write the honest retrospective&rdquo;); second-order effects and who is not in the room.</p>
+  <p><b>Decide:</b> the AI informs or recommends; it never decides. Make the call, record your reasoning, and disclose substantive AI help.</p>
+  <p class="ps-rule">The AI widens what you can see, and the decision stays yours.</p>
+  <h2>Your decision brief</h2>
+  <div class="ps-pre" id="psCrit">Context: ______________________________________________________________
+Role: _________________________________________________________________
+Interview: Before you answer, ask me about anything I have not considered.
+Task: _________________________________________________________________</div>
+  <h2>Three prompts you can use this week</h2>
+  <p class="ps-plabel">1 &middot; The conflicting recommendations (two leads, opposite answers)</p>
+  <div class="ps-pre">Context: Two experienced team leads who run the same service point have recommended opposite scheduling systems. One argues for a fixed-block schedule that gives staff predictable weeks. The other argues for a demand-based schedule that follows our busiest hours. Both cite coverage gaps this term. I supervise both leads and I owe them a decision.
+Role: You are a neutral operations advisor who has seen both approaches succeed and fail.
+Interview: Before you answer, ask me about anything I have not considered.
+Task: Map where the two recommendations actually agree, where they truly differ, and which facts would settle each difference. Then give me three questions to ask each lead. Do not pick a winner.</div>
+  <p class="ps-plabel">2 &middot; The scenario test (a coverage change, tested before you commit)</p>
+  <div class="ps-pre">Context: I manage a service desk that closes at 5 p.m. I am weighing extended coverage to 7 p.m. two evenings a week. The desk is staffed by student workers and two full-time staff members, described here by role only. Demand after 5 p.m. is real but not well measured. The budget for the extra hours would need my director's approval.
+Role: You are an experienced service operations manager who has run coverage changes like this one.
+Interview: Before you answer, ask me about anything I have not considered.
+Task: Give me the best case, the expected case, and the worst case for this change, and what would have to be true for each. Then run a premortem: it is six months later and the extended hours failed; write the honest retrospective. Finish with the second-order effects on the students and staff affected, including anyone not in the room for this decision.</div>
+  <p class="ps-plabel">3 &middot; The assumptions check (a budget pitch, stress-tested first). Internal figures stay in Copilot or Amplify</p>
+  <div class="ps-pre">Context: Pasted below is my draft budget request. I present it to my director next week. I want the weaknesses found now, in private, not in the meeting.
+Role: You are a skeptical budget director who has heard a hundred pitches and approved twelve.
+Interview: Before you answer, ask me about anything I have not considered.
+Task: List every assumption this plan makes, stated or unstated. Rank them from most fragile to most solid, and say what evidence would firm up the top three. Then write the three hardest questions my director will ask, and name the parts of the plan they will probe.</div>
+  <h2>The guardrails</h2>
+  <ol>
+    <li><b>Never personal or sensitive data.</b> No Social Security numbers, no health information, no performance records; describe situations as ROLES, NEVER NAMES. Personnel matters go to HR and your HR business partner. When in doubt, Amplify; when it&rsquo;s about a person, HR.</li>
+    <li><b>It informs or recommends; it never decides.</b> You design the AI&rsquo;s role for each decision, and the call stays with you.</li>
+    <li><b>Interrogate confident answers.</b> Ask what&rsquo;s missing and check any factual claim; the model argues any side persuasively.</li>
+    <li><b>Own it and show your work.</b> The decision and its consequences are yours; keep your reasoning in the record and disclose substantive AI help.</li>
+  </ol>
+  <h2>The tools</h2>
+  <p>Amplify &middot; www.vanderbilt.ai (internal or sensitive detail; the when-in-doubt choice) &nbsp;&bull;&nbsp; Microsoft Copilot &middot; copilot.microsoft.com (internal work via your Vanderbilt account, best when the plan lives in Office docs) &nbsp;&bull;&nbsp; ChatGPT EDU &middot; chat.openai.com (only when nothing internal or personal is involved)</p>
+  <div class="ps-block mode-class">
+    <h2>Discussion notes</h2>
+    <div class="ps-line"></div><div class="ps-line"></div><div class="ps-line"></div><div class="ps-line"></div>
+  </div>
+  <div class="ps-block mode-web">
+    <h2>My reflection / my commitment</h2>
+    <p id="psNote" hidden></p>
+    <div class="ps-line"></div><div class="ps-line"></div><div class="ps-line"></div><div class="ps-line"></div>
+  </div>
+  <h2>Keep learning</h2>
+  <p class="ps-kl">In Oracle Learning (search the name or OLC number): Making Key Decisions as a Manager (OLC3613209) &middot; Critical Thinking for Better Judgment and Decision-Making (OLC3602569) &middot; Decision-Making Strategies (OLC3558886) &middot; Overcoming Decision-Making Traps (OLC3627617). Online: this course &middot; me5231979.github.io/estesstite/learn/decisions &nbsp;&bull;&nbsp; Manager Foundations (Manager Voyage) &middot; me5231979.github.io/estesstite/learn/managers &nbsp;&bull;&nbsp; the CHART program &middot; me5231979.github.io/estesstite/learn<!-- [EDIT · SCORM] swap both printed URLs for the LMS links --></p>
+  <p class="ps-fine">Sources: 1&nbsp;Deloitte, State of AI in the Enterprise (2026), survey of 3,235 leaders &middot; 2&nbsp;Stanford GSB Insights, &ldquo;You&rsquo;re in Charge&rdquo; (2024) &middot; 3&nbsp;Dell&rsquo;Acqua et al., HBS Working Paper 24-013 (2023) &middot; 4&nbsp;Klein, Harvard Business Review 85(9) (2007) &middot; 5&nbsp;Chancellor Diermeier, &ldquo;Daring to Grow&rdquo; (2022). CRIT: Geoff Woods, The AI-Driven Leader (aileadership.com). Internal training prototype; not an official Vanderbilt University site.</p>
+</div>
+
+<!-- ═══════════════════ BOTTOM BOOK BAR ═══════════════════ -->
+<div class="book-bar" id="bookBar" role="navigation" aria-label="Book controls">
+  <div class="bb-left">
+    <span class="bb-sec" id="bbSec" aria-hidden="true">Welcome</span>
+    <button type="button" class="bb-done" id="bbDone" aria-pressed="false" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+      <span class="bb-done-t">Mark done</span></button>
+    <!-- the appendix (cited sources) is one tap from every page -->
+    <button type="button" class="bb-done" id="bbAppx" title="Appendix: every source cited in full">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span class="bb-done-t">Appendix</span></button>
+  </div>
+  <nav class="bb-dots" id="bbDots" aria-label="Course sections"></nav>
+  <div class="bb-ctl">
+    <span class="bb-count" id="bbCount" aria-live="polite">1 / 1</span>
+    <button type="button" class="bb-btn" id="pgPrev" aria-label="Previous page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <button type="button" class="bb-btn" id="pgNext" aria-label="Next page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</div>
+
+<script>
+/* ══════════ THE PAGER: the scroll site becomes a book ══════════
+   Adapted from the Working Smarter course. One section = one page here, so
+   every PLAN entry is whole-mode. If anything fails, the paged class is
+   removed and the original scroll layout stands. Storage: decisions-page. */
+(function(){
+'use strict';
+try{
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var main = document.getElementById('main');
+  if(!main) throw new Error('no main');
+  /* section plan: key = hash segment, label = bottom-bar name */
+  var PLAN = [
+    { sel:'section.hero', key:'home',       label:'Welcome' },
+    { sel:'#s-mission',   key:'mission',    label:'The Chancellor’s charge' },
+    { sel:'#evidence',    key:'evidence',   label:'The evidence' },
+    { sel:'#method',      key:'method',     label:'The method' },
+    { sel:'#ex-recs',    key:'ex-recs',   label:'Example: recommendations' },
+    { sel:'#ex-scenario', key:'ex-scenario',label:'Example: scenario test' },
+    { sel:'#ex-assume',  key:'ex-assume', label:'Example: assumptions' },
+    { sel:'#guardrails',  key:'guardrails', label:'Guardrails' },
+    { sel:'#practice',    key:'practice',   label:'Practice now' },
+    { sel:'#check',       key:'check',      label:'Knowledge check' },
+    { sel:'#recap',       key:'recap',      label:'Recap' },
+    { sel:'#sources',     key:'sources',    label:'Appendix', extras:['footer'] }
+  ];
+  /* dots: the nine pages, in course order (mirrors PROG_SECTIONS below) */
+  var TRACKED = [
+    ['home','01','Welcome'], ['mission','02','The Chancellor’s charge'],
+    ['evidence','03','The evidence'], ['method','04','The method'],
+    ['ex-recs','05','Example: the recommendations'], ['ex-scenario','06','Example: the scenario test'],
+    ['ex-assume','07','Example: the assumptions check'], ['guardrails','08','Guardrails'],
+    ['practice','09','Practice now'], ['check','10','Knowledge check'],
+    ['recap','11','Recap'], ['sources','12','Appendix']
+  ];
+  var pages = [];       /* { el, key, secLabel, pgLabel, n } */
+  var secFirst = {};    /* key -> first page index */
+  var topSpan = document.getElementById('top');
+  var frag = document.createDocumentFragment();
+
+  function mkPage(key, secLabel, pgLabel){
+    var art = document.createElement('article');
+    art.className = 'page';
+    art.setAttribute('data-sec', key);
+    art.setAttribute('data-label', pgLabel);
+    art.setAttribute('aria-hidden', 'true');
+    art.tabIndex = -1;
+    if(!(key in secFirst)) secFirst[key] = pages.length;
+    var meta = { el:art, key:key, secLabel:secLabel, pgLabel:pgLabel, n:1 };
+    pages.push(meta);
+    frag.appendChild(art);
+    return meta;
+  }
+  PLAN.forEach(function(cfg){
+    var S = main.querySelector(cfg.sel) || document.querySelector(cfg.sel);
+    if(!S) return;
+    var pg = mkPage(cfg.key, cfg.label, cfg.label);
+    pg.el.appendChild(S);
+    (cfg.extras || []).forEach(function(x){
+      var ex = (x === 'footer') ? document.querySelector('body > footer') : main.querySelector(x);
+      if(ex) pg.el.appendChild(ex);
+    });
+  });
+  if(!pages.length) throw new Error('no pages');
+  pages.forEach(function(p){ p.el.setAttribute('aria-label', p.secLabel); });
+  /* rebuild the stage */
+  while(main.firstChild) main.removeChild(main.firstChild);
+  main.appendChild(frag);
+  if(topSpan && pages[0]) pages[0].el.insertBefore(topSpan, pages[0].el.firstChild);
+  var more = document.createElement('span');
+  more.id = 'pgMore';
+  more.setAttribute('aria-hidden', 'true');
+  more.innerHTML = 'Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+  main.appendChild(more);
+
+  /* bottom bar */
+  var bbSec = document.getElementById('bbSec'), bbDots = document.getElementById('bbDots'),
+      bbCount = document.getElementById('bbCount'),
+      prevBtn = document.getElementById('pgPrev'), nextBtn = document.getElementById('pgNext');
+  if(bbDots){
+    bbDots.innerHTML = TRACKED.map(function(s){
+      return '<a class="bb-dot" href="#p/' + s[0] + '/1" data-rail="' + s[0] + '"' +
+        ' title="' + s[1] + ' · ' + s[2] + ' · not yet" aria-label="' + s[2] + ', not done">' +
+        '<span class="dot" aria-hidden="true"></span></a>';
+    }).join('');
+  }
+
+  var cur = -1, animT = null;
+  var store = (function(){
+    try{ var t = 'decisions-page-test'; window.localStorage.setItem(t,'1'); window.localStorage.removeItem(t); return window.localStorage; }
+    catch(e){ return null; }
+  })();
+  function writeHash(p){
+    try{ window.history.replaceState(null, '', '#p/' + p.key + '/' + p.n); }catch(e){}
+    if(store){ try{ store.setItem('decisions-page', p.key + '/' + p.n); }catch(e){} }
+  }
+  function hashIndex(h){
+    if(!h) return null;
+    h = String(h).replace(/^#/, '');
+    if(!h) return null;
+    if(h.indexOf('p/') === 0){
+      var bits = h.split('/');
+      var k = bits[1];
+      return (k in secFirst) ? secFirst[k] : null;
+    }
+    if(h === 'top' || h === 'main') return 0;
+    var el = document.getElementById(h);
+    if(!el) return null;
+    var pg = el.closest ? el.closest('.page') : null;
+    if(!pg) return null;
+    for(var j = 0; j < pages.length; j++){ if(pages[j].el === pg) return j; }
+    return null;
+  }
+  function checkMore(){
+    if(cur < 0) return;
+    var el = pages[cur].el;
+    var scrollable = el.scrollHeight - el.clientHeight > 24;
+    var nearEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 32;
+    main.classList.toggle('more', scrollable && !nearEnd);
+  }
+  function updateBar(){
+    var p = pages[cur];
+    if(bbSec) bbSec.textContent = p.secLabel;
+    if(bbCount) bbCount.textContent = (cur + 1) + ' / ' + pages.length;
+    if(prevBtn) prevBtn.disabled = cur === 0;
+    if(nextBtn) nextBtn.disabled = cur === pages.length - 1;
+    document.querySelectorAll('.bb-dot').forEach(function(a){
+      var on = a.getAttribute('data-rail') === p.key;
+      a.classList.toggle('cur', on);
+      if(on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  }
+  function clearAnim(){
+    pages.forEach(function(p){ p.el.classList.remove('pg-in-r','pg-in-l','pg-out','pg-out-l','pg-out-r'); });
+  }
+  function go(i, opts){
+    opts = opts || {};
+    if(typeof i !== 'number' || i < 0 || i >= pages.length) return;
+    if(i === cur){ if(opts.focus) pages[i].el.focus({ preventScroll:true }); return; }
+    var from = cur >= 0 ? pages[cur] : null;
+    var to = pages[i];
+    var dir = from && i < cur ? -1 : 1;
+    cur = i;
+    if(animT){ window.clearTimeout(animT); animT = null; clearAnim(); }
+    to.el.scrollTop = 0;
+    to.el.classList.add('cur');
+    to.el.removeAttribute('aria-hidden');
+    if(from){
+      from.el.classList.remove('cur');
+      from.el.setAttribute('aria-hidden', 'true');
+      if(!reduce){
+        to.el.classList.add(dir > 0 ? 'pg-in-r' : 'pg-in-l');
+        from.el.classList.add('pg-out', dir > 0 ? 'pg-out-l' : 'pg-out-r');
+        animT = window.setTimeout(function(){ animT = null; clearAnim(); }, 420);
+      }
+      /* focus must never be stranded in a hidden page */
+      var ae = document.activeElement;
+      if(opts.focus || (ae && from.el.contains(ae))) to.el.focus({ preventScroll:true });
+    } else if(opts.focus){
+      to.el.focus({ preventScroll:true });
+    }
+    updateBar();
+    writeHash(to);
+    checkMore();
+    try{
+      document.dispatchEvent(new CustomEvent('decisions:page', { detail:{ key:to.key, index:cur, label:to.pgLabel } }));
+    }catch(e){}
+  }
+  window.decisionsPager = {
+    go: go,
+    goToKey: function(k){ if(k in secFirst) go(secFirst[k]); },
+    current: function(){ return cur >= 0 ? { key: pages[cur].key, index: cur } : { key:'', index:0 }; },
+    count: pages.length
+  };
+
+  /* in-page anchors turn pages instead of scrolling */
+  document.addEventListener('click', function(e){
+    if(e.defaultPrevented) return;
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(!a) return;
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    var id = href.slice(1);
+    if(id === 'main'){ e.preventDefault(); if(cur >= 0) pages[cur].el.focus({ preventScroll:true }); return; }
+    var idx = hashIndex(href);
+    if(idx === null) return;
+    e.preventDefault();
+    go(idx, { focus:true });
+    var el = document.getElementById(id);
+    if(el && pages[idx].el.contains(el) && el !== pages[idx].el){
+      try{ el.scrollIntoView({ block:'start' }); }catch(err){}
+    }
+  });
+  window.addEventListener('hashchange', function(){
+    var idx = hashIndex(window.location.hash);
+    if(idx !== null && idx !== cur) go(idx);
+  });
+  /* book controls */
+  if(prevBtn) prevBtn.addEventListener('click', function(){ go(cur - 1); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ go(cur + 1); });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    if(e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    var t = e.target;
+    if(t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT' || t.isContentEditable)) return;
+    if(document.body.classList.contains('menu-open')) return;
+    e.preventDefault();
+    go(cur + (e.key === 'ArrowRight' ? 1 : -1));
+  });
+  /* touch swipe: horizontal, ~50px threshold, ignores mostly-vertical drags */
+  var sx = 0, sy = 0, swiping = false;
+  main.addEventListener('touchstart', function(e){
+    if(e.touches.length === 1){ sx = e.touches[0].clientX; sy = e.touches[0].clientY; swiping = true; }
+    else swiping = false;
+  }, { passive:true });
+  main.addEventListener('touchend', function(e){
+    if(!swiping) return;
+    swiping = false;
+    var t = e.changedTouches && e.changedTouches[0];
+    if(!t) return;
+    var dx = t.clientX - sx, dy = t.clientY - sy;
+    if(Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(cur + (dx < 0 ? 1 : -1));
+  }, { passive:true });
+  /* internal-scroll affordance */
+  window.addEventListener('resize', checkMore, { passive:true });
+  document.addEventListener('scroll', function(e){
+    if(cur >= 0 && e.target === pages[cur].el) checkMore();
+  }, true);
+  window.addEventListener('load', checkMore);
+  if(window.ResizeObserver){
+    try{
+      var ro = new ResizeObserver(function(){ checkMore(); });
+      pages.forEach(function(p){
+        Array.prototype.slice.call(p.el.children).forEach(function(ch){ ro.observe(ch); });
+      });
+    }catch(e){}
+  }
+
+  /* open at: deep link > page one. The course always starts on the
+     mode question; only an explicit #p/... hash overrides that. */
+  var startIdx = hashIndex(window.location.hash);
+  go(startIdx === null ? 0 : startIdx);
+}catch(err){
+  /* build failed: fall back to the original scroll layout */
+  document.documentElement.classList.remove('paged');
+  var bar = document.getElementById('bookBar');
+  if(bar) bar.hidden = true;
+}
+})();
+</script>
+
+<script src="../assets/js/qrcode.js"></script>
+<script>
+(function(){
+'use strict';
+var yr = document.getElementById('yr'); if(yr) yr.textContent = new Date().getFullYear();
+
+/* ══════════ QR: encodes the hosted URL, drawn client-side (no network) ══════════ */
+var qrBox = document.getElementById('qrBox');
+if(qrBox && typeof qrcode === 'function'){
+  var qrCard = document.getElementById('qrCard');
+  var qrTarget = (qrCard && qrCard.getAttribute('data-url')) ||
+    (location.protocol === 'file:' ? '' : location.origin + location.pathname);
+  var qrUrlEl = document.getElementById('qrUrl');
+  if(qrTarget){
+    try{
+      var qr = qrcode(0, 'M');
+      qr.addData(qrTarget);
+      qr.make();
+      qrBox.innerHTML = qr.createSvgTag({ scalable:true, margin:2 });
+      if(qrUrlEl) qrUrlEl.textContent = qrTarget.replace(/^https?:\/\//, '').replace(/\/$/, '');
+    }catch(err){
+      if(qrBox.parentElement) qrBox.parentElement.style.display = 'none';
+    }
+  } else {
+    if(qrUrlEl) qrUrlEl.textContent = 'QR appears when the site is hosted';
+    qrBox.innerHTML = '<div style="width:100%;aspect-ratio:1;display:grid;place-items:center;border:1px dashed #E4E4E4;color:#777;font-family:Inter,Arial,sans-serif;font-size:.8rem;padding:1rem;text-align:center">Deploy to generate the QR code</div>';
+  }
+}
+
+/* ══════════ nav shade + mobile menu ══════════ */
+var nav = document.getElementById('nav');
+function navShade(idx){ if(nav) nav.classList.toggle('scrolled', idx > 0); }
+document.addEventListener('decisions:page', function(ev){ navShade(ev.detail ? ev.detail.index : 0); });
+if(window.decisionsPager) navShade(window.decisionsPager.current().index);
+
+var menuBtn = document.getElementById('menuBtn'), mobileMenu = document.getElementById('mobileMenu');
+function setMenu(open){
+  var wasOpen = document.body.classList.contains('menu-open');
+  document.body.classList.toggle('menu-open', open);
+  if(menuBtn){ menuBtn.setAttribute('aria-expanded', open?'true':'false'); menuBtn.setAttribute('aria-label', open?'Close menu':'Open menu'); }
+  if(open && mobileMenu){
+    var first = mobileMenu.querySelector('a');
+    if(first) first.focus();
+  } else if(wasOpen && !open && menuBtn){
+    menuBtn.focus();
+  }
+}
+if(menuBtn) menuBtn.addEventListener('click', function(){ setMenu(!document.body.classList.contains('menu-open')); });
+if(mobileMenu) mobileMenu.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') setMenu(false); });
+/* trap Tab inside the open mobile menu */
+document.addEventListener('keydown', function(e){
+  if(e.key !== 'Tab' || !document.body.classList.contains('menu-open') || !mobileMenu) return;
+  var items = Array.prototype.slice.call(mobileMenu.querySelectorAll('a'));
+  if(menuBtn) items.unshift(menuBtn);
+  if(!items.length) return;
+  var first = items[0], last = items[items.length - 1];
+  var active = document.activeElement, idx = items.indexOf(active);
+  if(idx === -1){ e.preventDefault(); first.focus(); }
+  else if(e.shiftKey && active === first){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && active === last){ e.preventDefault(); first.focus(); }
+});
+
+/* ══════════ MODE: class vs web ══════════
+   decisions-mode holds 'class' or 'web'; web is the default until chosen.
+   body[data-mode] drives which .mode-* blocks show (on screen AND in the
+   print takeaway). The picker cards and the bottom-bar switch stay in step. */
+var MODE_KEY = 'decisions-mode-locked';
+var modeMem = 'web';
+var modeStore = (function(){
+  try{ var t = MODE_KEY + '-test'; window.localStorage.setItem(t,'1'); window.localStorage.removeItem(t); return window.localStorage; }
+  catch(e){ return null; }
+})();
+function modeGet(){
+  if(modeStore){
+    try{ var v = modeStore.getItem(MODE_KEY); if(v === 'class' || v === 'web') return v; }catch(e){}
+  }
+  return modeMem;
+}
+function modeSet(v){
+  modeMem = (v === 'class') ? 'class' : 'web';
+  if(modeStore){ try{ modeStore.setItem(MODE_KEY, modeMem); }catch(e){} }
+  modeRender();
+}
+var bbModeBtn = document.getElementById('bbMode'), bbModeT = document.getElementById('bbModeT'),
+    bbModeIcC = document.getElementById('bbModeIcClass'), bbModeIcW = document.getElementById('bbModeIcWeb');
+function modeRender(){
+  var m = modeGet();
+  document.body.setAttribute('data-mode', m);
+  document.querySelectorAll('.mode-card').forEach(function(c){
+    c.setAttribute('aria-pressed', c.getAttribute('data-mode-pick') === m ? 'true' : 'false');
+  });
+  if(bbModeT) bbModeT.textContent = m === 'class' ? 'Mode: class' : 'Mode: solo';
+  /* attribute, not property: SVGElement has no .hidden IDL, so the property would be an inert expando */
+  if(bbModeIcC){ if(m === 'class') bbModeIcC.removeAttribute('hidden'); else bbModeIcC.setAttribute('hidden',''); }
+  if(bbModeIcW){ if(m === 'web') bbModeIcW.removeAttribute('hidden'); else bbModeIcW.setAttribute('hidden',''); }
+  if(bbModeBtn){
+    bbModeBtn.setAttribute('aria-label', m === 'class'
+      ? 'Mode: in a classroom. Select to switch to self-paced.'
+      : 'Mode: self-paced. Select to switch to classroom.');
+    bbModeBtn.setAttribute('title', m === 'class' ? 'Switch to self-paced' : 'Switch to classroom');
+  }
+}
+document.querySelectorAll('.mode-card').forEach(function(c){
+  c.addEventListener('click', function(){
+    modeSet(c.getAttribute('data-mode-pick'));
+    /* answering the question turns the page: the chosen state shows for a
+       beat, then the course continues into the welcome for that mode */
+    if(document.documentElement.classList.contains('paged')){
+      setTimeout(function(){ var n = document.getElementById('pgNext'); if(n) n.click(); }, 600);
+    }
+  });
+});
+if(bbModeBtn) bbModeBtn.addEventListener('click', function(){ modeSet(modeGet() === 'class' ? 'web' : 'class'); });
+
+/* ══════════ your CRIT brief: typed fields feed the preview and the printout ══════════ */
+var critStore = modeStore;
+var CF = { context:document.getElementById('cfContext'), role:document.getElementById('cfRole'), task:document.getElementById('cfTask') };
+var cfNote = document.getElementById('cfNote');
+var tplPre = document.getElementById('tplcode');
+function cfVal(el){ return el && el.value.trim() ? el.value.trim() : '___'; }
+function critText(){
+  return 'Context: ' + cfVal(CF.context) + '\nRole: ' + cfVal(CF.role) +
+         '\nInterview: Before you answer, ask me about anything I have not considered.\nTask: ' + cfVal(CF.task);
+}
+function critRender(){ if(tplPre) tplPre.textContent = critText(); }
+Object.keys(CF).forEach(function(k){
+  if(!CF[k]) return;
+  CF[k].addEventListener('input', function(){
+    critRender();
+    if(critStore){ try{ CF[k].value.trim() ? critStore.setItem('decisions-crit-' + k, CF[k].value) : critStore.removeItem('decisions-crit-' + k); }catch(e){} }
+  });
+});
+if(cfNote) cfNote.addEventListener('input', function(){
+  if(critStore){ try{ cfNote.value.trim() ? critStore.setItem('decisions-note', cfNote.value) : critStore.removeItem('decisions-note'); }catch(e){} }
+});
+if(critStore){
+  try{
+    Object.keys(CF).forEach(function(k){ var v = critStore.getItem('decisions-crit-' + k); if(v && CF[k]) CF[k].value = v; });
+    var n = critStore.getItem('decisions-note'); if(n && cfNote) cfNote.value = n;
+  }catch(e){}
+}
+critRender();
+
+/* ══════════ print takeaway: carries what the learner typed ══════════ */
+function fillPrint(){
+  var pc = document.getElementById('psCrit');
+  if(pc){
+    var typed = (CF.context && CF.context.value.trim()) || (CF.role && CF.role.value.trim()) || (CF.task && CF.task.value.trim());
+    pc.textContent = typed ? critText() :
+      'Context: ______________________________________________________________\nRole: _________________________________________________________________\nInterview: Before you answer, ask me about anything I have not considered.\nTask: _________________________________________________________________';
+  }
+  var pn = document.getElementById('psNote');
+  if(pn){
+    var note = cfNote && cfNote.value.trim();
+    if(note){ pn.textContent = '“' + note + '”'; pn.removeAttribute('hidden'); }
+    else { pn.textContent = ''; pn.setAttribute('hidden',''); }
+  }
+}
+window.addEventListener('beforeprint', fillPrint);
+document.querySelectorAll('.print-btn').forEach(function(b){
+  b.addEventListener('click', function(){ fillPrint(); window.print(); });
+});
+
+/* ══════════ knowledge check: instant feedback, nothing stored or sent ══════════ */
+document.querySelectorAll('[data-q]').forEach(function(q){
+  var opts = q.querySelectorAll('.qopt'), x = q.querySelector('.qz-x');
+  opts.forEach(function(o){
+    o.addEventListener('click', function(){
+      opts.forEach(function(b){ b.classList.remove('ok','no'); });
+      if(o.getAttribute('data-ok') === '1'){ o.classList.add('ok'); }
+      else{
+        o.classList.add('no');
+        q.querySelectorAll('.qopt[data-ok="1"]').forEach(function(c){ c.classList.add('ok'); });
+      }
+      if(x) x.hidden = false;
+    });
+  });
+});
+
+/* ══════════ the two-week check-in, as a calendar file ══════════ */
+var icsBtn = document.getElementById('icsBtn');
+if(icsBtn) icsBtn.addEventListener('click', function(){
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function f(t){ return t.getFullYear() + pad(t.getMonth() + 1) + pad(t.getDate()) + 'T' + pad(t.getHours()) + pad(t.getMinutes()) + '00'; }
+  var d = new Date(Date.now() + 14 * 86400000); d.setHours(8, 30, 0, 0);
+  var e = new Date(d.getTime() + 15 * 60000);
+  var ics = 'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//CHARTProgram//DecisionsSharper//EN\r\nBEGIN:VEVENT\r\nUID:chart-decisions-' + d.getTime() + '@vanderbilt\r\n' +
+    'DTSTAMP:' + f(new Date()) + '\r\nDTSTART:' + f(d) + '\r\nDTEND:' + f(e) + '\r\n' +
+    'SUMMARY:Decisions check-in: did the calls stay yours?\r\n' +
+    /* [EDIT · SCORM] swap the refresher URL below for the LMS course link */
+    'DESCRIPTION:Two weeks since the Decisions Sharper course. Quick check: are you widening the view before the call with scenarios and a premortem? Does the AI inform without deciding? Refresher: me5231979.github.io/estesstite/learn/decisions\r\n' +
+    'END:VEVENT\r\nEND:VCALENDAR\r\n';
+  var blob = new Blob([ics], { type:'text/calendar' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'chart-decisions-checkin.ics';
+  document.body.appendChild(a); a.click();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+});
+
+/* ══════════ bottom-bar appendix jump ══════════ */
+var bbAppx = document.getElementById('bbAppx');
+if(bbAppx) bbAppx.addEventListener('click', function(){ window.location.hash = 'p/sources/1'; });
+
+/* ══════════ copy buttons (clipboard, with fallback) ══════════ */
+function copyText(txt, labelEl, okMsg){
+  var orig = labelEl.textContent;
+  function done(msg){
+    labelEl.textContent = msg;
+    labelEl.classList.add('copied');
+    window.setTimeout(function(){ labelEl.textContent = orig; labelEl.classList.remove('copied'); }, 1800);
+  }
+  function fallback(){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly','');
+      ta.style.position = 'fixed'; ta.style.left = '-9999px';
+      document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      done(ok ? okMsg : 'Select & copy manually');
+    }catch(e){ done('Select & copy manually'); }
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){ done(okMsg); }, fallback);
+  } else { fallback(); }
+}
+document.querySelectorAll('.copy-btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    var src = document.getElementById(b.getAttribute('data-copy'));
+    var label = b.querySelector('span');
+    if(src && label) copyText(src.textContent, label, 'Copied');
+  });
+});
+
+/* ══════════ PROGRESS: per-page completion, saved in this browser only ══════════
+   localStorage keys decisions-progress-<page> hold booleans; decisions-page holds
+   the last open page. Nothing typed is ever stored, nothing is ever sent. */
+var PROG_KEY = 'decisions-progress-';
+var PROG_SECTIONS = [
+  { k:'home',        no:'01', name:'Welcome' },
+  { k:'mission',     no:'02', name:'The Chancellor’s charge' },
+  { k:'evidence',    no:'03', name:'The evidence' },
+  { k:'method',      no:'04', name:'The method' },
+  { k:'ex-recs',     no:'05', name:'Example: the recommendations' },
+  { k:'ex-scenario', no:'06', name:'Example: the scenario test' },
+  { k:'ex-assume',   no:'07', name:'Example: the assumptions check' },
+  { k:'guardrails',  no:'08', name:'Guardrails' },
+  { k:'practice',    no:'09', name:'Practice now' },
+  { k:'check',       no:'10', name:'Knowledge check' },
+  { k:'recap',       no:'11', name:'Recap' },
+  { k:'sources',     no:'12', name:'Appendix' }
+];
+var progMem = {};
+var progStore = (function(){
+  try{
+    var t = PROG_KEY + 'test';
+    window.localStorage.setItem(t, '1');
+    window.localStorage.removeItem(t);
+    return window.localStorage;
+  }catch(e){ return null; }
+})();
+function progIs(k){
+  if(progStore){ try{ return progStore.getItem(PROG_KEY + k) === '1'; }catch(e){} }
+  return progMem[k] === true;
+}
+function progWrite(k, v){
+  progMem[k] = !!v;
+  if(progStore){ try{ v ? progStore.setItem(PROG_KEY + k, '1') : progStore.removeItem(PROG_KEY + k); }catch(e){} }
+}
+function progRender(){
+  PROG_SECTIONS.forEach(function(s){
+    var done = progIs(s.k);
+    var dot = document.querySelector('.bb-dot[data-rail="' + s.k + '"]');
+    if(dot){
+      dot.classList.toggle('done', done);
+      dot.setAttribute('aria-label', s.name + ', ' + (done ? 'done' : 'not done'));
+      dot.setAttribute('title', s.no + ' · ' + s.name + ' · ' + (done ? 'done' : 'not yet'));
+    }
+  });
+  bbDoneSync();
+}
+/* bottom-bar "Mark done": completes the current page */
+var bbDoneBtn = document.getElementById('bbDone');
+function bbDoneSync(){
+  if(!bbDoneBtn) return;
+  var curKey = (window.decisionsPager && window.decisionsPager.current) ? window.decisionsPager.current().key : '';
+  var sec = null;
+  PROG_SECTIONS.forEach(function(s){ if(s.k === curKey) sec = s; });
+  if(!sec){ bbDoneBtn.hidden = true; bbDoneBtn.removeAttribute('data-prog'); return; }
+  var done = progIs(sec.k);
+  bbDoneBtn.hidden = false;
+  bbDoneBtn.setAttribute('data-prog', sec.k);
+  bbDoneBtn.setAttribute('aria-pressed', done ? 'true' : 'false');
+  bbDoneBtn.setAttribute('aria-label', done ? sec.name + ' completed. Select to un-mark.' : 'Mark done: ' + sec.name);
+  if(done) bbDoneBtn.setAttribute('title', 'Select to un-mark'); else bbDoneBtn.removeAttribute('title');
+  var t = bbDoneBtn.querySelector('.bb-done-t');
+  if(t) t.textContent = done ? 'Completed' : 'Mark done';
+}
+if(bbDoneBtn) bbDoneBtn.addEventListener('click', function(){
+  var k = bbDoneBtn.getAttribute('data-prog');
+  if(!k) return;
+  progWrite(k, !progIs(k));
+  progRender();
+});
+document.addEventListener('decisions:page', progRender);
+
+/* ══════════ auto-complete: finishing a page's activity marks it done.
+   The Mark done button still works both ways for manual control.
+   Activity pages have their own triggers (below); content pages
+   complete themselves when the learner turns past them. ══════════ */
+function progAuto(k){ if(!progIs(k)){ progWrite(k, true); progRender(); } }
+var AUTO_ON_LEAVE = { home:1, mission:1, evidence:1, method:1, 'ex-recs':1, 'ex-scenario':1, 'ex-assume':1, guardrails:1, recap:1, sources:1 };
+var lastPageKey = null;
+document.addEventListener('decisions:page', function(){
+  var cur = (window.decisionsPager && window.decisionsPager.current) ? window.decisionsPager.current().key : null;
+  if(lastPageKey && lastPageKey !== cur && AUTO_ON_LEAVE[lastPageKey]) progAuto(lastPageKey);
+  lastPageKey = cur;
+});
+/* mode page: choosing a mode is the activity */
+document.querySelectorAll('.mode-card').forEach(function(c){
+  c.addEventListener('click', function(){ progAuto('mode'); });
+});
+/* knowledge check: all three questions answered */
+document.querySelectorAll('[data-q] .qopt').forEach(function(o){
+  o.addEventListener('click', function(){
+    var q = o.closest('[data-q]'); if(q) q.setAttribute('data-answered', '1');
+    var qs = document.querySelectorAll('[data-q]');
+    var all = Array.prototype.every.call(qs, function(x){ return x.getAttribute('data-answered') === '1'; });
+    if(all) progAuto('check');
+  });
+});
+/* practice: a filled brief, or copying it, is the activity */
+function cfFilled(){ return CF.context && CF.role && CF.task &&
+  CF.context.value.trim() && CF.role.value.trim() && CF.task.value.trim(); }
+Object.keys(CF).forEach(function(k){
+  if(CF[k]) CF[k].addEventListener('input', function(){ if(cfFilled()) progAuto('practice'); });
+});
+document.querySelectorAll('.copy-btn[data-copy="tplcode"]').forEach(function(b){
+  b.addEventListener('click', function(){
+    if((CF.context && CF.context.value.trim()) || (CF.role && CF.role.value.trim()) || (CF.task && CF.task.value.trim())) progAuto('practice');
+  });
+});
+/* recap: printing the plan or booking the check-in is the activity */
+if(icsBtn) icsBtn.addEventListener('click', function(){ progAuto('recap'); });
+document.querySelectorAll('#recap .print-btn').forEach(function(b){
+  b.addEventListener('click', function(){ progAuto('recap'); });
+});
+
+/* footer reset: clears every decisions-* key (progress, last-open page, mode) */
+var progReset = document.getElementById('progReset');
+if(progReset) progReset.addEventListener('click', function(){
+  progMem = {};
+  modeMem = 'web';
+  var st = progStore || modeStore;
+  if(st){
+    try{
+      var kill = [];
+      for(var i = 0; i < st.length; i++){
+        var key = st.key(i);
+        if(key && key.indexOf('decisions-') === 0) kill.push(key);
+      }
+      kill.forEach(function(key){ st.removeItem(key); });
+    }catch(e){}
+  }
+  progRender();
+  modeRender();
+  try{
+    ['cfContext','cfRole','cfTask','cfNote'].forEach(function(id){ var el = document.getElementById(id); if(el) el.value = ''; });
+    if(typeof critRender === 'function') critRender();
+  }catch(e){}
+});
+progRender();
+modeRender();
+})();
+</script>
+</body>
+</html>

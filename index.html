@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Vanderbilt Staff Learning Collection</title>
+<meta name="description" content="The Vanderbilt Staff Learning Collection: live, interactive classroom courses with matching facilitator editions, ready to deliver in person or virtually.">
+<link rel="canonical" href="./">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Vanderbilt Staff Learning Collection">
+<meta property="og:description" content="Live, interactive classroom courses with scripted facilitator editions. Pick a course and deliver it, in person or virtually.">
+<meta property="og:url" content="./">
+<meta property="og:image" content="./assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Vanderbilt Staff Learning Collection">
+<meta name="twitter:image" content="./assets/img/social-card.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-96.png">
+<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css?v=10">
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#courses">Skip to courses</a>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <nav class="nav__links" aria-label="Sections">
+    <a href="#courses">Courses</a>
+    <a href="#how">How It Works</a>
+    <a class="btn" href="#courses">Pick a course</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero on-dark">
+    <div class="wrap">
+      <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" class="hero__mark" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt University · For Staff</p>
+      <h1 class="h-hero" data-reveal>The Staff Learning <em class="gold-text">Collection</em>.</h1>
+      <p class="lead" data-reveal>Every course here is a live, interactive website instead of a slide deck. The facilitator projects it; learners scan a QR code and work every exercise on their own devices; the link from class is the reference they keep. Each course ships with a scripted facilitator edition, so any trained facilitator can pick one up and deliver it, in person or virtually.</p>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#courses">Browse the courses</a>
+        <a class="btn btn--ghost" href="#how">How it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COURSES ============ -->
+  <section class="section on-cream" id="courses">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The catalog</p>
+      <h2 class="h2" data-reveal>Pick a course. It's <em>ready</em>.</h2>
+      <p class="lead" data-reveal>Each card links to three editions of the same course: the classroom experience your learners see, the facilitator edition with the full delivery script beside every slide, and a self-paced edition for working through it at your own desk. A few self-paced editions are still on the way.</p>
+
+      <div class="filterbar" id="filterbar" data-reveal role="group" aria-label="Filter courses by topic">
+        <button class="filterchip" data-topic="all" aria-pressed="true">All courses</button>
+        <button class="filterchip" data-topic="ai" aria-pressed="false">AI &amp; Data</button>
+        <button class="filterchip" data-topic="communication" aria-pressed="false">Communication</button>
+        <button class="filterchip" data-topic="leadership" aria-pressed="false">Leadership &amp; Coaching</button>
+        <span class="viewgroup" role="group" aria-label="Catalog layout">
+          <button class="filterchip viewchip" data-view="cards" aria-pressed="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            Card view</button>
+          <button class="filterchip viewchip" data-view="list" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+            List view</button>
+        </span>
+      </div>
+
+      <div class="courses" id="catalog">
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">Start here &middot; for absolute beginners &middot; Part of the CHART Program</p>
+          <h3>Start Smarter</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 60 min &middot; Self-paced ~25 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Digital Fluency/Information Literacy</span><span class="skillpill">Data Security</span></div>
+          <p class="course__desc">Never used AI? Start here. Five plain-language ideas with zero jargon: what AI actually is, how to ask it for help in ordinary English, the traffic-light rule for what's safe to paste, the five chores it does best, and a first try you build in the session and run this week.</p>
+          <ul class="course__meta">
+            <li>5 ideas &middot; 4 trainers + prompt builder</li>
+            <li>Classroom 60 min (30 core) &middot; self-paced ~25 min &middot; no prerequisites</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-start-smarter.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Say what AI is in one plain sentence, and spot it in tools you already use every day</li><li>Ask AI for help in ordinary English, and make the answer better with one follow-up</li><li>Know the traffic-light rule: what's fine to ask, what needs an approved tool, what never goes in</li><li>Name five everyday chores AI can take off your plate</li><li>Make your first try this week, with a starter prompt you build in the session and keep</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/start-smarter/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/start-smarter/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/start-smarter/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/start-smarter/cheatsheet.html">cheat sheet</a> &middot; <a href="courses/start-smarter/worksheet.html">first-try card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai communication">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>First Drafts, Faster</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 45 min &middot; Self-paced ~15 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Business Writing</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Editing &amp; Proofreading</span></div>
+          <p class="course__desc">Save time and be more efficient in writing and editing communications. One method, brief, draft, edit: the AI writes the first draft and you edit the version that gets sent. Three worked examples (an email, an announcement, a summary), a practice report to run, every claim cited, and a printable one-page plan.</p>
+          <ul class="course__meta">
+            <li>11 pages &middot; 3 worked examples + knowledge check</li>
+            <li>Classroom: one live session &middot; self-paced ~15 min</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-first-drafts-faster.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Brief an AI like a colleague using CRIT: Context, Role, Interview, Task</li><li>Produce a usable first draft of an email, announcement, or summary without starting from a blank page</li><li>Edit an AI draft into your own: restore your voice, verify every fact, cut what isn&rsquo;t needed</li><li>Route each writing task to the right Vanderbilt tool by data sensitivity</li><li>Apply the method to tomorrow&rsquo;s first piece of writing, and leave with a printed plan</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/drafts-class/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/drafts-class/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/drafts/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: printable one-page plan, inside the course &middot; Part of <a href="learn/">the CHART Program</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Answers, Faster</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 45 min &middot; Self-paced ~15 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Digital Fluency/Information Literacy</span><span class="skillpill">Critical Thinking</span></div>
+          <p class="course__desc">Find, check, and summarize information in a fraction of the time. One method, ask, anchor, check: brief the question with CRIT, give the AI the source, then open the citation and confirm before anything gets used. Three worked examples (a long policy, a web comparison, a synthesis of notes), a real question of your own, every claim cited, and a printable one-page plan.</p>
+          <ul class="course__meta">
+            <li>11 pages &middot; 3 worked examples + knowledge check</li>
+            <li>About 15 minutes self-paced &middot; one session live</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-answers-faster.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Brief a real question with CRIT (Context, Role, Interview, Task) the way you&rsquo;d brief a colleague</li><li>Anchor the AI in a real source, and ask for a page or section reference with every claim</li><li>Open the citation and confirm an answer before it gets used, because a wrong answer reads exactly like a right one</li><li>Apply the four rules: safe data only, open the source before you repeat the claim, check the date, own what you pass along</li><li>Take three ready prompts and a printed one-page plan back to your desk</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/answers-class/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/answers-class/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/answers/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: printable one-page plan, inside the course &middot; Part of <a href="learn/">the CHART Program</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Ideas, Faster</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 45 min &middot; Self-paced ~15 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Creative Thinking</span><span class="skillpill">Problem Solving</span></div>
+          <p class="course__desc">Get unstuck: more options, better questions, clearer thinking. One method, frame, flood, filter: frame the problem with CRIT, ask for twenty options with real range, then pick, combine, and sharpen with criteria you own. Three worked examples (a blank page, an ambiguous problem, a vague goal), a real stuck problem of your own, every claim cited, and a printable one-page plan.</p>
+          <ul class="course__meta">
+            <li>11 pages &middot; 3 worked examples + knowledge check</li>
+            <li>About 15 minutes self-paced &middot; one session live</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-ideas-faster.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Frame a stuck problem with CRIT (Context, Role, Interview, Task) instead of circling it alone</li><li>Ask for twenty options with real range, wild ones included, rather than stopping at the first answer that sounds fine</li><li>Filter the flood with criteria you own: pick, combine, and sharpen the two or three worth developing</li><li>Avoid the sameness trap by adding the option only you would think of</li><li>Credit people, not the tool, and disclose substantive AI help in what gets proposed</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/ideas-class/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/ideas-class/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/ideas/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: printable one-page plan, inside the course &middot; Part of <a href="learn/">the CHART Program</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai communication">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Minutes, Faster</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 45 min &middot; Self-paced ~15 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Meeting Management</span><span class="skillpill">Business Writing</span></div>
+          <p class="course__desc">Turn meetings and long documents into decisions, action items, and takeaways people actually read. One method, capture, condense, confirm: get a faithful record, brief the condense with CRIT, then check the summary against the source before it circulates. Three worked examples (a staff meeting, a 30-page report, a meeting you missed), every claim cited, and a printable one-page plan.</p>
+          <ul class="course__meta">
+            <li>11 pages &middot; 3 worked examples + knowledge check</li>
+            <li>About 15 minutes self-paced &middot; one session live</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-minutes-faster.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Get a faithful record with announced recording and transcription in Teams or Zoom</li><li>Brief the condense with CRIT so the summary leads with decisions, then action items with owners and dates</li><li>Confirm names, numbers, and owners against the transcript or report before the summary circulates</li><li>Apply the four rules: safe data only, recording is announced, confirm before it circulates, the summary is the start, not the record</li><li>Brief the minutes for a real meeting of your own, and leave with three prompts and a printed plan</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/minutes-class/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/minutes-class/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/minutes/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: printable one-page plan, inside the course &middot; Part of <a href="learn/">the CHART Program</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai communication">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Slides, Faster</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 45 min &middot; Self-paced ~15 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Presentation Development</span><span class="skillpill">Storytelling</span></div>
+          <p class="course__desc">Build decks in a fraction of the time, and make them land with the people who matter. One method, story, build, polish: brief the deck with CRIT before any slide exists, let the tools build the rough version, then cut it hard and check every number before the room sees it. Three worked examples (a leadership update, a training deck, a workshop talk), every claim cited, and a printable one-page plan.</p>
+          <ul class="course__meta">
+            <li>11 pages &middot; 3 worked examples + knowledge check</li>
+            <li>About 15 minutes self-paced &middot; one session live</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-slides-faster.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Brief a deck with CRIT before any slide exists, starting from the audience instead of the blank slide</li><li>Let Copilot in PowerPoint or Designer build the rough deck, speaker notes included</li><li>Polish the rough deck into yours: one idea per slide, your unit&rsquo;s template, alt text confirmed</li><li>Check every number and chart against its source before the room sees it</li><li>Brief your next real deck, and leave with three prompts and a printed plan</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/slides-class/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/slides-class/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/slides/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: printable one-page plan, inside the course &middot; Part of <a href="learn/">the CHART Program</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>Decisions, Sharper</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 45 min &middot; Self-paced ~15 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Decision Making</span><span class="skillpill">Critical Thinking</span></div>
+          <p class="course__desc">Widen the view before the call: test scenarios, surface hidden assumptions, and decide with more confidence. One method, widen, weigh, decide: lay the decision out with CRIT (roles, never names), test best, expected, and worst case, run a premortem, then make the call yourself and write down why. Three worked examples (conflicting recommendations, a scenario test, an assumptions check), every claim cited, and a printable one-page plan.</p>
+          <ul class="course__meta">
+            <li>11 pages &middot; 3 worked examples + knowledge check</li>
+            <li>About 15 minutes self-paced &middot; one session live</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-decisions-sharper.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Lay a decision out with CRIT, describing every person by role, never by name</li><li>Test the decision before it&rsquo;s real: best, expected, and worst case, a premortem, and second-order effects</li><li>Design the AI&rsquo;s role for each decision: it informs or recommends, and it never decides</li><li>Interrogate confident answers, and check any factual claim before it moves your decision</li><li>Make the call yourself, keep your reasoning in the record, and disclose substantive AI help to the people who rely on it</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/decisions-class/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/decisions-class/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/decisions/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: printable one-page plan, inside the course &middot; Part of <a href="learn/">the CHART Program</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="communication leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Manager Voyage</p>
+          <h3>Navigating Difficult Conversations</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill">Conflict Resolution</span><span class="skillpill">De-escalation Techniques</span><span class="skillpill">Influencing Skills</span></div>
+          <p class="course__desc">A shared toolkit for the conversations managers avoid: the three conversations inside every hard exchange, SBI feedback, STATE openers, trust built with BRAVING, Radical Candor, recovery moves for tears, anger, and silence, and a planned real conversation within seven days.</p>
+          <ul class="course__meta">
+            <li>8 sections · 7 interactive tools</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-difficult-conversations.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Name the three conversations hiding inside any hard exchange, and spot the one that trips you up</li><li>Turn a vague concern into specific, fair feedback using the SBI model</li><li>Open a candid conversation in a way that keeps the other person safe, using STATE</li><li>Assess your own trust-building behaviors with the BRAVING inventory and pick one to strengthen</li><li>Plan one real conversation you've been avoiding, and commit to having it within seven days</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/difficult-conversations/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/difficult-conversations/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/difficult-conversations/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/difficult-conversations/cheatsheet.html">cheat sheet</a> · <a href="courses/difficult-conversations/worksheet.html">plan worksheet</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Manager Voyage</p>
+          <h3>Coaching for Performance</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill">Coaching Techniques</span><span class="skillpill">Leadership Development</span><span class="skillpill">Employee Engagement</span></div>
+          <p class="course__desc">Building managers who grow people, not just manage tasks: the research case for coaching (Google's Project Oxygen), the GROW model practiced against a virtual coachee, powerful questions, Goldsmith's Feedforward, and a real coaching conversation planned with a written opening question.</p>
+          <ul class="course__meta">
+            <li>7 sections &middot; 6 interactive tools + GROW simulator</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-coaching-for-performance.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why coaching, not directing, is the top predictor of great management, and spot your own telling default</li><li>Structure a full coaching conversation with the GROW model, from goal to committed action</li><li>Convert closed, leading, and advice-loaded lines into open, powerful questions</li><li>Give and receive future-focused Feedforward suggestions without judgment or defense</li><li>Choose your coaching model and commit to one real coaching conversation this week, opening question written</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/coaching-for-performance/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/coaching-for-performance/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/coaching-for-performance/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/coaching-for-performance/cheatsheet.html">cheat sheet</a> &middot; <a href="courses/coaching-for-performance/worksheet.html">plan worksheet</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Working Smarter</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 60&ndash;90 min &middot; Self-paced 60&ndash;90 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Artificial Intelligence</span><span class="skillpill">Prompt Writing</span><span class="skillpill">Digital Fluency/Information Literacy</span></div>
+          <p class="course__desc">Learn the new tools by using them. The flagship of the CHART Program moves from what AI is (you watch a model predict the next word) to the CRIT prompt framework, drilled in working practice apps, to choosing the right Vanderbilt tool, ChatGPT EDU, Amplify, or Copilot, by data sensitivity. You finish with a knowledge check and a readiness plan built from your own task list.</p>
+          <ul class="course__meta">
+            <li>9 sections &middot; 4 practice apps + opportunity simulator</li>
+            <li>Classroom 60&ndash;90 min &middot; self-paced 60&ndash;90 min &middot; every module skippable</li>
+            <li>Classroom, facilitator, and self-paced editions</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-working-smarter.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain what AI tools like ChatGPT are, and why they sometimes state made-up things as fact</li><li>Map your own role task by task, and build a 30/60/90 development plan from the tasks AI can help with</li><li>Write clear, complete prompts with the CRIT framework: Context, Role, Interview, Task</li><li>Choose the right approved tool for any task by data sensitivity: ChatGPT EDU, Amplify, or Copilot</li><li>Use AI responsibly: verify outputs, disclose substantive AI help, and keep sensitive data out of public tools</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="learn/classroom/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="learn/classroom/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="learn/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Flagship course of the CHART Program &middot; Cultivating Human-AI Readiness and Thinking</p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="communication leadership">
+          <p class="course__tag">For all Vanderbilt staff &amp; leaders &middot; Manager Voyage</p>
+          <h3>Emotional Intelligence &amp; Interpersonal Skills</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill skillpill--core">Radically collaborates and cultivates belonging</span><span class="skillpill">Conflict Management</span><span class="skillpill">Communication Strategies</span></div>
+          <p class="course__desc">Lead yourself before you lead others: the research case for EI (Goleman, Google's Project Aristotle), the four domains, mapping your blind spots with the Johari Window, the neuroscience of naming emotions, active listening scored against a rubric, Rosenberg's NVC reframe, and saying hard things with candor and care.</p>
+          <ul class="course__meta">
+            <li>7 sections &middot; 7 interactive tools + private Johari mapper</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-emotional-intelligence.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain Goleman's four EI domains and map your own blind spots with the Johari Window</li><li>Identify the Mayer-Salovey ability model, the research foundation beneath the applied one</li><li>Name emotions precisely and use affect labeling to turn reactivity into regulation</li><li>Practice active listening, paraphrase, clarify, withhold judgment, against a real rubric</li><li>Reframe an accusation into Nonviolent Communication's Observation, Feeling, Need, Request</li><li>Raise a hard truth with candor and care, and commit one practice to a real relationship this week</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/emotional-intelligence/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/emotional-intelligence/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/emotional-intelligence/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/emotional-intelligence/cheatsheet.html">cheat sheet</a> &middot; <a href="courses/emotional-intelligence/worksheet.html">plan worksheet</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="communication leadership">
+          <p class="course__tag">For all Vanderbilt staff</p>
+          <h3>Building Brave Teams</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 120 min &middot; Self-paced ~60 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Radically collaborates and cultivates belonging</span><span class="skillpill">Psychological Safety</span><span class="skillpill">Team Building</span><span class="skillpill">Trust Building</span></div>
+          <p class="course__desc">The team-building workshop on purpose and psychological safety. It opens with the Chancellor's charge and each person's own why, built live with Simon Sinek's Golden Circle, then makes the case with the evidence (Google's Project Aristotle, Edmondson's hospital studies), places your team on Clark's four stages with Edmondson's 7-item survey, practices the Johari Window in pairs, names the behaviors that expand safety versus the ones that quietly contract it, runs a three-round candor rehearsal with SBI + Ask, and closes with a start-stop-question commitment your team hears within 14 days.</p>
+          <ul class="course__meta">
+            <li>17 screens &middot; Golden Circle builder, Johari pairs, Expand/Contract grids + candor rehearsal</li>
+            <li>Classroom 120 min (90 core) &middot; self-paced ~60 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-building-brave-teams.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Define psychological safety, and tell it apart from being nice, lowering the bar, or needing consensus</li><li>Diagnose your team's current stage using Clark's ladder and Edmondson's 7-item survey</li><li>Explain why safety predicts performance, using the evidence from hospitals, cockpits, and Google</li><li>Practice disclosure and feedback with the Johari Window, and expand your Open quadrant</li><li>Differentiate behaviors that expand safety from the ones that quietly contract it, then deliver candid feedback with SBI + Ask</li><li>Commit to one start, one stop, and one question your team will hear within 14 days</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/building-brave-teams/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/building-brave-teams/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/building-brave-teams/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/building-brave-teams/cheatsheet.html">cheat sheet</a> &middot; <a href="courses/building-brave-teams/worksheet.html">commitment worksheet</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="communication leadership">
+          <p class="course__tag">For managers, senior ICs &amp; leaders &middot; Manager Voyage</p>
+          <h3>Presentation &amp; Public Speaking</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Continuously strives for excellence</span><span class="skillpill">Public Speaking</span><span class="skillpill">Storytelling</span><span class="skillpill">Strategic Communication</span><span class="skillpill">Stakeholder Communications</span></div>
+          <p class="course__desc">Building and delivering to a room or a leadership audience: the myth-busting research on what actually separates memorable presenters, Duarte's Big Idea and Sparkline, Minto's SCQA for the executive room, delivery technique from Anderson, Gallo, and the AMA, and composure under pointed questions, with a live, timed speaking rep for every participant.</p>
+          <ul class="course__meta">
+            <li>7 sections &middot; 7 interactive tools + exec briefing lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min &middot; everyone speaks once</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-presentation-public-speaking.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why gravitas and communication, not technical mastery alone, decide how a leader's message lands, and name your executive-presence growth edge</li><li>Distill a real presentation into one resonant sentence with Duarte's Big Idea: point of view plus what's at stake</li><li>Structure a talk with Duarte's Sparkline, alternating What Is and What Could Be toward New Bliss</li><li>Structure an executive briefing with Minto's Pyramid Principle and SCQA, leading with the answer</li><li>Apply the delivery techniques of Anderson, Gallo, and the AMA in a live, timed speaking round</li><li>Handle pointed questions with the bridge, and commit to rebuilding one real presentation, opening line written</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/presentation-public-speaking/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/presentation-public-speaking/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/presentation-public-speaking/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/presentation-public-speaking/cheatsheet.html">cheat sheet</a> &middot; <a href="courses/presentation-public-speaking/worksheet.html">rebuild worksheet</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>Workflow &amp; Process Redesign</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill">Process Mapping</span><span class="skillpill">AI Literacy</span><span class="skillpill">Change Management</span></div>
+          <p class="course__desc">Redesign the work, then add the AI. McKinsey's State of AI research found workflow redesign is the strongest factor separating AI high performers from the 80-plus percent seeing no bottom-line impact, and that work happens at the manager's level. This session teaches the method: map a real team workflow into steps (gather, transform, judge, commit), assign each step with the draft-verify-decide pattern, design verification that actually catches errors, rebuild a workflow in the graded Redesign Lab, and launch a pilot your team will trust.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 7 interactive tools + the Redesign Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-workflow-process-redesign.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why workflow redesign separates AI high performers from the crowd seeing no bottom-line impact</li><li>Map one of your team's workflows into steps and separate the mechanical work from the judgment work</li><li>Apply the draft-verify-decide pattern to assign every step: AI drafts, a human verifies, a human decides</li><li>Design verification with teeth: a named owner, real sources, and a reject path that gets used</li><li>Build a redesign card for one real workflow and commit to a piloted first step with a visible metric</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="courses/workflow-process-redesign/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="courses/workflow-process-redesign/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="courses/workflow-process-redesign/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="courses/workflow-process-redesign/cheatsheet.html">cheat sheet</a> &middot; <a href="courses/workflow-process-redesign/worksheet.html">redesign card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program</p>
+          <h3>Feedback, Ready</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 40 min &middot; Self-paced ~15 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Coaching Techniques</span><span class="skillpill">Performance Feedback</span><span class="skillpill">AI Literacy</span></div>
+          <p class="course__desc">Prep like a coach, show up human. SHRM finds managers' work is already about half AI-assisted; this short session installs the discipline that makes it good: AI preps the conversation (rehearsal, SBI feedback drafts from your own de-identified notes, coaching questions) and you have it. Includes the graded Feedback Prep Lab and the signal-versus-surveillance boundary for engagement data and 1:1 notes.</p>
+          <ul class="course__meta">
+            <li>3 sections &middot; 3 interactive tools + the Feedback Prep Lab</li>
+            <li>Classroom 40 min (30 core) &middot; self-paced ~15 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-ai-coaching-feedback.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain the prep-not-outsource line: what AI can prepare, and why the conversation itself never delegates</li><li>Draft behavior-based feedback with AI from your own de-identified observations, structured as Situation, Behavior, Impact</li><li>Use AI on aggregate signals to surface coaching opportunities without crossing into surveillance</li><li>Build a prep card for one real upcoming conversation, with the privacy rules attached</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./ai-coaching-feedback/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./ai-coaching-feedback/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./ai-coaching-feedback/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./ai-coaching-feedback/cheatsheet.html">cheat sheet</a> &middot; <a href="./ai-coaching-feedback/worksheet.html">prep card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program</p>
+          <h3>Talent Calls, Sharper</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 40 min &middot; Self-paced ~15 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill">Structured Interviewing</span><span class="skillpill">Succession Planning</span><span class="skillpill">Skills Mapping</span></div>
+          <p class="course__desc">Sharper talent inputs, human talent calls. AI drafts the instruments (structured interview kits from the JD, 9-box rubrics with behavioral anchors, de-identified skills maps, succession profiles) and every verdict about a person stays human. Includes the graded Rubric Lab, the bias-magnet camera test, and the strictest data rules in the series: resumes, reviews, and names never enter unapproved tools.</p>
+          <ul class="course__meta">
+            <li>3 sections &middot; 3 interactive tools + the Rubric Lab</li>
+            <li>Classroom 40 min (30 core) &middot; self-paced ~15 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-ai-talent-decisions.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Identify which talent tasks AI can draft (instruments, questions, maps) and which stay human calls, always</li><li>Build a behaviorally anchored rubric for interviews or a 9-box, with AI stress-testing your criteria</li><li>Draft structured interview questions from a real job description, with anchored scoring</li><li>Map your team's skills against goals, de-identified, and draft a gap-closing development plan</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./ai-talent-decisions/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./ai-talent-decisions/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./ai-talent-decisions/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./ai-talent-decisions/cheatsheet.html">cheat sheet</a> &middot; <a href="./ai-talent-decisions/worksheet.html">toolkit card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program</p>
+          <h3>Leading the Shift</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 40 min &middot; Self-paced ~15 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Change Management</span><span class="skillpill">AI Literacy</span><span class="skillpill">Team Development</span></div>
+          <p class="course__desc">Your team adopts what you model. Gallup finds manager modeling and workflow integration are the strongest predictors of a team actually using AI; Accenture finds only about 18 percent of leaders do this well. This session teaches the visible moves: the narrated use (use, check, miss), the three written guardrails (data, sign-off, ownership), and the scored AI-enabled work audit every manager runs on their own team before leaving.</p>
+          <ul class="course__meta">
+            <li>3 sections &middot; 2 trainers + the AI-enabled work audit</li>
+            <li>Classroom 40 min (30 core) &middot; self-paced ~15 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-leading-ai-adoption.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why manager modeling and workflow integration predict team AI use better than tools or mandates</li><li>Model AI use visibly: narrate real uses, show the checks, share the misses</li><li>Set the three team guardrails: what data goes in, when human sign-off is required, who owns the result</li><li>Run the AI-enabled work audit on your team and leave with a dated first move</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./leading-ai-adoption/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./leading-ai-adoption/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./leading-ai-adoption/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./leading-ai-adoption/cheatsheet.html">cheat sheet</a> &middot; <a href="./leading-ai-adoption/worksheet.html">audit + plan worksheet</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Numbers, Faster</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill skillpill--core">Continuously strives for excellence</span><span class="skillpill">Data Analysis</span><span class="skillpill">AI Literacy</span><span class="skillpill">Data Storytelling</span></div>
+          <p class="course__desc">Vanderbilt runs on spreadsheets, and most of the analysis in them is still done by hand. Gallup finds data work among the highest-payoff AI use cases, with roughly three in four users reporting clear productivity gains. This session teaches the Data Loop (describe, ask, check, tell): how to prepare a file safely, interrogate it with a question ladder instead of one vague prompt, recompute the numbers that matter before believing them, and turn the finding into two plain sentences a busy reader can act on. The traffic light governs every file that goes near a tool.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private data mapper, and the graded Analysis Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-numbers-faster.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain where AI genuinely speeds up data work and where it fails with confidence</li><li>Prepare a dataset safely for AI, applying the traffic light to data files and de-identifying people data</li><li>Apply the Data Loop, Describe, Ask, Check, Tell, to interrogate a real spreadsheet</li><li>Build a comparison and a chart brief with AI from your own numbers</li><li>Verify every AI-produced number against the rows before it travels into a report</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Numbers-Faster/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Numbers-Faster/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Numbers-Faster/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Numbers-Faster/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Numbers-Faster/worksheet.html">Data Loop card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Guardrails &amp; Responsible Use</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill">Responsible AI</span><span class="skillpill">Data Privacy</span><span class="skillpill">Risk Management</span></div>
+          <p class="course__desc">Start Smarter taught the traffic light. This is the session that writes the rest down. Stanford's AI Index counts AI misuse incidents climbing right alongside adoption, and at a university holding FERPA-protected records, good intentions are not a policy. Learners build the Four Lines, a one-page team agreement covering what data may go in, when a human must verify, when readers are told AI helped, and who owns the output. The hard cases get their own drills: student work, meeting notes, letters about people.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private agreement drafter, and the graded Guardrails Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-ai-guardrails.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why written guardrails protect a team in ways good intentions can't once AI use scales</li><li>Classify data with the traffic light, including the hard cases: student work, meeting notes, letters about people</li><li>Decide which outputs need a named human check and when AI use must be disclosed to the reader</li><li>Assign ownership of every AI-assisted output to the human who ships it</li><li>Draft the Four Lines, a starter one-page agreement for your own team's real work</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/AI-Guardrails/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/AI-Guardrails/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/AI-Guardrails/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/AI-Guardrails/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/AI-Guardrails/worksheet.html">Four Lines agreement</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Trust, Then Verify</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Continuously strives for excellence</span><span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span><span class="skillpill">Critical Thinking</span><span class="skillpill">AI Literacy</span><span class="skillpill">Fact-Checking</span></div>
+          <p class="course__desc">AI errors do not arrive looking like errors. They arrive fluent, specific, and confident, which is why SHRM finds workers losing hours every week to cleaning up output they trusted too fast. This session makes verification a discipline: the Three Reads (claim, source, slant), the failure taxonomy of hallucination, staleness, slant, omission, and faked math, verification budgets sized to what the output can break, and the stop rules for when a task should leave AI entirely.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private verification ritual builder, and the graded Verification Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-trust-then-verify.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Recognize how AI errors actually look in real work: fluent, specific, and wrong</li><li>Apply the Three Reads (claim, source, slant) to any AI output before it ships</li><li>Distinguish hallucination, staleness, slant, omission, and faked math by their tells</li><li>Size the verification to the stakes, from no check at all up to a human expert</li><li>Decide when to stop using AI for a task entirely, using the three stop rules</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Trust-Then-Verify/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Trust-Then-Verify/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Trust-Then-Verify/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Trust-Then-Verify/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Trust-Then-Verify/worksheet.html">verification card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Admin, Automated</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill skillpill--core">Continuously strives for excellence</span><span class="skillpill">Personal Productivity</span><span class="skillpill">AI Literacy</span><span class="skillpill">Process Improvement</span></div>
+          <p class="course__desc">Automating repetitive work is the highest-payoff AI use case Gallup measures, with around 77 percent of users reporting clear gains, and it is also where saved time most often disappears without a trace. This session runs the Repeat Audit: spot the work you have done the same way more than twice, template it with slots instead of leftovers, route what arrives with a three-pile triage you stay accountable for, and retire what should simply stop. It ends by banking the recovered hours on purpose.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private repeat inventory, and the graded Automation Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-admin-automated.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Identify the repetitive layer hiding in a real week of your own work</li><li>Build reusable templates with AI for your recurring messages and reports</li><li>Set up AI-assisted email triage that you stay accountable for, every send</li><li>Apply calendar rules that defend focus time from the meetings that refill it</li><li>Decide which recurring work to retire entirely, and bank the recovered hours</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Admin-Automated/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Admin-Automated/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Admin-Automated/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Admin-Automated/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Admin-Automated/worksheet.html">Repeat Audit card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai">
+          <p class="course__tag">For all Vanderbilt staff &middot; Part of the CHART Program</p>
+          <h3>Across Your Week</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="skillpill skillpill--core">Continuously strives for excellence</span><span class="skillpill">AI Literacy</span><span class="skillpill">Workflow Design</span><span class="skillpill">Time Management</span></div>
+          <p class="course__desc">The CHART integrator. Gallup's most striking finding is about breadth: people using AI across seven or more tasks are about twice as likely to report real productivity gains as those using it for one or two. Every other CHART course builds one use case; this one strings them together across a learner's actual week. They inventory their recurring blocks, match each to a CHART method, stack two methods on one task, and name where the reclaimed hours go before those hours quietly evaporate into more meetings.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private week inventory, and the graded Week Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-ai-across-your-week.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why breadth of AI use predicts productivity gains better than mastery of any single trick</li><li>Inventory a real week into recurring, AI-matchable blocks with an honest hour cost on each</li><li>Match each block to the CHART method that fits its verb: drafts, answers, minutes, slides, ideas, decisions, numbers</li><li>Stack two methods on one task while every link in the chain keeps its own check</li><li>Commit to a five-assist week on your actual calendar, with the saved time banked where it can be seen</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/AI-Across-Your-Week/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/AI-Across-Your-Week/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/AI-Across-Your-Week/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/AI-Across-Your-Week/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/AI-Across-Your-Week/worksheet.html">Week Map</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>People Data, Safely</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span><span class="skillpill">People Analytics</span><span class="skillpill">Coaching Techniques</span><span class="skillpill">AI Literacy</span></div>
+          <p class="course__desc">Coaching for Performance taught the human method. This teaches the data side, inside hard privacy lines. Culture Amp, Lattice, and 15Five are all pushing managers toward AI-assisted people insight, and the skill that matters is doing it without ever putting a person into a tool. The spine is the Aggregate Rule: individuals are red, always; aggregated and de-identified team data is yellow, approved VU tools only. On top of it sits the Coach's Loop, ending where people data should always end, in a conversation.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private interrogation planner, and the graded Review Prep Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-people-data-with-ai.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Apply the Aggregate Rule to every people-data case before any of it goes near an AI tool</li><li>Use AI to find themes in engagement results and your own meeting notes, at team level with names removed</li><li>Draft hard feedback with AI as a rehearsal partner while the judgment stays yours, in your words</li><li>Prepare a review cycle where AI organizes your evidence and you write every verdict</li><li>Run the follow-up conversation the data was collected for, and measure that it actually happened</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/People-Data-with-AI/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/People-Data-with-AI/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/People-Data-with-AI/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/People-Data-with-AI/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/People-Data-with-AI/worksheet.html">people-data card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>Making It Normal</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill skillpill--core">Radically collaborates and cultivates belonging</span><span class="skillpill">Change Management</span><span class="skillpill">AI Literacy</span><span class="skillpill">Team Development</span></div>
+          <p class="course__desc">The 90-minute companion to the short Leading the Shift course, for managers who want the full method. Gallup names manager modeling and workflow integration the two strongest predictors of a team actually using AI, and most employees say nobody ever told them what is encouraged. This session teaches Show, Say, Set, Sustain: narrating your own use including the misses, giving explicit permission and explicit limits, installing AI into the rituals where habits live, and holding the practice past the month-three novelty cliff.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private permission-talk builder, and the graded Adoption Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-making-ai-normal.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why a manager's visible AI use predicts team adoption better than mandates, licenses, or memos</li><li>Model your own AI use out loud, including the checks you ran and the misses you caught</li><li>Give your team explicit permission and explicit limits, with the traffic light as the hard edge</li><li>Install AI norms into the 1:1s and team meetings you already run, without adding a single meeting</li><li>Sustain adoption past the novelty cliff with protected learning time and metrics that tell stories</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Leading-AI-Adoption/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Leading-AI-Adoption/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Leading-AI-Adoption/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Leading-AI-Adoption/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Leading-AI-Adoption/worksheet.html">adoption plan</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>Delegating, Rethought</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill">Delegation</span><span class="skillpill">Role Design</span><span class="skillpill">AI Literacy</span></div>
+          <p class="course__desc">The same task can now go to AI, to a junior as a stretch assignment, or stay with you, and nobody trained managers for that choice. Route everything routine to the machine and you hollow out the apprenticeship your team learns by. Stanford GSB frames the shift as leaders redesigning roles rather than overseeing execution. This session teaches the Routing Test (growth first, then judgment, then volume) and the role math for rebuilding a job as AI absorbs its routine layer.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private role-math sketch, and the graded Routing Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-delegating-with-ai.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Apply the Routing Test's three questions, growth, judgment, volume, to the real tasks crossing your desk</li><li>Distinguish stretch work from grunt work before you route either one</li><li>Protect the apprenticeship pipeline as AI absorbs the tasks juniors used to learn by</li><li>Redesign a role around what grows, judgment reps, client contact, verification ownership, instead of just shrinking its task list</li><li>Brief a delegation, to a person or to AI, so it lands with a clear outcome and named checks</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Delegating-with-AI/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Delegating-with-AI/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Delegating-with-AI/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Delegating-with-AI/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Delegating-with-AI/worksheet.html">routing card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>Hiring, Human</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span><span class="skillpill skillpill--core">Grows self and others</span><span class="skillpill">Structured Interviewing</span><span class="skillpill">Talent Management</span><span class="skillpill">Responsible AI</span></div>
+          <p class="course__desc">Pasting a resume into a chatbot feels efficient and is a violation: candidate materials are private information about people, and AI never ranks, screens, or scores a human being. This session draws that line hard, then teaches everything valuable on the right side of it. Structure is the most evidence-backed fairness tool in hiring, and AI is excellent at building structure: inclusive postings, requirement audits that catch proxies, behavioral questions, and scoring anchors written before a single application is read.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private structure planner, and the graded Hiring Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-hiring-with-ai.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Classify the materials in a hiring process with the traffic light and defend the red line, including the cases that feel harmless</li><li>Use AI to draft job descriptions and structured interviews that widen the pool instead of quietly shrinking it</li><li>Build a scoring rubric before any application is read, with anchors a stranger could apply</li><li>Run a skills map of your team so the next posting names what the team actually lacks</li><li>Recognize where bias enters AI-assisted hiring and apply the guardrails that catch it</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Hiring-with-AI/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Hiring-with-AI/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Hiring-with-AI/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Hiring-with-AI/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Hiring-with-AI/worksheet.html">hiring structure card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course" data-reveal data-topics="ai leadership">
+          <p class="course__tag">For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage</p>
+          <h3>Change That Sticks</h3>
+          <p class="course__length"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg> Classroom 90 min &middot; Self-paced ~45 min</p>
+          <p class="course__voyage">Part of the Manager Voyage program</p>
+          <div class="course__skills" aria-label="Skills this course builds"><span class="skillpill skillpill--core">Leads and inspires teams</span><span class="skillpill skillpill--core">Develops and implements University strategy</span><span class="skillpill">Change Management</span><span class="skillpill">Psychological Safety</span><span class="skillpill">Communication</span></div>
+          <p class="course__desc">Accenture finds only about 18 percent of leaders lead AI investments effectively, and the differentiators are curiosity, courage, and connection rather than tool fluency. AI change fails on human ground: announced as technology, experienced as threat. This session teaches Name, Frame, Invite, Hold: saying the fear out loud before it says itself, answering the job-security question honestly without promising what you cannot, inviting the team into the design, and holding the container across months.</p>
+          <ul class="course__meta">
+            <li>6 sections &middot; 4 trainers, a private conversation planner, and the graded Change Lab</li>
+            <li>Classroom 90 min (60 core) &middot; self-paced ~45 min</li>
+            <li>In person, virtual, or self-paced</li>
+          </ul>
+          <a class="course__syllabus" href="syllabus-change-leadership-for-ai.html">Full course description (printable)<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <details class="course__obj">
+            <summary>Learning objectives</summary>
+            <ol><li>Explain why AI change fails on human ground rather than technical ground, and what the effective 18 percent do differently</li><li>Name the fear and the job-security question directly, without false promises, using the honesty rules</li><li>Build psychological safety around experimenting with AI: public experiments, no-blame misses, and going first</li><li>Facilitate your team's own ethics and governance conversation instead of outsourcing it to a policy document</li><li>Sustain change leadership over months: the revisit cadence, the quiet signals, and measuring trust alongside usage</li></ol>
+          </details>
+          <div class="course__cta">
+            <a class="btn btn--dark" href="./courses/Change-Leadership-for-AI/">Launch the course</a>
+            <a class="btn btn--ghost-dark" href="./courses/Change-Leadership-for-AI/facilitator/">Facilitator edition</a>
+            <a class="btn btn--ghost-dark" href="./courses/Change-Leadership-for-AI/web/">Self-paced edition</a>
+          </div>
+          <p class="course__extras">Take-home: <a href="./courses/Change-Leadership-for-AI/cheatsheet.html">cheat sheet</a> &middot; <a href="./courses/Change-Leadership-for-AI/worksheet.html">change card</a></p>
+                  <button class="course__toggle" type="button" aria-expanded="false" aria-label="Show course details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        </article>
+
+        <article class="course course--soon" data-reveal>
+          <p class="course__tag">In development</p>
+          <h3>Your next course</h3>
+          <p class="course__desc">The library grows on demand. New programs are designed, built, and delivered with matching facilitator guides in days, not quarters. Have a topic your team needs? Ask for it.</p>
+          <ul class="course__meta">
+            <li>Built to the same standard</li>
+            <li>Hands-on practice throughout</li>
+            <li>Facilitator guide included</li>
+          </ul>
+          <div class="course__cta">
+            <a class="btn btn--ghost-dark" href="mailto:chart@vanderbilt.edu?subject=Course%20request%20for%20the%20Learning%20Series%20library">Request a course</a><!-- [EDIT] program contact -->
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section on-dark" id="how">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The model</p>
+      <h2 class="h2" data-reveal>One link. Two editions.<br>Zero <em>slide decks</em>.</h2>
+      <div class="grid3">
+        <div class="feature" data-reveal>
+          <span class="feature__num">01</span>
+          <h3>Learners scan in</h3>
+          <p>The welcome slide carries a QR code. Learners open the course on their own devices and do every exercise hands-on: simulators, labs, checks, and a capstone plan they keep. Nobody just watches.</p>
+        </div>
+        <div class="feature" data-reveal>
+          <span class="feature__num">02</span>
+          <h3>Anyone can teach it</h3>
+          <p>The facilitator edition scripts every slide: what to say, what to do, what to ask, the answers to expect, and how to transition, plus prep checklists and contingencies. First-time facilitators deliver with confidence.</p>
+        </div>
+        <div class="feature" data-reveal>
+          <span class="feature__num">03</span>
+          <h3>The link is the takeaway</h3>
+          <p>No handout to lose. The same URL works in class, over Zoom, and at a desk six months later, with printable cheat sheets built in. Learning transfer starts with material people can find again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline">Learning, on demand.</p>
+      </div>
+      <div>
+        <h4>Courses</h4>
+        <ul>
+          <li><a href="courses/start-smarter/">Start Smarter</a></li>
+          <li><a href="courses/difficult-conversations/">Navigating Difficult Conversations</a></li>
+          <li><a href="courses/coaching-for-performance/">Coaching for Performance</a></li>
+          <li><a href="learn/classroom/">Working Smarter</a></li>
+          <li><a href="courses/emotional-intelligence/">Emotional Intelligence &amp; Interpersonal Skills</a></li>
+          <li><a href="courses/building-brave-teams/">Building Brave Teams</a></li>
+          <li><a href="courses/presentation-public-speaking/">Presentation &amp; Public Speaking</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Facilitators</h4>
+        <ul>
+          <li><a href="courses/start-smarter/facilitator/">Start Smarter · Facilitator</a></li>
+          <li><a href="courses/difficult-conversations/facilitator/">Difficult Conversations · Facilitator</a></li>
+          <li><a href="courses/coaching-for-performance/facilitator/">Coaching for Performance · Facilitator</a></li>
+          <li><a href="learn/classroom/facilitator/">Working Smarter · Facilitator</a></li>
+          <li><a href="courses/emotional-intelligence/facilitator/">Emotional Intelligence · Facilitator</a></li>
+          <li><a href="courses/building-brave-teams/facilitator/">Building Brave Teams · Facilitator</a></li>
+          <li><a href="courses/presentation-public-speaking/facilitator/">Presentation &amp; Public Speaking · Facilitator</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · The Vanderbilt Staff Learning Collection</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // every non-anchor link opens in a new tab
+  Array.prototype.slice.call(document.querySelectorAll('a[href]')).forEach(function (a) {
+    var href = a.getAttribute('href');
+    if (href && href.charAt(0) !== '#') {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    }
+  });
+
+  // topic filter
+  var bar = document.getElementById('filterbar');
+  if (bar) {
+    var chips = Array.prototype.slice.call(bar.querySelectorAll('.filterchip:not(.viewchip)'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.courses article.course'));
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var topic = chip.getAttribute('data-topic');
+        chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+        cards.forEach(function (card) {
+          var topics = card.getAttribute('data-topics') || '';
+          var show = topic === 'all' || card.classList.contains('course--soon') || topics.split(' ').indexOf(topic) > -1;
+          card.hidden = !show;
+        });
+      });
+    });
+  }
+
+  // card / list layout toggle, remembered in this browser
+  var catalog = document.getElementById('catalog');
+  var viewChips = Array.prototype.slice.call(document.querySelectorAll('.viewchip'));
+  function setView(v) {
+    if (!catalog) return;
+    catalog.classList.toggle('courses--list', v === 'list');
+    viewChips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.getAttribute('data-view') === v)); });
+    try { localStorage.setItem('library-view', v); } catch (e) {}
+  }
+  viewChips.forEach(function (c) {
+    c.addEventListener('click', function () { setView(c.getAttribute('data-view')); });
+  });
+  try { if (localStorage.getItem('library-view') === 'list') setView('list'); } catch (e) {}
+
+  // in list view each row expands to show its card details
+  var detailToggles = Array.prototype.slice.call(document.querySelectorAll('.course__toggle'));
+  detailToggles.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('article.course');
+      if (!card) return;
+      var open = card.classList.toggle('course--open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Hide course details' : 'Show course details');
+    });
+  });
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  if ('IntersectionObserver' in window && !reduce) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { obs.observe(el); });
+    requestAnimationFrame(function () {
+      els.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('in'); obs.unobserve(el); }
+      });
+    });
+  } else { els.forEach(function (el) { el.classList.add('in'); }); }
+  var nav = document.querySelector('.nav');
+  window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  var y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

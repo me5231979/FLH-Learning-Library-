@@ -1,0 +1,543 @@
+{
+  "meta": {
+    "program": "Building Brave Teams, Vanderbilt Learning Series",
+    "totalMinutes": 120,
+    "audience": "Intact teams and cohorts of managers or team members. 12 to 24 works best in table pods of 5 to 6; scalable to 30. Intact teams get the deepest transfer; mixed cohorts get safer practice. Know which you have before you plan the Candor Rehearsal.",
+    "roomSetup": "Round tables of 5 to 6, walls clear, no fixed rows. On each table: printed Johari worksheets, sticky notes in three colors, fine-tip Sharpies, index cards, table-norms placard. Walls before arrival, A: Clark's 4 Stages printed large; B: Edmondson's 7 items on butcher paper; C: blank Commitment Wall; D: anonymized pre-work intention themes. Facilitator kit: visible timer, chime (not clapping), oversized first-name tents. Music instrumental ~60 BPM during reflection, silent during dialogue.",
+    "postSession": "Day 1: photo email, commitment wall and every Expand/Contract grid. Day 3: 90-second video from you reinforcing one insight. Day 14: pulse, re-take Edmondson's 7 items, compare to baseline. Day 30: manager-led team retro using the grid the team built. Day 60: second Edmondson pulse plus a qualitative check on commitment cards. Day 90: results review, candor in retros, near-miss reporting, meeting talk-time balance. Without reinforcement most of this is gone in six days; the schedule is not optional.",
+    "paths": {
+      "full": {
+        "minutes": 120,
+        "description": "The full immersive design: arrival ritual, Edmondson video, complete Johari cycle (select, peer stickies, map, reflect), team-built Expand/Contract grids with gallery walk, three-round triad Candor Rehearsal, and the commitment ritual with the wall and the one-word circle. Book the full two hours; every block completes a Kolb cycle."
+      },
+      "core": {
+        "minutes": 90,
+        "description": "The 90-minute slot: every experiential block survives, diagnostic, Johari, Expand/Contract, Candor Rehearsal, commitment card. Skip the agenda walk, the manifesto pause, the glossary, and the in-class video (assign as the week's watch); debriefs shrink to one voice each; the gallery walk becomes a stand-and-scan. Per-section cuts are in each coreNote. Never cut the Johari or the rehearsal; they carry the affective objectives."
+      }
+    },
+    "framework": "ATD facilitator-guide structure: per module SAY / DO / ASK (with anticipated responses) / DEBRIEF / TRANSITION, plus preparation checklists, materials, contingencies, and a tough-questions bank. Instructional backbone: every 20 to 25 minute block completes a full Kolb cycle; no more than ~8 minutes of instructor talk before application.",
+    "materials": [
+      "Projector + facilitator link open (this edition); learners join via the welcome-slide QR",
+      "30 printed Johari worksheets and 30 copies of the 56-adjective list",
+      "Sticky notes in three colors, fine-tip Sharpies, index cards (commitment cards) per table",
+      "6 large pre-drawn Expand/Contract grids (4 stage rows × 2 columns), one per table",
+      "Table-norms placard per table: Chatham House Rule, speak from I, notice airtime, okay to pass, not okay to disengage",
+      "Butcher paper on Wall B with Edmondson's 7 items; blank Commitment Wall (Wall C); pre-work intention themes clustered and posted (Wall D)",
+      "Timer visible to the room, chime or bell, oversized first-name tents",
+      "Printed cheat sheets (cheatsheet.html) and commitment cards (worksheet.html) as the no-device fallback"
+    ],
+    "prep": {
+      "weekBefore": [
+        "Read Edmondson's The Fearless Organization, chapters 1, 4, and 6 (mandatory), and watch her TEDx talk (12 min).",
+        "Run both editions of this site end to end, doing every exercise, including rating your OWN current team on the 7 items. You may be asked for your score; deciding in advance what you'll share is part of prep.",
+        "Send the pre-work invite (template on this page): the 2-page Edmondson reading, the 7-item baseline self-score, the 5 to 6 adjective pre-select, and the one-sentence intention question.",
+        "Rehearse the case-teach (Section 03) out loud twice, four minutes is tight, and the Tenerife beat must be handled with weight, not drama.",
+        "Decide your path now: Full 120 or Core 90. If the audience is a high-power-distance culture or includes reporting lines, re-plan the Candor Rehearsal as peer-to-peer only, adapt it, never delete it."
+      ],
+      "dayBefore": [
+        "Cluster the pre-work intention statements into 3 to 4 themes and print them, anonymized, for Wall D.",
+        "Print: 30 Johari worksheets, 30 adjective lists, 6 Expand/Contract grids, commitment cards, and this guide's run-of-show.",
+        "Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand. Scan the welcome QR from the back of the room.",
+        "Cue the Edmondson TEDx video and pick your trim point (~6 minutes in class).",
+        "Re-read the tough-questions bank; say the 'my manager is the problem' response out loud once."
+      ],
+      "thirtyMinBefore": [
+        "Welcome slide up, music on (~60 BPM instrumental), intention themes visible on Wall D.",
+        "Walk the tables: worksheets, adjective lists, stickies, Sharpies, index cards, norms placard on every one.",
+        "Position yourself at the door. Greeting every person by name as they arrive is not hospitality, it is the first intervention (Inclusion safety), and it cannot be delegated.",
+        "Silence your phone; brief any co-facilitator on the watch-fors, especially the private-check-in rule for the Johari block.",
+        "Remember the tone: for two hours, the room is the lab. You are not presenting psychological safety; you are producing it, live, one response at a time."
+      ]
+    },
+    "contingencies": [
+      {
+        "if": "Nobody shares during the diagnostic debrief",
+        "then": "Name it, warmly: 'The fact that this is hard to share out loud IS the data. That's exactly what low psychological safety feels like, and it's why we're here.' Then model it yourself with your own lowest item, and re-invite. Never cold-call in this workshop; it breaks the thing you're building."
+      },
+      {
+        "if": "One voice dominates or overshares",
+        "then": "Protectively redirect: 'Thank you, I want to make sure we get a few voices.' If it's oversharing beyond the room's container, honor it and bound it: 'That deserves more than we can give it here; can we take it up after?' Check in privately at the break in flow."
+      },
+      {
+        "if": "Someone visibly reacts to their Johari sheet",
+        "then": "Do not address it publicly. Check in privately during the transition to Section 05. The scripted line: 'I noticed the sheet landed hard. Want two minutes outside, or are you okay?' Laughing off feedback is a normal defense, leave it alone entirely."
+      },
+      {
+        "if": "A table goes silent during dialogue",
+        "then": "Walk near, don't intervene; proximity restarts most tables. Only past 90 seconds of true silence do you kneel to table height and re-offer the prompt menu: 'Which of the three questions is your table sitting with?' The prompts are a menu on purpose; silence sometimes means everyone is choosing."
+      },
+      {
+        "if": "You're 10+ minutes behind by the end of the Johari block",
+        "then": "Declare the Core path silently: cut the video if it hasn't played, shrink every remaining debrief to one voice, convert the gallery walk to a stand-and-scan. Protect the last 15 minutes, recap, commitment card, and closing circle, by trimming debriefs, never Johari or the rehearsal."
+      },
+      {
+        "if": "The room includes reporting lines you didn't expect (a manager and their directs at one table)",
+        "then": "Re-pod quietly before the Johari block: 'Let's mix tables so you get fresh perspectives.' Johari stickies and candor rehearsal across a live reporting line change the risk math for everyone at that table; separate them without announcing why."
+      },
+      {
+        "if": "Someone challenges the premise ('this is soft-skills fluff')",
+        "then": "Go straight to evidence, not defense: 'Fair test. Google measured 180+ teams expecting talent to win; the #1 predictor was this instead. Hospitals found the best units report MORE errors. Run today as your own experiment and tell me at the end what you observed.' Skeptics who stay make the best Challenger-stage witnesses."
+      },
+      {
+        "if": "Someone says 'my manager is the real problem, and they're not in the room'",
+        "then": "Validate without joining the indictment: 'You're describing the ceiling you work under, and you're right that you can't set your manager's weather. Two honest options: what the four stages let YOU build sideways, with peers, regardless; and the SBI+Ask frame, which is exactly the tool for the upward conversation when you choose it. Managing up is Challenger work; today gives you the words.'"
+      }
+    ],
+    "toughQuestions": [
+      {
+        "q": "Isn't psychological safety just being nice, or a way to avoid hard conversations?",
+        "a": "It's closer to the opposite. Niceness avoids the hard thing; safety makes the hard thing sayable. Edmondson's candid teams argue MORE than polite teams, about ideas, without casualties. The two-dial test: safety high AND standards high. If either dial is down, it isn't the construct, whatever it's being called."
+      },
+      {
+        "q": "Doesn't this lower the bar? People need accountability.",
+        "a": "Safety without standards is the comfort zone, a real failure mode, and not what we're building. The research target is both dials high: hard on the work, soft on the people. Accountability actually gets easier with safety, because problems surface while they're small enough to fix. The nursing units that reported more errors weren't erring more; they were hiding less."
+      },
+      {
+        "q": "What if I do all this and my leadership doesn't change?",
+        "a": "You can't set the organization's weather, and pretending otherwise would be dishonest. But safety is a team-level property; Edmondson found it varies unit by unit inside the same company, under the same executives. Your table, your meetings, your responses to bad news: that's a climate you control. Start sideways and down; the upward conversation is Challenger work, and SBI+Ask is the tool for it when you're ready."
+      },
+      {
+        "q": "The Johari exercise feels invasive. What if I don't want feedback from these people?",
+        "a": "Then use every bound the exercise builds in: adjectives only, from a fixed list, no commentary, and you choose which reflection prompt to answer, or pass. Forced disclosure would destroy the very thing this teaches, which is why nothing on your sheet is ever shared aloud. The exercise is a rehearsal with training wheels; the real version, with people you trust, is always your call."
+      },
+      {
+        "q": "Is the SBI thing manipulative, a script to make criticism sound better?",
+        "a": "A frame, not a script, and the difference is honesty. SBI+Ask removes the parts of feedback that are actually manipulative: verdicts ('unprofessional'), mind-reads ('you clearly don't care'), and character trials ('always'). What's left is what a camera saw, what you felt, and a genuine question. If the Ask isn't genuine, it isn't SBI+Ask, it's a verdict with better posture."
+      },
+      {
+        "q": "How is this different from trust?",
+        "a": "Related, different altitude. Trust is a belief about a person, will YOU do what you said. Psychological safety is a belief about a group, what happens HERE when someone takes an interpersonal risk. You can trust every individual teammate and still watch the group punish dissent. Today works the group level; trust between pairs grows in its wake."
+      },
+      {
+        "q": "We did a survey like this before and nothing changed. Why will this stick?",
+        "a": "Because a score alone changes nothing, the score is a location, not an intervention. The design here ties the diagnostic to behaviors (the Expand/Contract grid), words (SBI+Ask), a dated commitment with a witness, and a reinforcement schedule your manager owns at day 30. If the follow-up schedule gets skipped, the skepticism will be right; that's why it's non-negotiable."
+      }
+    ],
+    "templates": [
+      {
+        "title": "Pre-work invite (send 5 to 7 days prior)",
+        "body": "Subject: Before Building Brave Teams, 20 minutes, three small things. 1) Read the attached 2-page Edmondson excerpt on why learning beats knowing. 2) Take the 7-item team survey (link) and note your score privately; bring the score, not for sharing. 3) From the attached 56-adjective list, pre-select the 5 to 6 words you'd claim for yourself. And one question, one sentence, submitted here: what would need to be true by the end for you to say your time was well spent? Your answers shape the session, anonymously."
+      },
+      {
+        "title": "14-day pulse (send two weeks after)",
+        "body": "Subject: Two weeks later, three quick lines. 1) Did you ask your question at a team meeting, and what came back? 2) Did tomorrow's note go out, and what happened? 3) Re-take the 7 items (link): moved, or not yet? Replies come to me only. Not yet? The card still works; this note is your nudge, not your audit."
+      },
+      {
+        "title": "30-day manager retro (send to team managers a month after)",
+        "body": "Subject: The 30-day retro your team already built. Your team wrote an Expand/Contract grid at the workshop (photo attached). Run a 20-minute retro on it: Which contracting behavior did we actually retire? Which expander did we practice? What's the next rung, Inclusion, Learner, Contributor, or Challenger, and what's one behavior for it? Send me one line on what you decided; the collected answers become the 60-day check."
+      }
+    ]
+  },
+  "sections": [
+    {
+      "id": "s-welcome",
+      "title": "Arrival & Inclusion Ritual",
+      "minutes": 6,
+      "purpose": "Establish Inclusion safety (Clark Stage 1) before any content. If people don't feel they belong in the room, no downstream learning holds.",
+      "facilitate": [
+        "Greet every person BY NAME at the door. This is non-negotiable, it is the intervention, not hospitality.",
+        "Music on, intention themes visible on Wall D; point them out: 'You told us what would make this worth it. It's on the wall.'",
+        "Get phones up on the QR before anything else; confirm by hands that most of the room has the site open.",
+        "Run 'Two Truths & a Learning' at tables (5 min): name, one thing true about how you show up in teams, one thing you're actively learning. Deliberately near the topic, not icebreaker trivia.",
+        "Read the table norms aloud in 30 seconds: stories stay, lessons leave; speak from I; notice airtime; okay to pass, not okay to disengage."
+      ],
+      "validate": "Every person has spoken at their table at least once, and 80%+ have the deck open on a device.",
+      "watchFor": "Anyone still standing, phone-out, or arms-crossed after the table round, note them and return gently; they are your Inclusion-stage work for the morning.",
+      "coreMinutes": 5,
+      "coreNote": "Core: door greeting and norms survive untouched; Two Truths shrinks to name + one thing you're learning.",
+      "say": "Before we do anything, I want to acknowledge: some of you know each other well, some don't. Some of you were told to be here, some chose it. All of that is welcome. For the next two hours we're going to practice the very thing we're studying, so the room itself is the lab. Four norms on your table, thirty seconds, then we begin.",
+      "ask": {
+        "q": "At your table, your name, one thing that's true about how you show up in teams, and one thing you're actively learning.",
+        "expect": [
+          "Surface-level answers at first ('I'm organized', 'learning delegation')",
+          "One or two genuinely open answers per table, mark who they are",
+          "Occasional deflection through humor"
+        ],
+        "respond": "Don't correct shallow answers; the depth arrives with the Johari block. The early open answers tell you which tables will carry the dialogue later."
+      },
+      "transition": "Here's the course in one breath, the hook, and the contract: six things you'll be able to do by the end."
+    },
+    {
+      "id": "s-hero",
+      "title": "Objectives",
+      "minutes": 2,
+      "purpose": "Open the course proper: the hook (why the smartest person stays quiet) and the contract, six capabilities ending in a dated, witnessed commitment.",
+      "facilitate": [
+        "Read the six objectives briskly, in plain language.",
+        "Land on the sixth: this session ends with a REAL commitment card, start, stop, question, note, stage, with a 14-day window.",
+        "Name the lineage once for credibility: Edmondson at Harvard, Clark's four stages, Luft and Ingham's window, Google's Project Aristotle."
+      ],
+      "validate": "Learners can say what the capstone will be (a commitment card their team will feel within 14 days).",
+      "watchFor": "Eye-rolls at 'psychological safety', the phrase carries baggage. Pre-empt: 'If the phrase is worn out for you, watch the evidence section; the data doesn't care what we call it.'",
+      "coreMinutes": 1,
+      "coreNote": "Core: objectives 1 and 6 out loud; the rest on screen.",
+      "say": "Six things by the end: you'll define this construct precisely enough to defend it, locate your team on a four-stage ladder, know why hospitals and cockpits and Google all landed on the same finding, practice the two moves that grow trust, disclosure and feedback, rehearse candor with an actual frame, and leave with one commitment your team will feel within fourteen days. Not agree with. Feel.",
+      "transition": "That's the what. Before the six ideas: two whys, the university's, then yours."
+    },
+    {
+      "id": "s-mission",
+      "title": "The Chancellor's charge",
+      "minutes": 4,
+      "purpose": "Open with the institutional why: the Chancellor's vision (define the great university of the 21st century, and be it), the three areas of focus, and each learner locating their own team's share of it via the alignment builder.",
+      "facilitate": [
+        "Deliver the vision sentence verbatim and let it sit: 'define the great university of the 21st century, and be it.'",
+        "Walk the three areas-of-focus cards with their team translations: core operations → Learner safety, bold initiatives → Challenger safety, industry leadership → modeling what you practice.",
+        "Touch the reputation flywheel card in one breath: reputation ↔ resources (talent, funding, partnerships, access); candor sits upstream of it.",
+        "Run the alignment builder on devices (2 min): pick the area of focus, pick the rung it needs, write the one concrete line. Say it now: the rung carries forward to the commitment card.",
+        "On the Full path only: the Go-deeper table ask about the four headwinds."
+      ],
+      "validate": "Every learner has a built alignment card: area of focus + rung + one concrete line. The room's dominant rung named aloud.",
+      "watchFor": "Cynicism about vision language ('posters don't change meetings'). Agree with it: 'Right, which is why we start by locating YOUR work in it, not by reciting it.' Also watch for the four headwinds sparking politics talk; steer to the team level fast.",
+      "coreMinutes": 2,
+      "coreNote": "Core: vision sentence + three cards in one pass, alignment builder at full length (it's the point); cut the flywheel breath and the headwinds ask.",
+      "say": "Chancellor Diermeier's institutional vision is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The how is equally blunt: uncommon speed, agility, and scale, in service of reclaiming the essential role of research universities in driving American prosperity. Three areas of focus carry it, exceptional core operations, bold strategic initiatives, industry leadership, and here's why it's OUR opening slide: none of it runs on silence. Speed without safety is silence at velocity. Bold bets need someone able to question them before they ship. And you model what you practice. Find your team's share of it, three taps and a sentence.",
+      "ask": {
+        "q": "Look at your alignment card: which area of focus did your table mostly pick, and which rung came up most?",
+        "expect": [
+          "Operations-heavy rooms pick core operations + Learner",
+          "Teams near new programs pick bold initiatives + Challenger",
+          "A few 'our work doesn't touch the vision', the redirect is that core operations IS most staff work"
+        ],
+        "respond": "Tag the room's dominant rung out loud: 'Remember that rung. It reappears on your commitment card at the end, and now it has the university's vision behind it.'"
+      },
+      "transition": "That's the institution's why. Yours is smaller, closer, and more powerful, and you're about to build it.",
+      "debrief": "The vision only exists at the altitude where you work. When your team surfaces a problem early, questions a bet before it ships, or credits the newest contributor, that's not adjacent to the strategy; it's the strategy, running."
+    },
+    {
+      "id": "s-why",
+      "title": "Our why (Golden Circle)",
+      "minutes": 4,
+      "purpose": "Move from the institutional why to each learner's personal why: Sinek's Golden Circle taught inside-out, then every learner constructs their own circle in the builder, the fuel for the commitment card.",
+      "facilitate": [
+        "Walk the three cards inside-out, one breath each: why, how, what.",
+        "Play the first ~4 minutes of Sinek's TED talk on the Full path, stop once the Golden Circle is drawn.",
+        "Run the circle builder on devices (2 to 3 min, silent, music on): all three rings, then build. Private by design.",
+        "Run the real-person test by show of hands: 'who has a WHY with a real person or moment in it?' Normalize the not-yets.",
+        "Say explicitly: the WHY ring returns at the commitment card; the HOW ring is a head start on it."
+      ],
+      "validate": "Every learner has a built circle with all three rings; spot-checked by the real-person show of hands.",
+      "watchFor": "Borrowed whys ('leadership says', 'it's on my review'). Don't correct publicly; the real-person test does the correcting. Also watch the HOW ring filling with values instead of behaviors, 'be more open' isn't a camera-visible how.",
+      "coreMinutes": 2,
+      "coreNote": "Core: cut the video (assign as the week's watch); cards in one breath; the builder stays at full length, the circle is what the capstone spends.",
+      "say": "The university just gave you its why. Simon Sinek's rule is that people and movements work the same way, inside-out: why, then how, then what. People don't buy what you do; they buy why you do it. Our why, stated flat: every person on your team deserves to matter out loud, and the work gets better the moment they do. Now build yours. Three rings: WHY, I want a braver team because, and make it about a real person. HOW, the behavior you'll practice. WHAT, what your team will visibly see. It has to survive day nine, so write it like it matters.",
+      "ask": {
+        "q": "Without sharing the sentence itself: does your WHY ring have a real person or a real moment in it?",
+        "expect": [
+          "Most hands up after a beat",
+          "A few honest 'not yet', normalize: borrowed whys are where everyone starts",
+          "Occasionally someone wants to read theirs aloud, allow one, don't harvest more"
+        ],
+        "respond": "One line: 'If there's no person in it yet, leave the ring open in the back of your mind. By the commitment card, there will be.'"
+      },
+      "transition": "Institutional why, personal why, contract set. Here's the plan, six ideas, in order."
+    },
+    {
+      "id": "s-agenda",
+      "title": "Agenda",
+      "minutes": 1,
+      "purpose": "Show the arc once so learners can place each experience as it arrives.",
+      "facilitate": [
+        "Walk the six items in one breath each.",
+        "Point out the shape: understand it (01 to 03), experience it (04), then act on it (05 to 06)."
+      ],
+      "validate": "None needed; this is orientation.",
+      "watchFor": "Don't teach here; every concept has its own slide.",
+      "coreMinutes": 0,
+      "coreNote": "Core: skip entirely; the deck's structure carries it.",
+      "say": "Three moves today: understand what this thing actually is, experience it in your own hands with the window exercise, then rehearse the behaviors that build it. Definitions first, because most of what wears this label isn't it.",
+      "transition": "So: what it is, and the three things it keeps getting confused with."
+    },
+    {
+      "id": "s-safety",
+      "title": "01 · What safety is (and isn't)",
+      "minutes": 8,
+      "purpose": "Anchor Edmondson's definition and dismantle the three myths, so the room stops hearing 'niceness' when you say 'safety'.",
+      "facilitate": [
+        "Deliver the opening frame standing at the front, no slides advancing, this is the one moment of pure oratory in the session.",
+        "Walk the three myth cards: niceness, lowered bar, consensus. One line each; the trainer does the drilling.",
+        "Play the Edmondson TEDx video, first ~6 minutes, on the Full path.",
+        "Run the 'Safety, or something else?' trainer on devices; call the room's score pattern afterward, not individuals'.",
+        "Then the pair activity from Go deeper: one unsaid-thing memory, which risk priced it out, own-words definition."
+      ],
+      "validate": "Exit-ticket item 1 rehearsal: pairs produce a definition mentioning interpersonal risk and shared belief, not niceness. Trainer scores mostly 4+/5.",
+      "watchFor": "The word 'safe' drifting toward 'comfortable' in table talk. Correct the room once, warmly: 'Comfort is what you feel; safety is what the TEAM believes about risk. Different animals.'",
+      "coreMinutes": 6,
+      "coreNote": "Core: frame + myths + trainer; cut the video (assign as the week's watch) and shrink the pair share to one voice.",
+      "say": "Psychological safety is NOT being nice. It is not lowering the bar. It is not consensus. It is the shared belief that this team is safe for interpersonal risk-taking, for saying 'I don't know,' 'I made a mistake,' 'I disagree,' or 'I have an idea that might be bad.' High-performing teams are not comfortable teams, they are candid ones. That's Edmondson, and every word is load-bearing.",
+      "ask": {
+        "q": "Think of a meeting where something true went unsaid. Which risk priced it out, looking ignorant, incompetent, negative, or disruptive?",
+        "expect": [
+          "Ignorant: didn't ask the clarifying question",
+          "Negative: saw the flaw, stayed quiet in the room, said it in the hallway",
+          "Disruptive: disagreed with the direction after the decision felt made"
+        ],
+        "respond": "Collect the four risk types on the board as they surface. 'Every unsaid thing in your organization is one of these four taxes. Today is about lowering the rates.'"
+      },
+      "debrief": "The definition is a test, not a slogan: when did someone here last say 'I was wrong' out loud, and what happened next? If you can't name it, you have politeness, and politeness is what silence sounds like from the inside.",
+      "transition": "One sentence carries the whole session. Watch the wall."
+    },
+    {
+      "id": "s-belief",
+      "title": "Manifesto",
+      "minutes": 1,
+      "purpose": "A beat of silence around the core idea before the diagnostic asks people to apply it to their own team.",
+      "facilitate": [
+        "Let the words reveal on screen; don't talk over them.",
+        "Read it once, slowly, then pause three full seconds before advancing."
+      ],
+      "validate": "None; this is pacing.",
+      "watchFor": "The urge to explain it. Don't; the next section is the explanation.",
+      "coreMinutes": 0,
+      "coreNote": "Core: skip; say the line out loud during the Section 01 debrief instead.",
+      "say": "High-performing teams are not comfortable teams. They are candid ones.",
+      "transition": "So where is YOUR team? There's an instrument for that, the actual one from the research."
+    },
+    {
+      "id": "s-diagnose",
+      "title": "02 · Where your team stands",
+      "minutes": 8,
+      "purpose": "Locate each learner's team on Clark's ladder using Edmondson's real 7-item instrument, and convert scores into a buildable next rung.",
+      "facilitate": [
+        "Walk the four stage cards with their tests: newest voice invited? last 'I don't know'? ideas credited? dissent thanked?",
+        "Send them to the 7-item survey on their devices; pre-work completers confirm or revise their baseline. Say explicitly: nothing you tap is saved or sent.",
+        "Run the table debrief: share your LOWEST item only, never totals. Passing is fine.",
+        "Take 3 to 4 voluntary whole-room shares; reflect the themes back onto Wall B next to the printed items.",
+        "Run the quick check (safety AND standards, the comfort-zone trap)."
+      ],
+      "validate": "LO2 evidence: each learner has a stage placement with one line of justification. Table debriefs surfaced a lowest-item pattern.",
+      "watchFor": "If nobody shares: name it, 'the difficulty of sharing this out loud IS the data; that's what low psychological safety feels like.' If someone overshares: protect them, 'thank you; I want to make sure we get a few voices.' Never cold-call.",
+      "coreMinutes": 6,
+      "coreNote": "Core: survey + lowest-item table share; cut the whole-room collection to two voices and skip writing on Wall B.",
+      "say": "These seven items are the actual research instrument, the same questions behind every study you'll see today. Rate your current team honestly; the score stays on your screen. Then we do something braver than sharing scores: share only your LOWEST item. The lowest item isn't your grade. It's your address, it tells you which rung of the ladder your team builds next.",
+      "ask": {
+        "q": "Which item scored lowest for you, and what did you notice while rating it?",
+        "expect": [
+          "Mistakes held against you (item 1), usually with a story attached",
+          "Difficult to ask for help (item 5), often from senior people",
+          "A pause, then 'honestly, I rated it differently than I would have out loud'"
+        ],
+        "respond": "That last one is gold when it appears: 'The gap between the private score and the public one, that gap IS the measurement.' Reflect themes, never press individuals."
+      },
+      "debrief": "Read your score as a location, not a grade. Low on mistakes → build Learner. Low on skills-valued → build Contributor. Fine until someone questions how things are done → your ceiling is Challenger. The next two hours hand you the tools rung by rung.",
+      "transition": "Before the tools, why believe any of this? Three bodies of evidence, and none of them are soft."
+    },
+    {
+      "id": "s-case",
+      "title": "03 · The evidence",
+      "minutes": 10,
+      "purpose": "Deliver the abstract conceptualization through cases, not lecture: hospitals, Tenerife, Project Aristotle, and the working equation.",
+      "facilitate": [
+        "Case-teach, four minutes, rehearsed: narrate ONE case as story (pick for your audience, healthcare room gets the nursing units, ops/engineering gets Tenerife, tech gets Aristotle). The other two cards stay on screen as evidence breadth.",
+        "Handle Tenerife with weight: 583 people, a flight engineer's doubt voiced too gently. No drama; the number does the work.",
+        "Pose the two questions to tables (3 min): what would have to be true to speak up in that moment? What would have to be true for the leader to INVITE it?",
+        "Pull 2 to 3 answers whole-room; write them on Wall B next to the Edmondson items.",
+        "Introduce the equation, one sentence per variable: Invitation × Response × Fallibility, multiply, don't add; a zero anywhere zeroes the product.",
+        "Run the quick check (why the better nursing units reported MORE errors)."
+      ],
+      "validate": "Quick check correct across the room; tables produced at least one 'what would have to be true' answer that names the leader's behavior, not the speaker's courage.",
+      "watchFor": "The seductive wrong reading of the nursing data, 'safe teams make more mistakes.' Kill it immediately with the reporting-vs-erring distinction; the quick check exists to catch it.",
+      "coreMinutes": 6,
+      "coreNote": "Core: one case narrated in three minutes, equation, quick check; table discussion shrinks to one minute and one shared answer.",
+      "say": "This isn't a soft idea with a hard sell, the evidence is brutal. Edmondson went looking for proof that better hospital teams made fewer errors, and found the opposite: the BETTER units reported MORE. It broke her model until she saw it: they weren't erring more, they were hiding less. Tenerife, 1977: a flight engineer saw the problem and said it too gently to a captain too senior to question: 583 people. And Google, with all its data, measured 180 teams expecting talent to win. Talent lost. The #1 predictor was whether the team was safe for risk. Same finding, three worlds.",
+      "ask": {
+        "q": "Pick one case at your table: what would have to be true for a person to speak up in that moment, and what would have to be true for the leader to invite it?",
+        "expect": [
+          "Speaker side: knowing you won't be punished, seeing someone else survive it first",
+          "Leader side: asking explicitly, responding well the LAST time, admitting their own errors",
+          "Occasionally: 'rank would have to matter less', the Challenger insight arriving early"
+        ],
+        "respond": "Steer the room from speaker-courage to leader-invitation: 'Notice most answers landed on the leader's behavior. Courage is expensive; invitation is cheap. Build the cheap thing.'"
+      },
+      "debrief": "The equation on the wall is your audit: Invitation, when did you last ask 'what am I missing' and wait? Response, what happened to the last person who brought bad news, and who watched? Fallibility, when did the most senior person last say 'I was wrong' out loud? A zero in any factor zeroes the product.",
+      "transition": "Enough evidence. Now the keystone, the next half hour happens in your own hands, with a window drawn in 1955."
+    },
+    {
+      "id": "s-johari",
+      "title": "04 · The Johari Window",
+      "minutes": 28,
+      "purpose": "The keystone experiential block: move the room from Learner into Contributor safety by practicing disclosure and feedback inside a bounded, low-stakes structure.",
+      "facilitate": [
+        "Frame the window in four minutes on the on-screen 2×2: axes first (known to self across, known to others down), then the panes, Open grows two ways only: disclosure shrinks Hidden, feedback shrinks Blind. Leave Unknown alone; it shrinks through time.",
+        "Part A (5 min, silent): the device builder replicates the paper exercise, tap once to CLAIM a word for Open (5 to 6), tap twice to mark a word TRUE-BUT-HELD-BACK (Hidden, up to 3), then build the window. Say the held-back rule out loud: holding words back is legitimate; noticing what you hold back IS the exercise. Music on.",
+        "Part B (10 min): paper sheets pass clockwise; each teammate adds 1 to 2 adjectives on a sticky, FROM THE LIST ONLY. No commentary, no explanations, say this rule twice; it bounds the emotional risk.",
+        "Part C (5 min, silent): owners sort the returned stickies against their built window, matches a claimed word → confirms Open; a word you didn't claim → Blind; your held-back words stay Hidden unless you choose to move one. Music on.",
+        "Part D (6 min): table reflection, each person answers ONE prompt of the three, their choice: what surprised me in Blind? what did I hold back, and what would moving it cost or gain? what word do I wish someone had written?",
+        "Then move DIRECTLY to Section 05. No whole-room share-out, the reflection IS the debrief, and public window-sharing would violate the safety just built."
+      ],
+      "validate": "LO4/LO5 evidence: every learner has a built window with 5 to 6 words in Open (and consciously chose whether Hidden holds any); every returned sticky sorted; every person answered one reflection prompt aloud (or consciously passed).",
+      "watchFor": "Someone visibly reacting to their sheet → private check-in at the transition, never publicly. A table gone silent → walk near, intervene only past 90 seconds. Someone laughing off feedback → normal defense; do not confront. Reporting lines at one table → should have been re-podded before this block.",
+      "coreMinutes": 24,
+      "coreNote": "Core: A→3 min, B→8 (one sticky per teammate), C→4, D→5 with one voice per table; framing shrinks to two minutes. Cut nothing else, this block carries the affective objectives.",
+      "say": "Team effectiveness is largely a function of one pane of this window: Open, what you know about yourself AND your team knows. You expand it exactly two ways. Disclosure: you tell them something, and Hidden shrinks. Feedback: they show you something, and Blind shrinks. For the next twenty-five minutes we practice both, with training wheels on: adjectives only, from a fixed list, no commentary. Your sheet is yours; nothing on it gets shared aloud. Ready?",
+      "ask": {
+        "q": "(Part D, each person picks ONE) What surprised you in Blind? What did you keep Hidden, and what would moving it to Open cost or gain? What word do you wish someone had written?",
+        "expect": [
+          "Blind surprises land positive more often than people fear, 'two people wrote brave'",
+          "Hidden answers come hedged; honor the hedge, it's disclosure-in-progress",
+          "The wish-question produces the quietest, truest answers in the room"
+        ],
+        "respond": "Do not harvest these for the whole room. Your job in Part D is proximity and time-keeping only. The chime ends it; 'thank your table' closes it."
+      },
+      "debrief": "None aloud, by design. The private mapping and the chosen prompt were the debrief. Say one sentence as you transition: 'What you just felt when you opened that sheet, hold onto it. That's what feedback costs and pays, and it's why the next section is about behaviors, not intentions.'",
+      "transition": "You now know what expands trust between two people. Scale it: what expands or contracts safety for a whole team, one meeting behavior at a time?"
+    },
+    {
+      "id": "s-expand",
+      "title": "05 · Expand or contract",
+      "minutes": 17,
+      "purpose": "Convert insight into observable behaviors across all four stages, the section where the workshop earns its behavior-change objective.",
+      "facilitate": [
+        "Set the lens in one minute: every behavior in a meeting is a transaction; the audience, not the target, is where safety is won or lost.",
+        "Tables fill the 4×2 grid (stage × expand/contract) with stickies from their own experience (8 min): 'what you've seen, done, or received.'",
+        "Seed ONLY if a table stalls, from the on-screen examples: names-first, 'what am I missing', public credit, steel-manning; versus interrupting, 'as we all know', eye-rolls, credit-taking, HiPPO.",
+        "Gallery walk (4 min): rotate one table clockwise, read, add one sticky to the host grid.",
+        "Whole-room synthesis (2 min): name 3 patterns you observed across all grids. Photograph EVERY grid, they are the day-1 email and the day-30 retro agenda.",
+        "Run the Expand-or-Contract trainer on devices as the individual check (it can also run as homework on the Core path)."
+      ],
+      "validate": "LO3 evidence: every grid has entries in all eight cells, peer-checked by the gallery walk; trainer scores mostly 6+/8.",
+      "watchFor": "Grids filling with abstractions ('be respectful'). Push to camera-visible: 'What would I SEE? Give me the behavior, not the value.' Also watch the contract column for thinly-veiled complaints about specific absent people; redirect to patterns.",
+      "coreMinutes": 12,
+      "coreNote": "Core: grid in 6 min, gallery walk becomes a 2-min stand-and-scan of the nearest grid, synthesis one pattern; trainer assigned as homework.",
+      "say": "Safety isn't declared; it's transacted, one behavior at a time, in front of an audience. The eye-roll costs one asker but taxes everyone watching. The public credit pays one contributor and everyone watching. Your table's job: fill this grid from lived experience, four stages, expand and contract, with things a camera would see. If it's on your grid, someone at your table has a witness memory of it. That's what makes this list better than any I could hand you.",
+      "ask": {
+        "q": "(Synthesis) What pattern showed up on every single grid in this room?",
+        "expect": [
+          "Interruption and airtime dominate the contract columns",
+          "'As we all know' or its local dialect appears verbatim on multiple grids",
+          "The Challenger row is the thinnest on every grid, name this if the room doesn't"
+        ],
+        "respond": "The thin Challenger row is the finding: 'Notice which row the room struggled to fill. That's not a coincidence; that's your organization's ceiling, mapped in eight minutes.'"
+      },
+      "debrief": "These grids get photographed and mailed to you today, and at day 30 your manager runs a retro on exactly this artifact: which contracting behavior did we retire, which expander did we practice? The grid is the contract.",
+      "transition": "One behavior on every expand list needs more than intention, it needs words. Candor. Let's rehearse it."
+    },
+    {
+      "id": "s-candor",
+      "title": "06 · The candor rehearsal",
+      "minutes": 17,
+      "purpose": "Rehearse the highest-stakes behavior, Challenger-stage candor, in a controlled triad structure. Skills only transfer if practiced out loud, in-room.",
+      "facilitate": [
+        "Frame in two minutes: candor is a skill, not a personality trait. Walk SBI + Ask on the four cards with the Priya example.",
+        "Run the Fix-the-Feedback trainer briskly on devices (4 min) to calibrate ears before mouths.",
+        "Triad rehearsal (10 min, rotate every ~3 min): Speaker delivers a real or realistic SBI+Ask; Receiver listens, clarifying questions ONLY, no defense; Observer checks the four elements plus tone, then 60 seconds of feedback.",
+        "Ring the chime at each rotation; deliver the body-data line during the second rotation, not before.",
+        "Whole-room close (2 min): what was hardest? What would have to be true on your team for this to happen without a workshop?",
+        "High-power-distance adaptation: triads are peer-to-peer only; upward candor is discussed, not rehearsed. Adapt, never delete."
+      ],
+      "validate": "LO5/LO6 evidence: every person delivered one complete SBI+Ask and received one without defending; observers caught at least one missing element per round. Trainer scores mostly 4+/5.",
+      "watchFor": "Receivers defending, re-state the rule table-side, gently: 'clarifying questions only; the defense is the reflex we're retraining.' Speakers going hypothetical to stay safe, allow it; 'realistic' is within bounds. Anyone using the rehearsal to ambush a real colleague in the room, redirect immediately to a different scenario.",
+      "coreMinutes": 14,
+      "coreNote": "Core: trainer compressed to 3 min, triads get 8 (three tight rotations), close to one voice. The rehearsal itself is untouchable.",
+      "say": "Candor is a skill, not a personality trait, and we're going to rehearse one candor move: feedback that would normally stay in the Hidden quadrant. The frame: Situation, 'in yesterday's staff meeting, when the budget came up.' Behavior, 'you cut off Priya mid-sentence.' What a camera saw, not a verdict. Impact, 'she didn't speak again, and I'm worried we lost her input.' Owned with I. Then the Ask, 'can we talk about how to handle those moments?' The Ask is what turns a verdict into a conversation.",
+      "ask": {
+        "q": "(Close) What did you notice was hardest, and what would need to be true on your team for this to happen naturally?",
+        "expect": [
+          "Receiving was harder than giving, most rooms discover this with surprise",
+          "'Not defending' named as nearly physical effort",
+          "What would need to be true: someone has to go first; usually 'the leader'"
+        ],
+        "respond": "Land the transfer line: 'Someone has to go first, and it's cheapest for the most senior person. If that's you, your first SBI+Ask this month is worth more than this whole workshop.'"
+      },
+      "debrief": "Notice what your body did when it was your turn to receive, dry mouth, the rebuttal forming early. That's the data. That's what your teammates feel every time you're the giver. This is why psychological safety takes work, and why it's work worth doing out loud.",
+      "transition": "You have the construct, the ladder, the window, and the words. Two closing moves: prove it, then commit to it."
+    },
+    {
+      "id": "s-recap",
+      "title": "Recap quiz",
+      "minutes": 4,
+      "purpose": "Level 2 check: six questions mapped one-to-one onto the six objectives, individually answered.",
+      "facilitate": [
+        "Everyone runs it solo on their own device; it doubles as the exit-ticket knowledge half.",
+        "Call for scores by hands (4+, 5+, 6), celebrate, don't interrogate.",
+        "Name misses in aggregate only, and point each miss back to its slide for the after-session reread."
+      ],
+      "validate": "The distribution is the Level 2 measure: aim for 80% of the room at 4/6 or better. Note which question missed most, it names your weakest teaching block this run.",
+      "watchFor": "Question 5 (judgment vs. behavior) misses most when the rehearsal ran short, that's diagnostic, not random.",
+      "coreMinutes": 4,
+      "coreNote": "Core: untouched. The recap is the measurement; it never gets cut.",
+      "say": "Six questions, one per objective, ninety seconds. This isn't a test of you, it's a test of me: whatever the room misses is what I taught badly, and I want to know.",
+      "transition": "Knowledge proven. Now the part your team actually experiences: the card."
+    },
+    {
+      "id": "s-plan",
+      "title": "Capstone · The commitment card",
+      "minutes": 7,
+      "purpose": "Convert learning into a specific, dated, witnessed commitment: start, stop, question, note, and stage, the artifact the next 14 days run on.",
+      "facilitate": [
+        "Silent build, music on (4 min): start, stop, question chip, note chip, stage chip; then build the card.",
+        "Everyone photographs their own card, then posts a duplicate sticky, just the START line, on the Commitment Wall. Public accountability, minimal disclosure.",
+        "Say the witness rule out loud: share the full card with ONE colleague today; a commitment with a witness survives.",
+        "Circulate; help anyone stuck on STOP by pointing at their table's contract column, it's a menu.",
+        "Exit ticket on the card's back (2 min): one-sentence definition, team's stage + because, and the 1 to 5 equipped rating."
+      ],
+      "validate": "LO6 evidence: every card complete and photographed; commitment wall has one sticky per person; exit tickets collected, they are your Level 1 and Level 2 record.",
+      "watchFor": "Vague commitments ('be more open'). Push once, kindly: 'What would your team SEE on Tuesday?' Also watch for over-commitment, one start and one stop beats five of each.",
+      "coreMinutes": 6,
+      "coreNote": "Core: build in 3 min, wall posting in passing on the way out, exit ticket untouched.",
+      "say": "Everything converges on one card: one behavior you start, one you stop, steal it from your contract column, one question your team hears at the next meeting, one note that goes out by end of day tomorrow, and the rung you're building. Fourteen days. Photograph it, post your start-line on the wall, and tell one colleague today. A commitment with a witness survives; a private one evaporates by Friday.",
+      "ask": {
+        "q": "Look at your card. Is there anything on it your team would actually notice by next Friday? If not, sharpen one line.",
+        "expect": [
+          "Most cards pass; a few 'be better at listening' cards need the camera test",
+          "Someone asks if they can do more than one, redirect to depth over count",
+          "Someone stuck on the note, offer the thank-you-for-candor as the lowest-risk start"
+        ],
+        "respond": "Use the camera test as the universal fix: 'if a camera can't record it, your team can't feel it.'"
+      },
+      "debrief": "The wall stays up until the photos are taken and mailed to you tonight. Day 14, I ask three questions. Day 30, your manager runs the retro on your team's grid. This card is the unit of change; everything else today was setup.",
+      "transition": "The vocabulary is on the next slide for later. Right now, stand up. One last thing, and it's not a slide."
+    },
+    {
+      "id": "s-glossary",
+      "title": "Glossary",
+      "minutes": 1,
+      "purpose": "Signpost the reference so learners know the vocabulary survives the session; not a teaching moment.",
+      "facilitate": [
+        "Gesture at it in passing: twelve terms, flip cards, on their devices forever.",
+        "Point to it as the pre-read for whoever they teach this to next."
+      ],
+      "validate": "None needed.",
+      "watchFor": "Don't walk the cards; the closing ritual needs its time.",
+      "coreMinutes": 0,
+      "coreNote": "Core: skip; one sentence during the close, 'the vocabulary lives in the deck.'",
+      "say": "Twelve terms, flip to reveal, yours forever, including everything your team will ask when you bring the card back.",
+      "transition": "Now stand up and make a circle. The last two minutes have no slides."
+    },
+    {
+      "id": "s-resources",
+      "title": "Resources",
+      "minutes": 0,
+      "purpose": "Signpost the curated shelf, Vanderbilt Oracle Learning courses, talks, podcasts, and source documents, without spending session time on it.",
+      "facilitate": [
+        "Gesture at it in passing during the close: four shelves, two of Vanderbilt courses in Oracle Learning, one to watch and listen, one to read.",
+        "Say the one rule: pick ONE item matching your commitment card's rung, finish it in the 14-day window, bring one idea to the day-30 retro.",
+        "Mention the ELE live offerings by name, the 4 Stages session and the Thriving Together series are the team-level next steps."
+      ],
+      "validate": "None in-session; the day-14 pulse asks whether the one chosen resource got started.",
+      "watchFor": "Resource enthusiasm replacing commitment, seven tabs open, zero conversations had. The one-item rule is the guardrail; say it.",
+      "coreMinutes": 0,
+      "coreNote": "Core: one sentence during the close, 'the shelf is in the deck; one item, your rung, fourteen days.'",
+      "say": "Everything on this shelf maps to a rung you practiced today, and half of it is already inside Vanderbilt's Oracle Learning with your VUnetID. One rule: pick one item, the one that matches the rung on your card, finish it inside your fourteen days, and bring one idea from it to your team's thirty-day retro. One resource applied beats seven collected.",
+      "transition": "Now stand up and make a circle. The last two minutes have no slides."
+    },
+    {
+      "id": "s-close",
+      "title": "Commitment & closing ritual",
+      "minutes": 2,
+      "purpose": "End with ritual, not with a slide: the one-word circle and the fist-to-five, then the final line.",
+      "facilitate": [
+        "Everyone stands in a circle, including you. Chairs stay where they are.",
+        "One at a time, each person says ONE word for what they're taking with them. No commentary, yours included. Model it by going first, with one word only.",
+        "When the circle closes, run the fist-to-five: 'how equipped do you feel to have candid conversations, compared to two hours ago?' Note the room's shape; it's your Level 1 record alongside the exit tickets.",
+        "Deliver the final line, then stop talking. Resist the closing lecture; the silence after is doing the work."
+      ],
+      "validate": "Level 1: fist-to-five distribution noted; every person spoke one word (or consciously passed), participation in the ritual is itself the Inclusion-stage bookend.",
+      "watchFor": "Your own urge to summarize. The word circle already did it, in the room's own words.",
+      "coreMinutes": 2,
+      "coreNote": "Core: untouched. The ritual is two minutes and it is the ending; cutting it saves nothing worth having.",
+      "say": "One word for what you're taking with you. Just the word, no commentary. I'll start.",
+      "debrief": "After the circle closes, the final line, verbatim, then silence: 'This is not something we finished today. It's something we started. Your team is watching you tomorrow.'",
+      "transition": "That's the session. Photos of the wall and the grids reach your inbox tonight; I come asking about the card in fourteen days."
+    }
+  ]
+}

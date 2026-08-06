@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delegation Routing Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to your task list</p>
+      <h1>Delegation routing, the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The Routing Test, in order</h2>
+      <ol>
+        <li><b>Growth:</b> would doing this grow a person? If yes, stretch beats speed; the test is over and the person gets the rep.</li>
+        <li><b>Judgment:</b> does it need context, relationships, or accountability? Then it stays human, and sometimes stays yours.</li>
+        <li><b>Volume:</b> is it mechanical repetition with catchable errors? AI's lane, always with a named verifier.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Order rule:</b> growth first, always. Volume is the loudest question and the least important.</p>
+    </div>
+
+    <div class="box">
+      <h2>Stretch vs grunt, the tells</h2>
+      <ul>
+        <li><b>Stretch:</b> hard because it is NEW. Feedback attached; leaves a capability behind.</li>
+        <li><b>Grunt:</b> hard because it is LONG. What did rep 30 teach that rep 3 did not? Nothing? Grunt.</li>
+        <li><b>The trap:</b> yesterday's stretch (first drafts, research passes) is today's AI lane. Build replacement reps: verification ownership, client seats, judgment calls with feedback.</li>
+        <li><b>Removing grunt is a favor. Removing stretch is a theft.</b></li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The handoff brief: to a person</h2>
+      <ol>
+        <li><b>Outcome:</b> what done looks like.</li>
+        <li><b>Context:</b> why it matters and where it fits.</li>
+        <li><b>Checkpoints:</b> when you will look, agreed up front, spaced by stakes.</li>
+        <li><b>Struggle room:</b> no rescue at the first wobble. Struggle produces attempts; drowning produces silence. Check for attempts.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The handoff brief: to AI</h2>
+      <ol>
+        <li><b>The draft assignment:</b> what it produces, from which inputs, to what standard.</li>
+        <li><b>The named verifier:</b> who checks, against what source, with the power to reject. No verifier, no handoff.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>A delegation to AI is really a delegation to the verifier.</b> And either way, you own what ships.</p>
+    </div>
+
+    <div class="box">
+      <h2>The traffic light (data rule)</h2>
+      <ul>
+        <li><b>Green:</b> public or generic information. Go.</li>
+        <li><b>Yellow:</b> internal work. Approved VU tools only.</li>
+        <li><b>Red:</b> private information about people. Never.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks the test:</b> red data closes the AI lane, whatever the volume question says.</p>
+    </div>
+
+    <div class="box">
+      <h2>Role math, when AI absorbs a chunk</h2>
+      <ol>
+        <li>Name what drains: the routine chunk, with a named verifier from day one.</li>
+        <li>Name what backfills BEFORE announcing: judgment reps, client contact, verification ownership.</li>
+        <li>Say what the freed capacity is for, out loud.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>A role redesigned with its owner grows;</b> a role shrunk from a distance starts job hunting.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The numbers, for the skeptics</h2>
+      <p class="prompt">Gallup: US employees using AI at work at least a few times a year <b>nearly doubled in two years to about 40%</b>; daily use doubled to <b>about 8%</b>; only <b>about 22%</b> say their organization has communicated a clear AI plan. Stanford GSB: the AI-era leader's job shifts to <b>redesigning roles and processes</b> rather than simply overseeing execution. The routing is already happening; the deciding is the part that is missing.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The 15-minute handoff conversation, fill in the blanks</h2>
+      <p class="prompt">Task: [the one you have been holding]. Destination: [AI + verifier / stretch / split / keep, with the reason]. Brief: [outcome, context, checkpoint] or [draft assignment + named verifier]. I will NOT: [route a learning rep away for speed / hand AI work unverified / keep from habit]. Check, two weeks out: [what the routing freed, what the person or verifier caught or learned].</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Delegating, Rethought · Vanderbilt Learning Series · <a href="../../courses/Delegating-with-AI/">Course link</a></span>
+    <span>The evidence: <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx">Gallup, AI in the Workplace</a> · <a href="https://www.gsb.stanford.edu/insights">Stanford GSB Insights</a></span>
+  </footer>
+</div>
+</body>
+</html>

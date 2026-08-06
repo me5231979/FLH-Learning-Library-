@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardrails &amp; Responsible Use, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for Vanderbilt staff: write the Four Lines, a team's one-page AI agreement covering what data goes in, when a human verifies, when AI use is disclosed, and who owns the output.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Guardrails &amp; Responsible Use | Vanderbilt Learning Series">
+<meta property="og:description" content="Turn responsible AI use from a poster into a one-page working agreement: the traffic light with its hard cases, right-sized verification, honest disclosure, and output ownership.">
+<meta property="og:url" content="../../../courses/AI-Guardrails/">
+<meta property="og:image" content="../../../courses/AI-Guardrails/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guardrails &amp; Responsible Use | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/AI-Guardrails/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-why">Written Rules</a>
+    <a href="#s-datain">What Goes In</a>
+    <a href="#s-check">The Check</a>
+    <a href="#s-disclose">Disclosure</a>
+    <a href="#s-write">The Agreement</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including drafting the Four Lines for a team you actually belong to. You will be asked what your own line one says; a real answer plays far better than a hypothetical.</li><li>Confirm the approved-tool list with IT so you never guess from the front of the room. If the list has changed, the course copy needs updating before you teach, not during.</li><li>Send the pre-work invite (template on this page) with the calendar invite: come knowing your team's two or three most-shipped outputs and the data they touch, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Skim the current Stanford AI Index chapter on responsible AI so the incident numbers are fresh; the game's reveals carry the citations, but you should be able to say 'the Index' with a straight face.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Guardrails Lab and one trainer so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and Four Lines agreements, and put up the traffic light poster.</li><li>Re-read the tough-questions bank; say the 'am I in trouble for what I already pasted?' response out loud once. That question is coming.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'TOOLS AND SITUATIONS, NEVER NAMES' where the room can see it all session.</li><li>Check the traffic light poster is straight and visible; you will point at it at least six times.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed Four Lines agreements (worksheet.html) as the no-device and projector-failure fallback</li><li>A printed or drawn traffic light poster, visible from every seat</li><li>Whiteboard or flip chart with markers for the hard-case arguments and disclosure rewrites</li><li>The current approved-tool list confirmed with IT the week before (today: ChatGPT EDU, Amplify, Copilot)</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the traffic light, the four lines, and the misled test all draw in seconds. The classification and disclosure drills never needed a screen; read the trainer cases aloud from the printed cheat sheet and have the room vote by hands. The builder and capstone move to the printed agreement.</div><div class="brief__row"><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the private builder and capstone move to paper. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the Guardrails Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the builder, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone names a colleague or starts prosecuting a specific person's AI use:</b> Protect the norm warmly: 'Hold that. Tools and situations, never names. The lines work on situations, not people.' If it keeps happening, there is usually a real conflict underneath; move the person to a private follow-up and keep the room on situations.</div><div class="brief__row"><b>If Someone discloses a possible real incident, like student data already pasted into a personal tool:</b> This outranks the agenda. Thank them for saying it out loud, do not adjudicate from the front of the room, and route it: their manager and the appropriate policy owner, today, framed as cleanup rather than punishment. Then use the moment, without the details, to teach why early surfacing is the cheap outcome the written lines exist to produce.</div><div class="brief__row"><b>If The room is skeptical: 'this is compliance theater, nobody will follow a page':</b> Agree with the premise and flip it: pages nobody follows are announced pages. Point at the working agreement standard: written WITH the team, findable, revisited. Then ask the skeptic what their team's current rule is; the honest answer is usually 'there isn't one,' which makes the case better than you can.</div><div class="brief__row"><b>If The room is the opposite: enthusiasts who want AI in everything today:</b> Aim the enthusiasm at the lab: 'Great, you're writing the lines for the rollout.' Enthusiast teams fail through unread output and undisclosed use, so let the lab's weak tier and the ownership section do the sobering. The message that lands: guardrails are what let you go fast without becoming the cautionary tale.</div><div class="brief__row"><b>If Someone asks about a tool not on the approved list, or claims the list is wrong:</b> Never adjudicate a specific tool live. The move is the agreement's own rule: the page points at IT's list, and questions about the list go to IT. Park the tool question, promise the route, and use it as a live example of 'unclear cases route, never improvise.'</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Am I in trouble for what I already pasted into a personal AI account?</summary><p>The honest answer: this session is not an audit, and the goal is better decisions from today forward. If something specific is weighing on you, especially anything about students or colleagues, the right move is to tell your manager or the policy owner so it can be assessed calmly; early surfacing is consistently the cheap outcome, and hiding it is how small things become incidents. The written lines exist precisely so nobody has to make these calls alone under deadline again.</p></details><details class="brief__q"><summary>Why does a rec letter or student essay matter? I'm the one asking for the help, and I have good intentions.</summary><p>Because the data is about someone else, and they never agreed to it entering a tool whose data handling you cannot see. FERPA does not have a good-intentions exemption, and neither does the person the letter describes. The workaround is usually easy: strip the identifying details and ask for structure help, or use an approved tool for the yellow parts. What never works is deciding on their behalf that the risk is fine.</p></details><details class="brief__q"><summary>Doesn't disclosure make us look lazy, like we didn't do the work?</summary><p>The evidence runs the other way: readers punish discovered concealment far harder than disclosed assistance. A plain line, drafted with AI assistance and reviewed by the team, reads as a process statement, the same register as 'photo by' credits. What reads as lazy is unread AI output, and that is a line-two failure, not a disclosure problem. If a piece would embarrass you when disclosed, the piece needs more human work before it ships.</p></details><details class="brief__q"><summary>Half my team already uses AI quietly. Won't writing rules just drive it further underground?</summary><p>Unwritten rules are what drove it underground; people hide what they cannot predict the reaction to. A written page with reasonable lines does the opposite: it tells people what is safe to say out loud, and teams that draft the page together usually surface the quiet use in the drafting meeting itself. The one thing that does drive it underground is treating the first honest disclosure as a disciplinary event, which is why the agreement frames routing and cleanup, never punishment.</p></details><details class="brief__q"><summary>Who enforces this? A team page has no teeth.</summary><p>Line four is the teeth. When every output has a named owner who answers for it, the other lines get enforced by the person with the most at stake, which beats any compliance mechanism a one-page agreement could invent. And the page has a second kind of teeth: when something goes wrong, the difference between 'we had a written line and someone crossed it' and 'we had no rule at all' is enormous, for the team and for the person.</p></details><details class="brief__q"><summary>This will all change in six months. Why write rules for tools that keep moving?</summary><p>The four lines are deliberately tool-agnostic. What goes in, who verifies, when we disclose, who owns it: those questions outlive any model release, and the quarterly revisit is how the answers track the tools. Notice the page also points at IT's approved list rather than copying it, for exactly this reason. Teams that wait for the tools to settle are choosing unwritten rules during the fastest-moving period, which is backwards.</p></details><details class="brief__q"><summary>What if my team's lines conflict with another team's lines?</summary><p>For work inside your team, your page governs your team. For shared outputs, the stricter line wins while the two owners talk, which is itself a route-not-improvise case: raise it, settle it, and both pages gain a line. And no team's page can loosen university policy; the lines add local clarity on top of FERPA, IT's tool list, and the rest, never subtract from them.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our AI Guardrails session. One thing to bring: a rough list of the two or three things your team ships most often (a newsletter, an FAQ, reports, email replies) and the kinds of data they touch, held privately. You will never be asked to name people; every exercise runs on tools and situations, and everything you type stays on your screen. If you took Start Smarter, dust off the traffic light; we build directly on it. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the Four Lines conversation happen? Three quick lines, reply whenever: 1) Did you have the team conversation from your card? 2) Where does the page live now, so a new hire could find it? 3) Which hard case surprised the team? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of the Four Lines. Two questions, same scale as the room: 1) Fist to five, how confident are you now making the daily calls: what goes in, who checks, when to disclose? 2) Is the page still findable, and has anyone pointed at it during a real decision? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the Four Lines conversation happen? Where does the page live? Which hard case surprised the team?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'is the page findable today, and has anyone pointed at it during a real decision?' The count of team agreements actually drafted and given a home is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our AI Guardrails session. One thing to bring: a rough list of the two or three things your team ships most often (a newsletter, an FAQ, reports, email replies) and the kinds of data they touch, held privately. You will never be asked to name people; every exercise runs on tools and situations, and everything you type stays on your screen. If you took Start Smarter, dust off the traffic light; we build directly on it. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today works on how your team really uses AI, so one norm up front: tools and situations, never people's names. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>4</b> Lines in the agreement</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> One-page draft you'll leave with</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the norm that makes real-use material safe: tools and situations, never names, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is the session where responsible AI use stops being a poster and becomes one page your team actually wrote. We'll work on how your team really uses AI, including the quiet uses, so one ground rule for the next ninety minutes: tools and situations, never people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: tools and situations, never people's names; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: how many of you used AI for actual work in the last week? And how many of your teams have a written rule about it that you could find right now?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Nearly every hand up on the first question</li><li>Almost every hand down on the second</li><li>Some nervous laughter at the gap</li></ul><p class="facnote__mini">Respond: Name the gap warmly: 'That gap in this room is the same gap in the global data, and closing it takes one page and one meeting. Both are today's deliverables.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'tools and situations, never names' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> Anyone bracing for either an AI compliance lecture or an AI cheerleading session. The frame that relaxes both: today is a team-agreement workshop that happens to be about AI, and it ends with a page, not a policy binder.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Guardrails &amp; Responsible Use · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Speed is optional.<br><em class="gold-text">Trust</em> is not.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Stanford's AI Index tracks AI incidents worldwide, and the misuse cases it counts nearly doubled year over year, climbing right alongside adoption. At a university that handles FERPA-protected student records and health-adjacent data, "we'll be careful" is not a policy. This session gives your team the Four Lines: a one-page written agreement covering what goes into AI tools, when a human verifies, when readers are told, and who owns the output.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why written guardrails protect a team in ways good intentions can't once AI use scales</li>
+          <li>Classify data with the traffic light, including the hard cases: student work, meeting notes, letters about people</li>
+          <li>Decide which outputs need a named human check and when AI use must be disclosed to the reader</li>
+          <li>Assign ownership of every AI-assisted output to the human who ships it</li>
+          <li>Draft the Four Lines, a starter one-page agreement for your own team's real work</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Responsible AI</span>
+        <span class="skillpill">Data Privacy</span>
+        <span class="skillpill">Risk Management</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-why">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in a drafted starter agreement and a dated team conversation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things by the end. You'll know why written guardrails protect a team in ways good intentions can't. You'll classify data with the traffic light, including the hard cases that trip smart people. You'll size the human check to the blast radius, and you'll have one test that settles disclosure. You'll put a name on every output. And it lands in one artifact: a starter Four Lines agreement for your actual team, with a date on the conversation that makes it real.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL draft of the Four Lines for your own team.</li><li>Name the sources once for credibility: Stanford's AI Index for the incident numbers, and the Four Lines as the method.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (a starter Four Lines draft and a dated team conversation).</p><p class="facnote__meta"><b>Watch for:</b> Legal questions arriving early ('is this the official policy?'). Park them: this is a team working agreement that sits under university policy and points to it; the tough-questions bank has the full answer.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One page before the plan: why the university itself needs your team to write these lines.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a university growing at this pace needs its AI rules written down before the deadline hits.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: uncommon speed with FERPA-protected records in the room only works when the lines are written, because a team moving fast on vibes is one paste away from an incident.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: every bold bet runs on data somebody handled correctly, and a written line on what enters which tool keeps the bet from becoming the headline.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: modeling responsible AI use starts with one page per team that says what goes in, who checks, who is told, and who owns it.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: reputation is exactly what an AI incident spends, and your team's written lines protect the trust the loop runs on. Every output that ships checked, disclosed, and owned keeps the flywheel turning.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Connect the course to the institutional vision: the university's dare to grow is what makes written AI guardrails an operations capability rather than compliance paperwork.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the plan, the why behind the why. Chancellor Diermeier's vision is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The how is uncommon speed, agility, and scale, and here is what that means at your desk: a university moving that fast while holding FERPA-protected records cannot run on 'we'll be careful.' Speed without written lines is how incidents happen, and incidents spend the reputation the whole vision runs on. Our motto is the dare, Crescere aude, dare to grow. The Four Lines you write today are what let your team take that dare safely.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence off the slide, slowly; it carries the page.</li><li>Walk the three focus cards, landing on the 'At your desk' line in each.</li><li>Point at the flywheel card: incidents spend reputation, and written lines protect it.</li><li>Keep it under three minutes; this page frames the session, and the sections do the teaching.</li></ol></div><p class="facnote__meta"><b>Validate:</b> The room can connect the vision to the course in one line: the faster the university moves, the more the written lines matter.</p><p class="facnote__meta"><b>Watch for:</b> Eye-rolls at strategy language. Ground it fast: the flywheel's inputs are decided at desks like theirs, one shipped output at a time.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Six steps, one page. Here's the arc.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute. Read the vision sentence, gesture at the three focus cards, move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six steps to one <em>page</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Why written rules</h3><p>Incidents rise with adoption, and the difference between a team with written lines and a team with vibes.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Line one: what goes in</h3><p>The traffic light from Start Smarter, now with the hard cases: student work, meeting notes, letters about people.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Line two: when a human verifies</h3><p>Size the check to the blast radius: from no check at all to the full source check.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Line three: when we disclose</h3><p>One test settles it: would the reader feel misled if they learned AI helped?</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Line four: who owns it</h3><p>The byline is a promise. Then the Guardrails Lab: write the lines for a real rollout and see month one.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Write your Four Lines</h3><p>Draft lines one and two for your own team and leave with a starter agreement to edit together.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each line as it arrives: evidence, then the four lines in order, then the draft.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first the evidence for why written beats careful. Then the four lines, one at a time: what goes in, when a human verifies, when we disclose, who owns it. Then you draft yours, and the capstone puts a date on the team conversation.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the six items in one breath each.</li><li>Point out the shape: the case for writing things down (01), then one section per line (02 through 05), then drafting yours (06).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every line has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the evidence, because some of you think this is overblown and some of you think it's terrifying, and the data disagrees with both.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 WHY WRITTEN RULES ============ -->
+  <section class="slide on-light" id="s-why" data-count data-title="Why written rules">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · Written Rules</p>
+      <h2 class="h2" data-reveal>Careful is a mood. Written is a <em>policy</em>.</h2>
+      <p class="lead" data-reveal>Before the method, the evidence. Stanford's AI Index counts AI incidents worldwide, and the numbers move one direction: more use, more incidents. Meanwhile the careers publication Metaintro keeps making the same observation from the workplace side: AI policy is turning into line-manager work, because the useful rules are the ones close enough to the work to be followed. Most rooms guess these numbers wrong, and the gap between the guess and the data is where this session lives.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">The pattern</span>
+          <h3>Incidents rise with adoption</h3>
+          <p class="muted">Reported AI misuse incidents nearly doubled year over year in the AI Index count. Nothing about the people changed; the volume of use did. Risk scales with use, whatever the intentions.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Team A</span>
+          <h3>The team with vibes</h3>
+          <p class="muted">Everyone means well. Each person quietly draws their own line about what to paste, when to double-check, and whether to mention AI at all. Six people, six invisible rulebooks.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Team B</span>
+          <h3>The team with lines</h3>
+          <p class="muted">Same tools, same pressures, one page. When the hard case lands on a deadline, the answer is already written down, and every new hire inherits it on day one.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="gnGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks far better than one you were shown. Four findings; call each one before it's revealed.</p>
+        <p class="quiz__progress" id="gnProgress"></p>
+        <p class="quiz__q" id="gnQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="gnOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="gnFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="gnNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="gnResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What actually changes the day a team writes its AI rules down?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="A written line can be pointed at, taught to a new hire, and challenged when it's wrong. Those are the three things intentions cannot do, and all three matter more as use scales."><span class="mark">A</span><span>Everyone works from the same line, and the line survives busy weeks and new hires</span></button>
+          <button class="opt" data-correct="0" data-why="Behavior shifts slowly, and that's fine. The immediate win is smaller and more valuable: the guessing stops, because the answer to 'can I paste this?' exists somewhere findable."><span class="mark">B</span><span>People stop using AI for anything risky</span></button>
+          <button class="opt" data-correct="0" data-why="Accountability stays with the humans doing the work; that's line four of the agreement you'll write. The page distributes clarity, never blame."><span class="mark">C</span><span>Responsibility moves to whoever wrote the page</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The evidence lives at <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener" style="text-decoration:underline">Stanford's AI Index</a>, the long-running annual measurement of AI's trajectory, which tracks reported AI incidents alongside adoption; the misuse count nearly doubled year over year, and both curves point up. <a href="https://www.metaintro.com" target="_blank" rel="noopener" style="text-decoration:underline">Metaintro</a> supplies the workplace half of the picture: quiet, unmanaged AI use is now ordinary, and policy that lives three levels up governs none of it, which is why the usable rules are moving to the team level. Put the two together and the conclusion writes itself: your team already uses AI, the risk grows with the use, and the one variable you control this month is whether the lines are written down. This course builds on Start Smarter, which taught the traffic light; today the light becomes line one of a page your whole team can point to.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the written-versus-vibes gap becomes personal the moment you look for it on your own team.</p>
+          <ol class="steps">
+            <li>In pairs: name one place AI already touches your team's work, officially or quietly.</li>
+            <li>Ask each other: is there a written rule that covers it, and where would a new hire find it?</li>
+            <li>Hands to the room: written or vibes? Count it out loud. Most rooms are nearly all vibes, which is the incident curve waiting for a place to happen.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> List three ways AI touches your work in a normal month. Next to each, write where the rule covering it lives. Every blank is a line your team's agreement needs.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish with guessed-at, missed numbers that incidents rise with adoption, shadow use is the norm, policy lags everywhere, and late discovery is the expensive kind, which makes a written team agreement the cheap countermeasure.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the method, the evidence, and I want you to guess. Stanford's AI Index tracks AI incidents worldwide, and the misuse cases it counts nearly doubled year over year, climbing right alongside adoption. Meanwhile roughly half of the people using AI at work are doing it without their manager knowing, and most organizations still have no written policy their staff could actually find. Hold those three facts together: the risk is growing, the use is invisible, and the rules are missing. Every team in this room controls exactly one of those three. Four findings, call your number before each reveal.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the game: four findings, guess each before the reveal. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>After the reveal round, walk the two-teams cards: same tools, same people, one page of difference.</li><li>Run the quick check (what changes when rules are written), then the pair inventory: where does AI already touch your team, and is the rule written or vibes?</li><li>Count the written-versus-vibes hands out loud and connect the count to the incident curve.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Where does AI already show up on your team, and be honest: is any of it covered by a rule a new hire could find, or is it all vibes?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Nearly all vibes: drafting, summarizing, quiet uses nobody reviews</li><li>One or two teams with a real written line, usually after a scare</li><li>Someone admits they don't actually know what their team uses</li></ul><p class="facnote__mini">Respond: For the 'don't know' answer, warmly: 'That answer is the most useful one in the room; the team conversation on your capstone card is where you find out.' For the vibes majority: 'Vibes means the adoption already happened. The lines are the part that's missing, and lines are cheap.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Use is up, incidents are up, policy is behind, and the one page your team controls is the cheapest fix on the board. That page has four lines, and the rest of today writes them.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; the vibes count lands visibly and the room sees its own exposure.</p><p class="facnote__meta"><b>Watch for:</b> A methodology skeptic litigating incident counting. Don't defend a single number; the case is the convergence: rising incidents, universal quiet use, lagging policy. Park deep methodology questions and point at the Index link for later.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before line one. It explains most of the incidents in that count.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, the pair inventory becomes one show of hands with no discussion.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Unwritten rules get rewritten every day, by whoever is in a hurry.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the method arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Unwritten rules get rewritten every day, by whoever is in a hurry.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So we write them down, starting with the one every other rule depends on: what goes in.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 LINE ONE: WHAT GOES IN ============ -->
+  <section class="slide on-dark" id="s-datain" data-count data-title="Line one: what goes in">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Line One</p>
+      <h2 class="h2" data-reveal>What goes <em>in</em> decides everything after.</h2>
+      <p class="lead" data-reveal>Line one answers the question every other question depends on: which data may enter which tools. Start Smarter gave you the traffic light, and the light still runs everything. What this session adds is the part that trips real teams: the hard cases, where ordinary-looking work turns out to be about a person.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Line one starts here</span>
+        <p style="margin:.5rem 0 0" class="measure">The traffic light, exactly as Start Smarter taught it. Line one is this light written down for your team's actual work:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The light outranks everything else in this course. Whatever a later section teaches about checking or disclosing, red data never enters an unapproved tool.</p>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Red hides in plain sight</span>
+          <h3>About a person means red</h3>
+          <p class="muted">A student's essay is about a student. Meeting notes naming colleagues are about colleagues, until the names come out. A recommendation letter is about its subject. Ask "who is this about" before "how sensitive does it feel."</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Yellow has a home</span>
+          <h3>Internal work, approved tools</h3>
+          <p class="muted">Budget drafts, grant drafts, internal policies: yellow. ChatGPT EDU, Amplify, and Copilot are approved because their agreements keep university work inside university walls. Yellow in a personal account is a rule already broken.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Green is narrower than it looks</span>
+          <h3>Public on purpose, or generic</h3>
+          <p class="muted">Published research, public web copy, and generic questions with nothing of yours pasted in. If it appeared in public on purpose, or contains nothing about your work or your people, go.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="tlSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Green, yellow, or red</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the light is easy on a poster and harder at 4:55 on a deadline. Five hard cases; call the light on each.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Traffic light choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="tsNext" style="visibility:hidden">Next case</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Your meeting notes name three colleagues. What makes them safe to bring into an approved tool?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="De-identification changes what the data is. With the names and identifying details out, what remains is internal work product: yellow, approved VU tools only. With them in, it stays red."><span class="mark">A</span><span>Taking out the names and anything that identifies who said what</span></button>
+          <button class="opt" data-correct="0" data-why="A prompt is a request. Confidentiality comes from the tool's agreement and from what you chose to enter, and asking nicely changes neither. The light doesn't negotiate."><span class="mark">B</span><span>Adding a line asking the tool to keep the names confidential</span></button>
+          <button class="opt" data-correct="0" data-why="Approved tools are the yellow lane, and red doesn't enter any lane. Approval widens where internal work can go; it changes nothing about private information about people."><span class="mark">C</span><span>Using an approved tool, since approval covers whatever you enter</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sorting question that catches the hard cases is "who is this about," asked before "how sensitive does it feel." FERPA protects student education records broadly: grades, schedules, advising notes, and in some contexts the fact of enrollment itself, which is why student work defaults to red however routine it looks. Health-adjacent information plays by stricter rules still. On the yellow lane, remember what approval means: ChatGPT EDU, Amplify, and Copilot are approved for internal work because of their agreements, never as a loophole for people data. And when a case genuinely will not classify, the move belongs in the agreement itself: treat it as red for today and ask the policy owner. Improvising under deadline is how the AI Index gets its numbers.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> line one only works when it's written for the data your team actually touches, and the hard calls surface fastest out loud.</p>
+          <ol class="steps">
+            <li>Pairs: list the two kinds of data your team handles most in a normal week.</li>
+            <li>Classify each with the light, and write one sentence of reasoning each.</li>
+            <li>Bring your hardest call to the room and let it argue. Hard calls settled in advance are exactly what line one is for.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> List the five data types you touch most and classify each. The one you hesitated on goes at the top of the team conversation this course ends with.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Restate the traffic light exactly as Start Smarter taught it, then install the hard cases: about a person means red, internal means yellow in approved tools, and de-identification is what moves data between lights.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Line one answers the question every other question depends on: which data may enter which tools. You know the traffic light from Start Smarter: green is public or generic, go. Yellow is internal work, approved VU tools only, and today that list reads ChatGPT EDU, Amplify, and Copilot. Red is private information about people, never, and no deadline changes it. What today adds is the hard cases, because red hides in plain sight. A student's essay is about a student. Meeting notes naming colleagues are about colleagues, until the names come out. A recommendation letter is about its subject. The sorting question is 'who is this about,' asked before 'how sensitive does it feel.' And when a case genuinely will not classify, treat it as red for today and ask; improvising under deadline is how the incident count grows.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the traffic light card verbatim and point at the room's poster: green public or generic, yellow internal in approved VU tools, red private information about people, never.</li><li>Walk the three hard-case cards: red hides in plain sight, yellow has a home, green is narrower than it looks.</li><li>Name the approved tools out loud: ChatGPT EDU, Amplify, Copilot, and say why approval matters: their agreements keep university work inside university walls.</li><li>Send them to Green, yellow, or red: five hard cases on devices.</li><li>Run the quick check on de-identification, then the pair drill: classify your team's two most-handled data types and bring the hardest call to the room.</li><li>Let the room argue one hard call briefly; settle it with the tell: who is this about?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the pair drill: what was your hardest call, and what made it hard?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Meeting recordings and transcripts: work product tangled up with names</li><li>Student-adjacent data that feels routine: rosters, advising emails, grade spreadsheets</li><li>Something aggregated or anonymized, where the person-question gets genuinely subtle</li></ul><p class="facnote__mini">Respond: Name the pattern: 'Notice the hard calls are almost never about sensitivity; they're about entanglement, people data braided into ordinary work. The fix is almost always the same: take the people out first, and the rest of the work turns yellow. When even that is unclear, that case goes on your page with a named person to ask.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The light, plus the hard cases, plus a route for the unclear ones: that is line one, and you just drafted its raw material from your own team's data.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; every learner has classified their own team's data types; the room can state the light unprompted and name the approved tools.</p><p class="facnote__meta"><b>Watch for:</b> Two drifts: 'it's fine because the tool promises privacy' (a prompt is a request; the agreement and the light decide, not the promise), and red-light violations wearing efficiency clothes ('AI could draft all my advisee emails!'). Correct both immediately and kindly; the light correction matters more than the flow of the room.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Line one decides what goes in. Line two decides what happens before anything comes out.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: light and hard-case cards at full strength, trainer on devices; the pair classification becomes a solo pass with the hardest call written down for the team meeting.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 LINE TWO: WHEN A HUMAN VERIFIES ============ -->
+  <section class="slide on-cream" id="s-check" data-count data-title="Line two: the check">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · Line Two</p>
+      <h2 class="h2" data-reveal>Size the check to the blast <em>radius</em>.</h2>
+      <p class="lead" data-reveal>Line two says which outputs need a named human check before they travel. The wrong answer is "all of them," because a team that checks everything equally soon checks nothing well. The right answer scales with blast radius: how far the output travels, and who acts on it when it lands.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">No check needed</span>
+          <h3>Stays on your screen</h3>
+          <p class="muted">Brainstorms, idea lists, drafts nobody else will see. If it never leaves your screen, the only reader it can mislead is you, and you were in the room when it was made.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Quick read</span>
+          <h3>Travels to a few</h3>
+          <p class="muted">Internal notes, agendas, summaries a colleague will skim. One attentive pass by the person who ships it: does this say what I mean, and is anything off?</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Full source check</span>
+          <h3>Numbers, names, dates, policy</h3>
+          <p class="muted">Anything a student acts on, anything external, anything carrying figures or policy claims. Checked against the source system by a named person before it moves.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Line two, written down</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Who checks:</b> a named person, usually whoever ships it. <b>Against what:</b> the actual source: the policy page, the data system, the calendar. Memory is not a source, and neither is "it reads right," because reading right is the one thing AI output always does. <b>Before it goes where:</b> the check happens before the output reaches anyone who will act on it. A check that happens after has a different name: a correction.</p>
+      </div>
+
+      <div class="quiz" id="szCheck" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Size the check</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> over-checking burns the attention your student-facing work needs, and under-checking ships the wrong deadline. Five outputs; size each check.</p>
+        <p class="quiz__progress" id="szProgress"></p>
+        <p class="quiz__q" id="szQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="szOptions" role="group" aria-label="Check size choices"></div>
+        <p class="quiz__feedback" id="szFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="szNext" style="visibility:hidden">Next output</button>
+        </div>
+        <div id="szResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: One question sizes the verification. Which is it?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Blast radius sets the check. A private brainstorm and a student-facing answer are different animals even when the text looks similar, and the difference is who acts on it."><span class="mark">A</span><span>How far does this travel, and who will act on it?</span></button>
+          <button class="opt" data-correct="0" data-why="Length is effort, and effort is a poor proxy for risk. One wrong date in a two-line email to a student outdamages ten sloppy pages of private brainstorm."><span class="mark">B</span><span>How long is the output?</span></button>
+          <button class="opt" data-correct="0" data-why="Human drafts carry errors too, and mature teams always checked what travels. Origin changes the flavor of likely errors; blast radius still sets the size of the check."><span class="mark">C</span><span>Did AI write it, or did a human?</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two things keep line two alive after week one. First, the name: a check assigned to "someone" dies on the first busy Friday, quietly, and looks fine right up to the correction, which is why the written line names who checks each output type. Second, the source: AI errors arrive fluent and confident, so the check runs against the policy page, the data system, or the calendar, never against how the draft reads. And the line has a budget clause worth writing down: if verifying an output costs what producing it did, that output was a bad candidate for AI drafting in the first place. Send it back to a human and spend the checking attention where drafting actually pays.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> line two is only real when it names your team's actual outputs and actual checkers.</p>
+          <ol class="steps">
+            <li>Pairs: list the three outputs your team ships most often.</li>
+            <li>Size each check out loud: none, quick read, or full source check, and say the blast radius that justifies it.</li>
+            <li>For each full source check, name the checker and the source they check against. Those sentences go straight into your agreement.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Same drill on paper: your team's three most-shipped outputs, a check size for each, and a named checker plus source for the biggest one.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install verification sized to blast radius: no check for what stays private, a quick read for what travels to a few, a named full source check for numbers, names, dates, policy, and anything acted on.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Line two says which outputs need a named human check before they travel, and the wrong answer is all of them. A team that checks everything equally soon checks nothing well. So we size the check to the blast radius: how far does the output travel, and who acts on it when it lands? Stays on your screen: no check; the only reader it can mislead is you. Travels to a few colleagues: one attentive read by whoever ships it. But numbers, names, dates, policy claims, anything a student acts on or anything leaving the university: full source check, against the actual policy page or data system, never against memory, and never against whether it reads right, because reading right is the one thing AI output always does. And the check has a name attached, because a check assigned to 'someone' dies on the first busy Friday.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the counterintuitive opener: 'check everything' is the wrong answer, because a team that checks everything equally soon checks nothing well.</li><li>Walk the three tiers: no check, quick read, full source check, with blast radius as the sorting question.</li><li>Walk the gold rubric card: who checks, against what, before it goes where. Stress that memory is not a source and 'reads right' is what AI output always does.</li><li>Send them to Size the Check: five outputs on devices.</li><li>Run the quick check, then the pair drill: size the checks for your team's three most-shipped outputs and name the checker for the biggest one.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the sizing drill: which of your team's outputs got the full source check, and who is the named checker?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Student-facing answers and anything with deadlines or requirements</li><li>Numbers that travel upward: dashboards, briefing slides, reports</li><li>An honest 'we ship that one unchecked today,' usually about a newsletter or FAQ</li></ul><p class="facnote__mini">Respond: Treat the honest answer as the win: 'That sentence, that output plus a name plus a source, is line two of your agreement, and you just wrote it. The gap you found is the reason the page exists.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Who checks, against what, before it goes where, sized to blast radius: line two. Cheap where stakes are low, rigorous where someone acts on the answer.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; pair drills produce named checkers and named sources; the room can say why over-checking is a real failure mode.</p><p class="facnote__meta"><b>Watch for:</b> The over-correction: learners concluding every AI output needs heavyweight review. Keep the budget idea alive: verification spends attention, attention is scarce, and wasting it on brainstorms is how student-facing checks get starved.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Line three is the awkward one: when do we tell people AI helped? One question settles it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: tiers and rubric at full strength, trainer on devices; the pair drill becomes a solo sizing of your own three outputs.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 LINE THREE: WHEN WE DISCLOSE ============ -->
+  <section class="slide on-light" id="s-disclose" data-count data-title="Line three: disclosure">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Line Three</p>
+      <h2 class="h2" data-reveal>Would the reader feel <em>misled</em>?</h2>
+      <p class="lead" data-reveal>Line three answers the question teams find most awkward: when do we tell readers that AI helped? One test settles nearly every case. Imagine the reader learning, later, exactly how this was made. If they would feel misled, disclose. If you can't say no with a straight face, disclose. The test works because you have to face an actual reader to run it.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Disclose</span>
+          <h3>The reader is owed it</h3>
+          <p class="muted">External documents, anything carrying the university's voice, and any assessment or feedback on a person's work. People have a right to know how judgment about them was formed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">No disclosure needed</span>
+          <h3>You own the words</h3>
+          <p class="muted">Brainstorms, outlines, and first drafts you rewrote until they're genuinely yours. Disclosure follows the reader's expectations, and no reader expects a memo to list its brainstorming partners.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">The honest middle</span>
+          <h3>Unsure? Say so and ask</h3>
+          <p class="muted">Funder rules, journal policies, and brand-new formats produce genuinely unclear cases. Ask the policy owner instead of improvising, then write the answer into the agreement so nobody asks twice.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="dcCall" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Disclose or not</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the misled test only becomes instinct through reps. Five scenarios; make the call on each.</p>
+        <p class="quiz__progress" id="dcProgress"></p>
+        <p class="quiz__q" id="dcQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="dcOptions" role="group" aria-label="Disclosure choices"></div>
+        <p class="quiz__feedback" id="dcFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="dcNext" style="visibility:hidden">Next scenario</button>
+        </div>
+        <div id="dcResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: The dependable test for disclosure is…</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The test tracks what disclosure is for: the reader's trust. And it scales, because it works on formats and tools that didn't exist when any written policy was drafted."><span class="mark">A</span><span>Whether the reader would feel misled if they learned AI helped</span></button>
+          <button class="opt" data-correct="0" data-why="Percentages miss the point in both directions. A fully AI-drafted brainstorm owes nobody anything, and a lightly AI-edited assessment of a person may still owe its subject the truth."><span class="mark">B</span><span>What share of the words AI produced</span></button>
+          <button class="opt" data-correct="0" data-why="That's a bet, and the stake is your office's credibility. Disclosure costs one sentence; discovered concealment costs trust in everything you ship next."><span class="mark">C</span><span>Whether anyone is likely to find out</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Disclosure in the wild is one plain sentence: "Drafted with AI assistance and reviewed by the events team." Cheap, honest, and forgettable, which is the point; the goal is a reader who never feels tricked, never a ceremony. The asymmetry is the whole argument: the sentence costs nothing, and discovered concealment taxes everything your office publishes afterward. Assessments are the strictest case and worth naming in your agreement explicitly: when AI helps evaluate a person's work, the person is owed that fact, because they're entitled to know how judgment about them was formed. And when a format's rules are genuinely unclear, grant proposals being the classic case, the agreement's answer is already written: say so and ask the owner of the rules.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing a disclosure line read aloud tells you instantly whether it sounds honest or evasive, and calibrates yours.</p>
+          <ol class="steps">
+            <li>Pairs: pick one real output type your team ships.</li>
+            <li>Run the misled test out loud and make the call: disclose or no.</li>
+            <li>If it's disclose, draft the one-line disclosure and read it to the room. The room votes: honest or evasive? Rewrite until it's honest.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take your most public output, run the misled test, and draft the one-line disclosure you would actually print. Say it out loud once; your ear will catch what your eye missed.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the misled test as the dependable disclosure rule, with the three zones: disclose (external, university's voice, judgments of people), no disclosure (owned drafts and brainstorms), and the honest middle (say so and ask).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Line three answers the question teams find most awkward: when do we tell readers AI helped? One test settles nearly every case. Imagine the reader finding out, later, exactly how this was made. If they'd feel misled, disclose. If you can't say no with a straight face, disclose. External documents, anything in the university's voice, and any feedback or assessment on a person's work: those readers are owed it, and the assessment case is the strictest, because people have a right to know how judgment about them was formed. Brainstorms and drafts you rewrote until they're yours: nothing owed; no reader expects a memo to list its brainstorming partners. And the honest middle: when a funder's or journal's rules are unclear, say so and ask the policy owner, then write the answer into your page so nobody asks twice. Disclosure itself is one plain sentence, and it costs nothing. Discovered concealment costs everything your office ships next.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the test itself: imagine the reader learning exactly how this was made. Misled means disclose.</li><li>Walk the three cards: the reader is owed it, you own the words, and unsure means say so and ask.</li><li>Name the strictest case plainly: when AI helps evaluate a person's work, the person is owed that fact.</li><li>Send them to Disclose or Not: five scenarios on devices, including the genuinely unclear funder case.</li><li>Run the quick check, then the pair drill: run the test on one real output, draft the one-line disclosure, and read a few to the room for the honest-or-evasive vote.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the drill: read us your one-line disclosure. Room, call it: honest or evasive?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Plain winners: 'Drafted with AI assistance; reviewed by the advising team'</li><li>Evasive contenders: buried, hedged, or lawyer-flavored versions</li><li>Someone asks whether the line makes them look lazy</li></ul><p class="facnote__mini">Respond: For the lazy worry, give the reframe from the bank: readers punish discovered concealment far harder than disclosed assistance, and a plain process line reads like a photo credit. If a piece would embarrass you when disclosed, it needs more human work, which is a line-two problem, never a reason to hide the process.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One test, three zones, one plain sentence. Line three is the cheapest trust insurance your team can buy.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; drafted disclosure lines are one plain sentence; the room can say the test from memory and knows the unclear-case route.</p><p class="facnote__meta"><b>Watch for:</b> The percentage trap: learners wanting a rule like 'disclose over 50 percent AI.' Redirect to the reader every time: a fully AI-drafted brainstorm owes nobody anything, and a lightly edited assessment may still owe its subject the truth. The test beats any threshold.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last line, shortest line, and it carries the other three: who owns the output.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: test and cards at full strength, trainer on devices, quick check stays; the read-aloud shrinks to one line judged by the room.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 LINE FOUR: WHO OWNS IT ============ -->
+  <section class="slide on-dark" id="s-own" data-count data-title="Line four: ownership">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Line Four</p>
+      <h2 class="h2" data-reveal>The byline is a <em>promise</em>.</h2>
+      <p class="lead" data-reveal>Line four is the shortest, and it carries the other three. The human who ships an output answers for it: every claim, every error, every reading of its tone. "The AI wrote it" has never once worked as an accountability answer, here or anywhere, which leads to the plainest rule in this course: you cannot ship what you have not read.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Line four, written down</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>One name per output:</b> whoever hits send, publish, or submit has read every word and answers for all of them. <b>The tool never appears in the accountability chain:</b> if the output is wrong, the correction carries a person's name and the fix belongs to that person. <b>Ownership powers the other lines:</b> a person who must answer for an output suddenly cares what went into it, who checked it, and whether the reader was told.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: An AI-drafted FAQ answer ships with a wrong deadline and a student misses it. Who answers for that?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The byline was theirs, so the promise was theirs. So is the fix: correct it under their own name, then strengthen the verify line so the next wrong date gets caught before posting."><span class="mark">A</span><span>The person who published the answer</span></button>
+          <button class="opt" data-correct="0" data-why="The vendor sold a drafting tool, and drafts are unverified by definition. Nothing in the chain of trust between the university and that student runs through a vendor."><span class="mark">B</span><span>The AI vendor</span></button>
+          <button class="opt" data-correct="0" data-why="Tools do make mistakes, which is exactly why the design puts a human between the tool and the reader. When that human ships unread output, the mistake becomes theirs."><span class="mark">C</span><span>Nobody; tools make mistakes</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="lab" id="guardLab" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Guardrails Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> your team is rolling out AI help on two regular outputs: the weekly staff newsletter and a student-facing FAQ page. Write the four lines for the rollout, then see where the team stands at month one. Every choice here is one a real team has made, one way or the other.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run month one</button>
+          <span class="quiz__progress" id="labStatus">Write all four lines</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice what the lab punishes. Never AI use itself; always the missing line around it: data with no rule, checks with no name, disclosure left to chance, errors with no owner. That matches how real incidents read after the fact: the postmortem almost never says the tool failed, it says nobody had decided who was responsible for what the tool touched. Line four is the enforcement mechanism the other three borrow. When a team skips it, lines one through three decay into suggestions; when it's real, the named owner personally audits the rest, because their name is the one on the correction. That's also why collective ownership fails so reliably: an output everyone owns has nobody who must read it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> walking a real output down all four lines, once, out loud, is the fastest way to find the line your team leaves to chance.</p>
+          <ol class="steps">
+            <li>Pairs: pick one output your team ships every week.</li>
+            <li>Walk it down the four lines aloud: what goes in, who verifies against what, would the reader feel misled, whose name owns it.</li>
+            <li>Find the line currently running on vibes, and say what the written version would be. Bring the sharpest one to the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Run your most frequent output down the four lines on paper and mark the line currently left to chance. That line is the first sentence of your team's agreement.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install output ownership (one name, every word read, the tool never in the accountability chain), then give every learner a full felt rep of all four lines in the Guardrails Lab, where design quality decides month one. The session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Line four is the shortest and it carries the rest: the human who ships an output answers for it. Every claim, every error, every reading of its tone. 'The AI wrote it' has never once worked as an accountability answer, anywhere, which gives you the plainest rule of the day: you cannot ship what you have not read. The byline is a promise. And notice what this line does to the other three: a person who must answer for an output suddenly cares what went into it, who checked it, and whether the reader was told. Now you get to feel all four lines at once. Your team is rolling out AI on the weekly newsletter and a student-facing FAQ. Write the four lines for that rollout, run month one, and watch where the design, not the tool, decides the outcome.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land line four in one breath: the human who ships it answers for it, and 'the AI wrote it' has never once worked.</li><li>Walk the gold card: one name per output, tool never in the chain, ownership powers the other lines.</li><li>Run the quick check (the wrong-deadline FAQ) and let its answer sting a little.</li><li>Set the lab scenario in one breath: newsletter plus student-facing FAQ, write the four lines, run month one.</li><li>Let people get their month-one outcome individually; the mid and weak tiers teach more than the strong one, so don't coach choices in advance.</li><li>Ask for a show of hands by tier; have one weak-tier learner read their coach notes aloud. The room learns from the postmortem.</li><li>Push the rerun: rewrite your weakest line and run the month again. The delta between runs is the lesson.</li><li>Then the pair drill: walk one of your OWN outputs down all four lines and find the line running on vibes.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those who hit the mid or weak tier: which single line cost you the month, and does your real team run the same version of it today?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The unwritten data rule: 'be careful' as line one</li><li>The unnamed check: someone skims when there is time</li><li>An honest 'my real team runs the weak version of all four'</li></ul><p class="facnote__mini">Respond: Treat that last answer as the room's win: 'That recognition is the whole lab. The weak tier isn't hypothetical; it's a description of unmanaged AI use, which is what most teams run today. You now know the fixes, and they're one page long.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The lab's scoring is the session's thesis in miniature: outcomes follow the lines, not the tool. And your real team's weakest line now has a name, which makes the next section personal.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes at least one lab run; most reach the strong tier on a rerun; every learner can name which of the four lines their real team currently leaves to chance.</p><p class="facnote__meta"><b>Watch for:</b> Learners who game the lab by picking the obviously maximal option everywhere without reading the coaching. The question that re-engages them: 'which of these lines would your actual team push back on, and why?' Also watch clock discipline; this section has the least slack.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So let's write yours. For real, for your team, right now.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one lab run instead of run-plus-rerun (rerun only for learners who hit weak tier), tier hands stay, the pair drill becomes a solo vibes-line hunt. This is the floor; never cut the lab entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 WRITE YOUR FOUR LINES ============ -->
+  <section class="slide on-cream" id="s-write" data-count data-title="Write your Four Lines">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Agreement</p>
+      <h2 class="h2" data-reveal>One page, written <em>together</em>.</h2>
+      <p class="lead" data-reveal>You have all four lines. Now write them for your actual team: one page, drafted with the people it covers, living somewhere findable, revisited quarterly. When a case doesn't fit the lines, the page says who to ask, because improvised policy under deadline is how incidents happen. And where VU policy already answers a question, your page points to it instead of competing with it.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The working agreement standard</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Written with the team,</b> never announced at it; people follow lines they helped draw. <b>One page, findable:</b> it lives where work starts, the team drive's front page or the onboarding doc, never in an email from March. <b>Revisited quarterly:</b> tools change, cases accumulate, and a stale agreement teaches people to ignore it. <b>Unclear cases route, never improvise:</b> the page names who to ask, and every answered question becomes a new line.</p>
+      </div>
+
+      <div class="plan" id="flBuild" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Draft your Four Lines, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a starter draft turns the team conversation from a blank page into an edit, and edits actually happen. Nothing you type is saved or sent anywhere; tools and situations, never people's names.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="flLine1"><b>1 · Line one: what goes in.</b> For your team's real work, which data may enter which tools?</label>
+            <input type="text" id="flLine1" maxlength="140" placeholder="e.g. drafts and internal docs in ChatGPT EDU only; nothing naming a student or colleague, ever" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="flLine2"><b>2 · Line two: when a human verifies.</b> Which outputs need a named check before they travel?</label>
+            <input type="text" id="flLine2" maxlength="140" placeholder="e.g. anything student-facing or with numbers: checked against the source by whoever ships it" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Line three: your team's disclosure default.</b></span>
+            <div class="plan__chips" id="flDisc" role="group" aria-label="Disclosure default">
+              <button class="opt" data-disc="voice"><span>Disclose whenever the university's voice or judgment of a person's work is involved</span></button>
+              <button class="opt" data-disc="external"><span>Disclose on everything external by default; internal drafts we rewrote and own need nothing</span></button>
+              <button class="opt" data-disc="test"><span>Run the misled test case by case, and ask the policy owner whenever it's unclear</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="flMake" disabled>Draft my Four Lines</button>
+            <span class="quiz__progress" id="flStatus">Write both lines and pick a default</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="flOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Your page doesn't compete with university policy; it fills the space between policy and Tuesday afternoon. FERPA questions already have the registrar's guidance. The approved-tool list is IT's to maintain, and today it reads ChatGPT EDU, Amplify, Copilot; your page points at the list rather than copying it, so it can't go stale. Research and funder rules belong to the research office. What none of those documents can reach is the everyday call: can this meeting summary go in, who reads the newsletter before it ships, does the FAQ carry a disclosure line. That's the agreement's territory, and it's why the page works best written by the people who make those calls daily. One habit worth stealing: every time an unclear case gets routed and answered, the answer becomes a new line on the page. Agreements that grow this way stay trusted, because every line earned its place.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> a line that survives a partner's hard case will survive the team meeting.</p>
+          <ol class="steps">
+            <li>Pairs: swap the two lines you just drafted and read each other's aloud.</li>
+            <li>Stress-test each other's line one with one hard case from your real work. Does the line answer it cleanly, or does it wobble?</li>
+            <li>Tighten the wording together until both lines answer their hard cases. Keep the wobble stories; they're your team meeting's best material.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Stress-test your own draft against the hardest case from the traffic-light trainer in section 02, and tighten each line until it answers cleanly.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the method into a private starter draft: the learner writes lines one and two in their own words, picks a disclosure default, and receives a playback with line four pre-written, ready to bring to the team as an edit.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You have all four lines. Now write them for your actual team. The standard is short: written with the team, never announced at it, because people follow lines they helped draw. One page, living somewhere findable, the drive's front page or the onboarding doc, never in an email from March. Revisited quarterly, because tools change and stale agreements teach people to ignore them. And unclear cases route to a named person, never to a guess. Where the university already has the answer, your page points at it: FERPA to the registrar, tools to IT's list, funder rules to the research office. Your page covers what those documents can't reach: the everyday calls. Two fields and a default, in your own words, private to your screen. Line one: which data may enter which tools, for your team's real work. Line two: which outputs get a named check before they travel. Go.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the working agreement standard first: written with the team, one findable page, revisited quarterly, unclear cases routed.</li><li>Name where VU policy already answers: FERPA to the registrar's guidance, tools to IT's list, funder rules to the research office. The page points, never competes.</li><li>Repeat the privacy line, then give quiet time for the builder; line one deserves a full minute of thought.</li><li>Circulate for stuck learners: the raw material is the drills they already did, their data types from 02 and their outputs from 03.</li><li>Run the pair stress-test from Go deeper: swap lines, hit each other's line one with a real hard case, tighten the wording.</li><li>Close the section by naming what they now hold: a starter draft the team meeting turns into an agreement.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the stress-test: did your line one survive your partner's hard case, and what did you change?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Wording tightened from vague to concrete: 'sensitive stuff' became named data types</li><li>A discovered gap: the line covered documents but not recordings or transcripts</li><li>A line that survived intact, usually because it leaned on the light directly</li></ul><p class="facnote__mini">Respond: Name the pattern: 'Notice every fix moved the line from adjectives to nouns. Careful, sensitive, appropriate: those are vibes. Named data types, named tools, named checkers: those are lines. Bring the nouns to your team meeting.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A starter draft in your own words, stress-tested once, with line four pre-written because it never changes. The team meeting turns this from your page into their page.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a draft (both lines plus a default); stress-tested lines survive a partner's hard case; learners can say where their page will live.</p><p class="facnote__meta"><b>Watch for:</b> Perfectionism stalling the draft ('it needs to cover everything'). The standard is a starter for the team to edit, not a finished policy; a two-sentence line one that answers the team's real cases beats a paragraph that covers hypotheticals. Also watch for policy-writing voice; push for words the team actually says.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quiz first, then the card that puts a date on that meeting.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: standard and routes in ninety seconds, builder stays at full length with its quiet minute protected; the pair stress-test drops to an optional 90 seconds.</p></aside>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 11 · FOUR LINES CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My Four Lines card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My Four Lines card</p>
+      <h2 class="h2" data-reveal>One team. One page. <em>Four lines.</em></h2>
+      <p class="lead" data-reveal>Sessions don't write team agreements; a person with a starter card and a date does. Name the team or workflow this covers, pick your first move, name the thing you refuse to do, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named team, a first move, and a date is a rollout; everything less is a poster. Tools and situations, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="capPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The team or workflow this agreement covers.</b> Whose work, which outputs?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the advising front office: email replies, the FAQ page, the weekly newsletter" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Where does the agreement start?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="draft"><span>Draft the Four Lines and bring them to the team as an edit, never an announcement</span></button>
+              <button class="opt" data-practice="agenda"><span>Put the Four Lines on the next team meeting agenda: 20 minutes, hard cases welcome</span></button>
+              <button class="opt" data-practice="route"><span>Route one unclear case we already have to the right policy owner, in writing</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode, named in advance.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="paste"><span>Paste anything about a person into an unapproved tool</span></button>
+              <button class="opt" data-not="unread"><span>Ship AI output I haven't read to the last word</span></button>
+              <button class="opt" data-not="silent"><span>Treat disclosure as optional when the university's voice is involved</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first move happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my Four Lines card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: a named team, a first move, a named failure mode to refuse, and a date, plus the agreement's home. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Sessions don't write team agreements. A person with a card and a date does. Name the team and the work the page covers. Pick your first move: draft tonight and hand the team the pen, put it on the next team meeting agenda, or settle one unclear case with the right policy owner first. Then the honest field: what you will NOT do, because you know your failure mode: pasting people data into unapproved tools, shipping output you haven't read, or going quiet when the university's voice is involved. And the date. A named team with a first move and a date is a rollout. Everything less is a poster.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: sessions don't write team agreements; a person with a starter card and a date does.</li><li>Repeat the privacy norm before anyone types: tools and situations, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the builder draft from section 06 is the raw material.</li><li>Point at field 3, what you will NOT do, as the honest one: every person in the room has one of these three failure modes.</li><li>Push the build moment, then read the home row aloud: an agreement nobody can find governs nobody.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the team conversation, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the week will eat it</li><li>Worry the team hears it as surveillance of their AI use</li><li>Doubt that their team cares enough to engage</li></ul><p class="facnote__mini">Respond: No time: 'It's 20 minutes against an incident that costs weeks; the math forgives you exactly once.' Surveillance: 'That's what draft-not-decree is for; hand them the pen and the quiet users will tell you where the real lines are.' Apathy: 'Open with the lab story: wrong deadline, public correction, frozen AI use. Teams care about the newsletter version of themselves.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One team is about to have the conversation, with a starter page in hand and a date on the calendar. That is how responsible use scales: one page at a time, written by the people it covers.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Grand cards ('roll this out to the whole division'). Push to ONE team whose meetings they actually attend. And date-dodging: a conversation 'soon' is not a commitment; help them pick the actual day on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The Four Lines, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Four Lines</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A team's one-page AI agreement: what goes in, when a human verifies, when we disclose, who owns the output. Written with the team, revisited quarterly.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal work, approved VU tools only. Red: private information about people, never. Line one starts here, and the light outranks everything.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="FERPA, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>FERPA</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The federal law protecting student education records: grades, schedules, advising notes and more. The reason "it's about a student" almost always means red.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Approved VU tools, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Approved VU Tools</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>ChatGPT EDU, Amplify, and Copilot: tools whose agreements keep university work inside university walls. The yellow lane, never a loophole for people data.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Verification, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Verification</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A named person checking an output against a real source before it travels. Sized to blast radius, and memory never counts as a source.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Blast radius, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Blast Radius</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>How far an output travels and who acts on it when it lands. The measure that sizes the check: none, quick read, or full source check.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Disclosure, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Disclosure</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Telling readers AI helped make something. Owed on external documents, the university's voice, and judgments of people's work. Tested by one question: would the reader feel misled?</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Output ownership, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Output Ownership</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Line four: the human who ships it answers for every claim, error, and tone. One name per output, and the tool never appears in the accountability chain.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Data misuse incident, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Data Misuse Incident</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Data reaching tools or readers it should never have reached. Stanford's AI Index counts these nearly doubling year over year, tracking adoption.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Shadow AI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Shadow AI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI use nobody talks about: quiet, unofficial, outside any rule. Roughly half of workplace AI use in survey after survey, and the strongest argument for written lines.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Working agreement, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Working Agreement</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A short, team-authored page of rules the team actually follows. Lives somewhere findable, gets revisited on a schedule, and names who to ask when it runs out.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards, including Shadow AI, for the next time someone says their team doesn't really use this stuff.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (Shadow AI is a good pick; it gets a knowing laugh and reteaches section 01).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all eleven cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One conversation left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go write the <em>four lines</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw why written beats careful, called the traffic light's hard cases, sized the checks, learned the misled test, put a name on every output, and drafted your starter lines. One team conversation stands between this session and a working agreement.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">20 minutes</span></div>
+        <h3>The Four Lines conversation with your team</h3>
+        <p>Bring the starter card. Walk the four lines, five minutes each, and let the team argue the hard cases; the arguing is what makes the page theirs. Before anyone leaves: the agreement has a home everyone can name, and the quarterly revisit is on the calendar. That's the whole method, on one page, owned by the people it covers.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your team and your meeting day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the team agreement</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">What goes in. Who checks. Who is told. Who owns it.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-why">Why Written Rules</a></li>
+          <li><a href="#s-datain">Line One: What Goes In</a></li>
+          <li><a href="#s-check">Line Two: The Check</a></li>
+          <li><a href="#s-disclose">Line Three: Disclosure</a></li>
+          <li><a href="#s-own">Line Four: Ownership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Four Lines Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Guardrails &amp; Responsible Use · Facilitator Edition · learner link: <a href="../../../courses/AI-Guardrails/" style="color:rgba(255,255,255,.7);text-decoration:underline">the learner edition</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: incidents rise with use, so the rules go in writing. What goes in follows the light. Checks are sized to blast radius and carry a name. Disclosure follows the misled test. And the human who ships it answers for it. You have a draft and a card. Before you go: your team, and your meeting day. Say it out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the 20-minute Four Lines conversation with the team, this week, ending with a home and a revisit date.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you making the daily calls now: what goes in, who checks, when to disclose?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: team and meeting day, out loud or in chat.</li><li>Point at the cheat sheet and agreement buttons; the worksheet is built to be filled in during the team conversation itself.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your team, and your meeting day.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The advising front office, Thursday'</li><li>'My unit's comms pair, we talk Monday'</li><li>Someone commits to settling their unclear case with the registrar first</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the case-settler, warmly: 'Good instinct. Bring the answer in writing to the team meeting; a settled argument is the best first line a page can have.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many teams had the conversation, and where the pages live now.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a team and a day out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no day, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go book the conversation. And when the team's hard cases surprise you, and they will, that surprise is the sound of the agreement starting to work.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust, Then Verify Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to the keyboard</p>
+      <h1>Trust, then verify, the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The Three Reads, in order</h2>
+      <ol>
+        <li><b>The claim read:</b> underline every checkable claim: names, numbers, dates, quotes, citations. Those are the fault lines.</li>
+        <li><b>The source read:</b> trace the riskiest claims to a source you trust, and open it. A claim with no source is a guess wearing a suit.</li>
+        <li><b>The slant read:</b> what is this assuming, who is missing, and what would the strongest opposite case say?</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Riskiest claim:</b> the one that travels farthest and costs most if wrong.</p>
+    </div>
+
+    <div class="box">
+      <h2>The five failure modes, with tells</h2>
+      <ul>
+        <li><b>Hallucination:</b> precise details you can find nowhere else. Orphan facts.</li>
+        <li><b>Staleness:</b> a moving number or policy stated with no date attached.</li>
+        <li><b>Slant:</b> adjectives doing the arguing; "concerns" versus "complaints."</li>
+        <li><b>Omission:</b> the summary reads smoother than the source ever did.</li>
+        <li><b>Faked math:</b> any arithmetic the model did itself. Redo it, every time.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The stop rules</h2>
+      <ul>
+        <li><b>Three misses in a row</b> on the same task: the model is telling you it cannot do this one. Take the task back.</li>
+        <li><b>The source does not exist:</b> one invented citation makes every citation suspect. Start over without the tool.</li>
+        <li><b>Judgment you cannot check:</b> if you could not tell right from wrong here, no read will save you.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The traffic light (data rule)</h2>
+      <ul>
+        <li><b>Green:</b> public or generic information. Go.</li>
+        <li><b>Yellow:</b> internal work. Approved VU tools only.</li>
+        <li><b>Red:</b> private information about people. Never.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks every read.</b> No check makes a forbidden input acceptable.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The verification budget, sized to the stakes</h2>
+      <p class="prompt"><b>No check:</b> brainstorms and drafts for your own eyes; there are no claims to be wrong yet. <b>Claim read (90 seconds):</b> internal summaries and notes you will act on. <b>All three reads:</b> anything that travels: emails to groups, briefings, reports, pages others will trust. <b>Human expert, regardless:</b> legal, medical, financial, or people consequences. Decide the size before you read the output; a fluent draft will talk you down.</p>
+    </div>
+
+    <div class="box">
+      <h2>The daily habit</h2>
+      <ol>
+        <li>Trigger: the moment output lands, the claim read starts.</li>
+        <li>Trace the one claim that would hurt most if wrong.</li>
+        <li>Slant question on anything that will influence a decision.</li>
+        <li>Tally misses by task; the tally runs the stop rules.</li>
+        <li>Say "caught one" out loud. Catches are wins.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The numbers, for the skeptics</h2>
+      <ul>
+        <li>Workers using AI spend around <b>4 hours a week</b> fixing its output (<a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence">SHRM</a>): about five full work weeks a year.</li>
+        <li>Publicly reported AI incidents keep hitting <b>record highs</b> even as models improve (<a href="https://hai.stanford.edu/ai-index">Stanford AI Index</a>).</li>
+        <li>Decades of decision-aid research: when a system is usually right, human checking <b>fades</b>. That drift is automation bias.</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>The 90-second check, fill in the blanks</h2>
+      <p class="prompt">Output: [what it is and where it goes]. Fault lines underlined: [names, numbers, dates, quotes, citations]. First trace: [the riskiest claim] against [the source I will open]. Slant question asked: [what it assumes / who is missing / the opposite case]. Verdict: ship / fix and ship / stop. Misses on this task so far: [tally].</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Trust, Then Verify · Vanderbilt Learning Series · <a href="../../courses/Trust-Then-Verify/">me5231979.github.io/Course_Library/courses/Trust-Then-Verify</a></span>
+    <span>The evidence: <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence">SHRM on workplace AI</a> · <a href="https://hai.stanford.edu/ai-index">Stanford AI Index</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talent Calls, Sharper | Vanderbilt</title>
+<meta name="description" content="A short interactive course for leaders on AI in hiring, succession, and skills mapping: draft the instruments (rubrics, structured interview questions, skills maps), keep the verdicts human, and keep identifying data out of unapproved tools.">
+<link rel="canonical" href="../ai-talent-decisions/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Talent Calls, Sharper | Vanderbilt Learning Series">
+<meta property="og:description" content="Instruments, not verdicts: AI-drafted rubrics, interview questions, and skills maps, with every decision about a person staying human. Classroom 40 min, self-paced ~15.">
+<meta property="og:url" content="../ai-talent-decisions/">
+<meta property="og:image" content="../ai-talent-decisions/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Talent Calls, Sharper | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../ai-talent-decisions/assets/img/social-card.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-96.png">
+
+<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-line">The Line</a>
+    <a href="#s-rubric">The Rubric</a>
+    <a href="#s-skills">The Skills Map</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 12</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series · CHART</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Follow along on your own device. Today is about decisions that affect real people and careers, so one norm up front: roles and rubrics, never names, and everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>3</b> Core ideas</div>
+        <div><b>40</b> Minutes (30 core)</div>
+        <div><b>1</b> Talent instrument you'll start building</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Talent Calls, Sharper · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Sharper talent inputs.<br><em class="gold-text">Human talent calls.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Leaders now use AI across the talent pipeline: screening, structured interview design, skills inference, succession planning, internal matching. These are the highest-stakes decisions a manager makes, about people, with bias risk and identifying data everywhere. So this session teaches one discipline: AI drafts the instruments, the rubrics, questions, and maps that make your judgment consistent, and every verdict about a person stays human.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Identify which talent tasks AI can draft (instruments, questions, maps) and which stay human calls, always</li>
+          <li>Build a behaviorally anchored rubric for interviews or a 9-box, with AI stress-testing your criteria</li>
+          <li>Draft structured interview questions from a real job description, with anchored scoring</li>
+          <li>Map your team's skills against goals, de-identified, and draft a gap-closing development plan</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill">Structured Interviewing</span>
+        <span class="skillpill">Succession Planning</span>
+        <span class="skillpill">Skills Mapping</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-line">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and the university grows exactly as well as its managers call talent.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: securing talent is an operations capability, and a structured interview kit AI drafted and you anchored makes your next hire faster and easier to defend.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: a bold bet needs the right people in the right seats, and a de-identified skills map shows you the gap between the team you have and the bet the institution is making.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: modeling the essential university means talent decisions that survive scrutiny; AI drafts the instrument, and a human with a name signs every verdict about a person.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: the flywheel turns on talent, and your instruments, the interview kit, the anchored 9-box, the skills map, decide whether the talent it attracts gets recognized, placed well, and grown.</p>
+      </div>
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Source:</b> <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Three ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Instruments, not verdicts</h3><p>The line that keeps AI useful and talent decisions defensible, plus the data rules.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The Rubric Lab</h3><p>Build a 9-box worth trusting: sources, criteria, anchors, and who scores.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Skills, gaps, and growth</h3><p>From job descriptions to a de-identified team skills map to a real development plan.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 INSTRUMENTS, NOT VERDICTS ============ -->
+  <section class="slide on-light" id="s-line" data-count data-title="Instruments, not verdicts">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Line</p>
+      <h2 class="h2" data-reveal>AI drafts the instrument. You own the <em>verdict</em>.</h2>
+      <p class="lead" data-reveal>Every talent process has two layers. The instruments: job descriptions, interview questions, scoring rubrics, skills taxonomies, the tools that make judgment consistent. And the verdicts: hire, promote, rate, succeed. AI is a strong drafter of instruments and a dangerous maker of verdicts, because it inherits the bias in its data and delivers it with confidence. Automated employment decisions are increasingly regulated territory, and the discipline that keeps you effective and defensible is the same one: instruments drafted, verdicts human.</p>
+
+      <div class="quiz" id="taskSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Draft, call, or keep it out?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the line sounds obvious until real tasks blur it. Five talent tasks; sort each one.</p>
+        <p class="quiz__progress" id="tsProgress"></p>
+        <p class="quiz__q" id="tsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tsOptions" role="group" aria-label="Sorting choices"></div>
+        <p class="quiz__feedback" id="tsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="tsNext" style="visibility:hidden">Next task</button>
+        </div>
+        <div id="tsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule, non-negotiable here</span>
+        <p style="margin:.5rem 0 0" class="measure">Talent work is where the traffic light matters most, because nearly everything in it identifies a person:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">Resumes, reviews, ratings, and anything with a name are red in unapproved tools, full stop. Job descriptions and role criteria are yellow: approved tools only. And anything touching candidate evaluation at VU runs with HR, in HR's approved systems, before AI touches it at all.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Industry coverage (<a href="https://peoplemanagingpeople.com" target="_blank" rel="noopener" style="text-decoration:underline">People Managing People</a>; Rework) tracks AI spreading across screening, interview scoring, skills inference, succession, and internal matching, and it also tracks the failures: screening models that learned yesterday's biases, scoring tools that couldn't explain a rejection, and jurisdictions responding with bias-audit requirements for automated employment decisions. The pattern behind every failure is the same: an instrument quietly became a verdict-maker. The pattern behind the successes is this session: better instruments, drafted fast, in human hands. One more reason the line matters: structured interviews with anchored scoring are among the best-validated selection methods there are, so instrument quality is where the real gains live anyway.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> your own talent process almost certainly has a spot where the line is blurry today.</p>
+          <ol class="steps">
+            <li>In pairs: name the last talent decision you were part of (role, not person). Where did instruments end and verdict begin?</li>
+            <li>Was any part of the verdict effectively delegated: to a score, a screen, a ranking?</li>
+            <li>One pair shares the blurriest spot they found.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write down your next talent decision and draw the line: which parts are instruments AI could draft, and where does the human verdict start?</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>AI can rank anything. Never let it rank people.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE RUBRIC LAB ============ -->
+  <section class="slide on-dark" id="s-rubric" data-count data-title="The Rubric Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Rubric</p>
+      <h2 class="h2" data-reveal>A 9-box worth <em>trusting</em>.</h2>
+      <p class="lead" data-reveal>The 9-box (performance across, potential up) is only as good as its definitions, and in most organizations those definitions are vibes. That's how a talent grid becomes politics with a spreadsheet. The fix is the rubric: criteria you can observe, anchored levels a stranger could apply, and independent scoring. AI helps at every step, drafting criteria from the job description, proposing anchors, stress-testing for bias magnets, as long as it never touches the scoring. Build one now and see how your next talent review goes.</p>
+
+      <div class="lab" id="rubricLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Rubric Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make building your real rubric, for interviews or for the 9-box, and the failure modes are the classics. Choose how you build, then run the talent review.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the talent review</button>
+          <span class="quiz__progress" id="labStatus">Choose all four steps</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: What makes a 9-box placement defensible when someone asks "why is she in that box?"</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Observable criteria, anchored levels, independent scoring, discussed differences. The answer to 'why that box' becomes evidence instead of opinion."><span class="mark">A</span><span>Anchored, observable criteria scored independently by multiple raters</span></button>
+          <button class="opt" data-correct="0" data-why="Seniority of the rater doesn't make a vibe defensible; it just makes it harder to challenge, which is worse for everyone including the person placed."><span class="mark">B</span><span>The most senior person in the room placed her</span></button>
+          <button class="opt" data-correct="0" data-why="An AI placement is the least defensible of all: it can't explain itself, it inherits bias from its data, and delegating the verdict is exactly what this course rules out."><span class="mark">C</span><span>An AI model scored the whole team consistently</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The same build works for interviews, and it's the highest-value instrument most managers never make: paste the job description into an approved tool and ask for the five competencies the role actually needs, two behavioral questions per competency ("tell me about a time..."), and a three-level anchored scoring guide per question, with concrete examples of a 1, a 2, and a 3. Then the human passes: cut what you can't observe in an interview, check the anchors against real answers you've heard, and have every interviewer score independently before comparing. Ask AI to review your final rubric for bias magnets too, vague criteria like "polish" and "culture fit" that let similarity sneak in dressed as standards.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> anchor-writing is a skill, and one rep with colleagues calibrates it faster than any explanation.</p>
+          <ol class="steps">
+            <li>Pairs. Take the criterion "communicates clearly" and write a level-3 anchor: a concrete, observable example a stranger could recognize.</li>
+            <li>Swap with another pair: could you apply their anchor without asking questions? If not, sharpen it together.</li>
+            <li>Notice what happened to "communicates clearly": it stopped being a compliment and became a standard.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write one level-3 anchor for a criterion you actually use in reviews. The test: would two colleagues apply it the same way without talking to you?</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 SKILLS, GAPS, AND GROWTH ============ -->
+  <section class="slide on-cream" id="s-skills" data-count data-title="Skills and gaps">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Skills Map</p>
+      <h2 class="h2" data-reveal>Map the skills. Close the <em>gaps</em>.</h2>
+      <p class="lead" data-reveal>A team skills map answers the question every planning cycle asks: do we have the capabilities next year needs? AI makes the mapping cheap: draft a skill taxonomy from your team's job descriptions, lay it against your goals, and draft development moves for the gaps. Two disciplines keep it clean: the map runs de-identified (roles and skills, never names attached to scores in any tool), and skills inference is a draft: the person is always the source of truth about their own skills.</p>
+
+      <div class="quiz" id="gapSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Useful and safe?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> skills work sits right on the data line, and the same idea can be safe or reckless depending on what goes in. Five moves; call each one.</p>
+        <p class="quiz__progress" id="gsProgress"></p>
+        <p class="quiz__q" id="gsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="gsOptions" role="group" aria-label="Safety judgments"></div>
+        <p class="quiz__feedback" id="gsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="gsNext" style="visibility:hidden">Next move</button>
+        </div>
+        <div id="gsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The gap-closing recipe</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1.</b> Taxonomy from the team's job descriptions, drafted in an approved tool. <b>2.</b> Each person self-rates and adds what the JD missed; people are the source of truth on their own skills. <b>3.</b> The de-identified map (roles, skills, levels) goes against next year's goals; AI drafts the gap list. <b>4.</b> For each gap, three closing moves: grow (a development assignment), borrow (internal matching or a partner team), or hire. The development conversations that follow are human, one to one, and use section 01 of the coaching course.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Succession gets the same treatment as everything else in this course: AI can draft the instrument, a succession profile for a key role (the capabilities, experiences, and relationships the role actually requires, drawn from the JD and the role's real outcomes), and the readiness criteria a candidate would show. What it never does is name the successor, score the candidates, or read performance reviews. When leaders ask AI "who should succeed me," they're handing the highest-stakes verdict in management to a system that can't be held accountable for it. Draft the profile, then do succession the human way: conversations, evidence, and a calibrated decision that someone with a name signs.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> the grow-borrow-hire frame turns a gap list from an anxiety into a plan.</p>
+          <ol class="steps">
+            <li>Pairs: name one skill your team will need more of next year (skill, not person).</li>
+            <li>Sketch all three closes in one line each: the grow move, the borrow move, the hire move.</li>
+            <li>Call your most realistic close to the room; notice how often it's grow or borrow, not hire.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Same drill on your own: one gap, three closes, one line each. Keep it; the capstone builds on it.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · TOOLKIT CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My talent toolkit card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My talent toolkit card</p>
+      <h2 class="h2" data-reveal>One instrument. One build session. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Pick the talent work in front of you, choose the first instrument you'll build with AI's help, name what you refuse to get wrong, and put a date on the build.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named instrument with a build date changes your next talent decision; everything less is agreement in principle. Roles and rubrics, never names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="ttPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The talent work.</b> What decision or cycle is coming up?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. interviews for the open analyst role; spring talent review" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first instrument.</b> What do you build with AI's help?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First instrument">
+              <button class="opt" data-practice="interview"><span>Interview question bank plus anchored scoring, from the JD</span></button>
+              <button class="opt" data-practice="ninebox"><span>A 9-box rubric with behavioral anchors for the talent review</span></button>
+              <button class="opt" data-practice="skillsmap"><span>A de-identified team skills map with grow-borrow-hire moves</span></button>
+              <button class="opt" data-practice="succession"><span>A succession profile for one key role (profile, never names)</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="rank"><span>Let AI score, rank, or shortlist people</span></button>
+              <button class="opt" data-not="paste"><span>Put resumes, reviews, or names into unapproved tools</span></button>
+              <button class="opt" data-not="vague"><span>Keep criteria I can't observe ("culture fit", "polish")</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When is the build session?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my toolkit card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Instruments not verdicts, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Instruments, Not Verdicts</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI drafts rubrics, questions, and maps; humans make every call about a person: hire, promote, rate, succeed. The line that keeps talent AI useful and defensible.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Structured interview, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Structured Interview</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Same questions, anchored scoring, independent raters. Among the best-validated selection methods there are, and AI makes building one cheap.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Behavioral anchor, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Behavioral Anchor</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A concrete, observable example defining what a score means, sharp enough that a stranger could apply it without asking you.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Nine box, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The 9-Box</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Performance across, potential up, nine cells. Worth exactly as much as the definitions behind it: anchored criteria or it's politics with a spreadsheet.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Bias magnet, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Bias Magnet</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A vague criterion ("culture fit", "polish", "executive presence") that lets similarity sneak in dressed as a standard. Ask AI to flag them in your rubric.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Skills inference, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Skills Inference</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI guessing skills from documents. Always a draft: the person is the source of truth about their own skills, and the map gets their corrections.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Grow borrow hire, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Grow, Borrow, Hire</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The three closes for any skills gap: a development assignment, internal matching or a partner team, or a new role. Most realistic closes are the first two.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Succession profile, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Succession Profile</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The capabilities, experiences, and relationships a key role requires, plus readiness criteria. AI drafts the profile; it never names the successor.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Bias audit, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Bias Audit</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Increasingly required by law for automated employment decision tools. If a vendor is scoring candidates, someone must be able to show the tool was audited, and explain any rejection.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never. Resumes, reviews, and names are red in unapproved tools.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Build the instrument. Own the <em>verdict</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You drew the line, built a rubric that could survive a challenge, and mapped skills without mapping people into a tool. Your next talent decision is about to get more consistent and more defensible at the same time.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">45 minutes</span></div>
+        <h3>The instrument build session</h3>
+        <p>Take the instrument from your card into an approved tool: JD in, draft out, then the human passes: cut what you can't observe, sharpen the anchors against real examples, and ask AI to flag the bias magnets. Bring the draft to whoever shares the decision with you, and to HR if it touches candidates. The instrument is ready when a stranger could score with it.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your instrument and your build day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="worksheet.html" target="_blank" rel="noopener">Print the toolkit card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Draft the instrument. Own the verdict.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-line">Instruments, Not Verdicts</a></li>
+          <li><a href="#s-rubric">The Rubric Lab</a></li>
+          <li><a href="#s-skills">Skills, Gaps, and Growth</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Toolkit Card</a></li>
+          <li><a href="web/">Self-paced version</a></li>
+          <li><a href="../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Talent Calls, Sharper · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="assets/js/qrcode.js?v=1"></script>
+<script src="assets/js/main.js?v=1"></script>
+</body>
+</html>

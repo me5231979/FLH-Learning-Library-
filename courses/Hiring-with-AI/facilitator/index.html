@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hiring, Human, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for managers who hire: draw the hard line on candidate data, then use AI where it earns its keep: inclusive job descriptions, structured interviews, scoring rubrics built before candidates, and a skills map of the team.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hiring, Human | Vanderbilt Learning Series">
+<meta property="og:description" content="Let AI build the process, never the verdict: the two sides of the line, the wide funnel, structure before candidates, and the guardrails that keep bias out.">
+<meta property="og:url" content="../../../courses/Hiring-with-AI/">
+<meta property="og:image" content="../../../courses/Hiring-with-AI/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hiring, Human | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/Hiring-with-AI/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-line">The Line</a>
+    <a href="#s-redside">The Red Side</a>
+    <a href="#s-funnel">The Funnel</a>
+    <a href="#s-structure">The Structure</a>
+    <a href="#s-lab">The Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise, including building a structure plan for a role you might genuinely hire. You will be asked what your own next posting needs; a real answer plays far better than a hypothetical.</li><li>Build your own capstone card for a real talent decision. You'll show the structure, never the contents.</li><li>Send the pre-work invite (template on this page) with the calendar invite: bring one hiring or talent decision that is live or coming, held privately.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.</li><li>Skim SHRM's current AI-and-employment page and the Stanford AI Index responsible AI chapter so the Guess the Number reveals feel fresh in your mouth; the game carries the citations, but you should be able to say 'the research' with a straight face.</li><li>Check with HR whether any AI screening tool is under evaluation at the University right now; if one is, know its status before someone asks.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Run one full round of the Hiring Lab, including the chatbot-screen option once, so you can speak to the violation outcome from experience.</li><li>Print 5 to 10 cheat sheets and structure cards.</li><li>Re-read the tough-questions bank; say the 'I already pasted a resume' response out loud once. That confession is coming.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a Guess the Number round, open the lab).</li><li>Write 'ROLES AND PROCESSES, NEVER NAMES' where the room can see it all session.</li><li>Draw the two-sides line on the whiteboard: RED SIDE / GREEN SIDE with two empty columns; you'll fill them live in sections 01 and 02.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed hiring structure cards (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart with markers for the never list and the anchor rewrites</li><li>Your unit's current AI tool guidance, or the VU approved-tools list, in case a policy question needs the exact source</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the whiteboard: the two sides of the line, the traffic light, and the rubric skeleton all draw in seconds. The audit and anchor drills never needed a screen; the capstone moves to the printed card. The lab becomes a group walk-through: read each moment's three options aloud and have the room vote.</div><div class="brief__row"><b>If Learner devices can't join (wifi or filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; the private structure builder and capstone move to paper. You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the Hiring Lab (05):</b> Declare the Core path silently: pair drills become solo passes, debriefs shrink to one voice, and the closing tightens to the fist-to-five plus commitment round. Never cut the lab, the structure builder, or the capstone; they carry the session's practice objectives.</div><div class="brief__row"><b>If Someone names a real candidate or starts describing an identifiable person:</b> Protect the norm warmly: 'Hold that. Roles and processes, never names; this session practices the exact discipline it teaches.' If it keeps happening, it usually means a live, painful search is in the room; offer a private follow-up and steer the room back to structures.</div><div class="brief__row"><b>If Someone admits, publicly, that they have already pasted candidate materials into a chatbot:</b> Thank them, genuinely; that honesty is the most useful moment the session can produce. No blame, one clean path: delete the conversations, don't repeat it, and know the escalation point if the material was sensitive. Then aim the room at the swap: every red-side urge has a green-side twin, and their case becomes the worked example.</div><div class="brief__row"><b>If The room pushes back: 'AI screening is obviously coming; this line is temporary':</b> Don't argue futures; argue jurisdiction. Vendor tools with audits and HR governance may well come, and that decision belongs to HR and University policy, never to an individual manager with a chatbot. The line in this course is about what managers do with general-purpose tools today, and that line is stable however the vendor market moves.</div><div class="brief__row"><b>If The room is the opposite: so worried about AI they won't touch the green side either:</b> Anchor on the structure dividend: rubrics and structured interviews were best practice before AI existed; AI just makes building them cheap. Run the Fix the Posting trainer next; watching proxies fall out of a posting usually converts the cautious, because the fairness gain is visible and no person was ever near the tool.</div><div class="brief__row"><b>If A real, specific data-privacy incident surfaces mid-flight:</b> Stop and honor it; this outranks the agenda. Restate the traffic light, confirm the case against it, and route it: their HR contact and VU policy own incidents, and you don't improvise remediation from the front of the room. Park it with a named follow-up and move on.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>I already pasted resumes into a chatbot last month. How bad is this, and what do I do?</summary><p>Thank you for saying it, and you are not alone; the tools arrived faster than the guidance did. Three moves: stop, so it doesn't become a habit; delete the conversations in the tool's history; and if the materials were sensitive or the paste shaped a real decision, tell your HR contact so the University hears it from you rather than from a complaint. Then take the energy that made the shortcut tempting and spend it on the green side: the rubric and the audit solve the same time problem without touching a person.</p></details><details class="brief__q"><summary>HR uses screening software already. Why is my chatbot different?</summary><p>Governance is the difference. An enterprise applicant system runs under contracts, data protections, audits, and HR accountability, and even those tools are facing new bias-audit laws. A manager pasting resumes into a general-purpose chatbot has none of that: no data agreement covering candidate materials, no audit trail, no accountable owner, and a model that was never validated for employment decisions. Same-looking act, entirely different legal and ethical footing. When a vendor tool tempts you, the move is to route it to HR, which is exactly what this course asks.</p></details><details class="brief__q"><summary>If AI is biased, aren't humans more biased? At least the machine is consistent.</summary><p>Consistency is the problem, not the defense. A biased human interviewer harms the candidates they touch, can be noticed, coached, and outvoted by a panel; a biased model applies the same skew to every candidate in the pile, silently, at scale, with no one watching a specific decision. Amazon's screener is the clean example: the bias came FROM the human hiring history it learned on, and automation made it systematic. The honest answer to human bias is the structure this course teaches, which is auditable at every step; automation of the verdict is bias with the lights off.</p></details><details class="brief__q"><summary>The rubric and structured interviews sound slow. My searches are already too long.</summary><p>The structure is front-loaded, and that's the trick: thirty minutes before the posting opens, when nothing is urgent yet. It pays itself back inside the same search: screens go faster because the must-haves are written down, interviews stop meandering because the questions exist, and the debrief shortens because you're comparing evidence instead of relitigating impressions. What actually makes searches long is the second round you run because the first one produced a shortlist nobody could defend. And AI collapses the build cost: the drafting that used to take an afternoon now takes minutes, with your judgment on top.</p></details><details class="brief__q"><summary>Can I use AI on interview notes if I remove the names first?</summary><p>Removing the name usually isn't removing the person. Notes carry employer, dates, projects, and specifics that identify someone in a small pool almost immediately, and a hiring pool is always small. The honest test: could anyone identify the person from this text plus context? For interview notes the answer is nearly always yes, so treat them as red. The legitimate version of the urge is upstream: use AI to build a better note-taking template before interview day, when nobody exists in it.</p></details><details class="brief__q"><summary>What about using AI to write the rejection and offer emails? That's about a person too.</summary><p>The template is process; the person is red. Draft the generic rejection or offer template in an approved tool, with brackets where the specifics go, and make it as warm and clear as you like; that's legitimate yellow work. Then add the person's name and details yourself, outside the tool. The test from section 02 runs here unchanged: the moment a specific candidate is identifiable in the text, the paste is over the line, even for a kind purpose like softening a no.</p></details><details class="brief__q"><summary>Does the skills map risk labeling my current team? That's people data too.</summary><p>Run it at the role level and it stays clean: what capabilities does the TEAM have, what does the work ahead need, where are the gaps. That's yellow, in approved tools. What you don't do is feed in performance reviews or assessments of named individuals; that crosses into red exactly like candidate materials do. If the map makes you want to develop a specific person toward a gap, wonderful, and that conversation happens with the person, not with the tool.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Hiring, Human session. One thing to bring: one hiring or talent decision that is live or coming for your team, a backfill, a new role, a promotion, a skills gap, held privately. You will never be asked to name a candidate or colleague; every exercise runs on roles and processes, and everything you type stays on your screen. If you have ever been tempted to run applications through an AI tool, come especially; the session is built for exactly that moment. No reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the first move happen? Three quick lines, reply whenever: 1) Did you make the first move from your structure card (the audit, the rubric, the skills map, or pulling the pile out of AI)? 2) What did it change or surface? 3) Is the red line holding on your team, and did anything test it? Replies come to me only. Not yet? The card still works; this note is your nudge.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of hiring with the line. Two questions, same scale as the room: 1) Fist to five, how confident are you now drawing the line and building the structure for a real search? 2) What does your next search have that your last one lacked? Reply with a number and a line. The before-and-after pair is how we know this session did more than feel good.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the first move from your card happen? What did the requirement audit or rubric session change? Is the red line holding on your team?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'what does your next search have that the last one lacked?' The count of first moves actually made (audits run, rubrics built, skills maps done, piles pulled out of AI) is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Hiring, Human session. One thing to bring: one hiring or talent decision that is live or coming for your team, a backfill, a new role, a promotion, a skills gap, held privately. You will never be asked to name a candidate or colleague; every exercise runs on roles and processes, and everything you type stays on your screen. If you have ever been tempted to run applications through an AI tool, come especially; the session is built for exactly that moment. No reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today works on real hiring and talent decisions, so one norm up front: roles and processes, never a candidate's or colleague's name. And everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>6</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real hiring decision you'll structure</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the norm that makes hiring material safe to work with: roles and processes, never names, and nothing typed leaves the screen.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Today is about AI and the decisions you make about people: hiring, screening, interviewing, growing your team. We'll draw one line very hard, and then spend most of the session on the side of the line where AI genuinely helps. We'll work close to real hiring decisions, so one ground rule for the next ninety minutes: roles and processes, never a candidate's or a colleague's name. And everything you type today stays on your screen; nothing is saved or sent anywhere.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the norm explicitly and early: roles and processes, never a candidate's or colleague's name; typed exercises stay on their screens.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick calibration, shout it out: how many of you have a hiring or talent decision live or coming this quarter? And how many have ever been tempted to run some part of it through an AI tool?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Most hands up on the first question</li><li>Slower, sheepish hands on the second, with some laughter</li><li>At least one person whose hands stay firmly down on both</li></ul><p class="facnote__mini">Respond: Name it warmly: 'Those second hands are why this course exists. The temptation is rational, the answer is a hard no, and the good news is that the valuable uses were never the tempting ones anyway.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; the room can repeat the 'roles and processes, never names' norm back to you.</p><p class="facnote__meta"><b>Watch for:</b> Defensiveness arriving with the coats: some managers expect to be scolded for AI use, others expect an AI sales pitch. The frame that relaxes both: today draws one hard line and then hands you a set of genuinely useful tools on the right side of it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Hiring, Human · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Let AI build the process.<br><em class="gold-text">Never the verdict.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">The temptation sits in your inbox: a pile of applications and a chatbot that could read them in seconds. That move is off the table, and this session opens by drawing the line hard: candidate materials are private information about people, and no AI ever ranks, scores, or screens a person here. Then it teaches everything valuable on the right side of that line, because decades of selection research keep landing on the same answer: structure is the strongest fairness tool hiring has, and AI happens to be excellent at building structure and terrible at judging people.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Classify the materials in a hiring process with the traffic light and defend the red line, including the cases that feel harmless</li>
+          <li>Use AI to draft job descriptions and structured interviews that widen the pool instead of quietly shrinking it</li>
+          <li>Build a scoring rubric before any application is read, with anchors a stranger could apply</li>
+          <li>Run a skills map of your team so the next posting names what the team actually lacks</li>
+          <li>Recognize where bias enters AI-assisted hiring and apply the guardrails that catch it</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Makes effective and ethical decisions for the University</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill">Structured Interviewing</span>
+        <span class="skillpill">Talent Management</span>
+        <span class="skillpill">Responsible AI</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-line">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five capabilities, ending in one real talent decision carded with a first structural move and a date.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things by the end. You'll be able to classify anything in a hiring process with the traffic light and defend the red line, including the cases that feel harmless. You'll use AI to draft postings and interviews that widen your pool. You'll build a scoring rubric before you read a single application, with anchors a stranger could apply. You'll map your team's skills so the next posting names the real gap. And you'll know where bias sneaks into even the legitimate uses, and the guardrails that catch it. It all lands in one artifact: a structure card for a talent decision you actually own, with a date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the headline out loud; it is the whole course in nine words: AI builds the process, never the verdict.</li><li>Read the five objectives briskly, in plain language.</li><li>Land on the last one: this session ends with a REAL card, one role, one first move, one date.</li><li>Name the sources once for credibility: SHRM's AI research and the Stanford AI Index for the landscape, decades of selection research for the structure.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one talent decision, one structural first move, one date).</p><p class="facnote__meta"><b>Watch for:</b> Tool-shopping questions arriving early ('which AI screens resumes best?'). Don't dodge; preview the answer: none, ever, and section 01 shows why that's the wrong prize anyway.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Before the plan, one minute on why the university wants exactly this from you.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 3 out loud; the rest on screen.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and growing means hiring, so the dare lands on the way you run your next search.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: securing talent is your next search, and a rubric built before the first application is read gives you speed without the shortcut that ranks a person.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: every bold bet begins as a requisition, and the skills map you run before the posting is how a team gets built for work that does not exist yet.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: a search where AI drafts the structure and a human makes every call about a person is exactly the hiring other institutions should copy.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: the flywheel starts at talent, and talent arrives through searches like yours. A wide posting, a frozen rubric, and a hard line on candidate data bring in people the old funnel missed, and bring them in fairly.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Anchor the session in the institution's own plan: the one-sentence vision, the three focus areas in hiring terms, and where a well-run search feeds the reputation flywheel.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Chancellor Diermeier's vision for this university is one sentence with no hedge in it: Vanderbilt will define the great university of the 21st century, and be it. The motto has always been the dare, Crescere aude, dare to grow, and growing means hiring; every focus area on this page runs on talent, and talent arrives through searches like the one you brought into this room. Three focuses: exceptional core operations, bold strategic initiatives, industry leadership, and each card says what it means from the hiring manager's chair. The bottom card is the reputation flywheel: reputation attracts talent, funding, partnerships, and access, which build the reputation. Your next search sits at the front of that loop, which is why the university cares how you run it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence exactly as written, then pause; it lands better without commentary.</li><li>Walk the three focus cards in one breath each, landing each team translation line.</li><li>Close on the flywheel card: reputation attracts talent, and hiring is where talent enters. Point forward: the line and the structure built today are how a search feeds the loop.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can connect one focus area to the hiring decision they brought, in one sentence.</p><p class="facnote__meta"><b>Watch for:</b> Strategy fatigue: part of the room has heard the vision language elsewhere. Keep it in hiring terms; the translation lines exist so nobody has to squint to find themselves in it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Six moves, in a deliberate order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute: read the vision sentence, gesture at the three focuses, move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six moves, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The temptation and the line</h3><p>Why pasting resumes into a chatbot feels efficient, and the three reasons it never happens.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The red side, exactly</h3><p>The full never list, and the subtle cases: reference notes, gut notes, the rejection email with a name in it.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The wide funnel</h3><p>Job descriptions that attract instead of filter, and the team skills map that should come first.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>Structure before candidates</h3><p>Same questions, anchored scores, and a rubric built before you read a single application.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The Hiring Lab</h3><p>Fill an open analyst role step by step and see how your process holds up when the offer goes out.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Bias, watched</h3><p>Where bias slips into even the legitimate uses, and the guardrails that catch it early.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: the line, the never list, then the four green-side tools.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first the temptation and why it's a hard no. Then the red side in full detail, including the sneaky cases. Then the good stuff: postings that widen your pool, structure built before candidates, a full practice hire in the lab, and finally bias, because even the legitimate uses have doors bias walks through.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the six items in one breath each.</li><li>Point out the shape: the line first (01 and 02), because nothing else is safe until it's drawn; then the build (03 and 04), the practice (05), and the watchdog (06).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the temptation, because every one of us has felt it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE TEMPTATION AND THE LINE ============ -->
+  <section class="slide on-light" id="s-line" data-count data-title="The temptation and the line">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Temptation</p>
+      <h2 class="h2" data-reveal>The shortcut that isn't <em>yours</em> to take.</h2>
+      <p class="lead" data-reveal>Forty applications, a busy week, and a chatbot that reads faster than you do. The temptation makes perfect sense, and it fails three separate ways at once: the paste puts private information about people into a tool, the ranking is a screen nobody can audit or explain, and automated employment decisions are exactly where regulators and courts are moving. Here is the reframe the whole session runs on: the screening was never where AI's value lived anyway. The valuable work sits upstream and around the decision, and it is entirely yours to take.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">1 · Privacy</span>
+          <h3>Red data, full stop</h3>
+          <p class="muted">A resume, an application, a reference: each one is private information about a person, which the traffic light marks red, never. There is no volume of applications that changes the color.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · Fairness</span>
+          <h3>A screen nobody can audit</h3>
+          <p class="muted">A chatbot's shortlist can't tell you why candidate twelve sank. Whatever patterns it absorbed from its training data just made an unexplainable call about a real person, under your name.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · Legal</span>
+          <h3>Regulated territory</h3>
+          <p class="muted">Automated employment decisions carry legal weight, and the rules are multiplying: bias audits, candidate notice, vendor scrutiny. The safest position is also the fairest one: the decision stays yours.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="gnGame" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a finding you guessed at, and missed, sticks far better than one you were shown. Four findings from the AI-and-hiring landscape; call each one before the reveal.</p>
+        <p class="quiz__progress" id="gnProgress"></p>
+        <p class="quiz__q" id="gnQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="gnOptions" role="group" aria-label="Answer choices"></div>
+        <p class="quiz__feedback" id="gnFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="gnNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="gnResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: A hiring platform add-on offers to rank your applicants by "fit score." Under this course's line, what is that?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Ranking people is an automated employment decision: unauditable, regulated, and never AI's call here. The answer is no before the demo starts."><span class="mark">A</span><span>An automated employment decision, and the answer is no</span></button>
+          <button class="opt" data-correct="0" data-why="Spot-checking a ranking you can't audit is theater: you'd be sampling an opaque decision after it already sorted real people. The problem is the ranking itself, and checking a few rows doesn't change what made the call."><span class="mark">B</span><span>Acceptable if a human spot-checks the ranking</span></button>
+          <button class="opt" data-correct="0" data-why="A first round IS the screen; for most candidates it's the whole process. Whoever the tool quietly sinks in round one never reaches your careful human rounds at all."><span class="mark">C</span><span>Acceptable for the first round only, with humans after</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The landscape behind the game: <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence" target="_blank" rel="noopener" style="text-decoration:underline">SHRM's AI research</a> tracks steadily climbing AI use in HR, with recruiting the most common application, alongside the shifting legal landscape around automated employment decisions. The <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener" style="text-decoration:underline">Stanford AI Index</a> documents the other side: AI regulation rising sharply year over year, with decisions about people drawing scrutiny first. Amazon's scrapped resume screener remains the canonical case study: a top engineering organization trained a model on its own hiring history, watched it learn the bias in that history, and could not audit the bias out. The lesson for a manager is bracing: if they couldn't make automated screening fair, a chatbot with your applicant pile certainly won't. Meanwhile Vanderbilt's own talent-mobility work is making skills mapping a live manager activity, which is exactly the kind of upstream work AI does help with. That is the line this course walks.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the temptation is only manageable once it's named out loud, and every manager in the room has felt some version of it.</p>
+          <ol class="steps">
+            <li>In pairs: name one moment where AI touching a hiring or talent decision was tempting, for you or someone you've seen. Roles and processes, no names.</li>
+            <li>Call it together: which side of the line was it on? The person side, or the process side?</li>
+            <li>Hands to the room: person side or process side? Most temptations land on the person side, which is exactly why the line has to be drawn before the busy week arrives.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write down the AI-in-hiring move you've been most tempted by, then sort it: does it touch a person's materials, or does it build the process? If it touches a person, the next two sections give you the replacement.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Establish that pasting candidate materials into AI fails on privacy, fairness, and legal grounds at once, and reframe: the high-value uses of AI in hiring were never the screening.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Forty applications, a busy week, and a chatbot that reads faster than you do. The temptation makes complete sense, and it fails three ways at once. Privacy: a resume is private information about a person, which our traffic light marks red, never, and no pile is big enough to change the color. Fairness: a chatbot's shortlist can't tell you why candidate twelve sank; an unexplainable decision just got made about a real person, under your name. Legal: automated employment decisions are regulated territory, and the rules are multiplying. Now the reframe that carries the rest of today: the screening was never where AI's value lived. The valuable work is upstream and around the decision, and it's entirely yours to take. Let's calibrate against the real landscape; I want you to guess.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the temptation stated sympathetically: forty applications, a busy week. Never mock it; half the room has felt it.</li><li>Walk the three cards: privacy (red data), fairness (unauditable screen), legal (regulated territory). Fill the RED SIDE column on the whiteboard as you go.</li><li>Frame the game: four findings from the AI-and-hiring landscape, guess each before the reveal. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; the Amazon item deserves ten extra seconds of silence after its reveal.</li><li>Run the quick check (the fit-score add-on), then the pair activity: name a temptation, sort it person-side or process-side.</li><li>Count the person-side hands out loud and land the reframe: the valuable uses live on the process side, and the rest of today is those.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From your pair sort: what was the temptation, and which side did it land on, person or process?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Person side dominates: summarize the resumes, compare candidates, screen the pile</li><li>A few process-side answers: draft the posting, write interview questions</li><li>Someone asks whether their case is really over the line, usually the notes or reference variety</li></ul><p class="facnote__mini">Respond: For the ambiguous case, defer precisely: 'Hold that one; the next section is a field guide to exactly those. If it touches a person, you'll be able to call it in about six minutes.' For the process-side answers: 'You've found the whole second half of this course.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The temptation is rational and the answer is still no, three ways: red data, unauditable fairness, regulated territory. And the prize was never there anyway; it's upstream, where we're headed.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct across the room; the pair sort lands with most temptations called person-side; nobody is still defending 'first pass only' screening.</p><p class="facnote__meta"><b>Watch for:</b> The efficiency argument surfacing as pushback: 'so we just eat the forty applications?' Don't fight it here; promise it: sections 03 and 04 cut the real hours, legitimately. Also watch for the Amazon story being dismissed as old news; the point isn't the year, it's that unlimited engineering resources couldn't audit the bias out.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before the field guide, and I want it to hang in the air a moment.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards fast against the whiteboard, Guess the Number as a room vote, quick check stays, the pair sort becomes one show of hands with no discussion.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>A resume is a person. Treat it like one.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock the session's core idea before the never list arrives.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;A resume is a person. Treat it like one.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So let's get exact about what never goes in, because the subtle cases are where good managers slip.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 THE RED SIDE, EXACTLY ============ -->
+  <section class="slide on-dark" id="s-redside" data-count data-title="The red side, exactly">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Red Side</p>
+      <h2 class="h2" data-reveal>The never list, in <em>full</em>.</h2>
+      <p class="lead" data-reveal>Two rules define the red side. First, the data rule: resumes, applications, references, interview notes about named candidates, anything that identifies a person in a hiring process never enters an AI tool. Second, the decision rule: AI never ranks, scores, or screens candidates, in any tool, approved or otherwise. The subtle cases are where good managers slip, so we'll take those one at a time.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The traffic light, applied to hiring</span>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go. In hiring: the public posting, generic role material, question drafts for a role.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only (ChatGPT EDU, Amplify, Copilot). In hiring: templates, rubrics, skills maps, nothing naming a person.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never. In hiring: everything about a candidate or colleague as a person, in any tool, always.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">This course touches people data constantly, so hear the rule plainly: the light outranks every technique taught today. When a use and the light disagree, the light wins.</p>
+      </div>
+
+      <div class="grid grid-3" style="margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Red</span>
+          <h3>The reference call summary</h3>
+          <p class="muted">A reference call is one person talking about another. Asking AI to summarize your notes puts both of them into the tool. Summarize it yourself; it's one call.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Red</span>
+          <h3>Your gut notes on a candidate</h3>
+          <p class="muted">Messy impressions about a named person are still information about a person. Fix your note template with AI before interview day, while nobody is in it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rewrite, then yellow</span>
+          <h3>The rejection email tone check</h3>
+          <p class="muted">"Just checking tone" on an email naming the candidate and their interview is a red paste. Strip the name and the specifics first; the generic draft is yellow work in approved tools.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Yellow</span>
+          <h3>The offer letter template</h3>
+          <p class="muted">No names, no personal details, pure process artifact: yellow, in approved VU tools. The moment a person's details enter the text, the color changes.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="olGame" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Over the line?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the line only protects people if you can call it under time pressure. Five real uses of AI in a hiring process; classify each one.</p>
+        <p class="quiz__progress" id="olProgress"></p>
+        <p class="quiz__q" id="olQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="olOptions" role="group" aria-label="Classification choices"></div>
+        <p class="quiz__feedback" id="olFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="olNext" style="visibility:hidden">Next case</button>
+        </div>
+        <div id="olResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The test that sorts every case in one breath: could a specific person be identified from what you are about to paste? If yes, it never goes in, whatever the deadline. And when you catch the temptation, use the swap: almost every red-side urge has a green-side twin that solves the same problem. Tempted to summarize interview notes? The real need is a better note template, which AI builds happily with nobody in it. Tempted to compare finalists in a chatbot? The real need is the rubric you should have built before you met them. The swap converts guilt into method. One more habit worth building now: when a tool, vendor, or well-meaning colleague proposes anything automated that touches candidates, the answer is a referral to HR and VU policy, every time, before any pilot. For the broader policy picture, the Guardrails &amp; Responsible Use course in the <a href="../../../" target="_blank" rel="noopener" style="text-decoration:underline">Course Library</a> is this course's general-purpose sibling; today is its hiring deep-dive.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> a never list your team wrote is a never list your team keeps.</p>
+          <ol class="steps">
+            <li>Pairs: draft your unit's hiring never list, five lines, starting from the two rules on this slide.</li>
+            <li>Trade lists with another pair. Hunt for the gap: what subtle case did they miss? The tone check and the reference call are the usual escapees.</li>
+            <li>Read the sharpest addition to the room. One sentence each; you're building the local law together.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your own five-line never list from this slide, then add the subtle case most likely to tempt you personally. Keep it where you'll see it during your next search.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the two red-side rules (no candidate data in any tool; no AI ranking, scoring, or screening anywhere) and calibrate the subtle cases: reference notes, gut notes, the tone check, the nameless template.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Two rules define the red side. The data rule: resumes, applications, references, interview notes about named candidates, anything that identifies a person in a hiring process, never enters an AI tool. Any tool, including the approved ones, because the color belongs to the data, not the tool. The decision rule: AI never ranks, scores, or screens candidates, period. Now the subtle cases, because nobody in this room was going to paste a resume labeled 'resume.' The reference call summary: that's a person talking about a person, red. Your messy gut notes on a candidate: still a person, red. The rejection email tone check: as written, with the name and the interview details, red; rewrite it around the name first and the generic draft is yellow work. The offer letter template with nobody in it: yellow, approved tools. The test that sorts all of them in one breath: could a specific person be identified from what you're about to paste? If yes, it never goes in.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>State the two rules crisply: the data rule and the decision rule. Write both atop the RED SIDE column.</li><li>Walk the traffic light card verbatim; the room should be able to finish the rows with you. Stress the outranking line: the light beats every technique taught today.</li><li>Walk the four subtle-case cards, slowest on the rejection-email card: the rewrite-around-the-name move is the most transferable trick on the slide.</li><li>Send them to Over the Line: five cases, classify each. On devices, or by hands on the projector.</li><li>Teach the one-breath test explicitly after the trainer: could a specific person be identified from this paste?</li><li>Run the pair never-list drill from Go deeper; harvest the sharpest additions aloud.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which of the five trainer cases surprised you, and what does that tell you about where your own line was sitting?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The interview-notes case: 'I didn't think of notes as candidate data'</li><li>The ranking case: surprise that approved tools don't make it okay</li><li>Someone relieved that the behavioral-questions case was green</li></ul><p class="facnote__mini">Respond: For the notes surprise: 'That's the most common line-slip there is, and the fix is upstream: perfect your note template before interview day, when nobody is in it.' For the ranking surprise: 'Right, and hold the two rules separately: the data rule is about what goes in, the decision rule is about what AI does. Ranking breaks the second one even in a governed tool.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Two rules, one test, and four subtle cases you can now call cold. Everything we do from here lives safely on the other side of that line.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; the room can recite the one-breath test and the two rules unprompted; the pair lists include at least one subtle case.</p><p class="facnote__meta"><b>Watch for:</b> The 'anonymize it' workaround: someone will propose stripping names as the general fix. Take it seriously and close it: hiring pools are small, and employer plus dates plus projects re-identifies almost anyone. Also watch the approved-tools confusion: yellow tools do NOT make red data acceptable; the color belongs to the data, never the tool.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;And the other side starts with the biggest legitimate win in hiring: the posting.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: two rules and traffic light at full strength, subtle cases in one pass, trainer on devices; the never-list drill becomes a solo two-minute write.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 THE WIDE FUNNEL ============ -->
+  <section class="slide on-cream" id="s-funnel" data-count data-title="The wide funnel">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Wide Funnel</p>
+      <h2 class="h2" data-reveal>Write the post that <em>invites</em>.</h2>
+      <p class="lead" data-reveal>Most job postings are accidental filters: recycled requirements, insider jargon, and a degree line nobody questioned, all quietly shrinking the pool before a single human judges anything. This is the first place AI genuinely earns its keep in hiring, because a posting is a process artifact with nobody in it. Green and yellow territory, high leverage, zero people data.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">1 · The skills map</span>
+          <h3>Know the gap first</h3>
+          <p class="muted">Before writing the post, map the team: what it can do, what the work ahead needs, where the gaps are. AI structures the map fast, and the posting gets written to the gap instead of to the last person who held the job.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">2 · The requirement audit</span>
+          <h3>Interrogate every line</h3>
+          <p class="muted">Ask of each requirement: does this describe the work, or the person we're picturing? "Digital native," "native English speaker," and unexamined degree lines are proxies that shrink pools for reasons unrelated to the job.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">3 · The plain-language pass</span>
+          <h3>Lower the reading wall</h3>
+          <p class="muted">AI checks reading level, flags insider jargon, and rewrites in plain language. Strong candidates outside your bubble stop bouncing off a posting only insiders could parse.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="fpGame" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Fix the posting</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the audit is a skill, and it calibrates fast. Five lines from real-world job postings; name each one's problem, or clear it.</p>
+        <p class="quiz__progress" id="fpProgress"></p>
+        <p class="quiz__q" id="fpQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="fpOptions" role="group" aria-label="Diagnosis choices"></div>
+        <p class="quiz__feedback" id="fpFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="fpNext" style="visibility:hidden">Next line</button>
+        </div>
+        <div id="fpResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The working sequence: skills map first, then the audit, then the rewrite. The map is yellow work, real internal detail with no named people, in approved VU tools, and Vanderbilt's talent-mobility push makes it doubly useful: sometimes the map shows the gap is growable from inside the team, and the posting you were about to write becomes a development conversation instead. For the audit, paste the posting draft and ask directly: which of these requirements are proxies, what could screen out capable people who took a nonstandard route, what does this read like at a ninth-grade reading level? Then judge the suggestions yourself; AI drafts the rewrite and you decide what the role truly requires. Keep one discipline: every requirement that survives should trace to a real task the role performs. If nobody can name the task, the requirement is a picture of a person, and it goes.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> auditing someone else's posting builds the eye faster than auditing your own, because you have no attachment to its lines.</p>
+          <ol class="steps">
+            <li>Pairs: each person recalls one requirement line from a posting they've written or worked under. Roles only, no names.</li>
+            <li>Audit each other's line with the question: does this describe the work, or the person being pictured?</li>
+            <li>Rewrite the weakest line together as a task the role actually performs, and read the before-and-after to the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Pull up the last posting for a role on your team. Audit its top three requirements: work, or picture? Rewrite the worst one as a real task, and keep the rewrite for section 04.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Turn the job posting from an accidental filter into an invitation: skills map first, then the requirement audit (proxies, degree inflation), then the plain-language pass, with AI drafting and the manager judging.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Most job postings are accidental filters. The requirements got recycled from the last posting, the jargon reads like a membership test, and there's a degree line nobody has questioned in years, all quietly shrinking your pool before a single human judges anything. This is the first place AI genuinely earns its keep in hiring, because a posting is a process artifact with nobody in it. The sequence: first the skills map, what can the team do, what does the work ahead need, where's the gap, so the post is written to the gap instead of to the last person who held the job. Then the requirement audit, with one question for every line: does this describe the work, or the person we're picturing? 'Digital native' is an age proxy. 'Native English speaker' is a national-origin proxy; the real requirement is fluency. And the degree line has to defend itself: if nobody can name the task that needs it, it goes. Then the plain-language pass. AI drafts all three; you judge all three.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the reframe: most postings filter by accident, through recycled requirements, jargon, and unexamined degree lines.</li><li>Walk the three cards in sequence: skills map first, requirement audit, plain-language pass. Stress the order; the map comes before the post.</li><li>Teach the audit question and write it on the whiteboard: does this describe the work, or the person we're picturing?</li><li>Send them to Fix the Posting: five lines, diagnose each. The 'genuinely fine' option matters; the audit clears good lines too.</li><li>Connect the skills map to Vanderbilt's talent-mobility work: sometimes the map shows the gap is growable from inside, and the posting becomes a development conversation.</li><li>Run the pair audit drill from Go deeper on requirement lines from their own experience.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Think of the last posting your team ran. Which line would have failed the audit, and what was it actually standing in for?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Years-of-experience lines standing in for a skill nobody defined</li><li>A degree line standing in for 'the last person had one'</li><li>An honest 'I copied the whole thing from the posting before'</li></ul><p class="facnote__mini">Respond: For the copy confession, warmly: 'That's the most common origin story postings have, and it means the filter compounds: every generation inherits the last one's proxies. The audit is how the inheritance stops with you.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Map the gap, audit the lines, lower the reading wall. The pool gets wider for exactly the people the proxies were silently excluding, and no candidate ever went near a tool.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; pairs produce at least one real requirement line rewritten as a task; the room can say the audit question unprompted.</p><p class="facnote__meta"><b>Watch for:</b> The defense of degree requirements, which can get heated. Keep it precise: some roles genuinely require credentials (licensure, accreditation), and the audit doesn't remove those; it removes the degree lines nobody can trace to a task. Also watch for someone treating the posting as HR's job; the requirements come from the hiring manager, which is exactly why the audit is theirs.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;A wider funnel means more candidates to judge fairly, which is why structure comes next, and it comes BEFORE them.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards and audit question at full strength, trainer on devices; the pair audit becomes a solo pass on one remembered requirement line.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 STRUCTURE BEFORE CANDIDATES ============ -->
+  <section class="slide on-light" id="s-structure" data-count data-title="Structure before candidates">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Structure</p>
+      <h2 class="h2" data-reveal>Decide how you'll decide, <em>first</em>.</h2>
+      <p class="lead" data-reveal>Here is the structure dividend: same questions for every candidate, scores anchored to defined evidence, and a rubric built before any application is read. Decades of selection research back structure as hiring's most reliable fairness tool, and it doubles as your best AI move, because questions, anchors, and rubrics are process artifacts AI drafts brilliantly, with nobody in them.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The before-candidates rule</span>
+        <p style="margin:.5rem 0 0" class="measure">Everything structural gets built <b>before the first application is read</b>: the questions, the 1-to-5 anchors, the weights. Once candidates are in view, the structure freezes. The reason is human, and researchers see it constantly: structure built after you've met people bends toward the person you already like. The timing is also what keeps AI's help here green and yellow: a rubric written before candidates exist contains no candidate.</p>
+      </div>
+
+      <div class="plan" id="structPlan" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your structure plan, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this session, and your next real hire, runs on this plan. Roles and tasks only, no names, and nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="spRole"><b>1 · The role.</b> One role you will hire for, or grow someone into:</label>
+            <input type="text" id="spRole" maxlength="120" placeholder="e.g. a data analyst for the enrollment team" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="spTasks"><b>2 · The real tasks.</b> Three things this role actually does in a normal month:</label>
+            <input type="text" id="spTasks" maxlength="160" placeholder="e.g. builds the weekly dashboard, cleans messy source data, presents findings to non-analysts" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="spProbe"><b>3 · The probe.</b> The quality you always wish you had asked about, and never quite did:</label>
+            <input type="text" id="spProbe" maxlength="120" placeholder="e.g. how they handle being wrong in front of others" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="spBuild" disabled>Build my structure plan</button>
+            <span class="quiz__progress" id="spStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="spOut" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Why does the rubric get built before any application is read?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Structure built after meeting candidates bends toward the one you already like, which defeats its purpose. Built early, it also stays a clean process artifact AI can help with: no candidate exists inside it."><span class="mark">A</span><span>Because structure built after meeting candidates bends toward favorites, and early structure stays fair and green</span></button>
+          <button class="opt" data-correct="0" data-why="Speed is a side effect. The real stakes are fairness and defensibility: a pre-built rubric measures every candidate against the job instead of against each other, and it can be shown to anyone who asks how the decision was made."><span class="mark">B</span><span>Because it saves time during interview season</span></button>
+          <button class="opt" data-correct="0" data-why="Policy may well require structure, and compliance was never the point. The rubric exists because it produces better, fairer, explainable decisions; that would be true with no policy anywhere."><span class="mark">C</span><span>Because HR policy requires the paperwork</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The AI workflow for structure, start to finish, in approved VU tools with no people data: feed the role's real tasks and ask for behavioral questions tied to each one, in the "tell me about a time" shape, with follow-ups probing the candidate's specific part. Then ask for 1-to-5 anchor descriptions per question: what concrete evidence makes an answer a 2, what makes it a 5. Then turn AI against its own draft: which anchors are ambiguous, where would two raters score the same answer differently, which questions could a polished talker ace without the skill? Rewrite until a stranger could apply the rubric cold. That stranger test is the whole standard: anchors that need you present to interpret them are opinions wearing a rubric's clothes.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> ambiguous anchors feel precise to their author, and the fastest cure is a stranger's reading.</p>
+          <ol class="steps">
+            <li>Pairs: swap the structure plans you just built.</li>
+            <li>Each partner drafts a 5-level anchor for the other's probe quality: what would a 2 sound like, what would a 5 sound like?</li>
+            <li>Stress-test one anchor aloud: would two raters score the same answer the same way? If no, tighten the evidence words until they would.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Draft the 2 and the 5 anchor for your own probe quality, then apply the stranger test: could someone who has never met you score an answer with just your words? Rewrite until yes.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the structure dividend (same questions, anchored scores, pre-built rubric) and the before-candidates rule, then get every learner a real structure plan via the private builder.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the structure dividend. Same questions for every candidate, in the same order. Scores anchored to defined evidence, and a rubric built before any application is read. Decades of selection research keep finding that structure beats unstructured judgment for both accuracy and fairness, and it happens to be your best AI move, because questions, anchors, and rubrics are process artifacts with nobody in them. One rule makes it work: everything structural is built BEFORE the first application is read, and then it freezes. The reason is human: structure built after you've met candidates bends toward the one you already like, and researchers watch it happen to careful, well-intentioned people. The timing is also what keeps AI's help green: a rubric written before candidates exist contains no candidate. Now build yours: one role, its three real tasks, and the probe, the quality you always wish you'd asked about and never quite did.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the structure dividend first: structure is the most evidence-backed fairness tool hiring has, and AI is excellent at building structure and terrible at judging people.</li><li>Walk the before-candidates rule on the gold card and repeat its reason: structure built after you've met people bends toward the one you already like.</li><li>Send them to the private builder: role, three real tasks, the probe. Repeat the privacy line before they type.</li><li>Give the builder quiet time; field 3, the probe, deserves a full minute. It's where most learners discover what they've never actually interviewed for.</li><li>Walk what the output means: tasks become questions, the probe gets anchors, the whole thing freezes before the first application.</li><li>Run the quick check, then the pair anchor swap from Go deeper: draft the 2 and the 5 for your partner's probe, and stress-test with the two-raters question.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What did you put as your probe, the thing you always wish you'd interviewed for? Shout a few out, no names attached to anything.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Handling being wrong, taking feedback, admitting mistakes</li><li>Follow-through and self-management when nobody is watching</li><li>How they treat people they don't need anything from</li></ul><p class="facnote__mini">Respond: Point at the pattern: 'Notice nobody said a technical skill. The probes are always character under pressure, which is exactly what unstructured interviews measure worst and anchored questions measure best. Your probe is the strongest argument for the rubric you'll ever have.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A role, three tasks that become questions, a probe that gets anchors, and a rule that freezes it before candidates arrive. That plan is your 30-minute structure session, already half done.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has a structure plan with a named role, three tasks, and a probe; quick check lands; pair anchors survive the two-raters test after one rewrite.</p><p class="facnote__meta"><b>Watch for:</b> Anchors written as adjectives ('good communicator, 5; poor communicator, 1'), which recreate the vibe problem inside the rubric. Push to evidence: what would you HEAR in a 5 answer? Also watch the learner whose 'role' is really a promotion decision; the method transfers, and say so: tasks of the next level, evidence anchors, same discipline.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Time to run a whole hire with everything so far. The lab is where the method gets felt.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: dividend and rule in two minutes, builder stays at full length with its quiet minute protected, quick check stays; the anchor swap becomes a solo draft of one anchor pair.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 THE HIRING LAB ============ -->
+  <section class="slide on-dark" id="s-lab" data-count data-title="The Hiring Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Lab</p>
+      <h2 class="h2" data-reveal>Fill the analyst <em>role</em>.</h2>
+      <p class="lead" data-reveal>Your data analyst just gave notice, the backfill is approved, and the season is busy. Four moments will decide this hire: the posting, the screen, the interviews, and the decision. Choose how each one runs, then see where the process lands.</p>
+
+      <div class="lab" id="hireLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Hiring Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on a real requisition, and the failure modes are the ones that actually happen, including the one nobody can undo. Choose all four, then run the hire.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the hire</button>
+          <span class="quiz__progress" id="labStatus">Choose all four moments</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice what the lab punishes. Gut choices cost you quality: the recycled posting refills the pool you had, vibe interviews measure confidence, and the felt-right decision rebuilds the team you already have. The chatbot screen costs something categorically different: a privacy violation that no later step can repair, because every decision downstream inherits it. That asymmetry is the deepest thing this course teaches. Process quality is a dial you can improve next time; the red line is a door, and it only swings one way. When you weigh a shortcut on a real requisition, ask which kind of mistake it risks: a dial mistake, or a door mistake. Dials forgive. Doors don't.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> your real process almost certainly contains one of the lab's weak choices, and finding it here costs nothing.</p>
+          <ol class="steps">
+            <li>Pairs: walk through the last hire either of you ran, moment by moment: posting, screen, interviews, decision. Roles and process only.</li>
+            <li>Find its weakest moment against the lab's strong options: where did structure give way to gut?</li>
+            <li>Name the fix from today's method, one sentence, and say which section it came from.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Score your own last hire against the lab's four moments, honestly. Mark the weakest one and write the one-sentence fix; that sentence belongs on your capstone card.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give every learner a full felt rep of the method: four moments of a real hire, chosen and then reviewed, with the chatbot screen wired as an unrecoverable violation. The session's deepest practice block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's a hire you all recognize: your data analyst gives notice in the busy season, and the backfill is approved. Four moments decide it. The posting: recycle it, punch it up, or audit it properly. The screen: and yes, the chatbot shortlist is one of the options, because it's one of the options in real life. The interviews: vibes, half-structure, or the full anchored set. The decision: gut, arithmetic, or evidence debated with a human making the call. Choose all four, run the hire, and read what comes back. One warning: exactly one choice in this lab cannot be repaired by anything that comes after it. Find out which.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Set the scenario in one breath: the analyst gave notice, the backfill is approved, the season is busy. Four moments: posting, screen, interviews, decision.</li><li>Send them into the lab on devices: choose all four, run the hire. Don't coach choices in advance; the weak tiers teach more than the strong one.</li><li>Expect a handful to pick the chatbot screen, some deliberately. Good; the violation outcome is the course's thesis rendered as consequence.</li><li>Ask for a show of hands by outcome: violation, gut hire, half process, defensible hire. Have one violation-tier learner read their outcome aloud; the room goes quiet at 'nothing downstream can repair it.'</li><li>Push the rerun: change your weakest moment and run it again. The delta between runs is the lesson.</li><li>Run the pair drill from Go deeper: find the weakest moment in a real past hire and name the fix.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those who picked the chatbot screen, on purpose or on autopilot: what did the outcome say, and what struck you about it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'Everything after it stopped mattering,' quoted with some surprise</li><li>'I picked it to see what would happen' from the deliberate testers</li><li>Someone noticing their real process resembles the gut tier more than they'd like</li></ul><p class="facnote__mini">Respond: For the deliberate testers: 'Perfect use of a simulator; you spent the violation where it costs nothing. The real version has no rerun button, which is the entire design of this lab.' For the gut-tier recognition: 'That honesty is the room's win; the fix is one pre-built rubric away, and you built half of it in section 04.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Process quality is a dial: the posting, the interviews, the debrief all improve next search. The red line is a door, and it swings one way. The lab let you learn that for free; the real pile in your inbox will not.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes at least one run; most reach the defensible tier on a rerun; every learner can name their own last hire's weakest moment and the section that fixes it.</p><p class="facnote__meta"><b>Watch for:</b> Learners gaming straight to the maximal options without reading the coaching; re-engage with 'which of these would your real process push back on?' Also protect the dial-versus-door language in the debrief: process quality is a dial, the red line is a door. It's the sentence people quote back at the 30-day poll, so say it clearly.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One more section, because even the green side has doors bias walks through.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one run instead of run-plus-rerun (rerun only for violation and gut tiers), outcome hands stay, the pair drill becomes a solo weakest-moment hunt. This is the floor; never cut the lab entirely.</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 BIAS, WATCHED ============ -->
+  <section class="slide on-cream" id="s-bias" data-count data-title="Bias, watched">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Bias, Watched</p>
+      <h2 class="h2" data-reveal>Bias doesn't knock. It <em>drifts</em> in.</h2>
+      <p class="lead" data-reveal>Staying on the green side does not make the work bias-proof. AI-drafted questions inherit the stereotypes of everything written before them, rubric anchors can quietly encode one culture's communication style, and "culture fit" stands ready to launder "reminds me of us" into a criterion. The guardrails are cheap and specific, and they all work the same way: they force definition before judgment.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Door 1 · Inheritance</span>
+          <h3>The stereotyped draft</h3>
+          <p class="muted">Ask AI for leadership questions and watch every one assume taking charge in a room. The draft inherited a pattern, and the role might need quiet coordination instead.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Door 2 · The anchor</span>
+          <h3>One culture's yardstick</h3>
+          <p class="muted">"Polished, confident, commands the room" scores a communication style, and style tracks culture. Applied equally to everyone, it is still the wrong yardstick unless commanding rooms is the actual job.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Door 3 · The laundromat</span>
+          <h3>"Culture fit"</h3>
+          <p class="muted">Undefined, fit means "reminds me of us" wearing a professional word. Defined as specific observable behaviors, it can be legitimate. The definition is the whole difference.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The guardrails</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>Diverse review:</b> a second reader from a different background reviews AI-drafted questions and anchors before use. <b>The same-evidence test:</b> identical facts get identical scrutiny, whoever they belong to. <b>Why before rank:</b> write the evidence-based reasons down before any ranking happens, never after. <b>And the hard rule:</b> anything automated that touches candidates goes through HR and VU policy first, always.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: "Culture fit" becomes a bias laundromat when...</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Undefined fit lets a gut feeling of similarity pass as a professional judgment. Defined as specific observable behaviors with evidence, values in action, it can be assessed like anything else on the rubric."><span class="mark">A</span><span>It stays undefined, so "reminds me of us" can hide inside it</span></button>
+          <button class="opt" data-correct="0" data-why="Teams and values are real, and discussing how someone works with others is legitimate. The trap is the missing definition; the word only launders bias when nobody has said what evidence counts."><span class="mark">B</span><span>Any time it is discussed at all; the concept itself is the problem</span></button>
+          <button class="opt" data-correct="0" data-why="The laundromat predates AI by decades; humans invented it unassisted. AI's role is amplification: an undefined criterion plus a fluent tool generates confident-sounding justifications faster."><span class="mark">C</span><span>Only when AI is involved in the assessment</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="sbGame" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Spot the bias door</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every one of these setups looks legitimate from a distance, which is exactly how bias travels. Five setups; find the open door in each.</p>
+        <p class="quiz__progress" id="sbProgress"></p>
+        <p class="quiz__q" id="sbQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sbOptions" role="group" aria-label="Diagnosis choices"></div>
+        <p class="quiz__feedback" id="sbFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sbNext" style="visibility:hidden">Next setup</button>
+        </div>
+        <div id="sbResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Running the guardrails costs minutes. Diverse review means one colleague who differs from you in background or working style reads the AI-drafted questions and anchors before any candidate sees them, hunting for one thing: whose way of being good at this job do these assume? The same-evidence test runs in the debrief: for any fact that moved a score, a gap, a job hop, a credential, ask whether the identical fact got identical treatment on every candidate. Why-before-rank is a discipline of sequence: scores and their evidence get written per candidate, against the rubric, before anyone utters an ordering. And keep the escalation rule bright: the moment anything automated touches candidates, a vendor tool, a screening add-on, a scoring plugin, it goes to HR and VU policy before any pilot, because <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence" target="_blank" rel="noopener" style="text-decoration:underline">the legal landscape SHRM tracks</a> is moving fast, and it is moving toward audits and accountability.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> the guardrails become real the first time you run one on your own material.</p>
+          <ol class="steps">
+            <li>Pairs: take the anchor you drafted in section 04's activity.</li>
+            <li>Run door 2 on it: does any word in it score a style rather than the job's real demand? Circle the suspects.</li>
+            <li>Rewrite the worst word as observable evidence, and read the before-and-after to the room. "Confident" usually becomes something like "explains the finding clearly and answers challenges with data."</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Audit your own section 04 anchor for style words: confident, polished, energetic, professional. Rewrite each as observable evidence of the job's real demand.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show where bias enters legitimate AI-assisted hiring (inherited stereotypes, culture-coded anchors, undefined fit) and install the guardrails: diverse review, the same-evidence test, why before rank, and HR for anything automated.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Last section, and it's the honest one: staying on the green side does not make the work bias-proof. Three doors. First, inheritance: AI drafts are built from everything written before, stereotypes included, so ask for leadership questions and watch every one assume commanding a room. Second, the anchor: 'polished, confident, commands the room' scores a communication style, and style tracks culture; applied equally to everyone, it's still the wrong yardstick unless commanding rooms is the actual job. Third, the laundromat: 'culture fit,' undefined, is 'reminds me of us' wearing a professional word. The guardrails are cheap. Diverse review: a second reader from a different background checks the drafts before use. The same-evidence test: identical facts, identical scrutiny. Why before rank: reasons written down before any ordering, never after. And the hard rule: anything automated that touches candidates goes to HR and VU policy first, always. Notice all four do the same thing: they force definition before judgment.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the honest turn: everything since section 02 has been green-side, and green does not mean bias-proof.</li><li>Walk the three doors: the stereotyped draft, one culture's yardstick, the fit laundromat. The anchor example ('polished, confident, commands the room') deserves a beat; half the room has written it.</li><li>Walk the guardrails card and mark the hard rule: anything automated touching candidates goes through HR and VU policy, always.</li><li>Run the quick check on the fit laundromat, then Spot the Bias Door: five setups on devices.</li><li>Run the pair drill from Go deeper: audit the section 04 anchors for style words and rewrite one as observable evidence.</li><li>Harvest one before-and-after rewrite aloud; 'confident' becoming 'answers challenges with data' is the section landing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Where has 'culture fit' shown up in a debrief you've been part of, and was it defined or was it a vibe? No names, no verdicts on colleagues.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Mostly vibes, admitted with a wince</li><li>One or two teams that define it as concrete behaviors and use it well</li><li>Someone asks how to push back when a senior voice says it</li></ul><p class="facnote__mini">Respond: For the pushback question: 'Ask the defining question instead of arguing: what did we see or hear that shows it? It converts the vibe into evidence or dissolves it, without accusing anyone of anything. That question is the same-evidence test in its politest clothes.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three doors, four guardrails, one shape: definition before judgment. Run them and the green side stays green all the way through the decision.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; pairs produce at least one style-word rewrite; the room can name all four guardrails and states the HR rule without hedging.</p><p class="facnote__meta"><b>Watch for:</b> Bias fatigue: a room that's had many bias trainings may brace for a lecture. Keep it mechanical, not moral: these are quality-control checks on artifacts, cheap and specific, and the trainer's setups are process failures anyone can fix. Also watch someone concluding AI drafts are too risky to use at all; the guardrail exists precisely so the drafts stay usable.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the full method. Quiz first, then the card that puts a date on it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: doors in one pass, guardrails card verbatim, quick check and trainer stay on devices; the anchor audit becomes a solo one-word rewrite.</p></aside>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the five objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you write the card that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the sections, so misses tell you exactly what to reteach; a miss on question 1 or 2 means the line itself needs restating, which outranks everything else.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as the systems check before the card, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes anything.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 11 · STRUCTURE CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My hiring structure card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My hiring structure card</p>
+      <h2 class="h2" data-reveal>One role. One rubric. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions don't change hiring; managers with a card and a date do. Name the decision in front of you, pick the first structural move, name what you refuse to do, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named decision with a first move and a date is a commitment; everything less is a good intention. Roles and processes, never candidate names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="tdPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The decision.</b> What role or talent decision is in front of you?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. backfilling the program coordinator role this fall" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first move.</b> Where does structure start?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First move">
+              <button class="opt" data-practice="audit"><span>Audit the posting with AI before it goes out</span></button>
+              <button class="opt" data-practice="rubric"><span>Build the rubric before reading a single application</span></button>
+              <button class="opt" data-practice="skillsmap"><span>Run the team skills map before writing the post</span></button>
+              <button class="opt" data-practice="out"><span>Take the resume pile out of any AI tool, today</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest temptation, named.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Line to hold">
+              <button class="opt" data-not="paste"><span>Put candidate materials in any AI tool</span></button>
+              <button class="opt" data-not="rank"><span>Let AI rank, score, or screen people</span></button>
+              <button class="opt" data-not="norubric"><span>Score candidates without a pre-built rubric</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first move happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my structure card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: one talent decision, one structural first move, one named temptation held, and the red-line pledge. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Sessions don't change hiring. Managers with a card and a date do. Name the decision actually in front of you: the backfill, the new role, the growth conversation. Pick the first structural move: audit the posting, build the rubric, run the skills map, or, and this is the honest one for some of us, take the resume pile out of any AI tool today. Then name your temptation, because you know which of the three it is, and naming it is most of holding it. And the date. Read the last line of your card before you close it: candidate materials never enter an AI tool, no tool ranks or screens a person, the process is AI's to help build, and the verdict is yours.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: sessions don't change hiring; managers with a card and a date do.</li><li>Repeat the privacy norm before anyone types: roles and processes, nothing saved or sent.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the structure plan from section 04 is the raw material, and 'take the pile out of AI today' is the honest first move for anyone who recognized themselves in section 01.</li><li>Point at field 3, what you will NOT do, as the honest one: everyone in the room has one of these three temptations, and naming it is the defense.</li><li>Push the build moment and have them read the final row to themselves: the line, standing, is the pledge they take out of the room.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip your first move, and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the search will start before the structure exists</li><li>The posting is HR's template and feels untouchable</li><li>The team already uses AI shortcuts and pushing back feels awkward</li></ul><p class="facnote__mini">Respond: No time: 'The structure session is 30 minutes against a search that runs for weeks; do it the day the requisition is approved.' The template: 'The requirements inside it are yours; audit those, and bring HR the rewrite rather than the complaint.' The shortcuts: 'Lead with the swap, never the scold: here's the green-side tool that solves the same problem. The lab's violation outcome is your visual aid if you need one.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One decision on your team now has structure coming before candidates, a held line, and a date. That is what fair looks like from the manager's chair.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields). The card plus the 7-day pulse plus the 30-day re-poll is the evidence chain; the count of first moves actually made is the headline metric.</p><p class="facnote__meta"><b>Watch for:</b> Vague decisions ('improve our hiring'). Push to ONE role or one live decision with a real date. And watch for the learner who picks 'take the pile out of AI today' quietly; find them after and thank them privately; that card is the session working exactly as designed.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The line, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Line</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The boundary this course draws: AI helps build hiring's process artifacts and never touches a person's materials or makes a call about a person.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The red side, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Red Side</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Resumes, applications, references, interview notes on named candidates: never in any AI tool. And AI never ranks, scores, or screens people, anywhere.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The structure dividend, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Structure Dividend</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Structure is hiring's most evidence-backed fairness tool, and structure-building is what AI does best. The overlap is this course's method.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Structured interview, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Structured Interview</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Same questions in the same order for every candidate, scored against defined anchors. Comparable evidence instead of comparable small talk.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Anchor, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Anchor</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The written description of what a 1 through 5 answer sounds like, in observable evidence. The stranger test: someone who never met you could apply it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Rubric, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Rubric</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The scoring grid: one row per real task plus the probe, each with anchors. Built before any application is read, then frozen.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Proxy requirement, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Proxy Requirement</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A posting line that describes the person being pictured instead of the work: "digital native," "native speaker." Shrinks the pool for reasons unrelated to the job.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Degree inflation, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Degree Inflation</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Requiring a degree for work that a demonstrable skill set could do. Screens out capable people who took a different route.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The wide funnel, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Wide Funnel</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A posting audited of proxies, jargon, and inflated degrees attracts instead of filters. AI drafts the audit and the rewrite; the manager judges.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Skills map, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Skills Map</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>What the team can do, what the work ahead needs, and the gap between them. Written before the posting, so the post names the real gap.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The culture fit trap, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Culture Fit Trap</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Undefined "fit" launders "reminds me of us" into a criterion. Defined as observable behaviors with evidence, it can be assessed honestly.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The same-evidence test, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Same-Evidence Test</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Identical facts get identical scrutiny, whoever they belong to. A gap probed on one resume gets probed on every resume.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Automated employment decision, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Automated Employment Decision</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A hiring outcome made or substantially shaped by a tool: ranking, scoring, screening. Regulated territory, and off the table here: the decision is yours.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards, including the culture fit trap, for the next debrief where 'great fit' arrives without evidence.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (The Culture Fit Trap is a good pick; it gets a knowing laugh and reteaches section 06).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all thirteen cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One structure session left to book.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go build the <em>process</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You drew the line and defended it through the subtle cases, audited the posting, built a structure plan, ran the hire in the lab, and learned to hear the bias doors opening. One role on your team is about to get a fairer, wider, more defensible search.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · Before the next posting</span><span class="vidcard__dur">30 minutes</span></div>
+        <h3>The structure session</h3>
+        <p>Take your structure plan from section 04 and finish it before a single application arrives: questions from the role's real tasks, anchors that pass the stranger test, the requirement audit on the posting draft. Use an approved VU tool, keep every person out of the prompt, and file the rubric where the whole hiring panel will use it. That half hour is the entire method in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your role and your first structural move out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the structure card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">The process is AI's to help build. The verdict is yours.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-line">The Temptation and the Line</a></li>
+          <li><a href="#s-redside">The Red Side, Exactly</a></li>
+          <li><a href="#s-funnel">The Wide Funnel</a></li>
+          <li><a href="#s-structure">Structure Before Candidates</a></li>
+          <li><a href="#s-bias">Bias, Watched</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Structure Card</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Hiring, Human · Facilitator Edition · <a href="../../../courses/Hiring-with-AI/" style="color:rgba(255,255,255,.7);text-decoration:underline">learner link</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the temptation is rational and the answer is no, the never list has its subtle cases, the posting can invite instead of filter, structure gets built before candidates and frozen, the lab showed you the one mistake with no undo, and the guardrails keep even the good uses honest. You have a card. Before you go: your role, and your first move. Say it out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: the one next step is the 30-minute structure session, before the next posting, in an approved tool, with no person in the prompt.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how confident are you that you can draw the line and build the structure for your next real search?' Scan and note the number; the 30-day re-poll asks it again.</li><li>Run the commitment round, popcorn style: role and first move, out loud or in chat.</li><li>Point at the cheat sheet and structure card buttons; the cheat sheet is built to sit next to the keyboard during the structure session.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your role or decision, and your first structural move.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The coordinator backfill; rubric before I read anything'</li><li>'New analyst role; skills map first, the posting might change'</li><li>Someone commits to taking the pile out of a chatbot today</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary. For the pile-out commitment, one warm sentence: 'That one takes the most honesty in the room, and it's the card the course was built for.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: how many first moves actually ran, and whether the red line held its first collision with a busy week.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state a role and a first move out loud or in chat. Count both; with the pulse and the 30-day re-poll, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the date. The commitment round catches them: no date, no commitment; help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go book the structure session. And the next time a pile of applications and a chatbot are both open on your screen, you know exactly which one closes.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

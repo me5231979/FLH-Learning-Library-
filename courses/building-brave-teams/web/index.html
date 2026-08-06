@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Building Brave Teams: Self-Paced | Vanderbilt</title>
+<meta name="description" content="An immersive workshop on psychological safety, trust, and honest communication: Edmondson's construct, Clark's 4 Stages, the Johari Window, behaviors that expand or contract safety, the SBI + Ask candor rehearsal, and a 14-day brave commitment you build.">
+<link rel="canonical" href="../../../courses/building-brave-teams/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Building Brave Teams | Vanderbilt Learning Series">
+<meta property="og:description" content="Psychological safety, trust, and honest communication, a 2-hour immersive workshop ending in one brave commitment your team will feel within 14 days.">
+<meta property="og:url" content="../../../courses/building-brave-teams/">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* resources slide: every link gold, never browser blue */
+  .res a { color: var(--vu-gold-flat); text-decoration: underline; text-underline-offset: 2px; }
+  .res a:hover { color: var(--vu-highlight); }
+  .res ul { list-style: none; margin: .75rem 0 0; padding: 0; display: grid; gap: .55rem; }
+  .res li { font-size: .95rem; color: rgba(255,255,255,.82); line-height: 1.5; }
+  .res li b { color: rgba(255,255,255,.92); font-weight: 600; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-safety">Safety</a>
+    <a href="#s-diagnose">The Ladder</a>
+    <a href="#s-johari">Johari</a>
+    <a href="#s-candor">Candor</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Building Brave Teams · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>You can meet.<br><em class="gold-text">Now say the hard thing.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Why does the smartest person in the room stay quiet? Why does a team see the flaw in the plan and let it ship anyway? And why do the best teams report <em>more</em> mistakes, not fewer? Today you get the mechanism, and the moves.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Define psychological safety, and tell it apart from being nice, lowering the bar, or needing consensus</li>
+          <li>Diagnose your team's current stage using Clark's ladder and Edmondson's 7-item survey</li>
+          <li>Explain why safety predicts performance, using the evidence from hospitals, cockpits, and Google</li>
+          <li>Practice disclosure and feedback with the Johari Window, and expand your Open quadrant</li>
+          <li>Differentiate behaviors that expand safety from the ones that quietly contract it, then deliver candid feedback with SBI + Ask</li>
+          <li>Commit to one start, one stop, and one question your team will hear within 14 days</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Radically collaborates and cultivates belonging</span>
+        <span class="skillpill">Psychological Safety</span>
+        <span class="skillpill">Team Building</span>
+        <span class="skillpill">Trust Building</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-mission">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and none of it runs on silence.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: mistakes hidden at speed compound at speed, Learner safety is an operations capability.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: a bold bet needs someone able to question it before it ships, that's Challenger safety, upstream of every initiative.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: you model what you practice, teams that speak plainly across differences are the institution's living proof.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: problems surfaced early are how execution keeps its reputation, and values-driven leadership isn't a slide, it's how your meetings treat the person who brings bad news. Your team's candor sits upstream of the flywheel.</p>
+      </div>
+
+      <div class="plan" id="missionAlign" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Align your work to the vision</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a vision you can't locate your own work inside is a poster. Find your team's share of it in three moves. You're done when a colleague could read your card and know what your team does differently because of it. Nothing you type leaves your screen.</p>
+        <div class="plan__form" style="margin-top:1.25rem">
+          <div class="plan__field">
+            <span class="plan__label"><b>1 · The area of focus your team's work most serves.</b></span>
+            <div class="plan__chips" id="maFocus" role="group" aria-label="Area of focus">
+              <button class="opt" data-focus="core"><span>Exceptional core operations</span></button>
+              <button class="opt" data-focus="bold"><span>Bold strategic initiatives</span></button>
+              <button class="opt" data-focus="industry"><span>Industry leadership</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The rung of safety that work needs most.</b></span>
+            <div class="plan__chips" id="maStage" role="group" aria-label="Stage of safety">
+              <button class="opt" data-stage="inclusion"><span>Inclusion</span></button>
+              <button class="opt" data-stage="learner"><span>Learner</span></button>
+              <button class="opt" data-stage="contributor"><span>Contributor</span></button>
+              <button class="opt" data-stage="challenger"><span>Challenger</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <label for="maLine"><b>3 · One concrete way your team advances it.</b> What would a colleague see?</label>
+            <input type="text" id="maLine" maxlength="140" placeholder="e.g. our onboarding rebuild gets new analysts contributing in week two instead of month two" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="maBuild" disabled>Build my alignment card</button>
+            <span class="quiz__progress" id="maStatus">Fill in all three parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="maOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>The honest headwinds</h4><p>The vision names four problems it exists to solve: leading research universities lack the core capabilities to deliver innovation at modern speed and scale; they're no longer seen as the primary drivers of solutions to society's problems; elite universities are viewed as politicized bastions of ideology; and a university education is no longer viewed as essential to the American dream. Notice what every one of those has in common: each is answered by institutions, which means by teams, that can move fast without hiding mistakes, collaborate across real differences, and tell themselves the truth. Brave teams aren't adjacent to this strategy. They're its raw material. <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Read the vision: "Daring to Grow"</a></p></div>
+          
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 1a · THE WHY ============ -->
+  <section class="slide on-cream" id="s-why" data-title="Our why">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Before the what · The why</p>
+      <h2 class="h2" data-reveal>Start with <em>why</em>.</h2>
+      <p class="lead" data-reveal>Simon Sinek's Golden Circle says great leaders and great movements work from the inside out: <b>why</b> before <b>how</b> before <b>what</b>. "People don't buy what you do; they buy why you do it." So before any framework touches this room, the why of this work, stated flat: <b>we build brave teams because every person on them deserves to matter out loud, and because the work gets better the moment they do.</b> The how is safety behaviors. The what is a candid, high-standards team. The why is people.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Why</span>
+          <h3>People deserve to matter out loud</h3>
+          <p class="muted">The belief at the center. If you don't hold it, no technique in this session will survive contact with a hard week.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">How</span>
+          <h3>Safety, built one behavior at a time</h3>
+          <p class="muted">The ladder, the window, the words, the mechanisms this session drills. The how only works in service of the why.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">What</span>
+          <h3>A candid, high-standards team</h3>
+          <p class="muted">The visible result: problems surfaced small, dissent before decisions, feedback that lands. What everyone else sees.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/u4ZoJKF_VuA" data-yttitle="How great leaders inspire action (Simon Sinek, TED)">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: how great leaders inspire action (18 min)</span>
+          <span class="yt__src">Simon Sinek · TED · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://youtu.be/u4ZoJKF_VuA" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the Golden Circle from its author. Play the first four minutes in class, the circle itself; assign the rest.</p>
+      </div>
+
+
+      <div class="plan" id="circleBuild" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Construct your Golden Circle</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a borrowed why evaporates by day nine. Build your own circle, inside-out, and it becomes the fuel for the commitment card at the end. You're done when the WHY ring names a real person or a real moment. Nothing you type leaves your screen.</p>
+        <div class="plan__form" style="margin-top:1.25rem">
+          <div class="plan__field">
+            <label for="gcWhy"><b>WHY · The center.</b> "I want a braver team because…", make it about a real person or a real moment.</label>
+            <input type="text" id="gcWhy" maxlength="140" placeholder="e.g. I watched a good analyst go quiet for a year, and I'm not doing that to anyone" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="gcHow"><b>HOW · The middle ring.</b> The behavior you'll practice to serve that why.</label>
+            <input type="text" id="gcHow" maxlength="140" placeholder="e.g. ask 'what am I missing?' and count to ten before speaking again" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="gcWhat"><b>WHAT · The outside ring.</b> What your team will visibly see or get.</label>
+            <input type="text" id="gcWhat" maxlength="140" placeholder="e.g. meetings where the newest analyst talks in the first ten minutes" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="gcBuild" disabled>Build my circle</button>
+            <span class="quiz__progress" id="gcStatus">Fill in all three rings</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="gcOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Your why is the thing that keeps a commitment alive on day nine, when the meeting runs long and the brave question feels skippable. It doesn't need to be grand; it needs to be yours. "I watched a good analyst go quiet for a year and I'm not doing that to anyone" is a why. "Leadership says so" is not. Borrowed whys don't survive hard weeks. Everything you build today, including the commitment card at the end, hangs on the sentence you write in the next two minutes.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> a commitment with a why survives; a commitment without one is a workshop souvenir.</p>
+          <ol class="steps">
+            <li>Fill the WHY ring of the circle builder above: "I want a braver team because…"</li>
+            <li>Test it: is it about a real person or a real moment? Sharpen it until it is.</li>
+            <li>Keep the built circle, the WHY ring returns at the commitment card, and the HOW ring is a head start on it.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Six ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>What safety is (and isn't)</h3><p>Edmondson's construct, and the three myths that hollow it out.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Where your team stands</h3><p>Clark's four stages, and the 7-item survey that locates you on the ladder.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The evidence</h3><p>Hospitals, cockpits, and Project Aristotle: why the quiet team is the risky team.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>The Johari Window</h3><p>Disclosure and feedback: the two moves that expand the Open quadrant.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Expand or contract</h3><p>Every behavior in a meeting moves safety one direction. Learn to see which.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>The candor rehearsal</h3><p>SBI + Ask: feedback that lands, practiced out loud before it counts.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 WHAT SAFETY IS ============ -->
+  <section class="slide on-light" id="s-safety" data-count data-title="What safety is (and isn't)">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Construct</p>
+      <h2 class="h2" data-reveal>Safe to <em>risk</em>.</h2>
+      <p class="lead" data-reveal>Psychological safety is the shared belief that this team is safe for interpersonal risk-taking, for saying "I don't know," "I made a mistake," "I disagree," or "I have an idea that might be bad." That's Amy Edmondson's definition, and every word is load-bearing: it's a <b>shared belief</b>, about <b>risk</b>, held by a <b>team</b>. It is not a personality trait, and it is not a mood.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Myth 1</span>
+          <h3>It's being nice</h3>
+          <p class="muted">Niceness avoids the hard thing. Safety makes the hard thing sayable. Candid teams argue more, not less, without casualties.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Myth 2</span>
+          <h3>It lowers the bar</h3>
+          <p class="muted">Safety without standards is the comfort zone. The target is both dials high: hard on the work, soft on the people.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Myth 3</span>
+          <h3>It means consensus</h3>
+          <p class="muted">Safety protects dissent; it doesn't require agreement. A safe team can disagree, decide, and commit, in that order.</p>
+        </div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/LhoLuui9gX8" data-yttitle="Building a psychologically safe workplace (Amy Edmondson, TEDx)">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: building a psychologically safe workplace (12 min)</span>
+          <span class="yt__src">Amy Edmondson · TEDxHGSE · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.ted.com/talks/amy_edmondson_building_a_psychologically_safe_workplace" target="_blank" rel="noopener">Open on TED</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the construct explained by the researcher who defined it. Play the first six minutes in class; assign the rest.</p>
+      </div>
+
+      <div class="quiz" id="mythMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Safety, or something else?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> most "psychological safety" efforts fail because they're actually niceness campaigns or standards cuts wearing the label. Five team snapshots; name what you're really looking at.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>How to play:</b> read the snapshot, make the call, then read the why; the explanations carry the teaching, so a miss you understand beats a guess you don't. You're solid at 4 of 5.</p>
+        <p class="quiz__progress" id="mtProgress"></p>
+        <p class="quiz__q" id="mtQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mtOptions" role="group" aria-label="Diagnosis choices"></div>
+        <p class="quiz__feedback" id="mtFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="mtNext" style="visibility:hidden">Next snapshot</button>
+        </div>
+        <div id="mtResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The definition earns its keep as a test. Before you call a team "safe," ask: when was the last time someone here said <em>I was wrong</em>, out loud, and nothing bad happened to them? When did someone junior disagree with someone senior, in the room, before the decision? If you can't name a recent example, you have politeness, not safety, and politeness is what silence sounds like from the inside.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Recall your own unsaid-thing moment and name the risk that priced it out. That memory is your material for the whole session.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>High-performing teams are not comfortable teams. They are candid ones.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE LADDER ============ -->
+  <section class="slide on-dark" id="s-diagnose" data-count data-title="Where your team stands">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Ladder</p>
+      <h2 class="h2" data-reveal>Four stages. <em>One ladder.</em></h2>
+      <p class="lead" data-reveal>Timothy Clark maps safety as a progression: people need to feel <b>included</b> before they'll <b>learn</b> out loud, learn before they'll <b>contribute</b> fully, and contribute before they'll <b>challenge</b> the way things are done. Teams get stuck at a stage, and the stuck stage is diagnosable.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));display:grid;gap:1.25rem">
+        <div class="card" data-reveal>
+          <span class="tag">Stage 1 · Inclusion</span>
+          <h3>Can I belong here?</h3>
+          <p class="muted">Accepted as a person, before any performance. The test: does the newest voice get invited in, by name?</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Stage 2 · Learner</span>
+          <h3>Can I ask and err?</h3>
+          <p class="muted">Safe to ask questions, try, and miss. The test: what happened to the last person who said "I don't know"?</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Stage 3 · Contributor</span>
+          <h3>Can I add my work?</h3>
+          <p class="muted">Trusted with real work, and credited for it. The test: do ideas travel with their author's name attached?</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Stage 4 · Challenger</span>
+          <h3>Can I question how?</h3>
+          <p class="muted">Safe to challenge the status quo, upward. The test: when was dissent last thanked, publicly?</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2.5rem;border-color:rgba(207,174,112,.5)">
+        <p class="eyebrow" style="margin-bottom:.35rem">Play · The 7-item diagnostic</p>
+        <p class="why" style="margin-top:0;margin-bottom:1rem"><b>Why this matters:</b> these seven items are Edmondson's actual research instrument, the same one used in the studies. Rate your current team honestly; nothing you tap is saved or sent anywhere.</p>
+        <p class="why" style="margin:0 0 1rem"><b>How to rate:</b> hold ONE specific team in mind, your closest one, and answer for how it is, not how you wish it were. 1 = strongly disagree, 5 = strongly agree. Your band and your lowest item appear after item 7; the lowest item, not the total, is what you'll bring to the table discussion.</p>
+        <div class="braving" id="psSurvey"></div>
+        <div class="lab__runrow">
+          <span class="quiz__progress" id="psCount" style="color:rgba(255,255,255,.6)">0 of 7 answered</span>
+        </div>
+        <div class="lab__outcome" id="psOut" hidden aria-live="polite" style="margin-top:1.25rem"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: A team scores 33/35 on the survey, and still misses every deadline. What would Edmondson say?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Safety is necessary, not sufficient. High safety with low standards is the comfort zone; the target is both dials high, a learning zone that is hard on the work and soft on the people."><span class="mark">A</span><span>Safety is necessary but not sufficient; pair it with high standards</span></button>
+          <button class="opt" data-correct="0" data-why="The research says the opposite: safety predicts higher performance. But it works with accountability, never instead of it."><span class="mark">B</span><span>Too much safety causes low performance; dial it back</span></button>
+          <button class="opt" data-correct="0" data-why="The instrument is validated across hundreds of studies. The missing variable isn't measurement; it's standards."><span class="mark">C</span><span>The survey must be broken</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Read your survey result as a location, not a grade. A low score on the mistake item points at Learner safety; a low score on "unique skills valued" points at Contributor; if everything is fine until someone questions how things are done, the ceiling is Challenger. Tuckman's forming, storming, norming, performing runs underneath this: a team that never storms, never has the safe fight, usually isn't performing, it's just quiet. The ladder tells you which rung to build next, and the next two sections are the tools for it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write your lowest item and your stage placement with one line of evidence. Both feed your commitment card at the end.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 THE EVIDENCE ============ -->
+  <section class="slide on-cream" id="s-case" data-count data-title="The evidence">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Evidence</p>
+      <h2 class="h2" data-reveal>The quiet team is the <em>risky</em> team.</h2>
+      <p class="lead" data-reveal>This isn't a soft idea with a hard sell. Three bodies of evidence, from hospitals, cockpits, and the largest team study ever run, say the same thing: silence is expensive, and the teams that speak up outperform the teams that keep the peace.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Hospitals · 1996</span>
+          <h3>More errors reported</h3>
+          <p class="muted">Edmondson's nursing-unit studies found the <b>better</b> units reported <b>more</b> medication errors, not because they made more, but because they felt safe reporting them. The quiet units were hiding theirs.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Cockpits · 1977</span>
+          <h3>Silence at Tenerife</h3>
+          <p class="muted">A flight engineer's doubt, voiced too gently to a captain too senior to question, preceded the deadliest crash in aviation history, 583 people. Crew Resource Management exists so that doubt now gets said plainly.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Google · 2012 to 2015</span>
+          <h3>Project Aristotle</h3>
+          <p class="muted">Across 180+ teams, <b>who</b> was on the team mattered far less than <b>how</b> the team ran. Psychological safety was the #1 predictor of effectiveness, above talent, seniority, and everything else measured.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The working equation</span>
+        <p style="margin:.6rem 0 0" class="measure"><b>Safety = f(Leader Invitation × Consistent Response × Normalized Fallibility)</b></p>
+        <p class="muted" style="margin:.5rem 0 0">Invitation: the leader explicitly asks for input. Response: what happens next is predictable and non-punishing, every time. Fallibility: the leader goes first on "I don't know" and "I was wrong." Multiply, don't add: a zero in any factor zeroes the product.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: The higher-performing nursing units reported MORE medication errors. The best explanation?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Exactly. The error rate wasn't higher; the reporting rate was. Safe teams surface problems while they're still small, which is precisely why they perform better."><span class="mark">A</span><span>They felt safe enough to report the errors they made</span></button>
+          <button class="opt" data-correct="0" data-why="That was the first assumption, and it was backwards. Follow-up observation showed the safer units weren't erring more; they were hiding less."><span class="mark">B</span><span>Better units genuinely made more errors</span></button>
+          <button class="opt" data-correct="0" data-why="Reporting rules were the same everywhere. The variable was the shared belief about what happens to the person who reports."><span class="mark">C</span><span>Only the better units were required to report</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Run the equation on your own team, factor by factor. <b>Invitation:</b> when did you last ask "what am I missing?" and wait for the answer? <b>Response:</b> think of the last person who brought bad news, what actually happened to them, and who watched it happen? <b>Fallibility:</b> when did the most senior person in your meetings last admit an error out loud? The audience for each factor is everyone watching, not just the person speaking. That's why one shot messenger silences a whole team for a year.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Answer all three for your highest-stakes recurring meeting. Keep the moment you named; Section 06 gives you the words for it.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 JOHARI WINDOW ============ -->
+  <section class="slide on-dark" id="s-johari" data-count data-title="The Johari Window">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Window</p>
+      <h2 class="h2" data-reveal>Expand the <em>Open</em> quadrant.</h2>
+      <p class="lead" data-reveal>The Johari Window (Luft &amp; Ingham, 1955) maps what's known about you against who knows it. Team effectiveness is largely a function of the <b>Open</b> pane, and there are exactly two ways to grow it: <b>disclosure</b> shrinks what you hide, and <b>feedback</b> shrinks what you can't see.</p>
+
+      <div class="jwin" data-reveal>
+        <span class="jwin__corner" aria-hidden="true"></span>
+        <span class="jwin__col">Known to self</span>
+        <span class="jwin__col">Not known to self</span>
+        <span class="jwin__row">Known to others</span>
+        <div class="jwin__pane jwin__pane--open"><h4>Open area · The Arena</h4><p>Known to you, known to them. Where trust, speed, and real collaboration live. The pane you're here to grow, and there are exactly two ways to grow it.</p></div>
+        <div class="jwin__pane"><h4>Blind spot</h4><p>They see it; you don't. Only <b>feedback</b> shrinks this pane, which is why soliciting it is a skill, not a courtesy.</p></div>
+        <span class="jwin__row">Not known to others</span>
+        <div class="jwin__pane"><h4>Hidden area · The Façade</h4><p>You know it; they don't. Every item kept here costs energy to maintain. <b>Disclosure</b> moves it to Open, on your terms, at your pace.</p></div>
+        <div class="jwin__pane"><h4>Unknown</h4><p>Nobody knows yet. Shrinks over time through new challenges and shared experience. Leave it room.</p></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2.5rem;border-color:rgba(207,174,112,.5)">
+        <p class="eyebrow" style="margin-bottom:.35rem">Play · Build your Open quadrant</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the window only moves two ways, disclosure and feedback, and this is your disclosure rep, the same decision you'll make with paper and stickies in the room. Nothing you tap leaves your screen.</p>
+        <ol style="margin:.9rem 0 .35rem;padding-left:1.2rem;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.85);display:grid;gap:.35rem">
+          <li><b>Tap a word once</b> (solid gold) to <b>claim it</b> for your Open pane, pick 5 to 6 you would stand behind in front of your team.</li>
+          <li><b>Tap it again</b> (dashed outline) to mark it <b>true of you, but held back</b>; it files under Hidden, up to 3. A third tap clears it.</li>
+          <li><b>Build the window.</b> You're done when Open holds 5 to 6 words you'd actually say out loud, and anything you knowingly held back sits in Hidden.</li>
+        </ol>
+        <p class="quiz__progress" id="jhCount" style="margin:.5rem 0 .5rem;color:rgba(255,255,255,.6)">Open: 0 of 5 to 6 claimed · Hidden: 0 of 3 held back</p>
+        <div class="adjgrid" id="jhGrid" role="group" aria-label="The 56 Johari adjectives"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="jhBuild" disabled>Build my window</button>
+          <span class="quiz__progress" id="jhStatus" style="color:rgba(255,255,255,.6)">Claim at least 5 words first</span>
+        </div>
+        <div class="lab__outcome" id="jhOut" hidden aria-live="polite" style="margin-top:1.25rem"></div>
+      </div>
+
+      <div class="quiz" id="stickySort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Sort the sticky</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the mapping step is where the insight happens, and people get it wrong under time pressure. Jordan chose <b>warm, organized, logical, dependable, quiet</b>. The stickies come back; sort each into its pane.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>How to play:</b> for each sticky, ask two questions in order, did Jordan claim it? can others see it?, and the two answers name the pane. You're ready for the in-room version at 4 of 5.</p>
+        <p class="quiz__progress" id="ssProgress"></p>
+        <p class="quiz__q" id="ssQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ssOptions" role="group" aria-label="Quadrant choices"></div>
+        <p class="quiz__feedback" id="ssFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="ssNext" style="visibility:hidden">Next sticky</button>
+        </div>
+        <div id="ssResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The in-room protocol is deliberately bounded, and the bounds are the safety design. Teammates may only write adjectives <em>from the list</em>, no commentary, no explanations, which caps the emotional risk of both giving and receiving. Mapping is silent and private. The reflection is by choice: you answer <em>one</em> of three prompts, your pick, because forced disclosure destroys the very thing this teaches. And what's on your sheet never gets shared aloud. Autonomy isn't a courtesy here; it's the mechanism.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Send your 5 to 6 words to two colleagues and ask each for two words back, from the same list. Sort what returns. That's the whole exercise, asynchronously.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 EXPAND OR CONTRACT ============ -->
+  <section class="slide on-cream" id="s-expand" data-count data-title="Expand or contract">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Behaviors</p>
+      <h2 class="h2" data-reveal>Every move <em>expands or contracts</em>.</h2>
+      <p class="lead" data-reveal>Safety isn't declared; it's transacted, one behavior at a time. Interrupting, crediting, eye-rolling, thanking dissent, each move expands the space for risk or contracts it, and everyone watching updates their belief about what's safe here. The skill is seeing the transaction as it happens.</p>
+
+      <div class="grid grid-2" style="margin-top:2.5rem">
+        <div class="card" data-reveal style="border-color:rgba(139,161,142,.6)">
+          <span class="tag" style="background:rgba(139,161,142,.9);color:#1c1c1c">Expanders</span>
+          <p style="margin:.6rem 0 0" class="muted"><b>Inclusion:</b> use names; invite the newest voice first. <b>Learner:</b> "What am I missing?"; model "I don't know." <b>Contributor:</b> credit specifically, publicly. <b>Challenger:</b> steel-man the opposing view; thank the dissenter in the room.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(199,107,90,.6)">
+          <span class="tag" style="background:#c76b5a;color:#1c1c1c">Contractors</span>
+          <p style="margin:.6rem 0 0" class="muted"><b>Inclusion:</b> interrupting; inside jokes; "as we all know…" <b>Learner:</b> eye-rolls at questions; "we tried that already." <b>Contributor:</b> taking credit; gatekeeping information. <b>Challenger:</b> shooting the messenger; HiPPO decisions.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="exMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Expand or contract?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> in the meeting, these go by in two seconds, and the contracting ones often sound harmless. Eight real moves; call each one, fast.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>How to play:</b> go gut-first, two-second calls, because that's meeting speed, then let the why name the stage each move touches. 6 of 8 means you'll see it live.</p>
+        <p class="quiz__progress" id="exProgress"></p>
+        <p class="quiz__q" id="exQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="exOptions" role="group" aria-label="Expand or contract"></div>
+        <p class="quiz__feedback" id="exFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="exNext" style="visibility:hidden">Next move</button>
+        </div>
+        <div id="exResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The in-room version of this is a wall your team builds: a grid, four rows for the four stages, two columns, behaviors that expand, behaviors that contract, filled from your own experience on stickies, then gallery-walked so every table reads every grid. Photograph it. That artifact becomes your team's 30-day retro agenda: which contracting behavior did we retire, and which expander did we practice? The grid your team writes beats any list an instructor hands you, because every line on it has a witness.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Draw the 4×2 grid for your team from memory: two behaviors per cell. The contract column is your stop-doing shortlist for the capstone.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 THE CANDOR REHEARSAL ============ -->
+  <section class="slide on-light" id="s-candor" data-count data-title="The candor rehearsal">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · The Rehearsal</p>
+      <h2 class="h2" data-reveal>Candor is a <em>skill</em>, not a trait.</h2>
+      <p class="lead" data-reveal>The highest rung on the ladder, Challenger safety, needs words, and winging them is how feedback turns into a fight. SBI + Ask, adapted from the Center for Creative Leadership, is the frame: anchor the <b>Situation</b>, describe the <b>Behavior</b> you observed, name the <b>Impact</b> you felt, end with an <b>Ask</b> that opens a conversation.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">S · Situation</span>
+          <h3>Anchor it</h3>
+          <p class="muted">"In yesterday's staff meeting, when the budget question came up…" Specific time and place. No "always," no "lately."</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">B · Behavior</span>
+          <h3>Describe, don't judge</h3>
+          <p class="muted">"…you cut off Priya mid-sentence…" What a camera would have recorded. "Dismissive" is a verdict; an interruption is a fact.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">I · Impact</span>
+          <h3>Name what you saw and felt</h3>
+          <p class="muted">"…she didn't speak again the rest of the meeting, and I'm worried we lost her input." Your observation, owned with "I."</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">+ Ask</span>
+          <h3>Open the door</h3>
+          <p class="muted">"Can we talk about how to handle those moments?" The ask converts a verdict into a conversation, it's what makes candor survivable.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="sbiSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Fix the feedback</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> feedback usually fails at one specific joint, and hearing where trains your ear faster than any template. Five attempts; name what's missing or broken in each.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>How to play:</b> listen for the four joints in order, Situation, Behavior, Impact, Ask, and name the first one that's missing or broken. At 4 of 5 your ear is tuned; the triad rehearsal is where your mouth catches up.</p>
+        <p class="quiz__progress" id="sbProgress"></p>
+        <p class="quiz__q" id="sbQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sbOptions" role="group" aria-label="Diagnosis choices"></div>
+        <p class="quiz__feedback" id="sbFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sbNext" style="visibility:hidden">Next attempt</button>
+        </div>
+        <div id="sbResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice what your body does when you're the receiver: dry mouth, defensive posture, the rebuttal forming before the sentence ends. That reaction is the data, it's what your teammates feel every time you're the giver, and it's why the receiver's only job in rehearsal is to listen and ask clarifying questions. No defense, no explanation. Practicing the receiving is half the skill, and it's the half nobody drills. One cultural note: in high-power-distance contexts, rehearse peer-to-peer first; upward candor is a later, carefully staged step, adapt the practice, never delete it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write one real SBI + Ask, out loud, to an empty room. Then say the receiver's line: "Tell me more." You'll use both within 14 days.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <p class="why" data-reveal style="margin:0 0 1.5rem"><b>How this works:</b> six questions, one per learning objective, taken solo. A miss isn't a verdict, it's an address: it names the exact section to reread, and the deck stays yours after today. Most people land 4 of 6 or better on the first pass.</p>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · MY BRAVE COMMITMENT (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My commitment">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · The commitment card</p>
+      <h2 class="h2" data-reveal>Build the <em>brave commitment</em>.</h2>
+      <p class="lead" data-reveal>Everything from today converges on one card: one behavior you start, one you stop, one question your team hears at the next meeting, one note you send tomorrow, and the stage you're climbing. Fourteen days. Your team is the witness.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> without reinforcement, most workshop learning is gone in a week. A specific, dated, witnessed commitment is what survives. Before you fill anything in, reread the why-sentence you wrote at the start of the session, the card is that sentence, converted into behavior. Nothing you type here is saved or sent anywhere; it lives only on your screen.</p>
+
+      <div class="plan" id="commitPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planStart"><b>1 · Start.</b> One behavior you'll start in the next 14 days.</label>
+            <input type="text" id="planStart" maxlength="140" placeholder="e.g. open each staff meeting by asking the newest person for their read first" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="planStop"><b>2 · Stop.</b> One behavior you'll stop, pull it from the contract column.</label>
+            <input type="text" id="planStop" maxlength="140" placeholder="e.g. answering my own questions before anyone else can" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · The question.</b> Which one will your team hear at the next meeting?</span>
+            <div class="plan__chips" id="planAsk" role="group" aria-label="Question for your team">
+              <button class="opt" data-ask="missing"><span>"What am I missing?"</span></button>
+              <button class="opt" data-ask="easier"><span>"What would make it easier to speak up here?"</span></button>
+              <button class="opt" data-ask="notsaying"><span>"What are we not saying?"</span></button>
+              <button class="opt" data-ask="shutdown"><span>"Where did I shut a conversation down this week?"</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · Tomorrow's note.</b> One person gets a note from you before end of day tomorrow.</span>
+            <div class="plan__chips" id="planNote" role="group" aria-label="Type of note">
+              <button class="opt" data-note="thanks"><span>A thank-you for their candor</span></button>
+              <button class="opt" data-note="blind"><span>A blind-spot acknowledgment</span></button>
+              <button class="opt" data-note="invite"><span>An invitation to disagree with me</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>5 · The rung.</b> Which stage are you building for your team?</span>
+            <div class="plan__chips" id="planStage" role="group" aria-label="Clark stage">
+              <button class="opt" data-stage="inclusion"><span>Inclusion, belonging first</span></button>
+              <button class="opt" data-stage="learner"><span>Learner, safe to ask and err</span></button>
+              <button class="opt" data-stage="contributor"><span>Contributor, credited, real work</span></button>
+              <button class="opt" data-stage="challenger"><span>Challenger, dissent thanked</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my commitment card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all five parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Psychological safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Psychological Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The shared belief that the team is safe for interpersonal risk-taking (Edmondson, 1999). Not niceness, not low standards, not consensus.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Interpersonal risk, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Interpersonal Risk</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The chance of looking ignorant, incompetent, negative, or disruptive when you speak. The tax every unsafe team charges for honesty.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Inclusion safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Inclusion Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Clark's Stage 1: accepted as a person before any performance. Without belonging, no downstream learning holds.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Learner safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Learner Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Clark's Stage 2: safe to ask questions, experiment, and make mistakes out loud. Measured by what happened to the last "I don't know."</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Contributor safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Contributor Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Clark's Stage 3: trusted with real work and credited for it. Ideas travel with their author's name attached.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Challenger safety, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Challenger Safety</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Clark's Stage 4: safe to question how things are done, upward, in the room, before the decision. The rarest and most valuable stage.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Johari window, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Johari Window</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Luft &amp; Ingham's 2×2: what's known about you × who knows it. Open, Blind, Hidden, Unknown. Effectiveness grows with the Open pane.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Blind spot, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Blind Spot</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Known to others, not to you. Only feedback shrinks it, which is why soliciting feedback is a leadership skill, not a courtesy.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Hidden area, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Hidden (Façade)</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Known to you, withheld from them. Costs energy to maintain. Disclosure moves items to Open, voluntarily, on your terms.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Disclosure and feedback, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Disclosure &amp; Feedback</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The only two moves that expand the Open quadrant: telling what you know (shrinks Hidden), and asking what they see (shrinks Blind).</p></div></div></button>
+        <button class="flip" data-reveal aria-label="SBI plus ask, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI + Ask</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, Behavior, Impact, then an Ask (adapted from CCL). Anchored, observable, owned, and ending in a conversation, not a verdict.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Chatham House Rule, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Chatham House Rule</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Stories stay, lessons leave: use what you learned, never attribute who said it. The confidentiality norm that makes the room a lab.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12b · RESOURCES ============ -->
+  <section class="slide on-dark" id="s-resources" data-title="Resources">
+    <div class="wrap wrap-wide res">
+      <p class="eyebrow" data-reveal>Keep climbing · Curated for this course</p>
+      <h2 class="h2" data-reveal>The <em>resources</em>.</h2>
+      <p class="lead" data-reveal>Everything below maps to a rung you practiced today. The Vanderbilt courses live in Oracle Learning behind your VUnetID; the rest is the open shelf, talks, podcasts, and the source documents this session is built on.</p>
+
+      <div class="grid grid-2" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Vanderbilt · Oracle Learning · Foundations</span>
+          <ul>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300001964048742" target="_blank" rel="noopener">The 4 Stages of Psychological Safety, Presented by ELE</a></b>, Clark's ladder, taught live by our own Employee Learning &amp; Engagement team. Sections 02 and 05, deepened.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002858838588" target="_blank" rel="noopener">The Fearless Organization, Amy Edmondson</a></b>, the source text of this entire course, as a guided course.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002858835929" target="_blank" rel="noopener">Psychological Safety</a></b>, the one-sitting primer; send it to a teammate who missed today.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002780555334" target="_blank" rel="noopener">Proven Tactics for Improving Teams' Psychological Safety, MIT SMR</a></b>, the evidence of Section 03, turned into management tactics.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002857412358" target="_blank" rel="noopener">Start with Why (Blinkist Summary)</a></b>, Sinek's Golden Circle from our Why section, in 20 minutes.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002798210093" target="_blank" rel="noopener">Thriving Together: A Two-Part Series on Psychological Safety, ELE</a></b>, the live follow-on when your whole team is ready.</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Vanderbilt · Oracle Learning · Practice &amp; candor</span>
+          <ul>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002889351882" target="_blank" rel="noopener">Powerful Questions to Build Team Trust, Engagement, and Psychological Safety</a></b>, more invitations like the four on your commitment card.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002870872624" target="_blank" rel="noopener">Setting Up Psychological Safety in One-on-One Meetings</a></b>, the smallest room where the ladder gets built.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002857240584" target="_blank" rel="noopener">Giving and Receiving Feedback</a></b>, more reps for the SBI + Ask muscle from Section 06.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002858835653" target="_blank" rel="noopener">Crucial Conversations, Patterson, Grenny, McMillan, Switzler</a></b>, candor when the stakes are highest.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002857412637" target="_blank" rel="noopener">Radical Candor (Blinkist Summary)</a></b>, care personally, challenge directly; the sibling frame to SBI + Ask.</li>
+            <li><b><a href="https://ecsr.fa.us2.oraclecloud.com/fscmUI/redwood/learner/learn/redirect?learningItemType=ORA_COURSE&amp;learningItemId=300002858836297" target="_blank" rel="noopener">Dare to Lead, Brené Brown</a></b>, brave work, tough conversations, whole hearts; the courage side of the same coin.</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Watch &amp; listen</span>
+          <ul>
+            <li><b><a href="https://youtu.be/u4ZoJKF_VuA" target="_blank" rel="noopener">How great leaders inspire action, Simon Sinek (TED)</a></b>, the Golden Circle; start here if you skipped the Why section.</li>
+            <li><b><a href="https://www.ted.com/talks/simon_sinek_why_good_leaders_make_you_feel_safe" target="_blank" rel="noopener">Why good leaders make you feel safe, Simon Sinek (TED)</a></b>, the Circle of Safety in 12 minutes.</li>
+            <li><b><a href="https://www.ted.com/talks/amy_edmondson_building_a_psychologically_safe_workplace" target="_blank" rel="noopener">Building a psychologically safe workplace, Amy Edmondson (TEDx)</a></b>, the construct from its author.</li>
+            <li><b><a href="https://brenebrown.com/podcast-show/dare-to-lead/" target="_blank" rel="noopener">Dare to Lead with Brené Brown</a></b>, podcast; leaders on courage, feedback, and trust.</li>
+            <li><b><a href="https://www.ted.com/podcasts/worklife" target="_blank" rel="noopener">WorkLife with Adam Grant</a></b>, podcast; organizational psychology of speaking up, one episode at a time.</li>
+            <li><b><a href="https://simonsinek.com/podcast/" target="_blank" rel="noopener">A Bit of Optimism, Simon Sinek</a></b>, podcast; conversations that keep the why in front of the what.</li>
+            <li><b><a href="https://coachingforleaders.com/" target="_blank" rel="noopener">Coaching for Leaders</a></b>, podcast; practical episodes on feedback, trust, and psychological safety.</li>
+          </ul>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Read · The source shelf</span>
+          <ul>
+            <li><b><a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener">"Daring to Grow", Chancellor Diermeier</a></b>, the vision this course's mission section draws from.</li>
+            <li><b><a href="https://fearlessorganization.com/" target="_blank" rel="noopener">The Fearless Organization, Edmondson</a></b>, the book, plus the team scan instrument.</li>
+            <li><b><a href="https://hbr.org/2008/07/the-competitive-imperative-of-learning" target="_blank" rel="noopener">"The Competitive Imperative of Learning", Edmondson, HBR</a></b>, the pre-work reading, worth a second pass now.</li>
+            <li><b><a href="https://rework.withgoogle.com/en/guides/understanding-team-effectiveness" target="_blank" rel="noopener">Google re:Work, Understand team effectiveness</a></b>, the Project Aristotle guide, with team exercises.</li>
+            <li><b><a href="https://www.leaderfactor.com/psychological-safety" target="_blank" rel="noopener">LeaderFactor, The 4 Stages</a></b>, Timothy Clark's behavioral guides for each stage.</li>
+            <li><b><a href="https://www.ccl.org/articles/leading-effectively-articles/closing-the-gap-between-intent-vs-impact-sbii/" target="_blank" rel="noopener">CCL, the SBI model</a></b>, the research home of Situation-Behavior-Impact.</li>
+            <li><b><a href="https://www.coursera.org/specializations/leading-teams" target="_blank" rel="noopener">Leading People and Teams, University of Michigan (Coursera)</a></b>, the deep-dive specialization when a course-length commitment fits.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>How to use this shelf:</b> pick ONE item that matches your commitment card's rung, finish it inside your 14-day window, and bring one idea from it to your team's day-30 retro. One resource applied beats seven collected.</p>
+    </div>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">We didn't finish. <em>We started.</em></h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You can see the machinery now: the belief, the ladder, the window, and the words. The card you built is the difference between agreeing with psychological safety and building it. Your team is watching you tomorrow.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This fortnight</span><span class="vidcard__dur">Within 14 days</span></div>
+        <h3>Run the card: the start, the stop, the question, and tomorrow's note</h3>
+        <p>Ask your question at the next team meeting and count to ten before you speak again. Send the note tomorrow. Note what happens; that note is worth more than another hour of theory. Want to go deeper? Amy Edmondson's <a href="https://fearlessorganization.com/" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">The Fearless Organization</a> is the source this course is built on.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> one word for what you're taking with you. Say it out loud, no commentary, just the word. When the circle closes, so does the workshop.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the commitment card</a>
+        <a class="btn btn--ghost" href="#s-resources">Pick one resource</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Safe to say. Brave to lead.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-safety">What Safety Is</a></li>
+          <li><a href="#s-diagnose">Where Your Team Stands</a></li>
+          <li><a href="#s-case">The Evidence</a></li>
+          <li><a href="#s-johari">The Johari Window</a></li>
+          <li><a href="#s-candor">The Candor Rehearsal</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-resources">Resources</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Commitment</a></li>
+          <li><a href="../../../courses/difficult-conversations/">Difficult Conversations</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Building Brave Teams · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=11"></script>
+</body>
+</html>

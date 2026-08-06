@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilitator Guide (printable) · Navigating Difficult Conversations — Vanderbilt Learning Series</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-weight: 400;
+    src: url('../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 400;
+    src: url('../assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 600;
+    src: url('../assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-weight: 700;
+    src: url('../assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 12.5px; line-height: 1.5; }
+  .sheet { max-width: 860px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 16px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  h2 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 18px;
+    margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  h3 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 14px 0 4px; }
+  .mins { font-family: 'Antonio', Impact, sans-serif; font-size: 11px; color: #946E24;
+    letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .sec { border: 1px solid #E4E4E4; border-left: 3px solid #CFAE70; border-radius: 4px;
+    padding: 12px 16px; margin-bottom: 12px; break-inside: avoid;
+    display: grid; grid-template-columns: 290px 1fr; gap: 16px; align-items: start; }
+  .sec.noimg { grid-template-columns: 1fr; }
+  .sec.noimg .sec__shot { display: none; }
+  .sec__shot { position: sticky; top: 12px; }
+  .sec__shot img { width: 100%; border: 1px solid #E4E4E4; border-radius: 3px; display: block; }
+  .sec__notes { min-width: 0; }
+  @media (max-width: 700px) { .sec { grid-template-columns: 1fr; } .sec__shot { position: static; max-width: 340px; } }
+  @media print { .sec { grid-template-columns: 240px 1fr; } .sec__shot { position: static; } }
+  .purpose { font-weight: 600; margin: 2px 0 8px; }
+  .tagline { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; margin: 10px 0 2px; color: #1C1C1C;
+    background: #CFAE70; display: inline-block; padding: 2px 7px; border-radius: 2px; }
+  .tagline.ask { background: #8BA18E; }
+  .script { font-family: 'Libre Caslon Display', serif; font-style: italic; font-size: 13.5px;
+    margin: 4px 0 6px; }
+  .mini { margin: 4px 0; color: #444; }
+  .mini.core { border-top: 1px dashed #CFAE70; padding-top: 6px; }
+  ol, ul { margin: 2px 0 8px; padding-left: 20px; }
+  li { margin-bottom: 3px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; }
+  th, td { border: 1px solid #E4E4E4; padding: 5px 9px; text-align: left; }
+  th { font-family: 'Antonio', Impact, sans-serif; text-transform: uppercase; letter-spacing: .06em;
+    font-size: 10px; color: #946E24; }
+  .front { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px;
+    break-inside: avoid; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11px; } .sheet { padding: 0; max-width: none; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · ATD facilitator guide · print edition</p>
+      <h1>Navigating Difficult Conversations, the <em>facilitator guide</em></h1>
+    </div>
+    <img src="../assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="front">
+    <h3>Run of show</h3>
+    <table><tr><th>Screen</th><th>Full (min)</th><th>Core (min)</th></tr><tr><td>Welcome / QR</td><td>3</td><td>2</td></tr><tr><td>Objectives</td><td>2</td><td>1</td></tr><tr><td>The Chancellor's charge</td><td>3</td><td>—</td></tr><tr><td>Agenda</td><td>1</td><td>—</td></tr><tr><td>01 · The cost of avoiding</td><td>6</td><td>4</td></tr><tr><td>Manifesto</td><td>1</td><td>—</td></tr><tr><td>02 · The three conversations</td><td>10</td><td>7</td></tr><tr><td>03 · SBI feedback</td><td>7</td><td>5</td></tr><tr><td>Feedback Lab</td><td>8</td><td>6</td></tr><tr><td>04 · Opening with STATE</td><td>8</td><td>4</td></tr><tr><td>05 · Trust and BRAVING</td><td>8</td><td>4</td></tr><tr><td>06 · Radical Candor</td><td>8</td><td>5</td></tr><tr><td>07 · The first 30 seconds</td><td>6</td><td>4</td></tr><tr><td>08 · Sideways &amp; listening</td><td>6</td><td>4</td></tr><tr><td>Recap quiz</td><td>4</td><td>4</td></tr><tr><td>Capstone · My conversation plan</td><td>8</td><td>7</td></tr><tr><td>Glossary</td><td>1</td><td>—</td></tr><tr><td>Closing · commitment</td><td>3</td><td>3</td></tr>
+    <tr><th>Total</th><th>93</th><th>60</th></tr></table>
+    <h3>Audience</h3><p>People managers, team leads, and HR/talent partners. Best with 8 to 24 people for pair practice.</p>
+    <h3>Room setup</h3><p>Projector + presenter device; learners on their own devices via the Welcome-slide QR; tables or pairs for practice. Virtual: breakout rooms of 2 for the STATE and sideways drills.</p>
+    <h3>Materials</h3><ul><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed capstone worksheets (worksheet.html) for anyone without a device, and as the projector-failure fallback</li><li>Whiteboard or flip chart for the parking lot and the room's quadrant vote</li><li>Sticky notes and pens: the private-notes fallback, and several exercises here are deliberately private</li></ul>
+    <h3>A week before</h3><ol><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise yourself, including a deliberately weak run of the Feedback Lab.</li><li>Build your own conversation plan in the capstone using a real conversation you're avoiding. You will reference having done it, not the contents.</li><li>Book a room where pairs can talk without shouting, and confirm guest wifi works for personal devices.</li><li>Decide your path now: Full (90-minute slot) or Core (60). Mark which group debriefs you keep.</li><li>Rehearse three scripted moments out loud: the Section 01 avoidance framing, the STATE opener read-aloud, and the contrast-statement demo in Section 08.</li><li>Send the pre-work invite (template on this page) with the calendar invite; primed rooms start five minutes faster.</li></ol><h3>The day before</h3><ol><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Print 5 to 10 cheat sheets and this guide's run-of-show.</li><li>Re-read the tough-questions bank; say the answers out loud once, especially the 'what if it's my boss' one. You will get it.</li></ol><h3>30 minutes before</h3><ol><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (tap a ring of the SBI anatomy, run one Lab option).</li><li>Write 'PARKING LOT' at the top of the whiteboard.</li><li>Set the tone for yourself: this room is about to talk about conversations they're afraid of. Calm is contagious.</li></ol>
+    <h3>When things go sideways</h3><p><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: SBI, STATE, the three conversations, and the quadrant grid all work on a whiteboard. The pair practice needs no screen at all.</p><p><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: interactions happen on the projector with volunteers calling choices; private exercises (avoidance slider, BRAVING, the capstone) move to the printed capstone worksheet or sticky notes. You lose typing, not learning.</p><p><b>If You're 10+ minutes behind by Radical Candor (Section 06):</b> Declare the Core path silently: cut remaining group debriefs and the in-class videos. Never cut the STATE pair rep, the recap, or the capstone; they carry objectives 3 and 5.</p><p><b>If Silence after you ask a question:</b> Count seven full seconds before rescuing; in this course especially, silence is people deciding whether to be honest. If it holds, narrow it: 'This table: Ruinous Empathy or Obnoxious Aggression?' Never answer your own question first.</p><p><b>If One voice dominates, or someone starts naming real colleagues:</b> For dominators: 'Hold that; parking lot,' then invite two unheard voices. For naming names: step in immediately and kindly: 'Roles, not names, protects everyone in this room, including you.' Repeat the no-names norm; it is load-bearing.</p><p><b>If Someone gets emotional or discloses a live, serious conflict:</b> Do not process it in the room. Acknowledge briefly ('That sounds genuinely hard, and I want to do it justice; find me at the break'), continue, and follow up privately. If it involves policy violations, harassment, or safety, route them to HR, not to this toolkit.</p>
+    <h3>Tough questions, ready answers</h3><p><b>Q: What if the difficult conversation I need is with my own boss?</b><br>The tools point up as well as down. STATE was built for high-stakes talks with people who outrank you: facts first, story owned tentatively, a genuine ask. Pick your timing, be extra generous in interpretation, and remember McKinsey's frame: surfacing a real problem is part of your job, not insubordination.</p><p><b>Q: I've let it slide for a year. Isn't it too late and too awkward now?</b><br>It's more awkward, and still worth it. Name the delay honestly as yours: 'I should have raised this months ago, and that's on me.' That one sentence takes the ambush out of it and models the accountability you're about to ask for.</p><p><b>Q: What about the person who cries or blows up every single time?</b><br>A predictable reaction doesn't erase the standard; it changes your preparation. Plan the pause, have your contrast statement ready, pick a private time with slack after it. If the pattern repeats across many conversations, bring in your HR partner; that's a support structure, not an escalation.</p><p><b>Q: Isn't scripting a conversation manipulative?</b><br>You script yourself, not them. The opener and contrast statement exist because adrenaline makes everyone a worse version of themselves in the first 30 seconds. Preparing to be clear and kind under stress is care, not control. The other person still gets to change your mind; that's what the Ask step is for.</p><p><b>Q: What if it turns out I'm the one who's wrong?</b><br>Then the conversation worked. You traded a resentment for information. That's why STATE ends with 'encourage testing'; if you weren't willing to be wrong, it was a lecture with a question mark.</p><p><b>Q: When does this stop being a conversation and become an HR matter?</b><br>The toolkit covers performance, behavior, and working-relationship conversations. Policy violations, anything touching protected classes, safety concerns, or formal performance processes belong with HR from the start. When in doubt, consult HR before the conversation, not after it goes wrong.</p>
+    <h3>Copy-paste templates</h3><p><b>Pre-work invite (paste into the calendar invite)</b><br>Subject: Before our Difficult Conversations session. We're spending the session on the work conversations we avoid. Before you arrive, think of ONE conversation you've been putting off: a role, not a name, and you will never be asked to share the details. Bring it in your head; every exercise uses it. Nothing you type in the session leaves your screen.</p><p><b>7-day pulse (send one week after)</b><br>Subject: One week later, did it happen? Three quick lines, reply whenever: 1) Did you have the conversation you planned? 2) Which tool did you reach for (SBI, STATE, contrast statement)? 3) What happened, in one sentence? Replies come to me only. If it hasn't happened yet, that's useful to know too, and this note is your nudge.</p>
+    <h3>After the session</h3><p>Seven days out, send a three-line pulse: 'Did you have the conversation? Which tool did you use? What happened?' Replies are your Kirkpatrick Level 3 evidence. At 30/60/90 days, ask managers-of-managers whether SBI language is showing up in regular 1:1s.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-welcome.jpg" alt="Slide: Welcome / QR" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Welcome / QR <span class="mins">Full 3 min · Core 2</span></h2>
+    <p class="purpose">Get every learner into the experience on their own device, and set the privacy norm that makes honesty possible.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Welcome. Point your camera at that code before we start. Two ground rules for the next hour: nothing you type leaves your screen, and every example we touch uses roles, never names. That's what makes it safe to work on the real thing.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>State the two norms: everything typed stays on their screen, and all examples today use roles, never names.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p>
+    <p class="mini"><b>Watch for:</b> Anyone without a device: pair them with a neighbor now, and point them at the printed cheat sheet for the private exercises.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Everyone in? Then let me tell you what you'll walk out with.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: one scan prompt, state the two norms, move on.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-hero.jpg" alt="Slide: Objectives" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Objectives <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Set the contract: five capabilities, ending in a real conversation with a date on it.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Most managers already know WHAT they need to say. Where it falls apart is HOW. In the next hour you get one shared toolkit from the best research there is, and you leave with one real conversation planned and dated. Not a hypothetical. Yours.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the five objectives in plain language, briskly.</li><li>Land hard on the fifth: this session ends with a plan for a REAL conversation, not a worksheet.</li><li>Name the sources once for credibility: Harvard's negotiation faculty, CCL, Crucial Conversations, Brené Brown, Kim Scott, McKinsey, SHRM.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Show of hands, no details: who has a conversation they've been putting off for more than a month?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Most hands go up, some sheepishly</li><li>A few brave laughs and 'more than one'</li><li>Some hands stay down out of caution</li></ul><p class='mini'><b>Respond:</b> Acknowledge the hands: 'That's normal, and that's the raw material for today.' If hands stay down, add: 'If yours is down, either you're current, which is rare, or it's private, which is fine. Everything today works either way.'</p>
+    
+    <p class="mini"><b>Validate:</b> Learners can say what the capstone will be (a planned, dated conversation).</p>
+    <p class="mini"><b>Watch for:</b> Eye-rolls at 'another soft-skills training': the objectives are the counter, every one is a concrete behavior.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Here's the road: eight ideas, each one building toward that conversation.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-mission.jpg" alt="Slide: The Chancellor's charge" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>The Chancellor's charge <span class="mins">Full 3 min · Core skip</span></h2>
+    <p class="purpose">Connect the course to the institutional vision: at a university committed to speed and bold bets, a manager's candor is infrastructure, not a personal preference.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Before the toolkit, one minute on why the institution cares whether you have this conversation. Chancellor Diermeier's vision is one sentence: Vanderbilt will define the great university of the 21st century, and be it. That takes speed, bold bets, and industry leadership, and all three run through teams where hard things get said early and trust survives the saying. The conversation you have been avoiding matters beyond your team.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the vision sentence verbatim; give it a beat.</li><li>Walk the three focus cards, one line each, landing on each 'team translation.'</li><li>Point at the flywheel card: trust-heavy teams keep problems small, and small problems never reach the reputation. Don't linger; the evidence comes next.</li></ol>
+    
+    
+    
+    
+    <p class="mini"><b>Transition:</b> &ldquo;So the university needs this conversation to happen. Here's the road we'll take to get you there.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: read the vision sentence, gesture at the three focuses, move on; under a minute.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-agenda.jpg" alt="Slide: Agenda" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Agenda <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Show the arc once so learners can place each tool as it arrives.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Eight ideas, four moves: why these talks are hard, what to actually say, what makes people able to hear it, and how to open, and recover, in the room.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the eight items in one breath each.</li><li>Point out the shape: why it's hard (01-02), what to say (03-04), what makes it hearable (05-06), how to open and recover (07-08).</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None needed; this is orientation.</p>
+    <p class="mini"><b>Watch for:</b> Don't teach here. If you're explaining a framework on the agenda slide, you're stealing time from its real slide.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Start with the uncomfortable math of putting it off.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip entirely; the deck's structure carries it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-cost.jpg" alt="Slide: 01 · The cost of avoiding" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>01 · The cost of avoiding <span class="mins">Full 6 min · Core 4</span></h2>
+    <p class="purpose">Make avoidance feel expensive instead of safe, and get each learner to privately name their real conversation.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Think of the conversation you're avoiding right now. Here's the uncomfortable part: while you wait, the behavior becomes a pattern, your silence tells them it's fine, and the conversation you eventually have is bigger than the one you skipped. McKinsey's researchers put it bluntly: speaking up isn't a personality trait, it's part of the job.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Give the McKinsey reframe: courage isn't a trait, it's an obligation to dissent. Silence is a decision.</li><li>Demo the avoidance slider on the projector; drag it slowly from days to months and let the readout land.</li><li>Send them to their devices: drag it to YOUR number. Emphasize it's private.</li><li>Run the quick check, then the 3-minute solo activity: write down the conversation, who and what, on paper or notes app.</li><li>Insist they keep the note in reach; every section from here uses it.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What do we tell ourselves in the moment we decide not to raise it?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>'It's not the right time' / 'I'll do it after the busy season'</li><li>'Maybe it'll fix itself' / 'It's not that big a deal'</li><li>'I don't want to demotivate them' / 'They're going through a lot'</li></ul><p class='mini'><b>Respond:</b> Collect three or four, then name the pattern: every one of these is a kindness story we tell about a decision that isn't kind. The person never gets the chance to fix what they can't see.</p>
+    <p class="mini"><b>Debrief:</b> The cheapest version of this conversation is the one you have earliest. Every week of delay raises the price.</p>
+    <p class="mini"><b>Validate:</b> Quick check answered correctly by the room; every learner has visibly written something down.</p>
+    <p class="mini"><b>Watch for:</b> Learners writing nothing because 'mine's too messy.' Reframe: messy is exactly what the toolkit is for; start with the least messy one you've got.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;So why do we still avoid them? Because there's more happening in a hard conversation than the topic. Three things, actually.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip the slider demo on the projector; straight to their devices, then the written note. The note is non-negotiable.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-belief.jpg" alt="Slide: Manifesto" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Manifesto <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">One beat of stillness to lock the core idea before the toolkit starts.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;A difficult conversation avoided does not disappear. It compounds.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None; this is pacing.</p>
+    <p class="mini"><b>Watch for:</b> The urge to talk over it. Don't.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Here's the model that explains why they feel so hard.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip; say the line yourself as you pass it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-three.jpg" alt="Slide: 02 · The three conversations" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>02 · The three conversations <span class="mins">Full 10 min · Core 7</span></h2>
+    <p class="purpose">Install the session's diagnostic lens: every hard exchange runs a facts, a feelings, and an identity conversation at once.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;The Harvard Negotiation Project studied thousands of hard conversations and found the same three running underneath every one. There's the What Happened conversation, the battle over facts. There's the Feelings conversation, the emotion underneath that leaks into your tone whether you name it or not. And there's the Identity conversation, the one you have with yourself: what does raising this say about me? That third one is usually why the conversation isn't happening.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Teach the three cards briskly: What Happened, Feelings, Identity. Spend your emphasis on Identity; it powers avoidance.</li><li>Play the first ~5 minutes of the Simon Sinek video if on the Full path; preview your stop point in advance.</li><li>Send them to 'Name that conversation' on their devices: five lines, label each.</li><li>Watch the room's scores; item 4 (hurt wearing a fact costume) catches the most people. Call that out.</li><li>Run the group activity: pairs share which conversation trips them up most, one line back per pair.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Why does 'just stick to the facts' fail as advice?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Because the other person has different facts</li><li>Because feelings come out anyway, in tone</li><li>Because the real fight isn't about the facts</li></ul><p class='mini'><b>Respond:</b> All three are right. Facts are one conversation out of three; the advice ignores two-thirds of what's happening. And when a facts argument loops in circles, it's almost always an identity argument in disguise.</p>
+    <p class="mini"><b>Debrief:</b> You can't respond to the right conversation until you can tell which one you're in. That's the skill you just practiced.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the labeler for most of the room; pairs can name their trip-wire conversation.</p>
+    <p class="mini"><b>Watch for:</b> The word 'Identity' getting read as jargon. Translate it every time: it's the 'what does this say about me?' voice.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now the toolkit turns practical: how do you say the hard content itself? Three letters: SBI.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cut the video (assign as follow-up) and the pair share; keep the teach and the labeler.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-sbi.jpg" alt="Slide: 03 · SBI feedback" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>03 · SBI feedback <span class="mins">Full 7 min · Core 5</span></h2>
+    <p class="purpose">Replace vague accusation with the Situation-Behavior-Impact structure, and install the camera test for behavior.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;'You're always late' starts a fight. Not because it's too honest, but because it's not honest enough: no time, no place, no specifics, just a verdict. The Center for Creative Leadership's fix has three parts. Situation: when and where, so it's a fact, not a pattern-accusation. Behavior: what a camera would have seen. Impact: what it cost, concretely. Watch what happens to the same complaint when it goes through that machine.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the anatomy on the projector: hover Situation, then Behavior, then Impact, reading each highlighted piece.</li><li>Teach the camera test out loud: if a camera couldn't have recorded it, it's a judgment, not a behavior.</li><li>Run the quick check; option C ('you clearly don't respect the team's time') is the useful wrong answer, it's a mind-read.</li><li>Send them to the solo activity: rewrite their own avoided concern as SBI, next to their note from Section 01.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What's the actual difference between 'you're unreliable' and 'the report went out with last quarter's numbers'?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>One is opinion, one is fact</li><li>You can argue with a label but not with the numbers</li><li>One attacks the person, one describes the work</li></ul><p class='mini'><b>Respond:</b> Exactly: one is contestable and one is checkable. People defend themselves against verdicts; they solve problems. SBI keeps the problem the problem.</p>
+    <p class="mini"><b>Debrief:</b> The camera test is the whole slide: if a camera couldn't have seen it, don't say it as if it's a fact.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct; learners have a written SBI version of their own concern.</p>
+    <p class="mini"><b>Watch for:</b> SBI statements that smuggle the verdict back in ('...and it was really disappointing'). Flag it kindly: impact is a cost, not a grade.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Structure alone isn't enough; you can deliver a perfect SBI and still watch it land like an attack. Let's feel that difference.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: anatomy plus quick check, and the rewrite happens inside the Lab next slide instead of separately.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-lab.jpg" alt="Slide: Feedback Lab" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Feedback Lab <span class="mins">Full 8 min · Core 6</span></h2>
+    <p class="purpose">Let learners feel how the reaction changes as each SBI part sharpens; the reaction is the teacher.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Same concern, three ways to say each part. Your job: assemble the feedback and watch how it lands. I'll go first, and I'm going to do it badly on purpose, because you've all heard this version.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame the scenario: a teammate came unprepared to the last two planning meetings, and you're saying so.</li><li>On the projector, deliberately build the WORST version (A-A-A) and deliver it. Let the defensive reaction land on the room.</li><li>Send them to their devices: build and deliver their own, iterate until it lands.</li><li>Circulate. Ask people showing a mid-tier result which part is costing them.</li><li>Pull the room back and ask who got the strong reaction, and what they changed to get it.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;When I delivered the worst version, what did the reply defend: the work, or the person's character?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Their character, they brought up staying late</li><li>They never addressed the actual problem</li><li>They counter-attacked</li></ul><p class='mini'><b>Respond:</b> Right. Attack character, and character is what gets defended. The status doc never came up. Vague feedback isn't gentler; it just changes the subject from the problem to the person.</p>
+    <p class="mini"><b>Debrief:</b> The reaction you get is diagnostic: defending the work means your feedback was about the work. Defending themselves means it wasn't.</p>
+    <p class="mini"><b>Validate:</b> Most of the room reaches the strong (8-9/9) outcome within the time box.</p>
+    <p class="mini"><b>Watch for:</b> Option-B-everywhere players getting a mediocre result and shrugging: push them to find WHICH slot is weakest, that's the diagnostic habit.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;You now have the content. The next tool is the delivery: how you open your mouth without raising their shields.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip your projector demo of the worst run; one sentence of framing, straight to devices.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-state.jpg" alt="Slide: 04 · Opening with STATE" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>04 · Opening with STATE <span class="mins">Full 8 min · Core 4</span></h2>
+    <p class="purpose">Give learners a safe-opening pattern (STATE) and one real out-loud rep of their own opener.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;SBI is what you say. STATE is how you say it without raising their shields. Start with facts, because facts are the least controversial thing you own. Then your story, held as a story: 'I'm starting to think,' not 'clearly you.' Then a real question. The magic words are the tentative ones; they're not weakness, they're accuracy. You're sure about the dates; you're guessing about the why.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the anatomy: Share facts, Tell your story, Talk tentatively, Ask, Encourage testing. Read the full opener aloud once, straight through.</li><li>Play the Crucial Conversations 6-minute preview on the Full path.</li><li>Run the quick check on why facts come first.</li><li>Then the main event: the pair rep. Each person opens THEIR conversation (from their note) out loud; partner answers with exactly one line: 'felt safe' or 'felt like an accusation,' and why.</li><li>Time it tightly: 2 minutes each plus swap.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Listen to the difference: 'You don't care about deadlines' versus 'I'm starting to worry we're overcommitting.' What changed?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>The second one owns it as your view</li><li>First one is about them, second is about the situation</li><li>The second leaves room to be wrong</li></ul><p class='mini'><b>Respond:</b> All of that. The first sentence is a verdict they must overturn; the second is a hypothesis they can add to. Same concern, opposite conversations.</p>
+    <p class="mini"><b>Debrief:</b> Candor is measured at the listener's ear. The pair rep you just did is the only reliable test of your opener; the mirror lies to you.</p>
+    <p class="mini"><b>Validate:</b> Every learner has said their opener out loud once and received the one-line verdict.</p>
+    <p class="mini"><b>Watch for:</b> Pairs slipping into discussing the situation instead of practicing the opener. Redirect: 'The content isn't the exercise; the first four sentences are.'</p>
+    <p class="mini"><b>Transition:</b> &ldquo;But here's the catch: the best opener in the world lands on deaf ears if the trust account is empty. That's the next stop.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cut the video; keep the anatomy, the check, and ONE round of the pair rep (one partner speaks, not both) if minutes allow, else assign the mirror version as homework.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-braving.jpg" alt="Slide: 05 · Trust and BRAVING" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>05 · Trust and BRAVING <span class="mins">Full 8 min · Core 4</span></h2>
+    <p class="purpose">Shift trust from an abstraction to seven rateable behaviors, and have each learner privately find their growth edge.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Why does the same sentence land fine from one manager and like a knife from another? The difference isn't the sentence; it's the account it's drawn on. Brené Brown's research breaks trust into seven behaviors, small, boring, daily ones. Rate yourself honestly on each; nobody sees your numbers. Your lowest score is probably the reason your hardest conversation feels dangerous.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame with Sinek: people hear hard feedback only inside a circle of safety, and the circle is built before the conversation, not during.</li><li>Introduce BRAVING as Brené Brown's anatomy of trust: seven behaviors, built or broken in small moments.</li><li>Send them to the scorecard: rate all seven, privately. Emphasize nobody will share numbers.</li><li>When the growth edge appears, give a quiet minute to read their behavior's suggestion.</li><li>Run the pair activity: name ONE behavior to strengthen this quarter, no scores, no stories, then popcorn behaviors to the room and name the pattern you hear.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Without sharing scores: which of the seven behaviors, when a MANAGER breaks it, kills trust fastest?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Vault, they repeat what you told them in confidence</li><li>Reliability, they promise and don't deliver</li><li>Nonjudgment, asking for help gets held against you</li></ul><p class='mini'><b>Respond:</b> Vault usually wins the vote, and notice why: one leak reclassifies every future conversation as unsafe. Whatever the room picks, the lesson is the same: trust breaks by behavior, so it rebuilds by behavior too.</p>
+    <p class="mini"><b>Debrief:</b> Trust isn't a vibe, it's seven behaviors, which means it's trainable. Pick one; that's your quarter.</p>
+    <p class="mini"><b>Validate:</b> All seven rows rated (the tool won't show a result otherwise); each learner can name their one behavior.</p>
+    <p class="mini"><b>Watch for:</b> This is where someone may go quiet or emotional; trust inventories touch real relationships. Don't spotlight anyone; the exercise is private by design.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;With trust as the ground, here's the map for the feedback itself: two axes, four quadrants, one worth aiming at.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: scorecard only, skip the pair share; assign both videos (Anatomy of Trust, Sinek) as the week's watch list.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-candor.jpg" alt="Slide: 06 · Radical Candor" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>06 · Radical Candor <span class="mins">Full 8 min · Core 5</span></h2>
+    <p class="purpose">Give learners the two-axis map for feedback and the self-knowledge of their own failure quadrant under stress.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Kim Scott's grid has two axes: do you care personally, and do you challenge directly. Do both and you get Radical Candor. Care without challenge is Ruinous Empathy, the most common manager failure, where your comfort gets protected and their career pays. Challenge without care is Obnoxious Aggression, technically true and completely unhearable. Neither is Manipulative Insincerity, and that one's poison. Every piece of feedback you've ever given lives somewhere on this grid.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Teach the grid from the slide: the two axes first, then the failure quadrants by name. Spend your emphasis on Ruinous Empathy; it's the room's most common drift.</li><li>Play the 6-minute Kim Scott video on the Full path (or trim to the story of getting the 'um' feedback).</li><li>Send them to the quadrant sort: four scenarios, label each.</li><li>Run the group activity: private vote on their stress-drift (soften vs. push), pairs name the trigger, trade one counter-move.</li><li>Close with Scott's line: candor is measured at the listener's ear.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Private vote, then hands: under stress, which way do YOU drift, soften too much, or push too hard?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>A softener majority in most rooms</li><li>A few honest pushers</li><li>Some 'depends who it is', seniority changes the drift</li></ul><p class='mini'><b>Respond:</b> The 'depends who it is' answer is gold: name it for the room. Most of us soften upward and push downward, which means the axis you're missing changes with the org chart. Your counter-move has to know that.</p>
+    <p class="mini"><b>Debrief:</b> The grid's punchline: withholding the feedback is the unkind option. Ruinous Empathy feels like kindness and costs them their growth.</p>
+    <p class="mini"><b>Validate:</b> 3+ of 4 on the sort for most of the room; each learner can name their drift and one counter-move.</p>
+    <p class="mini"><b>Watch for:</b> Someone proudly claiming Obnoxious Aggression as 'just being honest.' Use the axis language, not judgment: honesty was never the missing axis; care was.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;You know the what, the how, and the ground it lands on. Now compress it into the moment that decides everything: the first 30 seconds.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: cut the video and shrink the group activity to the private vote plus one volunteered counter-move.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-open.jpg" alt="Slide: 07 · The first 30 seconds" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>07 · The first 30 seconds <span class="mins">Full 6 min · Core 4</span></h2>
+    <p class="purpose">Assemble everything into one rehearsable opener, structured by SHRM's three questions.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;SHRM's field guidance boils the whole conversation down to three questions: where are we now, where are we going, and how do we get there. Answer them before you walk in and you have a spine. Skip them and you have a feelings spiral with no exit. Look at the opener on the card: purpose first, facts second, their view invited before yours hardens. Every framework from today is inside that one paragraph.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Teach the three questions as the conversation's spine: where are we, where are we going, how do we get there.</li><li>Read the assembled opener from the gold card aloud, slowly. Point out each framework inside it.</li><li>Run the quick check ('We need to talk' is the beloved wrong answer; let the room laugh at it).</li><li>Solo activity: fill the opener's brackets for THEIR conversation and answer the three questions in a line each.</li><li>Push the timing point: scheduled and private beats ambushed and public, every time.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Why does 'We need to talk' fail before the conversation even starts?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>It triggers panic, they imagine the worst</li><li>No topic, no purpose, just threat</li><li>It gives them hours to build defenses</li></ul><p class='mini'><b>Respond:</b> All three. Four words that maximize dread and minimize information. The fix costs one sentence: name the topic and the shared purpose in the same breath.</p>
+    <p class="mini"><b>Debrief:</b> An opener written now, calm, is what your mouth reaches for later, stressed. That's why we write it in the room.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct; each learner has a written, bracket-filled opener.</p>
+    <p class="mini"><b>Watch for:</b> Perfectionism stalls: learners polishing the opener instead of finishing it. A B-plus opener said out loud beats an A-plus one still in drafts.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;One more tool. Because even the perfect opener sometimes meets tears, anger, or dead silence.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: teach the card and the check; the bracket-filling merges into the capstone.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-sideways.jpg" alt="Slide: 08 · Sideways &amp; listening" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>08 · Sideways &amp; listening <span class="mins">Full 6 min · Core 4</span></h2>
+    <p class="purpose">Pre-load the three recovery moves so a hard reaction doesn't end the conversation, and install the listening turn that follows your ask.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Your opener can be perfect and still meet tears, anger, or silence. None of those mean you were wrong to raise it. They mean safety dropped, and safety is what you restore first. And when they finally answer your question, the conversation flips: it's your turn to listen. What you do in that turn, paraphrase, follow up, acknowledge, decides whether they're ever honest with you again.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the three reaction cards: tears (pause, don't retract), anger (contrast statement), silence (ask, then count to six).</li><li>Demo a contrast statement out loud with real delivery: 'I don't mean you're failing. I do mean these two deadlines slipped and we need a plan.'</li><li>Read the permission slip card: pausing a conversation is not losing it.</li><li>Then the listening turn: teach the three moves on the gold card (paraphrase first, one real follow-up, acknowledge before countering).</li><li>Run the quick check, then the pair drill: contrast statement plus the 60-second listen-only rep (paraphrase and one question, no advice).</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Why is 'forget it, it's not a big deal' the worst possible response to someone getting upset?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>The problem survives, only the conversation dies</li><li>It teaches them that emotion ends feedback</li><li>You'll be back here in a month, angrier</li></ul><p class='mini'><b>Respond:</b> All true, and there's a quieter cost: it converts their trust in your word. If this wasn't a big deal, what else have you said that you didn't mean?</p>
+    <p class="mini"><b>Debrief:</b> A paused conversation resumed is a success, and the listening turn is where trust gets banked for the next one.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct; each learner has a drafted contrast statement, and the pair drill's listeners stayed inside paraphrase-plus-question.</p>
+    <p class="mini"><b>Watch for:</b> Contrast statements that retract the message, and 'listeners' who slide into advice within ten seconds. Name both kindly; they're the two default failures.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;That's the toolkit, all of it. Let's see what stuck.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: teach the cards, the listening card, and the check; the contrast statement gets drafted inside the capstone, and the listen drill becomes the week's homework with their accountability partner.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-recap.jpg" alt="Slide: Recap quiz" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Recap quiz <span class="mins">Full 4 min · Core 4</span></h2>
+    <p class="purpose">Score the session's knowledge against the objectives before the capstone applies it (Kirkpatrick Level 2).</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Six questions, one per tool. This isn't a grade; it's a check on what's loaded before you build the plan that matters.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps one-to-one onto the objectives, so misses tell you exactly what to reteach.</p>
+    <p class="mini"><b>Watch for:</b> Racing ahead to finish first. Frame it as a mirror, not a race; wrong answers here are free, wrong answers in the real conversation aren't.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now the reason we're all here. Everything you've written today converges on one page.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep at full length; this is the objectives' evidence.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-plan.jpg" alt="Slide: Capstone · My conversation plan" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Capstone · My conversation plan <span class="mins">Full 8 min · Core 7</span></h2>
+    <p class="purpose">Convert the session into one dated, planned, real conversation: the transfer artifact and the Level 3 seed.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;You've carried one conversation through this whole session. Now it gets a plan: your opener, your drift and its counter-move, your recovery line, and a date inside the next seven days. Fill it in honestly, copy it somewhere you'll see tomorrow, and then do the two things that make it real: send the calendar invite, and tell one colleague you're having it.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame it: the notes they've kept all session become a plan with an opener, a counter-move, a recovery line, and a date.</li><li>Give quiet time. This is individual work; resist the urge to talk over it.</li><li>Circulate for stuck learners: the 'who' field wants a role, not a name.</li><li>When plans are built, push the copy button moment: get it out of the browser and into their notes or email.</li><li>Then the commitment mechanics: calendar invite sent before they leave the room, and one colleague told.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;What makes a planned conversation actually happen, when a good intention doesn't?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>A date on the calendar</li><li>Someone else knowing about it</li><li>Having the first sentence ready</li></ul><p class='mini'><b>Respond:</b> You just listed the plan's last three rows. Social accountability roughly doubles follow-through; that's why telling one colleague is in the commitment, not optional garnish.</p>
+    <p class="mini"><b>Debrief:</b> A conversation with a written opener and a date happens. Everything else was preparation for this page.</p>
+    <p class="mini"><b>Validate:</b> Every learner builds a plan (all four fields) and copies it out. That artifact is your Level 3 seed; the 7-day pulse follows up on it.</p>
+    <p class="mini"><b>Watch for:</b> Red flags in circulation: if someone's conversation involves policy violations, harassment, or safety, quietly route them to HR as the first step, not the toolkit.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Two minutes of reference material, and then the only step that matters.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: protect this at full length minus one minute of framing. Never cut the capstone.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-glossary.jpg" alt="Slide: Glossary" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Glossary <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Signpost the reference layer; it lives here for after the session.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Every term from today lives here, flip cards, whenever you need the vocabulary back. It'll still be here the night before your conversation.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Flip one card on the projector (Contrast Statement is a good pick).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None; reference material.</p>
+    <p class="mini"><b>Watch for:</b> Don't tour all fourteen cards; one flip makes the point.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Last slide. One step left.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip; point at it verbally from the closing slide.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-close.jpg" alt="Slide: Closing · commitment" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Closing · commitment <span class="mins">Full 3 min · Core 3</span></h2>
+    <p class="purpose">Convert plans into public commitments and close the loop on the session's one next step.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's everything in one sentence: name the real conversation, open with facts, hold your story lightly, keep them safe, and don't let your silence vote for the problem. You have an opener, a recovery line, and a date. The only step left is the one this room can't do for you. Before you go: who, and when? Say it out loud.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the featured card: the one next step is THE conversation, within 7 days.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how ready do you feel to have your conversation?' Scan and remember the room's number for your session log.</li><li>Run the commitment round: who (role) and when, out loud or in the chat. Keep it fast, popcorn style.</li><li>Point at the cheat sheet button; suggest printing it and keeping it by the keyboard.</li><li>Tell them the 7-day pulse is coming and what it will ask.</li><li>Land the last line and stop talking on time.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Who, and when? Around the room, one line each.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>'A direct report, Thursday morning'</li><li>'A peer, before Friday'</li><li>Some hesitation or 'I need to think about it'</li></ul><p class='mini'><b>Respond:</b> Thank each one, no commentary. For hesitators: 'Name just the day; the rest is already in your plan.' If someone genuinely isn't ready, let it go gracefully; the 7-day pulse gives them a second chance to close the loop.</p>
+    <p class="mini"><b>Debrief:</b> The session's success metric isn't in this room; it's the conversations that happen this week. The pulse in seven days collects it.</p>
+    <p class="mini"><b>Validate:</b> Fist-to-five mostly 3+ (reaction, Level 1); a majority state a who-and-when out loud or in chat (transfer seed). Count both; with the 7-day pulse they're your evidence chain.</p>
+    <p class="mini"><b>Watch for:</b> Commitment dodges ('I'll find the right moment'). Gently convert one or two: 'Which day?' A day makes it real; a moment never arrives.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Go have it. And when it's done, tell the colleague you named how it went. That debrief is where the skill becomes yours.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep at full length; the commitment round IS the ending.</p>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:14px;color:#777">Generated from facilitator/notes.json. The on-screen facilitator edition lives at ./ alongside this guide.</p>
+</div>
+</body>
+</html>

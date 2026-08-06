@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guardrails & Responsible Use Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to the keyboard</p>
+      <h1>Guardrails &amp; Responsible Use: the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box full">
+      <h2>The Four Lines, a team's one-page AI agreement</h2>
+      <ol>
+        <li><b>What goes in:</b> which data may enter which tools. The traffic light, written down for your team's real work.</li>
+        <li><b>When a human verifies:</b> which outputs need a named check before they travel, sized to blast radius.</li>
+        <li><b>When we disclose:</b> when readers are told AI helped. Test: would the reader feel misled?</li>
+        <li><b>Who owns it:</b> the human who ships it answers for it. "The AI wrote it" is never an accountability answer.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Agreement rules:</b> written with the team, one findable page, revisited quarterly, unclear cases routed to a named policy owner, never improvised.</p>
+    </div>
+
+    <div class="box">
+      <h2>The traffic light (line one)</h2>
+      <ul>
+        <li><b>Green:</b> public or generic information. Go.</li>
+        <li><b>Yellow:</b> internal work. Approved VU tools only.</li>
+        <li><b>Red:</b> private information about people. Never.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks everything.</b> Approved tools today: ChatGPT EDU, Amplify, Copilot.</p>
+    </div>
+
+    <div class="box">
+      <h2>The hard cases</h2>
+      <ul>
+        <li><b>Student work:</b> red. It is about a person (FERPA).</li>
+        <li><b>Meeting notes naming colleagues:</b> red until the names come out; then yellow.</li>
+        <li><b>Budget and grant drafts:</b> yellow, approved tools only.</li>
+        <li><b>Recommendation letters:</b> red. About their subject.</li>
+        <li><b>Published research, public pages:</b> green.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Size the check (line two)</h2>
+      <ul>
+        <li><b>No check:</b> stays on your screen. Brainstorms, private drafts.</li>
+        <li><b>Quick read:</b> travels to a few colleagues. One attentive pass.</li>
+        <li><b>Full source check:</b> numbers, names, dates, policy, anything a student or outsider acts on. Checked against the source system, never memory.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The line names who checks,</b> against what, before it goes where.</p>
+    </div>
+
+    <div class="box">
+      <h2>The disclosure test (line three)</h2>
+      <ul>
+        <li><b>Disclose:</b> external docs, the university's voice, assessment of a person's work.</li>
+        <li><b>No disclosure:</b> brainstorms and drafts a human rewrote and owns.</li>
+        <li><b>Unclear:</b> say so and ask the policy owner. Never improvise.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The wording:</b> "Drafted with AI assistance; reviewed by [role]." One plain sentence.</p>
+    </div>
+
+    <div class="box full">
+      <h2>Line four, said plainly</h2>
+      <p class="prompt"><b>One name per output.</b> Whoever hits send, publish, or submit has read every word and answers for all of them. The tool never appears in the accountability chain, and you cannot ship what you have not read. The byline is a promise.</p>
+    </div>
+
+    <div class="box">
+      <h2>The numbers, for the skeptics</h2>
+      <ul>
+        <li>AI misuse incidents <b>nearly doubled</b> year over year (<a href="https://hai.stanford.edu/ai-index">Stanford AI Index</a>), tracking adoption.</li>
+        <li><b>Around half</b> of workplace AI users use it without their manager knowing.</li>
+        <li><b>Fewer than half</b> of organizations have a written policy staff can find and follow.</li>
+        <li>Incidents caught <b>later cost more:</b> more copies, more readers, less trust.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Where VU policy already answers</h2>
+      <ul>
+        <li><b>FERPA questions:</b> the registrar's guidance.</li>
+        <li><b>Approved tools:</b> IT's list; point at it, don't copy it.</li>
+        <li><b>Research and funder rules:</b> the research office.</li>
+        <li><b>Everything else:</b> your team's Four Lines page.</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>The Four Lines starter, fill in the blanks</h2>
+      <p class="prompt">Team: [whose work, which outputs]. Line 1: [which data may enter which tools; anything about a person never enters unapproved tools]. Line 2: [which outputs get a named check, by whom, against what source]. Line 3: [disclosure default + the one-line wording]. Line 4: the human who ships it answers for it, one name per output. Home: [where the page lives]. Revisit: [quarterly date]. Unclear cases go to: [named policy owner].</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Guardrails &amp; Responsible Use · Vanderbilt Learning Series · <a href="../../courses/AI-Guardrails/">Course Library</a></span>
+    <span>The evidence: <a href="https://hai.stanford.edu/ai-index">Stanford AI Index</a> · <a href="https://www.metaintro.com">Metaintro</a></span>
+  </footer>
+</div>
+</body>
+</html>

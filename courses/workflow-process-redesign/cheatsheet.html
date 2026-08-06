@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workflow Redesign Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to the whiteboard</p>
+      <h1>Workflow redesign, the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The four step types</h2>
+      <ol>
+        <li><b>Gather:</b> collect the inputs. High volume, low judgment, eats the hours.</li>
+        <li><b>Transform:</b> shape the first version: the update, the summary, the deck.</li>
+        <li><b>Judge:</b> check it against sources and standards. Is it right, good, safe?</li>
+        <li><b>Commit:</b> send, approve, spend, hire. Where accountability lives.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Map rule:</b> one real instance, five to nine steps, interview the person who actually does it.</p>
+    </div>
+
+    <div class="box">
+      <h2>The pattern: draft, verify, decide</h2>
+      <ol>
+        <li><b>AI drafts:</b> gather and transform steps with catchable errors.</li>
+        <li><b>A human verifies:</b> a named owner checks against real sources, with a reject path.</li>
+        <li><b>A human decides:</b> judge and commit steps. Accountability doesn't delegate.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Assign once, per workflow, at design time.</b> Assignments attach to steps, never to people.</p>
+    </div>
+
+    <div class="box">
+      <h2>The verifier's rubric</h2>
+      <ul>
+        <li><b>Named owner:</b> the check is in someone's job, in writing.</li>
+        <li><b>Source-checked:</b> against the tracker, the data, the notes. Never against "sounds right."</li>
+        <li><b>Reject path plus a log:</b> misses get written down; catch rate becomes a metric.</li>
+        <li><b>The warning light:</b> a check that has never caught anything means nobody's looking.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The traffic light (data rule)</h2>
+      <ul>
+        <li><b>Green:</b> public or generic information. Go.</li>
+        <li><b>Yellow:</b> internal work. Approved VU tools only.</li>
+        <li><b>Red:</b> private information about people. Never.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks the pattern,</b> whatever the efficiency case.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The sorting questions, for any step</h2>
+      <p class="prompt"><b>Volume or judgment?</b> High-volume mechanical work drafts freely; judgment keeps its human. <b>The error question:</b> if this step is wrong, who gets hurt, and how fast would we find out? Fast-caught and cheap: draft it. Slow and expensive: keep the human earlier. <b>The budget test:</b> if the check costs what the work did, the step was never a draft candidate.</p>
+    </div>
+
+    <div class="box">
+      <h2>The pilot standard</h2>
+      <ol>
+        <li>One workflow, two to four weeks.</li>
+        <li>The doers design the checks.</li>
+        <li>A visible metric: hours saved AND errors caught.</li>
+        <li>A real rollback, available without shame.</li>
+        <li>An honest, out-loud answer to what the saved hours are for.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The numbers, for the skeptics</h2>
+      <ul>
+        <li><b>88%</b> of organizations use AI; around <b>6%</b> get real bottom-line value (McKinsey, State of AI).</li>
+        <li>Workflow redesign: the <b>strongest measured link</b> to EBIT impact from gen AI.</li>
+        <li>High performers are <b>2.8x</b> more likely to have fundamentally redesigned workflows (55% vs 20%).</li>
+        <li>Only about <b>1 in 5</b> gen AI users have redesigned any workflow at all.</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>The 30-minute mapping session, fill in the blanks</h2>
+      <p class="prompt">Workflow: [the repeating work and its weekly cost]. Steps on the whiteboard, tagged G / T / J / C, by the people who do them. First draft step: [the grind]. Its verify: [owner + source + cadence + reject path]. Metric: hours saved and errors caught, posted at [where]. Review date: [day]. The saved hours are for: [the real work that's been getting skipped].</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Workflow &amp; Process Redesign · Vanderbilt Learning Series · <a href="../../courses/workflow-process-redesign/">me5231979.github.io/Workflow</a></span>
+    <span>The evidence: <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai">McKinsey, The State of AI</a></span>
+  </footer>
+</div>
+</body>
+</html>

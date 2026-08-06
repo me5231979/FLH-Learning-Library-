@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leading the Shift Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this by the team meeting agenda</p>
+      <h1>Leading the Shift: the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>What actually predicts adoption</h2>
+      <ul>
+        <li><b>Manager modeling:</b> the team watches you use it, checks included (Gallup's top human predictor).</li>
+        <li><b>Workflow integration:</b> AI inside real repeated work, with checks.</li>
+        <li>Tools, budgets, and mandates barely move the needle on their own.</li>
+        <li>Only about <b>18%</b> of leaders do this well (Accenture): curiosity, courage, connection.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The narrated use (3 sentences)</h2>
+      <ol>
+        <li>What I used AI for this week.</li>
+        <li>What the check caught.</li>
+        <li>What I'd do differently.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Rules:</b> mundane beats impressive; misses welcome; ninety seconds at the team meeting.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The three guardrails (one page, written with the team)</h2>
+      <p class="prompt"><b>Data:</b> green (public or generic) go · yellow (internal) approved VU tools only · red (private information about people) never. <b>Sign-off:</b> outbound, high-stakes, or about people gets human review before it moves. <b>Ownership:</b> you own what you ship, whoever drafted it. Plus: amnesty for existing shortcuts, and a quarterly revision date.</p>
+    </div>
+
+    <div class="box">
+      <h2>Show your prompts (monthly, 15 min)</h2>
+      <ol>
+        <li>Real uses, real prompts, real misses.</li>
+        <li>Manager goes first, every time.</li>
+        <li>Steal shamelessly; log nothing.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The 1:1 question</h2>
+      <p class="prompt">"What have you tried with AI lately, and what did you learn?"</p>
+      <p style="margin:6px 0 0">Asked every 1:1. Development, never surveillance: no quotas, no counting, honest misses celebrated.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The AI-enabled work audit (quarterly, score /12)</h2>
+      <p class="prompt">1. Our three most repeated outputs: [list them]. 2. Where AI shows up: nowhere (0) · shortcuts (1) · one designed workflow (2) · several (3). 3. Team last SAW me use it: this week with checks (3) · this month (2) · never seen (1) · never (0). 4. Guardrails: written and posted (3) · verbal once (1) · guesses (0). 5. AI in coaching conversations: yes (3) · ad hoc (1) · never (0). Lowest dimension = next move. Rising scores = the adoption metric.</p>
+    </div>
+
+    <div class="box full">
+      <h2>My adoption plan, fill in the blanks</h2>
+      <p class="prompt">Work I model on: [task + what AI does + my check]. First visible move: [narrated use / show-your-prompts / guardrails session / 1:1 question]. I will NOT: [mandate without modeling / leave rails unwritten / hide the misses]. Date: [next team meeting / 7 days / 14 days]. Metric: rerun the audit in a month; which dimension moved?</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Leading the Shift · Vanderbilt Learning Series · <a href="../leading-ai-adoption/">me5231979.github.io/Course_Library/leading-ai-adoption</a></span>
+    <span>The research: <a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx">Gallup</a> · <a href="https://www.accenture.com/us-en/blogs/business-functions-blog/leadership-edge-ai">Accenture</a></span>
+  </footer>
+</div>
+</body>
+</html>

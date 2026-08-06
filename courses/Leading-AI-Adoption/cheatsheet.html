@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Making It Normal Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to your 1:1 notes</p>
+      <h1>Leading the Shift: the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box full">
+      <h2>The method: show, say, set, sustain</h2>
+      <ol>
+        <li><b>Show:</b> use AI visibly, misses included. Narrate the prompt, the draft, and the fix.</li>
+        <li><b>Say:</b> explicit permission and explicit limits: the encouraged list, the never list, who to ask.</li>
+        <li><b>Set:</b> norms in the rituals you already run: the 1:1 question, the share-one round, the miss log.</li>
+        <li><b>Sustain:</b> protect learning time, celebrate caught errors, keep it on the agenda past month three.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The 90-second narration</h2>
+      <p class="prompt">Four sentences, in the team meeting: <b>the task</b> ("the quarterly update"), <b>the prompt</b> ("here's what I asked and why"), <b>the fix</b> ("the draft got these two things wrong; I corrected them against the tracker"), <b>the check</b> ("I verified it against the source, never against how it read"). Real and slightly imperfect beats polished; the miss is the credibility.</p>
+    </div>
+
+    <div class="box">
+      <h2>The 1:1 question</h2>
+      <p class="prompt">"What did you try with AI this week, and what did it get wrong?" Two minutes, every week, for a quarter. The second half assumes misses exist, which makes reporting them normal. Answers tell you who's experimenting, who's stuck, and who's still waiting for permission.</p>
+    </div>
+
+    <div class="box full">
+      <h2>The permission talk, outline</h2>
+      <p class="prompt"><b>Opener:</b> "I want to be explicit about AI on this team, because I'd rather you hear it from me than guess." <b>Encouraged:</b> [2 to 3 named uses, each with its check]. <b>Never:</b> [the hard limits, starting from the traffic light's red]. <b>Gray zone:</b> [the unclear case you know is coming, answered], plus who to ask next time, and the promise that asking is applauded. <b>Repeat</b> in a month, and for every new hire. A norm heard once is a rumor.</p>
+    </div>
+
+    <div class="box">
+      <h2>The traffic light (data rule)</h2>
+      <ul>
+        <li><b>Green:</b> public or generic information. Go.</li>
+        <li><b>Yellow:</b> internal work. Approved VU tools only (ChatGPT EDU, Amplify, Copilot).</li>
+        <li><b>Red:</b> private information about people. Never.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks every technique</b> in this course, whatever the efficiency case.</p>
+    </div>
+
+    <div class="box">
+      <h2>The numbers, for the skeptics</h2>
+      <ul>
+        <li><b>~40%</b> of U.S. employees use AI at work; <b>19%</b> use it frequently (Gallup).</li>
+        <li>Only <b>22%</b> say their organization has communicated a clear AI plan.</li>
+        <li>Clear leadership plan: employees are <b>4.7x</b> as likely to feel comfortable using AI.</li>
+        <li>The two predictors that matter: <b>visible manager use</b> and <b>real-workflow integration</b>.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>The team rituals</h2>
+      <ul>
+        <li><b>Share-one round:</b> two minutes, weekly, rotated through everyone; misses count as shares.</li>
+        <li><b>Miss log:</b> no names on the miss, full credit on the catch, reviewed monthly.</li>
+        <li><b>The pairing move:</b> enthusiast plus skeptic on one real task; doubt becomes verification.</li>
+        <li><b>Install one at a time,</b> four weeks apart. Go first on all of them.</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>Month three, the playbook</h2>
+      <ul>
+        <li><b>The dip is normal.</b> Calendar a week-ten note: "the round will be quiet; seed it."</li>
+        <li><b>Defend the learning hour</b> like a client meeting; a perk dies, a budget survives.</li>
+        <li><b>Celebrate catches</b> publicly; the miss log is proof the checks work.</li>
+        <li><b>Report stories,</b> team-level: uses shared, misses caught, hours returned. Never rank individuals.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <span>Making It Normal · Vanderbilt Learning Series · <a href="../../courses/Leading-AI-Adoption/">Course link</a></span>
+    <span>The evidence: <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx">Gallup, AI in the Workplace</a></span>
+  </footer>
+</div>
+</body>
+</html>

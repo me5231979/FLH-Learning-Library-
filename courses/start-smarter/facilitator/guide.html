@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilitator Guide (printable) · Start Smarter · Vanderbilt Learning Series</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-weight: 400;
+    src: url('../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 400;
+    src: url('../assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-weight: 600;
+    src: url('../assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-weight: 700;
+    src: url('../assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 12.5px; line-height: 1.5; }
+  .sheet { max-width: 860px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 16px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  h2 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 18px;
+    margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  h3 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 14px 0 4px; }
+  .mins { font-family: 'Antonio', Impact, sans-serif; font-size: 11px; color: #946E24;
+    letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+  .sec { border: 1px solid #E4E4E4; border-left: 3px solid #CFAE70; border-radius: 4px;
+    padding: 12px 16px; margin-bottom: 12px; break-inside: avoid;
+    display: grid; grid-template-columns: 290px 1fr; gap: 16px; align-items: start; }
+  .sec.noimg { grid-template-columns: 1fr; }
+  .sec.noimg .sec__shot { display: none; }
+  .sec__shot { position: sticky; top: 12px; }
+  .sec__shot img { width: 100%; border: 1px solid #E4E4E4; border-radius: 3px; display: block; }
+  .sec__notes { min-width: 0; }
+  @media (max-width: 700px) { .sec { grid-template-columns: 1fr; } .sec__shot { position: static; max-width: 340px; } }
+  @media print { .sec { grid-template-columns: 240px 1fr; } .sec__shot { position: static; } }
+  .purpose { font-weight: 600; margin: 2px 0 8px; }
+  .tagline { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; margin: 10px 0 2px; color: #1C1C1C;
+    background: #CFAE70; display: inline-block; padding: 2px 7px; border-radius: 2px; }
+  .tagline.ask { background: #8BA18E; }
+  .script { font-family: 'Libre Caslon Display', serif; font-style: italic; font-size: 13.5px;
+    margin: 4px 0 6px; }
+  .mini { margin: 4px 0; color: #444; }
+  .mini.core { border-top: 1px dashed #CFAE70; padding-top: 6px; }
+  ol, ul { margin: 2px 0 8px; padding-left: 20px; }
+  li { margin-bottom: 3px; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; }
+  th, td { border: 1px solid #E4E4E4; padding: 5px 9px; text-align: left; }
+  th { font-family: 'Antonio', Impact, sans-serif; text-transform: uppercase; letter-spacing: .06em;
+    font-size: 10px; color: #946E24; }
+  .front { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px;
+    break-inside: avoid; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11px; } .sheet { padding: 0; max-width: none; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · ATD facilitator guide · print edition</p>
+      <h1>Start Smarter, the <em>facilitator guide</em></h1>
+    </div>
+    <img src="../assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="front">
+    <h3>Run of show</h3>
+    <table><tr><th>Screen</th><th>Full (min)</th><th>Core (min)</th></tr><tr><td>Welcome / QR</td><td>3</td><td>2</td></tr><tr><td>What you'll get</td><td>2</td><td>1</td></tr><tr><td>The Chancellor's charge</td><td>3</td><td>—</td></tr><tr><td>The plan</td><td>1</td><td>—</td></tr><tr><td>01 · What is AI?</td><td>3</td><td>1</td></tr><tr><td>Play · Is that AI?</td><td>4</td><td>2</td></tr><tr><td>Manifesto</td><td>2</td><td>1</td></tr><tr><td>02 · Why &amp; how</td><td>3</td><td>2</td></tr><tr><td>Play · Pick the next move</td><td>4</td><td>2</td></tr><tr><td>03 · When &amp; when not</td><td>4</td><td>2</td></tr><tr><td>Play · Green, yellow, or red?</td><td>4</td><td>3</td></tr><tr><td>04 · What it can do</td><td>3</td><td>1</td></tr><tr><td>Play · Match the superpower</td><td>4</td><td>2</td></tr><tr><td>The impact</td><td>3</td><td>1</td></tr><tr><td>The impact · Watch</td><td>2</td><td>1</td></tr><tr><td>05 · Your first try</td><td>9</td><td>6</td></tr><tr><td>Recap quiz</td><td>3</td><td>1</td></tr><tr><td>Capstone · My first try</td><td>4</td><td>1</td></tr><tr><td>Closing · commitment</td><td>2</td><td>1</td></tr>
+    <tr><th>Total</th><th>63</th><th>30</th></tr></table>
+    <h3>Audience</h3><p>Absolute beginners: staff who have never opened an AI tool, or who tried once and gave up. No prerequisites of any kind. Also delivered self-paced via the /web/ edition. Any size room works; 8 to 30 is the sweet spot.</p>
+    <h3>Room setup</h3><p>Projector + presenter device; learners on their own devices via the Welcome-slide QR. Ideal but optional: learners able to reach a Vanderbilt-approved AI tool (Copilot with VU sign-in) on their own devices for the first-try moment. Virtual: run everything on main stage; breakouts unnecessary at this level. Tone matters more than tech: warm, unhurried, zero jargon, no question too basic.</p>
+    <h3>Materials</h3><ul><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A Vanderbilt-approved AI tool (Copilot, VU sign-in) open in a second tab for the live demo</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed first-try cards (worksheet.html) as the no-device and projector-failure fallback</li></ul>
+    <h3>A week before</h3><ol><li>Read this guide end to end, then run BOTH editions (classroom and /web/) start to finish, doing every exercise.</li><li>Rehearse the live demo once: type a deliberately vague request into Copilot, then improve it with the room's details. Know what 'bland' looks like so you can count on it.</li><li>Make your own first try on a real chore if you haven't. Your story of it ('took me four minutes, the follow-up fixed the tone') is the most persuasive slide you have.</li><li>Decide your path: Full (60) or Core (30, the lunch-and-learn length).</li><li>Remember who this room is: people who may feel behind, embarrassed, or skeptical. The session's real job is removing fear.</li></ol><h3>The day before</h3><ol><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Sign into the approved AI tool and leave the tab ready.</li><li>Print 5 to 10 cheat sheets and first-try cards.</li><li>Re-read the tough-questions bank; say the 'is AI going to take my job?' response out loud once.</li></ol><h3>30 minutes before</h3><ol><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a round of Is That AI?).</li><li>Set the tone in your head: this is the friendliest hour in the catalog. No jargon leaves your mouth today.</li></ol>
+    <h3>When things go sideways</h3><p><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: the one-sentence definition, the three steps, the traffic light, and the five superpowers all work on a whiteboard. The trainers run verbally with hands-up voting; the first try moves to the printed card.</p><p><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: trainers on the projector with the room voting out loud, prompt builder as a fill-in-the-blanks on the whiteboard, commitment on the printed card. You lose typing, not learning.</p><p><b>If Nobody in the room can access an approved AI tool for the live try:</b> You demo on the projector with THEIR prompts: collect two built prompts from the room, run them live on your machine, improve each with one follow-up the room chooses. The first try becomes homework with the card; the pulse email catches it.</p><p><b>If Someone is visibly anxious or says 'I'm too old for this / not a tech person':</b> The reframe that works: 'You already use AI every day: your phone's word suggestions, your spam filter. Today is just learning to use it on purpose.' Then make sure their first try lands in the room; success beats reassurance.</p><p><b>If An experienced AI user is bored or starts adding advanced caveats:</b> Honor and redirect: 'That's exactly right, and it's AI 201 material: the sequel is in the Course Library.' Deputize them as a table helper for the prompt-builder moment; teaching beginners keeps experts happy.</p><p><b>If Fear talk takes over ('AI is dangerous / taking jobs / stealing data'):</b> Don't dismiss, anchor: the traffic light exists exactly because the concerns are partly right. 'The risks are real, which is why we use approved tools and keep people-data out. The skill you're learning today IS the safe version.' Park policy debates; route them to the official channels.</p>
+    <h3>Tough questions, ready answers</h3><p><b>Q: Is AI going to take my job?</b><br>AI takes over chores, not judgment: drafts, summaries, first passes. What history shows with tools like this is that people who use them become more valuable, not less. Today's hour is exactly that move: you're not competing with AI after this session, you're the person in your office who knows how to use it safely.</p><p><b>Q: Is it cheating to use AI for my work emails?</b><br>Is spellcheck cheating? Is asking a colleague to read your draft cheating? AI is a drafting tool; the thinking, the facts, and the final call stay yours. The professional standard is simple: you review everything, you check what matters, and your name means you stand behind it. Passing off unchecked AI output as finished work: that's the actual mistake.</p><p><b>Q: Where does what I type actually go?</b><br>It depends entirely on the tool, and that's the whole point of the yellow light. Random free websites may keep and learn from what you type. Vanderbilt-approved tools like Copilot with your VU sign-in have contractual protections for work content. That's why internal content only goes in approved tools, and private information about people goes in none of them.</p><p><b>Q: How do I know if the answer is true?</b><br>Assume it's a confident draft, not a verified fact. For anything that matters, a date, a number, a name, a claim you'll repeat, check the source the way you would if a smart new colleague told you something surprising. The tool is at its safest on tasks where truth isn't the question: drafting, rewording, brainstorming, explaining.</p><p><b>Q: Which tool should I actually use?</b><br>For work content: Microsoft Copilot signed in with your VU account: that sign-in is what makes it yellow-light safe. For public, generic questions, approved tools of your choice. If you're unsure whether a tool is approved, that uncertainty IS your answer: use Copilot or ask IT.</p><p><b>Q: I tried ChatGPT once and the answer was wrong or useless. Why bother?</b><br>One try with one vague question is like judging email by one message. Two fixes change everything: give it details (who it's for, what it's about, how it should sound), and use the follow-up: tell it what was wrong and watch it fix its own draft. The trainer in Idea 02 exists because the second message is where the tool gets good.</p>
+    <h3>Copy-paste templates</h3><p><b>Pre-work invite (paste into the calendar invite)</b><br>Subject: Before our Start Smarter session. Nothing to read and nothing to install. Just bring one thing: a chore from your normal week that involves words: an email you put off, a long document you need to digest, anything you'd love to hand to an assistant. You'll use it in the session. If you've never touched an AI tool, you're exactly who this hour is for.</p><p><b>7-day pulse (send one week after)</b><br>Subject: One week later, did the first try happen? Two quick lines, reply whenever: 1) Did you run the prompt you built, on the chore you named? 2) Did the follow-up trick (add one detail, ask again) make it better? Replies come to me only. Not yet? Your card still works, this note is your nudge, and the whole thing takes five minutes.</p><p><b>Graduation note (send to confident finishers)</b><br>Subject: Ready for the next gear? You've made your first tries and the traffic light is a habit. AI 201: Beyond the Basics is the sequel: why tools 'forget,' where answers actually come from, and how to build a governed AI workflow for a recurring task. It's in the Course Library, same format, no code: ../../../</p>
+    <h3>After the session</h3><p>Seven days out, send the pulse: 'Did you make your first try? What was the chore, and did the follow-up trick work?' The count of completed first tries is the program's headline metric: this course exists to convert non-users into first-time users. Route the confident ones to AI 201 in the Course Library.</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-welcome.jpg" alt="Slide: Welcome / QR" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Welcome / QR <span class="mins">Full 3 min · Core 2</span></h2>
+    <p class="purpose">Get every learner into the experience on their own device and set the tone: the friendliest hour in the catalog, built for absolute beginners.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Welcome. Point your camera at that code, it brings this whole session to your seat. Quick promise before we start: this is the beginner hour. No jargon, no code, no assumptions, and no question is too basic. If you have never touched an AI tool in your life, you are not behind, you are exactly who this session is for, and you'll make your first try before the week is out.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Say the safety line early: no jargon today, no question too basic, and nobody will be asked to know anything.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Show of hands, totally judgment-free: who here has never used ChatGPT, Copilot, or any AI chat tool, or tried once and quietly gave up?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>A third to half the room, sometimes sheepishly</li><li>A few 'tried once and gave up' confessions</li><li>Some experienced users too</li></ul><p class='mini'><b>Respond:</b> Thank the honest hands warmly: 'Perfect: this hour was built for you.' To the experienced: 'You're my table helpers today, and AI 201 is your course; it's in the library.'</p>
+    
+    <p class="mini"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p>
+    <p class="mini"><b>Watch for:</b> The person hanging back who 'isn't a tech person.' Make eye contact, smile, and remember them for the first-try moment: their success is the session's best story.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Here's everything you'll walk out with.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: one scan prompt, the no-jargon promise, move on.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-hero.jpg" alt="Slide: What you'll get" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>What you'll get <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Set the contract: five plain-language abilities, ending in a real first try with a prompt they build themselves.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five things in the next hour. You'll be able to say what AI is in one sentence, no buzzwords. You'll know how to ask it for help in ordinary English, and the one trick that makes answers good. You'll know the traffic light: what's fine, what needs an approved tool, what never goes in. You'll know the five chores it does best. And before we're done, you'll build your first request for a real chore from your real week, and copy it, ready to use.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the five objectives in plain language, unhurried.</li><li>Land on the last one: you leave with a real prompt you built, for a real chore, with a day attached.</li><li>Point at the skills row once: this course carries real skill credit in the library.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Learners can say what they'll leave with (a prompt they built + a first try scheduled).</p>
+    <p class="mini"><b>Watch for:</b> Don't oversell or speed up; calm confidence is the register for beginners.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;The whole plan fits on one slide.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-mission.jpg" alt="Slide: The Chancellor's charge" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>The Chancellor's charge <span class="mins">Full 3 min · Core skip</span></h2>
+    <p class="purpose">Anchor the hour in the institutional why: the Chancellor's vision makes a beginner's first AI try part of how the university grows.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;One minute on why Vanderbilt cares about this hour. Chancellor Diermeier's vision is a single sentence: Vanderbilt will define the great university of the 21st century, and be it. Doing that takes speed and careful bets, and both are made of ordinary work: the drafts, summaries, and rewrites on desks like yours. Your first try this week is a small piece of that. Our motto is literally 'dare to grow.'&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the vision sentence off the slide verbatim; let it land before you talk.</li><li>Walk the three focus cards left to right, one breath each, ending on the 'At your desk' line.</li><li>Point at the flywheel card and keep it plain: good work builds reputation, reputation brings resources, and safe everyday AI use is part of good work. Don't teach it; move.</li></ol>
+    
+    
+    
+    
+    <p class="mini"><b>Transition:</b> &ldquo;That's the why over our shoulder. Here's the plan for the hour.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: read the vision sentence, gesture at the three focus areas, move on; under a minute.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-agenda.jpg" alt="Slide: The plan" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>The plan <span class="mins">Full 1 min · Core skip</span></h2>
+    <p class="purpose">Show the five ideas once so the room sees how small the mountain actually is.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five ideas. That's the whole course: what AI is, how to use it, when not to, what it can do for you, and your first try. Small mountain.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the five items in one breath each.</li><li>Name the shape out loud: what it is, how to use it, when not to, what it does, then you try it.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> None needed; this is orientation.</p>
+    <p class="mini"><b>Watch for:</b> Don't teach here; every idea has its own slide.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Idea one: and I promise it fits in one sentence.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: skip entirely; the deck's structure carries it.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-what.jpg" alt="Slide: 01 · What is AI?" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>01 · What is AI? <span class="mins">Full 3 min · Core 1</span></h2>
+    <p class="purpose">Land the one-sentence definition (a program that learned from examples) and dissolve intimidation by proving everyone already uses AI daily.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's the whole definition, one sentence: AI is a computer program that learned from millions of examples, so instead of following fixed rules, it can predict, suggest, and write things that fit your situation. That's it. It's not a robot. It's not magic. And it's not always right, think of it as a very well-read assistant: fast, tireless, eager to help, and occasionally confidently wrong. Now the fun part: you've been using AI for years. Let's prove it.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Deliver the one-sentence definition slowly, twice: a program that learned from millions of examples.</li><li>Land the three nots: not a robot, not magic, not always right.</li><li>Run the group shout-out from Go deeper: name one thing on your phone that guessed something about you this week.</li><li>Land the reframe: you aren't AI beginners; you're experienced users who never got the name tag.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Name one thing on your phone that guessed something about you this week.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Word suggestions while texting</li><li>Maps rerouting, music and show recommendations</li><li>Photos grouping faces, spam filtering</li></ul><p class='mini'><b>Respond:</b> List them fast, then point at the list: 'Every one of those learned from examples. You aren't AI beginners: you're experienced users who never got the name tag. Today we just make it deliberate.'</p>
+    <p class="mini"><b>Debrief:</b> A program that learned from examples: capable because it learned, fallible because it guesses. Both halves matter all session.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; the shout-out round produces at least four examples.</p>
+    <p class="mini"><b>Watch for:</b> Jargon creeping into YOUR mouth ('model,' 'training data,' 'LLM'). The discipline of this session is saying 'it learned from examples' every single time.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now prove to yourselves you've been using it for years. Next screen: the game.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: definition + three nots, trainer as a fast room vote, shout-out becomes one example from you.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-what-play.jpg" alt="Slide: Play · Is that AI?" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Play · Is that AI? <span class="mins">Full 4 min · Core 2</span></h2>
+    <p class="purpose">One scored rep of the definition: learned-from-examples versus regular program, on five everyday things.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five everyday things. For each one: did it learn from examples, or is it following rules a person wrote? Call it.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Send them to their devices: five everyday things, call each one.</li><li>Run it as a room vote if devices are down; hands for 'AI' versus 'regular program.'</li><li>The calculator item is the teaching moment: fixed rules never surprise you; learned patterns do.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> 4+ of 5 for most of the room.</p>
+    <p class="mini"><b>Watch for:</b> Anyone scoring 2 or less quietly: the debrief line ('learned = AI') usually fixes it on the retry.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;So AI is already in your pocket. One more sentence before we learn to drive it.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: run it as a fast room vote on the projector.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-belief.jpg" alt="Slide: Manifesto" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Manifesto <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Give beginners explicit permission to use AI without understanding its internals. This one line removes the biggest hidden barrier in the room: the belief that AI is for technical people.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;You don't need to know how the engine works to drive the car. Here's what that means. Every one of us drove or rode here today, and almost none of us could explain a combustion engine, and that's fine, because driving and engineering are different skills. AI is the same. Asking it for help, reading the answer, making it better: that's driving, and you'll be doing it within the hour. How it works inside is engineering, and it's genuinely optional. If anyone in this room has been thinking 'I'm not a tech person, this isn't for me,' this sentence is for you. You don't need to be. You just need a steering wheel, and we're about to hand you one. One honest footnote: drivers do follow rules of the road, and AI has three. They're colors, they take three seconds, and they're coming up right after you learn to drive.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Let the line animate word by word. Say nothing until it finishes, then read it once, slowly.</li><li>Explain what it means in one breath: millions of people drive safely every day without being able to explain a combustion engine. Using a tool well and understanding its insides are two different skills, and today only asks for the first one.</li><li>Map the analogy for them explicitly: the car is the AI tool. Driving is asking, reading the answer, and improving it. The rules of the road are the traffic light coming two slides from now. The engine (how AI works inside) is a fine thing to learn someday, and AI 201 teaches it, but nobody needs it to get to work today.</li><li>Name who the line is for: anyone in the room quietly thinking 'I'm not a tech person.' This sentence is the course giving them permission to start anyway.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Quick show of hands: who here can explain exactly how their car engine works? And who drove here anyway?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>One or two engine hands, the whole room on the second question</li><li>Laughter, which is the point</li><li>Someone jokes about electric cars</li></ul><p class='mini'><b>Respond:</b> Land it gently: 'That gap between the two hands is exactly the permission slip this course runs on. Competence first. Curiosity about the engine later, if you want it. AI 201 pops the hood.'</p>
+    <p class="mini"><b>Debrief:</b> Using AI well is a driving skill, not an engineering skill. The rules of the road come next.</p>
+    <p class="mini"><b>Validate:</b> Ask for a nod: does anyone here understand their car engine? Almost nobody. Do you all drive? Everybody. Point made.</p>
+    <p class="mini"><b>Watch for:</b> The one caveat worth saying if an expert pushes back: drivers still follow rules of the road. The line doesn't mean 'use it carelessly.' It means the safety rules (coming next) are learnable in minutes, while engine knowledge is optional.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;So let's drive. Here's how you actually use it.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: read the line, give the one-breath explanation, move on. Keep the explanation even at 30 minutes; it does real work for nervous beginners.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-how.jpg" alt="Slide: 02 · Why &amp; how" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>02 · Why &amp; how <span class="mins">Full 3 min · Core 2</span></h2>
+    <p class="purpose">Install the three-step loop (ask in plain English, look, improve with one follow-up): the single skill that separates people who love AI from people who gave up.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Why do people use this? Because it takes the chores that eat your day (first drafts, long documents, blank pages) and does them in seconds. And how? You type what you need in ordinary English, like texting a very capable assistant. Full sentences, details welcome, no magic words. Then the part almost nobody tells beginners: when the answer isn't quite right, you don't start over and you don't give up. You just tell it what to fix. 'warmer,' 'shorter,' 'mention the deadline': and it rewrites instantly. Watch this live.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the three cards: ask in plain English, look at the draft, improve with one follow-up. Stress: nothing to install, nothing to memorize.</li><li>Run the live demo on the projector: type a deliberately vague request into the approved tool, let the room see the bland result, then type their suggested details as the follow-up and watch it improve.</li><li>Land the two habits from Go deeper: details make the difference, and the first answer is always a draft.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;During the demo: this answer is bland. What details should I add? Shout them out.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Who it's for, what it's about</li><li>Make it friendly / shorter / add the date</li><li>Someone dictates a full sentence: type it verbatim</li></ul><p class='mini'><b>Respond:</b> Type their exact words, send, and let the improvement land in silence for a beat. Then: 'Same tool. Better conversation. That's the entire skill, and you all just did it.'</p>
+    <p class="mini"><b>Debrief:</b> Ask, look, improve. And the quiet fourth step that keeps you safe: check anything important, because confident and correct are not the same thing.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; the room visibly reacts to the live demo's before/after.</p>
+    <p class="mini"><b>Watch for:</b> Beginners concluding the vague first answer means the tool is bad. Narrate explicitly: 'Same tool, better conversation: the second message is the skill.'</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Your turn. Five moments, five moves: next screen.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: three cards fast, demo shrinks to one exchange, trainer as room vote.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-how-play.jpg" alt="Slide: Play · Pick the next move" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Play · Pick the next move <span class="mins">Full 4 min · Core 2</span></h2>
+    <p class="purpose">One scored rep of the ask-look-improve loop, especially the follow-up habit that separates users from quitters.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five moments where the first answer wasn't perfect. Pick what a confident user does next. Notice how often the answer is just 'tell it what to fix.'&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Send them to their devices: five moments, pick the best next move.</li><li>Item 4 (the wrong date) plants the fact-checking habit; name it in the debrief.</li><li>Collect one aha out loud at the end.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> 4+ of 5 for most of the room.</p>
+    
+    <p class="mini"><b>Transition:</b> &ldquo;You now know how to drive. Time for the rules of the road.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: run it as a fast room vote on the projector.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-when.jpg" alt="Slide: 03 · When &amp; when not" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>03 · When &amp; when not <span class="mins">Full 4 min · Core 2</span></h2>
+    <p class="purpose">Install the traffic light as a three-second reflex (green/yellow/red) plus the fact-checking habit: the session's entire safety payload.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;AI is wonderful for drafts, ideas, summaries, and explanations. It is not the place for private information about real people, and it's not a decision-maker. So here's the only safety system you need, and it takes three seconds: before you paste anything, ask: what color is this? Green: public or generic, go ahead. Yellow: internal work content: fine, but only in Vanderbilt-approved tools, like Copilot signed in with your VU account. Never a random free website. Red: private information about real people: names with grades, health details, personnel issues. That never goes in. Describe the situation without the names, or don't use AI for it. Let's practice until it's a reflex.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Walk the three cards slowly; this is the most important slide of the hour.</li><li>Make yellow concrete: name the approved tool (Copilot with VU sign-in) and the anti-example (a random free website).</li><li>Make red vivid: names with grades, health, personnel issues. The fix: describe the situation without names, or don't.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Popcorn round: name a real task from your week, and the room calls the color.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Easy greens: icebreakers, explanations, generic drafts</li><li>Yellows: internal announcements, meeting notes</li><li>A juicy borderline: 'summarize my performance review notes'</li></ul><p class='mini'><b>Respond:</b> Let the room rule; only referee. On the borderline one: 'Hear the debate? That hesitation is the skill working. When in doubt: leave the names and details out: or leave it out entirely.'</p>
+    <p class="mini"><b>Debrief:</b> Three colors, three seconds, plus one more habit: check any fact that matters, because AI sounds confident even when it's wrong. That's the entire safety course.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; quick check correct; the popcorn round shows the room calling colors without your help.</p>
+    <p class="mini"><b>Watch for:</b> The borderline debates ARE the learning: let two run for thirty seconds each. And keep the tone empowering, not scary: the light exists so they can use AI confidently, not so they fear it.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Time to drill it. Five situations: call the color.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: three cards + trainer stay (this is the safety payload), quick check stays, popcorn round becomes two examples.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-when-play.jpg" alt="Slide: Play · Green, yellow, or red?" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Play · Green, yellow, or red? <span class="mins">Full 4 min · Core 3</span></h2>
+    <p class="purpose">Drill the traffic light to reflex on five real situations, then lock the fact-checking rule with the quick check.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five real situations. Three seconds each: green, yellow, or red? The one you hesitate on is the one worth talking about.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Send them to their devices: five situations, call the color.</li><li>The performance-review item is the discussion magnet; let the debate run thirty seconds.</li><li>Run the quick check on the same screen: the other big don't is trusting unchecked facts.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> 4+ of 5 and a correct quick check.</p>
+    
+    <p class="mini"><b>Transition:</b> &ldquo;Rules down. Now the fun part: what this thing can actually do for you.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep at nearly full length; this is the safety payload.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-cando.jpg" alt="Slide: 04 · What it can do" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>04 · What it can do <span class="mins">Full 3 min · Core 1</span></h2>
+    <p class="purpose">Install the five superpowers (draft, summarize, brainstorm, explain, rewrite) and get every learner to pick the chore for their first try.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;You don't need a list of a hundred AI uses. You need five, and you already recognize the chores they eat. Draft it: the email you've been putting off. Summarize it: the fourteen-page PDF and the four minutes you have. Brainstorm it: ten name ideas in ten seconds, you keep the two good ones. Explain it: the jargon-filled IT instructions, translated to human. Rewrite it: same facts, friendlier voice, half the length. And the honest card: it can't know what happened in your meeting, can't be trusted blind on facts, and can't take responsibility. It does the chore. You do the judgment.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Name the five superpowers with one everyday example each; keep the language chore-shaped, not tech-shaped.</li><li>Read the 'what it can't do' card out loud. That honesty earns trust: no knowledge of your morning, no blind trust on facts, no responsibility.</li><li>Run the pair round from Go deeper: the ONE chore you'd most love to hand off, matched to its power.</li><li>Tell them to hold onto that chore: the next slide builds the request for it.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;The one chore from your week you'd most love to hand off: what is it, and which superpower eats it?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>Status emails and updates → Draft it</li><li>Long documents and policies → Summarize it</li><li>Naming things, meeting ideas → Brainstorm it</li></ul><p class='mini'><b>Respond:</b> Collect a handful and match them out loud, fast and affirming. Then: 'Hold onto yours. In two minutes you're building the exact request for it.'</p>
+    <p class="mini"><b>Debrief:</b> Five superpowers, one honest boundary: AI does the chore, you do the judgment. And everyone in this room just picked their first chore.</p>
+    <p class="mini"><b>Validate:</b> 4+ of 5 on the trainer; every learner has named their chore (it feeds the first-try builder).</p>
+    <p class="mini"><b>Watch for:</b> Vague chores ('emails, I guess'). Push gently for THE one: the monthly update they dread, the policy doc they never read. Specific chores make real first tries.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Your turn to match. Five chores: next screen.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: five powers in one breath each, trainer as room vote, pair round becomes a ten-second silent pick.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-cando-play.jpg" alt="Slide: Play · Match the superpower" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Play · Match the superpower <span class="mins">Full 4 min · Core 2</span></h2>
+    <p class="purpose">One scored rep matching real chores to the five superpowers, priming each learner's own first-try chore.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five chores you'll recognize. Match each to its superpower, and while you play, keep asking: which chore of mine is next?&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Send them to their devices: five chores, pick the power.</li><li>As they finish, ask them to silently pick THEIR chore for the first try.</li><li>Collect two or three chores out loud with their matched power.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> 4+ of 5; every learner has a chore in mind.</p>
+    
+    <p class="mini"><b>Transition:</b> &ldquo;Hold that chore. First, sixty seconds on why this is bigger than saved time.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: run it as a fast room vote on the projector.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-impact.jpg" alt="Slide: The impact" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>The impact <span class="mins">Full 3 min · Core 1</span></h2>
+    <p class="purpose">Give the room a reason to care that's bigger than saved minutes: cited, true stories of AI helping in health, accessibility, voice, and communication, all sharing the pattern the course teaches (AI does the chore, a person stays in charge).</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Before your first try, here's why this is worth ten minutes of learning. The time savings are real and measured: Federal Reserve researchers found workers who use these tools save about two hours a week. But the numbers aren't the good part. In Sweden, doctors screened over a hundred thousand women for breast cancer with AI helping them read the scans. They found 29 percent more cancers, and the radiologists got 44 percent of their reading time back to spend where it mattered. That's published in The Lancet. A blind person can now photograph a menu or a medicine label and hear exactly what it says, free, through an app called Be My Eyes. People losing their voices to ALS are banking recordings so AI can rebuild their voice, and they keep speaking as themselves. And autistic professionals tell researchers they use these same chat tools to draft messages and decode workplace phrasing. One participant put it in words I can't beat: 'I use ChatGPT to humanize my words.' Notice what every story has in common: the AI does the chore, and a person stays in charge. The doctors made every diagnosis. That is exactly the arrangement you're learning today.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Name the efficiency number first, with its source: a 2024 Federal Reserve Bank of St. Louis survey found workers who use these tools save about 2.2 hours in a 40-hour week.</li><li>Walk the four story cards in one or two sentences each. Every card carries its source link; say the sources out loud (The Lancet, Be My Eyes, Bridging Voice, a peer-reviewed study of autistic professionals) because citations build trust with skeptics.</li><li>Run the popcorn question: which story surprised you most?</li><li>Land the pattern explicitly: in every story the AI does a chore and a person stays in charge. Doctors read the scans, patients choose their words. Same arrangement they're learning today.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Which of those four stories surprised you most, and why?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>The cancer numbers, usually with 'I had no idea it was already real'</li><li>The voice banking story, often from someone touched by ALS</li><li>The autism quote, because it reframes who these tools are for</li></ul><p class='mini'><b>Respond:</b> Take two or three, no commentary needed. Close with: 'Whichever one stuck with you, keep it. It's a better answer to "why bother with AI?" than any statistic, including the Fed's.'</p>
+    <p class="mini"><b>Debrief:</b> Two hours a week back for you, and for some people, a voice, a diagnosis, or a menu read aloud. The pattern is always the same: AI does the chore, a person stays in charge.</p>
+    <p class="mini"><b>Validate:</b> Quick check correct; two or three voices in the popcorn round. Watch the room's posture change during the video; that shift is this slide's real output.</p>
+    <p class="mini"><b>Watch for:</b> A grief response: someone in the room may have lost a person to cancer or ALS. Keep the tone warm and factual, never triumphant. And don't oversell: these are assist stories, not cure stories, and saying so keeps your credibility.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Now watch it happen. Two minutes, next screen.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: the Fed number, the four cards in one breath each, and the pattern line. Assign the Be My Eyes video as the week's watch if time is tight, but it's only two minutes; keep it if you possibly can.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-impact-video.jpg" alt="Slide: The impact · Watch" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>The impact · Watch <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Let the Be My Eyes video land emotionally, then lock the human-in-charge pattern with the quick check.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Two minutes. Watch what this technology means for someone who can't see the menu.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Play the video (2 minutes). Let it finish in silence for a beat.</li><li>Run the quick check: in the cancer trial, the AI helped doctors look; doctors made every call.</li><li>One line to close: same arrangement you're getting today, smaller stakes.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Quick check correct; the room's posture during the video tells you the rest.</p>
+    
+    <p class="mini"><b>Transition:</b> &ldquo;Your chore is smaller than any of that. Let's build your request.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: keep the video if you possibly can; it's two minutes and it's the session's heart.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-first.jpg" alt="Slide: 05 · Your first try" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>05 · Your first try <span class="mins">Full 9 min · Core 6</span></h2>
+    <p class="purpose">Every learner assembles a real, copyable prompt for their real chore: and ideally runs it in the room. This is the session's conversion moment.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Here's the whole recipe for a good request. Tell it the job: draft an email, summarize this, give me ideas, explain this. Give it your details: who it's for, what it's about, what it should sound like. And say what shape you want back: short, bullets, step by step. Job, details, shape. That's everything. Build yours right now, for the chore you just picked: and when you hit assemble, you're holding your first prompt. The empty box, the hardest part of starting? You just left with it filled in.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Teach the recipe in one line: the job, your details, the shape. That's the whole anatomy of a good request.</li><li>Give quiet time on the builder: pick the job, type the details for THEIR chore, pick the shape, assemble, copy.</li><li>Circulate for the stuck: their details just need who it's for, what it's about, how it should sound.</li><li>If devices allow, run the in-room first try: paste into the approved tool, send, hands up when answers arrive.</li><li>Have two volunteers read results aloud: deliberately including one mediocre one, improved live with one follow-up.</li><li>Point at the Go deeper: where to go (Copilot, VU sign-in) and the two moves (add a detail; check what matters).</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;For the volunteers who ran it: read us what came back. Was it good, or does it need the follow-up?&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>A surprisingly good draft, delight in the voice</li><li>A mediocre one, which is the gold: improve it live</li><li>Someone got a wrong detail, which is even better: the checking lesson, live</li></ul><p class='mini'><b>Respond:</b> For the good one: 'Four minutes ago that was a blank box.' For the mediocre one: ask the room what detail to add, run the follow-up live, watch it improve. For the wrong detail: 'And THAT is why we check what matters: you just saw the whole course in one answer.'</p>
+    <p class="mini"><b>Debrief:</b> Job, details, shape: then add a detail if it's close, and check it if it matters. You now know everything this course has to teach; the rest is reps.</p>
+    <p class="mini"><b>Validate:</b> Every learner has an assembled, copied prompt. If devices allowed, most ran it. This is the objective-5 evidence and the session's core outcome.</p>
+    <p class="mini"><b>Watch for:</b> Perfectionism stalling the builder. 'good enough, send it' is the coaching. And celebrate the mediocre live result loudly: improving it with one follow-up is a better lesson than a perfect first answer.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Quick knowledge check, then you make it official.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: recipe in one line, builder at full length (protect it, it IS the outcome), in-room try only if devices are instant, one volunteer read-aloud.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-recap.jpg" alt="Slide: Recap quiz" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Recap quiz <span class="mins">Full 3 min · Core 1</span></h2>
+    <p class="purpose">Score the five ideas before the commitment (Kirkpatrick Level 2).</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Five questions, one per idea, zero pressure. This is just proof of how much you picked up in an hour.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Everyone takes it on their own device, all five questions.</li><li>Ask for hands on 4-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Room mode at 4/5 or better. The quiz maps to the five ideas, so misses tell you exactly what to reteach.</p>
+    <p class="mini"><b>Watch for:</b> Racing. Frame it as a friendly check, not a test: this room may carry test anxiety about tech topics.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;And now the only part that changes next week.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: run it as a fast room vote on the projector, two questions max, rest assigned.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-plan.jpg" alt="Slide: Capstone · My first try" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Capstone · My first try <span class="mins">Full 4 min · Core 1</span></h2>
+    <p class="purpose">Convert the session into one dated commitment: the chore, the superpower, the day. The transfer artifact and the 7-day pulse's target.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;Name the chore: the real one. Pick the superpower. Pick the day, and I'll tell you now: today beats tomorrow, and tomorrow beats 'this week.' Your prompt is already built; the card just puts a date on it. That's the entire distance between someone who heard about AI and someone who uses it.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Frame it: reading about AI changes nothing; one real try changes everything.</li><li>Give quiet time: chore typed, superpower picked, day picked, card built and copied.</li><li>Push for 'today' or 'tomorrow': first tries scheduled for 'someday this week' evaporate.</li><li>Remind: nothing typed is saved or sent; the card is theirs.</li></ol>
+    
+    
+    <p class="mini"><b>Validate:</b> Every learner builds a card (all three parts). The card plus the 7-day pulse is the evidence chain, and the pulse's first-try count is the program metric.</p>
+    <p class="mini"><b>Watch for:</b> The chore quietly shrinking to something trivial. The best first try is the chore they named in Idea 04: the one they actually resent.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Last slide. Go time.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: build the card in sixty focused seconds; it survives every cut.</p>
+    </div>
+  </div>
+  <div class="sec">
+    <div class="sec__shot"><img src="img/s-close.jpg" alt="Slide: Closing · commitment" onerror="this.closest('.sec').classList.add('noimg')"></div>
+    <div class="sec__notes">
+    <h2>Closing · commitment <span class="mins">Full 2 min · Core 1</span></h2>
+    <p class="purpose">Convert cards into spoken commitments, capture the Level 1 check, and point at the follow-up and the next course.</p>
+    <p class="tagline say">Say</p><p class="script">&ldquo;One hour ago, AI was a headline. Now it's a sentence you can say, a traffic light you can run, five superpowers you can name, and a prompt in your clipboard with your name on it. Before you go: your chore, and your day. Out loud. Spoken commitments stick: and when that first answer comes back, remember, you're one follow-up away from good.&rdquo;</p>
+    <p class="tagline">Do</p><ol><li>Read the featured card: run the prompt, add one detail, check what matters.</li><li>Run the fist-to-five (Level 1): 'How confident are you that you'll make your first try?' Note the number for your log.</li><li>Run the commitment round, popcorn style: chore and day, out loud or in chat.</li><li>Point at the cheat sheet and first-try card buttons, and AI 201 for the ones who are hungry.</li><li>Tell them the 7-day pulse is coming, land the last line, stop on time.</li></ol>
+    <p class='tagline ask'>Ask</p><p class='script'>&ldquo;Around the room, one line each: your chore, and your day.&rdquo;</p><p class='mini'><b>Expect:</b></p><ul><li>'The monthly update email: today.'</li><li>'Summarizing the policy doc: tomorrow morning.'</li><li>Someone commits to explaining IT's last email</li></ul><p class='mini'><b>Respond:</b> Thank each one, no commentary, keep it moving. If someone says 'this week': 'Which day?': warmly, but get the day.</p>
+    <p class="mini"><b>Debrief:</b> The metric isn't in this room; it's the 7-day pulse: how many first tries actually ran. This course exists to turn non-users into users, one chore at a time.</p>
+    <p class="mini"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state chore-and-day out loud or in chat. With the pulse, that's the evidence chain.</p>
+    <p class="mini"><b>Watch for:</b> Cards without a day. The round catches them (no day, no commitment); help them pick one on the spot.</p>
+    <p class="mini"><b>Transition:</b> &ldquo;Go make the try. And when it saves you twenty minutes, tell a colleague who's where you were an hour ago: the QR travels.&rdquo;</p>
+    <p class="mini core"><b>Core path:</b> Core: fist-to-five plus a lightning commitment round; the ending survives every cut.</p>
+    </div>
+  </div>
+  <p class="mini" style="margin-top:14px;color:#777">Generated from facilitator/notes.json. The on-screen facilitator edition lives at ./ alongside this guide.</p>
+</div>
+</body>
+</html>

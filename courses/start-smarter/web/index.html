@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start Smarter: Self-Paced | Vanderbilt</title>
+<meta name="description" content="A very first introduction to AI for people who have never used it: what AI is, why and how we use it, when to use it and when not to, what it can do for you, and your first try today.">
+<link rel="canonical" href="../../../courses/start-smarter/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Start Smarter | Vanderbilt Learning Series">
+<meta property="og:description" content="Never used AI? Start here: what it is, how to use it, when not to, and your first try today. No jargon, no code.">
+<meta property="og:url" content="../../../courses/start-smarter/web/">
+<meta property="og:image" content="../../../courses/start-smarter/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start Smarter | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/start-smarter/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=12">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-what">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-what">What Is AI</a>
+    <a href="#s-how">How to Use It</a>
+    <a href="#s-when">When Not To</a>
+    <a href="#s-cando">What It Can Do</a>
+    <a href="#s-first">Your First Try</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle">Welcome</span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 18</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="What you'll get">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_200652_7fda2f74-e2d3-4922-aa82-3538078520e3.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_200704_f9a658ba-e21b-49d3-a82d-e24e4dca5641.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_200712_13c7a9d0-fc12-4c9b-b14d-7666faaac7f5.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Start Smarter · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Never used AI?<br><em class="gold-text">Start here.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">No jargon, no code, no assumptions. In the next half hour you'll learn what AI actually is, how to talk to it, when to keep things away from it, and you'll build your first request, ready to try today.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Say what AI is in one plain sentence, and spot it in tools you already use every day</li>
+          <li>Ask AI for help in ordinary English, and make the answer better with one follow-up</li>
+          <li>Know the traffic-light rule: what's fine to ask, what needs an approved tool, what never goes in</li>
+          <li>Name five everyday chores AI can take off your plate</li>
+          <li>Make your first try this week, with a starter prompt you build today and keep</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Artificial Intelligence</span>
+        <span class="skillpill">Digital Fluency/Information Literacy</span>
+        <span class="skillpill">Data Security</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-what">Begin</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and your first try with AI this week is exactly the kind of small dare it means.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: the five chores you'll practice today, drafting, summarizing, and rewriting among them, are where that speed actually starts.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: bold bets are paid for in hours, and the hour AI hands you back on a summary or a first draft is an hour the university can spend on something new.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: the traffic-light rule, green goes in, red never does, is what careful AI use looks like when other institutions study how Vanderbilt works.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition includes the ordinary work on your desk, and a first draft that takes four minutes instead of forty is execution. The traffic-light rule keeps every one of those wins safe enough to count.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The whole plan</p>
+      <h2 class="h2" data-reveal>Five ideas. <em>That's it.</em></h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>What is AI?</h3><p>One plain sentence, plus proof you've been using it for years.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Why and how do we use it?</h3><p>You type in ordinary English. It answers. You make it better with one follow-up.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>When to use it, and when not to</h3><p>The traffic light: green, yellow, red. Three seconds that keep you safe.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>What can it do for you?</h3><p>Five superpowers: draft, summarize, brainstorm, explain, rewrite.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Your first try</h3><p>Build a real request, copy it, and use it this week.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 WHAT IS AI ============ -->
+  <section class="slide on-light" id="s-what" data-count data-title="What is AI?">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 01 · What is AI?</p>
+      <h2 class="h2" data-reveal>One sentence, <em>no jargon</em>.</h2>
+      <p class="lead" data-reveal>AI is a computer program that learned from millions of examples. Because it learned instead of following fixed rules, it can predict, suggest, and write things that fit your situation. It isn't a robot or magic, and it isn't always right either.</p>
+
+
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/Ok-xpKjKp2g" data-yttitle="How AI works, a plain-language introduction">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: How AI Works (2 min, plain language)</span>
+          <span class="yt__src">Code.org · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=Ok-xpKjKp2g" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the friendliest short explanation on the internet, made for total beginners. No technical background needed.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Think of AI as a very well-read assistant: fast, tireless, eager to help, and occasionally wrong in a confident voice. The distinction worth keeping: a regular program follows rules a person wrote, which is why a calculator never surprises you. AI learned patterns from examples, which is why your phone's word suggestions surprise you daily. The chat tools everyone is talking about, like Microsoft Copilot or ChatGPT, are that same word-suggestion idea trained on so much text that it can draft emails, summarize documents, and explain almost anything. Once you see that, most of the mystery is gone.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> spotting AI in your own day makes the definition stick.</p>
+          <ol class="steps">
+            <li>Look at your phone. Find two things on it that learned from examples: word suggestions, photo face-grouping, map routes, music picks.</li>
+            <li>Say the sentence once: "AI is a program that learned from examples." That's the whole foundation.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="slide on-light slide--play" id="s-what-play" data-title="Idea 01 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 01 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Is that AI? Call all five.</h2>
+      <div class="quiz" id="isAI" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Is that AI?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the fastest way to make AI feel less mysterious is to notice you've already been using it for years. Here are five everyday things. Call each one.</p>
+        <p class="quiz__progress" id="iaProgress"></p>
+        <p class="quiz__q" id="iaQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="iaOptions" role="group" aria-label="Choices"></div>
+        <p class="quiz__feedback" id="iaFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="iaNext" style="visibility:hidden">Next one</button>
+        </div>
+        <div id="iaResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>You don't need to know how the engine works to drive the car.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 WHY & HOW ============ -->
+  <section class="slide on-dark" id="s-how" data-count data-title="How to use it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 02 · Why &amp; How</p>
+      <h2 class="h2" data-reveal>Type like you'd text <em>a helpful person</em>.</h2>
+      <p class="lead" data-reveal>Why do people use AI? Because it takes the chores that eat your day (first drafts, long documents, blank pages) and does them in seconds. Federal Reserve researchers found that workers who use it are already saving around two hours a week. And the how is easier than you'd guess. Nothing to install, nothing to memorize. You type what you need in plain English, like texting a very capable assistant, and it answers. When the answer isn't quite right, you don't start over. You just tell it what to fix.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Step 1 · Ask</span>
+          <h3>Plain English</h3>
+          <p class="muted">"Write a short, friendly email inviting my team to a planning lunch on Thursday." Full sentences. Details welcome. No magic words needed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Step 2 · Look</span>
+          <h3>Read what came back</h3>
+          <p class="muted">It answers in seconds. Usually good, sometimes off. Either way, you're not done yet, and neither is it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Step 3 · Improve</span>
+          <h3>One follow-up</h3>
+          <p class="muted">"Warmer." "Shorter." "Mention the RSVP deadline." It rewrites instantly, and it never gets tired of feedback. This step is where it gets good.</p>
+        </div>
+      </div>
+
+
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two habits carry beginners a long way. First, details make the difference: "write an email" gets you something generic; "write a warm, three-sentence email to my six-person team about Thursday's planning lunch" gets you something usable. Second, treat the first answer as a draft, always. AI writes the draft, and you stay the editor. It sounds confident even when it's wrong, so anything important (a date, a number, a name, a fact you'll repeat) gets checked by you before your name goes on it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> one real ask-look-improve loop teaches more than an hour of reading about it.</p>
+          <ol class="steps">
+            <li>Think of one email or note you need to write anyway this week.</li>
+            <li>Jot down the plain-English request you'd type, including two details: who it's for and what it should sound like.</li>
+            <li>Keep it. You'll build the real thing in Idea 05.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="slide on-dark slide--play" id="s-how-play" data-title="Idea 02 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 02 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Pick the next move.</h2>
+      <div class="quiz" id="followUp" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Pick the next move</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference between people who love AI and people who gave up after one try is what they did with the SECOND message. Five moments. Pick the move for each.</p>
+        <p class="quiz__progress" id="fuProgress"></p>
+        <p class="quiz__q" id="fuQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="fuOptions" role="group" aria-label="Next move choices"></div>
+        <p class="quiz__feedback" id="fuFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="fuNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="fuResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 WHEN & WHEN NOT ============ -->
+  <section class="slide on-cream" id="s-when" data-count data-title="When not to">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 03 · When &amp; When Not</p>
+      <h2 class="h2" data-reveal>The traffic light. <em>Three seconds.</em></h2>
+      <p class="lead" data-reveal>AI is great for drafts, ideas, summaries, and explanations. It is not the place for private information about real people, and it's not a decision-maker. Before you paste anything, one three-second question: what color is this?</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal style="border-top:3px solid #8BA18E">
+          <span class="tag">🟢 Green · Go ahead</span>
+          <h3>Public or generic</h3>
+          <p class="muted">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool, any time.</p>
+        </div>
+        <div class="card" data-reveal style="border-top:3px solid #ECB748">
+          <span class="tag">🟡 Yellow · Approved tools only</span>
+          <h3>Internal work content</h3>
+          <p class="muted">Your drafts, internal announcements, work documents. Fine, but ONLY in Vanderbilt-approved tools like Copilot signed in with your VU account. Never a random free website.</p>
+        </div>
+        <div class="card" data-reveal style="border-top:3px solid #c76b5a">
+          <span class="tag">🔴 Red · Keep it out</span>
+          <h3>Private info about people</h3>
+          <p class="muted">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop. Describe the situation without names, or don't.</p>
+        </div>
+      </div>
+
+
+
+
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Why the caution about facts? AI predicts what a good answer LOOKS like, and sometimes it produces something that looks right but isn't. It might cite a book that doesn't exist, or state a date with total confidence and be a year off. The professionals' habit is simple: use AI freely for drafts and ideas, where being wrong costs nothing, and verify anything you'll repeat, publish, or decide on. Decisions about people (hiring, grading, evaluations) stay with people. AI can inform your thinking, but it doesn't get a vote.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> the color call only helps if you make it on YOUR tasks.</p>
+          <ol class="steps">
+            <li>Think of three things from your real week you might hand to AI.</li>
+            <li>Call the color on each. When in doubt: leave the names and details out.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="slide on-cream slide--play" id="s-when-play" data-title="Idea 03 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 03 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Green, yellow, or red?</h2>
+      <div class="quiz" id="lightJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Green, yellow, or red?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> this one habit prevents nearly every AI mistake that makes the news. Five real situations. Call the color on each.</p>
+        <p class="quiz__progress" id="ljProgress"></p>
+        <p class="quiz__q" id="ljQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ljOptions" role="group" aria-label="Color choices"></div>
+        <p class="quiz__feedback" id="ljFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="ljNext" style="visibility:hidden">Next situation</button>
+        </div>
+        <div id="ljResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 WHAT IT CAN DO ============ -->
+  <section class="slide on-dark" id="s-cando" data-count data-title="What it can do">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 04 · What It Can Do</p>
+      <h2 class="h2" data-reveal>Five superpowers, <em>zero code</em>.</h2>
+      <p class="lead" data-reveal>You don't need a list of a hundred uses. You need five, and you'll recognize the chores they eat: <b>Draft it</b> (first versions of anything), <b>Summarize it</b> (long thing → short thing), <b>Brainstorm it</b> (ten ideas in ten seconds), <b>Explain it</b> (jargon → plain English), and <b>Rewrite it</b> (same facts, different tone or length).</p>
+
+
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">What it can't do</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">It can't know what happened in your meeting this morning, and it can't take responsibility for what goes out under your name. That part stays yours. AI does the chore, you do the judgment, and that division of labor is the whole arrangement.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>A realistic first month looks like this: week one, you draft two emails and summarize one long document. Week two, you brainstorm names for something and ask it to explain an acronym-filled message. By week four, you reach for it without thinking, the way you reach for search. In a 2024 Federal Reserve Bank of St. Louis survey, workers using these tools reported saving about 5% of their work hours, roughly 2.2 hours in a 40-hour week. The savings start with the first email.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> your first try should be a chore you already resent. Pick it now.</p>
+          <ol class="steps">
+            <li>Name the one chore from your week you'd most love to hand off.</li>
+            <li>Match it to its superpower. That's your first try, and the request for it gets built two slides from now.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="slide on-dark slide--play" id="s-cando-play" data-title="Idea 04 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 04 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Match the chore to the superpower.</h2>
+      <div class="quiz" id="superPower" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Match the superpower</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> once you can match the chore to the superpower, you'll start seeing AI-shaped chores everywhere. Five real situations. Pick the power for each.</p>
+        <p class="quiz__progress" id="spProgress"></p>
+        <p class="quiz__q" id="spQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="spOptions" role="group" aria-label="Superpower choices"></div>
+        <p class="quiz__feedback" id="spFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="spNext" style="visibility:hidden">Next chore</button>
+        </div>
+        <div id="spResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · THE IMPACT ============ -->
+  <section class="slide on-cream" id="s-impact" data-count data-title="The impact">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The bigger picture · Why this is worth learning</p>
+      <h2 class="h2" data-reveal>This is already changing <em>real lives</em>.</h2>
+      <p class="lead" data-reveal>Workers who use these tools save about 2.2 hours a week, per a <a href="https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity" target="_blank" rel="noopener">2024 Federal Reserve survey</a>. And the same technology behind your first email draft is doing some remarkable good in the world.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Health</span>
+          <h3>Finding cancer earlier</h3>
+          <p class="muted">In a Swedish trial of 105,000 women (<a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00267-X/fulltext" target="_blank" rel="noopener">The Lancet Digital Health</a>), AI-supported screening found 29% more cancers and cut scan-reading workload 44%. Doctors made every call.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Accessibility</span>
+          <h3>Describing the world for blind users</h3>
+          <p class="muted"><a href="https://www.bemyeyes.com/news/introducing-be-my-ai-formerly-virtual-volunteer-for-people-who-are-blind-or-have-low-vision-powered-by-openais-gpt-4/" target="_blank" rel="noopener">Be My Eyes</a> lets a blind person photograph anything (a menu, a label, the fridge) and hear what it says in seconds. The demo is on the next screen.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Voice</span>
+          <h3>Giving voices back</h3>
+          <p class="muted">People losing speech to ALS bank recordings, and AI rebuilds their voice so they keep speaking as themselves. Free through <a href="https://bridgingvoice.org/news/elevenlabs-bridging-voice-partnership/" target="_blank" rel="noopener">Bridging Voice and ElevenLabs</a>.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Communication</span>
+          <h3>A drafting partner for autistic adults</h3>
+          <p class="muted">Researchers <a href="https://arxiv.org/html/2601.17946v1" target="_blank" rel="noopener">studying autistic professionals</a> found many use AI to draft messages and decode workplace phrasing. One participant: "I use ChatGPT to humanize my words."</p>
+        </div>
+      </div>
+
+
+
+
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice the pattern in every one of these stories. The AI never works alone: doctors read the scans, blind users decide what to photograph and what to trust, ALS patients choose their words, autistic professionals edit every draft before sending. The technology does a chore that used to be a barrier, and a person stays in charge. That's the same arrangement you're learning today, just with higher stakes. Sources, if you want to read further: <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00267-X/fulltext" target="_blank" rel="noopener">the MASAI trial in The Lancet Digital Health</a>, <a href="https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity" target="_blank" rel="noopener">the St. Louis Fed productivity survey</a>, <a href="https://www.bemyeyes.com/" target="_blank" rel="noopener">Be My Eyes</a>, and <a href="https://bridgingvoice.org/" target="_blank" rel="noopener">Bridging Voice</a>.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> a reason to learn that's bigger than saved minutes tends to stick.</p>
+          <ol class="steps">
+            <li>Watch the Be My Eyes video above.</li>
+            <li>Ask yourself which of the four stories you'd tell a skeptical friend, then remember it. It's a better answer to "why bother with AI?" than any statistic.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="slide on-cream slide--play" id="s-impact-video" data-title="The impact · Watch">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The impact · Watch</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Two minutes that make it real.</h2>
+      <div class="yt" data-reveal style="max-width:720px" data-embed="https://www.youtube-nocookie.com/embed/DaKb2L8Xqkw" data-yttitle="Be My Eyes: AI describing the world for blind users">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: AI describes the world for a blind user (2 min)</span>
+          <span class="yt__src">Be My Eyes · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=DaKb2L8Xqkw" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> two minutes that turn "AI" from a headline into a person reading a menu on their own for the first time in years.</p>
+      </div>
+      <div class="quiz" data-quiz data-reveal style="margin-top:1.5rem">
+        <p class="quiz__q">Quick check: in the breast cancer screening trial, what was the AI's job?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The AI flagged scans for the doctors and took over repetitive screen reading. Humans made every diagnosis. That pattern, AI does the chore and people keep the judgment, is the same one you'll use at your desk."><span class="mark">A</span><span>Help doctors look; doctors made every call</span></button>
+          <button class="opt" data-correct="0" data-why="No. Radiologists made every diagnosis. The AI took the repetitive reading so their attention went where it mattered."><span class="mark">B</span><span>Replace the radiologists</span></button>
+          <button class="opt" data-correct="0" data-why="It helped find 29% more cancers. Every decision stayed with the doctors."><span class="mark">C</span><span>Only schedule the appointments</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 YOUR FIRST TRY ============ -->
+  <section class="slide on-light" id="s-first" data-count data-title="Your first try">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 05 · Your First Try</p>
+      <h2 class="h2" data-reveal>Build your first request. <em>Right now.</em></h2>
+      <p class="lead" data-reveal>The recipe for a good request is short: tell it the <b>job</b>, give it your <b>details</b>, and say what <b>shape</b> you want back. Build yours below. It assembles into a real prompt you can copy and use today in a Vanderbilt-approved tool.</p>
+
+      <div class="plan" id="firstPrompt" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Build · My first prompt</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the hardest part of starting is the empty box. You're about to leave with it already filled in. Nothing you type here is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <span class="plan__label"><b>1 · The job.</b> What should it do?</span>
+            <div class="plan__chips" id="fpTask" role="group" aria-label="Job">
+              <button class="opt" data-task="email"><span>Draft an email</span></button>
+              <button class="opt" data-task="summary"><span>Summarize something long</span></button>
+              <button class="opt" data-task="ideas"><span>Give me ideas</span></button>
+              <button class="opt" data-task="explain"><span>Explain something confusing</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <label for="fpDetail"><b>2 · Your details.</b> Who's it for, what's it about, what should it sound like?</label>
+            <input type="text" id="fpDetail" maxlength="200" placeholder="e.g. to my 6-person team, inviting them to a planning lunch Thursday, warm and casual" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · The shape.</b> What do you want back?</span>
+            <div class="plan__chips" id="fpFormat" role="group" aria-label="Shape">
+              <button class="opt" data-format="short"><span>Short and sweet</span></button>
+              <button class="opt" data-format="bullets"><span>A bulleted list</span></button>
+              <button class="opt" data-format="steps"><span>Step by step</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="fpBuild" disabled>Assemble my prompt</button>
+            <span class="quiz__progress" id="fpStatus">Pick a job, add your details, pick a shape</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="fpOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Where to actually go for your first try: use a Vanderbilt-approved tool. Microsoft Copilot signed in with your VU account is the safe default for work content. Open it, paste your prompt, press enter. Then remember the only two moves you need: if the answer is close, add one detail and ask again; if it's important, check it before you use it. Your first try will take under five minutes, and the second one will take two.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> reading about swimming isn't swimming. Your first try is one paste away.</p>
+          <ol class="steps">
+            <li>Copy your assembled prompt above.</li>
+            <li>Open Microsoft Copilot signed in with your VU account (or another Vanderbilt-approved tool), paste, and press enter.</li>
+            <li>Read the answer. Add one detail it was missing, ask again, and watch it improve. That's the whole skill.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 · MY FIRST TRY (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My first try">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Your commitment · My first try</p>
+      <h2 class="h2" data-reveal>One chore. One prompt. <em>One day.</em></h2>
+      <p class="lead" data-reveal>Reading about AI changes nothing; one real try changes everything. Name the chore, pick the superpower, pick the day. Nothing you type is saved or sent anywhere.</p>
+
+      <div class="plan" id="firstTry" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planTask"><b>1 · The chore.</b> One real task from your actual week:</label>
+            <input type="text" id="planTask" maxlength="140" placeholder="e.g. the monthly update email I always put off" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The superpower.</b></span>
+            <div class="plan__chips" id="planPower" role="group" aria-label="Superpower">
+              <button class="opt" data-power="draft"><span>Draft it</span></button>
+              <button class="opt" data-power="summarize"><span>Summarize it</span></button>
+              <button class="opt" data-power="brainstorm"><span>Brainstorm it</span></button>
+              <button class="opt" data-power="explain"><span>Explain it</span></button>
+              <button class="opt" data-power="rewrite"><span>Rewrite it</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · When?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="When">
+              <button class="opt" data-when="today"><span>Today</span></button>
+              <button class="opt" data-when="tomorrow"><span>Tomorrow morning</span></button>
+              <button class="opt" data-when="week"><span>This week</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all three parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go make your <em>first try</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You know what AI is, how to talk to it, when to keep things out of it, what it can do, and you're holding a prompt you built yourself. The distance between you and "someone who uses AI" is one paste.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step</span><span class="vidcard__dur">Per your card</span></div>
+        <h3>Run the prompt you built, on the chore you named</h3>
+        <p>Open a Vanderbilt-approved tool, paste your prompt, press enter. Add one detail, ask again. Check anything important. Then notice the time you just got back. That's yours now, every week. When this starts to feel easy, AI 201 in the Course Library is the next step.</p>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the first-try card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+<!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Ask. Look. Improve. Check.</p>
+      </div>
+      <div>
+        <h4>The five ideas</h4>
+        <ul>
+          <li><a href="#s-what">What Is AI?</a></li>
+          <li><a href="#s-how">Why &amp; How We Use It</a></li>
+          <li><a href="#s-when">When Not To</a></li>
+          <li><a href="#s-cando">What It Can Do</a></li>
+          <li><a href="#s-first">Your First Try</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My First Try</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../../courses/ai-advanced/">Next course: AI 201</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Start Smarter · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=13"></script>
+</body>
+</html>

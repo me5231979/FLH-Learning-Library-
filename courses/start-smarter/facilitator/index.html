@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start Smarter: Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="A very first introduction to AI for people who have never used it: what AI is, why and how we use it, when to use it and when not to, what it can do for you, and your first try today.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Start Smarter | Vanderbilt Learning Series">
+<meta property="og:description" content="Never used AI? Start here: what it is, how to use it, when not to, and your first try today. No jargon, no code.">
+<meta property="og:url" content="../../../courses/start-smarter/">
+<meta property="og:image" content="../../../courses/start-smarter/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Start Smarter | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/start-smarter/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=12">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  flex: none; /* below 1200px the slide is a column flexbox; without this the notes panel (a scroll container, so min-height: 0) collapses to a sliver */
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-what">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-what">What Is AI</a>
+    <a href="#s-how">How to Use It</a>
+    <a href="#s-when">When Not To</a>
+    <a href="#s-cando">What It Can Do</a>
+    <a href="#s-first">Your First Try</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle">Welcome</span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 19</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (63 min) or Core (30 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions (classroom and /web/) start to finish, doing every exercise.</li><li>Rehearse the live demo once: type a deliberately vague request into Copilot, then improve it with the room's details. Know what 'bland' looks like so you can count on it.</li><li>Make your own first try on a real chore if you haven't. Your story of it ('took me four minutes, the follow-up fixed the tone') is the most persuasive slide you have.</li><li>Decide your path: Full (60) or Core (30, the lunch-and-learn length).</li><li>Remember who this room is: people who may feel behind, embarrassed, or skeptical. The session's real job is removing fear.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Sign into the approved AI tool and leave the tab ready.</li><li>Print 5 to 10 cheat sheets and first-try cards.</li><li>Re-read the tough-questions bank; say the 'is AI going to take my job?' response out loud once.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a round of Is That AI?).</li><li>Set the tone in your head: this is the friendliest hour in the catalog. No jargon leaves your mouth today.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A Vanderbilt-approved AI tool (Copilot, VU sign-in) open in a second tab for the live demo</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed first-try cards (worksheet.html) as the no-device and projector-failure fallback</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: the one-sentence definition, the three steps, the traffic light, and the five superpowers all work on a whiteboard. The trainers run verbally with hands-up voting; the first try moves to the printed card.</div><div class="brief__row"><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: trainers on the projector with the room voting out loud, prompt builder as a fill-in-the-blanks on the whiteboard, commitment on the printed card. You lose typing, not learning.</div><div class="brief__row"><b>If Nobody in the room can access an approved AI tool for the live try:</b> You demo on the projector with THEIR prompts: collect two built prompts from the room, run them live on your machine, improve each with one follow-up the room chooses. The first try becomes homework with the card; the pulse email catches it.</div><div class="brief__row"><b>If Someone is visibly anxious or says 'I'm too old for this / not a tech person':</b> The reframe that works: 'You already use AI every day: your phone's word suggestions, your spam filter. Today is just learning to use it on purpose.' Then make sure their first try lands in the room; success beats reassurance.</div><div class="brief__row"><b>If An experienced AI user is bored or starts adding advanced caveats:</b> Honor and redirect: 'That's exactly right, and it's AI 201 material: the sequel is in the Course Library.' Deputize them as a table helper for the prompt-builder moment; teaching beginners keeps experts happy.</div><div class="brief__row"><b>If Fear talk takes over ('AI is dangerous / taking jobs / stealing data'):</b> Don't dismiss, anchor: the traffic light exists exactly because the concerns are partly right. 'The risks are real, which is why we use approved tools and keep people-data out. The skill you're learning today IS the safe version.' Park policy debates; route them to the official channels.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Is AI going to take my job?</summary><p>AI takes over chores, not judgment: drafts, summaries, first passes. What history shows with tools like this is that people who use them become more valuable, not less. Today's hour is exactly that move: you're not competing with AI after this session, you're the person in your office who knows how to use it safely.</p></details><details class="brief__q"><summary>Is it cheating to use AI for my work emails?</summary><p>Is spellcheck cheating? Is asking a colleague to read your draft cheating? AI is a drafting tool; the thinking, the facts, and the final call stay yours. The professional standard is simple: you review everything, you check what matters, and your name means you stand behind it. Passing off unchecked AI output as finished work: that's the actual mistake.</p></details><details class="brief__q"><summary>Where does what I type actually go?</summary><p>It depends entirely on the tool, and that's the whole point of the yellow light. Random free websites may keep and learn from what you type. Vanderbilt-approved tools like Copilot with your VU sign-in have contractual protections for work content. That's why internal content only goes in approved tools, and private information about people goes in none of them.</p></details><details class="brief__q"><summary>How do I know if the answer is true?</summary><p>Assume it's a confident draft, not a verified fact. For anything that matters, a date, a number, a name, a claim you'll repeat, check the source the way you would if a smart new colleague told you something surprising. The tool is at its safest on tasks where truth isn't the question: drafting, rewording, brainstorming, explaining.</p></details><details class="brief__q"><summary>Which tool should I actually use?</summary><p>For work content: Microsoft Copilot signed in with your VU account: that sign-in is what makes it yellow-light safe. For public, generic questions, approved tools of your choice. If you're unsure whether a tool is approved, that uncertainty IS your answer: use Copilot or ask IT.</p></details><details class="brief__q"><summary>I tried ChatGPT once and the answer was wrong or useless. Why bother?</summary><p>One try with one vague question is like judging email by one message. Two fixes change everything: give it details (who it's for, what it's about, how it should sound), and use the follow-up: tell it what was wrong and watch it fix its own draft. The trainer in Idea 02 exists because the second message is where the tool gets good.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Start Smarter session. Nothing to read and nothing to install. Just bring one thing: a chore from your normal week that involves words: an email you put off, a long document you need to digest, anything you'd love to hand to an assistant. You'll use it in the session. If you've never touched an AI tool, you're exactly who this hour is for.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the first try happen? Two quick lines, reply whenever: 1) Did you run the prompt you built, on the chore you named? 2) Did the follow-up trick (add one detail, ask again) make it better? Replies come to me only. Not yet? Your card still works, this note is your nudge, and the whole thing takes five minutes.</p></details><details class="brief__q"><summary>Graduation note (send to confident finishers)</summary><p>Subject: Ready for the next gear? You've made your first tries and the traffic light is a habit. AI 201: Beyond the Basics is the sequel: why tools 'forget,' where answers actually come from, and how to build a governed AI workflow for a recurring task. It's in the Course Library, same format, no code: ../../../</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did you make your first try? What was the chore, and did the follow-up trick work?' The count of completed first tries is the program's headline metric: this course exists to convert non-users into first-time users. Route the confident ones to AI 201 in the Course Library.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 63 min · Core 30</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Start Smarter session. Nothing to read and nothing to install. Just bring one thing: a chore from your normal week that involves words: an email you put off, a long document you need to digest, anything you'd love to hand to an assistant. You'll use it in the session. If you've never touched an AI tool, you're exactly who this hour is for.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR (classroom only) ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join" data-classroom>
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. If you have never touched an AI tool in your life, you are exactly who this hour is for.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>5</b> Simple ideas</div>
+        <div><b>60</b> Minutes (30 core)</div>
+        <div><b>1</b> First try you'll make this week</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the tone: the friendliest hour in the catalog, built for absolute beginners.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code, it brings this whole session to your seat. Quick promise before we start: this is the beginner hour. No jargon, no code, no assumptions, and no question is too basic. If you have never touched an AI tool in your life, you are not behind, you are exactly who this session is for, and you'll make your first try before the week is out.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Say the safety line early: no jargon today, no question too basic, and nobody will be asked to know anything.</li><li>Confirm by show of hands that most of the room has the site open before advancing.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Show of hands, totally judgment-free: who here has never used ChatGPT, Copilot, or any AI chat tool, or tried once and quietly gave up?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A third to half the room, sometimes sheepishly</li><li>A few 'tried once and gave up' confessions</li><li>Some experienced users too</li></ul><p class="facnote__mini">Respond: Thank the honest hands warmly: 'Perfect: this hour was built for you.' To the experienced: 'You're my table helpers today, and AI 201 is your course; it's in the library.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device.</p><p class="facnote__meta"><b>Watch for:</b> The person hanging back who 'isn't a tech person.' Make eye contact, smile, and remember them for the first-try moment: their success is the session's best story.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's everything you'll walk out with.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the no-jargon promise, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="What you'll get">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_200652_7fda2f74-e2d3-4922-aa82-3538078520e3.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_200704_f9a658ba-e21b-49d3-a82d-e24e4dca5641.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260715_200712_13c7a9d0-fc12-4c9b-b14d-7666faaac7f5.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Start Smarter · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>Never used AI?<br><em class="gold-text">Start here.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">No jargon, no code, no assumptions. In the next half hour you'll learn what AI actually is, how to talk to it, when to keep things away from it, and you'll build your first request, ready to try today.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Say what AI is in one plain sentence, and spot it in tools you already use every day</li>
+          <li>Ask AI for help in ordinary English, and make the answer better with one follow-up</li>
+          <li>Know the traffic-light rule: what's fine to ask, what needs an approved tool, what never goes in</li>
+          <li>Name five everyday chores AI can take off your plate</li>
+          <li>Make your first try this week, with a starter prompt you build today and keep</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Artificial Intelligence</span>
+        <span class="skillpill">Digital Fluency/Information Literacy</span>
+        <span class="skillpill">Data Security</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-what">Begin</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: five plain-language abilities, ending in a real first try with a prompt they build themselves.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five things in the next hour. You'll be able to say what AI is in one sentence, no buzzwords. You'll know how to ask it for help in ordinary English, and the one trick that makes answers good. You'll know the traffic light: what's fine, what needs an approved tool, what never goes in. You'll know the five chores it does best. And before we're done, you'll build your first request for a real chore from your real week, and copy it, ready to use.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the five objectives in plain language, unhurried.</li><li>Land on the last one: you leave with a real prompt you built, for a real chore, with a day attached.</li><li>Point at the skills row once: this course carries real skill credit in the library.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what they'll leave with (a prompt they built + a first try scheduled).</p><p class="facnote__meta"><b>Watch for:</b> Don't oversell or speed up; calm confidence is the register for beginners.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The whole plan fits on one slide.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 5 out loud; the rest on screen.</p></aside>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and your first try with AI this week is exactly the kind of small dare it means.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: the five chores you'll practice today, drafting, summarizing, and rewriting among them, are where that speed actually starts.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: bold bets are paid for in hours, and the hour AI hands you back on a summary or a first draft is an hour the university can spend on something new.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: the traffic-light rule, green goes in, red never does, is what careful AI use looks like when other institutions study how Vanderbilt works.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition includes the ordinary work on your desk, and a first draft that takes four minutes instead of forty is execution. The traffic-light rule keeps every one of those wins safe enough to count.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Anchor the hour in the institutional why: the Chancellor's vision makes a beginner's first AI try part of how the university grows.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;One minute on why Vanderbilt cares about this hour. Chancellor Diermeier's vision is a single sentence: Vanderbilt will define the great university of the 21st century, and be it. Doing that takes speed and careful bets, and both are made of ordinary work: the drafts, summaries, and rewrites on desks like yours. Your first try this week is a small piece of that. Our motto is literally 'dare to grow.'&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence off the slide verbatim; let it land before you talk.</li><li>Walk the three focus cards left to right, one breath each, ending on the 'At your desk' line.</li><li>Point at the flywheel card and keep it plain: good work builds reputation, reputation brings resources, and safe everyday AI use is part of good work. Don't teach it; move.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the why over our shoulder. Here's the plan for the hour.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: read the vision sentence, gesture at the three focus areas, move on; under a minute.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The whole plan</p>
+      <h2 class="h2" data-reveal>Five ideas. <em>That's it.</em></h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>What is AI?</h3><p>One plain sentence, plus proof you've been using it for years.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Why and how do we use it?</h3><p>You type in ordinary English. It answers. You make it better with one follow-up.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>When to use it, and when not to</h3><p>The traffic light: green, yellow, red. Three seconds that keep you safe.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>What can it do for you?</h3><p>Five superpowers: draft, summarize, brainstorm, explain, rewrite.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>Your first try</h3><p>Build a real request, copy it, and use it this week.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the five ideas once so the room sees how small the mountain actually is.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five ideas. That's the whole course: what AI is, how to use it, when not to, what it can do for you, and your first try. Small mountain.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the five items in one breath each.</li><li>Name the shape out loud: what it is, how to use it, when not to, what it does, then you try it.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every idea has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Idea one: and I promise it fits in one sentence.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 WHAT IS AI ============ -->
+  <section class="slide on-light" id="s-what" data-count data-title="What is AI?">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 01 · What is AI?</p>
+      <h2 class="h2" data-reveal>One sentence, <em>no jargon</em>.</h2>
+      <p class="lead" data-reveal>AI is a computer program that learned from millions of examples. Because it learned instead of following fixed rules, it can predict, suggest, and write things that fit your situation. It isn't a robot or magic, and it isn't always right either.</p>
+
+
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/Ok-xpKjKp2g" data-yttitle="How AI works, a plain-language introduction">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: How AI Works (2 min, plain language)</span>
+          <span class="yt__src">Code.org · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=Ok-xpKjKp2g" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the friendliest short explanation on the internet, made for total beginners. No technical background needed.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Think of AI as a very well-read assistant: fast, tireless, eager to help, and occasionally wrong in a confident voice. The distinction worth keeping: a regular program follows rules a person wrote, which is why a calculator never surprises you. AI learned patterns from examples, which is why your phone's word suggestions surprise you daily. The chat tools everyone is talking about, like Microsoft Copilot or ChatGPT, are that same word-suggestion idea trained on so much text that it can draft emails, summarize documents, and explain almost anything. Once you see that, most of the mystery is gone.</p></div>
+          <div class="deeper__ask" data-classroom><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing the room name AI they already use dissolves the intimidation faster than any definition.</p>
+          <ol class="steps">
+            <li>Shout-out round: name one thing on your phone that guessed something about you this week.</li>
+            <li>Facilitator lists them, then points at the list: "You aren't AI beginners. You're experienced users who never got the name tag."</li>
+          </ol></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> spotting AI in your own day makes the definition stick.</p>
+          <ol class="steps">
+            <li>Look at your phone. Find two things on it that learned from examples: word suggestions, photo face-grouping, map routes, music picks.</li>
+            <li>Say the sentence once: "AI is a program that learned from examples." That's the whole foundation.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Land the one-sentence definition (a program that learned from examples) and dissolve intimidation by proving everyone already uses AI daily.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole definition, one sentence: AI is a computer program that learned from millions of examples, so instead of following fixed rules, it can predict, suggest, and write things that fit your situation. That's it. It's not a robot. It's not magic. And it's not always right, think of it as a very well-read assistant: fast, tireless, eager to help, and occasionally confidently wrong. Now the fun part: you've been using AI for years. Let's prove it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Deliver the one-sentence definition slowly, twice: a program that learned from millions of examples.</li><li>Land the three nots: not a robot, not magic, not always right.</li><li>Run the group shout-out from Go deeper: name one thing on your phone that guessed something about you this week.</li><li>Land the reframe: you aren't AI beginners; you're experienced users who never got the name tag.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Name one thing on your phone that guessed something about you this week.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Word suggestions while texting</li><li>Maps rerouting, music and show recommendations</li><li>Photos grouping faces, spam filtering</li></ul><p class="facnote__mini">Respond: List them fast, then point at the list: 'Every one of those learned from examples. You aren't AI beginners: you're experienced users who never got the name tag. Today we just make it deliberate.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">A program that learned from examples: capable because it learned, fallible because it guesses. Both halves matter all session.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; the shout-out round produces at least four examples.</p><p class="facnote__meta"><b>Watch for:</b> Jargon creeping into YOUR mouth ('model,' 'training data,' 'LLM'). The discipline of this session is saying 'it learned from examples' every single time.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now prove to yourselves you've been using it for years. Next screen: the game.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: definition + three nots, trainer as a fast room vote, shout-out becomes one example from you.</p></aside>
+  </section>
+
+  <section class="slide on-light slide--play" id="s-what-play" data-title="Idea 01 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 01 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Is that AI? Call all five.</h2>
+      <div class="quiz" id="isAI" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Is that AI?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the fastest way to make AI feel less mysterious is to notice you've already been using it for years. Here are five everyday things. Call each one.</p>
+        <p class="quiz__progress" id="iaProgress"></p>
+        <p class="quiz__q" id="iaQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="iaOptions" role="group" aria-label="Choices"></div>
+        <p class="quiz__feedback" id="iaFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="iaNext" style="visibility:hidden">Next one</button>
+        </div>
+        <div id="iaResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One scored rep of the definition: learned-from-examples versus regular program, on five everyday things.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five everyday things. For each one: did it learn from examples, or is it following rules a person wrote? Call it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Send them to their devices: five everyday things, call each one.</li><li>Run it as a room vote if devices are down; hands for 'AI' versus 'regular program.'</li><li>The calculator item is the teaching moment: fixed rules never surprise you; learned patterns do.</li></ol></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 for most of the room.</p><p class="facnote__meta"><b>Watch for:</b> Anyone scoring 2 or less quietly: the debrief line ('learned = AI') usually fixes it on the retry.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So AI is already in your pocket. One more sentence before we learn to drive it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: run it as a fast room vote on the projector.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>You don't need to know how the engine works to drive the car.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give beginners explicit permission to use AI without understanding its internals. This one line removes the biggest hidden barrier in the room: the belief that AI is for technical people.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You don't need to know how the engine works to drive the car. Here's what that means. Every one of us drove or rode here today, and almost none of us could explain a combustion engine, and that's fine, because driving and engineering are different skills. AI is the same. Asking it for help, reading the answer, making it better: that's driving, and you'll be doing it within the hour. How it works inside is engineering, and it's genuinely optional. If anyone in this room has been thinking 'I'm not a tech person, this isn't for me,' this sentence is for you. You don't need to be. You just need a steering wheel, and we're about to hand you one. One honest footnote: drivers do follow rules of the road, and AI has three. They're colors, they take three seconds, and they're coming up right after you learn to drive.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes, then read it once, slowly.</li><li>Explain what it means in one breath: millions of people drive safely every day without being able to explain a combustion engine. Using a tool well and understanding its insides are two different skills, and today only asks for the first one.</li><li>Map the analogy for them explicitly: the car is the AI tool. Driving is asking, reading the answer, and improving it. The rules of the road are the traffic light coming two slides from now. The engine (how AI works inside) is a fine thing to learn someday, and AI 201 teaches it, but nobody needs it to get to work today.</li><li>Name who the line is for: anyone in the room quietly thinking 'I'm not a tech person.' This sentence is the course giving them permission to start anyway.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick show of hands: who here can explain exactly how their car engine works? And who drove here anyway?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>One or two engine hands, the whole room on the second question</li><li>Laughter, which is the point</li><li>Someone jokes about electric cars</li></ul><p class="facnote__mini">Respond: Land it gently: 'That gap between the two hands is exactly the permission slip this course runs on. Competence first. Curiosity about the engine later, if you want it. AI 201 pops the hood.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Using AI well is a driving skill, not an engineering skill. The rules of the road come next.</p></div><p class="facnote__meta"><b>Validate:</b> Ask for a nod: does anyone here understand their car engine? Almost nobody. Do you all drive? Everybody. Point made.</p><p class="facnote__meta"><b>Watch for:</b> The one caveat worth saying if an expert pushes back: drivers still follow rules of the road. The line doesn't mean 'use it carelessly.' It means the safety rules (coming next) are learnable in minutes, while engine knowledge is optional.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;So let's drive. Here's how you actually use it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: read the line, give the one-breath explanation, move on. Keep the explanation even at 30 minutes; it does real work for nervous beginners.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 WHY & HOW ============ -->
+  <section class="slide on-dark" id="s-how" data-count data-title="How to use it">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 02 · Why &amp; How</p>
+      <h2 class="h2" data-reveal>Type like you'd text <em>a helpful person</em>.</h2>
+      <p class="lead" data-reveal>Why do people use AI? Because it takes the chores that eat your day (first drafts, long documents, blank pages) and does them in seconds. Federal Reserve researchers found that workers who use it are already saving around two hours a week. And the how is easier than you'd guess. Nothing to install, nothing to memorize. You type what you need in plain English, like texting a very capable assistant, and it answers. When the answer isn't quite right, you don't start over. You just tell it what to fix.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Step 1 · Ask</span>
+          <h3>Plain English</h3>
+          <p class="muted">"Write a short, friendly email inviting my team to a planning lunch on Thursday." Full sentences. Details welcome. No magic words needed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Step 2 · Look</span>
+          <h3>Read what came back</h3>
+          <p class="muted">It answers in seconds. Usually good, sometimes off. Either way, you're not done yet, and neither is it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Step 3 · Improve</span>
+          <h3>One follow-up</h3>
+          <p class="muted">"Warmer." "Shorter." "Mention the RSVP deadline." It rewrites instantly, and it never gets tired of feedback. This step is where it gets good.</p>
+        </div>
+      </div>
+
+
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two habits carry beginners a long way. First, details make the difference: "write an email" gets you something generic; "write a warm, three-sentence email to my six-person team about Thursday's planning lunch" gets you something usable. Second, treat the first answer as a draft, always. AI writes the draft, and you stay the editor. It sounds confident even when it's wrong, so anything important (a date, a number, a name, a fact you'll repeat) gets checked by you before your name goes on it.</p></div>
+          <div class="deeper__ask" data-classroom><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> watching one request improve live, on the projector, teaches the two-step better than any slide.</p>
+          <ol class="steps">
+            <li>Facilitator opens an approved AI tool on screen and types a deliberately vague request: "write an email about the meeting."</li>
+            <li>The room critiques the bland result, then shouts details to add. Type their exact words as the follow-up.</li>
+            <li>Watch it improve. Name the lesson: same tool, better conversation.</li>
+          </ol></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> one real ask-look-improve loop teaches more than an hour of reading about it.</p>
+          <ol class="steps">
+            <li>Think of one email or note you need to write anyway this week.</li>
+            <li>Jot down the plain-English request you'd type, including two details: who it's for and what it should sound like.</li>
+            <li>Keep it. You'll build the real thing in Idea 05.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the three-step loop (ask in plain English, look, improve with one follow-up): the single skill that separates people who love AI from people who gave up.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Why do people use this? Because it takes the chores that eat your day (first drafts, long documents, blank pages) and does them in seconds. And how? You type what you need in ordinary English, like texting a very capable assistant. Full sentences, details welcome, no magic words. Then the part almost nobody tells beginners: when the answer isn't quite right, you don't start over and you don't give up. You just tell it what to fix. 'warmer,' 'shorter,' 'mention the deadline': and it rewrites instantly. Watch this live.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards: ask in plain English, look at the draft, improve with one follow-up. Stress: nothing to install, nothing to memorize.</li><li>Run the live demo on the projector: type a deliberately vague request into the approved tool, let the room see the bland result, then type their suggested details as the follow-up and watch it improve.</li><li>Land the two habits from Go deeper: details make the difference, and the first answer is always a draft.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;During the demo: this answer is bland. What details should I add? Shout them out.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Who it's for, what it's about</li><li>Make it friendly / shorter / add the date</li><li>Someone dictates a full sentence: type it verbatim</li></ul><p class="facnote__mini">Respond: Type their exact words, send, and let the improvement land in silence for a beat. Then: 'Same tool. Better conversation. That's the entire skill, and you all just did it.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Ask, look, improve. And the quiet fourth step that keeps you safe: check anything important, because confident and correct are not the same thing.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the room visibly reacts to the live demo's before/after.</p><p class="facnote__meta"><b>Watch for:</b> Beginners concluding the vague first answer means the tool is bad. Narrate explicitly: 'Same tool, better conversation: the second message is the skill.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Your turn. Five moments, five moves: next screen.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: three cards fast, demo shrinks to one exchange, trainer as room vote.</p></aside>
+  </section>
+
+  <section class="slide on-dark slide--play" id="s-how-play" data-title="Idea 02 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 02 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Pick the next move.</h2>
+      <div class="quiz" id="followUp" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Pick the next move</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference between people who love AI and people who gave up after one try is what they did with the SECOND message. Five moments. Pick the move for each.</p>
+        <p class="quiz__progress" id="fuProgress"></p>
+        <p class="quiz__q" id="fuQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="fuOptions" role="group" aria-label="Next move choices"></div>
+        <p class="quiz__feedback" id="fuFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="fuNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="fuResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One scored rep of the ask-look-improve loop, especially the follow-up habit that separates users from quitters.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five moments where the first answer wasn't perfect. Pick what a confident user does next. Notice how often the answer is just 'tell it what to fix.'&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Send them to their devices: five moments, pick the best next move.</li><li>Item 4 (the wrong date) plants the fact-checking habit; name it in the debrief.</li><li>Collect one aha out loud at the end.</li></ol></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 for most of the room.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;You now know how to drive. Time for the rules of the road.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: run it as a fast room vote on the projector.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 WHEN & WHEN NOT ============ -->
+  <section class="slide on-cream" id="s-when" data-count data-title="When not to">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 03 · When &amp; When Not</p>
+      <h2 class="h2" data-reveal>The traffic light. <em>Three seconds.</em></h2>
+      <p class="lead" data-reveal>AI is great for drafts, ideas, summaries, and explanations. It is not the place for private information about real people, and it's not a decision-maker. Before you paste anything, one three-second question: what color is this?</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal style="border-top:3px solid #8BA18E">
+          <span class="tag">🟢 Green · Go ahead</span>
+          <h3>Public or generic</h3>
+          <p class="muted">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool, any time.</p>
+        </div>
+        <div class="card" data-reveal style="border-top:3px solid #ECB748">
+          <span class="tag">🟡 Yellow · Approved tools only</span>
+          <h3>Internal work content</h3>
+          <p class="muted">Your drafts, internal announcements, work documents. Fine, but ONLY in Vanderbilt-approved tools like Copilot signed in with your VU account. Never a random free website.</p>
+        </div>
+        <div class="card" data-reveal style="border-top:3px solid #c76b5a">
+          <span class="tag">🔴 Red · Keep it out</span>
+          <h3>Private info about people</h3>
+          <p class="muted">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop. Describe the situation without names, or don't.</p>
+        </div>
+      </div>
+
+
+
+
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Why the caution about facts? AI predicts what a good answer LOOKS like, and sometimes it produces something that looks right but isn't. It might cite a book that doesn't exist, or state a date with total confidence and be a year off. The professionals' habit is simple: use AI freely for drafts and ideas, where being wrong costs nothing, and verify anything you'll repeat, publish, or decide on. Decisions about people (hiring, grading, evaluations) stay with people. AI can inform your thinking, but it doesn't get a vote.</p></div>
+          <div class="deeper__ask" data-classroom><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> practicing the color call out loud, on the room's own examples, turns the poster into a reflex.</p>
+          <ol class="steps">
+            <li>Popcorn round: each person names one task from their real week they might hand to AI.</li>
+            <li>The room calls the color: green, yellow, or red. Debate the borderline ones; the debate IS the learning.</li>
+            <li>End on the rule: when in doubt, leave the names and details out.</li>
+          </ol></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> the color call only helps if you make it on YOUR tasks.</p>
+          <ol class="steps">
+            <li>Think of three things from your real week you might hand to AI.</li>
+            <li>Call the color on each. When in doubt: leave the names and details out.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the traffic light as a three-second reflex (green/yellow/red) plus the fact-checking habit: the session's entire safety payload.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;AI is wonderful for drafts, ideas, summaries, and explanations. It is not the place for private information about real people, and it's not a decision-maker. So here's the only safety system you need, and it takes three seconds: before you paste anything, ask: what color is this? Green: public or generic, go ahead. Yellow: internal work content: fine, but only in Vanderbilt-approved tools, like Copilot signed in with your VU account. Never a random free website. Red: private information about real people: names with grades, health details, personnel issues. That never goes in. Describe the situation without the names, or don't use AI for it. Let's practice until it's a reflex.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards slowly; this is the most important slide of the hour.</li><li>Make yellow concrete: name the approved tool (Copilot with VU sign-in) and the anti-example (a random free website).</li><li>Make red vivid: names with grades, health, personnel issues. The fix: describe the situation without names, or don't.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Popcorn round: name a real task from your week, and the room calls the color.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Easy greens: icebreakers, explanations, generic drafts</li><li>Yellows: internal announcements, meeting notes</li><li>A juicy borderline: 'summarize my performance review notes'</li></ul><p class="facnote__mini">Respond: Let the room rule; only referee. On the borderline one: 'Hear the debate? That hesitation is the skill working. When in doubt: leave the names and details out: or leave it out entirely.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three colors, three seconds, plus one more habit: check any fact that matters, because AI sounds confident even when it's wrong. That's the entire safety course.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; quick check correct; the popcorn round shows the room calling colors without your help.</p><p class="facnote__meta"><b>Watch for:</b> The borderline debates ARE the learning: let two run for thirty seconds each. And keep the tone empowering, not scary: the light exists so they can use AI confidently, not so they fear it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Time to drill it. Five situations: call the color.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: three cards + trainer stay (this is the safety payload), quick check stays, popcorn round becomes two examples.</p></aside>
+  </section>
+
+  <section class="slide on-cream slide--play" id="s-when-play" data-title="Idea 03 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 03 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Green, yellow, or red?</h2>
+      <div class="quiz" id="lightJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Green, yellow, or red?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> this one habit prevents nearly every AI mistake that makes the news. Five real situations. Call the color on each.</p>
+        <p class="quiz__progress" id="ljProgress"></p>
+        <p class="quiz__q" id="ljQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="ljOptions" role="group" aria-label="Color choices"></div>
+        <p class="quiz__feedback" id="ljFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="ljNext" style="visibility:hidden">Next situation</button>
+        </div>
+        <div id="ljResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 3</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Drill the traffic light to reflex on five real situations, then lock the fact-checking rule with the quick check.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five real situations. Three seconds each: green, yellow, or red? The one you hesitate on is the one worth talking about.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Send them to their devices: five situations, call the color.</li><li>The performance-review item is the discussion magnet; let the debate run thirty seconds.</li><li>Run the quick check on the same screen: the other big don't is trusting unchecked facts.</li></ol></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 and a correct quick check.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Rules down. Now the fun part: what this thing can actually do for you.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at nearly full length; this is the safety payload.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 WHAT IT CAN DO ============ -->
+  <section class="slide on-dark" id="s-cando" data-count data-title="What it can do">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 04 · What It Can Do</p>
+      <h2 class="h2" data-reveal>Five superpowers, <em>zero code</em>.</h2>
+      <p class="lead" data-reveal>You don't need a list of a hundred uses. You need five, and you'll recognize the chores they eat: <b>Draft it</b> (first versions of anything), <b>Summarize it</b> (long thing → short thing), <b>Brainstorm it</b> (ten ideas in ten seconds), <b>Explain it</b> (jargon → plain English), and <b>Rewrite it</b> (same facts, different tone or length).</p>
+
+
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
+        <span class="tag">What it can't do</span>
+        <p style="margin:.5rem 0 0;color:rgba(255,255,255,.85)">It can't know what happened in your meeting this morning, and it can't take responsibility for what goes out under your name. That part stays yours. AI does the chore, you do the judgment, and that division of labor is the whole arrangement.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>A realistic first month looks like this: week one, you draft two emails and summarize one long document. Week two, you brainstorm names for something and ask it to explain an acronym-filled message. By week four, you reach for it without thinking, the way you reach for search. In a 2024 Federal Reserve Bank of St. Louis survey, workers using these tools reported saving about 5% of their work hours, roughly 2.2 hours in a 40-hour week. The savings start with the first email.</p></div>
+          <div class="deeper__ask" data-classroom><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the room's own chores are more convincing than any example on a slide.</p>
+          <ol class="steps">
+            <li>Pairs: each person names the ONE chore from their week they'd most love to hand off.</li>
+            <li>Partner matches it to a superpower: draft, summarize, brainstorm, explain, or rewrite.</li>
+            <li>Collect five out loud. That list is the room's homework menu.</li>
+          </ol></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> your first try should be a chore you already resent. Pick it now.</p>
+          <ol class="steps">
+            <li>Name the one chore from your week you'd most love to hand off.</li>
+            <li>Match it to its superpower. That's your first try, and the request for it gets built two slides from now.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the five superpowers (draft, summarize, brainstorm, explain, rewrite) and get every learner to pick the chore for their first try.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You don't need a list of a hundred AI uses. You need five, and you already recognize the chores they eat. Draft it: the email you've been putting off. Summarize it: the fourteen-page PDF and the four minutes you have. Brainstorm it: ten name ideas in ten seconds, you keep the two good ones. Explain it: the jargon-filled IT instructions, translated to human. Rewrite it: same facts, friendlier voice, half the length. And the honest card: it can't know what happened in your meeting, can't be trusted blind on facts, and can't take responsibility. It does the chore. You do the judgment.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Name the five superpowers with one everyday example each; keep the language chore-shaped, not tech-shaped.</li><li>Read the 'what it can't do' card out loud. That honesty earns trust: no knowledge of your morning, no blind trust on facts, no responsibility.</li><li>Run the pair round from Go deeper: the ONE chore you'd most love to hand off, matched to its power.</li><li>Tell them to hold onto that chore: the next slide builds the request for it.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;The one chore from your week you'd most love to hand off: what is it, and which superpower eats it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Status emails and updates → Draft it</li><li>Long documents and policies → Summarize it</li><li>Naming things, meeting ideas → Brainstorm it</li></ul><p class="facnote__mini">Respond: Collect a handful and match them out loud, fast and affirming. Then: 'Hold onto yours. In two minutes you're building the exact request for it.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Five superpowers, one honest boundary: AI does the chore, you do the judgment. And everyone in this room just picked their first chore.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; every learner has named their chore (it feeds the first-try builder).</p><p class="facnote__meta"><b>Watch for:</b> Vague chores ('emails, I guess'). Push gently for THE one: the monthly update they dread, the policy doc they never read. Specific chores make real first tries.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Your turn to match. Five chores: next screen.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: five powers in one breath each, trainer as room vote, pair round becomes a ten-second silent pick.</p></aside>
+  </section>
+
+  <section class="slide on-dark slide--play" id="s-cando-play" data-title="Idea 04 · Play">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 04 · Play</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Match the chore to the superpower.</h2>
+      <div class="quiz" id="superPower" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Match the superpower</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> once you can match the chore to the superpower, you'll start seeing AI-shaped chores everywhere. Five real situations. Pick the power for each.</p>
+        <p class="quiz__progress" id="spProgress"></p>
+        <p class="quiz__q" id="spQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="spOptions" role="group" aria-label="Superpower choices"></div>
+        <p class="quiz__feedback" id="spFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="spNext" style="visibility:hidden">Next chore</button>
+        </div>
+        <div id="spResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One scored rep matching real chores to the five superpowers, priming each learner's own first-try chore.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five chores you'll recognize. Match each to its superpower, and while you play, keep asking: which chore of mine is next?&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Send them to their devices: five chores, pick the power.</li><li>As they finish, ask them to silently pick THEIR chore for the first try.</li><li>Collect two or three chores out loud with their matched power.</li></ol></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5; every learner has a chore in mind.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Hold that chore. First, sixty seconds on why this is bigger than saved time.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: run it as a fast room vote on the projector.</p></aside>
+  </section>
+
+  <!-- ============ 8 · THE IMPACT ============ -->
+  <section class="slide on-cream" id="s-impact" data-count data-title="The impact">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The bigger picture · Why this is worth learning</p>
+      <h2 class="h2" data-reveal>This is already changing <em>real lives</em>.</h2>
+      <p class="lead" data-reveal>Workers who use these tools save about 2.2 hours a week, per a <a href="https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity" target="_blank" rel="noopener">2024 Federal Reserve survey</a>. And the same technology behind your first email draft is doing some remarkable good in the world.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Health</span>
+          <h3>Finding cancer earlier</h3>
+          <p class="muted">In a Swedish trial of 105,000 women (<a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00267-X/fulltext" target="_blank" rel="noopener">The Lancet Digital Health</a>), AI-supported screening found 29% more cancers and cut scan-reading workload 44%. Doctors made every call.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Accessibility</span>
+          <h3>Describing the world for blind users</h3>
+          <p class="muted"><a href="https://www.bemyeyes.com/news/introducing-be-my-ai-formerly-virtual-volunteer-for-people-who-are-blind-or-have-low-vision-powered-by-openais-gpt-4/" target="_blank" rel="noopener">Be My Eyes</a> lets a blind person photograph anything (a menu, a label, the fridge) and hear what it says in seconds. The demo is on the next screen.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Voice</span>
+          <h3>Giving voices back</h3>
+          <p class="muted">People losing speech to ALS bank recordings, and AI rebuilds their voice so they keep speaking as themselves. Free through <a href="https://bridgingvoice.org/news/elevenlabs-bridging-voice-partnership/" target="_blank" rel="noopener">Bridging Voice and ElevenLabs</a>.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Communication</span>
+          <h3>A drafting partner for autistic adults</h3>
+          <p class="muted">Researchers <a href="https://arxiv.org/html/2601.17946v1" target="_blank" rel="noopener">studying autistic professionals</a> found many use AI to draft messages and decode workplace phrasing. One participant: "I use ChatGPT to humanize my words."</p>
+        </div>
+      </div>
+
+
+
+
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Notice the pattern in every one of these stories. The AI never works alone: doctors read the scans, blind users decide what to photograph and what to trust, ALS patients choose their words, autistic professionals edit every draft before sending. The technology does a chore that used to be a barrier, and a person stays in charge. That's the same arrangement you're learning today, just with higher stakes. Sources, if you want to read further: <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(24)00267-X/fulltext" target="_blank" rel="noopener">the MASAI trial in The Lancet Digital Health</a>, <a href="https://www.stlouisfed.org/on-the-economy/2025/feb/impact-generative-ai-work-productivity" target="_blank" rel="noopener">the St. Louis Fed productivity survey</a>, <a href="https://www.bemyeyes.com/" target="_blank" rel="noopener">Be My Eyes</a>, and <a href="https://bridgingvoice.org/" target="_blank" rel="noopener">Bridging Voice</a>.</p></div>
+          <div class="deeper__ask" data-classroom><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> connecting AI to something the room cares about beats any statistic.</p>
+          <ol class="steps">
+            <li>Play the Be My Eyes video for the room.</li>
+            <li>One question, popcorn style: which of these four stories surprised you most, and why?</li>
+            <li>Land the pattern: in every story, the AI does the chore and a person stays in charge. Same deal you're getting today.</li>
+          </ol></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <p class="why"><b>Why this matters:</b> a reason to learn that's bigger than saved minutes tends to stick.</p>
+          <ol class="steps">
+            <li>Watch the Be My Eyes video above.</li>
+            <li>Ask yourself which of the four stories you'd tell a skeptical friend, then remember it. It's a better answer to "why bother with AI?" than any statistic.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Give the room a reason to care that's bigger than saved minutes: cited, true stories of AI helping in health, accessibility, voice, and communication, all sharing the pattern the course teaches (AI does the chore, a person stays in charge).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before your first try, here's why this is worth ten minutes of learning. The time savings are real and measured: Federal Reserve researchers found workers who use these tools save about two hours a week. But the numbers aren't the good part. In Sweden, doctors screened over a hundred thousand women for breast cancer with AI helping them read the scans. They found 29 percent more cancers, and the radiologists got 44 percent of their reading time back to spend where it mattered. That's published in The Lancet. A blind person can now photograph a menu or a medicine label and hear exactly what it says, free, through an app called Be My Eyes. People losing their voices to ALS are banking recordings so AI can rebuild their voice, and they keep speaking as themselves. And autistic professionals tell researchers they use these same chat tools to draft messages and decode workplace phrasing. One participant put it in words I can't beat: 'I use ChatGPT to humanize my words.' Notice what every story has in common: the AI does the chore, and a person stays in charge. The doctors made every diagnosis. That is exactly the arrangement you're learning today.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Name the efficiency number first, with its source: a 2024 Federal Reserve Bank of St. Louis survey found workers who use these tools save about 2.2 hours in a 40-hour week.</li><li>Walk the four story cards in one or two sentences each. Every card carries its source link; say the sources out loud (The Lancet, Be My Eyes, Bridging Voice, a peer-reviewed study of autistic professionals) because citations build trust with skeptics.</li><li>Run the popcorn question: which story surprised you most?</li><li>Land the pattern explicitly: in every story the AI does a chore and a person stays in charge. Doctors read the scans, patients choose their words. Same arrangement they're learning today.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which of those four stories surprised you most, and why?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The cancer numbers, usually with 'I had no idea it was already real'</li><li>The voice banking story, often from someone touched by ALS</li><li>The autism quote, because it reframes who these tools are for</li></ul><p class="facnote__mini">Respond: Take two or three, no commentary needed. Close with: 'Whichever one stuck with you, keep it. It's a better answer to "why bother with AI?" than any statistic, including the Fed's.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Two hours a week back for you, and for some people, a voice, a diagnosis, or a menu read aloud. The pattern is always the same: AI does the chore, a person stays in charge.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; two or three voices in the popcorn round. Watch the room's posture change during the video; that shift is this slide's real output.</p><p class="facnote__meta"><b>Watch for:</b> A grief response: someone in the room may have lost a person to cancer or ALS. Keep the tone warm and factual, never triumphant. And don't oversell: these are assist stories, not cure stories, and saying so keeps your credibility.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now watch it happen. Two minutes, next screen.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: the Fed number, the four cards in one breath each, and the pattern line. Assign the Be My Eyes video as the week's watch if time is tight, but it's only two minutes; keep it if you possibly can.</p></aside>
+  </section>
+
+  <section class="slide on-cream slide--play" id="s-impact-video" data-title="The impact · Watch">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The impact · Watch</p>
+      <h2 class="h3" data-reveal style="font-family:var(--font-serif);font-weight:400;font-size:clamp(1.5rem,2.8vw,2.1rem);margin-bottom:1rem">Two minutes that make it real.</h2>
+      <div class="yt" data-reveal style="max-width:720px" data-embed="https://www.youtube-nocookie.com/embed/DaKb2L8Xqkw" data-yttitle="Be My Eyes: AI describing the world for blind users">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: AI describes the world for a blind user (2 min)</span>
+          <span class="yt__src">Be My Eyes · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=DaKb2L8Xqkw" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> two minutes that turn "AI" from a headline into a person reading a menu on their own for the first time in years.</p>
+      </div>
+      <div class="quiz" data-quiz data-reveal style="margin-top:1.5rem">
+        <p class="quiz__q">Quick check: in the breast cancer screening trial, what was the AI's job?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The AI flagged scans for the doctors and took over repetitive screen reading. Humans made every diagnosis. That pattern, AI does the chore and people keep the judgment, is the same one you'll use at your desk."><span class="mark">A</span><span>Help doctors look; doctors made every call</span></button>
+          <button class="opt" data-correct="0" data-why="No. Radiologists made every diagnosis. The AI took the repetitive reading so their attention went where it mattered."><span class="mark">B</span><span>Replace the radiologists</span></button>
+          <button class="opt" data-correct="0" data-why="It helped find 29% more cancers. Every decision stayed with the doctors."><span class="mark">C</span><span>Only schedule the appointments</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Let the Be My Eyes video land emotionally, then lock the human-in-charge pattern with the quick check.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Two minutes. Watch what this technology means for someone who can't see the menu.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Play the video (2 minutes). Let it finish in silence for a beat.</li><li>Run the quick check: in the cancer trial, the AI helped doctors look; doctors made every call.</li><li>One line to close: same arrangement you're getting today, smaller stakes.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; the room's posture during the video tells you the rest.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Your chore is smaller than any of that. Let's build your request.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep the video if you possibly can; it's two minutes and it's the session's heart.</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 YOUR FIRST TRY ============ -->
+  <section class="slide on-light" id="s-first" data-count data-title="Your first try">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Idea 05 · Your First Try</p>
+      <h2 class="h2" data-reveal>Build your first request. <em>Right now.</em></h2>
+      <p class="lead" data-reveal>The recipe for a good request is short: tell it the <b>job</b>, give it your <b>details</b>, and say what <b>shape</b> you want back. Build yours below. It assembles into a real prompt you can copy and use today in a Vanderbilt-approved tool.</p>
+
+      <div class="plan" id="firstPrompt" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Build · My first prompt</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the hardest part of starting is the empty box. You're about to leave with it already filled in. Nothing you type here is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <span class="plan__label"><b>1 · The job.</b> What should it do?</span>
+            <div class="plan__chips" id="fpTask" role="group" aria-label="Job">
+              <button class="opt" data-task="email"><span>Draft an email</span></button>
+              <button class="opt" data-task="summary"><span>Summarize something long</span></button>
+              <button class="opt" data-task="ideas"><span>Give me ideas</span></button>
+              <button class="opt" data-task="explain"><span>Explain something confusing</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <label for="fpDetail"><b>2 · Your details.</b> Who's it for, what's it about, what should it sound like?</label>
+            <input type="text" id="fpDetail" maxlength="200" placeholder="e.g. to my 6-person team, inviting them to a planning lunch Thursday, warm and casual" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · The shape.</b> What do you want back?</span>
+            <div class="plan__chips" id="fpFormat" role="group" aria-label="Shape">
+              <button class="opt" data-format="short"><span>Short and sweet</span></button>
+              <button class="opt" data-format="bullets"><span>A bulleted list</span></button>
+              <button class="opt" data-format="steps"><span>Step by step</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="fpBuild" disabled>Assemble my prompt</button>
+            <span class="quiz__progress" id="fpStatus">Pick a job, add your details, pick a shape</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="fpOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Where to actually go for your first try: use a Vanderbilt-approved tool. Microsoft Copilot signed in with your VU account is the safe default for work content. Open it, paste your prompt, press enter. Then remember the only two moves you need: if the answer is close, add one detail and ask again; if it's important, check it before you use it. Your first try will take under five minutes, and the second one will take two.</p></div>
+          <div class="deeper__ask" data-classroom><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> a first try completed IN the room, surrounded by other beginners, removes the last excuse.</p>
+          <ol class="steps">
+            <li>Everyone builds their prompt above and copies it.</li>
+            <li>Anyone with access to an approved tool on their device: paste, send, read. Hands up when your answer arrives.</li>
+            <li>Two volunteers read their answer aloud, including one that came back mediocre. Improve that one live with a single follow-up.</li>
+          </ol></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> reading about swimming isn't swimming. Your first try is one paste away.</p>
+          <ol class="steps">
+            <li>Copy your assembled prompt above.</li>
+            <li>Open Microsoft Copilot signed in with your VU account (or another Vanderbilt-approved tool), paste, and press enter.</li>
+            <li>Read the answer. Add one detail it was missing, ask again, and watch it improve. That's the whole skill.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Every learner assembles a real, copyable prompt for their real chore: and ideally runs it in the room. This is the session's conversion moment.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole recipe for a good request. Tell it the job: draft an email, summarize this, give me ideas, explain this. Give it your details: who it's for, what it's about, what it should sound like. And say what shape you want back: short, bullets, step by step. Job, details, shape. That's everything. Build yours right now, for the chore you just picked: and when you hit assemble, you're holding your first prompt. The empty box, the hardest part of starting? You just left with it filled in.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the recipe in one line: the job, your details, the shape. That's the whole anatomy of a good request.</li><li>Give quiet time on the builder: pick the job, type the details for THEIR chore, pick the shape, assemble, copy.</li><li>Circulate for the stuck: their details just need who it's for, what it's about, how it should sound.</li><li>If devices allow, run the in-room first try: paste into the approved tool, send, hands up when answers arrive.</li><li>Have two volunteers read results aloud: deliberately including one mediocre one, improved live with one follow-up.</li><li>Point at the Go deeper: where to go (Copilot, VU sign-in) and the two moves (add a detail; check what matters).</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For the volunteers who ran it: read us what came back. Was it good, or does it need the follow-up?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A surprisingly good draft, delight in the voice</li><li>A mediocre one, which is the gold: improve it live</li><li>Someone got a wrong detail, which is even better: the checking lesson, live</li></ul><p class="facnote__mini">Respond: For the good one: 'Four minutes ago that was a blank box.' For the mediocre one: ask the room what detail to add, run the follow-up live, watch it improve. For the wrong detail: 'And THAT is why we check what matters: you just saw the whole course in one answer.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Job, details, shape: then add a detail if it's close, and check it if it matters. You now know everything this course has to teach; the rest is reps.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has an assembled, copied prompt. If devices allowed, most ran it. This is the objective-5 evidence and the session's core outcome.</p><p class="facnote__meta"><b>Watch for:</b> Perfectionism stalling the builder. 'good enough, send it' is the coaching. And celebrate the mediocre live result loudly: improving it with one follow-up is a better lesson than a perfect first answer.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quick knowledge check, then you make it official.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: recipe in one line, builder at full length (protect it, it IS the outcome), in-room try only if devices are instant, one volunteer read-aloud.</p></aside>
+  </section>
+
+  <!-- ============ 9 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the five ideas before the commitment (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Five questions, one per idea, zero pressure. This is just proof of how much you picked up in an hour.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all five questions.</li><li>Ask for hands on 4-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 4/5 or better. The quiz maps to the five ideas, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as a friendly check, not a test: this room may carry test anxiety about tech topics.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;And now the only part that changes next week.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: run it as a fast room vote on the projector, two questions max, rest assigned.</p></aside>
+  </section>
+
+  <!-- ============ 10 · MY FIRST TRY (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My first try">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Your commitment · My first try</p>
+      <h2 class="h2" data-reveal>One chore. One prompt. <em>One day.</em></h2>
+      <p class="lead" data-reveal>Reading about AI changes nothing; one real try changes everything. Name the chore, pick the superpower, pick the day. Nothing you type is saved or sent anywhere.</p>
+
+      <div class="plan" id="firstTry" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planTask"><b>1 · The chore.</b> One real task from your actual week:</label>
+            <input type="text" id="planTask" maxlength="140" placeholder="e.g. the monthly update email I always put off" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The superpower.</b></span>
+            <div class="plan__chips" id="planPower" role="group" aria-label="Superpower">
+              <button class="opt" data-power="draft"><span>Draft it</span></button>
+              <button class="opt" data-power="summarize"><span>Summarize it</span></button>
+              <button class="opt" data-power="brainstorm"><span>Brainstorm it</span></button>
+              <button class="opt" data-power="explain"><span>Explain it</span></button>
+              <button class="opt" data-power="rewrite"><span>Rewrite it</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · When?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="When">
+              <button class="opt" data-when="today"><span>Today</span></button>
+              <button class="opt" data-when="tomorrow"><span>Tomorrow morning</span></button>
+              <button class="opt" data-when="week"><span>This week</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all three parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: the chore, the superpower, the day. The transfer artifact and the 7-day pulse's target.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Name the chore: the real one. Pick the superpower. Pick the day, and I'll tell you now: today beats tomorrow, and tomorrow beats 'this week.' Your prompt is already built; the card just puts a date on it. That's the entire distance between someone who heard about AI and someone who uses it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: reading about AI changes nothing; one real try changes everything.</li><li>Give quiet time: chore typed, superpower picked, day picked, card built and copied.</li><li>Push for 'today' or 'tomorrow': first tries scheduled for 'someday this week' evaporate.</li><li>Remind: nothing typed is saved or sent; the card is theirs.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all three parts). The card plus the 7-day pulse is the evidence chain, and the pulse's first-try count is the program metric.</p><p class="facnote__meta"><b>Watch for:</b> The chore quietly shrinking to something trivial. The best first try is the chore they named in Idea 04: the one they actually resent.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. Go time.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: build the card in sixty focused seconds; it survives every cut.</p></aside>
+  </section>
+
+  <!-- ============ 11 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go make your <em>first try</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You know what AI is, how to talk to it, when to keep things out of it, what it can do, and you're holding a prompt you built yourself. The distance between you and "someone who uses AI" is one paste.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step</span><span class="vidcard__dur">Per your card</span></div>
+        <h3>Run the prompt you built, on the chore you named</h3>
+        <p>Open a Vanderbilt-approved tool, paste your prompt, press enter. Add one detail, ask again. Check anything important. Then notice the time you just got back. That's yours now, every week. When this starts to feel easy, AI 201 in the Course Library is the next step.</p>
+      </div>
+      <p class="why" data-reveal data-classroom style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your chore and your day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the first-try card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+<!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Ask. Look. Improve. Check.</p>
+      </div>
+      <div>
+        <h4>The five ideas</h4>
+        <ul>
+          <li><a href="#s-what">What Is AI?</a></li>
+          <li><a href="#s-how">Why &amp; How We Use It</a></li>
+          <li><a href="#s-when">When Not To</a></li>
+          <li><a href="#s-cando">What It Can Do</a></li>
+          <li><a href="#s-first">Your First Try</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My First Try</a></li>
+          <li><a href="../web/" data-classroom>Self-paced web version</a></li>
+          <li><a href="../../../courses/ai-advanced/">Next course: AI 201</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Start Smarter · Facilitator Edition · learner link: <a href="../../../courses/start-smarter/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/AI_Classroom</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments, capture the Level 1 check, and point at the follow-up and the next course.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;One hour ago, AI was a headline. Now it's a sentence you can say, a traffic light you can run, five superpowers you can name, and a prompt in your clipboard with your name on it. Before you go: your chore, and your day. Out loud. Spoken commitments stick: and when that first answer comes back, remember, you're one follow-up away from good.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: run the prompt, add one detail, check what matters.</li><li>Run the fist-to-five (Level 1): 'How confident are you that you'll make your first try?' Note the number for your log.</li><li>Run the commitment round, popcorn style: chore and day, out loud or in chat.</li><li>Point at the cheat sheet and first-try card buttons, and AI 201 for the ones who are hungry.</li><li>Tell them the 7-day pulse is coming, land the last line, stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your chore, and your day.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'The monthly update email: today.'</li><li>'Summarizing the policy doc: tomorrow morning.'</li><li>Someone commits to explaining IT's last email</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary, keep it moving. If someone says 'this week': 'Which day?': warmly, but get the day.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The metric isn't in this room; it's the 7-day pulse: how many first tries actually ran. This course exists to turn non-users into users, one chore at a time.</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state chore-and-day out loud or in chat. With the pulse, that's the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards without a day. The round catches them (no day, no commitment); help them pick one on the spot.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go make the try. And when it saves you twenty minutes, tell a colleague who's where you were an hour ago: the QR travels.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a lightning commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=13"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

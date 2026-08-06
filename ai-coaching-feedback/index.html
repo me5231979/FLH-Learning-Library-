@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback, Ready | Vanderbilt</title>
+<meta name="description" content="A short interactive course for managers: use AI to prepare for 1:1s, draft behavior-based feedback from your own observations, and surface coaching opportunities from aggregate signals, while the conversation itself stays fully human.">
+<link rel="canonical" href="../ai-coaching-feedback/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Feedback, Ready | Vanderbilt Learning Series">
+<meta property="og:description" content="Prep like a coach, show up human: AI-assisted 1:1 prep, SBI feedback drafting, and signal-spotting without surveillance. Classroom 40 min, self-paced ~15.">
+<meta property="og:url" content="../ai-coaching-feedback/">
+<meta property="og:image" content="../ai-coaching-feedback/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feedback, Ready | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../ai-coaching-feedback/assets/img/social-card.png">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-96.png">
+
+<link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-prep">The Principle</a>
+    <a href="#s-draft">The Draft</a>
+    <a href="#s-signals">The Signals</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 12</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series · CHART</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Follow along on your own device. Today touches conversations with real people, so one norm up front: roles, never names, and everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>3</b> Core ideas</div>
+        <div><b>40</b> Minutes (30 core)</div>
+        <div><b>1</b> Conversation you'll prep this week</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Feedback, Ready · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Prep like a coach.<br><em class="gold-text">Show up human.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">SHRM's workplace research finds managers' work is already about 50 percent AI-assisted, against 34 percent for individual contributors, and coaching platforms now build AI into the flow of people work. The move that separates good use from bad is one sentence long: AI prepares the conversation, and you have it. This half hour installs that habit, with the privacy rules that make it safe.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain the prep-not-outsource line: what AI can prepare, and why the conversation itself never delegates</li>
+          <li>Draft behavior-based feedback with AI from your own de-identified observations, structured as Situation, Behavior, Impact</li>
+          <li>Use AI on aggregate signals, survey themes and your own 1:1 notes, to surface coaching opportunities without crossing into surveillance</li>
+          <li>Build a prep card for one real upcoming conversation, with the privacy rules attached</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Coaching Techniques</span>
+        <span class="skillpill">Performance Feedback</span>
+        <span class="skillpill">AI Literacy</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-prep">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and people grow fastest for managers who prepare the hard conversation instead of avoiding it.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: speed only holds when feedback lands the week it's earned, and an SBI draft from your own de-identified notes is what gets Thursday's 1:1 held instead of postponed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets are staffed with people somebody coached, and the conversations you prep with AI and hold as a human are how your team gets ready for one.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: you model what you practice, and a manager who preps with AI in approved lanes and keeps every conversation human is the example the institution wants copied.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: the talent the flywheel attracts stays where it's coached well, and every 1:1 you walk into prepared, behavior not character, is the retention work the reputation is built on.</p>
+      </div>
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Source:</b> <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Three ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Prep, not outsource</h3><p>The line between AI that sharpens your conversations and AI that replaces you in them.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The feedback draft</h3><p>From your rough notes to Situation-Behavior-Impact, in the Feedback Prep Lab.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Signals, not surveillance</h3><p>Survey themes and your own 1:1 notes as coaching radar, with the boundary drawn clearly.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 PREP, NOT OUTSOURCE ============ -->
+  <section class="slide on-light" id="s-prep" data-count data-title="Prep, not outsource">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Principle</p>
+      <h2 class="h2" data-reveal>AI preps the conversation. <em>You have it.</em></h2>
+      <p class="lead" data-reveal>Rehearsing a hard conversation, structuring messy notes into clear feedback, generating good coaching questions: that's preparation, and AI is excellent at it. Writing words you'll sign without reading, or whispering lines mid-conversation: that's outsourcing the one part of management that only works human to human. The line matters because trust is built in the room, and your people can tell which side of it you're on.</p>
+
+      <div class="quiz" id="prepJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Prep or outsource?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the line is easy to state and easy to drift across. Five real manager moves; call each one.</p>
+        <p class="quiz__progress" id="pjProgress"></p>
+        <p class="quiz__q" id="pjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="pjOptions" role="group" aria-label="Judgment choices"></div>
+        <p class="quiz__feedback" id="pjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="pjNext" style="visibility:hidden">Next move</button>
+        </div>
+        <div id="pjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule, before anything else</span>
+        <p style="margin:.5rem 0 0" class="measure">Coaching and feedback work runs on information about people, which is exactly what the traffic light guards:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The working recipe: de-identify first (roles and situations, never names), keep it in approved VU tools, and describe behavior you observed rather than character you inferred. If a platform with embedded coaching AI is approved at VU, that approval is what makes it a lane; the light still decides what goes in.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The context behind this session: <a href="https://www.shrm.org/topics-tools/research/navigating-ai-in-the-workplace/full-report" target="_blank" rel="noopener" style="text-decoration:underline">SHRM's Navigating AI in the Workplace research</a> finds managers report about 50 percent of their work involves AI assistance, versus 34 percent for individual contributors, so the question is no longer whether managers use AI on people work but whether they use it well. And the market has noticed: platforms like Culture Amp's AI Coach, Lattice, and 15Five now embed AI coaching support directly into the flow of work, built on organizational psychology principles. The skills in this session transfer to whichever tools VU approves; the principles, prep not outsource, de-identify, behavior not character, transfer to all of them.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing where colleagues draw the line calibrates your own.</p>
+          <ol class="steps">
+            <li>In pairs: each name one conversation-prep task you'd happily hand AI, and one you never would.</li>
+            <li>Compare: where exactly did the "never" start for each of you?</li>
+            <li>One pair shares their sharpest line with the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your own two lists: three prep tasks AI gets, three moments that stay only yours. Keep them; the capstone uses both.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>AI preps the conversation. You still have it.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE FEEDBACK DRAFT ============ -->
+  <section class="slide on-dark" id="s-draft" data-count data-title="The feedback draft">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Draft</p>
+      <h2 class="h2" data-reveal>From rough notes to <em>SBI</em>.</h2>
+      <p class="lead" data-reveal>The best feedback structure is decades old: Situation (when and where), Behavior (what you observed, camera-true), Impact (what it caused). AI is genuinely good at reshaping your messy notes into that structure. Whether the result helps or hurts depends entirely on what you feed it, what you ask for, and what you do with the draft. Run the lab and find out.</p>
+
+      <div class="lab" id="fbLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Feedback Prep Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the scenario is real: a solid analyst on your team has missed two handoffs this month, and Thursday's 1:1 is the moment. Choose how you prep, then see how the conversation lands.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the 1:1</button>
+          <span class="quiz__progress" id="labStatus">Choose all four steps</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Which of these is the Behavior part of SBI actually supposed to contain?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Camera-true observation is the whole trick: 'the last two handoffs went out without the checklist' can be discussed; 'you're getting careless' can only be defended against."><span class="mark">A</span><span>What you observed, described so a camera would agree</span></button>
+          <button class="opt" data-correct="0" data-why="That's a character verdict wearing a feedback costume. Verdicts trigger defense; observations invite discussion, and AI will happily draft either, so you have to know which you're asking for."><span class="mark">B</span><span>Your honest read of their attitude</span></button>
+          <button class="opt" data-correct="0" data-why="Intentions are invisible; you're guessing. SBI works precisely because it sticks to what happened and what it caused, and leaves their side of the story for the conversation."><span class="mark">C</span><span>What they probably intended</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>A prep prompt worth stealing, names removed before anything else: "Here are my rough observations about a situation with a team member (role only). Structure them as Situation, Behavior, Impact. Flag anything that reads as a judgment of character rather than a description of behavior, and list the questions I should ask before assuming my read is right." That last clause matters most: the draft's job is to make you more prepared to listen, and a good prep surfaces what you might be wrong about. Then the rewrite pass: your voice, verified examples, and nothing you wouldn't say looking at them.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the character-versus-behavior distinction becomes reflex through small reps.</p>
+          <ol class="steps">
+            <li>Pairs. Convert these two verdicts into camera-true behavior lines: "she's disengaged lately" and "he's not a team player."</li>
+            <li>Read the best conversions aloud; the room checks each: would a camera agree?</li>
+            <li>Notice the pattern: every conversion forced you to recall a specific moment. That recall is the prep.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take one piece of feedback you owe someone and write the S, the B, and the I in three lines, behavior camera-true. That's the input for your next AI-assisted draft.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 SIGNALS, NOT SURVEILLANCE ============ -->
+  <section class="slide on-cream" id="s-signals" data-count data-title="Signals, not surveillance">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Signals</p>
+      <h2 class="h2" data-reveal>Coaching radar, with a <em>boundary</em>.</h2>
+      <p class="lead" data-reveal>Two data sources make managers better coaches without touching anyone's privacy: aggregate signals your platforms already anonymize (engagement survey themes), and your own 1:1 notes, which record what you already know but stopped seeing. AI is good at both: summarizing themes into discussion questions, and spotting the topic you've postponed four weeks running. The boundary is just as clear: analyzing an individual who hasn't asked for it is surveillance, and it poisons the trust the coaching was for.</p>
+
+      <div class="quiz" id="signalSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Signal or surveillance?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the same tools do both, so the boundary has to live in you. Five uses; call each one.</p>
+        <p class="quiz__progress" id="snProgress"></p>
+        <p class="quiz__q" id="snQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="snOptions" role="group" aria-label="Boundary judgments"></div>
+        <p class="quiz__feedback" id="snFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="snNext" style="visibility:hidden">Next use</button>
+        </div>
+        <div id="snResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The two-question boundary test</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Is it aggregate, or is it about one person who hasn't asked?</b> Team-level themes are coaching radar; individual analysis without consent is surveillance, whatever the tool calls it. <b>2. Would you tell the team you do this?</b> If the practice needs to stay secret to keep working, it's already over the line. Everything this course teaches survives being said out loud.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The 1:1 notes move deserves its own habit, because it's the highest-value, lowest-risk use in this course: your own notes, de-identified (roles for names before they touch a tool), in an approved tool, with a monthly prompt like "what topics keep appearing without resolving, what have I committed to and not done, and what has this person asked for more than once?" Managers who run it report the same surprise: the pattern was visible all along, in their own handwriting. Engagement platforms do the equivalent at team level and anonymize by design; your job is to turn themes into one good conversation, never into a hunt for who said what.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> saying the boundary out loud, to a colleague, is what makes it durable back at your desk.</p>
+          <ol class="steps">
+            <li>Pairs: each pick the one signal use from this section you'll actually adopt.</li>
+            <li>Then each name the use closest to your own line, the one you'd be tempted by under pressure.</li>
+            <li>Trade the counter-move: what would you say to a peer manager reaching for it?</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Run the two-question boundary test on your current practices. Anything that fails question 2 gets retired today.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8 · PREP CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My 1:1 prep card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My 1:1 prep card</p>
+      <h2 class="h2" data-reveal>One conversation. One prep move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>You have a conversation coming; every manager does. Name it (role and topic, never a name), choose the prep move from today you'll run, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named conversation with a chosen prep move and a date is a practice change; everything less is a good intention. Roles, never names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="prepPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The conversation.</b> Who is it with (role, not name), and what's it about?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. a senior analyst; two missed handoffs and what's behind them" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The prep move.</b> Which one runs before this conversation?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="Prep move">
+              <button class="opt" data-practice="rehearse"><span>Rehearse it: AI plays the other side and pushes back</span></button>
+              <button class="opt" data-practice="sbi"><span>Draft it: my de-identified notes into SBI structure</span></button>
+              <button class="opt" data-practice="notes"><span>Mine my own 1:1 notes for the pattern I've stopped seeing</span></button>
+              <button class="opt" data-practice="themes"><span>Turn team survey themes into three discussion questions</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="names"><span>Put names or identifying details into any unapproved tool</span></button>
+              <button class="opt" data-not="unread"><span>Deliver an AI draft I haven't verified and rewritten</span></button>
+              <button class="opt" data-not="screen"><span>Manage the conversation from a screen instead of listening</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the prep happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="next"><span>Before my next 1:1</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my prep card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 9 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Prep not outsource, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Prep, Not Outsource</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI prepares the conversation: rehearsal, structure, questions. The conversation itself, and the relationship it runs on, never delegates.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="S B I, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, Behavior, Impact: when and where, what you observed (camera-true), what it caused. The behavior line carries the whole structure.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="De-identification, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>De-identification</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Roles and situations instead of names and details, done before anything touches a tool. The habit that keeps prep work on the right side of the light.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Aggregate versus individual, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Aggregate vs Individual</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Team-level themes are coaching radar. Analysis of one person who hasn't asked is surveillance, whatever the tool's marketing says.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The rehearsal partner, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Rehearsal Partner</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI as the other side of a hard conversation, de-identified: it pushes back, you practice, and the real conversation gets your calmer second draft.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Embedded coaching AI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Embedded Coaching AI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Platforms like Culture Amp's AI Coach, Lattice, and 15Five build AI prep into the flow of people work. Approved tools are the lane; the light still decides what goes in.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The fifty percent stat, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The 50 Percent Stat</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>SHRM: managers report about half their work involves AI assistance, versus about a third for individual contributors. The question is no longer whether, but how well.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Behavior versus character, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Behavior vs Character</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>"Two handoffs went out without the checklist" is discussable. "You're careless" is only defensible. Feed AI the first kind; ask it to flag the second.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The out loud test, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Out-Loud Test</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Would you tell your team you do this? A practice that needs secrecy to keep working is already over the line.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never. People work lives next to red; de-identify and stay in approved lanes.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">The next 1:1 is <em>the rep</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You drew the prep-outsource line, ran the Feedback Prep Lab, and set the surveillance boundary. One conversation on your calendar is about to get a better-prepared, more human version of you.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">20 minutes</span></div>
+        <h3>The prep, then the conversation</h3>
+        <p>Run your card's prep move exactly as written: de-identified, in an approved tool, behavior not character. Then close the laptop and have the conversation with nothing between you and them. Afterward, one line: what did the prep change about how you listened?</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your conversation (role only) and your prep day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="worksheet.html" target="_blank" rel="noopener">Print the prep card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Prep deeper. Show up human.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-prep">Prep, Not Outsource</a></li>
+          <li><a href="#s-draft">The Feedback Draft</a></li>
+          <li><a href="#s-signals">Signals, Not Surveillance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Prep Card</a></li>
+          <li><a href="web/">Self-paced version</a></li>
+          <li><a href="../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Feedback, Ready · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="assets/js/qrcode.js?v=1"></script>
+<script src="assets/js/main.js?v=1"></script>
+</body>
+</html>

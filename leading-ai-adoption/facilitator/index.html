@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leading the Shift, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="A short interactive course for managers on the highest-leverage adoption behavior: using AI visibly, setting the three team guardrails (data, sign-off, ownership), and running the AI-enabled work audit on your own team.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leading the Shift | Vanderbilt Learning Series">
+<meta property="og:description" content="Your team adopts what you model: visible use, three guardrails, and the AI-enabled work audit. Classroom 40 min, self-paced ~15.">
+<meta property="og:url" content="../../leading-ai-adoption/">
+<meta property="og:image" content="../../leading-ai-adoption/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leading the Shift | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../leading-ai-adoption/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-model">The Model</a>
+    <a href="#s-rails">The Guardrails</a>
+    <a href="#s-audit">The Audit</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 13</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (43 min) or Core (30 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Run both editions start to finish, doing every exercise, including the work audit on a team you actually lead. Your own honest score is your best facilitation asset.</li><li>Prepare your narrated use story: what you used AI for this week, what the check caught, what you'd do differently. You will open section 01 with it.</li><li>Send the pre-work invite (template on this page): come knowing your team's three most repeated outputs.</li><li>Skim the current Gallup workplace AI findings so the modeling claim is fresh in your mouth.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable.</li><li>Scan the welcome QR with your own phone; it must land on the learner edition.</li><li>Run one trainer round and one full audit pass so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and worksheets.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive.</li><li>Close every other tab; silence the machine.</li><li>Write 'TEAMS AND ROLES, NEVER NAMES' where the room can see it.</li><li>Say your narrated use story out loud once more.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed audit + plan worksheets (worksheet.html) as the no-device fallback</li><li>Your own narrated AI-use story, rehearsed: use, check, miss</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Whiteboard the course: the two predictors, the three rails, and the five audit questions all draw in seconds. The audit runs on paper (the worksheet mirrors it); trainers become read-aloud room votes.</div><div class="brief__row"><b>If Learner devices can't join:</b> Run facilitator-only: trainers on the projector with A/B/C hand votes; the audit and capstone move to the printed worksheet.</div><div class="brief__row"><b>If A manager challenges the premise: 'my job is results, not AI evangelism':</b> Agree, then reframe with the data: modeling IS a results lever; teams with manager support show large engagement and usage gaps over teams without it. Fifteen minutes a month of visible use is the cheapest results lever on the list.</div><div class="brief__row"><b>If Someone's honest audit score is very low and they deflate publicly:</b> Normalize immediately: 'Most rooms start in shadow adoption; that's what the research says too, and every move on your list is a fifteen-minute move.' Low scores with honest answers beat high scores with flattering ones; say so.</div><div class="brief__row"><b>If The room wants to debate which AI tool is best:</b> Park it: this course is deliberately tool-agnostic, and the audit works whatever VU approves. Tool questions route to the CHART resources; behavior questions stay in the room.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Isn't 'modeling AI use' just performative? My team can smell theater.</summary><p>Theater is exactly what the misses-included rule prevents. Performative modeling shows polished wins; real modeling shows the check that caught the error and the prompt that failed. Teams can smell the difference, and the honest version is the one Gallup's data connects to adoption. If it feels like theater, drop the polish, not the visibility.</p></details><details class="brief__q"><summary>What if I model it and the team still doesn't adopt?</summary><p>Then the audit tells you which other dimension is blocking: usually unwritten guardrails (people fear stepping on a data landmine) or zero workflow integration (no designed place to use it). Modeling opens the door; the rails and one designed workflow are what people walk through. Run the audit with the team and let them tell you which it is.</p></details><details class="brief__q"><summary>Only 18 percent of leaders do this well. What actually separates them?</summary><p>Accenture's answer is three behaviors: curiosity (openly interested, asking what people tried), courage (using it before certainty arrives, misses visible), and connection (adoption as a trust-based team practice, never a compliance program). Notice none of the three is technical: they're leadership behaviors you already know, aimed at a new subject.</p></details><details class="brief__q"><summary>Should AI use affect performance reviews?</summary><p>As development, yes: the 1:1 question ('what have you tried, what did you learn?') and skill-building goals belong in coaching conversations, and the audit's fifth dimension measures exactly that. As surveillance or quotas, no: counting prompts breeds theater, and judging people for honest misses kills the safety that adoption runs on. Develop the skill; don't police the meter.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Leading the Shift session. One thing to know walking in: your team's three most repeated outputs, the reports, updates, summaries, or reviews that happen every week or month. You'll use them in an audit you keep entirely to yourself. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the visible move happen? Three quick lines, reply whenever: 1) Did the first visible move from your plan run, and how did the team react? 2) Which guardrail conversation started? 3) What's your audit's lowest dimension now? Replies come to me only.</p></details><details class="brief__q"><summary>30-day re-poll (send a month after)</summary><p>Subject: Thirty days of visible leadership. Two questions: 1) Rerun the five-question work audit; which dimension moved? 2) Fist to five, how confident are you leading your team's AI adoption now? Reply with the dimension and a number. Rising audit scores are the metric that matters.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the first visible move happen? What did the team's reaction tell you? What's your audit's lowest dimension now?' At 30 days: 'Rerun the audit; which dimension moved?' The count of first visible moves actually made is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 43 min · Core 30</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Leading the Shift session. One thing to know walking in: your team's three most repeated outputs, the reports, updates, summaries, or reviews that happen every week or month. You'll use them in an audit you keep entirely to yourself. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series · CHART</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today you'll audit your own team's AI reality, honestly, so one norm up front: teams and roles, never names, and everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>3</b> Core ideas</div>
+        <div><b>40</b> Minutes (30 core)</div>
+        <div><b>1</b> Work audit you'll run today</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get learners in on their own devices and set the norm for honest self-assessment.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Scan the code before we start. Today is about the single highest-leverage thing a leader does for AI adoption, and it isn't buying tools or writing policy. It's what your team watches you do. You'll audit your own team honestly today, so the ground rule: teams and roles, never names, and everything you type stays on your screen.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Slide projected as people arrive; phones up before you speak.</li><li>State the norm once: teams and roles, never names, and the audit stays on their screens.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Most of the room has the deck open; the norm gets a nod.</p><p class="facnote__meta"><b>Watch for:</b> Anyone expecting a tools demo. The frame: this is a leadership session; the tools are wherever VU put them.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's the contract.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Leading the Shift · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Your team adopts<br><em class="gold-text">what you model</em>.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Gallup's workplace research keeps finding the same thing: the strongest predictors of a team actually using AI are the manager visibly championing it and the tools being integrated into real workflows. Tools and mandates barely move the needle. Accenture's leadership research adds the uncomfortable part: only about 18 percent of leaders are doing this well, and what separates them is curiosity, courage, and connection. This session makes you one of them, starting with an honest audit of your own team.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why manager modeling and workflow integration predict team AI use better than tools or mandates</li>
+          <li>Model AI use visibly: narrate real uses, show the checks, share the misses</li>
+          <li>Set the three team guardrails: what data goes in, when human sign-off is required, who owns the result</li>
+          <li>Run the AI-enabled work audit on your team and leave with a dated first move</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Leads and inspires teams</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Change Management</span>
+        <span class="skillpill">AI Literacy</span>
+        <span class="skillpill">Team Development</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-model">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: four capabilities, ending in an audit run and a dated visible move.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Four things by the end: you'll know why modeling and workflow integration beat tools and mandates. You'll know what visible modeling actually looks like, down to the three sentences. You'll be able to write the three guardrails that make trying safe. And you'll run the AI-enabled work audit on your own team and leave with a dated first move.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the four objectives briskly.</li><li>Name the two research anchors once: Gallup on modeling and integration; Accenture's 18 percent and the three C's.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone is (a dated first visible move).</p><p class="facnote__meta"><b>Watch for:</b> Skeptics of survey research; the numbers are directional and the behaviors are cheap, say so.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One minute on where this sits in the university's plan, then the three ideas.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 2 and 4 out loud.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a team only dares what it watches its manager do first.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: uncommon speed arrives one adopted workflow at a time, and the work audit in this session finds the workflows on your team where AI belongs first.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets land on teams that are already fluent, and the modeling you do this month, narrated uses, visible checks, misses included, is where that fluency comes from.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: an institution can't model the essential university on teams that use AI in secret, so your narrated uses and three posted guardrails are the demonstration, run at team scale.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition is a team that actually adopts its tools, and Gallup puts the lever in your hands: teams take up AI when the manager models it inside real workflows, which is exactly what your audit and first move set up.</p>
+      </div>
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Source:</b> <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Anchor manager modeling in the Chancellor's vision so adoption reads as institutional work, not a tool rollout.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the audit, one minute on why this is bigger than your team. The Chancellor's vision has no hedge in it: Vanderbilt will define the great university of the 21st century, and be it, operating at uncommon speed, agility, and scale. No institution reaches uncommon speed by memo; it gets there one adopted workflow at a time, led by managers the team can watch. Crescere aude, dare to grow: your team will dare exactly as much as they see you dare first.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence off the slide and let it land.</li><li>Walk the three focus areas, one team translation each.</li><li>Point at the flywheel: execution with ambition is adoption, and the manager is the lever.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Nods at the team-translation lines; no discussion needed here.</p><p class="facnote__meta"><b>Watch for:</b> The urge to teach strategy; this page is a frame, and the three ideas are waiting.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the three ideas, in order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute; read the vision sentence, gesture at the three focus areas, and move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Three ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Model it, visibly</h3><p>What Gallup found about manager modeling, and what visible use actually looks like.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The three guardrails</h3><p>Data, sign-off, ownership: the rules that make it safe for your team to try.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The work audit</h3><p>Five honest questions about your team's AI reality, scored, with your first three moves.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Orient: model, rails, audit.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc: first what the research says about modeling, and what visible use actually sounds like. Then the three guardrails that make it safe for your team to try. Then the audit: five honest questions about your team, scored, with your first three moves.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three items in one breath each.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the finding that gives this course its name.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; the deck carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 MODEL IT, VISIBLY ============ -->
+  <section class="slide on-light" id="s-model" data-count data-title="Model it, visibly">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Model</p>
+      <h2 class="h2" data-reveal>They watch what you <em>do</em>.</h2>
+      <p class="lead" data-reveal>Most managers who use AI use it invisibly, and invisible use teaches the team nothing except that the subject is unspoken. Visible modeling is specific: narrate a real use in a real meeting, show the check that caught the error, and share a miss now and then. Gallup finds employees whose managers actively champion AI use it dramatically more, and are more engaged; a mandate without modeling mostly produces quiet resistance and hidden shortcuts.</p>
+
+      <div class="quiz" id="modelJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Model, mandate, or undermine?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference between modeling and mandating is easy to see in someone else's behavior first. Five leader moves; call each one.</p>
+        <p class="quiz__progress" id="mjProgress"></p>
+        <p class="quiz__q" id="mjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mjOptions" role="group" aria-label="Judgment choices"></div>
+        <p class="quiz__feedback" id="mjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="mjNext" style="visibility:hidden">Next move</button>
+        </div>
+        <div id="mjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The three C's, from the 18 percent</span>
+        <p style="margin:.5rem 0 0" class="measure">Accenture's research on leaders who actually deliver on AI names three differentiators. <b>Curiosity:</b> staying openly interested, asking "what did you try?" instead of pretending fluency. <b>Courage:</b> using it before certainty arrives, and letting the team see the misses. <b>Connection:</b> making adoption a team practice with trust in it, never a compliance program. Notice all three are visible behaviors; none of them is a tool decision.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The evidence base: <a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's 2026 workplace research</a> finds manager championing and integration with real workflows are the top drivers of frequent AI use, with big engagement gaps between teams whose managers actively guide AI use and teams left alone with the tools. <a href="https://www.accenture.com/us-en/blogs/business-functions-blog/leadership-edge-ai" target="_blank" rel="noopener" style="text-decoration:underline">Accenture's leadership research</a> puts the share of organizations leading well at about 18 percent and names curiosity, courage, and connection as what separates them. The practical translation is small and weekly: one narrated use in a team meeting ("here's what I drafted, here's the number the check caught"), one show-your-prompts round a month, misses included. Fifteen minutes of visibility beats any policy memo you will ever forward.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> saying a real use out loud, here, is the rehearsal for saying it to your team.</p>
+          <ol class="steps">
+            <li>In pairs: narrate one real AI use from your own week, including the check you ran (or should have).</li>
+            <li>Partner listens for the three parts: what you used it for, what the check was, what you'd tell your team.</li>
+            <li>Two volunteers narrate theirs to the room. That's the move, exactly as it should sound on Monday.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the three sentences of your Monday narration: the use, the check, the miss or win. You'll want them for the capstone.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the modeling finding (Gallup) and the three C's (Accenture), and teach the narrated-use move.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Let me start by doing the thing this course teaches. This week I used AI to draft [your real example]; the check I ran caught [the real catch]; next time I'd [the real lesson]. That took thirty seconds, and it's the single strongest adoption lever the research knows. Gallup keeps finding the same two predictors of a team actually using AI: the manager visibly championing it, and the tools living inside real workflows. Mandates without modeling produce compliance theater. Silence produces shadow use. And Accenture's study of the leaders doing this well, about 18 percent, names what separates them: curiosity, courage, connection. All behaviors. All visible. All free.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with YOUR narrated use: what you used AI for, what the check caught, what you'd do differently. Model the modeling.</li><li>Land the Gallup finding: manager championing and workflow integration are the top predictors; mandates without modeling produce hidden shortcuts.</li><li>Run Model, Mandate, or Undermine: five moves, call each.</li><li>Walk the three C's card: curiosity, courage, connection, all visible behaviors.</li><li>Run the pair narration drill: one real use, with the check, partner listening for the three parts.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;When did your team last SEE you use AI, not hear that you do, but watch the use and the check?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Long pauses; 'never' from confident AI users</li><li>A few genuine this-week answers</li><li>Someone protests that their use is too mundane to show</li></ul><p class="facnote__mini">Respond: For the 'too mundane': 'Mundane is the point. A narrated ordinary use teaches more than a demo of something impressive, because your team can copy mundane tomorrow.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Visible, honest, specific: the use, the check, the miss. Three sentences at a team meeting beat any policy you'll ever forward.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; every learner has narrated one real use aloud to a partner.</p><p class="facnote__meta"><b>Watch for:</b> The invisible-user who claims nothing to narrate. Their week has one: the email they drafted, the summary they asked for. Help them find it; everyone has material.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence to hold, then the rules that make trying safe.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: your narrated use plus the finding, trainer as room votes, pair drill becomes writing the three sentences solo.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>Teams adopt what you model, not what you mandate.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness on the core idea.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Teams adopt what you model, not what you mandate.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate; read it once, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Modeling opens the door. The guardrails are what your team walks through.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 THE THREE GUARDRAILS ============ -->
+  <section class="slide on-dark" id="s-rails" data-count data-title="The three guardrails">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Guardrails</p>
+      <h2 class="h2" data-reveal>Make it safe to <em>try</em>.</h2>
+      <p class="lead" data-reveal>People hold back from AI for a sensible reason: nobody told them what's safe. Three written guardrails remove the guesswork, and they fit on one page. What data goes in. When a human signs off. Who owns the result. Write them with the team, post them, and watch experimentation start.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Rail 1 · Data</span>
+          <h3>What goes in</h3>
+          <p class="muted">The traffic light, written where everyone can see it. Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">Rail 2 · Sign-off</span>
+          <h3>When a human approves</h3>
+          <p class="muted">Anything outbound, high-stakes, or about people gets human review before it moves. Internal drafts and personal productivity don't. Name the line so nobody has to guess it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Rail 3 · Ownership</span>
+          <h3>Who answers for it</h3>
+          <p class="muted">You own what you ship, whoever drafted it. "The AI got it wrong" is not a sentence this team uses; a named human stands behind every output that leaves.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="railSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Which rail is missing?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every AI incident on a team is a missing rail wearing a costume. Five situations; name the rail that would have prevented each.</p>
+        <p class="quiz__progress" id="rsProgress"></p>
+        <p class="quiz__q" id="rsQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="rsOptions" role="group" aria-label="Guardrail choices"></div>
+        <p class="quiz__feedback" id="rsFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="rsNext" style="visibility:hidden">Next situation</button>
+        </div>
+        <div id="rsResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Write the rails with the team, in thirty minutes, and keep them to one page: the light, the sign-off line ("outbound, high-stakes, or about people gets eyes"), and the ownership sentence ("you own what you ship"). Two additions earn their place fast. An amnesty: the shortcuts people already run get grandfathered in for redesign, never punished, because punishing early adopters teaches everyone to hide. And a revision date: the rails are version one, reviewed in a quarter, which tells the team the rules will learn as they do. Guardrails written this way read as permission, and permission is what most teams are actually waiting for.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> drafting the sign-off line is where abstract policy becomes a usable team rule.</p>
+          <ol class="steps">
+            <li>Pairs. Draft your team's sign-off line: which outputs need human review before they move, in one sentence?</li>
+            <li>Swap and stress-test: find one output the line wrongly frees, and one it wrongly catches.</li>
+            <li>One pair reads their line; the room tries to break it. Surviving lines get stolen shamelessly.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Draft all three rails for your team in three sentences. That's the artifact your capstone move posts on the wall.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the three-rail structure (data, sign-off, ownership) and drill incident diagnosis by missing rail.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;People hold back from AI for a sensible reason: nobody told them what's safe, and they'd rather do nothing than step on a landmine. Three written rules remove the guesswork, and they fit on one page. The data rail is the traffic light you already know: green go, yellow approved tools only, red never. The sign-off rail names when a human reviews before something moves: outbound, high-stakes, or about people. And the ownership rail is one sentence: you own what you ship, whoever drafted it. Write them with the team, give the existing shortcuts amnesty into redesign, post the page, and put a revision date on it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three rail cards: data (the traffic light), sign-off (outbound, high-stakes, or about people gets eyes), ownership (you own what you ship).</li><li>Run Which Rail Is Missing: five situations, name the rail.</li><li>Land the two additions from Go deeper: the amnesty for existing shortcuts, and the quarterly revision date.</li><li>Run the pair drill: draft the team's sign-off line and stress-test it.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which rail is weakest on your team right now, and what's the incident it's currently inviting?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Ownership, usually: nobody's name on AI-assisted outputs</li><li>Data: uncertainty about which tools are approved for what</li><li>Honest 'all three are unwritten'</li></ul><p class="facnote__mini">Respond: For 'all three unwritten': 'That's most teams, and it's one 30-minute session from fixed. The audit in the next section will make the case for booking it.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Data, sign-off, ownership: one page, written together, posted, revised quarterly. Every AI incident you'll ever debrief is a missing rail wearing a costume.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; pairs produce a sign-off line that survives one stress-test.</p><p class="facnote__meta"><b>Watch for:</b> Rails drafted as prohibition lists. Reframe: guardrails written with the team read as permission, and permission is what people are waiting for.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the mirror: where does your team actually stand? Five questions, scored, honest.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: rail cards fast, trainer stays, pair drill becomes a solo three-sentence draft.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 THE WORK AUDIT ============ -->
+  <section class="slide on-cream" id="s-audit" data-count data-title="The work audit">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Audit</p>
+      <h2 class="h2" data-reveal>Your team's AI reality, <em>scored</em>.</h2>
+      <p class="lead" data-reveal>Before you can lead adoption, you need to know where your team actually stands, and most managers are guessing. This audit is five questions, answered honestly, scored live. It measures the things the research says matter: where AI shows up in the work, how visibly you model it, whether guardrails exist, and whether AI has entered your performance and coaching conversations. Nothing you enter is saved or sent anywhere.</p>
+
+      <div class="plan" id="workAudit" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Practice · The AI-enabled work audit</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the audit turns "we should do more with AI" into a scored snapshot and a first move. Answer for your real team, current state, not aspirations.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="auWork"><b>1 · The repeated work.</b> Name your team's three most repeated outputs (reports, updates, summaries, reviews...):</label>
+            <input type="text" id="auWork" maxlength="160" placeholder="e.g. weekly status report, ticket triage, monthly board summary" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · Where does AI show up in that work today?</b></span>
+            <div class="plan__chips" id="auUse" role="group" aria-label="AI usage state">
+              <button class="opt" data-v="0"><span>Nowhere I can see</span></button>
+              <button class="opt" data-v="1"><span>Personal shortcuts, unmanaged</span></button>
+              <button class="opt" data-v="2"><span>One designed workflow with checks</span></button>
+              <button class="opt" data-v="3"><span>Several designed workflows</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · When did your team last SEE you use AI?</b></span>
+            <div class="plan__chips" id="auModel" role="group" aria-label="Modeling state">
+              <button class="opt" data-v="3"><span>This week, checks and all</span></button>
+              <button class="opt" data-v="2"><span>This month, in passing</span></button>
+              <button class="opt" data-v="1"><span>They know I use it; they've never seen it</span></button>
+              <button class="opt" data-v="0"><span>Never</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · The guardrails: data, sign-off, ownership?</b></span>
+            <div class="plan__chips" id="auRails" role="group" aria-label="Guardrails state">
+              <button class="opt" data-v="3"><span>Written, shared, posted</span></button>
+              <button class="opt" data-v="1"><span>Discussed once, verbally</span></button>
+              <button class="opt" data-v="0"><span>Everyone guesses</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>5 · Is AI part of your performance and coaching conversations?</b></span>
+            <div class="plan__chips" id="auTalk" role="group" aria-label="Conversation state">
+              <button class="opt" data-v="3"><span>Yes: uses and skills come up in 1:1s and reviews</span></button>
+              <button class="opt" data-v="1"><span>Occasionally, ad hoc</span></button>
+              <button class="opt" data-v="0"><span>It never comes up</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="auRun" disabled>Score my audit</button>
+            <span class="quiz__progress" id="auStatus">Answer all five</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="auOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The audit's five dimensions come straight from the research: repeated outputs are where workflow integration pays (Gallup's second predictor), visible modeling is the first predictor, guardrails are what make trying safe, and AI in coaching conversations is how adoption becomes a skill you develop in people rather than a tool you issued once. Run it again with your team in the room, that's the braver version, and let them score you on question 3. The gap between your answer and theirs is the most useful number the audit produces. Repeat quarterly; rising scores are your adoption metric, and they cost nothing to collect.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing the room's scores calibrates your own, and normalizes honest low ones.</p>
+          <ol class="steps">
+            <li>Hands by tier: who scored 10 or more, 6 to 9, 5 or under? No commentary, just the count.</li>
+            <li>Pairs: name your lowest-scoring dimension and the single move that would raise it one level.</li>
+            <li>Two volunteers name their move to the room. Notice how many are fifteen-minute moves, not initiatives.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write down your lowest dimension and the one-level move. The capstone will ask for a date.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Every learner runs the five-question audit on their real team and leaves with a scored snapshot and three prioritized moves. The session's signature block.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Now the mirror. Five questions about your real team, scored live, kept entirely on your screen. Name the three most repeated outputs your team produces, then answer honestly: where does AI show up in that work today? When did your team last see you use it? Do the three guardrails exist in writing? And does AI ever enter your performance and coaching conversations? The audit scores you out of twelve and hands you your three highest-leverage moves, ranked by your weakest dimensions. Current state, not aspirations. Low and honest beats high and flattering; you can only improve a real number.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: current state, not aspirations; low honest scores beat high flattering ones.</li><li>Give quiet time for all five questions; the repeated-outputs field deserves a real answer.</li><li>Ask for tier hands: 10+, 6 to 9, 5 or under. No commentary, just the count; normalize the low tier immediately.</li><li>Run the pair debrief: lowest dimension, and the one-level move.</li><li>Land the cadence: quarterly rerun, and the braver version with the team scoring question 3 about you.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;By hands, no commentary: who scored ten or more? Six to nine? Five or under?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The bulk of the room in the middle and low tiers</li><li>One or two adoption leaders</li><li>Visible relief when the low tier is the biggest</li></ul><p class="facnote__mini">Respond: Normalize instantly: 'That distribution matches the research; most teams are in shadow adoption, and every move on your list is a fifteen-minute move, not an initiative. The leaders: your job is now drift-catching, and lending your show-your-prompts format to a peer.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Five dimensions, straight from the research: the work, the usage, the modeling, the rails, the conversations. Quarterly reruns make it your adoption metric, and it costs nothing to collect.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes the audit and can name their lowest dimension and its one-level move.</p><p class="facnote__meta"><b>Watch for:</b> Aspirational scoring. The tell is a high score with a vague repeated-outputs field; nudge: 'answer for last month, not next quarter.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quiz, then the plan that turns your lowest dimension into a dated move.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: audit at full length (it is the section); pair debrief becomes a solo note. Never cut the audit.</p></aside>
+  </section>
+
+  <!-- ============ 7 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 3</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the objectives before the capstone (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Four questions, one per big idea. The systems check before the plan.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all four questions.</li><li>Hands for 3-or-better; 30-second reteach on anything missed.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 3/4 or better.</p><p class="facnote__meta"><b>Watch for:</b> Racing; it's the check before the plan.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the move your team will actually see.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length.</p></aside>
+  </section>
+
+  <!-- ============ 8 · ADOPTION PLAN (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My adoption plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My adoption plan</p>
+      <h2 class="h2" data-reveal>One visible move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>The audit told you where your team stands. Now pick the work you'll model on, the first visible move, the failure mode you refuse, and the date. Adoption starts the first time your team watches you work.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named move with a date, done visibly, is what Gallup's data says actually moves a team; everything less is a forwarded policy. Teams and roles, never names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="adPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The work you'll model on.</b> Which real task or workflow, and what will you use AI for in it?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. the monthly board summary; AI drafts, I verify against the tracker" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first visible move.</b></span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First visible move">
+              <button class="opt" data-practice="narrate"><span>Narrate one real AI use at the next team meeting, checks included</span></button>
+              <button class="opt" data-practice="prompts"><span>Run a 15-minute show-your-prompts round, me first, misses welcome</span></button>
+              <button class="opt" data-practice="rails"><span>Write the three guardrails with the team and post them</span></button>
+              <button class="opt" data-practice="oneone"><span>Add an AI check-in question to my 1:1s and reviews</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="mandate"><span>Mandate use without modeling it</span></button>
+              <button class="opt" data-not="unwritten"><span>Leave the guardrails unwritten</span></button>
+              <button class="opt" data-not="polish"><span>Show only wins and hide the misses</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the first move happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="meeting"><span>At the next team meeting</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+              <button class="opt" data-when="twoweeks"><span>Within 14 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my adoption plan</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the audit into one dated, visible first move. The transfer artifact and Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The audit told you where your team stands; the plan picks the move they'll see. Name the real work you'll model on. Choose the first visible move: the narrated use, the show-your-prompts round, the guardrails session, or the 1:1 question. Then the honest field: what you will NOT do, because you know your failure mode. And the date, because 'soon' is where adoption plans go to die. Your metric is the audit itself, rerun in a month: which dimension moved?&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: one visible move, one date, aimed at your lowest audit dimension.</li><li>Repeat the privacy norm before anyone types.</li><li>Give quiet time; circulate: the audit output literally lists the moves.</li><li>Point at the NOT field as the honest one; every manager has one of the three.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the first move, and what's your plan for that?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Feels awkward or self-promoting</li><li>The meeting agenda is always full</li><li>Fear of being asked something they can't answer</li></ul><p class="facnote__mini">Respond: Awkward: 'Three sentences about a mundane use, misses included, reads as honesty, never as promotion.' Full agenda: 'It's ninety seconds; trade one status update for it once.' Hard questions: 'Curiosity is the C that covers you: what did you try? beats knowing every answer.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One visible move, dated, aimed at your weakest dimension, measured by the next audit. That's leading adoption, the whole job, in one card.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a plan (all four fields).</p><p class="facnote__meta"><b>Watch for:</b> Moves chosen for comfort over leverage (picking the 1:1 question when the modeling dimension scored zero). Nudge toward the lowest dimension.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf, then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 9 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Manager modeling, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Manager Modeling</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Using AI visibly: narrated uses, shown checks, shared misses. Gallup's strongest human predictor of whether a team adopts.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Workflow integration, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Workflow Integration</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI built into the team's real repeated work, with checks, rather than issued as a tool. The other top predictor of frequent use.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The three guardrails, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Three Guardrails</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Data (what goes in), sign-off (when a human approves), ownership (who answers for it). One page, written with the team, posted.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The data rail, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Data Rail</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The traffic light: green public or generic, go; yellow internal, approved VU tools only; red private information about people, never.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The sign-off rail, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Sign-Off Rail</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Outbound, high-stakes, or about people: a human reviews before it moves. Internal drafts and personal productivity: go.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The ownership rail, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Ownership Rail</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>You own what you ship, whoever drafted it. "The AI got it wrong" is a missing name, and a missing rail.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Show your prompts, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Show Your Prompts</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A 15-minute team round: real uses, real prompts, real misses, manager first. The cheapest adoption program that exists.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Curiosity courage connection, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Curiosity, Courage, Connection</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Accenture's three differentiators of the ~18 percent of leaders doing this well. All three are visible behaviors, none is a tool decision.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The work audit, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Work Audit</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Five scored questions on your team's AI reality: repeated work, usage state, modeling, guardrails, coaching conversations. Quarterly; rising scores are the metric.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Amnesty, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Amnesty</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Existing shortcuts get grandfathered into redesign, never punished. Punishing early adopters teaches everyone to hide.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here, including the amnesty, which is the difference between finding your team's shortcuts and driving them underground.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card (The Amnesty flips well and reteaches the rails).</li><li>Tell them it's here whenever they need it.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour the cards.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. Monday is watching.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point verbally from the close.</p></aside>
+  </section>
+
+  <!-- ============ 10 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Monday, they're <em>watching</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw the evidence, wrote the rails, and scored your team's reality honestly. One visible move is on your card, and the research says that move matters more than any tool your organization will ever buy.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">15 minutes</span></div>
+        <h3>The first visible move</h3>
+        <p>Run your card's move exactly as written: the narrated use with its check, the show-your-prompts round, the guardrails session, or the 1:1 question. Then rerun the audit in a month and watch which dimension moved. Adoption is a score that rises one visible move at a time.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your move and your day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the audit + plan</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Model it. Rail it. Audit it. Repeat.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-model">Model It, Visibly</a></li>
+          <li><a href="#s-rails">The Three Guardrails</a></li>
+          <li><a href="#s-audit">The Work Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Adoption Plan</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Leading the Shift · Facilitator Edition · learner link: <a href="../../leading-ai-adoption/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Course_Library/leading-ai-adoption</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert plans into spoken commitments and capture the Level 1 check.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: they adopt what you model, the rails make trying safe, and the audit tells you what to fix next, quarterly, forever. You have a plan. Say your move and your day out loud; spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured next step: the first visible move, then the audit rerun in a month.</li><li>Fist-to-five on confidence; note the number; the 30-day re-poll asks it again.</li><li>Commitment round: move and day, out loud or in chat.</li><li>Point at the cheat sheet and worksheet; the 7-day pulse is coming; stop on time.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+; a majority state a move and a day.</p><p class="facnote__meta"><b>Watch for:</b> Plans without dates; the round catches them.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go make the move where they can see it. Curiosity, courage, connection, and three honest sentences at Monday's meeting.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast round.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

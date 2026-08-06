@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback, Ready, Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="A short interactive course for managers: use AI to prepare for 1:1s, draft behavior-based feedback from your own observations, and surface coaching opportunities from aggregate signals, while the conversation itself stays fully human.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Feedback, Ready | Vanderbilt Learning Series">
+<meta property="og:description" content="Prep like a coach, show up human: AI-assisted 1:1 prep, SBI feedback drafting, and signal-spotting without surveillance. Classroom 40 min, self-paced ~15.">
+<meta property="og:url" content="../../ai-coaching-feedback/">
+<meta property="og:image" content="../../ai-coaching-feedback/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feedback, Ready | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../ai-coaching-feedback/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-prep">The Principle</a>
+    <a href="#s-draft">The Draft</a>
+    <a href="#s-signals">The Signals</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 13</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (43 min) or Core (30 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Run both editions start to finish, doing every exercise, including the Feedback Prep Lab honestly. You'll be asked what YOUR prep routine is; a real answer plays best.</li><li>Build your own prep card for a real upcoming conversation. You'll show the structure, never the contents.</li><li>Send the pre-work invite (template on this page): bring one upcoming conversation you're not fully looking forward to, held privately.</li><li>Confirm which VU-approved tools your audience actually has access to, so the 'approved lanes' advice is concrete.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR with your own phone; it must land on the learner edition.</li><li>Run one round of Prep or Outsource and one full lab pass so you can drive them without looking.</li><li>Print 5 to 10 cheat sheets and prep cards.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab; silence the machine.</li><li>Write 'ROLES, NEVER NAMES' where the room can see it all session.</li><li>Test arrow-key navigation and one interaction.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed prep cards (worksheet.html) as the no-device fallback</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Whiteboard the course: the prep-outsource line, SBI, and the two-question boundary test all draw in seconds. The lab becomes a group walk-through: read each step's options aloud, room votes, you read the coaching. Capstone moves to the printed card.</div><div class="brief__row"><b>If Learner devices can't join:</b> Run facilitator-only: trainers play well on the projector with A/B/C hand votes; the capstone moves to paper.</div><div class="brief__row"><b>If Someone names a real colleague or starts describing an identifiable situation:</b> Protect them warmly and immediately: 'Hold that. Roles, never names; the exercises work on the pattern, not the person.' If something serious surfaced, route it privately to HR or the EAP at the break, never from the front of the room.</div><div class="brief__row"><b>If The room reacts to the surveillance section with 'but my platform offers exactly that feature':</b> Honor it; the tools genuinely do. The answer is the two-question test: aggregate or individual, and would you tell the team? A vendor shipping a feature doesn't make it a good management practice, and VU's approved-tool decisions plus the light set the actual boundary.</div><div class="brief__row"><b>If A learner asks whether AI-written feedback is dishonest:</b> Draw the authorship line: structure and phrasing help is the same help a book or a template gives; judgment and examples must be yours, verified. The dishonesty starts where the verification stops: signing an assessment you didn't make.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>Isn't using AI for feedback just lazy management?</summary><p>Using it to avoid the conversation is. Using it to prepare is the opposite: the managers who rehearse, structure their observations, and check their drafts for character judgments walk in MORE prepared than the ones who wing it. The lazy version and the diligent version use the same tool; the difference is whether the human conversation got more of you or less.</p></details><details class="brief__q"><summary>If I de-identify, can't AI still guess who I mean on a small team?</summary><p>Sometimes, which is why de-identification is necessary but not sufficient: the second rule is approved VU tools only, where the data handling is contractually governed. Together they cover the realistic risk. And note what de-identification is really for: it forces you to describe behavior and situation rather than person, which makes the feedback better anyway.</p></details><details class="brief__q"><summary>My people will find out I used AI to prep. Isn't that a trust problem?</summary><p>Only if it was a secret. Everything this course teaches survives being said out loud: 'I structured my notes before our 1:1 so I'd be clearer' is diligence, and most people read it that way. The trust problem comes from the practices that need secrecy, which is exactly what the out-loud test screens for.</p></details><details class="brief__q"><summary>Where's the line with engagement survey data?</summary><p>The platform's anonymization is the line, and it's also the deal that keeps surveys honest. Aggregate themes into conversations: always fine. Any attempt to de-anonymize, match writing styles, or narrow by demographic slice until individuals emerge: never, because the first time a team suspects it, honest surveys are over.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Feedback, Ready session. One thing to bring: one upcoming conversation you're not fully looking forward to, a piece of feedback you owe someone, a 1:1 that keeps skating on the surface. You will never be asked to name the person or share details; every exercise runs on roles, and everything you type stays on your screen. That's it, no reading, no tools to install.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later, did the prepped conversation happen? Three quick lines, reply whenever: 1) Did the prep move from your card run before the conversation? 2) What did the prep change about how you listened? 3) Did everything stay de-identified and in approved tools? Replies come to me only.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Seven days out, send the pulse: 'Did the prep run before the conversation? What did the prep change about how you listened? Did everything stay de-identified and in approved tools?' The count of prepped conversations actually held is the program's headline Level 3 metric.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 43 min · Core 30</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Feedback, Ready session. One thing to bring: one upcoming conversation you're not fully looking forward to, a piece of feedback you owe someone, a 1:1 that keeps skating on the surface. You will never be asked to name the person or share details; every exercise runs on roles, and everything you type stays on your screen. That's it, no reading, no tools to install.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series · CHART</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. Today touches conversations with real people, so one norm up front: roles, never names, and everything you type stays on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>3</b> Core ideas</div>
+        <div><b>40</b> Minutes (30 core)</div>
+        <div><b>1</b> Conversation you'll prep this week</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get learners into the experience on their own devices and set the norm that makes people-conversation material safe.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Scan the code before we start. Today is thirty-some minutes on one habit: letting AI make you better prepared for the conversations that matter, without ever letting it have them for you. We'll work near real relationships, so the ground rule for the whole session: roles, never names, and everything you type stays on your screen.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Slide projected as people arrive; phones up before you speak.</li><li>State the norm once, clearly: roles, never names; typed exercises stay on their screens.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Most of the room has the deck open; the norm gets a visible nod.</p><p class="facnote__meta"><b>Watch for:</b> Anyone bracing for an AI pitch. The frame: this is a coaching session that happens to use AI for the prep.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's the contract for the next forty minutes.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the norm stated once, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Feedback, Ready · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Prep like a coach.<br><em class="gold-text">Show up human.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">SHRM's workplace research finds managers' work is already about 50 percent AI-assisted, against 34 percent for individual contributors, and coaching platforms now build AI into the flow of people work. The move that separates good use from bad is one sentence long: AI prepares the conversation, and you have it. This half hour installs that habit, with the privacy rules that make it safe.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain the prep-not-outsource line: what AI can prepare, and why the conversation itself never delegates</li>
+          <li>Draft behavior-based feedback with AI from your own de-identified observations, structured as Situation, Behavior, Impact</li>
+          <li>Use AI on aggregate signals, survey themes and your own 1:1 notes, to surface coaching opportunities without crossing into surveillance</li>
+          <li>Build a prep card for one real upcoming conversation, with the privacy rules attached</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Grows self and others</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill">Coaching Techniques</span>
+        <span class="skillpill">Performance Feedback</span>
+        <span class="skillpill">AI Literacy</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-prep">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: four capabilities, ending in a prep card for one real conversation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Four things by the end: you'll know exactly where the line sits between AI that preps you and AI that replaces you. You'll be able to turn your rough notes into behavior-based feedback, safely. You'll know how to read team-level signals without sliding into surveillance. And you'll leave with a prep card for a conversation you actually have coming.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the four objectives briskly.</li><li>Name the SHRM stat once: managers' work is already about half AI-assisted, so the question is how well, not whether.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone is (a prep card for a real conversation).</p><p class="facnote__meta"><b>Watch for:</b> Tool-brand questions; park them, the principles are tool-agnostic.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One minute on where this sits in the university's plan, then the three ideas.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 1 and 4 out loud.</p></aside>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and people grow fastest for managers who prepare the hard conversation instead of avoiding it.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: speed only holds when feedback lands the week it's earned, and an SBI draft from your own de-identified notes is what gets Thursday's 1:1 held instead of postponed.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets are staffed with people somebody coached, and the conversations you prep with AI and hold as a human are how your team gets ready for one.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: you model what you practice, and a manager who preps with AI in approved lanes and keeps every conversation human is the example the institution wants copied.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: the talent the flywheel attracts stays where it's coached well, and every 1:1 you walk into prepared, behavior not character, is the retention work the reputation is built on.</p>
+      </div>
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Source:</b> <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core &lt;1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Anchor the prep-not-outsource habit in the Chancellor's vision so the session reads as institutional work, not tooling.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Before the three ideas, one minute on why the university cares about your 1:1s. The Chancellor's vision has no hedge in it: Vanderbilt will define the great university of the 21st century, and be it, operating at uncommon speed, agility, and scale. Speed is a feedback problem: at pace, things compound fast, good and bad, and the manager who preps the hard conversation and actually holds it is the one who keeps the operation honest. Dare to grow is the motto; on your team it means daring to say the thing your notes have been telling you for a month.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence off the slide and let it land.</li><li>Walk the three focus areas, one team translation each.</li><li>Point at the flywheel: talent stays where it's coached well, and coached talent is what the reputation runs on.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Nods at the team-translation lines; no discussion needed here.</p><p class="facnote__meta"><b>Watch for:</b> The urge to teach strategy; this page is a frame, and the three ideas are waiting.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the three ideas, in order.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: under a minute; read the vision sentence, gesture at the three focus areas, and move on.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Three ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>Prep, not outsource</h3><p>The line between AI that sharpens your conversations and AI that replaces you in them.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The feedback draft</h3><p>From your rough notes to Situation-Behavior-Impact, in the Feedback Prep Lab.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>Signals, not surveillance</h3><p>Survey themes and your own 1:1 notes as coaching radar, with the boundary drawn clearly.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Orient: principle, practice, boundary.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc: first the line, prep versus outsource. Then the craft: your notes into feedback worth giving. Then the boundary: signals that make you a better coach, and the ones that make you a surveillance program.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three items in one breath each.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The line first, because everything else depends on it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; the deck carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 PREP, NOT OUTSOURCE ============ -->
+  <section class="slide on-light" id="s-prep" data-count data-title="Prep, not outsource">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Principle</p>
+      <h2 class="h2" data-reveal>AI preps the conversation. <em>You have it.</em></h2>
+      <p class="lead" data-reveal>Rehearsing a hard conversation, structuring messy notes into clear feedback, generating good coaching questions: that's preparation, and AI is excellent at it. Writing words you'll sign without reading, or whispering lines mid-conversation: that's outsourcing the one part of management that only works human to human. The line matters because trust is built in the room, and your people can tell which side of it you're on.</p>
+
+      <div class="quiz" id="prepJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Prep or outsource?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the line is easy to state and easy to drift across. Five real manager moves; call each one.</p>
+        <p class="quiz__progress" id="pjProgress"></p>
+        <p class="quiz__q" id="pjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="pjOptions" role="group" aria-label="Judgment choices"></div>
+        <p class="quiz__feedback" id="pjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="pjNext" style="visibility:hidden">Next move</button>
+        </div>
+        <div id="pjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The data rule, before anything else</span>
+        <p style="margin:.5rem 0 0" class="measure">Coaching and feedback work runs on information about people, which is exactly what the traffic light guards:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">The working recipe: de-identify first (roles and situations, never names), keep it in approved VU tools, and describe behavior you observed rather than character you inferred. If a platform with embedded coaching AI is approved at VU, that approval is what makes it a lane; the light still decides what goes in.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The context behind this session: <a href="https://www.shrm.org/topics-tools/research/navigating-ai-in-the-workplace/full-report" target="_blank" rel="noopener" style="text-decoration:underline">SHRM's Navigating AI in the Workplace research</a> finds managers report about 50 percent of their work involves AI assistance, versus 34 percent for individual contributors, so the question is no longer whether managers use AI on people work but whether they use it well. And the market has noticed: platforms like Culture Amp's AI Coach, Lattice, and 15Five now embed AI coaching support directly into the flow of work, built on organizational psychology principles. The skills in this session transfer to whichever tools VU approves; the principles, prep not outsource, de-identify, behavior not character, transfer to all of them.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> hearing where colleagues draw the line calibrates your own.</p>
+          <ol class="steps">
+            <li>In pairs: each name one conversation-prep task you'd happily hand AI, and one you never would.</li>
+            <li>Compare: where exactly did the "never" start for each of you?</li>
+            <li>One pair shares their sharpest line with the room.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your own two lists: three prep tasks AI gets, three moments that stay only yours. Keep them; the capstone uses both.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the prep-outsource line and the data rules (de-identify, approved tools) that make AI-assisted people work safe.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole course in one line: AI preps the conversation, and you have it. Rehearsing the hard conversation with AI pushing back? Prep, and it works. Structuring your messy notes into clear feedback? Prep. Sending words you didn't read, or glancing at suggested empathy lines mid-1:1? That's outsourcing the only part of this job that had to be you. And before any of it: the traffic light still runs. This work sits next to red-light data, private information about people. So two rules with no exceptions: de-identify first, roles never names, and stay in approved VU tools.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Land the principle in one sentence: AI preps the conversation; you have it.</li><li>Run Prep or Outsource on devices, or as room votes; five moves, call each.</li><li>Walk the traffic light card and be unambiguous: people work lives next to red. De-identify, approved tools only, behavior not character.</li><li>Run the pair activity: one prep task you'd hand AI, one you never would; where does the 'never' start?</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Where's your line? Name one conversation-prep task you'd happily hand AI, and one you never would.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Drafting and structuring on the 'happily' side</li><li>The conversation itself, condolences, personal news on the 'never' side</li><li>Someone confesses a practice that's over the data line</li></ul><p class="facnote__mini">Respond: For the confession, warmly: 'Right instinct, wrong input. De-identify it and move it to an approved tool, and it becomes one of the best practices in the room.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The line: prep leaves you more present; outsourcing leaves you less. And the light outranks everything: de-identified, approved lanes, behavior not character.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; the room can recite the two data rules unprompted.</p><p class="facnote__meta"><b>Watch for:</b> The learner proud of a practice that's actually over the line. Correct the practice, not the person: 'that instinct is right, the input is the problem; de-identify and it's a great move.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence to hold, and then the craft.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: trainer as fast room votes, traffic light at full strength, pair activity becomes a 30-second solo list.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>AI preps the conversation. You still have it.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness on the core idea.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;AI preps the conversation. You still have it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate; say nothing until it finishes, then read it once.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the most useful fifteen minutes of prep a manager can run: the feedback draft.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 THE FEEDBACK DRAFT ============ -->
+  <section class="slide on-dark" id="s-draft" data-count data-title="The feedback draft">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Draft</p>
+      <h2 class="h2" data-reveal>From rough notes to <em>SBI</em>.</h2>
+      <p class="lead" data-reveal>The best feedback structure is decades old: Situation (when and where), Behavior (what you observed, camera-true), Impact (what it caused). AI is genuinely good at reshaping your messy notes into that structure. Whether the result helps or hurts depends entirely on what you feed it, what you ask for, and what you do with the draft. Run the lab and find out.</p>
+
+      <div class="lab" id="fbLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Feedback Prep Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the scenario is real: a solid analyst on your team has missed two handoffs this month, and Thursday's 1:1 is the moment. Choose how you prep, then see how the conversation lands.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run the 1:1</button>
+          <span class="quiz__progress" id="labStatus">Choose all four steps</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Which of these is the Behavior part of SBI actually supposed to contain?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Camera-true observation is the whole trick: 'the last two handoffs went out without the checklist' can be discussed; 'you're getting careless' can only be defended against."><span class="mark">A</span><span>What you observed, described so a camera would agree</span></button>
+          <button class="opt" data-correct="0" data-why="That's a character verdict wearing a feedback costume. Verdicts trigger defense; observations invite discussion, and AI will happily draft either, so you have to know which you're asking for."><span class="mark">B</span><span>Your honest read of their attitude</span></button>
+          <button class="opt" data-correct="0" data-why="Intentions are invisible; you're guessing. SBI works precisely because it sticks to what happened and what it caused, and leaves their side of the story for the conversation."><span class="mark">C</span><span>What they probably intended</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>A prep prompt worth stealing, names removed before anything else: "Here are my rough observations about a situation with a team member (role only). Structure them as Situation, Behavior, Impact. Flag anything that reads as a judgment of character rather than a description of behavior, and list the questions I should ask before assuming my read is right." That last clause matters most: the draft's job is to make you more prepared to listen, and a good prep surfaces what you might be wrong about. Then the rewrite pass: your voice, verified examples, and nothing you wouldn't say looking at them.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the character-versus-behavior distinction becomes reflex through small reps.</p>
+          <ol class="steps">
+            <li>Pairs. Convert these two verdicts into camera-true behavior lines: "she's disengaged lately" and "he's not a team player."</li>
+            <li>Read the best conversions aloud; the room checks each: would a camera agree?</li>
+            <li>Notice the pattern: every conversion forced you to recall a specific moment. That recall is the prep.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Take one piece of feedback you owe someone and write the S, the B, and the I in three lines, behavior camera-true. That's the input for your next AI-assisted draft.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install SBI as the structure and run every learner through the Feedback Prep Lab: input, ask, rewrite, conversation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The best feedback structure is decades old: Situation, when and where. Behavior, what you observed, described so a camera would agree. Impact, what it caused. AI is genuinely good at reshaping your messy notes into that structure, and it will just as happily draft a character verdict with confident polish. The lab in front of you is the whole discipline in four choices: what you feed it, what you ask for, what you do with the draft, and what happens in the room. Choose honestly; the outcome shows you Thursday.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach SBI in one line each: Situation (when and where), Behavior (camera-true), Impact (what it caused).</li><li>Set the lab scenario: a solid analyst, two missed handoffs, Thursday's 1:1. Send them in.</li><li>Let learners get their outcome; ask for tier hands. Have one weak-tier learner read their coaching aloud.</li><li>Push the rerun for anyone below strong.</li><li>Run the quick check (what the Behavior line contains) and, time permitting, the verdict-conversion pair drill from Go deeper.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For those below strong: which single choice cost you the conversation, and is it the one your real Thursday self would have made?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The unverified send: 'it read well'</li><li>The skewed input: only the bad weeks</li><li>An honest 'my real prep is the weak version of this'</li></ul><p class="facnote__mini">Respond: Treat the honest answer as the win: 'That recognition is the lab working. The fix is one pass: verify, rewrite in your voice, cut what you wouldn't say to their face.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The division of labor: AI structures, you judge. Input de-identified, ask includes the character-flag, draft gets the rewrite pass, and the room gets all of you.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner completes a lab run; most reach strong on a rerun; the quick check lands (camera-true behavior).</p><p class="facnote__meta"><b>Watch for:</b> Learners who breeze the lab by picking the longest option. Re-engage: 'which of these steps would you actually skip on a busy Thursday? That skip is your real risk.'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's the conversation you knew you needed. The last section finds the ones you're missing.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: SBI in one breath, one lab run (rerun only for weak tier), quick check stays, pair drill cut.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 SIGNALS, NOT SURVEILLANCE ============ -->
+  <section class="slide on-cream" id="s-signals" data-count data-title="Signals, not surveillance">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Signals</p>
+      <h2 class="h2" data-reveal>Coaching radar, with a <em>boundary</em>.</h2>
+      <p class="lead" data-reveal>Two data sources make managers better coaches without touching anyone's privacy: aggregate signals your platforms already anonymize (engagement survey themes), and your own 1:1 notes, which record what you already know but stopped seeing. AI is good at both: summarizing themes into discussion questions, and spotting the topic you've postponed four weeks running. The boundary is just as clear: analyzing an individual who hasn't asked for it is surveillance, and it poisons the trust the coaching was for.</p>
+
+      <div class="quiz" id="signalSort" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Signal or surveillance?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the same tools do both, so the boundary has to live in you. Five uses; call each one.</p>
+        <p class="quiz__progress" id="snProgress"></p>
+        <p class="quiz__q" id="snQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="snOptions" role="group" aria-label="Boundary judgments"></div>
+        <p class="quiz__feedback" id="snFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="snNext" style="visibility:hidden">Next use</button>
+        </div>
+        <div id="snResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The two-question boundary test</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Is it aggregate, or is it about one person who hasn't asked?</b> Team-level themes are coaching radar; individual analysis without consent is surveillance, whatever the tool calls it. <b>2. Would you tell the team you do this?</b> If the practice needs to stay secret to keep working, it's already over the line. Everything this course teaches survives being said out loud.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The 1:1 notes move deserves its own habit, because it's the highest-value, lowest-risk use in this course: your own notes, de-identified (roles for names before they touch a tool), in an approved tool, with a monthly prompt like "what topics keep appearing without resolving, what have I committed to and not done, and what has this person asked for more than once?" Managers who run it report the same surprise: the pattern was visible all along, in their own handwriting. Engagement platforms do the equivalent at team level and anonymize by design; your job is to turn themes into one good conversation, never into a hunt for who said what.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> saying the boundary out loud, to a colleague, is what makes it durable back at your desk.</p>
+          <ol class="steps">
+            <li>Pairs: each pick the one signal use from this section you'll actually adopt.</li>
+            <li>Then each name the use closest to your own line, the one you'd be tempted by under pressure.</li>
+            <li>Trade the counter-move: what would you say to a peer manager reaching for it?</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Run the two-question boundary test on your current practices. Anything that fails question 2 gets retired today.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Teach the two safe signal sources (aggregate themes, your own 1:1 notes) and install the two-question boundary test against surveillance.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Two data sources make you a better coach with nobody's privacy touched. Your platform's engagement themes, anonymized by design: turn them into discussion questions, never into a hunt for who said what. And the most underused coaching dataset you own: your own 1:1 notes. De-identified and run monthly through an approved tool, they'll show you the topic you've postponed four weeks running and the thing someone has asked for twice. The boundary is just as clean: analysis of one person who hasn't asked for it is surveillance, whatever the feature is called, and it fails a simple test: would you tell the team you do it?&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Name the two safe sources: platform-anonymized aggregates, and your own notes, de-identified.</li><li>Run Signal or Surveillance: five uses, call each.</li><li>Walk the two-question boundary test: aggregate or individual? And would you tell the team?</li><li>Run the pair activity: the use you'll adopt, and the tempting one closest to your line.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Which signal use will you actually adopt, and which one is closest to your line under pressure?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The notes mine wins most adopters</li><li>Temptations cluster around 'checking on' a struggling or quiet person</li><li>Someone asks where performance-management data gathering fits</li></ul><p class="facnote__mini">Respond: For the temptation: 'The caring instinct is right; the method is wrong. The move for a struggling person is a conversation, not a scan. Ask them, and use your prep tools to ask well.' For performance cases: that's a documented HR process, not a DIY analysis; loop in the experts.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Aggregate and your own notes: radar. Individuals who haven't asked: off limits. And everything we did today survives the out-loud test.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; every learner can state the two-question test.</p><p class="facnote__meta"><b>Watch for:</b> The 'but the platform offers it' objection; answer with the test, not with tool-shaming. Features aren't practices.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quiz, then the card that points all of this at a real conversation.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: trainer stays, boundary test verbatim, pair activity becomes a solo pick.</p></aside>
+  </section>
+
+  <!-- ============ 7 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 3</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Four questions, one per big idea. The systems check before the card.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all four questions.</li><li>Hands for 3-or-better; 30-second reteach on anything the room missed.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 3/4 or better.</p><p class="facnote__meta"><b>Watch for:</b> Racing; frame it as the check before the card.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes a conversation.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length.</p></aside>
+  </section>
+
+  <!-- ============ 8 · PREP CARD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My 1:1 prep card">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My 1:1 prep card</p>
+      <h2 class="h2" data-reveal>One conversation. One prep move. <em>One date.</em></h2>
+      <p class="lead" data-reveal>You have a conversation coming; every manager does. Name it (role and topic, never a name), choose the prep move from today you'll run, and put a date on it.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named conversation with a chosen prep move and a date is a practice change; everything less is a good intention. Roles, never names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="prepPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The conversation.</b> Who is it with (role, not name), and what's it about?</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. a senior analyst; two missed handoffs and what's behind them" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The prep move.</b> Which one runs before this conversation?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="Prep move">
+              <button class="opt" data-practice="rehearse"><span>Rehearse it: AI plays the other side and pushes back</span></button>
+              <button class="opt" data-practice="sbi"><span>Draft it: my de-identified notes into SBI structure</span></button>
+              <button class="opt" data-practice="notes"><span>Mine my own 1:1 notes for the pattern I've stopped seeing</span></button>
+              <button class="opt" data-practice="themes"><span>Turn team survey themes into three discussion questions</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="names"><span>Put names or identifying details into any unapproved tool</span></button>
+              <button class="opt" data-not="unread"><span>Deliver an AI draft I haven't verified and rewritten</span></button>
+              <button class="opt" data-not="screen"><span>Manage the conversation from a screen instead of listening</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When does the prep happen?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="next"><span>Before my next 1:1</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my prep card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated prep commitment for a real conversation. The transfer artifact and Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every manager in this room has a conversation coming. Name it, role and topic, never a name. Pick the prep move: the rehearsal, the SBI draft, the notes mine, or the themes move. Then the honest field: what you will NOT do, because you know your failure mode. And the date. A named conversation with a chosen prep and a date is a practice change; everything less is a good intention.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: one conversation, one prep move, one date.</li><li>Repeat the privacy norm before anyone types.</li><li>Give quiet time; circulate for stuck learners: everyone owes someone a conversation.</li><li>Point at field 3, the NOT field, as the honest one.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the prep, and what's your plan for that?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time before the meeting</li><li>The conversation feels too small to prep</li><li>Fear of over-scripting</li></ul><p class="facnote__mini">Respond: No time: 'The rehearsal is ten minutes; the unprepped version of this conversation costs more.' Too small: 'Small conversations are where the habit gets built cheap.' Over-scripting: 'The prep ends when the door closes; the card literally says so.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One conversation is about to get a better-prepared, more human version of you. That's the entire promise of the tool.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields).</p><p class="facnote__meta"><b>Watch for:</b> Vague conversations ('my team, generally'). Push to ONE role and ONE topic.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf, then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 9 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Prep not outsource, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Prep, Not Outsource</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI prepares the conversation: rehearsal, structure, questions. The conversation itself, and the relationship it runs on, never delegates.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="S B I, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SBI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, Behavior, Impact: when and where, what you observed (camera-true), what it caused. The behavior line carries the whole structure.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="De-identification, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>De-identification</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Roles and situations instead of names and details, done before anything touches a tool. The habit that keeps prep work on the right side of the light.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Aggregate versus individual, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Aggregate vs Individual</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Team-level themes are coaching radar. Analysis of one person who hasn't asked is surveillance, whatever the tool's marketing says.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The rehearsal partner, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Rehearsal Partner</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>AI as the other side of a hard conversation, de-identified: it pushes back, you practice, and the real conversation gets your calmer second draft.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Embedded coaching AI, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Embedded Coaching AI</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Platforms like Culture Amp's AI Coach, Lattice, and 15Five build AI prep into the flow of people work. Approved tools are the lane; the light still decides what goes in.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The fifty percent stat, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The 50 Percent Stat</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>SHRM: managers report about half their work involves AI assistance, versus about a third for individual contributors. The question is no longer whether, but how well.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Behavior versus character, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Behavior vs Character</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>"Two handoffs went out without the checklist" is discussable. "You're careless" is only defensible. Feed AI the first kind; ask it to flag the second.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The out loud test, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Out-Loud Test</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Would you tell your team you do this? A practice that needs secrecy to keep working is already over the line.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never. People work lives next to red; de-identify and stay in approved lanes.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here, including the out-loud test, which is the whole ethics section in one question.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card (the Out-Loud Test flips well).</li><li>Tell them it's here whenever they need it.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour the cards.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One conversation left.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point verbally from the close.</p></aside>
+  </section>
+
+  <!-- ============ 10 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">The next 1:1 is <em>the rep</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You drew the prep-outsource line, ran the Feedback Prep Lab, and set the surveillance boundary. One conversation on your calendar is about to get a better-prepared, more human version of you.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">20 minutes</span></div>
+        <h3>The prep, then the conversation</h3>
+        <p>Run your card's prep move exactly as written: de-identified, in an approved tool, behavior not character. Then close the laptop and have the conversation with nothing between you and them. Afterward, one line: what did the prep change about how you listened?</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your conversation (role only) and your prep day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the prep card</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Prep deeper. Show up human.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-prep">Prep, Not Outsource</a></li>
+          <li><a href="#s-draft">The Feedback Draft</a></li>
+          <li><a href="#s-signals">Signals, Not Surveillance</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Prep Card</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Feedback, Ready · Facilitator Edition · learner link: <a href="../../ai-coaching-feedback/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Course_Library/ai-coaching-feedback</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert cards into spoken commitments and capture the Level 1 check.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: AI preps, you converse. De-identified, approved lanes, behavior not character, aggregate not individual. You have a card. Say your conversation, role only, and your prep day out loud. Spoken commitments stick.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured next step: prep, then the conversation, nothing between you and them.</li><li>Fist-to-five on confidence; note the number for your log.</li><li>Commitment round: conversation (role only) and prep day, out loud or in chat.</li><li>Point at the cheat sheet and prep card buttons; tell them the 7-day pulse is coming; stop on time.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+; a majority state a role and a day.</p><p class="facnote__meta"><b>Watch for:</b> Cards without dates; the round catches them.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go run the prep. Then close the laptop and go be the manager the prep was for.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

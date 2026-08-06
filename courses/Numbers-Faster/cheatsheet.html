@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numbers, Faster Cheat Sheet | Vanderbilt</title>
+<meta name="robots" content="noindex">
+<style>
+  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400;
+    src: url('assets/fonts/inter-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600;
+    src: url('assets/fonts/inter-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
+    src: url('assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Inter', Arial, sans-serif; color: #1C1C1C; background: #fff;
+    font-size: 13px; line-height: 1.45; }
+  .sheet { max-width: 820px; margin: 0 auto; padding: 28px 32px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 18px; }
+  header img { width: 150px; }
+  h1 { font-family: 'Libre Caslon Display', 'Times New Roman', serif; font-weight: 400;
+    font-size: 26px; margin: 0; }
+  h1 em { font-style: italic; color: #946E24; }
+  .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .box { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 14px; break-inside: avoid; }
+  .box h2 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 0 0 8px; }
+  ol, ul { margin: 0; padding-left: 18px; }
+  li { margin-bottom: 4px; }
+  b { font-weight: 600; }
+  .full { grid-column: 1 / -1; }
+  .prompt { font-family: 'Libre Caslon Display', serif; font-size: 13.5px; border-left: 2px solid #CFAE70;
+    padding-left: 10px; color: #333; }
+  footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  a { color: #946E24; }
+  .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
+    padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
+  @media print { .printbtn { display: none; } body { font-size: 11.5px; } .sheet { padding: 0; max-width: none; } }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<button class="printbtn" onclick="window.print()">Print / Save as PDF</button>
+<div class="sheet">
+  <header>
+    <div>
+      <p class="eyebrow">Vanderbilt · Learning Series · Keep this next to the keyboard</p>
+      <h1>Numbers, faster: the <em>cheat sheet</em></h1>
+    </div>
+    <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
+  </header>
+
+  <div class="grid">
+    <div class="box">
+      <h2>The Data Loop</h2>
+      <ol>
+        <li><b>Describe:</b> tell the AI what the data is: columns, period, source, quirks.</li>
+        <li><b>Ask:</b> one question at a time, climbing the ladder rung by rung.</li>
+        <li><b>Check:</b> recompute one number, check totals and counts, trace surprises to rows.</li>
+        <li><b>Tell:</b> two plain sentences a busy reader can act on, plus one chart.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>Loop rule:</b> the check is never optional, and the recommendation is never the AI's.</p>
+    </div>
+
+    <div class="box">
+      <h2>The traffic light, for data files</h2>
+      <ul>
+        <li><b>Green:</b> public or generic data. Go.</li>
+        <li><b>Yellow:</b> internal data with no people in it, including de-identified files. Approved VU tools only: ChatGPT EDU, Amplify, Copilot.</li>
+        <li><b>Red:</b> private information about people: names, IDs, salaries, grades. Never in unapproved tools.</li>
+      </ul>
+      <p style="margin:6px 0 0"><b>The light outranks the loop,</b> and one name in a comment field makes the whole file red.</p>
+    </div>
+
+    <div class="box">
+      <h2>De-identify in five minutes</h2>
+      <ol>
+        <li>Copy the file; never touch the original.</li>
+        <li>Delete name, initial, ID, email, and phone columns.</li>
+        <li>Read the free-text columns by eye; names hide in comments.</li>
+        <li>Aggregate to counts by month or unit when counts will do.</li>
+      </ol>
+    </div>
+
+    <div class="box">
+      <h2>The question ladder</h2>
+      <ol>
+        <li><b>Summarize:</b> what does a typical month look like?</li>
+        <li><b>Compare:</b> this period against last, in a scannable table.</li>
+        <li><b>Outliers:</b> which rows or months break the pattern?</li>
+        <li><b>Explain:</b> what changed, and show me the rows behind it.</li>
+      </ol>
+    </div>
+
+    <div class="box full">
+      <h2>The describe paragraph, fill in the blanks</h2>
+      <p class="prompt">"This is [what the file is], one row per [unit], covering [period], from [source system]. Columns: [name each and what it holds]. Quirks: [gaps, renames, double-counts]. First question: [rung one]."</p>
+    </div>
+
+    <div class="box">
+      <h2>The check ritual, every run</h2>
+      <ol>
+        <li><b>Recompute one number:</b> the one that will be quoted.</li>
+        <li><b>Totals and counts:</b> parts sum to the whole; row count matches the file.</li>
+        <li><b>Row trace:</b> "show me which rows that came from" on every surprise.</li>
+      </ol>
+      <p style="margin:6px 0 0"><b>The tells:</b> parts that miss the total, percentages over 100, categories the file never had, months past the data's edge.</p>
+    </div>
+
+    <div class="box">
+      <h2>The numbers, for the skeptics</h2>
+      <ul>
+        <li>About <b>3 in 4</b> employees using AI on data work report clear productivity gains (<a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx">Gallup</a>), with the widest gains among frequent users.</li>
+        <li>Data and analysis work ranks <b>near the top</b> of AI use cases by payoff, and most of it is still done by hand.</li>
+        <li>Workers average around <b>4 hours a week</b> fixing AI output (<a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence">SHRM</a>): the cost of checking too late.</li>
+      </ul>
+    </div>
+
+    <div class="box full">
+      <h2>The telling: two sentences and a chart</h2>
+      <p class="prompt"><b>Sentence one:</b> the change, with its number. <b>Sentence two:</b> why the reader should care, or what to look at next. <b>Chart brief:</b> the comparison + the audience + the takeaway line under the chart. <b>Never outsourced:</b> the recommendation; the "so we should" sentence carries your name.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Numbers, Faster · Vanderbilt Learning Series · <a href="../../courses/Numbers-Faster/">Course site</a></span>
+    <span>The evidence: <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx">Gallup</a> · <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence">SHRM</a></span>
+  </footer>
+</div>
+</body>
+</html>

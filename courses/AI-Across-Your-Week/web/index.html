@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Across Your Week: Self-Paced | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for Vanderbilt staff: Gallup's breadth finding, the Week Map method, matching your week's blocks to the CHART methods, stacking two methods on one task, and banking the saved time where it can be seen.">
+<link rel="canonical" href="../../../courses/AI-Across-Your-Week/web/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Across Your Week | Vanderbilt Learning Series">
+<meta property="og:description" content="The CHART integrator course: inventory your real week, match each block to a CHART method, stack two methods on one task, and bank the saved time on purpose.">
+<meta property="og:url" content="../../../courses/AI-Across-Your-Week/">
+<meta property="og:image" content="../../../courses/AI-Across-Your-Week/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Across Your Week | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/AI-Across-Your-Week/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+  /* the shared AI traffic light (matches Start Smarter and AI 201) */
+  .tl { display: grid; gap: .5rem; margin-top: .9rem; }
+  .tl__row { display: grid; grid-template-columns: 92px 1fr; gap: .8rem; align-items: baseline;
+    padding: .6rem .85rem; border-radius: 5px; border: 1px solid; font-size: .95rem; }
+  .tl__row b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .07em; font-size: .78rem; }
+  .tl__row--green { border-color: rgba(46,125,50,.55); background: rgba(46,125,50,.08); }
+  .tl__row--green b { color: #2e7d32; }
+  .tl__row--yellow { border-color: rgba(168,121,0,.55); background: rgba(168,121,0,.08); }
+  .tl__row--yellow b { color: #a87900; }
+  .tl__row--red { border-color: rgba(179,64,46,.55); background: rgba(179,64,46,.08); }
+  .tl__row--red b { color: #b3402e; }
+  /* the CHART toolbox grid (section 03) */
+  .toolbox { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-top: 2rem; }
+  .toolbox .card { padding: 1rem 1.1rem; }
+  .toolbox .card h3 { font-size: 1.05rem; margin: .2rem 0 .35rem; }
+  .toolbox .card p { font-size: .88rem; }
+</style>
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body>
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-breadth">The Breadth Effect</a>
+    <a href="#s-inventory">The Inventory</a>
+    <a href="#s-match">The Match</a>
+    <a href="#s-stack">The Stack</a>
+    <a href="#s-weeklab">The Week Lab</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 14</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Across Your Week · The CHART Integrator · Vanderbilt</p>
+      <h1 class="h-hero" data-reveal>One trick is a party.<br>Seven is a <em class="gold-text">practice</em>.</h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Gallup keeps asking working adults how they use AI and what it actually does for them, and the sharpest finding is about range: people who use AI for seven or more distinct tasks are roughly twice as likely to report real productivity gains as people who use it for one or two. Breadth is the multiplier. Each CHART course builds one use; this capstone strings them together across one real week, yours, and ends with a Week Map: five or more assists on your actual calendar, each with its method and its check.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why breadth of AI use predicts productivity gains better than mastery of any single trick</li>
+          <li>Inventory a real week into recurring, AI-matchable blocks with an honest hour cost on each</li>
+          <li>Match each block to the CHART method that fits its verb: drafts, answers, minutes, slides, ideas, decisions, numbers</li>
+          <li>Stack two methods on one task while every link in the chain keeps its own check</li>
+          <li>Commit to a five-assist week on your actual calendar, with the saved time banked where it can be seen</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Embodies an entrepreneurial spirit and leverages data and technology</span>
+        <span class="skillpill skillpill--core">Continuously strives for excellence</span>
+        <span class="skillpill">AI Literacy</span>
+        <span class="skillpill">Workflow Design</span>
+        <span class="skillpill">Time Management</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-breadth">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and this capstone grows your AI practice from one trick to a whole working week.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. At your desk: uncommon speed is assembled from ordinary weeks, and a Week Map with five assists on your real calendar is your share of it.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. At your desk: bold bets are paid for in recovered hours, and breadth is how you recover them; the time your Week Map banks is capacity the university can point somewhere new.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. At your desk: the model university has a model workweek somewhere inside it, and staff running seven or more AI-assisted tasks, each with its own check, are what it looks like up close.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition is a weekly habit long before it is a strategy, and every block on your Week Map that ships sooner with its check intact hands the flywheel another hour to spend.</p>
+      </div>
+
+      <p class="muted" data-reveal style="margin-top:1.25rem;font-size:.85rem">The vision on this page: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>One week, six <em>moves</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The breadth effect</h3><p>Gallup's finding: seven-plus distinct uses roughly doubles the odds of real gains, and one-trick habits plateau.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>The inventory</h3><p>Your week as recurring blocks, each with an honest hour cost. You'll write yours down, privately.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The method match</h3><p>The CHART toolbox on one slide, and the rule that makes matching easy: follow the block's verb.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>The stack</h3><p>Chaining two methods on one task, with a check at every link. The chain is only as good as its weakest verify.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>The week lab</h3><p>Plan a program coordinator's Monday to Friday and watch where the hours actually go by week four.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Bank the time</h3><p>Saved time evaporates unless you name where it goes. The last move makes the gain visible.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 3 · 01 THE BREADTH EFFECT ============ -->
+  <section class="slide on-light" id="s-breadth" data-count data-title="The breadth effect">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Breadth Effect</p>
+      <h2 class="h2" data-reveal>The multiplier is <em>breadth</em>.</h2>
+      <p class="lead" data-reveal>Most people who use AI at work found one trick, an email draft or a quick summary, and stopped there. The research says stopping there is exactly where the gains stop too. Before the method, the evidence: four findings from Gallup's workplace AI research, and most rooms guess them wrong.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">The one-trick user</span>
+          <h3>One or two uses</h3>
+          <p class="muted">Drafts the occasional email, summarizes the occasional document. The habit lives in one corner of the week, the rest of the calendar never changes, and the reported gains stay modest.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">The seven-plus user</span>
+          <h3>Seven or more distinct uses</h3>
+          <p class="muted">Drafts, answers, minutes, slides, numbers: AI shows up wherever the week repeats itself. Roughly twice as likely to report real productivity gains, because the assists compound across the calendar.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="bgGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a finding you guessed at, and missed, sticks far better than one you were shown. Four findings from Gallup; call each one before the reveal.</p>
+        <p class="quiz__progress" id="bgProgress"></p>
+        <p class="quiz__q" id="bgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="bgOptions" role="group" aria-label="Answer choices"></div>
+        <p class="quiz__feedback" id="bgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="bgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="bgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: According to Gallup's workplace research, what best predicts whether someone reports real productivity gains from AI?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Breadth and frequency together: AI used across many distinct tasks, regularly. That is why this capstone works on your whole week instead of one more trick."><span class="mark">A</span><span>Using AI across many distinct tasks, regularly</span></button>
+          <button class="opt" data-correct="0" data-why="Deep mastery of one use is comfortable and it plateaus. The single-task expert and the light user report surprisingly similar weeks; the range is what moves the needle."><span class="mark">B</span><span>Becoming an expert at one high-value use</span></button>
+          <button class="opt" data-correct="0" data-why="Everyone has roughly the same tools now. What separates people is how many places in the week the tools actually show up, which is a habit question rather than an access question."><span class="mark">C</span><span>Having access to the newest model</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The source for the game is <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace AI research</a>, the long-running survey of how employees actually use AI on the job. The pattern across its findings: adoption keeps spreading, most users park at one or two occasional uses, and the people reporting real productivity gains are the frequent, broad users with AI threaded through many distinct tasks. The plateau has a simple mechanic. One use case saves minutes in one place while the rest of the week goes untouched, so the gain never feels real and the habit never grows. Seven uses reach seven corners of the calendar, the assists start feeding each other, and the saved time gets big enough to notice. Which raises the question this course answers: where in YOUR week would seven assists even go?</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Count your own distinct uses from the last month, honestly. Write the number down; the capstone asks you to grow it, and the before-and-after is your evidence.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>The gain is not in the task. It is in the habit.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5 · 02 THE INVENTORY ============ -->
+  <section class="slide on-dark" id="s-inventory" data-count data-title="The inventory">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · The Inventory</p>
+      <h2 class="h2" data-reveal>First, see the week as <em>blocks</em>.</h2>
+      <p class="lead" data-reveal>You cannot place seven assists on a week you have never looked at. So the Week Map starts with an inventory: the recurring blocks your calendar actually runs on, written down with an honest hour cost next to each. Most weeks are built from a handful of repeating shapes.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Meetings</span>
+          <h3>The recurring rooms</h3>
+          <p class="muted">Team meetings, one-on-ones, committees. The blocks themselves stay; what AI can absorb is the record-keeping and the follow-up they generate.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Writing</span>
+          <h3>The recurring pages</h3>
+          <p class="muted">Status updates, newsletters, announcements, the same email in forty costumes. Usually the biggest single pile of draftable hours in the week.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Reporting</span>
+          <h3>The recurring numbers</h3>
+          <p class="muted">Exports, dashboards, the spreadsheet that lands every Thursday. Reading data and explaining what changed eats more of the week than most people admit.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Inbox</span>
+          <h3>The daily drip</h3>
+          <p class="muted">Triage, routine replies, the requests that arrive shaped like the last hundred. Small individually, enormous by Friday.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Prep and research</span>
+          <h3>The looking-things-up hours</h3>
+          <p class="muted">Policy questions, vendor comparisons, background before a meeting. The block people forget to count because it hides inside other blocks.</p>
+        </div>
+        <div class="card" data-reveal style="border-color:rgba(207,174,112,.5)">
+          <span class="tag">The honest hour</span>
+          <h3>Cost each block for real</h3>
+          <p class="muted">Next to each block, the hours it truly takes in a normal week. The honest number is usually higher than the guess, and the gap is where the Week Map pays.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">One rule before you write anything</span>
+        <p style="margin:.5rem 0 0" class="measure">An inventory can drift into naming people: the difficult report, the slow approver. Keep it blocks, roles, and workflows. And the traffic light from Start Smarter governs every assist you place this week:</p>
+        <div class="tl">
+          <div class="tl__row tl__row--green"><b>Green</b><span>Public or generic information. Go.</span></div>
+          <div class="tl__row tl__row--yellow"><b>Yellow</b><span>Internal work. Approved VU tools only.</span></div>
+          <div class="tl__row tl__row--red"><b>Red</b><span>Private information about people. Never.</span></div>
+        </div>
+        <p style="margin:.75rem 0 0" class="measure">If a block touches red data, that block's assist stays out of unapproved tools, whatever the time savings look like. The light outranks the map.</p>
+      </div>
+
+      <div class="plan" id="wkInv" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Play · Inventory your week, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this session runs on your real week, and three blocks are enough to start the map. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="wiHeavy"><b>1 · The heaviest block.</b> Your biggest recurring time cost in a normal week:</label>
+            <input type="text" id="wiHeavy" maxlength="120" placeholder="e.g. the Monday enrollment report, most of the morning" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="wiRepeat"><b>2 · The most repetitive block.</b> The work that looks the same every single time:</label>
+            <input type="text" id="wiRepeat" maxlength="120" placeholder="e.g. routine inbox replies to the same five questions" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="wiPostpone"><b>3 · The block you always postpone.</b> The recurring task that slides to Friday, then to next week:</label>
+            <input type="text" id="wiPostpone" maxlength="120" placeholder="e.g. updating the program documentation" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="wiBuild" disabled>Read my week back</button>
+            <span class="quiz__progress" id="wiStatus">Fill in all three</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="wiOut" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Three habits make an inventory worth keeping. Work from last week's actual calendar and sent folder, because memory flatters the week and the calendar tells the truth. Keep blocks at the size of an appointment, an hour or three, since "administration" is too big to match a method to and "opened the spreadsheet" is too small. And write the honest hour in ink: if the Thursday report truly costs four hours across the week, saying four is what makes the later math real. Five to eight blocks is plenty. The inventory is private and nobody audits it; it is simply the surface the next section's matching runs on.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Open last week's calendar and sent folder for two minutes and add the block you forgot. The fourth block found this way is usually the most repetitive one, which makes it the easiest match in the next section.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 6 · 03 THE METHOD MATCH ============ -->
+  <section class="slide on-cream" id="s-match" data-count data-title="The method match">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Method Match</p>
+      <h2 class="h2" data-reveal>Match the verb, not the <em>topic</em>.</h2>
+      <p class="lead" data-reveal>Here is the whole CHART toolbox on one slide: seven methods, each built by its own course. The matching rule that makes the toolbox usable is simple. Ignore what the block is about and ask what you are doing in it. A writing verb takes the drafts method, a question verb takes answers, a deciding verb takes decisions. Verbs match; topics mislead.</p>
+
+      <div class="toolbox">
+        <div class="card" data-reveal><span class="tag">Verb: asking</span><h3>Answers</h3><p class="muted">Research with ask, anchor, check: get the answer, anchor it to a source, verify before you rely on it.</p></div>
+        <div class="card" data-reveal><span class="tag">Verb: writing</span><h3>First Drafts</h3><p class="muted">AI writes the first pass from your real material; you rewrite the judgment parts and check every claim.</p></div>
+        <div class="card" data-reveal><span class="tag">Verb: capturing</span><h3>Minutes</h3><p class="muted">Meetings into a record: decisions, owners, deadlines, checked against your own notes before it ships.</p></div>
+        <div class="card" data-reveal><span class="tag">Verb: presenting</span><h3>Slides</h3><p class="muted">A brief before a deck: message, audience, three points, then slides. You keep the recommendation slide.</p></div>
+        <div class="card" data-reveal><span class="tag">Verb: inventing</span><h3>Ideas</h3><p class="muted">Volume first, judgment second: many options fast, then your standards pick what survives.</p></div>
+        <div class="card" data-reveal><span class="tag">Verb: choosing</span><h3>Decisions</h3><p class="muted">Options, criteria, and tradeoffs laid out for you to weigh. The call itself stays yours.</p></div>
+        <div class="card" data-reveal><span class="tag">Verb: explaining data</span><h3>Numbers</h3><p class="muted">Spreadsheets into plain language: what changed, what drives it, spot-checked against the source file.</p></div>
+      </div>
+
+      <div class="quiz" id="mmMatch" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Match the method</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the toolbox only pays when you can sight-read a block and reach for the right method. Five real week-blocks; find each one's verb, then its method.</p>
+        <p class="quiz__progress" id="mmProgress"></p>
+        <p class="quiz__q" id="mmQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="mmOptions" role="group" aria-label="Method choices"></div>
+        <p class="quiz__feedback" id="mmFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="mmNext" style="visibility:hidden">Next block</button>
+        </div>
+        <div id="mmResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: Your block is "prepare the quarterly budget summary for the finance committee." What tells you which method fits?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="The verb decides. Explaining what the numbers did is the numbers method; writing the narrative summary is drafts; building the committee deck is slides. Same topic, three different verbs, three different methods."><span class="mark">A</span><span>The verb: what you are actually doing in the block</span></button>
+          <button class="opt" data-correct="0" data-why="Budget sounds like numbers, and the topic misleads. A budget block might be a writing block, a presenting block, or an explaining block, and each takes a different method."><span class="mark">B</span><span>The topic: budgets mean the numbers method</span></button>
+          <button class="opt" data-correct="0" data-why="Stakes change how carefully you check, never which method you reach for. A high-stakes writing block is still a writing block; it just gets a stricter verify."><span class="mark">C</span><span>The stakes: important blocks get the strongest method</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Every method on this slide is its own CHART course, with the full technique and its checks: the First Drafts course for the writing verb, the Answers course for the asking verb, the Minutes course for meetings, plus Slides, Ideas, Decisions, and Numbers, all sitting alongside Start Smarter in the <a href="../../../" target="_blank" rel="noopener" style="text-decoration:underline">Course Library</a>. You do not need all seven to build a Week Map; you need the two or three whose verbs dominate your inventory. Match your blocks first, then take the course for any method you reached for and found thin. That order matters: the week tells you which courses to take, which beats taking courses and hoping a week shows up.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Match your own three blocks: say the verb, then the method. If one block will not settle on a single verb, split it in two; multi-verb blocks are tomorrow's stacks.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 7 · 04 THE STACK ============ -->
+  <section class="slide on-light" id="s-stack" data-count data-title="The stack">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · The Stack</p>
+      <h2 class="h2" data-reveal>Two methods, one task: the <em>stack</em>.</h2>
+      <p class="lead" data-reveal>Some blocks hold two verbs, and that is where the biggest savings live. The meeting produces a record and the record needs a follow-up email: minutes into drafts. The export needs explaining and the explanation needs a deck: numbers into slides. Chaining methods is the seven-plus user's signature move, with one law attached: every link keeps its own check, because a chain is only as trustworthy as its weakest verify.</p>
+
+      <div class="grid grid-3" style="margin-top:2rem">
+        <div class="card" data-reveal>
+          <span class="tag">Minutes into Drafts</span>
+          <h3>Meeting to follow-up</h3>
+          <p class="muted">The recording becomes minutes, checked against your notes. The checked minutes become the action-item email, read before it sends. Two checks, one afternoon saved.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Numbers into Slides</span>
+          <h3>Export to deck</h3>
+          <p class="muted">The spreadsheet becomes a plain-language read, spot-checked against the source. The checked read becomes a slide brief, and you keep the recommendation slide.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Answers into Decisions</span>
+          <h3>Research to the call</h3>
+          <p class="muted">The question becomes sourced answers, anchored and verified. The verified answers become a decision brief with criteria and tradeoffs. The call stays yours.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The weakest-verify law</span>
+        <p style="margin:.5rem 0 0" class="measure">An error that slips through link one rides the chain in a nicer costume: a wrong figure in the minutes becomes a confident wrong figure in the follow-up email. So the rule for every stack is unglamorous and firm. <b>Check the output of link one before it feeds link two.</b> Skip a check to move faster and you have chosen the chain's ceiling; the weakest verify sets it.</p>
+      </div>
+
+      <div class="quiz" id="bcChain" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Build the chain</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> stacks are the move that separates the seven-plus user from the one-trick user. Five real tasks; pick the two-method stack that fits.</p>
+        <p class="quiz__progress" id="bcProgress"></p>
+        <p class="quiz__q" id="bcQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="bcOptions" role="group" aria-label="Stack choices"></div>
+        <p class="quiz__feedback" id="bcFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="bcNext" style="visibility:hidden">Next task</button>
+        </div>
+        <div id="bcResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Start with a two-link stack and resist longer ones for the first month. Every added link multiplies the ways an unverified claim can travel, and a three-link chain with soft checks fails more expensively than three separate assists. The check between links can be quick: three figures traced to the source file, the decision list read against your own jottings, one claim followed back to the policy page. Quick is fine; skipped is the failure. And notice what stacking does to your time math: a stack saves the handoff hours, the retyping and reformatting between tools, which is often more than either method saves alone. That is why the Week Map asks for one stack, singular, done well.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write your heaviest block's stack in four lines: method one, its check, method two, its check. Mark the check you would be most tempted to skip; the lab is about to show you why.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 8 · 05 THE WEEK LAB ============ -->
+  <section class="slide on-dark" id="s-weeklab" data-count data-title="The Week Lab">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · The Week Lab</p>
+      <h2 class="h2" data-reveal>Plan the coordinator's <em>week</em>.</h2>
+      <p class="lead" data-reveal>Meet a program coordinator with a week you will recognize: a Monday enrollment report, a Wednesday team meeting, a Thursday committee deck, and an inbox that never sleeps. Choose how each block runs, then jump ahead four weeks and see where the hours went.</p>
+
+      <div class="lab" id="weekLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Week Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make on your own map this week, and the failure modes are the ones that actually happen. Set all four blocks, then run the month.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Run four weeks</button>
+          <span class="quiz__progress" id="labStatus">Choose all four blocks</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Watch where the lab punishes you. Never for using AI on too many blocks; always for the design around it: an unchecked draft feeding a deck, an auto-reply speaking for you, saved hours with no name on them. The strong week has a texture worth noticing too. Its wins are boring: twenty minutes here, an hour there, checks that each take three minutes. Breadth gains rarely announce themselves; they accumulate, which is exactly why the last block, the bank, matters so much. If nobody names where six quiet hours went, the week-four story becomes "we're busier than ever," and the whole practice loses its evidence.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Rerun the lab once, changing only your weakest block, and watch the week-four story change. Then write down which of your real blocks that weakest choice resembles.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 9 · 06 BANK THE TIME ============ -->
+  <section class="slide on-cream" id="s-bank" data-count data-title="Bank the time">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Bank the Time</p>
+      <h2 class="h2" data-reveal>Saved time evaporates. Unless you <em>bank</em> it.</h2>
+      <p class="lead" data-reveal>Here is the finding that makes the last move necessary. Coaches and researchers who study how leaders spend their calendars, <a href="https://leadershipcircle.com/" target="_blank" rel="noopener" style="text-decoration:underline">Leadership Circle</a> among them, keep meeting the same pattern: time recovered by any efficiency quietly refills with meetings and busywork unless it is deliberately reassigned. The hours your map saves this week already have a dozen claimants. Banking means naming the destination before the time arrives.</p>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The bank, in three parts</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>1. Name the destination:</b> the backlog project, the deep-work block, leaving on time on Fridays. A real thing, said out loud. <b>2. Put it on the calendar:</b> a named block where the saved hours land, visible to whoever sees your calendar. <b>3. Report it:</b> one line in your next one-on-one about what the assists saved and what the time bought. Visible gains survive; invisible ones get reabsorbed.</p>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: The minutes method starts saving you two hours a week. What does this section say to do first?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Name it, block it, report it. Time with a destination survives the calendar's pull; time without one refills so smoothly you never notice it was saved."><span class="mark">A</span><span>Name where those two hours go and put the block on the calendar</span></button>
+          <button class="opt" data-correct="0" data-why="More assists without a bank just means more invisible savings to evaporate. Grow the practice after the gains have somewhere to land."><span class="mark">B</span><span>Add more AI assists while the momentum lasts</span></button>
+          <button class="opt" data-correct="0" data-why="Unclaimed time does not stay free; the calendar refills it within a week or two. The whole point of the bank is that saved time needs an owner the way money does."><span class="mark">C</span><span>Nothing; saved time takes care of itself</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <div class="quiz" id="jbBank" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the bank</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> evaporation is quiet, and busywork wears a productive costume. Five accounts of what happened to saved time; call each one.</p>
+        <p class="quiz__progress" id="jbProgress"></p>
+        <p class="quiz__q" id="jbQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="jbOptions" role="group" aria-label="Bank judgments"></div>
+        <p class="quiz__feedback" id="jbFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="jbNext" style="visibility:hidden">Next account</button>
+        </div>
+        <div id="jbResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The bank is also what makes your practice legible to other people. A manager who hears "AI saves me time" hears a claim; a manager who sees a calendar block named for the assessment project, and hears one line a month about what the assists saved and what the time bought, sees evidence. That visibility protects the gain twice over: the named block is harder for meeting invitations to colonize, and the reported line builds the case for the practice spreading to the team. One more thing worth saying plainly: leaving on time is a legitimate bank. Recovered hours do not owe anyone more output; they owe a destination, and home is one.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <p class="why"><b>Do this now:</b> Write the line, then open your calendar and create the block right now, named for its destination, in the first week your map runs. The bank exists when the calendar says it does.</p></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 10 · RECAP QUIZ ============ -->
+  <section class="slide on-light" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11 · WEEK MAP (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My Week Map">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · My Week Map</p>
+      <h2 class="h2" data-reveal>Five assists. One stack. <em>One date.</em></h2>
+      <p class="lead" data-reveal>Sessions do not change calendars; a map with a date does. Name your week's blocks, choose the first stack you will run, name what you refuse to let happen, and put a date on the calendar pass that places the assists.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named set of blocks with a chosen stack and a dated first move is a practice; everything less is a good intention. Blocks and workflows, never people's names, and nothing you type here is saved or sent anywhere.</p>
+
+      <div class="plan" id="wkPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWho"><b>1 · The five blocks.</b> Name your week's recurring blocks in one line:</label>
+            <input type="text" id="planWho" maxlength="140" placeholder="e.g. Monday report, team meeting, committee deck, inbox, vendor research" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>2 · The first stack.</b> Which chain runs first?</span>
+            <div class="plan__chips" id="planPractice" role="group" aria-label="First stack">
+              <button class="opt" data-practice="minutes"><span>Minutes into drafts: the meeting record becomes the follow-up</span></button>
+              <button class="opt" data-practice="numbers"><span>Numbers into slides: the export becomes the deck brief</span></button>
+              <button class="opt" data-practice="answers"><span>Answers into a decision brief: research becomes the call's paperwork</span></button>
+              <button class="opt" data-practice="inventory"><span>Inventory first: map the whole week before choosing the stack</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · What I will NOT do.</b> Your honest failure mode as this map's owner.</span>
+            <div class="plan__chips" id="planNot" role="group" aria-label="Failure mode to avoid">
+              <button class="opt" data-not="evaporate"><span>Let saved time evaporate unnamed</span></button>
+              <button class="opt" data-not="nochecks"><span>Run a chain without checks</span></button>
+              <button class="opt" data-not="reddata"><span>Put people data in unapproved tools while moving fast</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>4 · When is the calendar pass that places the assists?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Commitment window">
+              <button class="opt" data-when="tomorrow"><span>Tomorrow</span></button>
+              <button class="opt" data-when="threedays"><span>Within 3 days</span></button>
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my Week Map</button>
+            <span class="quiz__progress" id="planStatus">Fill in all four parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 12 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="The breadth effect, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Breadth Effect</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Gallup's pattern: productivity gains track how many distinct tasks AI touches. Seven-plus uses roughly doubles the odds of real gains over one or two.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The Week Map, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Week Map</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>This course's method: inventory the week's blocks, match each to a CHART method, stack two methods on one task, and bank the saved time by name.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Block, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Block</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>A recurring unit of the week, appointment-sized: the Monday report, the team meeting, the inbox hour. Blocks are what methods attach to.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The inventory, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Inventory</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The Week Map's first step: the week written down as blocks with an honest hour cost on each, built from the real calendar, kept to roles and workflows.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Method match, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Method Match</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Pairing a block with the CHART method that fits its verb: writing takes drafts, asking takes answers, choosing takes decisions. Topics mislead; verbs match.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The stack, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Stack</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Two methods chained on one task: minutes into drafts, numbers into slides, answers into a decision brief. Each link keeps its own check.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Weakest verify, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Weakest Verify</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The softest check in a chain, which sets the whole chain's trustworthiness. An error that slips one link rides the rest in a nicer costume.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Banked time, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Banked Time</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Saved hours with a named destination and a calendar block to prove it: the backlog project, the deep-work block, leaving on time. Visible, so it survives.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Evaporated time, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Evaporated Time</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Saved hours nobody named, quietly reabsorbed by meetings and busywork within a week or two. The default fate of every unmanaged efficiency.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The seven-plus user, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Seven-Plus User</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Someone with AI threaded through seven or more distinct tasks. In Gallup's research, roughly twice as likely to report real productivity gains as the one-trick user.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="CHART Program, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>CHART Program</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Cultivating Human-AI Readiness and Thinking: Vanderbilt's course series. Each course builds one method; this capstone strings them across a week.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The traffic light, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Traffic Light</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Green: public or generic, go. Yellow: internal, approved VU tools only. Red: private information about people, never. The light outranks the map.</p></div></div></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:22ch;margin-inline:auto">Now go map <em>one week</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You saw the breadth data, inventoried your real blocks, matched them to methods, built a stack with its checks, ran the coordinator's month, and named your bank. One ordinary week is about to become the evidence.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · This week</span><span class="vidcard__dur">30 minutes</span></div>
+        <h3>The calendar pass</h3>
+        <p>Next week's calendar, open. Your Week Map beside it. Place each assist on the block it belongs to, write the method and its check in the appointment notes, and create the bank block, named for where the saved time goes. When a method feels thin, its CHART course is waiting in the Course Library. That half hour is the whole practice in miniature.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your first stack and your calendar-pass day out loud, or type it in the chat. Spoken commitments stick.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the Week Map</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">Inventory. Match. Stack. Bank.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-breadth">The Breadth Effect</a></li>
+          <li><a href="#s-inventory">The Inventory</a></li>
+          <li><a href="#s-match">The Method Match</a></li>
+          <li><a href="#s-stack">The Stack</a></li>
+          <li><a href="#s-bank">Bank the Time</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Week Map</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../">Classroom edition (for facilitators)</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Across Your Week · A Vanderbilt learning experience</span>
+    </div>
+  </div>
+</footer>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=1"></script>
+</body>
+</html>

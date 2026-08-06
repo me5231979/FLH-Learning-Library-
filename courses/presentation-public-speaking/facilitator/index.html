@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentation &amp; Public Speaking — Facilitator Edition | Vanderbilt</title>
+<meta name="description" content="An interactive classroom experience for presenting to a room or a leadership audience: Duarte's Big Idea and Sparkline, Minto's SCQA, delivery technique from Anderson and Gallo, and tough-question handling, ending in one real presentation rebuilt.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Presentation &amp; Public Speaking | Vanderbilt Learning Series">
+<meta property="og:description" content="Build and deliver to a room or a leadership audience: one Big Idea, the right structure, delivery that lands, and composure under tough questions.">
+<meta property="og:url" content="../../../courses/presentation-public-speaking/">
+<meta property="og:image" content="../../../courses/presentation-public-speaking/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Presentation &amp; Public Speaking | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../../courses/presentation-public-speaking/assets/img/social-card.png">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/img/favicon-96.png">
+<link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
+
+<link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<style>
+  /* skill pills (course-level) */
+  .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
+  .skills__label { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; font-size: .7rem; color: var(--vu-gold-flat); margin-right: .25rem; }
+  .skillpill { display: inline-block; font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; line-height: 1.3;
+    padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
+    color: rgba(255,255,255,.85); }
+  .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+</style>
+
+<style>
+/* ============ facilitator edition ============ */
+.fac__badge { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .7rem; color: var(--vu-black); background: var(--vu-gold-flat);
+  padding: .3rem .55rem; border-radius: 3px; margin-left: .9rem; white-space: nowrap; }
+@media (min-width: 1200px) {
+  body.fac .slide { display: grid; grid-template-columns: minmax(0,1fr) 350px; align-items: center; column-gap: 0; overflow-y: auto; overflow-x: hidden; }
+  body.fac .slide > .wrap { grid-column: 1; }
+  body.fac .slide > .hero__video, body.fac .slide > .hero__canvas, body.fac .slide > .hero__scrim { grid-column: 1 / -1; }
+  body.fac .facnote { grid-column: 2; align-self: start; position: sticky; top: calc(var(--nav-h) + 16px);
+    margin: 0 18px 0 0; }
+  body.fac .dots { display: none; } /* rail replaces the dot rail on the right */
+}
+.facnote {
+  background: rgba(20,20,20,.96); color: rgba(255,255,255,.85); border: 1px solid rgba(207,174,112,.45);
+  border-left: 3px solid var(--vu-gold-flat); border-radius: 6px; padding: 1rem 1.1rem;
+  font-size: .82rem; line-height: 1.5; max-height: calc(100vh - var(--nav-h) - 48px); overflow: auto; z-index: 5;
+}
+@media (max-width: 1199px) { .facnote { margin: 1.5rem var(--pad-x) 0; } }
+.facnote__head { display: flex; justify-content: space-between; gap: .5rem; align-items: baseline;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .68rem; color: var(--vu-gold-flat); border-bottom: 1px solid rgba(207,174,112,.3);
+  padding-bottom: .5rem; margin-bottom: .6rem; }
+.facnote__purpose { margin: 0 0 .6rem; color: #fff; font-weight: 500; }
+.facnote__steps { margin: 0 0 .6rem; padding-left: 1.05rem; display: grid; gap: .35rem; }
+.facnote__meta { margin: .35rem 0 0; color: rgba(255,255,255,.75); }
+.facnote__meta b { color: var(--vu-gold-flat); font-weight: 600; }
+.facnote__core { border-top: 1px dashed rgba(207,174,112,.35); padding-top: .5rem; }
+.facnote__blk { margin: .55rem 0 0; }
+.facnote__tag { display: inline-block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: .6rem; padding: .15rem .4rem; border-radius: 2px; margin-bottom: .25rem; }
+.t-say { background: var(--vu-gold-flat); color: var(--vu-black); }
+.t-do  { background: rgba(179,201,205,.9); color: var(--vu-black); }
+.t-ask { background: rgba(139,161,142,.9); color: var(--vu-black); }
+.t-deb { background: rgba(236,183,72,.9); color: var(--vu-black); }
+.t-tra { background: rgba(255,255,255,.25); color: #fff; }
+.facnote__script { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: .88rem; color: #fff; }
+.facnote__mini { margin: .25rem 0 0; font-size: .78rem; color: rgba(255,255,255,.75); }
+.brief__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.5rem; }
+@media (min-width: 980px) { .brief__grid { grid-template-columns: repeat(2, 1fr); } }
+.brief__box { background: #262626; border: 1px solid rgba(207,174,112,.3); border-radius: 6px; padding: 1.1rem 1.25rem; font-size: .92rem; }
+.brief__box h3 { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  font-size: .8rem; color: var(--vu-gold-flat); margin-bottom: .6rem; }
+.brief__box ol, .brief__box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; color: rgba(255,255,255,.85); }
+.brief__wide { grid-column: 1 / -1; }
+.brief__row { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.08); color: rgba(255,255,255,.85); }
+.brief__row b { color: var(--vu-gold-flat); }
+.brief__q { border-bottom: 1px solid rgba(255,255,255,.08); padding: .4rem 0; }
+.brief__q summary { cursor: pointer; font-weight: 500; color: #fff; }
+.brief__q p { margin: .4rem 0 .2rem; color: rgba(255,255,255,.8); font-size: .9rem; }
+.brief__youarehere { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: rgba(255,255,255,.55); margin-bottom: 1rem; }
+.brief__sub { font-weight: 600; color: #fff; margin: 0 0 .6rem; font-size: 1rem; }
+.brief__printnote { color: rgba(255,255,255,.7); font-size: .9rem; max-width: 62ch; margin-top: .75rem; }
+.brief__box ol.checks, .brief__box ul.checks { list-style: none; padding-left: 0; }
+.brief__box .checks li { position: relative; padding-left: 1.4rem; }
+.brief__box .checks li::before { content: "\2713"; position: absolute; left: 0; color: var(--vu-gold-flat); font-weight: 700; }
+.facnote__invite { border: 1px solid rgba(255,255,255,.18); border-radius: 5px; padding: .8rem .9rem;
+  margin-top: .5rem; font-size: .8rem; color: rgba(255,255,255,.85); white-space: pre-wrap; }
+/* hide/show the facilitator script */
+.facnote__hide { font-family: var(--font-body, Inter, sans-serif); font-weight: 600; font-size: .72rem;
+  color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 5px; padding: .3rem .7rem; cursor: pointer; text-transform: none; letter-spacing: 0; }
+.facnote__hide:hover { border-color: var(--vu-gold-flat); }
+body.fac-hide .facnote { display: none !important; }
+@media (min-width: 1200px) { body.fac.fac-hide .slide { grid-template-columns: 1fr; } }
+.facshow { position: fixed; right: clamp(14px, 2vw, 28px); top: calc(var(--nav-h) + 14px); z-index: 96;
+  display: none; align-items: center; gap: .45rem;
+  font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .09em; font-size: .68rem; color: var(--vu-gold-flat);
+  background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
+  padding: .5rem .75rem; cursor: pointer; }
+body.fac-hide .facshow { display: inline-flex; }
+</style>
+
+<!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+    var vaScript = document.createElement('script');
+    vaScript.defer = true;
+    vaScript.src = '/_vercel/insights/script.js';
+    document.head.appendChild(vaScript);
+  }
+</script>
+</head>
+<body class="fac">
+<a class="skip-link" href="#s-agenda">Skip to content</a>
+
+<!-- reading progress -->
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progressBar"></div></div>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Vanderbilt University, home">
+    <img class="nav__lockup" src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="250" height="65">
+    <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
+    <span class="fac__badge">Facilitator Edition</span>
+  </a>
+  <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <nav class="nav__links" id="navlinks" aria-label="Sections">
+    <a href="#s-bigidea">Big Idea</a>
+    <a href="#s-sparkline">Sparkline</a>
+    <a href="#s-scqa">SCQA</a>
+    <a href="#s-delivery">Delivery</a>
+    <a href="#s-quest">Q&amp;A</a>
+    <a class="btn" href="#s-recap">Take the Quiz</a>
+  </nav>
+</header>
+
+<!-- bottom navigation bar -->
+<div class="bottombar" role="group" aria-label="Presentation controls">
+  <span class="bottombar__title" id="barTitle"></span>
+  <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
+  <div class="bottombar__ctrl">
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+  </div>
+</div>
+<button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+<main class="deck" id="top">
+
+  <section class="slide on-dark" id="s-briefing" data-title="Facilitator briefing">
+    <div class="wrap wrap-wide">
+      <p class="brief__youarehere">You are here: the facilitator prep page. Learners start on the next page.</p>
+      <p class="eyebrow">Run this course / 00 · Facilitator only</p>
+      <h2 class="h2">Before the room <em>fills</em>.</h2>
+      <p class="lead">Two paths: Full (93 min) or Core (60 min). Every page ahead carries your script in the right rail: Say, Do, Ask with expected answers, Debrief, and a Transition into the next page, with the Core cut named at the bottom of each card. This page is everything that happens before and around the room. Learners never see this edition; the welcome QR on the next page sends them to their own.</p>
+      <div class="hero__cta" style="margin-top:1.25rem"><a class="btn" href="guide.html" target="_blank" rel="noopener">Print the facilitator guide &#128424;</a></div>
+      <p class="brief__printnote">One paper packet: this prep page, the run of show, the tough-questions bank, and every section script with its slide pictured beside the notes. Print it or choose Save as PDF.</p>
+      <div class="brief__grid"><div class="brief__box"><h3>01 · A week before</h3><p class="brief__sub">Learn the course by taking it</p><ol class="checks"><li>Read this guide end to end, then run BOTH editions start to finish, doing every exercise — including drafting your own Big Idea for a real talk. You'll model it in Section 03, and a facilitator with a real example is worth three slides of theory.</li><li>Send the pre-work invite (template on this page) with the calendar invite: bring one real upcoming presentation topic. This single ask doubles the session's transfer.</li><li>Decide your path now: Full (90-minute slot) or Core (60). On Core, decide which structure section gets full depth — SCQA for leadership-heavy rooms, Sparkline for change-communication rooms.</li><li>Cue and trim both videos: Duarte TEDxEast (play 8–10 minutes of 18) and Anderson's TED talk (8 minutes). Pick your trim points and note them.</li><li>Rehearse your own opening line for this session out loud. You are about to teach opening lines; the room will notice yours.</li></ol></div><div class="brief__box"><h3>02 · The day before</h3><p class="brief__sub">Test everything a learner touches</p><ol class="checks"><li>Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.</li><li>Scan the welcome QR from the back of the room with your own phone; it must land on the learner edition.</li><li>Test both videos start-to-trim so nothing surprises the room; check audio levels.</li><li>Print 5 to 10 cheat sheets and rebuild worksheets; stage the sticky notes and the timer.</li><li>Re-read the tough-questions bank; say the 'my leadership only wants bullet points' response out loud once.</li></ol></div><div class="brief__box"><h3>03 · 30 minutes before</h3><p class="brief__sub">Set the room, set the tone</p><ol class="checks"><li>Welcome slide up as people arrive; it does the enrolling for you.</li><li>Close every other tab and app; silence the machine.</li><li>Test arrow-key navigation and one interaction (run a round of Guess the Number, open the SCQA lab).</li><li>Set up the timer where the whole room can see it.</li><li>Write 'PARKING LOT' on the whiteboard, and remember the frame: this room doesn't fear speaking — they've just never been given the architecture.</li></ol></div>
+        <div class="brief__box"><h3>04 · Materials</h3><p class="brief__sub">Have these in hand</p><ul class="checks"><li>Projector or large display and the facilitator link open (this edition)</li><li>Facilitator laptop with arrow keys or clicker; all notifications off</li><li>Learner devices (BYOD) joining via the welcome-slide QR</li><li>A visible timer or stopwatch for the live delivery round — strict timing IS the exercise</li><li>Sticky notes (or a shared doc, virtual) for the Sparkline/SCQA storyboard activity</li><li>A few printed cheat sheets (cheatsheet.html) for anyone without a device</li><li>Printed rebuild worksheets (worksheet.html) as the no-device and projector-failure fallback</li><li>Whiteboard or flip chart for the parking lot and live Big Idea rewrites</li></ul></div>
+        <div class="brief__box brief__wide"><h3>05 · When things go sideways</h3><p class="brief__sub">If it breaks, you have a move</p><div class="brief__row"><b>If Projector or the site fails mid-session:</b> Teach from the printed cheat sheet: the Big Idea formula, both structures, the delivery rules, and the bridge all work on a whiteboard. The live round and rapid fire never needed a screen; the capstone moves to the printed worksheet.</div><div class="brief__row"><b>If Learner devices can't join (wifi/filters):</b> Run facilitator-only: the trainers play well on the projector with the room voting A/B/C by hands; Big Idea drafting and the capstone move to paper (the worksheet covers both). You lose typing, not learning.</div><div class="brief__row"><b>If You're 10+ minutes behind by the delivery section (06):</b> Declare the Core path silently: cut the remaining video (assign it), run the live round at 60 seconds flat per speaker, and compress the rapid fire to two volunteers. Never cut the live round entirely or the capstone — a presentation course where nobody presented is a contradiction the room will remember.</div><div class="brief__row"><b>If Participants didn't do the pre-work and have no real presentation to draft:</b> Give the universal fallback prompt: 'pitch your leadership on one change that would make your team's work week better.' Everyone has one. It drafts, storyboards, and survives the rapid fire exactly like a real topic — and often becomes one.</div><div class="brief__row"><b>If Someone freezes or visibly panics in the live round:</b> Protect them without excusing them: 'Take a breath — start with just the Big Idea sentence, that's the whole rep.' If they can't, let them pass and re-offer at the end; most take the second chance when the pressure of the queue is gone. Never force it, never make it a moment. AMA's principle applies to facilitation too: no one cares about the stumble but them.</div><div class="brief__row"><b>If A senior leader in the room dominates feedback or turns notes into speeches:</b> Re-anchor the rule warmly: 'One specific note per speaker, framework-anchored — that discipline is half the exercise.' Deputize them as the timer-keeper or the rapid-fire executive; the role channels the energy and they're usually excellent at it.</div></div>
+        <div class="brief__box brief__wide"><h3>06 · Tough questions, ready answers</h3><p class="brief__sub">Say each answer out loud once before you teach</p><details class="brief__q"><summary>My leadership only wants bullet points and dense slides. Won't 'one idea per slide' look unprepared?</summary><p>Separate the two artifacts: the PRESENTATION is what you say with minimal slides behind it; the DOCUMENT is the dense leave-behind they can study. Gallo's rule applies to the first, not the second. Minto's Pyramid was literally built for the document. Teams that split deck-as-teleprompter from deck-as-reference find executives read the document and remember the talk — right now yours are getting neither.</p></details><details class="brief__q"><summary>Isn't leading with the answer risky? What if they reject it before I've made my case?</summary><p>The suspense strategy carries the bigger risk: an executive interrupting minute six with 'what are you asking for?' — and now you're improvising your ask under pressure. Leading with the answer doesn't skip the case; it frames every supporting point as evidence for a decision the room can already see. If the answer is genuinely explosive, SCQA still helps: state the Question crisply and signal the answer is coming in one minute, not twenty.</p></details><details class="brief__q"><summary>The Sparkline feels theatrical for a budget review. Is this TED stuff really for internal meetings?</summary><p>Match the tool to the job — that's Section 05's whole point. A routine budget review wants SCQA, maybe just the Answer and support. But the moment a presentation asks people to CHANGE — new process, reorg, strategy shift — you're in persuasion territory, and the What Is/What Could Be gap is the mechanism that moves people. The skill isn't using the Sparkline everywhere; it's noticing which meetings are secretly change talks.</p></details><details class="brief__q"><summary>I hate the sound of my own opening line. How do I know if it's good?</summary><p>Test it on the three failure modes from today: is it an apology? A warm-up ('so, um, thanks for having me, a bit of background…')? A topic announcement ('today I'll talk about Q3')? If it's none of those and it delivers either stakes or the answer inside the first sentence, it's good enough to rehearse — and rehearsal, not redrafting, is what makes it feel natural. The tenth time out loud sounds nothing like the first.</p></details><details class="brief__q"><summary>What about nerves? You said fear isn't the barrier, but my hands still shake.</summary><p>The Chapman data says fear isn't the TOP barrier for most people — not that nerves aren't real. Two honest answers: structure is itself the best anxiolytic (most speaking panic is really 'I don't know what comes next,' and a storyboard fixes that), and arousal reframing works — 'excited AND nervous' outperforms 'calm down' in performance research. Rehearse out loud, know your first sentence cold, and let the hands shake; the room can't see them from four feet away.</p></details><details class="brief__q"><summary>Can AI just build my presentation now?</summary><p>AI drafts well and thinks poorly on your behalf. It can propose Sparkline beats or an SCQA skeleton in seconds — genuinely useful — but the Big Idea is a point of view, and outsourcing your point of view is how you end up presenting a talk you don't believe in front of people who can tell. Use it the way we used the lab today: generate options, then YOU choose and sharpen. If your team took Start Smarter or Working Smarter, this is the human-checkpoint pattern applied to your own deck.</p></details></div>
+        <div class="brief__box brief__wide"><h3>07 · Copy-paste templates</h3><p class="brief__sub">Copy, swap the brackets, send</p><details class="brief__q"><summary>Pre-work invite (paste into the calendar invite)</summary><p>Subject: Before our Presentation &amp; Public Speaking session. One thing to bring: a real presentation you'll give in the next month or two — a budget review, a project pitch, a leadership update, anything with real stakes. You'll rebuild it during the session using the frameworks behind the world's best talks, and you'll leave with the opening line written. No slides needed — just the topic. Everyone speaks at least once; nobody presents a full deck.</p></details><details class="brief__q"><summary>7-day pulse (send one week after)</summary><p>Subject: One week later — did the talk happen? Three quick lines, reply whenever: 1) Did you deliver (or rehearse) the presentation you rebuilt? 2) Which structure did you use — Sparkline or SCQA — and did it hold? 3) Did anyone react to your opening line? Replies come to me only. Talk not scheduled yet? The rebuild card still works; this note is your nudge to book the rehearsal.</p></details><details class="brief__q"><summary>30/60/90-day structure check (send monthly)</summary><p>Subject: The structure check. Two questions: 1) Have you used the Big Idea, Sparkline, or SCQA on a presentation since the session? Which one, and for what room? 2) Managers: in the decks you've reviewed this month, are you seeing fewer bullet walls and more answer-first openings? Reply with a line each. The count of structure-led presentations is the metric the session was designed around.</p></details></div>
+      </div>
+      <p class="why" style="margin-top:1.5rem"><b>After the session:</b> Immediately: capture the exit commitments (Big Idea sentence, structure chosen, date of the real talk). Seven days out, send the pulse: 'Did you deliver it? Which structure? Did anyone react to your opening line?' At 30/60/90 days, track self-reported use of Big Idea/Sparkline/SCQA on subsequent presentations, and consider a manager or peer spot-check: are decks shifting from bullet-heavy to story-led, and are presenters opening with the answer in leadership settings?</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 93 min · Core 60</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Run this course</p><p class="facnote__mini">The pre-work invite. Send it with the calendar invite a week out; swap anything in [brackets] and it is ready.</p><span class="facnote__tag t-say">Invite</span><div class="facnote__invite">Subject: Before our Presentation &amp; Public Speaking session. One thing to bring: a real presentation you'll give in the next month or two — a budget review, a project pitch, a leadership update, anything with real stakes. You'll rebuild it during the session using the frameworks behind the world's best talks, and you'll leave with the opening line written. No slides needed — just the topic. Everyone speaks at least once; nobody presents a full deck.</div></aside>
+  </section>
+
+  <!-- ============ 0 · WELCOME / QR ============ -->
+  <section class="slide on-dark welcome" id="s-welcome" data-title="Scan to join">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-v-icon.png" alt="Vanderbilt V" width="72" height="66" style="margin:0 auto 1.75rem;width:clamp(56px,6vw,80px);height:auto" data-reveal>
+      <p class="eyebrow" data-reveal>Vanderbilt · Learning Series</p>
+      <h1 class="h2" data-reveal style="max-width:22ch;margin-inline:auto">Welcome. Scan to bring this session <em class="gold-text">to your seat</em>.</h1>
+      <div class="qr-card" id="qrCard" data-reveal>
+        <div class="qr-card__code" id="qrBox" role="img" aria-label="QR code linking to this experience"></div>
+        <p class="qr-card__url" id="qrUrl"></p>
+      </div>
+      <p class="lead" data-reveal style="margin:1.5rem auto 0;max-width:46ch">Learners scan this code and land on the learner edition; your screen keeps the notes. Follow along on your own device. You'll draft for a real upcoming presentation today, and everyone speaks out loud at least once. Your drafts stay on your screen.</p>
+      <div class="hero__meta" data-reveal style="justify-content:center">
+        <div><b>7</b> Core ideas</div>
+        <div><b>90</b> Minutes (60 core)</div>
+        <div><b>1</b> Real presentation you'll rebuild</div>
+      </div>
+      <div class="hero__cta" data-reveal style="justify-content:center">
+        <a class="btn" href="#s-hero">We're ready, let's begin</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Get every learner into the experience on their own device and set the contract: everyone speaks today, drafts stay private, and the work targets a real presentation.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Welcome. Point your camera at that code before we start. Two things about today. First: everyone in this room speaks out loud at least once — sixty to ninety seconds, with exactly one piece of feedback. I'm telling you now so it's not a surprise later. Second: you brought a real presentation, and by the end of this hour it will have a one-sentence Big Idea, a structure, and a written opening line. What you draft stays on your screen.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Have this slide projected as people arrive.</li><li>Point at the QR and get phones up before you say anything else.</li><li>Set the contract early: everyone speaks out loud at least once today, 60 to 90 seconds, with one kind and specific note. Naming it now defuses it.</li><li>Confirm by show of hands who brought a real upcoming presentation; note anyone who didn't (the fallback prompt is in contingencies).</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Quick poll, hands: think of the best presentation you've ever watched a leader give. Was it the content or the delivery that stuck with you?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A genuine split — that's fine, both answers serve the session</li><li>Someone says 'both' or 'the confidence'</li><li>A specific story starts to surface; bank it</li></ul><p class="facnote__mini">Respond: Whatever the split: 'Hold that presentation in your head. Today has a framework for each half of what made it work — and by the recap you'll be able to name exactly what they did.'</p></div><p class="facnote__meta"><b>Validate:</b> 80%+ of the room has the deck open on a device; you know who needs the fallback topic.</p><p class="facnote__meta"><b>Watch for:</b> Visible dread when you announce the live round. Reframe immediately: 60 seconds, one sentence plus an opening line, one note. Reps, not performance.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Here's exactly what you'll walk out able to do.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: one scan prompt, the everyone-speaks contract, move on.</p></aside>
+  </section>
+
+  <!-- ============ 1 · HERO ============ -->
+  <section class="slide on-dark hero" id="s-hero" data-title="Objectives">
+    <video class="hero__video" id="heroVideo" autoplay muted playsinline preload="auto" aria-hidden="true"
+      data-playlist='["https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_040842_1931d719-c8d4-406d-b6a0-e5bef20857a6.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_040854_5f92ded9-0250-428f-9dd1-0b2cd435aa10.mp4","https://d8j0ntlcm91z4.cloudfront.net/user_3CCurpI0FW75YAnAl4Hbz3vPdBv/hf_20260716_040905_8de4a588-85a3-4984-b7e7-2795af61ce41.mp4"]'></video>
+    <canvas class="hero__canvas" aria-hidden="true"></canvas>
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Presentation &amp; Public Speaking · Vanderbilt · Manager Voyage</p>
+      <h1 class="h-hero" data-reveal>Build the talk.<br><em class="gold-text">Command the room.</em></h1>
+      <p class="lead" data-reveal style="margin-top:1.5rem">Public speaking isn't even in America's top 50 fears anymore, so fear was never the real barrier. What separates presenters a room remembers is structure and presence, and both are learnable. Today you rebuild a real presentation with the frameworks the best talks in the world are built on.</p>
+      <div class="objectives" data-reveal>
+        <p class="objectives__label">By the end of this session, you will be able to</p>
+        <ol class="objectives__list">
+          <li>Explain why gravitas and communication, not technical mastery alone, decide how a leader's message lands, and name your own executive-presence growth edge</li>
+          <li>Distill a real presentation into one resonant sentence with Duarte's Big Idea: point of view plus what's at stake</li>
+          <li>Structure a talk with Duarte's Sparkline, alternating What Is and What Could Be toward New Bliss</li>
+          <li>Structure an executive briefing with Minto's Pyramid Principle and SCQA, leading with the answer</li>
+          <li>Apply the delivery techniques of Anderson, Gallo, and the AMA in a live, timed speaking round</li>
+          <li>Handle pointed questions with the bridge, and commit to rebuilding one real upcoming presentation, opening line written word for word</li>
+        </ol>
+      </div>
+      <div class="skills" data-reveal aria-label="Skills this course builds">
+        <span class="skills__label">Skills you'll build</span>
+        <span class="skillpill skillpill--core">Continuously strives for excellence</span>
+        <span class="skillpill">Public Speaking</span>
+        <span class="skillpill">Storytelling</span>
+        <span class="skillpill">Strategic Communication</span>
+        <span class="skillpill">Stakeholder Communications</span>
+      </div>
+      <div class="hero__cta" data-reveal>
+        <a class="btn" href="#s-case">Begin the session</a>
+        <a class="btn btn--ghost" href="#s-recap">Jump to the quiz</a>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 2 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Set the contract: six capabilities, ending in one real presentation rebuilt with the opening line written word for word.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six things by the end: you'll know why gravitas and communication decide how your message lands and which pillar is your growth edge. You'll compress your real presentation into one sentence. You'll structure it two ways — the Sparkline for hearts and minds, SCQA for the executive room — and know when to use each. You'll take a live, timed delivery rep. And you'll practice staying composed when the pointed question comes. It all lands in one artifact: your rebuild card, with the opening line written word for word.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the six objectives briskly, in plain language.</li><li>Land on the sixth: this session ends with a REAL presentation rebuilt — structure chosen, opening line written.</li><li>Name the sources once for credibility: Duarte, Minto/McKinsey, Anderson (TED), Gallo, the AMA, Hewlett's executive presence research.</li><li>Point at the skills row: this course carries Public Speaking, Storytelling, and Strategic Communication credit in the library.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Learners can say what the capstone will be (one real presentation rebuilt, opening line written).</p><p class="facnote__meta"><b>Watch for:</b> The montage pulling attention; advance once the objectives have been read.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Seven ideas, in order — starting with a myth that needs to die.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: objectives 2 and 6 out loud; the rest on screen.</p></aside>
+  </section>
+
+<!-- ============ 1b · THE MISSION ============ -->
+  <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
+      <h2 class="h2" data-reveal>Define the great university. <em>Then be it.</em></h2>
+      <p class="lead" data-reveal>Chancellor Diermeier's institutional vision is one sentence with no hedge in it: <b>Vanderbilt will define the great university of the 21st century, and be it.</b> The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and a vision this size travels only as far as the people who can stand up and make its case.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem">
+        <div class="card" data-reveal>
+          <span class="tag">Focus 1 · Exceptional core operations</span>
+          <h3>Speed, agility, scale</h3>
+          <p class="muted">Innovative, impactful capabilities that secure the talent, resources, and reputation the vision needs. The team translation: speed includes the meeting, and a briefing built on SCQA, answer first, gets a decision in the room instead of a follow-up on the calendar.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 2 · Bold strategic initiatives</span>
+          <h3>Core ops as fuel</h3>
+          <p class="muted">Increasingly bold bets that extend the reach and impact of education and research. The team translation: bold bets are won in rooms that have to be persuaded, and a Big Idea with a point of view and stakes gives the decision-maker something to grab.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Focus 3 · Industry leadership</span>
+          <h3>Model the essential university</h3>
+          <p class="muted">Stimulate industry change by modeling what a research university should be. The team translation: modeling the essential university happens on stages and in briefings, and the executive presence you build here is what makes the audience believe the model.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: funding, partnerships, and access are won in rooms where someone presents the university's case, and this course trains you to be that someone. A clear Big Idea, delivered with presence, is the reputation making its rounds.</p>
+      </div>
+
+      <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Frame presenting as institutional capability: the Chancellor's vision travels only as far as the people who can stand up and make its case.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;One minute on the stakes beyond your next talk. Chancellor Diermeier's vision is one sentence: Vanderbilt will define the great university of the 21st century, and be it. A vision that size gets funded, partnered, and believed in rooms where someone presents the case, and after today that someone is you. Our motto is 'dare to grow,' and a dare needs a voice.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the vision sentence verbatim, with the delivery you are about to teach: pause before 'and be it.'</li><li>Walk the three focus cards, one line each, landing on each 'team translation.'</li><li>Point at the flywheel card: reputation is argued for in rooms, one presentation at a time. Then move on.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;That's what your next presentation is actually carrying. Here's the plan.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: read the vision sentence, gesture at the three focuses, move on; under a minute.</p></aside>
+  </section>
+
+  <!-- ============ 2 · AGENDA ============ -->
+  <section class="slide on-cream" id="s-agenda" data-title="The plan">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>What we'll cover</p>
+      <h2 class="h2" data-reveal>Seven ideas, in <em>order</em>.</h2>
+      <ol class="agenda">
+        <li data-reveal><span class="num">01</span><div><h3>The myth &amp; the case</h3><p>Public speaking isn't the #1 fear (Chapman), and what actually decides careers: gravitas and communication.</p></div></li>
+        <li data-reveal><span class="num">02</span><div><h3>Executive presence</h3><p>Hewlett's three pillars, weighed by 268 senior executives, and your own growth edge.</p></div></li>
+        <li data-reveal><span class="num">03</span><div><h3>The Big Idea</h3><p>Duarte's one-sentence discipline: your point of view plus what's at stake.</p></div></li>
+        <li data-reveal><span class="num">04</span><div><h3>The Sparkline</h3><p>What Is, What Could Be, and the tension-and-release shape of the world's great talks.</p></div></li>
+        <li data-reveal><span class="num">05</span><div><h3>SCQA, for the executive room</h3><p>Minto's Pyramid Principle: lead with the answer, because their attention is scarce.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Delivery</h3><p>Anderson's five keys, Gallo's five tips, AMA's seven principles, and a live timed round.</p></div></li>
+        <li data-reveal><span class="num">07</span><div><h3>The tough question</h3><p>The bridge: acknowledge, answer, return to the Big Idea, with composure.</p></div></li>
+      </ol>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Show the arc once so learners can place each tool as it arrives: the case, presence, idea, structure, delivery, defense.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc is simple: first why this skill decides more than you think, then build — one idea, two structures — then deliver it live, then survive the questions.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the seven items in one breath each.</li><li>Point out the shape: why it matters (01–02), build the talk (03–05), deliver and defend it (06–07).</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed; this is orientation.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here; every concept has its own slide.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Start with the numbers, because half of what you believe about public speaking is folklore.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip entirely; the deck's structure carries it.</p></aside>
+  </section>
+
+  <!-- ============ 3 · 01 THE MYTH & THE CASE ============ -->
+  <section class="slide on-light" id="s-case" data-count data-title="The myth &amp; the case">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 01 · The Case</p>
+      <h2 class="h2" data-reveal>The fear is a myth.<br><em>The stakes are not.</em></h2>
+      <p class="lead" data-reveal>Every number in this game comes from published research, and most rooms guess them wrong. The pattern they add up to: what's holding presenters back isn't nerve, and what's at stake in presenting well is bigger than most people think.</p>
+
+      <div class="quiz" id="statGuess" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Guess the number</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a statistic you guessed at, and missed, sticks ten times better than one you were shown. Four findings; call each number before the reveal.</p>
+        <p class="quiz__progress" id="sgProgress"></p>
+        <p class="quiz__q" id="sgQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="sgOptions" role="group" aria-label="Number choices"></div>
+        <p class="quiz__feedback" id="sgFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="sgNext" style="visibility:hidden">Next finding</button>
+        </div>
+        <div id="sgResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: If fear isn't what's actually holding most presenters back, what did the research point to instead?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="Structure and presence: a distilled idea, a deliberate shape, and the gravitas-plus-communication that makes leadership visible. All learnable, which is why this session exists."><span class="mark">A</span><span>Structure and presence, both learnable</span></button>
+          <button class="opt" data-correct="0" data-why="Charisma is the folklore answer. Anderson's TED research says the opposite: delivery can be coached; the idea and its structure are what can't be faked."><span class="mark">B</span><span>Innate charisma, you have it or you don't</span></button>
+          <button class="opt" data-correct="0" data-why="Slide polish is where most prep time goes, and the research says it's the least of it. Gallo would have you cut most of those slides anyway."><span class="mark">C</span><span>Better slide design software</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The sources: the Chapman University Survey of American Fears (2024 wave: public speaking 59th of 85, at 29 percent, a few points below sharks; the myth has outlived the data by decades). Coqual's Executive Presence research, led by Sylvia Ann Hewlett, surveying nearly 4,000 professionals including 268 senior executives. And Deloitte's CFO research, where "good communication skills, the ability to explain results in clear, simple terms" topped the list of qualities for the next CFO at 39 percent, ahead of every technical competency. Presenting well is not a stage skill; it's how the people who decide careers see your thinking.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> the research becomes personal when it matches the best presentation you've actually watched.</p>
+          <ol class="steps">
+            <li>Think of the best presentation you've ever watched a leader give. In pairs: was it the content or the delivery that stuck with you?</li>
+            <li>Name ONE specific thing that made it land: an opening line, a moment of composure, a picture you still remember.</li>
+            <li>Collect a few out loud. Notice the answers are almost never "the slides were thorough." They're structure and presence, every time.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the one thing that made it land. Check it against the frameworks coming; it will map to one of them.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Kill the fear myth with the Chapman data and establish the career stakes with Coqual and Deloitte — reframing presenting as a leadership skill, not a stage skill.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Everything you've heard about public speaking starts with 'it's America's number one fear.' It isn't — and it hasn't been for a while. In the 2024 Chapman Survey it ranked fifty-ninth of eighty-five, a few points below sharks. So if fear isn't what's separating forgettable presenters from the ones a room remembers, what is? That's what these four numbers are about — and I want you to guess each one before I show you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame the game: four research findings, guess each number before it's revealed. Missed guesses are the point; they stick.</li><li>Run Guess the Number on devices, or as a room vote on the projector; call for guesses out loud before each reveal.</li><li>Land the reframe after the reveals: if fear isn't the barrier, the barrier is structure and presence — and both are learnable, which is the whole session.</li><li>Run the quick check, then the group discussion: best presentation you've watched — content or delivery?</li><li>Collect one specific 'what made it land' from two or three voices; map each answer to a coming section out loud.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;If it's not fear holding most presenters back, what is it — in your own experience?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No structure / rambling / no clear point</li><li>Reading the slides, monotone delivery</li><li>Not knowing the audience, wrong altitude for the room</li></ul><p class="facnote__mini">Respond: Collect three or four and sort them out loud: 'Everything you just named is either structure or presence. Nobody said fear. The room just wrote today's agenda.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The fear is folklore; the stakes are not. Gravitas and communication decide leadership readiness, and a presentation is where both are on display.</p></div><p class="facnote__meta"><b>Validate:</b> Quick check correct; two or three specific 'what made it land' answers collected and mapped to sections.</p><p class="facnote__meta"><b>Watch for:</b> Someone whose fear IS real and who hears the myth-busting as dismissal. Honor it in one line — 'nerves are real; the data just says they're not the main barrier, and structure is the best treatment for both' — and keep moving.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One sentence before the frameworks — the session's warning label.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: Guess the Number as a fast room vote, quick check stays, discussion becomes one show of hands.</p></aside>
+  </section>
+
+  <!-- ============ 4 · MANIFESTO ============ -->
+  <section class="slide on-cream manifesto" id="s-belief" data-title="One idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>The core idea</p>
+      <p>You can coach out a weak delivery. You can't coach in a weak idea.</p>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">One beat of stillness to lock Anderson's core insight before the tooling begins.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;You can coach out a weak delivery. You can't coach in a weak idea.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Let the line animate word by word. Say nothing until it finishes.</li><li>Read it once, slowly, then advance.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; this is pacing.</p><p class="facnote__meta"><b>Watch for:</b> The urge to talk over it. Don't.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Which is why we build the idea first and polish the delivery after. But first — the presence the idea travels on.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; say the line yourself as you pass it.</p></aside>
+  </section>
+
+  <!-- ============ 5 · 02 EXECUTIVE PRESENCE ============ -->
+  <section class="slide on-dark" id="s-presence" data-count data-title="Executive presence">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 02 · Presence</p>
+      <h2 class="h2" data-reveal>Three pillars, weighed by the people <em>who promote you</em>.</h2>
+      <p class="lead" data-reveal>Hewlett's team asked 268 senior executives what signals leadership readiness. Gravitas, confidence, decisiveness, grace under fire, took 67 percent of the vote. Communication took 28, and it's the pillar that makes gravitas visible. Appearance took 5, but filters the other two. A presentation is the one moment all three are on display at once.</p>
+
+      <div class="grid grid-3" style="margin-top:2.5rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div class="card" data-reveal>
+          <span class="tag">Gravitas · 67%</span>
+          <h3>How you hold pressure</h3>
+          <p class="muted">Confidence, decisiveness, grace under fire. Going "six questions deep" in your domain without flinching. The core signal of readiness.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Communication · 28%</span>
+          <h3>How the room sees it</h3>
+          <p class="muted">Great speaking, commanding a room, reading an audience. Gravitas that can't be communicated might as well not exist.</p>
+        </div>
+        <div class="card" data-reveal>
+          <span class="tag">Appearance · 5%</span>
+          <h3>The filter</h3>
+          <p class="muted">The smallest pillar, but a real filter: polish failures distract the room from the two pillars that matter. Manage it so it disappears.</p>
+        </div>
+      </div>
+
+      <div class="quiz" id="pillarSpot" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Spot the pillar</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the model only helps if you can see it in real moments, especially the moments where a pillar is missing. Five presentation scenes; name the pillar at work or at fault.</p>
+        <p class="quiz__progress" id="psProgress"></p>
+        <p class="quiz__q" id="psQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="psOptions" role="group" aria-label="Pillar choices"></div>
+        <p class="quiz__feedback" id="psFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="psNext" style="visibility:hidden">Next scene</button>
+        </div>
+        <div id="psResult" hidden aria-live="polite"></div>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two nuances worth carrying out of the room. First, the appearance paradox: executives rated appearance least important, yet cited unkempt attire among the most damaging presence errors. Both are true: appearance can't win the room, but it can lose it, so the professional move is making it a non-event. Second, executives put presence at roughly 26 percent of what it takes to get promoted, which means every presentation is quietly a promotion interview. Hewlett's full talk on the research is this week's optional watch (search "Sylvia Ann Hewlett Executive Presence Talks at Google").</p></div>
+          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 3 min</h4>
+          <p class="why"><b>Why this matters:</b> naming your own weakest pillar, honestly, tells you which half of today matters most for you.</p>
+          <ol class="steps">
+            <li>Rank the three pillars for yourself, strongest to weakest. Gut call, ten seconds each.</li>
+            <li>Write one recent presentation moment your weakest pillar cost you something.</li>
+            <li>Keep the note; the capstone will aim the rebuild at exactly that spot.</li>
+          </ol></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Hewlett's three-pillar model with its real weights, make it sight-readable in presentation moments, and get each learner a named growth edge for the capstone.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Hewlett's team asked 268 senior executives what actually signals leadership readiness. Sixty-seven percent said gravitas — confidence, decisiveness, grace under fire. Twenty-eight percent said communication. Five percent said appearance. Now the useful part: communication is how the room sees your gravitas. You can be brilliant under pressure in private and it counts for nothing in the meeting where careers are decided. That meeting is usually a presentation — which is why this is a leadership course wearing a public-speaking costume.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards with the numbers attached: gravitas 67, communication 28, appearance 5 — and the twist, that communication is how the room SEES gravitas.</li><li>Name the appearance paradox honestly: least important, yet blunders there are disproportionately costly. The move is making it a non-event.</li><li>Send them to Spot the Pillar: five presentation scenes, name the pillar at work or at fault.</li><li>Run the solo activity: rank your own three pillars, write one moment your weakest cost you something.</li><li>Land the stake: executives put presence at roughly 26 percent of promotion decisions. Every presentation is quietly an interview.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Gut call, ten seconds: which pillar is YOUR growth edge — and what did it cost you most recently?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Communication confessions: rambling, burying the point</li><li>Gravitas: crumbling under the hard question, over-apologizing</li><li>A brave appearance answer, usually about virtual-meeting presence</li></ul><p class="facnote__mini">Respond: No commentary on individual answers — just: 'Write the moment down. The capstone aims your rebuild at exactly that spot, and Sections 06 and 07 are the gym for the two big pillars.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three pillars, real weights, and each of you has a target. Now we build the thing the pillars carry: the idea.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer for most of the room; every learner has a written weakest-pillar moment (it feeds the capstone).</p><p class="facnote__meta"><b>Watch for:</b> The model turning into a fixed-trait test ('I'm just not a gravitas person'). Keep it behavioral: gravitas is a set of trainable moves — composure under challenge, going deep without flinching — and Section 07 drills exactly that.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;And the idea has a brutal test: can you say it in one sentence?&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: cards with numbers in ninety seconds, trainer on devices, solo ranking in thirty silent seconds.</p></aside>
+  </section>
+
+  <!-- ============ 6 · 03 THE BIG IDEA ============ -->
+  <section class="slide on-light" id="s-bigidea" data-count data-title="The Big Idea">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 03 · The Big Idea</p>
+      <h2 class="h2" data-reveal>One sentence, or it isn't <em>ready</em>.</h2>
+      <p class="lead" data-reveal>Nancy Duarte studied the structure of history's great talks and found they all rest on one thing: a single Big Idea, your point of view plus what's at stake, in one sentence. "Our Q3 results" is a topic. "Double down on enterprise, because SMB churn just outpaced our new-logo growth" is a Big Idea. If you can't say it in a sentence, the deck isn't unclear. The thinking is.</p>
+
+      <div class="quiz" id="topicJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Topic or Big Idea?</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the difference is easiest to hear in other people's sentences first. Five openers; call each one.</p>
+        <p class="quiz__progress" id="tjProgress"></p>
+        <p class="quiz__q" id="tjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="tjOptions" role="group" aria-label="Judgments"></div>
+        <p class="quiz__feedback" id="tjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="tjNext" style="visibility:hidden">Next sentence</button>
+        </div>
+        <div id="tjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="plan" id="bigIdea" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.75rem">Practice · Draft your Big Idea, privately</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you brought a real upcoming presentation; this is where it starts becoming a talk. Nothing you type is saved or sent anywhere.</p>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="biView"><b>1 · Your point of view.</b> The stance you're taking, that a reasonable colleague could disagree with:</label>
+            <input type="text" id="biView" maxlength="160" placeholder="e.g. We should move new-hire onboarding to a hybrid model now" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="biStake"><b>2 · What's at stake.</b> What's lost if the room doesn't act, ideally with a number:</label>
+            <input type="text" id="biStake" maxlength="160" placeholder="e.g. our all-virtual approach is costing us 20% of new hires in their first 90 days" autocomplete="off">
+          </div>
+          <div class="lab__runrow">
+            <button class="btn btn--dark" id="biBuild" disabled>Assemble my Big Idea</button>
+            <span class="quiz__progress" id="biStatus">Fill in both halves</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="biOut" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/1nYFpuc2Umk" data-yttitle="Nancy Duarte: the secret structure of great talks">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Duarte, "The Secret Structure of Great Talks" (18 min, play 8–10)</span>
+          <span class="yt__src">Nancy Duarte, TEDxEast · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=1nYFpuc2Umk" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the researcher herself, mapping the same shape under MLK's Dream speech and the great product launches. It sets up the next section.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Duarte's two tests for a real Big Idea: it must articulate YOUR point of view (not a neutral subject), and it must convey what's at stake (why the audience should care enough to act). The discipline is the compression itself: if the sentence needs an "and also," you have two talks. Her <a href="https://www.duarte.com/resources/talks/the-secret-structure-of-great-talks/" target="_blank" rel="noopener" style="text-decoration:underline">talk page at Duarte, Inc.</a> and the HBR Guide to Persuasive Presentations carry the full method. The Big Idea also becomes your Q&amp;A anchor in Section 07: every tough question gets bridged back to it.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <p class="why"><b>Why this matters:</b> pressure-testing a Big Idea out loud, kindly, is the fastest way to find the fog in it.</p>
+          <ol class="steps">
+            <li>Two or three volunteers read their drafted Big Idea to the room.</li>
+            <li>The room applies the tests: Is it one idea, or three? Could anyone disagree? Are the stakes real?</li>
+            <li>Rewrite the fuzziest one live, together. Watch it get shorter and sharper at the same time.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Read yours out loud. If it takes two breaths, cut it. Then try it on a colleague cold: "does this make you want the evidence?"</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 12 min · Core 9</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Duarte's Big Idea discipline (point of view + stakes, one sentence) and get every learner a drafted Big Idea for their real presentation — the raw material for everything after.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Nancy Duarte studied the greatest talks ever given looking for their common architecture, and the foundation is always the same: one Big Idea. Not a topic — a point of view, plus what's at stake, in one sentence. 'Our Q3 results' commits to nothing; nobody can disagree with it, so nobody can care about it. 'We should double down on enterprise, because SMB churn just outpaced our new-logo growth' — that's a stance with a cost attached, and now the whole deck has a job: prove it. Here's the uncomfortable truth in the formula: if you can't compress your presentation into one sentence, the deck isn't unclear. The thinking is. Let's find out.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the formula with the contrast pair: 'Our Q3 results' is a topic; 'double down on enterprise because SMB churn outpaced new-logo growth' is a Big Idea.</li><li>Send them to Topic or Big Idea: five sentences, call each one. The two-ideas-fused item teaches the most.</li><li>Run the private drafter: point of view plus stakes, assembled on their own screens. Circulate and pressure-test two or three aloud: 'Is that one idea, or three?'</li><li>Play the Duarte TEDxEast clip (8–10 minutes of 18) on the Full path — she applies the structure to MLK and Jobs, which sets up the next section.</li><li>Run the group pressure-test from Go deeper: volunteers read theirs, the room applies the tests, rewrite the fuzziest one live.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why is it so hard to compress a presentation into one sentence — and what does it tell you when you can't?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Because we start in the slides instead of the idea</li><li>Because it's really three presentations wearing one deck</li><li>Because committing to a stance feels risky; a topic is safe</li></ul><p class="facnote__mini">Respond: Anchor the third one when it comes: 'Exactly — a topic can't be wrong, which is why it can't be interesting. The Big Idea takes the risk a presentation exists to take. If the stance is wrong, better to find out in one sentence than in slide forty.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One sentence, one idea, stakes attached. That sentence is your Q&amp;A anchor, your opening line's raw material, and the test every slide must pass: does it serve the Big Idea?</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; every learner has a drafted Big Idea sentence on their screen or paper — this is the section's non-negotiable output.</p><p class="facnote__meta"><b>Watch for:</b> Drafts that are secretly topics ('an update on the program') or two ideas fused with 'and also.' The kind pressure-test: 'What do you want them to DO? What happens if they don't?' — the answers usually contain the real Big Idea.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the idea needs a shape. Duarte found one in the greatest speeches in history — and it isn't a straight line.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: contrast pair, trainer fast, drafter at full length (protect it), cut the video (assign as the week's watch), pressure-test one draft instead of three.</p></aside>
+  </section>
+
+  <!-- ============ 7 · 04 THE SPARKLINE ============ -->
+  <section class="slide on-cream" id="s-sparkline" data-count data-title="The Sparkline">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 04 · Structure I</p>
+      <h2 class="h2" data-reveal>What is. What could be.<br><em>Again and again.</em></h2>
+      <p class="lead" data-reveal>Duarte's Presentation Sparkline is the shape she found under the great persuasive talks: alternate between today's reality (What Is) and the future you're proposing (What Could Be), raising the stakes with each pass, and end on New Bliss, the picture of the world once the room says yes. The alternation is the engine; the gap between the two is what makes an audience want to move.</p>
+
+      <div class="quiz" id="beatTag" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Tag the beat</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> once you can tag the beats in someone else's talk, you can storyboard your own. Five beats from one onboarding pitch, in order; tag each.</p>
+        <p class="quiz__progress" id="btProgress"></p>
+        <p class="quiz__q" id="btQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="btOptions" role="group" aria-label="Beat labels"></div>
+        <p class="quiz__feedback" id="btFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="btNext" style="visibility:hidden">Next beat</button>
+        </div>
+        <div id="btResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The storyboard template</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>What Is</b> (today's pain, concrete) → <b>What Could Be</b> (the vision) → <b>What Is</b> (the honest obstacle) → <b>What Could Be</b> (the bigger vision) → <b>New Bliss</b> (the world after they say yes). Storyboard these five beats on sticky notes BEFORE touching slides; the deck is the last step, not the first.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Duarte traces the shape through MLK's "I Have a Dream" (the alternation between the broken promise of America as it is and the dream of what it could be) and Steve Jobs' iPhone launch (the clunky phones of 2007 against the device in his pocket). The craft points: make the What Is beats concrete enough to sting, return to reality after each vision (that return is what builds credibility), and never end on an obstacle. New Bliss is the last thing they hear.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> storyboarding beats before slides is the single biggest process change most presenters take from this session.</p>
+          <ol class="steps">
+            <li>Small groups of 3 to 4: pick one member's Big Idea from the last section.</li>
+            <li>Storyboard 3 to 4 beats on sticky notes or a shared doc: What Is → What Could Be → What Is → New Bliss.</li>
+            <li>Read the beats aloud as one paragraph. Does the gap between reality and vision widen each pass? If not, sharpen the What Is.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Storyboard your own four beats on paper now. The capstone will ask which structure you chose; this is your audition for the Sparkline.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Duarte's Sparkline shape (What Is ↔ What Could Be → New Bliss) as a storyboarding tool, and drill beat-recognition until learners can storyboard their own talk.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Duarte put the greatest speeches in history under a microscope and found the same shape: they alternate. Here's what is — the world as it stands, with its pain made concrete. Here's what could be. Back to what is — because the audience needs you to acknowledge the obstacle. Then a bigger what could be. And it ends on what she calls New Bliss: the picture of the world after the room says yes. The gap between reality and vision is the engine — every alternation widens it, and the audience crosses it for you. You don't build slides first. You storyboard these beats on sticky notes, and the deck comes last.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Draw the shape as you teach it — literally sketch the alternating line on the whiteboard: reality, vision, reality, bigger vision, New Bliss.</li><li>Name where it comes from: Duarte traced it under MLK's Dream speech (the broken promise against the dream) and Jobs' iPhone launch (2007's clunky phones against the device in his pocket).</li><li>Send them to Tag the Beat: five beats from one onboarding pitch, tag each. The return-to-reality beat teaches the most.</li><li>Walk the storyboard template on the gold card: beats on sticky notes BEFORE slides.</li><li>Run the group storyboard: 3–4 beats for one member's Big Idea, read aloud as a paragraph.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Why does RETURNING to 'What Is' after painting the vision make the talk stronger, not weaker?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>It's honest — the room knows the obstacles exist</li><li>It builds credibility; pure optimism sounds like sales</li><li>It creates the tension that makes the resolution land</li></ul><p class="facnote__mini">Respond: All three are right; land the second hardest: 'An audience that hears you name the obstacle trusts your vision twice as much. The Sparkline isn't hype — it's honesty with a shape.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Beats before slides, alternation as the engine, and never end on an obstacle. That's the shape for hearts and minds. But there's a room where suspense is a liability…</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; each group has a 3–4 beat storyboard read aloud.</p><p class="facnote__meta"><b>Watch for:</b> Groups skipping the return to What Is — straight-line optimism reads as salesmanship. The return to reality after each vision is what builds credibility; say it explicitly when you see it missing.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;…the executive room. Different audience, opposite structure.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: sketch the shape, trainer on devices, storyboard as a 3-minute solo exercise instead of groups. (Leadership-heavy Core rooms may compress this further in favor of full-depth SCQA.)</p></aside>
+  </section>
+
+  <!-- ============ 8 · 05 SCQA ============ -->
+  <section class="slide on-dark" id="s-scqa" data-count data-title="SCQA">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 05 · Structure II</p>
+      <h2 class="h2" data-reveal>For executives:<br><em>lead with the answer</em>.</h2>
+      <p class="lead" data-reveal>Barbara Minto built the Pyramid Principle at McKinsey for one audience: senior people with brutal calendars. SCQA runs Situation (facts the room accepts), Complication (what makes now untenable), Question, then the Answer, stated first and supported top-down. The Sparkline builds tension; SCQA respects scarce attention. Choosing between them IS the audience analysis.</p>
+
+      <div class="lab" id="scqaLab" data-reveal style="margin-top:2rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Exec Briefing Lab</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> feeling the executive room react as each part sharpens is how SCQA moves from acronym to instinct. The scenario: your support team is drowning and you have four sentences of leadership attention. Build the briefing, one part at a time.</p>
+        <div class="lab__slots" id="labSlots"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="labRun" disabled>Brief the room</button>
+          <span class="quiz__progress" id="labStatus">Choose all four parts</span>
+        </div>
+        <div class="lab__outcome" id="labOutcome" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
+        <p class="quiz__q">Quick check: You have 10 minutes with the executive committee to get a decision. Sparkline or SCQA?</p>
+        <div class="quiz__options">
+          <button class="opt" data-correct="1" data-why="SCQA: with scarce executive attention and a decision on the table, lead with the answer. Save the tension-and-release for keynotes, all-hands, and change stories."><span class="mark">A</span><span>SCQA, answer first</span></button>
+          <button class="opt" data-correct="0" data-why="The Sparkline's suspense is a luxury of time and captive attention. Ten minutes into a build-up, an executive will interrupt with 'what are you asking for?' — and they'd be right."><span class="mark">B</span><span>Sparkline, build the tension</span></button>
+          <button class="opt" data-correct="0" data-why="Structure isn't optional at that altitude; it's the difference between a decision and a 'send us the deck.' Ten unstructured minutes is how good ideas die politely."><span class="mark">C</span><span>Neither, just talk through the slides</span></button>
+        </div>
+        <p class="quiz__feedback" aria-live="polite"></p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>Two Minto craft points. First, the pyramid: the Answer sits on top, supported by grouped arguments that are MECE, mutually exclusive, collectively exhaustive, so no argument overlaps and nothing is missing. Second, the Situation trap: most presenters over-build it. It's the SHORTEST part, only what the room already agrees is true. And the honest tension with Duarte is worth naming: McKinsey optimizes for scarce attention, Duarte for emotional movement. Senior room and a decision needed: SCQA. A room you need to inspire toward change: Sparkline. Know both; choose deliberately.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <p class="why"><b>Why this matters:</b> converting the same idea between structures shows you what each one is for.</p>
+          <ol class="steps">
+            <li>Take the group storyboard from the Sparkline activity and re-cast it as SCQA: what's the Situation, the Complication, the Question, the one-sentence Answer?</li>
+            <li>Read both versions aloud, back to back.</li>
+            <li>Debrief: which made the idea feel more urgent, and which would the CFO rather hear? (Those answers usually differ, and that IS the lesson.)</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write the four SCQA sentences for your own presentation. If the Answer can't be one sentence, revisit your Big Idea.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 10 min · Core 7</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install Minto's SCQA with the answer-first discipline, let learners FEEL the exec room react in the graded lab, and make structure choice an audience-analysis decision.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Barbara Minto built the Pyramid Principle at McKinsey for one audience: senior people with brutal calendars. The structure is SCQA. Situation — the facts the room already accepts, and it's the shortest part; resist the history lesson. Complication — what makes right now untenable: a deadline, named stakes. Question — the exact question the room should now be asking. And the Answer — stated FIRST, specific, costed, dated. Duarte builds tension; Minto respects scarce attention. Neither is better; they're for different rooms, and choosing between them IS the audience analysis. You're about to brief a leadership room with four sentences of their attention. Build it well and watch what happens.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the four parts with their traps: Situation (shortest part — only what the room accepts), Complication (deadline + named stakes), Question (crystallize it), Answer (first, specific, costed, dated).</li><li>Name the lineage: Barbara Minto built this at McKinsey, and consultants still run on it because executive attention is scarce.</li><li>Send them to the Exec Briefing Lab: build the support-team briefing one part at a time, watch the room's reaction change. The weak-Answer option teaches the most.</li><li>Run the quick check (ten minutes with the exec committee: SCQA).</li><li>Run the conversion activity from Go deeper: re-cast the Sparkline storyboard as SCQA, read both aloud, debrief which the CFO would rather hear.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;McKinsey's own playbook optimizes for scarce executive attention. What's the risk of building suspense with a leadership audience that just wants the bottom line?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>They interrupt with 'what's the ask?' and you lose the thread</li><li>They decide you don't know your own answer</li><li>They mentally check out and read the deck ahead of you</li></ul><p class="facnote__mini">Respond: All real, and the second is the killer: 'In an executive room, withholding the answer doesn't read as storytelling — it reads as not having one. Lead with it, and every minute after becomes evidence instead of preamble.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Answer first, Situation short, Complication with teeth. And the meta-skill: Sparkline for hearts and minds, SCQA for decisions — chosen deliberately, per room.</p></div><p class="facnote__meta"><b>Validate:</b> Most learners reach the strong reaction in the lab; the quick check lands; groups can articulate when each structure wins.</p><p class="facnote__meta"><b>Watch for:</b> The over-built Situation — most presenters' instinct is to give history lessons. Minto's rule: the Situation is only what the room already agrees is true, and it's the SHORTEST part. Also watch for hearing SCQA as 'the smart one' — it's the right tool for decisions, not universally superior.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The talk is built. Now the part everyone thinks the course is about: saying it out loud.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: parts with traps in two minutes, lab at full length (it IS the instruction), quick check stays, cut the conversion activity. (This section gets full depth in leadership-heavy Core rooms.)</p></aside>
+  </section>
+
+  <!-- ============ 9 · 06 DELIVERY ============ -->
+  <section class="slide on-cream" id="s-delivery" data-count data-title="Delivery">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 06 · Delivery</p>
+      <h2 class="h2" data-reveal>Be a person, talking <em>to people</em>.</h2>
+      <p class="lead" data-reveal>Chris Anderson has coached every TED speaker of the modern era; Carmine Gallo studied hundreds of them; the AMA has trained executive speakers for decades. Their advice converges: be conversational, never read bullet walls, modulate the voice, don't over-apologize, and rehearse out loud. Nothing on the list requires talent. All of it requires reps, and yours start on this slide.</p>
+
+      <div class="quiz" id="deliveryFix" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Fix the delivery</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> you'll hear these exact problems in the live round in a few minutes, and one of them is probably yours. Five moments; pick the fix the research would prescribe.</p>
+        <p class="quiz__progress" id="dfProgress"></p>
+        <p class="quiz__q" id="dfQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="dfOptions" role="group" aria-label="Fix choices"></div>
+        <p class="quiz__feedback" id="dfFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="dfNext" style="visibility:hidden">Next moment</button>
+        </div>
+        <div id="dfResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="yt" data-reveal data-embed="https://www.youtube-nocookie.com/embed/-FOCpMAww28" data-yttitle="Chris Anderson: TED's secret to great public speaking">
+        <button class="yt__load" type="button">
+          <span class="yt__play" aria-hidden="true">▶</span>
+          <span class="yt__title">Watch: Anderson, "TED's Secret to Great Public Speaking" (8 min)</span>
+          <span class="yt__src">Chris Anderson, TED · Loads YouTube on click</span>
+        </button>
+        <p class="yt__alt">Prefer a new tab? <a href="https://www.youtube.com/watch?v=-FOCpMAww28" target="_blank" rel="noopener">Open on YouTube</a>.</p>
+        <p class="why" style="margin:.35rem 0 0"><b>Why this video:</b> the head of TED on the one thing all great talks share, and why delivery polish can't rescue a talk without it.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">The live round, rules</span>
+        <p style="margin:.5rem 0 0" class="measure"><b>60 to 90 seconds each, strictly timed:</b> your Big Idea sentence plus your opening line, delivered to the group. Feedback is exactly ONE specific, actionable note per speaker, drawn from today's frameworks ("you read it instead of said it," "great pause before the ask," "cut the second sentence"). The goal is reps, not perfection.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The condensed playbook. Anderson's five keys: frame the story as a journey, plan delivery deliberately (never memorize into deadness), work on stage presence, plan multimedia last, and put the idea first. Gallo's five tips: be concise (18 minutes beats 60), never use bullet points, modulate your voice, give the audience something extra, and rehearse relentlessly. AMA's seven principles add the mindset: perception beats perfection ("no one cares about your mistake but you"), visualize success, and speak to serve the audience, not to perform. Full text: Anderson's "How to Give a Killer Presentation" and Gallo's "What It Takes to Give a Great Presentation," both Harvard Business Review.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 12 min</h4>
+          <p class="why"><b>Why this matters:</b> one timed rep with one honest note changes more than an hour of theory. This is the session's centerpiece; protect it.</p>
+          <ol class="steps">
+            <li>Every participant, in turn: stand (or unmute), deliver your Big Idea and opening line. 60 to 90 seconds, timed visibly.</li>
+            <li>The group gives exactly one specific note per speaker, framework-anchored, starting with what worked.</li>
+            <li>Facilitator keeps momentum; no re-dos, no pile-ons. Reps over perfection.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Deliver it to your phone camera, timed. Watch it once. Give yourself the one note; you'll know what it is.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 14 min · Core 10</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the converged delivery playbook (Anderson, Gallo, AMA) and give every participant one timed, live speaking rep with exactly one piece of framework-anchored feedback — the session's centerpiece.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Chris Anderson has coached every TED speaker of the modern era. Carmine Gallo studied hundreds of the best. The AMA has trained executive speakers for decades. Strip their advice to what converges and you get five rules: talk like a person, not an orator. Never make the room read while you talk — one idea per slide, detail in the handout. Use your voice as the highlighter: change pace, and pause before the thing that matters. Never over-apologize — no one cares about your mistake but you, until you teach them to. And rehearse out loud, timed, because reading slides silently the night before is not rehearsal. None of this needs talent. All of it needs reps — and yours is in about four minutes.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the converged playbook fast: conversational register, no bullet walls, modulate the voice, never over-apologize, rehearse out loud.</li><li>Send them to Fix the Delivery: five moments, pick the research-backed fix. It pre-loads the feedback vocabulary for the live round.</li><li>Play the Anderson TED clip (8 min) on the Full path.</li><li>Run the LIVE ROUND — the centerpiece: every participant delivers their Big Idea plus opening line, 60–90 seconds, timer visible, strictly enforced.</li><li>Enforce the feedback rule: exactly ONE specific, actionable, framework-anchored note per speaker, starting with what worked. You model the first one.</li><li>Keep momentum: no re-dos, no pile-ons, warm energy. Reps over perfection.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;After the round — to the room: what note did you hear someone ELSE get that you're stealing for yourself?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The pause before the ask</li><li>Cut the second sentence — the first one was the opener</li><li>Say it, don't read it</li></ul><p class="facnote__mini">Respond: Let three or four land, then name what happened: 'You just got fifteen coaching notes for the price of one. That's why the round is public — the Observer's seat teaches as much as the speaker's.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Everyone spoke, everyone got one true note, and nobody died — the Chapman survey was right. The note you got is your rehearsal focus; the note you stole is your bonus.</p></div><p class="facnote__meta"><b>Validate:</b> EVERY participant has spoken once and received one note; 4+ of 5 on the trainer. This section's completion is the session's objective 4 evidence.</p><p class="facnote__meta"><b>Watch for:</b> Feedback drift into pile-ons or vague praise ('that was great!'). Redirect to the frameworks: 'great pause before the ask' teaches; 'good job' doesn't. And watch the timer yourself — the round's discipline is half its value.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;One skill left, and it's the one that happens after your last slide: the pointed question.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: playbook in ninety seconds, trainer stays, cut the video (assign), live round at 60 seconds flat per speaker. The live round is the floor — never cut it.</p></aside>
+  </section>
+
+  <!-- ============ 10 · 07 THE TOUGH QUESTION ============ -->
+  <section class="slide on-light" id="s-quest" data-count data-title="The tough question">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Section 07 · Q&amp;A</p>
+      <h2 class="h2" data-reveal>The question is not <em>an attack</em>.</h2>
+      <p class="lead" data-reveal>The moment presenters fear most is the pointed question from a senior stakeholder, and it's also the moment gravitas is most visible. The AMA's executive-speaking curriculum trains one move for it: the bridge. Acknowledge the question honestly, answer it directly (or commit to a date you will), then return to your Big Idea. Composed is not the same as defensive, and the room can tell.</p>
+
+      <div class="quiz" id="bridgeJudge" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Judge the bridge</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the drill after this is live rapid-fire; calibrate your ear first. Five pointed questions; pick the composed bridge each time.</p>
+        <p class="quiz__progress" id="bjProgress"></p>
+        <p class="quiz__q" id="bjQ" style="margin-top:.4rem"></p>
+        <div class="quiz__options" id="bjOptions" role="group" aria-label="Response choices"></div>
+        <p class="quiz__feedback" id="bjFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn btn--dark" id="bjNext" style="visibility:hidden">Next question</button>
+        </div>
+        <div id="bjResult" hidden aria-live="polite"></div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Before you present: SHRM's six questions</span>
+        <p style="margin:.5rem 0 0" class="measure">Who's the audience? What's the goal? What are the messages? What's the content? Where's the feedback? How do I refine it? Six questions, asked before you build, and half the tough questions never get asked because you answered them in the talk.</p>
+      </div>
+
+      <details class="deeper" data-reveal>
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
+        <div class="deeper__body">
+          <div><h4>In practice</h4><p>The prep that makes the bridge easy: before any leadership presentation, write the three questions you're most afraid of, and draft one-sentence answers. (You already know what they are; the fear is the tell.) The honest deferral is a full member of the toolkit: "I don't want to guess; I'll have it to you by Thursday" reads as gravitas, a fluent guess that collapses in the follow-up reads as the opposite. And if your team took Navigating Difficult Conversations, you'll recognize the DNA: acknowledge before you answer is the same move as paraphrase before you argue.</p></div>
+          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <p class="why"><b>Why this matters:</b> composure under fire is trainable, and the training is fire.</p>
+          <ol class="steps">
+            <li>Facilitator (or a volunteer playing a skeptical executive) fires 2 to 3 pointed questions at each presenter from the live round: "What's this going to cost us?" "Why hasn't this been done already?"</li>
+            <li>Presenter practices the bridge: acknowledge → answer directly → return to the Big Idea.</li>
+            <li>The room calls out one thing per exchange: bridge landed, or where it wobbled.</li>
+          </ol>
+          <p class="why" style="margin-top:.6rem"><b>Flying solo?</b> Write your three most-feared questions for your real presentation, and the one-sentence answers. Keep them; the capstone assumes you have them.</p></div>
+        </div>
+      </details>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 8 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the AMA bridge (acknowledge → answer → return) and drill composure under rapid fire — the gravitas gym.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The moment presenters fear most is the pointed question from the most senior person in the room — and it's also the moment gravitas is most visible, which makes it an opportunity wearing a threat costume. The move is the bridge, three beats: acknowledge the question honestly, including whatever is true in it. Answer it directly — or commit to a date you will: 'I don't want to guess; you'll have it Thursday.' Then return to your Big Idea: 'and the reason this matters for today's decision is…' The question is not an attack. It's the room taking your idea seriously enough to test it — and every question you bridge is another rep of your Big Idea landing.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the bridge with its three beats, and the honest deferral as a full member of the toolkit: 'I'll have it to you Thursday' plus the return.</li><li>Send them to Judge the Bridge: five pointed questions, pick the composed response. The hostile-framing item teaches the most.</li><li>Walk SHRM's six pre-speaking questions on the gold card: half the tough questions never come because you answered them in the talk.</li><li>Run the rapid fire: you (or a deputized volunteer executive) fire 2–3 pointed questions at each presenter from the live round; presenter bridges.</li><li>Call one thing per exchange: bridge landed, or where it wobbled.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's the actual question you're most afraid of getting on YOUR presentation — and what's the one-sentence answer?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Cost questions, almost universally</li><li>'Why hasn't this been done already?'</li><li>Someone admits they don't know their answer yet — the honest one</li></ul><p class="facnote__mini">Respond: For the honest one: 'That fear is a gift — it just told you what to prepare. Write the three questions you're most afraid of and one-sentence answers before any leadership talk. You already know what they are; the fear is the tell.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Acknowledge, answer, return. Composed is not defensive, the deferral-with-a-date is strength, and the three feared questions get drafted before the talk, not survived during it.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; each rapid-fire presenter completes at least one full bridge (acknowledge, answer, return).</p><p class="facnote__meta"><b>Watch for:</b> Answers that never return to the Big Idea — the most common wobble. And defensiveness dressed as confidence: 'with respect, that's unfair' is a flag, not a bridge. Model the concession move: 'what's true in that question is…'</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Toolkit complete. Quiz first, then the card that rebuilds your real talk.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: bridge plus trainer stay, rapid fire compresses to two volunteers, SHRM card pointed at verbally.</p></aside>
+  </section>
+
+  <!-- ============ 11 · RECAP QUIZ ============ -->
+  <section class="slide on-cream" id="s-recap" data-title="Recap quiz">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Check your understanding</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>recap</em>.</h2>
+      <div class="quiz" id="recap" data-reveal>
+        <div id="recapPanel">
+          <p class="quiz__progress" id="recapProgress"></p>
+          <p class="quiz__q" id="recapQ" style="margin-top:.5rem"></p>
+          <div class="quiz__options" id="recapOptions" role="group" aria-label="Answer choices"></div>
+          <p class="quiz__feedback" id="recapFeedback" aria-live="polite"></p>
+          <div class="quiz__nav">
+            <button class="btn btn--dark" id="recapNext" style="visibility:hidden">Next question</button>
+          </div>
+        </div>
+        <div id="recapResult" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 4</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Score the session's knowledge against the six objectives before the capstone applies it (Kirkpatrick Level 2).</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Six questions, one per big idea. This is the systems check before you rebuild the talk that leaves the room with you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Everyone takes it on their own device, all six questions.</li><li>Ask for hands on 5-or-better; celebrate briefly.</li><li>For any question the room visibly missed, do a 30-second reteach from the relevant slide, not a lecture.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Room mode at 5/6 or better. The quiz maps onto the objectives, so misses tell you exactly what to reteach.</p><p class="facnote__meta"><b>Watch for:</b> Racing. Frame it as a check before the rebuild, not a race.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Now the only part of today that changes your next presentation.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: keep at full length; this is the objectives' evidence.</p></aside>
+  </section>
+
+  <!-- ============ 12 · PRESENTATION REBUILD (capstone) ============ -->
+  <section class="slide on-dark" id="s-plan" data-title="My rebuild">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Capstone · The presentation rebuild</p>
+      <h2 class="h2" data-reveal>One talk. One structure. <em>One opening line.</em></h2>
+      <p class="lead" data-reveal>Frameworks don't change presentations; rebuilt presentations do. Pick the real talk you brought, commit to a structure, write the literal first sentence you'll say, and name the one thing you're cutting.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> a named talk with a written opening line and a rehearsal on the calendar is a behavior change; everything less is good intentions. Your drafts stay on your screen; nothing is saved or sent.</p>
+
+      <div class="plan" id="rebuildPlan" data-reveal>
+        <div class="plan__form">
+          <div class="plan__field">
+            <label for="planWhat"><b>1 · The presentation.</b> What is it, when is it, and who's the audience?</label>
+            <input type="text" id="planWhat" maxlength="160" placeholder="e.g. Q1 budget review, end of month, to the department leadership team" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <label for="planIdea"><b>2 · Your Big Idea.</b> Point of view plus stakes, one sentence (paste it from Section 03):</label>
+            <input type="text" id="planIdea" maxlength="220" placeholder="e.g. We should consolidate the three tools — because we're paying twice for features nobody uses" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>3 · Your structure.</b> Chosen for THIS audience.</span>
+            <div class="plan__chips" id="planStructure" role="group" aria-label="Structure">
+              <button class="opt" data-structure="sparkline"><span>Sparkline: What Is ↔ What Could Be → New Bliss</span></button>
+              <button class="opt" data-structure="scqa"><span>SCQA: lead with the answer</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <label for="planOpen"><b>4 · Your literal opening line.</b> The exact first sentence out of your mouth:</label>
+            <input type="text" id="planOpen" maxlength="220" placeholder="e.g. Last quarter we lost eleven new hires in their first 90 days — today I'm asking for the fix" autocomplete="off">
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>5 · What you will CUT.</b> Your honest deck vice.</span>
+            <div class="plan__chips" id="planCut" role="group" aria-label="What to cut">
+              <button class="opt" data-cut="bullets"><span>The bullet-wall slide</span></button>
+              <button class="opt" data-cut="apology"><span>The apologetic opener</span></button>
+              <button class="opt" data-cut="warmup"><span>The ten-slide warm-up</span></button>
+            </div>
+          </div>
+          <div class="plan__field">
+            <span class="plan__label"><b>6 · When is the talk?</b></span>
+            <div class="plan__chips" id="planWhen" role="group" aria-label="Timing">
+              <button class="opt" data-when="week"><span>Within 7 days</span></button>
+              <button class="opt" data-when="twoweeks"><span>Within 2 weeks</span></button>
+              <button class="opt" data-when="month"><span>Within the month</span></button>
+            </div>
+          </div>
+          <div class="lab__runrow">
+            <button class="btn" id="planBuild" disabled>Build my rebuild card</button>
+            <span class="quiz__progress" id="planStatus">Fill in all six parts</span>
+          </div>
+        </div>
+        <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 6 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one rebuilt presentation: Big Idea, structure chosen for the room, literal opening line, one thing cut, rehearsal implied. The transfer artifact and the Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Frameworks don't change presentations; rebuilt presentations do. Six decisions, and you've already drafted most of them: the talk — what, when, who. Your Big Idea, pasted from Section 03. The structure, chosen for THAT room, not your comfort. Your literal opening line — the exact first sentence, no apology, no warm-up; stakes or answer, sentence one. The thing you're cutting, because every rebuild is also a deletion. And the date. When you're done, say your structure and opening line out loud. A spoken opening line survives the walk to the podium; a silent one dies backstage.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: frameworks don't change presentations; rebuilt presentations do. Six fields, most already drafted in earlier sections.</li><li>Give quiet time; this is individual work. Circulate for stuck learners: the Big Idea from Section 03 pastes straight in.</li><li>Watch field 4 — the literal opening line. Push past topic announcements: stakes or answer in the first sentence.</li><li>Push the copy-button moment, then the public commitment: structure and opening line, out loud or in chat.</li><li>Close the loop: rehearse out loud once with one honest human before the talk; write one line of evidence after it.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the rebuild — and what's your plan for that obstacle?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time; the deck already exists</li><li>My team expects the old format</li><li>The rehearsal step feels awkward</li></ul><p class="facnote__mini">Respond: Existing deck: 'rebuild the OPENING and the structure of the first five slides; that's 80 percent of the effect for 20 percent of the work.' Format expectations: 'nobody has ever complained that a presentation was too clear.' Rehearsal: 'one run, phone camera, alone. Watch it once. You'll never skip it again.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One talk, one structure, one opening line, one deletion, one date. Your next presentation is about to be the before-and-after everyone else notices.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all six fields) and states structure plus opening line aloud or in chat. The card plus the 7-day pulse plus the 30/60/90 structure check is the evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Opening lines that are secretly apologies or agenda announcements. The test from the cheat sheet: does the first sentence deliver stakes or the answer? Also vague talks ('some upcoming meeting') — push to a named, dated presentation.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf in one breath, and then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length minus the read-alouds; never cut the capstone.</p></aside>
+  </section>
+
+  <!-- ============ 13 · GLOSSARY ============ -->
+  <section class="slide on-cream" id="s-glossary" data-title="Glossary">
+    <div class="wrap wrap-wide">
+      <p class="eyebrow" data-reveal>Reference · Flip to reveal</p>
+      <h2 class="h2" data-reveal style="margin-bottom:2rem">The <em>vocabulary</em>.</h2>
+      <div class="glossary">
+        <button class="flip" data-reveal aria-label="Big Idea, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Big Idea™</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Duarte: your point of view plus what's at stake, in one sentence. A topic informs; a Big Idea gives the talk a job.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Sparkline, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Presentation Sparkline™</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Duarte's shape for persuasive talks: alternate What Is and What Could Be, raising stakes each pass, ending in New Bliss.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="What Is What Could Be, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>What Is / What Could Be</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The two alternating beats: today's concrete reality against the proposed future. The gap between them is the persuasion engine.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="New Bliss, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>New Bliss</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>The closing beat: the picture of the world after the audience says yes. Sparklines end here, never on an obstacle.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Pyramid Principle, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Pyramid Principle</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Minto (McKinsey): answer on top, grouped supporting arguments below. Built for readers and rooms with no time.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="S C Q A, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>SCQA</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Situation, Complication, Question, Answer. For executives, the Answer is stated first; the rest earns it.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="M E C E, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>MECE</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Mutually Exclusive, Collectively Exhaustive: supporting arguments that don't overlap and don't leave gaps.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Executive presence, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Executive Presence</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Hewlett/Coqual: gravitas (67%), communication (28%), appearance (5%). Roughly a quarter of what it takes to get promoted.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Gravitas, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Gravitas</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Confidence, decisiveness, grace under fire; going six questions deep without flinching. The core signal of leadership readiness.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="The bridge, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>The Bridge</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Q&amp;A move from AMA's executive curriculum: acknowledge → answer directly → return to the Big Idea.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="No bullet points, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>"Never Use Bullet Points"</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Gallo's hardest rule: a slide people read is a slide they don't listen through. One idea per slide; detail goes to the handout.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Rehearsal, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>Rehearsal</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Out loud, timed, on your feet, at least once before one honest human. Re-reading slides is not rehearsal.</p></div></div></button>
+        <button class="flip" data-reveal aria-label="Seven principles, flip for definition"><div class="flip__inner"><div class="flip__face flip__front"><span class="hint">Term</span><h3>AMA's Seven Principles</h3></div><div class="flip__face flip__back"><span class="hint">Definition</span><p>Perception, Perfection, Visualization, Discipline, Description, Inspiration, Anticipation — and the mantra: no one cares about your mistake but you.</p></div></div></button>
+      </div>
+    </div>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Signpost the reference layer; it lives here for after the session.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every term from today lives here as flip cards — including MECE, for the next time a consultant uses it at you.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Flip one card on the projector (MECE is a good pick; it gets a smile and reteaches the Pyramid).</li><li>Tell them it's all here whenever they need the vocabulary back.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None; reference material.</p><p class="facnote__meta"><b>Watch for:</b> Don't tour all thirteen cards; one flip makes the point.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. One talk left — yours.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; point at it verbally from the closing slide.</p></aside>
+  </section>
+
+  <!-- ============ 14 · CLOSING ============ -->
+  <section class="slide on-dark" id="s-close" data-title="Wrap-up">
+    <div class="wrap" style="text-align:center">
+      <img src="../assets/img/vu-centered-white.png" alt="Vanderbilt University" width="120" height="125" style="margin:0 auto 2rem;width:clamp(96px,10vw,130px);height:auto" data-reveal>
+      <h2 class="h2 gold-text" data-reveal style="max-width:20ch;margin-inline:auto">Now go give the <em>talk</em>.</h2>
+      <p class="lead" data-reveal style="margin:1.25rem auto 0;color:rgba(255,255,255,.82)">You busted the myth, found your pillar, compressed the idea, chose the structure, took a live rep, and survived the rapid fire. One real presentation is about to get rebuilt.</p>
+      <div class="vidcard vidcard--feature" data-reveal style="text-align:left;max-width:680px;margin:2.25rem auto 0;cursor:default">
+        <div class="vidcard__top"><span class="vidcard__src">Your one next step · Before the talk</span><span class="vidcard__dur">Per your card</span></div>
+        <h3>Rebuild it, rehearse it out loud, deliver the opening line cold</h3>
+        <p>Storyboard the beats before touching slides. Rehearse out loud, timed, once with one honest human. Open with the exact line on your card — no apology, no warm-up. Afterward, write one line: did the opening land, and did the structure hold under questions? That line is your evidence.</p>
+      </div>
+      <p class="why" data-reveal style="margin:1.5rem auto 0;max-width:52ch;text-align:center"><b>Before you go:</b> say your opening line out loud, or type it in the chat. A spoken opening line survives the walk to the podium.</p>
+      <div class="hero__cta" data-reveal style="justify-content:center;margin-top:1.75rem">
+        <a class="btn" href="../cheatsheet.html" target="_blank" rel="noopener">Take the cheat sheet</a>
+        <a class="btn btn--ghost" href="../worksheet.html" target="_blank" rel="noopener">Print the rebuild worksheet</a>
+        <a class="btn btn--ghost" href="#s-recap">Retake the quiz</a>
+      </div>
+    </div>
+  <!-- ============ FOOTER ============ -->
+<footer class="footer" aria-labelledby="footHead">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <img src="../assets/img/vu-lockup-white.png" alt="Vanderbilt University" width="300" height="78" style="width:min(300px,80%);height:auto">
+        <p class="brandline" id="footHead">One idea. One structure. One opening line.</p>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#s-presence">Executive Presence</a></li>
+          <li><a href="#s-bigidea">The Big Idea</a></li>
+          <li><a href="#s-sparkline">The Sparkline</a></li>
+          <li><a href="#s-scqa">SCQA</a></li>
+          <li><a href="#s-delivery">Delivery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Keep Learning</h4>
+        <ul>
+          <li><a href="#s-glossary">Glossary</a></li>
+          <li><a href="#s-recap">Knowledge Check</a></li>
+          <li><a href="#s-plan">My Rebuild</a></li>
+          <li><a href="#s-close">Your Next Step</a></li>
+          <li><a href="../web/">Self-paced version</a></li>
+          <li><a href="../../../">Course Library</a></li>
+          <li><a href="#top">Start Over</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Presentation &amp; Public Speaking · Facilitator Edition · learner link: <a href="../../../courses/presentation-public-speaking/" style="color:rgba(255,255,255,.7);text-decoration:underline">me5231979.github.io/Presentation-Public-Speaking</a></span>
+    </div>
+  </div>
+</footer>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 3 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert rebuild cards into spoken commitments, capture the Level 1 reaction check, and point at the follow-up chain.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The whole session in one breath: the fear is folklore, presence decides more than you think, one sentence or it isn't ready, alternate reality and vision for hearts and minds, lead with the answer for the executive room, deliver like a person talking to people, and bridge every hard question back to the idea. You have a card with the opening line written. Before you go — say it. Out loud. Right now.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Read the featured card: rebuild it, rehearse out loud once with one honest human, open with the exact line on the card.</li><li>Run the fist-to-five (Level 1): 'On a fist to five, how ready do you feel to deliver your rebuilt talk?' Scan and note the number for your session log.</li><li>Run the commitment round, popcorn style: structure and opening line, out loud or in chat. This doubles as each person's second speaking rep of the day.</li><li>Point at the cheat sheet and rebuild worksheet buttons, and the two talks (Duarte, Anderson) as the week's watch list.</li><li>Tell them the 7-day pulse is coming, then land the last line and stop on time.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Around the room, one line each: your structure, and your literal opening line.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>'SCQA — Last quarter we lost eleven new hires in their first 90 days; today I'm asking for the fix.'</li><li>'Sparkline — Every Monday, three of your analysts spend the morning rebuilding the same report.'</li><li>Someone's line is still a topic announcement</li></ul><p class="facnote__mini">Respond: Thank each one, no commentary — except the topic announcement, warmly: 'You've got the what; give me the why-now. What breaks if they don't act?' The room usually finishes the line with them.</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">The session's success metric isn't in this room; it's the 7-day pulse: did the rebuilt talk happen, and did anyone react to the opening line?</p></div><p class="facnote__meta"><b>Validate:</b> Fist-to-five mostly 3+ (Level 1); a majority state structure plus opening line aloud or in chat. Count both; with the pulse and the structure check, that's your evidence chain.</p><p class="facnote__meta"><b>Watch for:</b> Cards that quietly skipped the opening line. The commitment round catches them: no line, no commitment; help them draft one on the spot from their Big Idea.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Go give the talk. And when someone comments on your opening line — and someone will — write it down. That's your evidence.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: fist-to-five plus a fast commitment round; the ending survives every cut.</p></aside>
+  </section>
+
+</main>
+
+
+
+<script src="../assets/js/qrcode.js?v=1"></script>
+<script src="../assets/js/main.js?v=12"></script>
+
+<script>
+(function () {
+  var KEY = 'facScriptHidden';
+  var show = document.createElement('button');
+  show.className = 'facshow'; show.type = 'button';
+  show.textContent = 'Show facilitator script';
+  document.body.appendChild(show);
+  function set(h) {
+    document.body.classList.toggle('fac-hide', h);
+    try { localStorage.setItem(KEY, h ? '1' : '0'); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.facnote__hide')) set(true);
+  });
+  show.addEventListener('click', function () { set(false); });
+  try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+</body>
+</html>

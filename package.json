@@ -1,0 +1,24 @@
+{
+  "name": "flh-learning-library",
+  "version": "1.0.0",
+  "description": "The Vanderbilt Staff Learning Collection",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests configured\" && exit 0",
+    "lint": "echo \"No linter configured\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/me5231979/FLH-Learning-Library-"
+  },
+  "keywords": [
+    "learning",
+    "education",
+    "courses"
+  ],
+  "author": "Vanderbilt University",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@vercel/analytics": "^1.4.1"
+  }
+}

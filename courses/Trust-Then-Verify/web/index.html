@@ -80,7 +80,7 @@
     <img class="nav__vicon" src="../assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
   </a>
   <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="nav__links" id="navlinks" aria-label="Sections">
     <a href="#s-cost">The Cost</a>
@@ -98,8 +98,8 @@
   <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
   <div class="bottombar__ctrl">
     <span class="bottombar__count" id="deckCount">1 / 14</span>
-    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
 </div>
 <button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -145,7 +145,7 @@
   <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
     <div class="wrap">
       <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
-      <h2 class="h2" data-reveal>Vanderbilt will <em>define the great university of the 21st Century</em> and <em>be it.</em></h2>
+      <h2 class="h2" data-reveal>Vanderbilt will define the great university of the 21st Century and <em>be it.</em></h2>
       <p class="lead" data-reveal>That is Chancellor Diermeier's institutional vision, one sentence with no hedge in it. The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and daring work travels on facts somebody bothered to check.</p>
 
       <p class="eyebrow" data-reveal style="margin-top:2.5rem">Areas of Focus</p>
@@ -232,8 +232,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The four-hours figure comes from <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence" target="_blank" rel="noopener" style="text-decoration:underline">SHRM's workplace AI research</a>, which keeps finding the same pattern: adoption runs fast, checking skills lag behind, and workers absorb the difference as cleanup time. The <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener" style="text-decoration:underline">Stanford AI Index</a> supplies the other half of the picture: publicly reported AI incidents keep setting records even as models improve, because better models earn more trust, get used in more places, and get checked less. Hold both facts at once and the conclusion writes itself: what protects you is a checking habit, sized to the stakes, that survives your busiest week. That habit is this session.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <div><h3>In practice</h3><p>The four-hours figure comes from <a href="https://www.shrm.org/topics-tools/topics/artificial-intelligence" target="_blank" rel="noopener" style="text-decoration:underline">SHRM's workplace AI research</a>, which keeps finding the same pattern: adoption runs fast, checking skills lag behind, and workers absorb the difference as cleanup time. The <a href="https://hai.stanford.edu/ai-index" target="_blank" rel="noopener" style="text-decoration:underline">Stanford AI Index</a> supplies the other half of the picture: publicly reported AI incidents keep setting records even as models improve, because better models earn more trust, get used in more places, and get checked less. Hold both facts at once and the conclusion writes itself: what protects you is a checking habit, sized to the stakes, that survives your busiest week. That habit is this session.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> Write down your last AI miss: what was wrong, who caught it, and what it cost in time or trust. That miss is your test case for the Three Reads in section 03.</p></div>
         </div>
       </details>
@@ -299,8 +299,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The taxonomy earns its keep because each mode maps to a different check. Hallucination falls to the source read: open the citation, find the study, locate the quote. Staleness falls to a date check: when was this true, and is it still? Slant falls to the slant read: strip the adjectives and see what's left. Omission falls to comparison: hold the summary against the source and look for what vanished. And faked math falls to a calculator: redo any arithmetic the model did, every time, because computing is the one thing it only appears to do. Notice what this means for speed: you rarely need every check. Diagnose the likely mode for this kind of output and spend your minutes there.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <div><h3>In practice</h3><p>The taxonomy earns its keep because each mode maps to a different check. Hallucination falls to the source read: open the citation, find the study, locate the quote. Staleness falls to a date check: when was this true, and is it still? Slant falls to the slant read: strip the adjectives and see what's left. Omission falls to comparison: hold the summary against the source and look for what vanished. And faked math falls to a calculator: redo any arithmetic the model did, every time, because computing is the one thing it only appears to do. Notice what this means for speed: you rarely need every check. Diagnose the likely mode for this kind of output and spend your minutes there.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> Open the last AI output you actually used. Hunt it for each of the five modes in turn, one minute per mode. Finding nothing is a fine result; now you know what looking feels like.</p></div>
         </div>
       </details>
@@ -356,8 +356,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The order is the trick. The claim read costs about ninety seconds on a page and turns a wall of prose into a short list of checkable points, which is what makes the source read affordable: you trace the two or three claims that carry real weight instead of everything. "Riskiest" has a working definition: the claim that travels farthest and would cost the most if wrong. A date people will act on outranks a percentage in a background paragraph. And if you took Answers, Faster, this should feel familiar: ask-anchor-check is the Three Reads specialized for research questions. What you're learning here is the general case, ready for any output the model hands you.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <div><h3>In practice</h3><p>The order is the trick. The claim read costs about ninety seconds on a page and turns a wall of prose into a short list of checkable points, which is what makes the source read affordable: you trace the two or three claims that carry real weight instead of everything. "Riskiest" has a working definition: the claim that travels farthest and would cost the most if wrong. A date people will act on outranks a percentage in a background paragraph. And if you took Answers, Faster, this should feel familiar: ask-anchor-check is the Three Reads specialized for research questions. What you're learning here is the general case, ready for any output the model hands you.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> Take the AI miss you wrote down in section 01 and run all three reads on it now, from memory. Which read would have caught it, and how long would that read have taken?</p></div>
         </div>
       </details>
@@ -423,8 +423,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Two habits keep the budget honest. First, decide the check size before you read the output, because a fluent draft will talk you down; the stakes were set the moment you knew where the output was going, and nothing in the prose changes them. Second, keep a private tally of misses per task. The stop rules run on that tally: three misses in a row on the same task is a fact you can only notice if you counted. The tally also runs the other way, and that matters just as much: a task with months of clean checks has earned a smaller budget. Verification is a dial you keep adjusting to the evidence, in both directions.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <div><h3>In practice</h3><p>Two habits keep the budget honest. First, decide the check size before you read the output, because a fluent draft will talk you down; the stakes were set the moment you knew where the output was going, and nothing in the prose changes them. Second, keep a private tally of misses per task. The stop rules run on that tally: three misses in a row on the same task is a fact you can only notice if you counted. The tally also runs the other way, and that matters just as much: a task with months of clean checks has earned a smaller budget. Verification is a dial you keep adjusting to the evidence, in both directions.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> List your three most common AI tasks and write the budget line for each: no check, claim read, all three reads, or expert. Keep the list; it becomes your default settings.</p></div>
         </div>
       </details>
@@ -452,8 +452,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Notice what the hour was actually enough for. The claim read on two pages costs five minutes. Tracing the three load-bearing claims costs fifteen. The slant pass costs five more, and you still had half the hour left. The lab's bad endings never come from lack of time; they come from spending the hour polishing sentences instead of checking claims, because polishing feels like diligence and reads like progress. The other lesson hides in the sign-off slot: what you tell the dean about your checking is itself a claim, and it shapes how much the dean re-verifies. An honest signal ("numbers verified against the enrollment system, benchmark confirmed") lets the reader spend their attention where you didn't.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <div><h3>In practice</h3><p>Notice what the hour was actually enough for. The claim read on two pages costs five minutes. Tracing the three load-bearing claims costs fifteen. The slant pass costs five more, and you still had half the hour left. The lab's bad endings never come from lack of time; they come from spending the hour polishing sentences instead of checking claims, because polishing feels like diligence and reads like progress. The other lesson hides in the sign-off slot: what you tell the dean about your checking is itself a claim, and it shapes how much the dean re-verifies. An honest signal ("numbers verified against the enrollment system, benchmark confirmed") lets the reader spend their attention where you didn't.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> Run the lab once more, choosing what you would honestly do on your busiest day, and read that outcome. The gap between your two runs is where your real risk lives.</p></div>
         </div>
       </details>
@@ -512,8 +512,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Habits attach to triggers, so pick the trigger deliberately: the moment AI output lands in front of you, before you do anything else with it, the claim read starts. Two weeks of that and the underlining happens without deciding to. The team layer needs one more ingredient: the miss log records the task and the mode, never the person who missed it, because the log's job is pattern-finding. Three staleness misses on the same monthly report is a stop-rule conversation about that report. And the "caught one" ritual does quiet cultural work: it tells everyone the checks are running, makes the checker look sharp rather than slow, and keeps the log honest.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span></h4>
+          <div><h3>In practice</h3><p>Habits attach to triggers, so pick the trigger deliberately: the moment AI output lands in front of you, before you do anything else with it, the claim read starts. Two weeks of that and the underlining happens without deciding to. The team layer needs one more ingredient: the miss log records the task and the mode, never the person who missed it, because the log's job is pattern-finding. Three staleness misses on the same monthly report is a stop-rule conversation about that report. And the "caught one" ritual does quiet cultural work: it tells everyone the checks are running, makes the checker look sharp rather than slow, and keeps the log honest.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> Set the trigger now: name the exact moment your chosen output arrives each week, and put a two-minute calendar block or reminder on it labeled with your check. The reminder does the remembering so the busy day doesn't have to.</p></div>
         </div>
       </details>

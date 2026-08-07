@@ -22,14 +22,14 @@
     border-bottom: 2px solid #CFAE70; padding-bottom: 14px; margin-bottom: 16px; }
   header img { width: 150px; }
   h1 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 26px; margin: 0; }
-  h1 em { font-style: italic; color: #946E24; }
+  h1 em { font-style: italic; color: #8C6822; }
   .eyebrow { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .08em; font-size: 10px; color: #946E24; margin: 0 0 6px; }
+    letter-spacing: .08em; font-size: 10px; color: #8C6822; margin: 0 0 6px; }
   h2 { font-family: 'Libre Caslon Display', serif; font-weight: 400; font-size: 18px;
     margin: 0 0 4px; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   h3 { font-family: 'Antonio', Impact, sans-serif; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .06em; font-size: 12px; color: #946E24; margin: 14px 0 4px; }
-  .mins { font-family: 'Antonio', Impact, sans-serif; font-size: 11px; color: #946E24;
+    letter-spacing: .06em; font-size: 12px; color: #8C6822; margin: 14px 0 4px; }
+  .mins { font-family: 'Antonio', Impact, sans-serif; font-size: 11px; color: #8C6822;
     letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
   .sec { border: 1px solid #E4E4E4; border-left: 3px solid #CFAE70; border-radius: 4px;
     padding: 12px 16px; margin-bottom: 12px; break-inside: avoid;
@@ -55,12 +55,17 @@
   table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; }
   th, td { border: 1px solid #E4E4E4; padding: 5px 9px; text-align: left; }
   th { font-family: 'Antonio', Impact, sans-serif; text-transform: uppercase; letter-spacing: .06em;
-    font-size: 10px; color: #946E24; }
+    font-size: 10px; color: #8C6822; }
   .front { border: 1px solid #E4E4E4; border-radius: 4px; padding: 12px 16px; margin-bottom: 12px;
     break-inside: avoid; }
   .printbtn { position: fixed; right: 18px; top: 18px; background: #CFAE70; border: 0; border-radius: 4px;
     padding: 9px 16px; font-family: Inter, Arial, sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; }
   @media print { .printbtn { display: none; } body { font-size: 11px; } .sheet { padding: 0; max-width: none; } }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
 </style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>

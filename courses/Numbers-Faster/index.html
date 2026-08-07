@@ -71,7 +71,7 @@
     <img class="nav__vicon" src="assets/img/vu-v-icon-nav.png" alt="Vanderbilt University" width="34" height="25">
   </a>
   <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="nav__links" id="navlinks" aria-label="Sections">
     <a href="#s-case">The Case</a>
@@ -89,8 +89,8 @@
   <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
   <div class="bottombar__ctrl">
     <span class="bottombar__count" id="deckCount">1 / 15</span>
-    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
 </div>
 <button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -156,7 +156,7 @@
   <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
     <div class="wrap">
       <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
-      <h2 class="h2" data-reveal>Vanderbilt will <em>define the great university of the 21st Century</em> and <em>be it.</em></h2>
+      <h2 class="h2" data-reveal>Vanderbilt will define the great university of the 21st Century and <em>be it.</em></h2>
       <p class="lead" data-reveal>That is Chancellor Diermeier's institutional vision, one sentence with no hedge in it. The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and growth shows up first in the numbers, so somebody has to read them faster than by hand.</p>
 
       <p class="eyebrow" data-reveal style="margin-top:2.5rem">Areas of Focus</p>
@@ -243,8 +243,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The source for the game is <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace AI research</a>, the long-running survey of how employees actually use these tools. The finding that matters most here: data and analysis work sits near the top of AI use cases by reported payoff, with about three quarters of the employees who use AI on it saying it clearly improves their productivity, and the gains concentrate heavily in the people who use it often rather than occasionally. Meanwhile most staff who live in spreadsheets still pull, total, and eyeball entirely by hand. That combination, high payoff and low adoption, is unusual, and it means the fastest available win in most offices is sitting in a file you already own. The blind spot is real too: AI fabricates numbers with total confidence, which is why this course welds a verification step into the loop instead of treating it as optional hygiene.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>The source for the game is <a href="https://www.gallup.com/workplace/651203/ai-workplace-answering-big-questions.aspx" target="_blank" rel="noopener" style="text-decoration:underline">Gallup's workplace AI research</a>, the long-running survey of how employees actually use these tools. The finding that matters most here: data and analysis work sits near the top of AI use cases by reported payoff, with about three quarters of the employees who use AI on it saying it clearly improves their productivity, and the gains concentrate heavily in the people who use it often rather than occasionally. Meanwhile most staff who live in spreadsheets still pull, total, and eyeball entirely by hand. That combination, high payoff and low adoption, is unusual, and it means the fastest available win in most offices is sitting in a file you already own. The blind spot is real too: AI fabricates numbers with total confidence, which is why this course welds a verification step into the loop instead of treating it as optional hygiene.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> the payoff gap becomes personal the moment you count your own hours.</p>
           <ol class="steps">
             <li>In pairs: name one number you produce or update on a schedule, weekly, monthly, or term by term.</li>
@@ -298,8 +298,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>De-identification is a five-minute ritual, and it goes like this. Make a copy of the file; the original never gets touched. Delete every column that identifies a person: names, initials, employee and student IDs, emails, phone numbers. Scan the free-text columns by eye, because comments are where names hide. If the analysis works on groups, aggregate before uploading: counts by month or by unit answer most questions and carry no individuals at all. And when a file cannot be cleanly de-identified, the answer is already written: it stays out of unapproved tools entirely, whatever the deadline. The light outranks the loop, the deadline, and every technique in this course.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>De-identification is a five-minute ritual, and it goes like this. Make a copy of the file; the original never gets touched. Delete every column that identifies a person: names, initials, employee and student IDs, emails, phone numbers. Scan the free-text columns by eye, because comments are where names hide. If the analysis works on groups, aggregate before uploading: counts by month or by unit answer most questions and carry no individuals at all. And when a file cannot be cleanly de-identified, the answer is already written: it stays out of unapproved tools entirely, whatever the deadline. The light outranks the loop, the deadline, and every technique in this course.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> calling the light on your own files, out loud, is what makes the reflex real.</p>
           <ol class="steps">
             <li>In pairs: each person names two real datasets they touch in a normal month. Columns and content, never the people in them.</li>
@@ -364,8 +364,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Three habits make the ladder work. Keep the describe paragraph honest about mess: if the data has gaps, renamed categories, or a month recorded twice, say so up front, because unspoken quirks come back later as confident wrong answers. Ask one question per message; a single prompt demanding summary, trends, outliers, and recommendations produces a wall of plausible mush, while the ladder produces answers you can check one at a time. And end any rung that surprises you with "show me which rows that came from"; a real pattern survives the question, an invented one dissolves on contact.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <div><h3>In practice</h3><p>Three habits make the ladder work. Keep the describe paragraph honest about mess: if the data has gaps, renamed categories, or a month recorded twice, say so up front, because unspoken quirks come back later as confident wrong answers. Ask one question per message; a single prompt demanding summary, trends, outliers, and recommendations produces a wall of plausible mush, while the ladder produces answers you can check one at a time. And end any rung that surprises you with "show me which rows that came from"; a real pattern survives the question, an invented one dissolves on contact.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 5 min</h3>
           <p class="why"><b>Why this matters:</b> hearing someone else's grind question makes your own ladder easier to see.</p>
           <ol class="steps">
             <li>Pairs. Read your partner your three starter entries: the dataset, the grind question, the wish.</li>
@@ -416,8 +416,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Which number do you recompute? The one that will be quoted: the headline total, the percentage in the subject line, the figure a dean or director will repeat in a meeting. One hand-checked number catches most fabrications, because a model that invented one figure rarely invented just that one, and the mismatch surfaces immediately. The row-count check catches the quietest failure, dropped data: ask "how many rows did you read?" and compare the answer to the file. And keep the asymmetry in mind: a boring answer that matches your instincts can wait for the weekly pass, while a surprising answer gets traced to its rows today, because surprising numbers are the ones that travel fastest.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <div><h3>In practice</h3><p>Which number do you recompute? The one that will be quoted: the headline total, the percentage in the subject line, the figure a dean or director will repeat in a meeting. One hand-checked number catches most fabrications, because a model that invented one figure rarely invented just that one, and the mismatch surfaces immediately. The row-count check catches the quietest failure, dropped data: ask "how many rows did you read?" and compare the answer to the file. And keep the asymmetry in mind: a boring answer that matches your instincts can wait for the weekly pass, while a surprising answer gets traced to its rows today, because surprising numbers are the ones that travel fastest.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 5 min</h3>
           <p class="why"><b>Why this matters:</b> running the ritual once, together, on a bad output makes it automatic on your own.</p>
           <ol class="steps">
             <li>Pairs. Take this output: "Total requests this year: 4,180, averaging 380 a month, with Facilities the top category at 61 percent."</li>
@@ -451,8 +451,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Notice what the lab punishes. Never using AI on the numbers; always the design around it: a file that went up with names attached, a dump-everything prompt that produced mush, a check that was really a vibe. The strongest run is the Data Loop verbatim: de-identify, describe, climb the ladder, recompute one number, and hand leadership two sentences with a chart. Notice also the trap on the check step: redoing the whole analysis by hand scores worse than the targeted ritual, because a check that costs as much as the work means the AI bought you nothing. Verification has a budget; spend it on the number that will be quoted.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 6 min</h4>
+          <div><h3>In practice</h3><p>Notice what the lab punishes. Never using AI on the numbers; always the design around it: a file that went up with names attached, a dump-everything prompt that produced mush, a check that was really a vibe. The strongest run is the Data Loop verbatim: de-identify, describe, climb the ladder, recompute one number, and hand leadership two sentences with a chart. Notice also the trap on the check step: redoing the whole analysis by hand scores worse than the targeted ritual, because a check that costs as much as the work means the AI bought you nothing. Verification has a budget; spend it on the number that will be quoted.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 6 min</h3>
           <p class="why"><b>Why this matters:</b> the lab's choices become real the moment you map them onto your own month-end.</p>
           <ol class="steps">
             <li>Pairs. Put your real dataset from section 03 on the table, the one from your starter.</li>
@@ -516,8 +516,8 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>A telling that works answers the reader's next question before it is asked. Lead with the change, in units the reader already thinks in; "18 percent" beats "212 versus 180," and "two clinics drove it" beats a table of nine. Keep the number's check in your pocket, because someone will ask where the figure came from, and "I recomputed it against the export" ends that conversation in one sentence. And watch the editorializing line: the data can say enrollment dipped after the deadline moved; it cannot say whose fault that was. The moment your sentence assigns blame or motive, you have left the data and started spending your own credibility.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <div><h3>In practice</h3><p>A telling that works answers the reader's next question before it is asked. Lead with the change, in units the reader already thinks in; "18 percent" beats "212 versus 180," and "two clinics drove it" beats a table of nine. Keep the number's check in your pocket, because someone will ask where the figure came from, and "I recomputed it against the export" ends that conversation in one sentence. And watch the editorializing line: the data can say enrollment dipped after the deadline moved; it cannot say whose fault that was. The moment your sentence assigns blame or motive, you have left the data and started spending your own credibility.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 5 min</h3>
           <p class="why"><b>Why this matters:</b> writing a finding under a clock, then hearing it judged, is the fastest calibration there is.</p>
           <ol class="steps">
             <li>Everyone, 2 minutes, solo: write the two-sentence finding for your lab run. Sentence one the change, sentence two why it matters.</li>

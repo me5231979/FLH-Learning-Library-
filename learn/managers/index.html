@@ -28,15 +28,31 @@
   ══════════════════════════════════════════════════════════════════════════
 -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C1C1C'/%3E%3Cpath d='M14 16h11l7 20 7-20h11L36 50h-8z' fill='%23CFAE70'/%3E%3C/svg%3E" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@0;1&family=Inter:wght@400;500;600&family=Antonio:wght@700&display=swap" rel="stylesheet" />
 <script>document.documentElement.classList.add('js');</script>
 <style>
+/* Self-hosted brand faces (no third-party font CDN). */
+@font-face{font-family:'Libre Caslon Display';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2');}
+/* Display has no italic cut; serve Libre Caslon Text italic under the same family so <em> renders a true italic */
+@font-face{font-family:'Libre Caslon Display';font-style:italic;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/libre-caslon-text-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/inter-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../../assets/fonts/inter-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
+  src:url('../../assets/fonts/inter-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../../assets/fonts/antonio-latin-700-normal.woff2') format('woff2');}
+
 /* ═══════════════════ TOKENS ═══════════════════ */
 :root{
   --vu-black:#1C1C1C; --vu-white:#FFFFFF;
-  --vu-gold:#CFAE70; --vu-highlight:#ECB748; --vu-oak:#946E24;
+  --vu-gold:#CFAE70; --vu-highlight:#ECB748; --vu-oak:#8C6822;
   --vu-cream:#F5F3EF; --vu-sand:#E0D5C0;
   --vu-gray-l:#E4E4E4; --vu-gray-d:#777;
   --vu-sky:#B3C9CD; --vu-sage:#8BA18E; --vu-err:#A94438;
@@ -63,9 +79,9 @@
   --tx:#1C1C1C; --tx2:#555555; --tx3:#6E6E6E;
   --bd:#E4E4E4; --bdg:rgba(148,110,36,.4);
   --card:#FFFFFF; --card2:#F5F3EF; --field:#FFFFFF; --field-bd:#D6D0C4;
-  --eyebrow:#946E24; --link:#946E24; --strong:#946E24; --focus:#946E24; --acc:#946E24;
-  --btn-bg:#1C1C1C; --btn-tx:#FFFFFF; --btn-hv:#946E24;
-  --gold:#946E24; --champ:#946E24; --muted:#555555; --faint:#6E6E6E; --ink:#1C1C1C;
+  --eyebrow:#8C6822; --link:#8C6822; --strong:#8C6822; --focus:#8C6822; --acc:#8C6822;
+  --btn-bg:#1C1C1C; --btn-tx:#FFFFFF; --btn-hv:#8C6822;
+  --gold:#8C6822; --champ:#8C6822; --muted:#555555; --faint:#6E6E6E; --ink:#1C1C1C;
 }
 .th-cream{ background:var(--vu-cream); --card2:#FFFFFF; --bd:#E0D8C8;
   --eyebrow:#7A5C1E; --link:#7A5C1E; --strong:#7A5C1E; --focus:#7A5C1E; --acc:#7A5C1E;
@@ -988,7 +1004,7 @@ svg{ width:1em; height:1em; flex-shrink:0; }
 .baro{ border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:clamp(18px,3vw,30px); max-width:720px; }
 .baro label{ display:flex; gap:12px; align-items:flex-start; padding:11px 4px; border-bottom:1px solid var(--bd); cursor:pointer; font-size:.95rem; color:var(--tx2); }
 .baro label:hover{ color:var(--tx); }
-.baro input[type=checkbox]{ width:19px; height:19px; margin-top:2px; accent-color:var(--acc,#946E24); flex-shrink:0; cursor:pointer; }
+.baro input[type=checkbox]{ width:19px; height:19px; margin-top:2px; accent-color:var(--acc,#8C6822); flex-shrink:0; cursor:pointer; }
 .baro-out{ margin-top:18px; }
 .baro-meter{ height:10px; border-radius:6px; background:var(--bd); overflow:hidden; }
 .baro-meter i{ display:block; height:100%; background:var(--metal); border-radius:6px; transition:width .5s var(--ease); }
@@ -1050,10 +1066,10 @@ a.track-pill:hover{ border-color:var(--vu-gold); transform:translateY(-1px); col
 .mm-dialog{ position:relative; width:100%; max-width:660px; max-height:88vh; overflow-y:auto; border-radius:6px;
   background:#FFFFFF; color:#1C1C1C; border:1px solid #E0D8C8; box-shadow:0 30px 80px -20px rgba(0,0,0,.5); padding:clamp(22px,4vw,34px);
   --tx:#1C1C1C; --tx2:#555; --tx3:#6E6E6E; --bd:#E4E4E4; --bdg:rgba(148,110,36,.4); --card:#fff; --card2:#F5F3EF;
-  --field:#fff; --field-bd:#D6D0C4; --eyebrow:#946E24; --strong:#946E24; --acc:#946E24; }
+  --field:#fff; --field-bd:#D6D0C4; --eyebrow:#8C6822; --strong:#8C6822; --acc:#8C6822; }
 .mm-x{ position:absolute; top:14px; right:14px; width:38px; height:38px; border-radius:50%; border:1px solid #E4E4E4;
   background:#fff; color:#555; cursor:pointer; font-size:.9rem; }
-.mm-x:hover{ border-color:#946E24; color:#946E24; }
+.mm-x:hover{ border-color:#8C6822; color:#8C6822; }
 .mm-head{ display:flex; gap:14px; align-items:center; margin-bottom:14px; padding-right:40px; }
 .mm-head h4{ font-family:var(--serif); font-weight:400; font-size:1.35rem; color:#1C1C1C; }
 .mm-deep{ font-size:.92rem; color:#555; line-height:1.6; }
@@ -1071,7 +1087,7 @@ a.track-pill:hover{ border-color:var(--vu-gold); transform:translateY(-1px); col
 .mm-proc ol{ margin:10px 0 0 20px; display:flex; flex-direction:column; gap:6px; }
 .mm-proc li{ font-size:.9rem; color:#555; line-height:1.5; }
 .mm-links{ display:flex; gap:18px; flex-wrap:wrap; margin-top:14px; }
-.mm-links .olink{ color:#946E24; border-bottom:1px solid rgba(148,110,36,.4); font-size:.88rem; font-weight:500; }
+.mm-links .olink{ color:#8C6822; border-bottom:1px solid rgba(148,110,36,.4); font-size:.88rem; font-weight:500; }
 .mm-links .olink .ph{ margin-left:6px; }
 nav.links a{ white-space:nowrap; }
 /* ═══════ WIDGETS: note builder / triage / rebalancer ═══════ */
@@ -1089,7 +1105,7 @@ nav.links a{ white-space:nowrap; }
 .tri-lane.on{ opacity:1; border-color:var(--vu-gold); transform:translateY(-2px); background:var(--card2); }
 .tri-switches{ display:flex; flex-direction:column; gap:10px; margin-top:16px; max-width:640px; }
 .tri-switches label{ display:flex; gap:12px; align-items:flex-start; cursor:pointer; font-size:.95rem; color:var(--tx2); }
-.tri-switches input{ width:19px; height:19px; margin-top:2px; accent-color:var(--acc,#946E24); flex-shrink:0; }
+.tri-switches input{ width:19px; height:19px; margin-top:2px; accent-color:var(--acc,#8C6822); flex-shrink:0; }
 #triageRead{ margin-top:14px; font-size:.92rem; color:var(--tx2); border-left:2px solid var(--vu-gold); padding-left:12px; max-width:64ch; line-height:1.6; }
 .rb-row{ display:grid; grid-template-columns:minmax(150px,200px) 1fr minmax(200px,260px) 44px; gap:14px; align-items:center; margin-top:14px; }
 .rb-row label{ font-size:.9rem; font-weight:600; color:var(--tx); }
@@ -1280,28 +1296,28 @@ nav.links a{ white-space:nowrap; }
         <h3>Compliance &amp; Duty</h3>
         <p>The non-negotiables: state-specific obligations, Title IX, protection of minors, ethics, safety, and harassment prevention. What you are legally required to know, do, and report.</p>
         <div class="ptags"><span>State-specific</span><span>Title IX</span><span>Mandatory reporting</span><span>Ethics</span></div>
-        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="pathcard" href="#relations">
         <span class="pno">02</span>
         <h3>Employee Relations</h3>
         <p>The human core of the job: what it actually means to manage people, how to run a difficult conversation, and, the skill that protects everyone, knowing when to handle it yourself and when to escalate. Progressive discipline lives here too: the fair, documented path for when coaching is not enough.</p>
         <div class="ptags"><span>Difficult conversations</span><span>Progressive discipline</span><span>Escalation</span><span>Coaching</span></div>
-        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="pathcard" href="#operations">
         <span class="pno">03</span>
         <h3>Human-Centered Responsibilities</h3>
         <p>The processes you now own: hiring, FMLA and leave, ADA accommodations, pay and PTO, expense reports, and timekeeping. The flagship FMLA simulator lives here.</p>
         <div class="ptags"><span>FMLA</span><span>ADA</span><span>Hiring</span><span>Pay &amp; PTO</span><span>Timekeeping</span></div>
-        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <a class="pathcard" href="#softskills">
         <span class="pno">04</span>
         <h3>People Skills</h3>
         <p>The soft skills that are actually the hard part: one-on-ones that people don't dread, feedback that lands, psychological safety that's real, and growth conversations that keep your best people.</p>
         <div class="ptags"><span>1-on-1s</span><span>Feedback</span><span>Psych safety</span><span>Development</span></div>
-        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        <span class="go">Enter domain <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
   </div>
@@ -1342,7 +1358,7 @@ nav.links a{ white-space:nowrap; }
       
       <div class="primer"><span class="mono" style="color:var(--eyebrow)">How to decide · the three lanes</span><div class="pr-row"><b>Resolve it yourself</b><span>Everyday management calls: schedules, workload, ordinary disagreements, a first-time minor lapse. Nothing protected is involved and no legal duty applies.</span></div><div class="pr-row"><b>Loop in PCB / Compliance</b><span>Gray areas and patterns: possible conflicts of interest, gifts from vendors, repeat behavior, anything touching pay, leave, or policy where you want a second reader before acting.</span></div><div class="pr-row"><b>Report immediately</b><span>Legal duties, not judgment calls: suspected abuse of a minor, sexual misconduct (Title IX), safety threats, retaliation. You report the same day, and you never investigate it yourself.</span></div></div>
       <div id="deck-report" style="margin-top:26px"></div>
-      <p class="next-up"><a href="#relations">Next up: Domain 02 · Employee Relations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <p class="next-up"><a href="#relations">Next up: Domain 02 · Employee Relations <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
   </div>
 </section>
@@ -1504,7 +1520,7 @@ nav.links a{ white-space:nowrap; }
         <div class="pr-row"><b>Trade a real one</b><span>Describe a discipline situation you have actually faced, no names. Where would your peer have made a different call than you did?</span></div>
         <div class="pr-row"><b>Check consistency</b><span>Would your two teams experience the same rules? If you would have handled the simulator&rsquo;s employee differently, someone at Vanderbilt is living under stricter rules than their colleague across the hall.</span></div>
       </div>
-      <p class="next-up"><a href="#operations">Next up: Domain 03 · Human-Centered Responsibilities <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <p class="next-up"><a href="#operations">Next up: Domain 03 · Human-Centered Responsibilities <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
     </div>
   </div>
@@ -1620,7 +1636,7 @@ nav.links a{ white-space:nowrap; }
         <div class="pr-row"><b>Rehearse the sentence</b><span>Say the protective sentence to each other out loud until it sounds natural: &ldquo;You may be entitled to job-protected leave; let me connect you with Leave Administration today.&rdquo; The rehearsal is what makes it available under pressure.</span></div>
         <div class="pr-row"><b>Name your first call</b><span>Who, specifically, would each of you contact first when a leave disclosure lands? If either of you hesitates, that is the gap to close this week.</span></div>
       </div>
-      <p class="next-up"><a href="#softskills">Next up: Domain 04 · People Skills <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <p class="next-up"><a href="#softskills">Next up: Domain 04 · People Skills <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
 
 
@@ -1682,7 +1698,7 @@ nav.links a{ white-space:nowrap; }
       <p style="margin-top:14px;color:var(--tx2);max-width:62ch">Kim Scott ran teams at Google and Apple and wrote the book on saying the hard thing kindly. Ten minutes, then test your ear in the lab below.</p>
       <div class="yt" data-embed="https://www.youtube-nocookie.com/embed/vmxHUiiHgNk" data-title="Kim Scott · How to Lead With Radical Candor (TED)" style="margin-top:22px">
         <button type="button" class="yt-btn" aria-label="Play: Kim Scott, How to Lead With Radical Candor">
-          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           <span class="yt-t">Kim Scott · How to Lead With Radical Candor</span>
           <span class="yt-sub">TED · ~10 min · click to load</span>
         </button>
@@ -1698,7 +1714,7 @@ nav.links a{ white-space:nowrap; }
       <p style="margin-top:14px;color:var(--tx2);max-width:62ch">Amy Edmondson coined the term psychological safety and spent thirty years proving it predicts team performance. Watch her explain it, then take an honest reading of your own team.</p>
       <div class="yt" data-embed="https://www.youtube-nocookie.com/embed/LhoLuui9gX8" data-title="Amy Edmondson · Building a psychologically safe workplace (TEDx)" style="margin-top:22px">
         <button type="button" class="yt-btn" aria-label="Play: Amy Edmondson, Building a psychologically safe workplace">
-          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></span>
           <span class="yt-t">Amy Edmondson · Building a psychologically safe workplace</span>
           <span class="yt-sub">TEDxHGSE · ~12 min · click to load</span>
         </button>
@@ -1721,7 +1737,7 @@ nav.links a{ white-space:nowrap; }
       <h3 style="font-size:1.7rem;max-width:28ch">The 1:1 Simulator</h3>
       <p style="margin-top:14px;color:var(--tx2);max-width:64ch">Your steadiest person just said “I feel stuck.” What you do in the next five minutes is the difference between a growth plan and a resignation letter. Run it here first.</p>
       <div id="sim-oneonone" style="margin-top:26px"></div>
-      <p class="next-up"><a href="#assess">That's the core four. Ready? Let's review <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      <p class="next-up"><a href="#assess">That's the core four. Ready? Let's review <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
     </div>
   </div>
 </section>
@@ -1797,10 +1813,10 @@ nav.links a{ white-space:nowrap; }
       <h3 style="font-size:1.45rem;max-width:30ch">The professional ground this track covers</h3>
       <p style="margin-top:12px;color:var(--tx2);max-width:62ch">Each domain maps to the competency areas used across the HR profession, so what you practice here lines up with how the field itself defines quality management.</p>
       <div class="topic-grid" style="margin-top:24px">
-        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 8l-3 7a3 3 0 006 0L6 8m12 0l-3 7a3 3 0 006 0l-3-7M4 21h16M9 5h6"/></svg></div><h5>Compliance &amp; Duty</h5><p><b>Covers:</b> U.S. Employment Law &amp; Regulations · Risk Management · Ethical Practice</p></div>
-        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"/></svg></div><h5>Employee Relations</h5><p><b>Covers:</b> Employee &amp; Labor Relations · Relationship Management · Communication</p></div>
-        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h5>Human-Centered Responsibilities</h5><p><b>Covers:</b> Talent Acquisition · Total Rewards · Leave Management (FMLA/FLSA) · Business Acumen</p></div>
-        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"/></svg></div><h5>People Skills</h5><p><b>Covers:</b> Leadership &amp; Navigation · Communication · Relationship Management</p></div>
+        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M6 8l-3 7a3 3 0 006 0L6 8m12 0l-3 7a3 3 0 006 0l-3-7M4 21h16M9 5h6"/></svg></div><h5>Compliance &amp; Duty</h5><p><b>Covers:</b> U.S. Employment Law &amp; Regulations · Risk Management · Ethical Practice</p></div>
+        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"/></svg></div><h5>Employee Relations</h5><p><b>Covers:</b> Employee &amp; Labor Relations · Relationship Management · Communication</p></div>
+        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h5>Human-Centered Responsibilities</h5><p><b>Covers:</b> Talent Acquisition · Total Rewards · Leave Management (FMLA/FLSA) · Business Acumen</p></div>
+        <div class="topic-card"><div class="tc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"/></svg></div><h5>People Skills</h5><p><b>Covers:</b> Leadership &amp; Navigation · Communication · Relationship Management</p></div>
       </div>
     </div>
   </div>
@@ -1926,12 +1942,12 @@ nav.links a{ white-space:nowrap; }
       <h3>National authorities</h3>
       <p>The primary sources, free, official, and current.</p>
       <div class="linklist">
-        <a class="rlink" href="https://www.dol.gov/agencies/whd/fmla/employer-guide" target="_blank" rel="noopener"><span class="src">U.S. Dept of Labor</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>The FMLA Employer Guide</b><span>The definitive plain-English walkthrough of every employer obligation, the companion to our FMLA Simulator.</span></a>
-        <a class="rlink" href="https://www.dol.gov/agencies/whd/fmla/faq" target="_blank" rel="noopener"><span class="src">U.S. Dept of Labor</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>FMLA Frequently Asked Questions</b><span>Fast answers on eligibility, certification, intermittent leave, and holidays during leave.</span></a>
-        <a class="rlink" href="https://www.eeoc.gov/harassment" target="_blank" rel="noopener"><span class="src">EEOC</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Harassment, what the law covers</b><span>The federal baseline on unlawful harassment, retaliation, and employer liability for supervisors.</span></a>
-        <a class="rlink" href="https://askjan.org" target="_blank" rel="noopener"><span class="src">Job Accommodation Network</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>AskJAN, accommodation ideas by condition</b><span>Free, expert accommodation guidance funded by DOL. The best first stop before and during any interactive process.</span></a>
-        <a class="rlink" href="https://www.dol.gov/agencies/whd/flsa" target="_blank" rel="noopener"><span class="src">U.S. Dept of Labor</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>FLSA, wage &amp; hour basics</b><span>Exempt vs. non-exempt, overtime, and off-the-clock rules behind our hybrid-work scenarios.</span></a>
-        <a class="rlink" href="https://www.osha.gov/workers" target="_blank" rel="noopener"><span class="src">OSHA</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Worker safety rights &amp; duties</b><span>Safety duties, hazard reporting, and the no-retaliation rule every supervisor personally enforces.</span></a>
+        <a class="rlink" href="https://www.dol.gov/agencies/whd/fmla/employer-guide" target="_blank" rel="noopener"><span class="src">U.S. Dept of Labor</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>The FMLA Employer Guide</b><span>The definitive plain-English walkthrough of every employer obligation, the companion to our FMLA Simulator.</span></a>
+        <a class="rlink" href="https://www.dol.gov/agencies/whd/fmla/faq" target="_blank" rel="noopener"><span class="src">U.S. Dept of Labor</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>FMLA Frequently Asked Questions</b><span>Fast answers on eligibility, certification, intermittent leave, and holidays during leave.</span></a>
+        <a class="rlink" href="https://www.eeoc.gov/harassment" target="_blank" rel="noopener"><span class="src">EEOC</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Harassment, what the law covers</b><span>The federal baseline on unlawful harassment, retaliation, and employer liability for supervisors.</span></a>
+        <a class="rlink" href="https://askjan.org" target="_blank" rel="noopener"><span class="src">Job Accommodation Network</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>AskJAN, accommodation ideas by condition</b><span>Free, expert accommodation guidance funded by DOL. The best first stop before and during any interactive process.</span></a>
+        <a class="rlink" href="https://www.dol.gov/agencies/whd/flsa" target="_blank" rel="noopener"><span class="src">U.S. Dept of Labor</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>FLSA, wage &amp; hour basics</b><span>Exempt vs. non-exempt, overtime, and off-the-clock rules behind our hybrid-work scenarios.</span></a>
+        <a class="rlink" href="https://www.osha.gov/workers" target="_blank" rel="noopener"><span class="src">OSHA</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Worker safety rights &amp; duties</b><span>Safety duties, hazard reporting, and the no-retaliation rule every supervisor personally enforces.</span></a>
       </div>
     </div>
 
@@ -1939,12 +1955,12 @@ nav.links a{ white-space:nowrap; }
       <h3>Your state, specifically</h3>
       <p>Where the four state profiles in the Compliance domain come from.</p>
       <div class="linklist">
-        <a class="rlink" href="https://www.tn.gov/workforce.html" target="_blank" rel="noopener"><span class="src">Tennessee</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>TN Dept of Labor &amp; Workforce Development</b><span>State employment rules and the agencies behind Tennessee’s any-person child-abuse reporting duty.</span></a>
-        <a class="rlink" href="https://www.ny.gov/programs/combating-sexual-harassment-workplace" target="_blank" rel="noopener"><span class="src">New York</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>NY sexual harassment prevention portal</b><span>The model policy, the annual training requirement, and employer obligations, with free training materials.</span></a>
-        <a class="rlink" href="https://calcivilrights.ca.gov" target="_blank" rel="noopener"><span class="src">California</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>CA Civil Rights Department</b><span>Supervisor harassment-prevention training (2 hrs / 2 yrs), CFRA, and California’s expanded protected classes.</span></a>
-        <a class="rlink" href="https://www.dir.ca.gov" target="_blank" rel="noopener"><span class="src">California</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>CA Dept of Industrial Relations</b><span>Daily overtime, meal and rest premiums, and final-pay timing, the wage-hour rules in our simulators.</span></a>
-        <a class="rlink" href="https://www.floridajobs.org" target="_blank" rel="noopener"><span class="src">Florida</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>FloridaCommerce, workforce rules</b><span>Florida largely follows the federal floor, which makes Vanderbilt’s own standard the bar that matters.</span></a>
-        <a class="rlink" href="https://hr.vanderbilt.edu/policies/" target="_blank" rel="noopener"><span class="src">Vanderbilt</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>PCB policy library</b><span>Every Vanderbilt People, Culture and Belonging policy in one place, the house rules over all four states.</span></a>
+        <a class="rlink" href="https://www.tn.gov/workforce.html" target="_blank" rel="noopener"><span class="src">Tennessee</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>TN Dept of Labor &amp; Workforce Development</b><span>State employment rules and the agencies behind Tennessee’s any-person child-abuse reporting duty.</span></a>
+        <a class="rlink" href="https://www.ny.gov/programs/combating-sexual-harassment-workplace" target="_blank" rel="noopener"><span class="src">New York</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>NY sexual harassment prevention portal</b><span>The model policy, the annual training requirement, and employer obligations, with free training materials.</span></a>
+        <a class="rlink" href="https://calcivilrights.ca.gov" target="_blank" rel="noopener"><span class="src">California</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>CA Civil Rights Department</b><span>Supervisor harassment-prevention training (2 hrs / 2 yrs), CFRA, and California’s expanded protected classes.</span></a>
+        <a class="rlink" href="https://www.dir.ca.gov" target="_blank" rel="noopener"><span class="src">California</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>CA Dept of Industrial Relations</b><span>Daily overtime, meal and rest premiums, and final-pay timing, the wage-hour rules in our simulators.</span></a>
+        <a class="rlink" href="https://www.floridajobs.org" target="_blank" rel="noopener"><span class="src">Florida</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>FloridaCommerce, workforce rules</b><span>Florida largely follows the federal floor, which makes Vanderbilt’s own standard the bar that matters.</span></a>
+        <a class="rlink" href="https://hr.vanderbilt.edu/policies/" target="_blank" rel="noopener"><span class="src">Vanderbilt</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>PCB policy library</b><span>Every Vanderbilt People, Culture and Belonging policy in one place, the house rules over all four states.</span></a>
       </div>
     </div>
 
@@ -1952,10 +1968,10 @@ nav.links a{ white-space:nowrap; }
       <h3>Research &amp; white papers</h3>
       <p>Evidence worth quoting in your next leadership meeting.</p>
       <div class="linklist">
-        <a class="rlink" href="https://www.shrm.org/topics-tools/research" target="_blank" rel="noopener"><span class="src">SHRM</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>SHRM Research &amp; Insights</b><span>Workplace research from SHRM, the leading professional association for HR.</span></a>
-        <a class="rlink" href="https://rework.withgoogle.com" target="_blank" rel="noopener"><span class="src">Google re:Work</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>re:Work. Project Aristotle &amp; manager guides</b><span>Google’s open playbooks: what made teams work (psychological safety, #1) and how to run 1:1s and feedback.</span></a>
-        <a class="rlink" href="https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx" target="_blank" rel="noopener"><span class="src">Gallup</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>State of the Global Workplace</b><span>The annual engagement dataset behind “managers account for 70% of the variance in team engagement.”</span></a>
-        <a class="rlink" href="https://www.cupahr.org/leadership-development/learning-framework/" target="_blank" rel="noopener"><span class="src">CUPA-HR</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Higher-Ed HR Learning Framework</b><span>The higher-ed specific competency map (Core, Building Capabilities, Strategic Leadership, Engagement) from the association for college and university HR.</span></a>
+        <a class="rlink" href="https://www.shrm.org/topics-tools/research" target="_blank" rel="noopener"><span class="src">SHRM</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>SHRM Research &amp; Insights</b><span>Workplace research from SHRM, the leading professional association for HR.</span></a>
+        <a class="rlink" href="https://rework.withgoogle.com" target="_blank" rel="noopener"><span class="src">Google re:Work</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>re:Work. Project Aristotle &amp; manager guides</b><span>Google’s open playbooks: what made teams work (psychological safety, #1) and how to run 1:1s and feedback.</span></a>
+        <a class="rlink" href="https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx" target="_blank" rel="noopener"><span class="src">Gallup</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>State of the Global Workplace</b><span>The annual engagement dataset behind “managers account for 70% of the variance in team engagement.”</span></a>
+        <a class="rlink" href="https://www.cupahr.org/leadership-development/learning-framework/" target="_blank" rel="noopener"><span class="src">CUPA-HR</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Higher-Ed HR Learning Framework</b><span>The higher-ed specific competency map (Core, Building Capabilities, Strategic Leadership, Engagement) from the association for college and university HR.</span></a>
       </div>
     </div>
 
@@ -1963,10 +1979,10 @@ nav.links a{ white-space:nowrap; }
       <h3>Gartner, free to read</h3>
       <p>The research house behind several frameworks in this course. These pages are publicly accessible.</p>
       <div class="linklist">
-        <a class="rlink" href="https://www.gartner.com/en/human-resources/topics/succession-planning" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Succession planning guide</b><span>The four-move framework our Talent ID section teaches, with templates for taking it to leadership.</span></a>
-        <a class="rlink" href="https://www.gartner.com/en/human-resources/insights/leadership-management/high-potentials" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>High-potential employees</b><span>The ability + aspiration + engagement model behind our Spot the Signal deck.</span></a>
-        <a class="rlink" href="https://www.gartner.com/en/human-resources/insights/publications/connector-manager" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>The Connector Manager</b><span>Why the managers who connect people to growth beat the ones who coach everything themselves, by 26%.</span></a>
-        <a class="rlink" href="https://www.gartner.com/en/human-resources" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Gartner HR insights hub</b><span>The free front door: manager effectiveness, change fatigue, talent strategy, and the annual HR priorities research.</span></a>
+        <a class="rlink" href="https://www.gartner.com/en/human-resources/topics/succession-planning" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Succession planning guide</b><span>The four-move framework our Talent ID section teaches, with templates for taking it to leadership.</span></a>
+        <a class="rlink" href="https://www.gartner.com/en/human-resources/insights/leadership-management/high-potentials" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>High-potential employees</b><span>The ability + aspiration + engagement model behind our Spot the Signal deck.</span></a>
+        <a class="rlink" href="https://www.gartner.com/en/human-resources/insights/publications/connector-manager" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>The Connector Manager</b><span>Why the managers who connect people to growth beat the ones who coach everything themselves, by 26%.</span></a>
+        <a class="rlink" href="https://www.gartner.com/en/human-resources" target="_blank" rel="noopener"><span class="src">Gartner</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Gartner HR insights hub</b><span>The free front door: manager effectiveness, change fatigue, talent strategy, and the annual HR priorities research.</span></a>
       </div>
     </div>
 
@@ -1974,11 +1990,11 @@ nav.links a{ white-space:nowrap; }
       <h3>Watch &amp; listen</h3>
       <p>For the commute. The two talks are also embedded in the Soft Skills domain above.</p>
       <div class="linklist">
-        <a class="rlink" href="https://www.youtube.com/watch?v=LhoLuui9gX8" target="_blank" rel="noopener"><span class="src">TEDx · 12 min</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Amy Edmondson, psychological safety</b><span>The talk that named the most important property a team can have.</span></a>
-        <a class="rlink" href="https://www.youtube.com/watch?v=vmxHUiiHgNk" target="_blank" rel="noopener"><span class="src">TED · 10 min</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Kim Scott, radical candor</b><span>Care personally, challenge directly, the feedback frame our lab practices.</span></a>
-        <a class="rlink" href="https://www.shrm.org/topics-tools/flagships/all-things-work" target="_blank" rel="noopener"><span class="src">SHRM</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>All Things Work, the podcast</b><span>SHRM’s weekly deep-dive on the changing world of work. Player below, or wherever you listen.</span></a>
-        <a class="rlink" href="https://hbr.org/podcasts/ideacast" target="_blank" rel="noopener"><span class="src">Harvard Business Review</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>HBR IdeaCast</b><span>Twenty minutes a week of management thinking that has survived a century of fads.</span></a>
-        <a class="rlink" href="https://www.ted.com/podcasts/worklife" target="_blank" rel="noopener"><span class="src">TED</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>WorkLife with Adam Grant</b><span>An organizational psychologist makes work not suck, psychological safety, feedback, and burnout episodes especially.</span></a>
+        <a class="rlink" href="https://www.youtube.com/watch?v=LhoLuui9gX8" target="_blank" rel="noopener"><span class="src">TEDx · 12 min</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Amy Edmondson, psychological safety</b><span>The talk that named the most important property a team can have.</span></a>
+        <a class="rlink" href="https://www.youtube.com/watch?v=vmxHUiiHgNk" target="_blank" rel="noopener"><span class="src">TED · 10 min</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>Kim Scott, radical candor</b><span>Care personally, challenge directly, the feedback frame our lab practices.</span></a>
+        <a class="rlink" href="https://www.shrm.org/topics-tools/flagships/all-things-work" target="_blank" rel="noopener"><span class="src">SHRM</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>All Things Work, the podcast</b><span>SHRM’s weekly deep-dive on the changing world of work. Player below, or wherever you listen.</span></a>
+        <a class="rlink" href="https://hbr.org/podcasts/ideacast" target="_blank" rel="noopener"><span class="src">Harvard Business Review</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>HBR IdeaCast</b><span>Twenty minutes a week of management thinking that has survived a century of fads.</span></a>
+        <a class="rlink" href="https://www.ted.com/podcasts/worklife" target="_blank" rel="noopener"><span class="src">TED</span><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l3-3a5 5 0 00-7-7l-1.7 1.7M14 11a5 5 0 00-7.5-.5l-3 3a5 5 0 007 7l1.7-1.7"/></svg>WorkLife with Adam Grant</b><span>An organizational psychologist makes work not suck, psychological safety, feedback, and burnout episodes especially.</span></a>
       </div>
       <div class="spotify-wrap">
         <iframe title="SHRM All Things Work on Spotify" style="border-radius:8px;border:0" src="https://open.spotify.com/embed/show/3qkoUqHu0Llhmcfzm12xZ0?utm_source=generator" width="100%" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -2102,27 +2118,27 @@ function el(id){ return document.getElementById(id); }
 function h(html){ var t=document.createElement('template'); t.innerHTML=html.trim(); return t.content.firstElementChild; }
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 var ICON = {
-  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
-  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
-  scale:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7h10M5 7l-2 6a3 3 0 006 0L7 7M17 7l-2 6a3 3 0 006 0l-2-6M4 21h16"/></svg>',
-  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>',
-  law:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M6 8l-3 7a3 3 0 006 0L6 8m12 0l-3 7a3 3 0 006 0l-3-7M4 21h16M9 5h6"/></svg>',
-  users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"/></svg>',
-  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6M9 13h6M9 17h6"/></svg>',
-  alert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0zM12 9v4M12 17h.01"/></svg>',
-  flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>',
-  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
-  cash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>',
-  receipt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1z"/><path d="M9 8h6M9 12h6"/></svg>',
-  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg>',
-  fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s4 4 4 8a4 4 0 01-8 0c0-1 .5-2 .5-2S6 10 6 14a6 6 0 0012 0c0-5-6-12-6-12z"/></svg>',
-  neutral:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 15h8M9 9h.01M15 9h.01"/></svg>',
-  chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/></svg>',
-  route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h6a3 3 0 003-3V8"/></svg>',
-  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5v14z"/></svg>',
-  hire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 3a4 4 0 100 8 4 4 0 000-8zM19 8v6M22 11h-6"/></svg>'
+  arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>',
+  x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+  scale:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M7 7h10M5 7l-2 6a3 3 0 006 0L7 7M17 7l-2 6a3 3 0 006 0l-2-6M4 21h16"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>',
+  law:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M6 8l-3 7a3 3 0 006 0L6 8m12 0l-3 7a3 3 0 006 0l-3-7M4 21h16M9 5h6"/></svg>',
+  users:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 7a4 4 0 100 8 4 4 0 000-8zM23 21v-2a4 4 0 00-3-3.87M16 3.13A4 4 0 0116 11"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM14 2v6h6M9 13h6M9 17h6"/></svg>',
+  alert:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0zM12 9v4M12 17h.01"/></svg>',
+  flag:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>',
+  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  cal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>',
+  cash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>',
+  receipt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2v20l2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1z"/><path d="M9 8h6M9 12h6"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 000-7.8z"/></svg>',
+  fire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2s4 4 4 8a4 4 0 01-8 0c0-1 .5-2 .5-2S6 10 6 14a6 6 0 0012 0c0-5-6-12-6-12z"/></svg>',
+  neutral:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 15h8M9 9h.01M15 9h.01"/></svg>',
+  chat:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/></svg>',
+  route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h6a3 3 0 003-3V8"/></svg>',
+  book:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 016.5 17H20V3H6.5A2.5 2.5 0 004 5.5v14z"/></svg>',
+  hire:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 3a4 4 0 100 8 4 4 0 000-8zM19 8v6M22 11h-6"/></svg>'
 };
 ICON.play='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
 

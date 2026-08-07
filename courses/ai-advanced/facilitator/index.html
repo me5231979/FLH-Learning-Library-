@@ -136,7 +136,7 @@ body.fac-hide .facshow { display: inline-flex; }
     <span class="fac__badge">Facilitator Edition</span>
   </a>
   <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="nav__links" id="navlinks" aria-label="Sections">
     <a href="#s-attention">Attention</a>
@@ -153,9 +153,9 @@ body.fac-hide .facshow { display: inline-flex; }
   <span class="bottombar__title" id="barTitle"></span>
   <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
   <div class="bottombar__ctrl">
-    <span class="bottombar__count" id="deckCount">1 / 15</span>
-    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <span class="bottombar__count" id="deckCount">1 / 17</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
 </div>
 <button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -245,7 +245,7 @@ body.fac-hide .facshow { display: inline-flex; }
   <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
     <div class="wrap">
       <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
-      <h2 class="h2" data-reveal>Vanderbilt will <em>define the great university of the 21st Century</em> and <em>be it.</em></h2>
+      <h2 class="h2" data-reveal>Vanderbilt will define the great university of the 21st Century and <em>be it.</em></h2>
       <p class="lead" data-reveal>That is Chancellor Diermeier's institutional vision, one sentence with no hedge in it. The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow.</p>
 
       <p class="eyebrow" data-reveal style="margin-top:2.5rem">Areas of Focus</p>
@@ -272,6 +272,11 @@ body.fac-hide .facshow { display: inline-flex; }
       <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
         <span class="tag">How this course delivers</span>
         <p style="margin:.5rem 0 0" class="measure">AI 201 deepens the capability the mission names first: staff fluent in advanced AI workflows are the innovative, impactful capability Exceptional Core Operations describes, and the fuel Bold Strategic Initiatives burn.</p>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:2rem">
+        <span class="tag">The reputation flywheel</span>
+        <p style="margin:.5rem 0 0" class="measure">Reputation and resources feed each other in a loop, reputation attracts <b>talent, funding, partnerships, and access</b>, which build the reputation. The university spins that flywheel with <b>execution with ambition, values-driven leadership, and athletics momentum</b>. Here's your place in it: execution with ambition includes the ordinary work on your desk, and every task you finish faster and check before it ships feeds the wheel.</p>
       </div>
 
       <p data-reveal style="margin-top:1.75rem;font-size:.85rem;color:rgba(255,255,255,.6)">Source: <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">&ldquo;Daring to Grow&rdquo;, Chancellor Diermeier, Vanderbilt University (July 2022)</a></p>
@@ -336,8 +341,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Three habits fall straight out of the mechanism. <b>Restate, don't assume:</b> in long chats, repeat the key instruction instead of trusting message three. <b>Put the ask near the end:</b> "important instruction last" isn't superstition; recent tokens compete better for attention. <b>Start fresh on purpose:</b> a new chat with a clean, complete prompt often beats message 40 of a cluttered one. The window is why.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>Three habits fall straight out of the mechanism. <b>Restate, don't assume:</b> in long chats, repeat the key instruction instead of trusting message three. <b>Put the ask near the end:</b> "important instruction last" isn't superstition; recent tokens compete better for attention. <b>Start fresh on purpose:</b> a new chat with a clean, complete prompt often beats message 40 of a cluttered one. The window is why.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> everyone has felt a tool "forget"; attaching the mechanism to a real memory makes it diagnostic instead of spooky.</p>
           <ol class="steps">
             <li>In pairs: describe one real moment a chat tool lost track of something you'd said earlier.</li>
@@ -400,8 +405,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>You already use RAG: chat tools that "search the web first," assistants plugged into your document library, and Amplify workflows grounded in uploaded files are all retrieval in front of a model. The tell of a grounded answer is the citation you can click. Two cautions: retrieval is only as good as the documents (stale library, stale answers), and the model can still misquote what it retrieved, so spot-checking the cited source stays in the job.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>You already use RAG: chat tools that "search the web first," assistants plugged into your document library, and Amplify workflows grounded in uploaded files are all retrieval in front of a model. The tell of a grounded answer is the citation you can click. Two cautions: retrieval is only as good as the documents (stale library, stale answers), and the model can still misquote what it retrieved, so spot-checking the cited source stays in the job.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> spotting where RAG belongs in YOUR workflow is the difference between understanding the concept and using it.</p>
           <ol class="steps">
             <li>In pairs or tables: name one question at work a general chatbot would confidently guess at.</li>
@@ -456,8 +461,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The hidden cost people underestimate is <b>maintenance</b>. A prompt costs minutes and changes freely. A RAG library needs an owner who keeps the documents current, or the answers quietly rot. Fine-tuning needs training data, compute, evaluation, and a redo every time the underlying model updates, which is often. That's why the framework runs cheapest-first: escalate on evidence, not enthusiasm. IBM's side-by-side comparison video is a solid share-out for your team; find it linked from the cheat sheet.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>The hidden cost people underestimate is <b>maintenance</b>. A prompt costs minutes and changes freely. A RAG library needs an owner who keeps the documents current, or the answers quietly rot. Fine-tuning needs training data, compute, evaluation, and a redo every time the underlying model updates, which is often. That's why the framework runs cheapest-first: escalate on evidence, not enthusiasm. IBM's side-by-side comparison video is a solid share-out for your team; find it linked from the cheat sheet.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> practicing the justification sentence is what makes the framework usable in a real meeting.</p>
           <ol class="steps">
             <li>In pairs: pick one AI idea floating around your unit (or invent a plausible one).</li>
@@ -517,8 +522,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The research behind each: Few-Shot comes from the original GPT-3 paper (Brown et al.), which showed models learn tasks from in-prompt examples alone. Chain-of-Thought comes from Wei et al., who measured the accuracy jump from step-by-step reasoning. Template and Flipped Interaction come from White et al.'s prompt pattern catalog, the same Vanderbilt-led work behind the Persona Pattern you learned in AI Basics. The patterns stack: a Template prompt with Few-Shot examples is a workhorse.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 5 min</h4>
+          <div><h3>In practice</h3><p>The research behind each: Few-Shot comes from the original GPT-3 paper (Brown et al.), which showed models learn tasks from in-prompt examples alone. Chain-of-Thought comes from Wei et al., who measured the accuracy jump from step-by-step reasoning. Template and Flipped Interaction come from White et al.'s prompt pattern catalog, the same Vanderbilt-led work behind the Persona Pattern you learned in AI Basics. The patterns stack: a Template prompt with Few-Shot examples is a workhorse.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span> · 5 min</h3>
           <p class="why"><b>Why this matters:</b> rewriting a prompt you actually use is the rep that moves a pattern from trivia into your fingers.</p>
           <ol class="steps">
             <li>Pull up one real prompt you've used at work in the last two weeks.</li>
@@ -587,8 +592,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The checkpoint question has three honest answers, and your capstone will ask you to pick one. <b>Spot-check:</b> a human samples some outputs; right for low-stakes volume. <b>Full review:</b> a human reads everything before it ships; right for external or consequential output. <b>Named approval:</b> a specific accountable person signs off; right for anything touching money, people, or commitments. The pattern to avoid is the silent fourth option: no checkpoint at all, discovered only after the incident.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>The checkpoint question has three honest answers, and your capstone will ask you to pick one. <b>Spot-check:</b> a human samples some outputs; right for low-stakes volume. <b>Full review:</b> a human reads everything before it ships; right for external or consequential output. <b>Named approval:</b> a specific accountable person signs off; right for anything touching money, people, or commitments. The pattern to avoid is the silent fourth option: no checkpoint at all, discovered only after the incident.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> checkpoint placement is a judgment your team should agree on BEFORE an agent ships something embarrassing, not after.</p>
           <ol class="steps">
             <li>Name one place in your unit's work where an agent could genuinely help (drafting, filing, compiling).</li>
@@ -630,8 +635,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>What you just did by hand, organizations do as a discipline. <b>Red-teaming</b>, in NIST's definition, is a structured testing effort to find flaws and vulnerabilities in an AI system, often with the developers in the loop. <b>Evaluation</b> is its steady-state sibling: measuring accuracy on known test sets before and after every change. When a vendor says "our model doesn't hallucinate," the right response is: "show me the eval results and the red-team findings."</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 3 min</h4>
+          <div><h3>In practice</h3><p>What you just did by hand, organizations do as a discipline. <b>Red-teaming</b>, in NIST's definition, is a structured testing effort to find flaws and vulnerabilities in an AI system, often with the developers in the loop. <b>Evaluation</b> is its steady-state sibling: measuring accuracy on known test sets before and after every change. When a vendor says "our model doesn't hallucinate," the right response is: "show me the eval results and the red-team findings."</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 3 min</h3>
           <p class="why"><b>Why this matters:</b> naming where a wrong answer would hurt most turns abstract risk into a checkable list.</p>
           <ol class="steps">
             <li>As a table: name the ONE place in your work where a confident wrong answer would cost the most.</li>
@@ -691,8 +696,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The tiers here are the same green, yellow, red rules from AI Basics, now wearing their governance name. <b>Green:</b> public or generic, any approved tool. <b>Yellow:</b> internal content, company-managed tools only (Amplify, VU-signed Copilot). <b>Red:</b> sensitive data, named approval required, or no AI tool at all: FERPA, HIPAA, personnel, donors, credentials, unpublished research, contracts. The NIST framing adds the org-level view: someone should be able to answer "what AI are we running, and how do we know it works?" For your team, that someone might be you.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>The tiers here are the same green, yellow, red rules from AI Basics, now wearing their governance name. <b>Green:</b> public or generic, any approved tool. <b>Yellow:</b> internal content, company-managed tools only (Amplify, VU-signed Copilot). <b>Red:</b> sensitive data, named approval required, or no AI tool at all: FERPA, HIPAA, personnel, donors, credentials, unpublished research, contracts. The NIST framing adds the org-level view: someone should be able to answer "what AI are we running, and how do we know it works?" For your team, that someone might be you.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> running one real tool through the four functions makes NIST a checklist instead of an acronym.</p>
           <ol class="steps">
             <li>Pick one AI tool your team already uses, even informally.</li>

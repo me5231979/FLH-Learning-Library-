@@ -5,11 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Pocket Card · Manager Foundations · Vanderbilt</title>
 <meta name="description" content="The one-sheet job aid for Vanderbilt managers: the three lanes, the five-part note, the protective sentences, and who to call.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Inter:wght@400;500;600;700&family=Antonio:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --ink:#1C1C1C; --tx2:#555; --tx3:#6E6E6E; --gold:#946E24; --gold-lt:#CFAE70; --bd:#E0D8C8; --card:#F7F5F0; --err:#A94438; }
+/* Self-hosted brand faces (no third-party font CDN). Inter 700 and Antonio 600
+   are not shipped as separate cuts; the browser synthesises them from the
+   nearest weight, matching how the course decks render. */
+@font-face{font-family:'Libre Caslon Display';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Libre Caslon Display';font-style:italic;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../assets/fonts/inter-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../../assets/fonts/inter-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
+  src:url('../../assets/fonts/inter-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../../assets/fonts/antonio-latin-700-normal.woff2') format('woff2');}
+
+  :root{ --ink:#1C1C1C; --tx2:#555; --tx3:#6E6E6E; --gold:#8C6822; --gold-lt:#CFAE70; --bd:#E0D8C8; --card:#F7F5F0; --err:#A94438; }
   *{ margin:0; padding:0; box-sizing:border-box; }
   body{ font-family:'Inter',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.5; font-size:13.5px; }
   .sheet{ max-width:860px; margin:0 auto; padding:34px 28px 44px; }

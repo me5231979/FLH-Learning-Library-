@@ -39,7 +39,7 @@
 
   /* Saturated — data viz / small accents only */
   --vu-highlight: #ECB748;
-  --vu-oak: #946E24;
+  --vu-oak: #8C6822;
   --vu-sky: #B3C9CD;
   --vu-sage: #8BA18E;
 
@@ -487,11 +487,11 @@ em, .italic { font-style: italic; }
 .deeper[open] .chev { transform: rotate(90deg); }
 .deeper__body { display: grid; gap: 1.5rem; padding: .25rem 0 1rem; grid-template-columns: 1fr; }
 @media (min-width: 860px) { .deeper__body { grid-template-columns: 1.2fr 1fr; } }
-.deeper__body h4 {
+.deeper__body h3, .deeper__body h4 {
   font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
   letter-spacing: .05em; font-size: .78rem; color: var(--vu-gray-dark); margin: 0 0 .5rem;
 }
-.on-dark .deeper__body h4 { color: rgba(255,255,255,.55); }
+.on-dark .deeper__body h3, .on-dark .deeper__body h4 { color: rgba(255,255,255,.55); }
 .deeper__body p, .deeper__body li { font-size: 1rem; margin: 0; }
 .deeper__body ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; }
 .deeper__ask {

@@ -16,10 +16,14 @@
   .idx code { font-size: .76rem; color: var(--ink-soft); margin-left: .4rem; }
   .idx__count { font-family: var(--font-condensed); text-transform: uppercase;
     letter-spacing: .05em; margin-bottom: 2.2rem; }
+
+.skip{position:absolute;left:-9999px;top:0;background:#1C1C1C;color:#fff;padding:10px 16px;z-index:100;border-radius:0 0 4px 0;}
+.skip:focus{left:0;}
 </style>
 </head>
 <body>
-<main class="section on-cream idx">
+<a class="skip" href="#main">Skip to content</a>
+<main class="section on-cream idx" id="main">
   <div class="wrap">
     <p class="eyebrow">Every page in the collection</p>
     <h1 class="h2">Page <em>index</em>.</h1>

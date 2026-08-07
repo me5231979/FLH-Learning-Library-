@@ -52,17 +52,33 @@
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C1C1C'/%3E%3Cpath d='M14 16h11l7 20 7-20h11L36 50h-8z' fill='%23CFAE70'/%3E%3C/svg%3E" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital@0;1&family=Inter:wght@400;500;600&family=Antonio:wght@700&display=swap" rel="stylesheet" />
 
 <script>document.documentElement.classList.add('js','paged'); /* 'paged' arms book mode; the pager script removes it if it cannot build, restoring the scroll fallback */</script>
 
 <style>
+/* Self-hosted brand faces (no third-party font CDN). */
+@font-face{font-family:'Libre Caslon Display';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../../assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2');}
+/* Display has no italic cut; serve Libre Caslon Text italic under the same family so <em> renders a true italic */
+@font-face{font-family:'Libre Caslon Display';font-style:italic;font-weight:400;font-display:swap;
+  src:url('../../../assets/fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Libre Caslon Text';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../../assets/fonts/libre-caslon-text-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Libre Caslon Text';font-style:italic;font-weight:400;font-display:swap;
+  src:url('../../../assets/fonts/libre-caslon-text-latin-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;
+  src:url('../../../assets/fonts/inter-latin-400-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;
+  src:url('../../../assets/fonts/inter-latin-500-normal.woff2') format('woff2');}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;
+  src:url('../../../assets/fonts/inter-latin-600-normal.woff2') format('woff2');}
+@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;
+  src:url('../../../assets/fonts/antonio-latin-700-normal.woff2') format('woff2');}
+
 /* ═══════════════════ TOKENS (shared with the Working Smarter course) ═══════════════════ */
 :root{
   --vu-black:#1C1C1C; --vu-white:#FFFFFF;
-  --vu-gold:#CFAE70; --vu-highlight:#ECB748; --vu-oak:#946E24;
+  --vu-gold:#CFAE70; --vu-highlight:#ECB748; --vu-oak:#8C6822;
   --vu-cream:#F5F3EF; --vu-sand:#E0D5C0;
   --vu-gray-l:#E4E4E4; --vu-gray-d:#777;
   --vu-sky:#B3C9CD; --vu-sage:#8BA18E; --vu-err:#A94438;
@@ -89,9 +105,9 @@
   --tx:#1C1C1C; --tx2:#555555; --tx3:#6E6E6E;
   --bd:#E4E4E4; --bdg:rgba(148,110,36,.4);
   --card:#FFFFFF; --card2:#F5F3EF; --field:#FFFFFF; --field-bd:#D6D0C4;
-  --eyebrow:#946E24; --link:#946E24; --strong:#946E24; --focus:#946E24; --acc:#946E24;
-  --btn-bg:#1C1C1C; --btn-tx:#FFFFFF; --btn-hv:#946E24;
-  --gold:#946E24; --champ:#946E24; --muted:#555555; --faint:#6E6E6E; --ink:#1C1C1C;
+  --eyebrow:#8C6822; --link:#8C6822; --strong:#8C6822; --focus:#8C6822; --acc:#8C6822;
+  --btn-bg:#1C1C1C; --btn-tx:#FFFFFF; --btn-hv:#8C6822;
+  --gold:#8C6822; --champ:#8C6822; --muted:#555555; --faint:#6E6E6E; --ink:#1C1C1C;
 }
 .th-cream{ background:var(--vu-cream); --card2:#FFFFFF; --bd:#E0D8C8;
   --eyebrow:#7A5C1E; --link:#7A5C1E; --strong:#7A5C1E; --focus:#7A5C1E; --acc:#7A5C1E;
@@ -899,7 +915,7 @@ html.paged #pgMore{ right:calc(clamp(10px,2vw,22px) + 122px); }
     <div class="sec-head">
       <span class="you-are">Why the university is asking managers to decide this way.</span>
       <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">The institutional why &middot; Crescere aude</span></span>
-      <h2>Vanderbilt will <em class="s">define the great university of the 21st Century</em> and <em class="s">be it.</em></h2>
+      <h2>Vanderbilt will define the great university of the 21st Century and <em class="s">be it.</em></h2>
       <p>That is Chancellor Diermeier&rsquo;s institutional vision, one sentence with no hedge in it. The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society&rsquo;s challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b><sup class="cite"><a href="#src5" aria-label="Source 5">5</a></sup>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and the dare lands on managers like you, one open decision at a time.</p>
     </div>
     <span class="eyebrow" style="margin-bottom:10px"><span class="tick" aria-hidden="true"></span><span class="mono">Areas of Focus</span></span>
@@ -972,12 +988,12 @@ html.paged #pgMore{ right:calc(clamp(10px,2vw,22px) + 122px); }
       </div>
     </div>
     <div class="moment mode-class">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <div><span class="m-label">Together</span>
       <p>Share with the room, in one sentence and in roles, never names: what decision is your team waiting on you for right now?</p></div>
     </div>
     <div class="moment mode-web">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
       <div><span class="m-label">Pause + reflect</span>
       <p>Take a moment: name a decision you own that is still open. Keep it in mind. You&rsquo;ll lay it out at the end of this course.</p></div>
     </div>
@@ -1041,12 +1057,12 @@ html.paged #pgMore{ right:calc(clamp(10px,2vw,22px) + 122px); }
       <p class="r">The AI widens what you can see, and <b>the decision stays yours</b>.</p>
     </div>
     <div class="moment mode-class">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <div><span class="m-label">Together</span>
       <p>Turn to a partner and explain Widen &rarr; Weigh &rarr; Decide back to each other in under a minute. Explaining it out loud is the fastest way to make it stick.</p></div>
     </div>
     <div class="moment mode-web">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
       <div><span class="m-label">Pause + reflect</span>
       <p>Before you turn the page, look away from the screen and name the three steps out loud. If you can recall them now, you&rsquo;ll remember them when a real decision lands.</p></div>
     </div>
@@ -1067,12 +1083,12 @@ html.paged #pgMore{ right:calc(clamp(10px,2vw,22px) + 122px); }
       <p>Two team leads have each recommended a scheduling system for the same front desk, and they point in opposite directions. Both are careful people, both wrote solid one-pagers, and both are waiting on you. Picking one by gut feel means telling the other that careful homework lost a coin flip.</p>
     </div>
     <div class="moment mode-class" style="margin-top:0;margin-bottom:26px">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <div><span class="m-label">Together</span>
       <p>Do this one together: the instructor lays the disagreement out live, and the room supplies the questions for each lead.</p></div>
     </div>
     <div class="moment mode-web" style="margin-top:0;margin-bottom:26px">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
       <div><span class="m-label">Pause + reflect</span>
       <p>Try it now: copy this prompt into Amplify and run it. Then compare what comes back with the judgment pass below.</p></div>
     </div>
@@ -1140,12 +1156,12 @@ Task: Map where the two recommendations actually agree, where they truly differ,
       <p>Your service desk closes at five, and the requests to extend it keep coming. You&rsquo;re weighing coverage until seven, two evenings a week. The change touches student workers&rsquo; schedules, staff rotations, and a budget line you would have to defend. Once announced, it is very hard to un-announce.</p>
     </div>
     <div class="moment mode-class" style="margin-top:0;margin-bottom:26px">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <div><span class="m-label">Together</span>
       <p>Run this one as a room: the instructor takes real constraints from the floor and runs the prompt live. Tables split the output (best case, worst case, the premortem) and each reports one finding back.</p></div>
     </div>
     <div class="moment mode-web" style="margin-top:0;margin-bottom:26px">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
       <div><span class="m-label">Pause + reflect</span>
       <p>Try it now: copy the prompt, swap in a change you&rsquo;re actually weighing, and run it. Read the premortem twice; it&rsquo;s the part managers skip and shouldn&rsquo;t.</p></div>
     </div>
@@ -1392,15 +1408,15 @@ Task: ___</pre>
       <p class="hinttxt" style="margin-top:10px">The takeaway is one page: the method, your decision brief, all three prompts, the guardrails, and the tools. Your browser&rsquo;s print dialog will open; choose Save as PDF if you&rsquo;d rather keep it digital.</p>
     </div>
     <div class="moment mode-class">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
       <div><span class="m-label">Together</span>
       <p>In pairs: interview your partner about their open decision and fill in the brief for them, roles not names, then swap. When both briefs are done, trade assumption lists: write the three biggest assumptions in your partner&rsquo;s plan and hand them over.</p></div>
     </div>
     <div class="moment mode-web">
-      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
       <div><span class="m-label">Pause + reflect</span>
       <p>Make it real: lay out the decision that&rsquo;s been sitting on your desk, then put your commitment in your own words below; it prints on your takeaway.</p>
-      <textarea id="cfNote" rows="2" placeholder="My commitment: the next decision I owe someone gets a scenario test and a premortem before I make the call. I'll start with&hellip;"></textarea></div>
+      <textarea id="cfNote" aria-label="Your reflection and commitment" rows="2" placeholder="My commitment: the next decision I owe someone gets a scenario test and a premortem before I make the call. I'll start with&hellip;"></textarea></div>
     </div>
     <div class="bridge"><span class="b-label">Next</span><p>Three quick questions to check <em>it stuck</em>.</p></div>
   </div>
@@ -1712,7 +1728,7 @@ try{
   var more = document.createElement('span');
   more.id = 'pgMore';
   more.setAttribute('aria-hidden', 'true');
-  more.innerHTML = 'Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+  more.innerHTML = 'Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';
   main.appendChild(more);
 
   /* bottom bar */

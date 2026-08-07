@@ -10,6 +10,12 @@
 <meta property="og:title" content="Building Brave Teams | Vanderbilt Learning Series">
 <meta property="og:description" content="Psychological safety, trust, and honest communication, a 2-hour immersive workshop ending in one brave commitment your team will feel within 14 days.">
 <meta property="og:url" content="../../../courses/building-brave-teams/">
+<meta property="og:image" content="../../courses/building-brave-teams/assets/img/social-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building Brave Teams | Vanderbilt Learning Series">
+<meta name="twitter:image" content="../../courses/building-brave-teams/assets/img/social-card.png">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/img/favicon-96.png">
 <link rel="apple-touch-icon" href="../assets/img/favicon-96.png">
@@ -109,6 +115,11 @@ body.fac-hide .facnote { display: none !important; }
   background: rgba(20,20,20,.92); border: 1px solid rgba(207,174,112,.45); border-radius: 4px;
   padding: .5rem .75rem; cursor: pointer; }
 body.fac-hide .facshow { display: inline-flex; }
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
 </style>
 
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
@@ -136,7 +147,7 @@ body.fac-hide .facshow { display: inline-flex; }
     <span class="fac__badge">Facilitator Edition</span>
   </a>
   <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
   </button>
   <nav class="nav__links" id="navlinks" aria-label="Sections">
     <a href="#s-safety">Safety</a>
@@ -152,9 +163,9 @@ body.fac-hide .facshow { display: inline-flex; }
   <span class="bottombar__title" id="barTitle"></span>
   <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
   <div class="bottombar__ctrl">
-    <span class="bottombar__count" id="deckCount">1 / 17</span>
-    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+    <span class="bottombar__count" id="deckCount">1 / 18</span>
+    <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
 </div>
 <button class="scrollhint" id="scrollHint" type="button" aria-label="Scroll for more on this screen">Scroll for more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
@@ -241,7 +252,7 @@ body.fac-hide .facshow { display: inline-flex; }
   <section class="slide on-dark" id="s-mission" data-title="The Chancellor's charge">
     <div class="wrap">
       <p class="eyebrow" data-reveal>The institutional why · Crescere aude</p>
-      <h2 class="h2" data-reveal>Vanderbilt will <em>define the great university of the 21st Century</em> and <em>be it.</em></h2>
+      <h2 class="h2" data-reveal>Vanderbilt will define the great university of the 21st Century and <em>be it.</em></h2>
       <p class="lead" data-reveal>That is Chancellor Diermeier's institutional vision, one sentence with no hedge in it. The how is equally blunt: operate at <b>uncommon speed, agility, and scale</b> to address society's challenges through education and research, and help <b>reclaim the essential role of leading research universities in driving American prosperity</b>. Our motto has always been the dare, <em>Crescere aude</em>, dare to grow, and none of it runs on silence.</p>
 
       <p class="eyebrow" data-reveal style="margin-top:2.5rem">Areas of Focus</p>
@@ -311,8 +322,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>The honest headwinds</h4><p>The vision names four problems it exists to solve: leading research universities lack the core capabilities to deliver innovation at modern speed and scale; they're no longer seen as the primary drivers of solutions to society's problems; elite universities are viewed as politicized bastions of ideology; and a university education is no longer viewed as essential to the American dream. Notice what every one of those has in common: each is answered by institutions, which means by teams, that can move fast without hiding mistakes, collaborate across real differences, and tell themselves the truth. Brave teams aren't adjacent to this strategy. They're its raw material. <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Read the vision: "Daring to Grow"</a></p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 2 min</h4>
+          <div><h3>The honest headwinds</h3><p>The vision names four problems it exists to solve: leading research universities lack the core capabilities to deliver innovation at modern speed and scale; they're no longer seen as the primary drivers of solutions to society's problems; elite universities are viewed as politicized bastions of ideology; and a university education is no longer viewed as essential to the American dream. Notice what every one of those has in common: each is answered by institutions, which means by teams, that can move fast without hiding mistakes, collaborate across real differences, and tell themselves the truth. Brave teams aren't adjacent to this strategy. They're its raw material. <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener" style="color:var(--vu-gold-flat);text-decoration:underline">Read the vision: "Daring to Grow"</a></p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 2 min</h3>
           <p class="why"><b>Why this matters:</b> the vision only becomes real at the altitude where you work, the room you're in.</p>
           <ol class="steps">
             <li>At your table: which of the four headwinds does your team's work actually touch? Name one.</li>
@@ -388,8 +399,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Your why is the thing that keeps a commitment alive on day nine, when the meeting runs long and the brave question feels skippable. It doesn't need to be grand; it needs to be yours. "I watched a good analyst go quiet for a year and I'm not doing that to anyone" is a why. "Leadership says so" is not. Borrowed whys don't survive hard weeks. Everything you build today, including the commitment card at the end, hangs on the sentence you write in the next two minutes.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">On your own</span> · 2 min</h4>
+          <div><h3>In practice</h3><p>Your why is the thing that keeps a commitment alive on day nine, when the meeting runs long and the brave question feels skippable. It doesn't need to be grand; it needs to be yours. "I watched a good analyst go quiet for a year and I'm not doing that to anyone" is a why. "Leadership says so" is not. Borrowed whys don't survive hard weeks. Everything you build today, including the commitment card at the end, hangs on the sentence you write in the next two minutes.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">On your own</span> · 2 min</h3>
           <p class="why"><b>Why this matters:</b> a commitment with a why survives; a commitment without one is a workshop souvenir.</p>
           <ol class="steps">
             <li>Fill the WHY ring of the circle builder above: "I want a braver team because…"</li>
@@ -471,8 +482,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The definition earns its keep as a test. Before you call a team "safe," ask: when was the last time someone here said <em>I was wrong</em>, out loud, and nothing bad happened to them? When did someone junior disagree with someone senior, in the room, before the decision? If you can't name a recent example, you have politeness, not safety, and politeness is what silence sounds like from the inside.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>The definition earns its keep as a test. Before you call a team "safe," ask: when was the last time someone here said <em>I was wrong</em>, out loud, and nothing bad happened to them? When did someone junior disagree with someone senior, in the room, before the decision? If you can't name a recent example, you have politeness, not safety, and politeness is what silence sounds like from the inside.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> defining the construct in your own words, against a real memory, is what makes it diagnostic instead of decorative.</p>
           <ol class="steps">
             <li>In pairs: recall one meeting where something true went unsaid. No names, stories stay, lessons leave.</li>
@@ -549,8 +560,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Read your survey result as a location, not a grade. A low score on the mistake item points at Learner safety; a low score on "unique skills valued" points at Contributor; if everything is fine until someone questions how things are done, the ceiling is Challenger. Tuckman's forming, storming, norming, performing runs underneath this: a team that never storms, never has the safe fight, usually isn't performing, it's just quiet. The ladder tells you which rung to build next, and the next two sections are the tools for it.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 5 min</h4>
+          <div><h3>In practice</h3><p>Read your survey result as a location, not a grade. A low score on the mistake item points at Learner safety; a low score on "unique skills valued" points at Contributor; if everything is fine until someone questions how things are done, the ceiling is Challenger. Tuckman's forming, storming, norming, performing runs underneath this: a team that never storms, never has the safe fight, usually isn't performing, it's just quiet. The ladder tells you which rung to build next, and the next two sections are the tools for it.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 5 min</h3>
           <p class="why"><b>Why this matters:</b> hearing which item scored lowest across the table, without sharing totals, surfaces the team's real work in five minutes.</p>
           <ol class="steps">
             <li>At your table: share only your <em>lowest-scoring item</em>, and what you noticed while rating it. Totals stay private; passing is fine.</li>
@@ -608,8 +619,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Run the equation on your own team, factor by factor. <b>Invitation:</b> when did you last ask "what am I missing?" and wait for the answer? <b>Response:</b> think of the last person who brought bad news, what actually happened to them, and who watched it happen? <b>Fallibility:</b> when did the most senior person in your meetings last admit an error out loud? The audience for each factor is everyone watching, not just the person speaking. That's why one shot messenger silences a whole team for a year.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 4 min</h4>
+          <div><h3>In practice</h3><p>Run the equation on your own team, factor by factor. <b>Invitation:</b> when did you last ask "what am I missing?" and wait for the answer? <b>Response:</b> think of the last person who brought bad news, what actually happened to them, and who watched it happen? <b>Fallibility:</b> when did the most senior person in your meetings last admit an error out loud? The audience for each factor is everyone watching, not just the person speaking. That's why one shot messenger silences a whole team for a year.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 4 min</h3>
           <p class="why"><b>Why this matters:</b> the case only transfers when you locate the same physics in your own meetings.</p>
           <ol class="steps">
             <li>At your table, pick one case, hospital, cockpit, or Google, and answer: what would have to be true for a person to speak up in that moment?</li>
@@ -676,8 +687,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The in-room protocol is deliberately bounded, and the bounds are the safety design. Teammates may only write adjectives <em>from the list</em>, no commentary, no explanations, which caps the emotional risk of both giving and receiving. Mapping is silent and private. The reflection is by choice: you answer <em>one</em> of three prompts, your pick, because forced disclosure destroys the very thing this teaches. And what's on your sheet never gets shared aloud. Autonomy isn't a courtesy here; it's the mechanism.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 25 min in-room</h4>
+          <div><h3>In practice</h3><p>The in-room protocol is deliberately bounded, and the bounds are the safety design. Teammates may only write adjectives <em>from the list</em>, no commentary, no explanations, which caps the emotional risk of both giving and receiving. Mapping is silent and private. The reflection is by choice: you answer <em>one</em> of three prompts, your pick, because forced disclosure destroys the very thing this teaches. And what's on your sheet never gets shared aloud. Autonomy isn't a courtesy here; it's the mechanism.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 25 min in-room</h3>
           <p class="why"><b>Why this matters:</b> this is the keystone experience of the workshop, a structured, low-stakes rehearsal of disclosure and feedback with real people.</p>
           <ol class="steps">
             <li>Finalize your 5 to 6 adjectives on your sheet (silent, 5 min). Pass the sheet clockwise; each teammate adds 1 to 2 adjectives from the list on a sticky. No commentary.</li>
@@ -726,8 +737,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>The in-room version of this is a wall your team builds: a grid, four rows for the four stages, two columns, behaviors that expand, behaviors that contract, filled from your own experience on stickies, then gallery-walked so every table reads every grid. Photograph it. That artifact becomes your team's 30-day retro agenda: which contracting behavior did we retire, and which expander did we practice? The grid your team writes beats any list an instructor hands you, because every line on it has a witness.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 12 min in-room</h4>
+          <div><h3>In practice</h3><p>The in-room version of this is a wall your team builds: a grid, four rows for the four stages, two columns, behaviors that expand, behaviors that contract, filled from your own experience on stickies, then gallery-walked so every table reads every grid. Photograph it. That artifact becomes your team's 30-day retro agenda: which contracting behavior did we retire, and which expander did we practice? The grid your team writes beats any list an instructor hands you, because every line on it has a witness.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 12 min in-room</h3>
           <p class="why"><b>Why this matters:</b> naming behaviors from lived experience converts insight into a checklist your team actually recognizes.</p>
           <ol class="steps">
             <li>As a table: fill the 4×2 grid (stage × expand/contract) with stickies from your own experience, what you've seen, done, or received.</li>
@@ -788,8 +799,8 @@ body.fac-hide .facshow { display: inline-flex; }
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h4>In practice</h4><p>Notice what your body does when you're the receiver: dry mouth, defensive posture, the rebuttal forming before the sentence ends. That reaction is the data, it's what your teammates feel every time you're the giver, and it's why the receiver's only job in rehearsal is to listen and ask clarifying questions. No defense, no explanation. Practicing the receiving is half the skill, and it's the half nobody drills. One cultural note: in high-power-distance contexts, rehearse peer-to-peer first; upward candor is a later, carefully staged step, adapt the practice, never delete it.</p></div>
-          <div class="deeper__ask"><h4><span class="mode">As a group</span> · 14 min in-room</h4>
+          <div><h3>In practice</h3><p>Notice what your body does when you're the receiver: dry mouth, defensive posture, the rebuttal forming before the sentence ends. That reaction is the data, it's what your teammates feel every time you're the giver, and it's why the receiver's only job in rehearsal is to listen and ask clarifying questions. No defense, no explanation. Practicing the receiving is half the skill, and it's the half nobody drills. One cultural note: in high-power-distance contexts, rehearse peer-to-peer first; upward candor is a later, carefully staged step, adapt the practice, never delete it.</p></div>
+          <div class="deeper__ask"><h3><span class="mode">As a group</span> · 14 min in-room</h3>
           <p class="why"><b>Why this matters:</b> skills transfer only if practiced out loud, with a witness, before the stakes are real.</p>
           <ol class="steps">
             <li>Triads, roles rotating every 4 minutes: Speaker delivers a real (or realistic) SBI + Ask. Receiver listens; clarifying questions only, no defense. Observer checks all four elements and tone, then gives 60 seconds of feedback.</li>

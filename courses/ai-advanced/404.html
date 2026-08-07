@@ -3,13 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Redirecting… | AI 201 — Vanderbilt</title>
-<meta http-equiv="refresh" content="2;url=/AI-Advanced/">
+<title>Page not found | AI 201 — Vanderbilt</title>
 <style>
-  @font-face { font-family: 'Libre Caslon Display'; font-style: normal; font-weight: 400;
-    src: url('/AI-Advanced/assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2'); }
-  @font-face { font-family: 'Antonio'; font-style: normal; font-weight: 700;
-    src: url('/AI-Advanced/assets/fonts/antonio-latin-700-normal.woff2') format('woff2'); }
+
   body { margin: 0; min-height: 100vh; display: grid; place-items: center;
     background: #1C1C1C; color: #fff; text-align: center;
     font-family: 'Libre Caslon Display', 'Times New Roman', serif; }
@@ -21,7 +17,31 @@
     letter-spacing: .08em; font-size: .85rem; color: #CFAE70; }
   a { color: #CFAE70; }
 </style>
-<script>setTimeout(function(){ location.replace('/AI-Advanced/'); }, 1500);</script>
+<script>
+  /* Served from a repository subpath on GitHub Pages and from the domain root
+     on Vercel, so paths are resolved at runtime rather than hard-coded. A 404
+     can be served for any URL depth, so the logo is resolved the same way.
+     No timed redirect: an automatic bounce between 1 and 20 seconds fails
+     WCAG 2.2.1, and it hides the fact that the URL was wrong. */
+  (function () {
+    var REPO = 'Course_Library';
+    var seg = ["courses", "ai-advanced"];
+    var base = location.pathname.indexOf('/' + REPO + '/') === 0 ? '/' + REPO + '/' : '/';
+    var home = base + (seg.length ? seg.join('/') + '/' : '');
+      /* fonts resolved against the same runtime base, so no request is
+         made to a path that only exists on the other host */
+      var css = "@font-face{font-family:'Libre Caslon Display';font-style:normal;font-weight:400;font-display:swap;src:url('"+home+"assets/fonts/libre-caslon-display-latin-400-normal.woff2') format('woff2');}" +
+        "@font-face{font-family:'Antonio';font-style:normal;font-weight:700;font-display:swap;src:url('"+home+"assets/fonts/antonio-latin-700-normal.woff2') format('woff2');}";
+      var st = document.createElement("style"); st.textContent = css;
+      document.head.appendChild(st);
+    document.addEventListener('DOMContentLoaded', function () {
+      var a = document.getElementById('homeLink');
+      if (a) a.setAttribute('href', home);
+      var img = document.getElementById('homeMark');
+      if (img) img.setAttribute('src', home + 'assets/img/vu-v-icon.png');
+    });
+  })();
+</script>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -34,10 +54,10 @@
 </script>
 </head>
 <body>
-<div>
-  <img src="assets/img/vu-v-icon.png" alt="Vanderbilt V">
+<main>
+  <img id="homeMark" src="assets/img/vu-v-icon.png" alt="Vanderbilt V">
   <h1>That page moved <em>on</em>.</h1>
-  <p>Taking you to the course… <a href="./">or tap here</a></p>
-</div>
+  <p><a id="homeLink" href="./">Go to the course</a></p>
+</main>
 </body>
 </html>

@@ -3,7 +3,7 @@
 A short interactive course (Classroom 40 min / Core 30 / self-paced ~15) for
 managers on the highest-leverage adoption behavior: using AI visibly,
 setting the three team guardrails, and running the AI-enabled work audit.
-Part of the CHART Program and the Manager Voyage.
+Part of the AI-enabled Education Series and the Manager Voyage.
 
 Part of the Vanderbilt Learning Series. Catalog:
 [Course Library](https://me5231979.github.io/Course_Library/)

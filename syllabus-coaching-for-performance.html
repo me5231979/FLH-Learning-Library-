@@ -38,6 +38,8 @@
   li { margin-bottom: 4px; }
   .topics li b { font-weight: 600; }
   .frameworks { color: #555; font-size: 12px; font-style: italic; }
+  .sources { font-size: 11.5px; color: #555; }
+  .sources li { margin-bottom: 3px; }
   .links { border: 1px solid #CFAE70; background: #fdf9ef; border-radius: 4px; padding: 12px 14px; margin-top: 14px; }
   footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
@@ -71,7 +73,7 @@
     <div>
       <p class="eyebrow">Vanderbilt · Staff Learning Collection · Course description</p>
       <h1>Coaching for <em>Performance</em></h1>
-      <p class="subtitle">Building managers who grow people, not just manage tasks</p>
+      <p class="subtitle">For Vanderbilt managers who want to coach staff without dropping the work</p>
     </div>
     <img src="assets/img/vu-lockup-black.png" alt="Vanderbilt University">
   </header>
@@ -97,16 +99,28 @@
   <ul class="topics"><li><b>The case for coaching.</b> Google's Project Oxygen and McKinsey's controller-to-coach shift, plus a private coaching-ratio self-check</li><li><b>Your telling default.</b> Goleman's leadership styles and why excellent doers over-direct, practiced in a catch-the-style game</li><li><b>The GROW conversation.</b> Goal, Reality, Options, Will, run live against a virtual coachee in the Coach Jordan simulator, then with a partner</li><li><b>Powerful questions.</b> The ICF's three tests (open, clean, theirs), the six-second silence, and a question-conversion drill</li><li><b>Feedforward.</b> Goldsmith's future-only development exchange, run live in triads</li><li><b>Choose your model.</b> GROW vs CLEAR vs OSKAR, matched to real coaching situations</li><li><b>When NOT to coach.</b> Situational judgment: when directing is right, and how to default back to coaching</li></ul>
 
   <h2>How you'll learn</h2>
-  <p>A coaching-ratio meter (the baseline for a 30-day re-measure), a style-spotting trainer, the Coach Jordan GROW conversation simulator, a powerful-question converter, a feedforward classifier, a model matcher, live pair and triad practice, a six-question scored recap, and the My Coaching Plan capstone. Every section pairs teaching with something to do; nothing is watch-only. Private exercises stay on the learner's screen and are never collected.</p>
+  <p>A coaching-ratio meter (the baseline for a 30-day re-measure), a style-spotting trainer, the Coach Jordan GROW conversation simulator, a powerful-question converter, a feedforward classifier, a model matcher, live pair and triad practice, a six-question scored recap, and the My Coaching Plan capstone. Exercises run on the learner’s own screen and are not collected; see the <a href="privacy.html">privacy note</a>.</p>
 
   <h2>Outcomes and how learning is measured</h2>
   <p>Learners leave with a chosen coaching model, a written opening question for a real team member, a counter-move for their personal telling trap, and a date within seven days. Learning is measured in session (trainer scores, simulator outcomes, and a recap mapped to objectives), at close (readiness check and public commitment), and after (a seven-day pulse and a 30-day coaching-ratio re-poll against the in-session baseline).</p>
 
   <p class="frameworks">Blends Google re:Work's Project Oxygen, Whitmore's GROW, the ICF core competencies, Marshall Goldsmith's Feedforward, Goleman's leadership styles, McKinsey's leadership research, Hawkins' CLEAR, the solution-focused OSKAR model, and Ibarra &amp; Scoular's 'The Leader as Coach' (HBR).</p>
 
+  
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>Goldsmith, M. (2002). "Try Feedforward Instead of Feedback." <i>Leader to Leader</i>, 25, 11–14.</li>
+    <li>Goleman, D. (1998). "What Makes a Leader?" <i>Harvard Business Review</i>. <a href="https://hbr.org/2004/01/what-makes-a-leader" rel="noopener">hbr.org/2004/01/what-makes-a-leader</a></li>
+    <li>Hawkins, P. (2021, 3rd ed.). <i>Leadership Team Coaching</i>. Kogan Page.</li>
+    <li>Jackson, P.Z. &amp; McKergow, M. (2007, 2nd ed.). <i>The Solutions Focus</i>. Nicholas Brealey.</li>
+    <li>McKinsey &amp; Company, <i>The State of AI</i> (annual survey). <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" rel="noopener">mckinsey.com · State of AI</a></li>
+    <li>Harrell, M. &amp; Barbato, L. (2018). "Great managers still matter: the evidence behind Google’s Project Oxygen." Google re:Work. <a href="https://rework.withgoogle.com/" rel="noopener">rework.withgoogle.com</a></li>
+    <li>Whitmore, J. (2017, 5th ed.). <i>Coaching for Performance</i>. Nicholas Brealey. <a href="https://www.performanceconsultants.com/grow-model" rel="noopener">performanceconsultants.com/grow-model</a></li>
+  </ul>
+
   <div class="links">
-    <b>Take the course:</b> <a href="courses/coaching-for-performance/">me5231979.github.io/Coaching-for-Performance/</a><br>
-    <b>Deliver it (facilitator edition):</b> <a href="courses/coaching-for-performance/facilitator/">me5231979.github.io/Coaching-for-Performance/facilitator/</a><br>
+    <b>Take the course:</b> <a href="courses/coaching-for-performance/">flh-learning-library.vercel.app/courses/coaching-for-performance/</a><br>
+    <b>Deliver it (facilitator edition):</b> <a href="courses/coaching-for-performance/facilitator/">flh-learning-library.vercel.app/courses/coaching-for-performance/facilitator/</a><br>
     <b>Take-homes:</b> <a href="courses/coaching-for-performance/cheatsheet.html">Printable cheat sheet</a> · <a href="courses/coaching-for-performance/worksheet.html">Coaching plan worksheet</a>
   </div>
 
@@ -119,7 +133,7 @@
   /* Printed syllabi show the course address; resolve it from wherever this site is served
      so the printout is correct on any domain. */
   document.querySelectorAll('a[href]').forEach(function (a) {
-    if (/^(me5231979\.github\.io|https?:\/\/)/.test(a.textContent.trim())) {
+    if (/^(me5231979\.github\.io|flh-learning-library\.vercel\.app|https?:\/\/)/.test(a.textContent.trim())) {
       a.textContent = a.href.replace(/^https?:\/\//, '');
     }
   });

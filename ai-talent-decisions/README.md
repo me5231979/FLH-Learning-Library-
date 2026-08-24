@@ -4,7 +4,7 @@ A short interactive course (Classroom 40 min / Core 30 / self-paced ~15) for
 leaders on AI in hiring, succession, and skills mapping: AI drafts the
 instruments (rubrics, structured interview questions, skills maps,
 succession profiles) and every verdict about a person stays human. Part of
-the CHART Program and the Manager Voyage.
+the AI-enabled Education Series and the Manager Voyage.
 
 Part of the Vanderbilt Learning Series. Catalog:
 [Course Library](https://me5231979.github.io/Course_Library/)

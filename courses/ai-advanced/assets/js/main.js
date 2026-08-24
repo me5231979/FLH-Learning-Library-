@@ -516,7 +516,7 @@
         correct: 1, why: 'The window is finite and re-read every turn. Outside it, the instruction doesn\'t exist for that answer.' },
       { q: 'RAG improves a chatbot\'s answers by…',
         opts: ['Making the model itself smarter', 'Retrieving real, current documents and answering from them', 'Removing the context window limit', 'Guaranteeing zero hallucinations'],
-        correct: 1, why: 'Same model, trustworthy raw material. It grounds answers in your current sources; verification still applies.' },
+        correct: 1, why: 'Same model, grounded in your current sources. The sources still have to be curated; verification still applies.' },
       { q: 'A team wants answers from a policy that changes monthly. Best-fit method?',
         opts: ['Fine-tune a model on the policy', 'Prompt harder', 'RAG, retrieval from the current policy', 'Print the policy'],
         correct: 2, why: 'Changing, proprietary facts are retrieval\'s home turf. Fine-tuning would bake in a stale version every month.' },

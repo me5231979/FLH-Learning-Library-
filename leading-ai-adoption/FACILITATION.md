@@ -33,7 +33,7 @@ screens.
 stay; pair drills become solo passes. Never cut the audit.
 
 **Safety rails:** normalize low audit scores instantly (most teams are in
-shadow adoption); tool debates route to CHART resources; AI in reviews is
+shadow adoption); tool debates route to AI-enabled Education Series resources; AI in reviews is
 development, never surveillance.
 
 ## Validation model

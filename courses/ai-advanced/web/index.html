@@ -243,7 +243,7 @@
     <div class="wrap">
       <p class="eyebrow" data-reveal>Section 02 · Grounding</p>
       <h2 class="h2" data-reveal>Give the model <em>receipts</em>.</h2>
-      <p class="lead" data-reveal>A model's training data is frozen in the past, so it guesses at anything current or internal. Retrieval-Augmented Generation fixes the raw material: before answering, the system retrieves your real, current documents and hands them to the model. RAG doesn't make the model smarter. It makes its sources trustworthy.</p>
+      <p class="lead" data-reveal>A model's training data is frozen in the past, so it guesses at anything current or internal. Retrieval-Augmented Generation fixes the raw material: before answering, the system retrieves your real, current documents and hands them to the model. RAG doesn't make the model smarter, and it doesn't make sources trustworthy on its own. It grounds answers in the documents you give it; the answers are only as reliable as that library.</p>
 
       <div class="ragsim card" id="ragSim" data-reveal>
         <p class="ragsim__q"><b>The question:</b> "How many unused PTO days carry over into next year?"</p>
@@ -268,7 +268,7 @@
       <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
         <p class="quiz__q">Quick check: What does RAG actually fix?</p>
         <div class="quiz__options">
-          <button class="opt" data-correct="1" data-why="Exactly: retrieval grounds the answer in real, current documents. The reasoning engine is unchanged; its raw material gets trustworthy."><span class="mark">A</span><span>The sources: answers get grounded in real, current documents</span></button>
+          <button class="opt" data-correct="1" data-why="Exactly: retrieval grounds the answer in real, current documents. The reasoning engine is unchanged; the answers are grounded in the material you supplied, so they are only as good as that material."><span class="mark">A</span><span>The sources: answers get grounded in real, current documents</span></button>
           <button class="opt" data-correct="0" data-why="RAG doesn't upgrade the model's intelligence at all. Same model, better raw material."><span class="mark">B</span><span>The brain: the model becomes smarter</span></button>
           <button class="opt" data-correct="0" data-why="Grounding reduces hallucination about covered topics, but the model can still misread or mix up what it retrieved. Verification survives RAG."><span class="mark">C</span><span>Everything: RAG answers can be trusted without checking</span></button>
         </div>

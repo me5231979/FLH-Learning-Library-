@@ -1,4 +1,4 @@
-"""Syllabus configs for the ten CHART gap courses (spliced into build-syllabi.py)."""
+"""Syllabus configs for the ten AI-enabled Education Series gap courses (spliced into build-syllabi.py)."""
 
 B = "https://me5231979.github.io/Course_Library/courses"
 
@@ -126,19 +126,19 @@ _c("admin-automated", "Admin-Automated", "Admin, Automated",
    KIRK, "Repeat Audit card"),
 
 _c("ai-across-your-week", "AI-Across-Your-Week", "Across Your Week",
-   "The CHART integrator: five assists on one real week",
-   "Vanderbilt staff who have taken at least one or two CHART courses and want the habit rather than the trick",
+   "The series integrator: five assists on one real week",
+   "Vanderbilt staff who have taken at least one or two AI-enabled Education Series courses and want the habit rather than the trick",
    ['Embodies an entrepreneurial spirit and leverages data and technology', 'Continuously strives for excellence'],
    ['Artificial Intelligence', 'Workflow Design', 'Time Management'],
-   "Gallup's most striking AI finding is about breadth rather than depth: people using AI across seven or more distinct tasks are roughly twice as likely to report real productivity gains as people using it for one or two. Every other CHART course is an excellent single-use-case builder, and this one is the capstone that strings them together. Learners inventory their actual week into recurring blocks, match each block to a CHART method by its verb rather than its topic, stack two methods on a single task so the output of one becomes the input of the next, and then confront the finding that decides whether any of it lasts: saved time evaporates into more meetings unless it is deliberately banked. The graded Week Lab runs Monday to Friday for a program coordinator, and every choice in it is one the learner will make on their own calendar.",
+   "Gallup's most striking AI finding is about breadth rather than depth: people using AI across seven or more distinct tasks are roughly twice as likely to report real productivity gains as people using it for one or two. Every other AI-enabled Education Series course is an excellent single-use-case builder, and this one is the capstone that strings them together. Learners inventory their actual week into recurring blocks, match each block to a method from this series by its verb rather than its topic, stack two methods on a single task so the output of one becomes the input of the next, and then confront the finding that decides whether any of it lasts: saved time evaporates into more meetings unless it is deliberately banked. The graded Week Lab runs Monday to Friday for a program coordinator, and every choice in it is one the learner will make on their own calendar.",
    ["Explain why breadth of use predicts productivity gains better than intensity",
     "Inventory a real week into blocks that can be matched to AI methods",
-    "Match each block to the right CHART method by its verb",
+    "Match each block to the right series method by its verb",
     "Stack two methods on a single task while keeping each link's check",
     "Commit to a five-assist week with the reclaimed time visibly banked"],
    [("The breadth effect", "Why the one-trick user plateaus, and what separates them from the seven-plus user"),
     ("The inventory", "Seeing a week as blocks, costing each one honestly, and keeping the inventory to roles and workflows"),
-    ("The method match", "The CHART toolbox on one page, matched by verb: writing, questioning, deciding, condensing, analyzing"),
+    ("The method match", "The AI-enabled Education Series toolbox on one page, matched by verb: writing, questioning, deciding, condensing, analyzing"),
     ("The stack", "Chaining methods so one output feeds the next, and why a chain is only as trustworthy as its weakest check"),
     ("The Week Lab", "A graded Monday-to-Friday plan with outcomes at week four"),
     ("Bank the time", "Naming the destination for reclaimed hours before they disappear into the calendar")],

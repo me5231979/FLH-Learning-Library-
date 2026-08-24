@@ -42,12 +42,12 @@ COURSES = [
         "activities": "Four scenario trainers (Is That AI?, Pick the Next Move, Green-Yellow-Red, Match the Superpower), a live vague-to-good demo, an inline knowledge check, a prompt builder that assembles a real copyable request, a five-question scored recap, and the My First Try commitment card.",
         "outcomes": "Learners leave having converted from non-user to first-time user: a one-sentence understanding of AI, the follow-up habit that makes answers good, the traffic-light safety reflex, and a real prompt in their clipboard with a dated commitment to run it. Learning is measured in session (trainer scores and the recap), at close (confidence check and a spoken chore-and-day commitment), and after (a 7-day pulse whose count of completed first tries is the program's headline metric).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/AI_Classroom/cheatsheet.html"),
-            ("First-try card", "https://me5231979.github.io/AI_Classroom/worksheet.html"),
-            ("Self-paced web edition", "https://me5231979.github.io/AI_Classroom/web/")
+            ("Printable cheat sheet", "courses/start-smarter/cheatsheet.html"),
+            ("First-try card", "courses/start-smarter/worksheet.html"),
+            ("Self-paced web edition", "courses/start-smarter/web/")
         ],
-        "learner": "https://me5231979.github.io/AI_Classroom/",
-        "facilitator": "https://me5231979.github.io/AI_Classroom/facilitator/",
+        "learner": "courses/start-smarter/",
+        "facilitator": "courses/start-smarter/facilitator/",
         "frameworks": "Designed on adult-learning principles for novice audiences (plain language, immediate application, low-stakes first success), with Kirkpatrick-instrumented follow-up. Data-safety rules align with Vanderbilt's approved-tool guidance and carry into the rest of the collection."
     },
     {
@@ -81,11 +81,11 @@ COURSES = [
         "activities": "An avoidance-cost meter, a conversation labeler, a graded SBI Feedback Lab, tap-to-explore SBI and STATE anatomies, a private BRAVING scorecard, a Radical Candor quadrant sort, out-loud pair practice with partner verdicts, a six-question scored recap, and the My Conversation Plan capstone.",
         "outcomes": "Learners leave with a written opener for a real conversation, a recovery line for when it gets heated, a listening plan, and a date within seven days, plus a shared team vocabulary (SBI, STATE, BRAVING, Radical Candor). Learning is measured in session (checks and a recap mapped to objectives), at close (readiness check and public commitment), and after (a seven-day follow-up pulse).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Difficult_Conversations/cheatsheet.html"),
-            ("Capstone plan worksheet", "https://me5231979.github.io/Difficult_Conversations/worksheet.html")
+            ("Printable cheat sheet", "courses/difficult-conversations/cheatsheet.html"),
+            ("Capstone plan worksheet", "courses/difficult-conversations/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Difficult_Conversations/",
-        "facilitator": "https://me5231979.github.io/Difficult_Conversations/facilitator/",
+        "learner": "courses/difficult-conversations/",
+        "facilitator": "courses/difficult-conversations/facilitator/",
         "frameworks": "Blends Stone, Patton & Heen (Harvard Negotiation Project), CCL's SBI, Crucial Conversations' STATE, Brené Brown's BRAVING, Kim Scott's Radical Candor, SHRM's manager guidance, ATD's CLEAR, and McKinsey's courageous-conversations research."
     },
     {
@@ -118,11 +118,11 @@ COURSES = [
         "activities": "A coaching-ratio meter (the baseline for a 30-day re-measure), a style-spotting trainer, the Coach Jordan GROW conversation simulator, a powerful-question converter, a feedforward classifier, a model matcher, live pair and triad practice, a six-question scored recap, and the My Coaching Plan capstone.",
         "outcomes": "Learners leave with a chosen coaching model, a written opening question for a real team member, a counter-move for their personal telling trap, and a date within seven days. Learning is measured in session (trainer scores, simulator outcomes, and a recap mapped to objectives), at close (readiness check and public commitment), and after (a seven-day pulse and a 30-day coaching-ratio re-poll against the in-session baseline).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Coaching-for-Performance/cheatsheet.html"),
-            ("Coaching plan worksheet", "https://me5231979.github.io/Coaching-for-Performance/worksheet.html")
+            ("Printable cheat sheet", "courses/coaching-for-performance/cheatsheet.html"),
+            ("Coaching plan worksheet", "courses/coaching-for-performance/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Coaching-for-Performance/",
-        "facilitator": "https://me5231979.github.io/Coaching-for-Performance/facilitator/",
+        "learner": "courses/coaching-for-performance/",
+        "facilitator": "courses/coaching-for-performance/facilitator/",
         "frameworks": "Blends Google re:Work's Project Oxygen, Whitmore's GROW, the ICF core competencies, Marshall Goldsmith's Feedforward, Goleman's leadership styles, McKinsey's leadership research, Hawkins' CLEAR, the solution-focused OSKAR model, and Ibarra & Scoular's 'The Leader as Coach' (HBR)."
     },
     {
@@ -135,7 +135,7 @@ COURSES = [
         "length": "Classroom: 60 to 90 minutes. Self-paced: 60 to 90 minutes; every module is skippable and embedded videos are optional",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices) or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "The flagship course of the CHART Program (Cultivating Human-AI Readiness and Thinking). Instead of talking about AI, it has you use it: you watch a language model predict the next word, map your own role the way AI actually meets it (task by task), learn the CRIT prompt framework, and drill it in working practice apps before taking one real task into your own tools. Along the way you learn the two questions that route any task to the right Vanderbilt tool, ChatGPT EDU, Amplify, or Copilot: how sensitive is the data, and where are you already working. It closes with a knowledge check and a personal plan for the week ahead.",
+        "description": "The flagship course of the AI-enabled Education Series. Instead of talking about AI, it has you use it: you watch a language model predict the next word, map your own role the way AI actually meets it (task by task), learn the CRIT prompt framework, and drill it in working practice apps before taking one real task into your own tools. Along the way you learn the two questions that route any task to the right Vanderbilt tool, ChatGPT EDU, Amplify, or Copilot: how sensitive is the data, and where are you already working. It closes with a knowledge check and a personal plan for the week ahead.",
         "objectives": [
             "Explain what AI tools like ChatGPT are, and why they sometimes state made-up things as fact",
             "Map your own role task by task, identify where AI can help, and build a 30/60/90 development plan from that list",
@@ -157,9 +157,9 @@ COURSES = [
         "activities": "An in-page next-word prediction demo, a role readiness assessment with a 30/60/90 plan, four working practice apps (the CRIT builder, the Prompt Lab, the Prompt Grader, and Tool Match), the AI Opportunity Simulator, section-by-section self-checks with progress tracking, an eight-question knowledge check, and a closing shelf of Oracle Learning picks, podcasts, and videos for continued learning.",
         "outcomes": "Learners leave with a tested CRIT prompt for a real task from their own week, the two-question rule for routing any task to the right tool, the never-paste list, a 30/60/90 development plan built from their own task list, and a five-step weekly loop for putting AI on one task at a time. Learning is self-measured in the course (section self-checks and the eight-question knowledge check), and learners record completion themselves in Oracle Learning.",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/classroom/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/classroom/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/",
+        "learner": "learn/classroom/",
+        "facilitator": "learn/classroom/facilitator/",
+        "selfpaced": "learn/",
         "frameworks": "CRIT (Context, Role, Interview, Task) is credited to Geoff Woods, The AI-Driven Leader. Prompt patterns draw on Vanderbilt's Dr. Jules White (the Persona pattern). Task-exposure research from Eloundou et al., 'GPTs are GPTs,' and the Anthropic Economic Index. Tool routing follows Vanderbilt's data classification."
     },
     {
@@ -172,7 +172,7 @@ COURSES = [
         "length": "About 15 minutes self-paced; one 45-to-60-minute session live",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices via QR code) with a scripted facilitator edition, or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "Part of the CHART Program (Cultivating Human-AI Readiness and Thinking). If your job includes writing emails, announcements, or summaries, this course teaches one method for it: the AI writes the first draft, and you edit the version that gets sent. Research puts the gain at about 40% faster with better results (Noy & Zhang, Science, 2023), and the quality lift shows up when a person edits what comes back. The method is brief, draft, edit: brief the AI with CRIT (Context, Role, Interview, Task) the way you'd brief a colleague, let it write the whole first pass, then make it sound like you, check every name, date, and number, and cut what isn't needed.",
+        "description": "Part of the AI-enabled Education Series. If your job includes writing emails, announcements, or summaries, this course teaches one method for it: the AI writes the first draft, and you edit the version that gets sent. Research puts the gain at about 40% faster with better results (Noy & Zhang, Science, 2023), and the quality lift shows up when a person edits what comes back. The method is brief, draft, edit: brief the AI with CRIT (Context, Role, Interview, Task) the way you'd brief a colleague, let it write the whole first pass, then make it sound like you, check every name, date, and number, and cut what isn't needed.",
         "objectives": [
             "Brief an AI like a colleague using CRIT: Context, Role, Interview, Task",
             "Produce a usable first draft of an email, announcement, or summary without starting from a blank page",
@@ -191,9 +191,9 @@ COURSES = [
         "activities": "Three worked examples with copyable prompts and a fictional practice report to run, a try-it row under each example naming the right Vanderbilt tool (ChatGPT EDU, Amplify, or Copilot, with the recommendation explained and the wrong choice greyed out with the reason), a typed practice brief, and a room-run live demo in the classroom edition",
         "outcomes": "Learners leave with a typed CRIT brief for a real piece of writing from their own week, three prompts ready to use at work, the four rules, and a printable one-page plan, plus a calendar file for a 15-minute self check-in two weeks out",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/drafts-class/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/drafts-class/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/drafts/",
+        "learner": "learn/drafts-class/",
+        "facilitator": "learn/drafts-class/facilitator/",
+        "selfpaced": "learn/drafts/",
         "frameworks": "CRIT (Context, Role, Interview, Task) from Geoff Woods' The AI-Driven Leader; the brief, draft, edit method; Vanderbilt tool routing by data sensitivity (ChatGPT EDU, Amplify, Copilot)",
     },
     {
@@ -206,7 +206,7 @@ COURSES = [
         "length": "About 15 minutes self-paced; one 45-to-60-minute session live",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices via QR code) with a scripted facilitator edition, or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "Part of the CHART Program (Cultivating Human-AI Readiness and Thinking). If your job includes digging answers out of policies, reports, and the open web, this course teaches a simple way to have AI do the finding while you stay the one who decides what's true. Searching for information is already the most common thing Americans use AI chatbots for (Pew Research Center), and in field experiments the gains held up on tasks within the tool's reach when a person confirmed the result. The method is ask, anchor, check: brief the question with CRIT the way you'd brief a colleague, give the AI the source so the answer comes from something real (with a page or section reference for every claim), then open the citation and confirm before anything gets used. Three worked examples walk it through, and the course ends with you briefing a real question of your own.",
+        "description": "Part of the AI-enabled Education Series. If your job includes digging answers out of policies, reports, and the open web, this course teaches a simple way to have AI do the finding while you stay the one who decides what's true. Searching for information is already the most common thing Americans use AI chatbots for (Pew Research Center), and in field experiments the gains held up on tasks within the tool's reach when a person confirmed the result. The method is ask, anchor, check: brief the question with CRIT the way you'd brief a colleague, give the AI the source so the answer comes from something real (with a page or section reference for every claim), then open the citation and confirm before anything gets used. Three worked examples walk it through, and the course ends with you briefing a real question of your own.",
         "objectives": [
             "Brief a real question with CRIT (Context, Role, Interview, Task) the way you'd brief a colleague",
             "Anchor the AI in a real source (paste the document, name the site, attach the file), and ask for a page or section reference with every claim",
@@ -228,9 +228,9 @@ COURSES = [
         "activities": "Three worked examples with copyable prompts, a try-it row under each example naming the right Vanderbilt tool (ChatGPT EDU, Amplify, or Copilot, with the recommendation explained and the wrong choice greyed out with the reason), a typed CRIT brief for a real question that feeds the printable plan, a three-question knowledge check, and a printable one-page takeaway with the method, your brief, all three prompts, the guardrails, and the tools.",
         "outcomes": "Learners leave with a typed CRIT brief for a real question from their own week, three prompts ready to use at work, the four rules, and a printable one-page plan, plus a calendar file for a 15-minute self check-in two weeks out: are you still opening the sources, or just forwarding answers? Learning is self-checked in the course; nothing typed is saved or transmitted.",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/answers-class/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/answers-class/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/answers/",
+        "learner": "learn/answers-class/",
+        "facilitator": "learn/answers-class/facilitator/",
+        "selfpaced": "learn/answers/",
         "frameworks": "CRIT (Context, Role, Interview, Task) is credited to Geoff Woods, The AI-Driven Leader. Evidence cited in the course includes Pew Research Center's Americans and AI, Dell'Acqua et al. (HBS Working Paper, 2023), Noy & Zhang (Science, 2023), and the Mata v. Avianca sanctions order on fabricated citations. Tool routing follows Vanderbilt's guidance: ChatGPT EDU for everyday non-sensitive work; anything sensitive or internal goes in Amplify or Copilot through a Vanderbilt account."
     },
     {
@@ -243,7 +243,7 @@ COURSES = [
         "length": "About 15 minutes self-paced; one 45-to-60-minute session live",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices via QR code) with a scripted facilitator edition, or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "Part of the CHART Program (Cultivating Human-AI Readiness and Thinking). This course teaches a simple way to use AI as a thinking partner when you're stuck, so you start from twenty options instead of a blank page. Working people already reach for AI at exactly that moment: in Gallup's survey of U.S. employees, generating ideas was one of the two most common uses of AI at work. The method is frame, flood, filter: frame the problem with CRIT the way you'd brief a colleague, ask for twenty options with real range (wild ones included), then pick, combine, and sharpen with criteria you own. The evidence page is honest about the catch: AI ideas cluster, so the course teaches you to bring your own weird. Three worked examples walk it through, and the course ends with you framing a real stuck problem of your own.",
+        "description": "Part of the AI-enabled Education Series. This course teaches a simple way to use AI as a thinking partner when you're stuck, so you start from twenty options instead of a blank page. Working people already reach for AI at exactly that moment: in Gallup's survey of U.S. employees, generating ideas was one of the two most common uses of AI at work. The method is frame, flood, filter: frame the problem with CRIT the way you'd brief a colleague, ask for twenty options with real range (wild ones included), then pick, combine, and sharpen with criteria you own. The evidence page is honest about the catch: AI ideas cluster, so the course teaches you to bring your own weird. Three worked examples walk it through, and the course ends with you framing a real stuck problem of your own.",
         "objectives": [
             "Frame a stuck problem with CRIT (Context, Role, Interview, Task) instead of circling it alone",
             "Ask for twenty options with real range, wild ones included, rather than stopping at the first answer that sounds fine",
@@ -265,9 +265,9 @@ COURSES = [
         "activities": "Three worked examples with copyable prompts, a try-it row under each example naming the right Vanderbilt tool (ChatGPT EDU, Amplify, or Copilot, with the recommendation explained), a typed CRIT brief for a real stuck problem that feeds the printable plan, a three-question knowledge check, and a printable one-page takeaway with the method, your brief, all three prompts, the guardrails, and the tools.",
         "outcomes": "Learners leave with a typed frame for a real problem they own, three prompts ready for the next time they're stuck, the four rules, and a printable one-page plan, plus a calendar file for a 15-minute self check-in two weeks out: are you still flooding before you filter? Learning is self-checked in the course; nothing typed is saved or transmitted.",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/ideas-class/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/ideas-class/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/ideas/",
+        "learner": "learn/ideas-class/",
+        "facilitator": "learn/ideas-class/facilitator/",
+        "selfpaced": "learn/ideas/",
         "frameworks": "CRIT (Context, Role, Interview, Task) is credited to Geoff Woods, The AI-Driven Leader. Evidence cited in the course includes Girotra, Meincke, Terwiesch & Ulrich (SSRN, 2023), Slack Workforce Lab's Workforce Index, Doshi & Hauser (Science Advances, 2024), and Gallup's AI Use at Work surveys. Tool routing follows Vanderbilt's guidance: ChatGPT EDU for everyday non-sensitive work; anything sensitive or internal goes in Amplify or Copilot through a Vanderbilt account."
     },
     {
@@ -280,7 +280,7 @@ COURSES = [
         "length": "About 15 minutes self-paced; one 45-to-60-minute session live",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices via QR code) with a scripted facilitator edition, or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "Part of the CHART Program (Cultivating Human-AI Readiness and Thinking). Turning what was said into what gets done is real work, and it competes with a workday that interrupts you about every two minutes (Microsoft WorkLab). This course teaches a three-step way to turn a faithful record into a summary you can trust: capture (get an announced recording and transcript from Teams or Zoom), condense (brief the AI with CRIT so the summary leads with decisions, then action items with owners and dates), confirm (read the result against the source before it circulates, because a transcript mishears and a model summarizes confidently either way). Workers who use AI for this kind of work estimate saving about six hours a week (SHRM). Three worked examples walk it through, and the course ends with you briefing the minutes for a real meeting of your own.",
+        "description": "Part of the AI-enabled Education Series. Turning what was said into what gets done is real work, and it competes with a workday that interrupts you about every two minutes (Microsoft WorkLab). This course teaches a three-step way to turn a faithful record into a summary you can trust: capture (get an announced recording and transcript from Teams or Zoom), condense (brief the AI with CRIT so the summary leads with decisions, then action items with owners and dates), confirm (read the result against the source before it circulates, because a transcript mishears and a model summarizes confidently either way). Workers who use AI for this kind of work estimate saving about six hours a week (SHRM). Three worked examples walk it through, and the course ends with you briefing the minutes for a real meeting of your own.",
         "objectives": [
             "Get a faithful record with announced recording and transcription in Teams or Zoom",
             "Brief the condense with CRIT (Context, Role, Interview, Task) so the summary leads with decisions, then action items with owners and dates",
@@ -302,9 +302,9 @@ COURSES = [
         "activities": "Three worked examples with copyable prompts, a capture cheat sheet with the actual Teams and Zoom steps, a try-it row under each example naming the right Vanderbilt tool (transcripts and internal reports belong in Amplify or Copilot), a typed CRIT brief for a real meeting that feeds the printable plan, a three-question knowledge check, and a printable one-page takeaway with the method, your brief, all three prompts, the capture cheat-lines, the guardrails, and the tools.",
         "outcomes": "Learners leave with a typed brief for their next meeting's minutes, three prompts ready to use this week, the capture steps for Teams and Zoom, the four rules, and a printable one-page plan, plus a calendar file for a 15-minute self check-in two weeks out: are your summaries confirmed, or just fast? Learning is self-checked in the course; nothing typed is saved or transmitted.",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/minutes-class/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/minutes-class/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/minutes/",
+        "learner": "learn/minutes-class/",
+        "facilitator": "learn/minutes-class/facilitator/",
+        "selfpaced": "learn/minutes/",
         "frameworks": "CRIT (Context, Role, Interview, Task) is credited to Geoff Woods, The AI-Driven Leader. Evidence cited in the course includes Microsoft WorkLab's Work Trend Index, SHRM's Navigating AI in the Workplace, Noy & Zhang (Science, 2023), and Microsoft and Zoom product documentation for the capture steps. Tool routing follows Vanderbilt's guidance: meeting transcripts and internal reports go in Amplify or Copilot through a Vanderbilt account, never personal tools."
     },
     {
@@ -317,7 +317,7 @@ COURSES = [
         "length": "About 15 minutes self-paced; one 45-to-60-minute session live",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices via QR code) with a scripted facilitator edition, or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "Part of the CHART Program (Cultivating Human-AI Readiness and Thinking). The hours in most deck builds don't go where the value is: they go into blank slides, layout fiddling, and rewriting bullet three at midnight. This course teaches a simple way to have AI build the rough deck so your time goes into the story and the polish instead. Among people who already use AI for deck building, 76% say it has had a positive effect on their productivity (Gallup). The method is story, build, polish: brief the deck with CRIT before any slide exists (who is in the room, what they care about, the one thing they should do afterward), let Copilot in PowerPoint or Designer build the rough version, then cut it hard, put it on your template, and check every number before the room sees it. Three worked examples walk it through, and the course ends with you briefing a real deck of your own.",
+        "description": "Part of the AI-enabled Education Series. The hours in most deck builds don't go where the value is: they go into blank slides, layout fiddling, and rewriting bullet three at midnight. This course teaches a simple way to have AI build the rough deck so your time goes into the story and the polish instead. Among people who already use AI for deck building, 76% say it has had a positive effect on their productivity (Gallup). The method is story, build, polish: brief the deck with CRIT before any slide exists (who is in the room, what they care about, the one thing they should do afterward), let Copilot in PowerPoint or Designer build the rough version, then cut it hard, put it on your template, and check every number before the room sees it. Three worked examples walk it through, and the course ends with you briefing a real deck of your own.",
         "objectives": [
             "Brief a deck with CRIT (Context, Role, Interview, Task) before any slide exists, starting from the audience instead of the blank slide",
             "Let Copilot in PowerPoint or Designer build the rough deck, speaker notes included",
@@ -339,9 +339,9 @@ COURSES = [
         "activities": "Three worked examples with copyable prompts, a try-it row under each example naming the right Vanderbilt tool (internal numbers and unreleased plans go through Amplify or Copilot), a typed CRIT brief for a real upcoming deck that feeds the printable plan, a three-question knowledge check, and a printable one-page takeaway with the method, your brief, all three prompts, the guardrails, and the tools.",
         "outcomes": "Learners leave with a typed brief for their next real deck, three deck prompts ready to use at work, the four rules, and a printable one-page plan, plus a calendar file for a 15-minute self check-in two weeks out: did your last deck start with a brief, or a blank slide? Learning is self-checked in the course; nothing typed is saved or transmitted.",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/slides-class/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/slides-class/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/slides/",
+        "learner": "learn/slides-class/",
+        "facilitator": "learn/slides-class/facilitator/",
+        "selfpaced": "learn/slides/",
         "frameworks": "CRIT (Context, Role, Interview, Task) is credited to Geoff Woods, The AI-Driven Leader. Evidence cited in the course includes Gallup's Organizational AI Adoption panel survey, Noy & Zhang (Science, 2023), Dell'Acqua et al. (HBS Working Paper, 2023), and Microsoft's Copilot in PowerPoint and Designer documentation. Tool routing follows Vanderbilt's guidance: ChatGPT EDU for everyday non-sensitive work; internal numbers, personnel matters, and unreleased plans go through Amplify or Copilot on a Vanderbilt account."
     },
     {
@@ -354,7 +354,7 @@ COURSES = [
         "length": "About 15 minutes self-paced; one 45-to-60-minute session live",
         "format": "Classroom (instructor-led, in person or virtual; learners join on their own devices via QR code) with a scripted facilitator edition, or fully self-paced online",
         "group": "Any size in the classroom; the self-paced edition works alone at a desk",
-        "description": "Part of the CHART Program (Cultivating Human-AI Readiness and Thinking) and a Managers Voyage course. Think about the last decision you sat on for a week, not because the choice was hard to say out loud, but because you couldn't be sure what you were missing. This course teaches a simple way to use AI to widen what you can see before you decide, while the decision stays yours. In Deloitte's survey of 3,235 leaders, 60% named better decision-making among the benefits they're seeing from AI, and Stanford GSB's advice to leaders says the boundary in its title: you're in charge. The method is widen, weigh, decide: lay the decision out with CRIT (every person described by role, never by name), test best, expected, and worst case, run a premortem, ask for second-order effects and the case against your favorite option, then make the call yourself and write down why. Three worked examples walk it through, and the course ends with you laying out a real decision you own.",
+        "description": "Part of the AI-enabled Education Series and a Managers Voyage course. Think about the last decision you sat on for a week, not because the choice was hard to say out loud, but because you couldn't be sure what you were missing. This course teaches a simple way to use AI to widen what you can see before you decide, while the decision stays yours. In Deloitte's survey of 3,235 leaders, 60% named better decision-making among the benefits they're seeing from AI, and Stanford GSB's advice to leaders says the boundary in its title: you're in charge. The method is widen, weigh, decide: lay the decision out with CRIT (every person described by role, never by name), test best, expected, and worst case, run a premortem, ask for second-order effects and the case against your favorite option, then make the call yourself and write down why. Three worked examples walk it through, and the course ends with you laying out a real decision you own.",
         "objectives": [
             "Lay a decision out with CRIT (Context, Role, Interview, Task), describing every person by role, never by name",
             "Test the decision before it's real: best, expected, and worst case, a premortem, and second-order effects",
@@ -376,9 +376,9 @@ COURSES = [
         "activities": "Three worked examples with copyable prompts, a try-it row under each example naming the right Vanderbilt tool for decision work, a typed decision brief (roles, never names) that feeds the printable plan, a three-question knowledge check, and a printable one-page takeaway with the method, your brief, all three prompts, the guardrails, and the tools.",
         "outcomes": "Learners leave with a typed brief for a real open decision, three prompts ready to use this week, the four rules, and a printable one-page plan, plus a calendar file for a 15-minute self check-in two weeks out: did the AI widen the view, and did the calls stay yours? The recap sends the three hardest questions from the test back to the people involved. Learning is self-checked in the course; nothing typed is saved or transmitted.",
         "takehomes": [],
-        "learner": "https://me5231979.github.io/estesstite/learn/decisions-class/",
-        "facilitator": "https://me5231979.github.io/estesstite/learn/decisions-class/facilitator/",
-        "selfpaced": "https://me5231979.github.io/estesstite/learn/decisions/",
+        "learner": "learn/decisions-class/",
+        "facilitator": "learn/decisions-class/facilitator/",
+        "selfpaced": "learn/decisions/",
         "frameworks": "CRIT (Context, Role, Interview, Task) is credited to Geoff Woods, The AI-Driven Leader. Evidence cited in the course includes Deloitte's State of AI in the Enterprise, Stanford GSB Insights' 'You're in Charge' (2024), Dell'Acqua et al. (HBS Working Paper, 2023), and Gary Klein's 'Performing a Project Premortem' (Harvard Business Review, 2007). Data rules are strict: no names in people decisions, and personnel matters go to HR."
     },
     {
@@ -412,11 +412,11 @@ COURSES = [
         "activities": "A guess-the-number research game, a domain-spotting trainer, a private Johari Window mapper, an emotion-label upgrader, a rate-the-reply listening trainer plus a live triad drill, a graded NVC Reframe Lab, a judge-the-opener candor trainer, inline knowledge checks, a scored recap, and the EI Commitment Card capstone.",
         "outcomes": "Learners leave with a dated commitment card: one real relationship, one practice (listening, NVC, candor with care, or affect labeling), one named failure mode to avoid, and a first rep within seven days, plus the blind-spot question to ask a trusted colleague. Learning is measured in session (trainer scores, a graded lab, and a recap mapped to the objectives), at close (a confidence check and a spoken commitment round), and after (a 7-day pulse on the first rep and a 30-day self-check re-poll).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Emotional-Intelligence/cheatsheet.html"),
-            ("Commitment card worksheet", "https://me5231979.github.io/Emotional-Intelligence/worksheet.html")
+            ("Printable cheat sheet", "courses/emotional-intelligence/cheatsheet.html"),
+            ("Commitment card worksheet", "courses/emotional-intelligence/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Emotional-Intelligence/",
-        "facilitator": "https://me5231979.github.io/Emotional-Intelligence/facilitator/",
+        "learner": "courses/emotional-intelligence/",
+        "facilitator": "courses/emotional-intelligence/facilitator/",
         "frameworks": "Grounded in Goleman's 'What Makes a Leader?' (HBR) and four-domain model, the Mayer-Salovey-Caruso ability model, Tasha Eurich's self-awareness research, Lieberman et al.'s affect-labeling studies (UCLA, Psychological Science 2007), Luft & Ingham's Johari Window, Rosenberg's Nonviolent Communication, and Amy Edmondson's psychological safety research with Google's Project Aristotle."
     },
     {
@@ -453,11 +453,11 @@ COURSES = [
         "activities": "A Golden Circle builder (why, how, what), a stat-guessing evidence game, an is-it-safety sorter, a live team diagnostic on Edmondson's 7-item survey, a Johari Window pair exercise with peer stickies, team-built Expand/Contract grids with a gallery walk, a three-round triad Candor Rehearsal, inline knowledge checks, a scored recap, and the start-stop-question commitment capstone.",
         "outcomes": "Learners leave with a dated commitment card: one behavior to start, one to stop, and one question their team will hear within 14 days, plus their team's diagnostic score and stage. Learning is measured in session (trainer scores, the diagnostic, and a recap mapped to the objectives), at close (a fist-to-five confidence check and the spoken commitment round), and after (a 14-day pulse on whether the team heard the question).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/TeamUp/cheatsheet.html"),
-            ("Commitment worksheet", "https://me5231979.github.io/TeamUp/worksheet.html")
+            ("Printable cheat sheet", "courses/building-brave-teams/cheatsheet.html"),
+            ("Commitment worksheet", "courses/building-brave-teams/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/TeamUp/",
-        "facilitator": "https://me5231979.github.io/TeamUp/facilitator/",
+        "learner": "courses/building-brave-teams/",
+        "facilitator": "courses/building-brave-teams/facilitator/",
         "frameworks": "Grounded in Amy Edmondson's psychological safety research (Administrative Science Quarterly 1999, The Fearless Organization) and her 7-item team survey, Google's Project Aristotle, Timothy R. Clark's The 4 Stages of Psychological Safety, Luft & Ingham's Johari Window, Tuckman's group development model, SBI + Ask feedback from the Center for Creative Leadership lineage, and Simon Sinek's Golden Circle (Start With Why)."
     },
     {
@@ -491,11 +491,11 @@ COURSES = [
         "activities": "A research guessing game, a pillar-spotting trainer, a topic-or-Big-Idea judge plus a private Big Idea drafter, a Sparkline beat tagger, a graded SCQA Exec Briefing Lab where the executive room reacts to each choice, a delivery-fix trainer, a live timed speaking round for every participant, a judge-the-bridge Q&A trainer with live rapid fire, inline knowledge checks, a scored recap, and the Presentation Rebuild capstone.",
         "outcomes": "Learners leave with one real presentation rebuilt: a one-sentence Big Idea, a structure chosen for the actual audience (Sparkline or SCQA), the literal opening line written and spoken aloud, one deck vice named and cut, and a rehearsal committed. Learning is measured in session (trainer scores, the graded briefing lab, a recap mapped to the six objectives, and the live round itself), at close (readiness check and a spoken structure-plus-opening-line commitment), and after (a 7-day pulse on the delivered talk and a 30/60/90-day structure check on whether decks are shifting from bullet-heavy to story-led and answer-first).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Presentation-Public-Speaking/cheatsheet.html"),
-            ("Rebuild worksheet", "https://me5231979.github.io/Presentation-Public-Speaking/worksheet.html")
+            ("Printable cheat sheet", "courses/presentation-public-speaking/cheatsheet.html"),
+            ("Rebuild worksheet", "courses/presentation-public-speaking/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Presentation-Public-Speaking/",
-        "facilitator": "https://me5231979.github.io/Presentation-Public-Speaking/facilitator/",
+        "learner": "courses/presentation-public-speaking/",
+        "facilitator": "courses/presentation-public-speaking/facilitator/",
         "frameworks": "Grounded in Nancy Duarte's Presentation Principles (Big Idea™, Presentation Sparkline™; TEDxEast), Barbara Minto's Pyramid Principle and SCQA (McKinsey), Chris Anderson's 'How to Give a Killer Presentation' (HBR/TED), Carmine Gallo's 'What It Takes to Give a Great Presentation' (HBR), the AMA's Seven Principles of Effective Public Speaking and Effective Executive Speaking curriculum, SHRM's six pre-speaking questions, Coqual/Hewlett's Executive Presence research, Deloitte's CFO Signals survey, and the Chapman Survey of American Fears."
     },
     {
@@ -527,12 +527,12 @@ COURSES = [
         "activities": "A guess-the-number research game, a step-type trainer, a private workflow mapper, an assignment trainer, a rate-the-check trainer, a judge-the-announcement trainer, the graded Redesign Lab with rerun, inline knowledge checks, a scored recap, and the My Redesign Card capstone.",
         "outcomes": "Learners leave with a dated redesign card: one real workflow, the first step AI will draft, a named failure mode to avoid, and a 30-minute team mapping session within seven days, plus a pilot metric (hours saved and errors caught). Learning is measured in session (trainer scores, the graded lab, and a recap mapped to the objectives), at close (a confidence check and a spoken workflow-and-day commitment round), and after (a 7-day pulse on mapping sessions held and a 30-day re-poll on workflow cost and catches).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Workflow/cheatsheet.html"),
-            ("Redesign card worksheet", "https://me5231979.github.io/Workflow/worksheet.html")
+            ("Printable cheat sheet", "courses/workflow-process-redesign/cheatsheet.html"),
+            ("Redesign card worksheet", "courses/workflow-process-redesign/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Workflow/",
-        "facilitator": "https://me5231979.github.io/Workflow/facilitator/",
-        "frameworks": "Grounded in McKinsey's State of AI global survey (workflow redesign as the strongest measured link to EBIT impact from gen AI), Metaintro's framing of process mapping as the manager's new core job, automation-bias research on human oversight of automated systems, and classic process-mapping practice. The data rules align with the traffic light taught in Start Smarter and AI 201."
+        "learner": "courses/workflow-process-redesign/",
+        "facilitator": "courses/workflow-process-redesign/facilitator/",
+        "frameworks": "Grounded in McKinsey's State of AI global survey (workflow redesign as the strongest measured link to EBIT impact from gen AI), automation-bias research on human oversight of automated systems, and classic process-mapping practice. The data rules align with the traffic light taught in Start Smarter and AI 201."
     },
     {
         "slug": "ai-coaching-feedback",
@@ -540,7 +540,7 @@ COURSES = [
         "skills": ['Coaching Techniques', 'Performance Feedback', 'AI Literacy'],
         "title": "Feedback, Ready",
         "subtitle": "Prep like a coach, show up human",
-        "audience": "Part of the Manager Voyage program and the CHART Program. People managers and team leads who run 1:1s, give feedback, and want AI's help preparing without losing the human conversation",
+        "audience": "Part of the Manager Voyage program and the AI-enabled Education Series. People managers and team leads who run 1:1s, give feedback, and want AI's help preparing without losing the human conversation",
         "length": "Classroom: 40 minutes (30-minute core path). Self-paced web edition: about 15 minutes",
         "format": "Instructor-led, in person or virtual; learners join on their own devices via QR code. Private by design: exercises use roles (never names) and nothing typed is saved or transmitted",
         "group": "8 to 24 works best; the drills run in pairs",
@@ -559,11 +559,11 @@ COURSES = [
         "activities": "A prep-or-outsource trainer, the graded Feedback Prep Lab, a signal-or-surveillance trainer, inline knowledge checks, a scored recap, and the 1:1 Prep Card capstone.",
         "outcomes": "Learners leave with a dated prep card: one real conversation (role, not name), one prep move (rehearsal, SBI draft, notes mine, or themes move), one named failure mode to avoid, and the privacy rules attached. Learning is measured in session (trainer scores and the graded lab), at close (fist-to-five and a spoken role-and-day commitment), and after (a 7-day pulse on prepped conversations actually held).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Course_Library/ai-coaching-feedback/cheatsheet.html"),
-            ("Prep card worksheet", "https://me5231979.github.io/Course_Library/ai-coaching-feedback/worksheet.html")
+            ("Printable cheat sheet", "ai-coaching-feedback/cheatsheet.html"),
+            ("Prep card worksheet", "ai-coaching-feedback/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Course_Library/ai-coaching-feedback/",
-        "facilitator": "https://me5231979.github.io/Course_Library/ai-coaching-feedback/facilitator/",
+        "learner": "ai-coaching-feedback/",
+        "facilitator": "ai-coaching-feedback/facilitator/",
         "frameworks": "Grounded in SHRM's Navigating AI in the Workplace research, the Center for Creative Leadership's Situation-Behavior-Impact feedback model, and the embedded-coaching-AI market context (Culture Amp AI Coach, Lattice, 15Five). Data rules align with the traffic light taught in Start Smarter and AI 201."
     },
     {
@@ -572,7 +572,7 @@ COURSES = [
         "skills": ['Structured Interviewing', 'Succession Planning', 'Skills Mapping'],
         "title": "Talent Calls, Sharper",
         "subtitle": "Sharper talent inputs, human talent calls",
-        "audience": "Part of the Manager Voyage program and the CHART Program. Leaders and managers who hire, run talent reviews, plan succession, or own team capability. Anything candidate-facing runs with HR; the course says so repeatedly",
+        "audience": "Part of the Manager Voyage program and the AI-enabled Education Series. Leaders and managers who hire, run talent reviews, plan succession, or own team capability. Anything candidate-facing runs with HR; the course says so repeatedly",
         "length": "Classroom: 40 minutes (30-minute core path). Self-paced web edition: about 15 minutes",
         "format": "Instructor-led, in person or virtual; learners join on their own devices via QR code. Exercises use roles and rubrics, never names; nothing typed is saved or transmitted",
         "group": "8 to 24 works best; the drills run in pairs",
@@ -591,11 +591,11 @@ COURSES = [
         "activities": "A draft-call-or-keep-it-out trainer, the graded Rubric Lab, a useful-and-safe skills trainer, inline knowledge checks, a scored recap, and the Talent Toolkit Card capstone.",
         "outcomes": "Learners leave with a dated toolkit card: one talent decision, one instrument to build (interview kit, 9-box rubric, skills map, or succession profile), one named failure mode to avoid, and a 45-minute build session with the stranger-could-score standard. Learning is measured in session (trainer scores and the graded lab), at close (fist-to-five and a spoken instrument-and-day commitment), and after (a 7-day pulse on instruments actually built).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Course_Library/ai-talent-decisions/cheatsheet.html"),
-            ("Toolkit card worksheet", "https://me5231979.github.io/Course_Library/ai-talent-decisions/worksheet.html")
+            ("Printable cheat sheet", "ai-talent-decisions/cheatsheet.html"),
+            ("Toolkit card worksheet", "ai-talent-decisions/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Course_Library/ai-talent-decisions/",
-        "facilitator": "https://me5231979.github.io/Course_Library/ai-talent-decisions/facilitator/",
+        "learner": "ai-talent-decisions/",
+        "facilitator": "ai-talent-decisions/facilitator/",
         "frameworks": "Grounded in industry coverage of AI across the talent pipeline (People Managing People; Rework), the validity research behind structured interviews and behaviorally anchored rating scales, and the emerging bias-audit regulation for automated employment decision tools. Data rules align with the traffic light taught in Start Smarter and AI 201."
     },
     {
@@ -604,7 +604,7 @@ COURSES = [
         "skills": ['Change Management', 'AI Literacy', 'Team Development'],
         "title": "Leading the Shift",
         "subtitle": "Your team adopts what you model",
-        "audience": "Part of the Manager Voyage program and the CHART Program. Managers and team leads who want their teams actually using AI well, safely and openly. Pairs naturally with Workflow & Process Redesign",
+        "audience": "Part of the Manager Voyage program and the AI-enabled Education Series. Managers and team leads who want their teams actually using AI well, safely and openly. Pairs naturally with Workflow & Process Redesign",
         "length": "Classroom: 40 minutes (30-minute core path). Self-paced web edition: about 15 minutes",
         "format": "Instructor-led, in person or virtual; learners join on their own devices via QR code. The work audit stays entirely on the learner's screen; nothing typed is saved or transmitted",
         "group": "8 to 24 works best; drills run in pairs",
@@ -623,11 +623,11 @@ COURSES = [
         "activities": "A model-mandate-or-undermine trainer, a which-rail-is-missing trainer, the scored AI-enabled work audit, inline knowledge checks, a scored recap, and the Adoption Plan capstone.",
         "outcomes": "Learners leave with a scored audit of their own team and a dated adoption plan: the work they'll model on, one visible first move (narrated use, show-your-prompts round, guardrails session, or the 1:1 question), one named failure mode to avoid, and the audit rerun as the metric. Learning is measured in session (trainer scores and the completed audit), at close (fist-to-five and a spoken move-and-day commitment), and after (a 7-day pulse on first moves made and a 30-day audit rerun).",
         "takehomes": [
-            ("Printable cheat sheet", "https://me5231979.github.io/Course_Library/leading-ai-adoption/cheatsheet.html"),
-            ("Audit + plan worksheet", "https://me5231979.github.io/Course_Library/leading-ai-adoption/worksheet.html")
+            ("Printable cheat sheet", "leading-ai-adoption/cheatsheet.html"),
+            ("Audit + plan worksheet", "leading-ai-adoption/worksheet.html")
         ],
-        "learner": "https://me5231979.github.io/Course_Library/leading-ai-adoption/",
-        "facilitator": "https://me5231979.github.io/Course_Library/leading-ai-adoption/facilitator/",
+        "learner": "leading-ai-adoption/",
+        "facilitator": "leading-ai-adoption/facilitator/",
         "frameworks": "Grounded in Gallup's 2026 workplace AI research (manager championing and workflow integration as top drivers of frequent use) and Accenture's AI leadership research (~18 percent leading well; curiosity, courage, connection). The data guardrail is the traffic light taught in Start Smarter and AI 201, verbatim."
     },
 ]
@@ -713,13 +713,13 @@ def build(c):
 <style>{CSS}</style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  if (!/(^|\.)github\.io$/.test(location.hostname)) {
+  window.va = window.va || function () {{ (window.vaq = window.vaq || []).push(arguments); }};
+  if (!/(^|\.)github\.io$/.test(location.hostname)) {{
     var vaScript = document.createElement('script');
     vaScript.defer = true;
     vaScript.src = '/_vercel/insights/script.js';
     document.head.appendChild(vaScript);
-  }
+  }}
 </script>
 </head>
 <body>
@@ -767,18 +767,18 @@ def build(c):
   </div>
 
   <footer>
-    <span>Vanderbilt Learning Series · <a href="https://me5231979.github.io/Course_Library/">Course Library</a></span>
+    <span>Vanderbilt Learning Series · <a href="./">Course Library</a></span>
     <span>Questions? <a href="mailto:chart@vanderbilt.edu">chart@vanderbilt.edu</a></span>
   </footer>
 </div>
 <script>
   /* Printed syllabi show the course address; resolve it from wherever this site is served
      so the printout is correct on any domain. */
-  document.querySelectorAll('a[href]').forEach(function (a) {
-    if (/^(me5231979\.github\.io|https?:\/\/)/.test(a.textContent.trim())) {
+  document.querySelectorAll('a[href]').forEach(function (a) {{
+    if (/^(me5231979\.github\.io|https?:\/\/)/.test(a.textContent.trim())) {{
       a.textContent = a.href.replace(/^https?:\/\//, '');
-    }
-  });
+    }}
+  }});
 </script>
 </body>
 </html>

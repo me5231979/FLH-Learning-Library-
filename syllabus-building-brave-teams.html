@@ -38,6 +38,8 @@
   li { margin-bottom: 4px; }
   .topics li b { font-weight: 600; }
   .frameworks { color: #555; font-size: 12px; font-style: italic; }
+  .sources { font-size: 11.5px; color: #555; }
+  .sources li { margin-bottom: 3px; }
   .links { border: 1px solid #CFAE70; background: #fdf9ef; border-radius: 4px; padding: 12px 14px; margin-top: 14px; }
   footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
@@ -97,16 +99,27 @@
   <ul class="topics"><li><b>The Chancellor's charge.</b> The institutional mission, stated plainly, as the frame for everything the team builds next</li><li><b>Our why (Golden Circle).</b> Simon Sinek's why, how, what from the inside out, with his TED talk and a live builder where each learner drafts their own why</li><li><b>The case.</b> Edmondson's medication-error finding, the Challenger and cockpit evidence, and Google's Project Aristotle: safety predicts performance</li><li><b>What safety is and is not.</b> A working definition, and the four look-alikes it gets confused with: niceness, low standards, consensus, comfort</li><li><b>Clark's four stages.</b> Included, learner, contributor, challenger: a ladder teams climb in order, diagnosed live</li><li><b>The team diagnostic.</b> Edmondson's 7-item survey, the same instrument used in the research, scored and discussed by the team</li><li><b>The Johari Window.</b> Disclosure and feedback in pairs; the Open quadrant grows only when both move</li><li><b>Expand and contract.</b> Team-built grids of the behaviors that grow safety and the ones that quietly shrink it, shared in a gallery walk</li><li><b>The Candor Rehearsal.</b> Three rounds of real feedback in triads with SBI + Ask, because candor is a skill, not a trait</li><li><b>The commitment ritual.</b> One start, one stop, one question, written, spoken, and dated within 14 days</li></ul>
 
   <h2>How you'll learn</h2>
-  <p>A Golden Circle builder (why, how, what), a stat-guessing evidence game, an is-it-safety sorter, a live team diagnostic on Edmondson's 7-item survey, a Johari Window pair exercise with peer stickies, team-built Expand/Contract grids with a gallery walk, a three-round triad Candor Rehearsal, inline knowledge checks, a scored recap, and the start-stop-question commitment capstone. Every section pairs teaching with something to do; nothing is watch-only. Private exercises stay on the learner's screen and are never collected.</p>
+  <p>A Golden Circle builder (why, how, what), a stat-guessing evidence game, an is-it-safety sorter, a live team diagnostic on Edmondson's 7-item survey, a Johari Window pair exercise with peer stickies, team-built Expand/Contract grids with a gallery walk, a three-round triad Candor Rehearsal, inline knowledge checks, a scored recap, and the start-stop-question commitment capstone. Exercises run on the learner’s own screen and are not collected; see the <a href="privacy.html">privacy note</a>.</p>
 
   <h2>Outcomes and how learning is measured</h2>
   <p>Learners leave with a dated commitment card: one behavior to start, one to stop, and one question their team will hear within 14 days, plus their team's diagnostic score and stage. Learning is measured in session (trainer scores, the diagnostic, and a recap mapped to the objectives), at close (a fist-to-five confidence check and the spoken commitment round), and after (a 14-day pulse on whether the team heard the question).</p>
 
   <p class="frameworks">Grounded in Amy Edmondson's psychological safety research (Administrative Science Quarterly 1999, The Fearless Organization) and her 7-item team survey, Google's Project Aristotle, Timothy R. Clark's The 4 Stages of Psychological Safety, Luft &amp; Ingham's Johari Window, Tuckman's group development model, SBI + Ask feedback from the Center for Creative Leadership lineage, and Simon Sinek's Golden Circle (Start With Why).</p>
 
+  
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>Center for Creative Leadership; Weitzel, S.R. (2000). <i>Feedback That Works</i>. CCL Press. <a href="https://www.ccl.org/" rel="noopener">ccl.org</a></li>
+    <li>Clark, T.R. (2020). <i>The 4 Stages of Psychological Safety</i>. Berrett-Koehler.</li>
+    <li>Edmondson, A. (1999). "Psychological Safety and Learning Behavior in Work Teams." <i>Administrative Science Quarterly</i>, 44(2), 350–383. <a href="https://doi.org/10.2307/2666999" rel="noopener">doi.org/10.2307/2666999</a></li>
+    <li>Luft, J. &amp; Ingham, H. (1955). "The Johari Window." <i>Proceedings of the Western Training Laboratory in Group Development</i>. UCLA.</li>
+    <li>Sinek, S. (2009). <i>Start With Why</i>. Portfolio.</li>
+    <li>Tuckman, B.W. (1965). "Developmental sequence in small groups." <i>Psychological Bulletin</i>, 63(6), 384–399.</li>
+  </ul>
+
   <div class="links">
-    <b>Take the course:</b> <a href="courses/building-brave-teams/">me5231979.github.io/TeamUp/</a><br>
-    <b>Deliver it (facilitator edition):</b> <a href="courses/building-brave-teams/facilitator/">me5231979.github.io/TeamUp/facilitator/</a><br>
+    <b>Take the course:</b> <a href="courses/building-brave-teams/">flh-learning-library.vercel.app/courses/building-brave-teams/</a><br>
+    <b>Deliver it (facilitator edition):</b> <a href="courses/building-brave-teams/facilitator/">flh-learning-library.vercel.app/courses/building-brave-teams/facilitator/</a><br>
     <b>Take-homes:</b> <a href="courses/building-brave-teams/cheatsheet.html">Printable cheat sheet</a> · <a href="courses/building-brave-teams/worksheet.html">Commitment worksheet</a>
   </div>
 
@@ -119,7 +132,7 @@
   /* Printed syllabi show the course address; resolve it from wherever this site is served
      so the printout is correct on any domain. */
   document.querySelectorAll('a[href]').forEach(function (a) {
-    if (/^(me5231979\.github\.io|https?:\/\/)/.test(a.textContent.trim())) {
+    if (/^(me5231979\.github\.io|flh-learning-library\.vercel\.app|https?:\/\/)/.test(a.textContent.trim())) {
       a.textContent = a.href.replace(/^https?:\/\//, '');
     }
   });

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Insert the ten CHART gap courses as catalog cards, before the 'Your next course' card."""
+"""Insert the ten AI-enabled Education Series gap courses as catalog cards, before the 'Your next course' card."""
 import json, re, os, html as H
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,8 +13,8 @@ ARROW = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-widt
 CHEV = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
         '<polyline points="6 9 12 15 18 9"/></svg>')
 
-STAFF = "For all Vanderbilt staff &middot; Part of the CHART Program"
-MGR = "For people managers &amp; team leads &middot; Part of the CHART Program &middot; Manager Voyage"
+STAFF = "For all Vanderbilt staff &middot; Part of the AI-enabled Education Series"
+MGR = "For people managers &amp; team leads &middot; Part of the AI-enabled Education Series &middot; Manager Voyage"
 
 # repo -> (slug, topics, tag, voyage, description, interactions line, take-home label)
 META = {
@@ -28,7 +28,7 @@ META = {
    "AI errors do not arrive looking like errors. They arrive fluent, specific, and confident, which is why SHRM finds workers losing hours every week to cleaning up output they trusted too fast. This session makes verification a discipline: the Three Reads (claim, source, slant), the failure taxonomy of hallucination, staleness, slant, omission, and faked math, verification budgets sized to what the output can break, and the stop rules for when a task should leave AI entirely.",
    "6 sections &middot; 4 trainers, a private verification ritual builder, and the graded Verification Lab", "verification card"),
  "AI-Across-Your-Week": ("ai-across-your-week", "ai", STAFF, False,
-   "The CHART integrator. Gallup's most striking finding is about breadth: people using AI across seven or more tasks are about twice as likely to report real productivity gains as those using it for one or two. Every other CHART course builds one use case; this one strings them together across a learner's actual week. They inventory their recurring blocks, match each to a CHART method, stack two methods on one task, and name where the reclaimed hours go before those hours quietly evaporate into more meetings.",
+   "The series integrator. Gallup's most striking finding is about breadth: people using AI across seven or more tasks are about twice as likely to report real productivity gains as those using it for one or two. Every other AI-enabled Education Series course builds one use case; this one strings them together across a learner's actual week. They inventory their recurring blocks, match each to a method from this series, stack two methods on one task, and name where the reclaimed hours go before those hours quietly evaporate into more meetings.",
    "6 sections &middot; 4 trainers, a private week inventory, and the graded Week Lab", "Week Map"),
  "Admin-Automated": ("admin-automated", "ai", STAFF, False,
    "Automating repetitive work is the highest-payoff AI use case Gallup measures, with around 77 percent of users reporting clear gains, and it is also where saved time most often disappears without a trace. This session runs the Repeat Audit: spot the work you have done the same way more than twice, template it with slots instead of leftovers, route what arrives with a three-pile triage you stay accountable for, and retire what should simply stop. It ends by banking the recovered hours on purpose.",

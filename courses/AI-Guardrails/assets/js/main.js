@@ -223,7 +223,7 @@
         answer: 1, why: 'Around half, survey after survey. Quiet, untracked use is the norm, and an unwritten rule cannot govern work nobody mentions. Written lines are what make the quiet use safe to say out loud.' },
       { q: 'And what share of organizations using AI have a written policy their staff could actually find and follow?',
         opts: ['Nearly all of them', 'Around three quarters', 'A minority, fewer than half'],
-        answer: 2, why: 'A minority. Policy lags adoption almost everywhere, which is why Metaintro reads AI policy as line-manager work now: the team level is where a usable rule can exist this quarter.' },
+        answer: 2, why: 'A minority. Policy lags adoption almost everywhere, which is why AI policy is becoming line-manager work in practice: the team level is where a usable rule can exist this quarter.' },
       { q: 'When a data incident does happen, which cost pattern shows up again and again?',
         opts: ['Costs are flat however it surfaces', 'Early-caught and late-caught cost about the same', 'The later it surfaces, the more it costs'],
         answer: 2, why: 'Later means costlier: more copies, more readers, more cleanup, less trust. Written lines move discovery earlier, and earlier is the cheapest place to catch anything.' }

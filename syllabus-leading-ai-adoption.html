@@ -38,6 +38,8 @@
   li { margin-bottom: 4px; }
   .topics li b { font-weight: 600; }
   .frameworks { color: #555; font-size: 12px; font-style: italic; }
+  .sources { font-size: 11.5px; color: #555; }
+  .sources li { margin-bottom: 3px; }
   .links { border: 1px solid #CFAE70; background: #fdf9ef; border-radius: 4px; padding: 12px 14px; margin-top: 14px; }
   footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
@@ -77,9 +79,9 @@
   </header>
 
   <div class="facts">
-    <div><b>Audience</b>Part of the Manager Voyage program and the CHART Program. Managers and team leads who want their teams actually using AI well, safely and openly. Pairs naturally with Workflow &amp; Process Redesign</div>
+    <div><b>Audience</b>Part of the Manager Voyage program and the AI-enabled Education Series. Managers and team leads who want their teams actually using AI well, safely and openly. Pairs naturally with Workflow &amp; Process Redesign</div>
     <div><b>Length</b>Classroom: 40 minutes (30-minute core path). Self-paced web edition: about 15 minutes</div>
-    <div><b>Format</b>Instructor-led, in person or virtual; learners join on their own devices via QR code. The work audit stays entirely on the learner's screen; nothing typed is saved or transmitted</div>
+    <div><b>Format</b>Instructor-led, in person or virtual; learners join on their own devices via QR code. The work audit stays on the learner’s own screen (<a href="privacy.html">privacy note</a>)</div>
     <div><b>Group size</b>8 to 24 works best; drills run in pairs</div>
   </div>
 
@@ -97,16 +99,24 @@
   <ul class="topics"><li><b>Model it, visibly.</b> Gallup's two predictors, Accenture's three C's, and the narrated-use move, drilled on five leader behaviors</li><li><b>The three guardrails.</b> Data, sign-off, ownership: one page written with the team, with amnesty for existing shortcuts; incidents diagnosed to their missing rail</li><li><b>The AI-enabled work audit.</b> Five scored questions on the team's real AI state, with the three highest-leverage moves ranked by weakest dimension and a quarterly cadence</li></ul>
 
   <h2>How you'll learn</h2>
-  <p>A model-mandate-or-undermine trainer, a which-rail-is-missing trainer, the scored AI-enabled work audit, inline knowledge checks, a scored recap, and the Adoption Plan capstone. Every section pairs teaching with something to do; nothing is watch-only. Private exercises stay on the learner's screen and are never collected.</p>
+  <p>A model-mandate-or-undermine trainer, a which-rail-is-missing trainer, the scored AI-enabled work audit, inline knowledge checks, a scored recap, and the Adoption Plan capstone. Exercises run on the learner’s own screen and are not collected; see the <a href="privacy.html">privacy note</a>.</p>
 
   <h2>Outcomes and how learning is measured</h2>
   <p>Learners leave with a scored audit of their own team and a dated adoption plan: the work they'll model on, one visible first move (narrated use, show-your-prompts round, guardrails session, or the 1:1 question), one named failure mode to avoid, and the audit rerun as the metric. Learning is measured in session (trainer scores and the completed audit), at close (fist-to-five and a spoken move-and-day commitment), and after (a 7-day pulse on first moves made and a 30-day audit rerun).</p>
 
   <p class="frameworks">Grounded in Gallup's 2026 workplace AI research (manager championing and workflow integration as top drivers of frequent use) and Accenture's AI leadership research (~18 percent leading well; curiosity, courage, connection). The data guardrail is the traffic light taught in Start Smarter and AI 201, verbatim.</p>
 
+  
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>Accenture research on AI leadership. <a href="https://www.accenture.com/us-en/insights/artificial-intelligence" rel="noopener">accenture.com · AI insights</a></li>
+    <li>Gallup workplace research on AI adoption. <a href="https://www.gallup.com/workplace/" rel="noopener">gallup.com/workplace</a></li>
+    <li>Vanderbilt University IT data classification and approved-tool guidance. <a href="https://www.vanderbilt.edu/it/policies/" rel="noopener">vanderbilt.edu/it/policies</a> (verify current policy URL with VU IT)</li>
+  </ul>
+
   <div class="links">
-    <b>Take the course:</b> <a href="leading-ai-adoption/">me5231979.github.io/Course_Library/leading-ai-adoption/</a><br>
-    <b>Deliver it (facilitator edition):</b> <a href="leading-ai-adoption/facilitator/">me5231979.github.io/Course_Library/leading-ai-adoption/facilitator/</a><br>
+    <b>Take the course:</b> <a href="leading-ai-adoption/">flh-learning-library.vercel.app/leading-ai-adoption/</a><br>
+    <b>Deliver it (facilitator edition):</b> <a href="leading-ai-adoption/facilitator/">flh-learning-library.vercel.app/leading-ai-adoption/facilitator/</a><br>
     <b>Take-homes:</b> <a href="leading-ai-adoption/cheatsheet.html">Printable cheat sheet</a> · <a href="leading-ai-adoption/worksheet.html">Audit + plan worksheet</a>
   </div>
 
@@ -119,7 +129,7 @@
   /* Printed syllabi show the course address; resolve it from wherever this site is served
      so the printout is correct on any domain. */
   document.querySelectorAll('a[href]').forEach(function (a) {
-    if (/^(me5231979\.github\.io|https?:\/\/)/.test(a.textContent.trim())) {
+    if (/^(me5231979\.github\.io|flh-learning-library\.vercel\.app|https?:\/\/)/.test(a.textContent.trim())) {
       a.textContent = a.href.replace(/^https?:\/\//, '');
     }
   });

@@ -1,6 +1,6 @@
-# CHART Program house style
+# AI-enabled Education Series house style
 
-Every course in the CHART Program follows these rules. The goal: copy that
+Every course in the AI-enabled Education Series follows these rules. The goal: copy that
 sounds like a person at Vanderbilt wrote it, because one did (or approved it).
 Run this checklist on every page before a course ships.
 
@@ -58,7 +58,7 @@ If a page can't answer all three, the page isn't done.
 ## Program conventions
 
 - Courses are numbered ("Course 02") and carry the line
-  "Part of CHART: Cultivating Human-AI Readiness and Thinking." CHART is the
+  "Part of the AI-enabled Education Series." AI-enabled Education Series is the
   program (the ecosystem every AI course and activity belongs to); course
   NAMES stay soft and never contain the word "AI" (Working Smarter, First
   Drafts Faster); course content may say AI freely.

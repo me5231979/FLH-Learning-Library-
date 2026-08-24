@@ -3,7 +3,7 @@
 A short interactive course (Classroom 40 min / Core 30 / self-paced ~15) for
 managers on using AI to prepare for 1:1s, draft behavior-based feedback, and
 surface coaching opportunities from aggregate signals, while the conversation
-itself stays fully human. Part of the CHART Program and the Manager Voyage.
+itself stays fully human. Part of the AI-enabled Education Series and the Manager Voyage.
 
 Part of the Vanderbilt Learning Series. Catalog:
 [Course Library](https://me5231979.github.io/Course_Library/)

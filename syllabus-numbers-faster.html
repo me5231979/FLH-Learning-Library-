@@ -38,6 +38,8 @@
   li { margin-bottom: 4px; }
   .topics li b { font-weight: 600; }
   .frameworks { color: #555; font-size: 12px; font-style: italic; }
+  .sources { font-size: 11.5px; color: #555; }
+  .sources li { margin-bottom: 3px; }
   .links { border: 1px solid #CFAE70; background: #fdf9ef; border-radius: 4px; padding: 12px 14px; margin-top: 14px; }
   footer { margin-top: 16px; border-top: 1px solid #E4E4E4; padding-top: 10px; font-size: 11px; color: #777;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
@@ -79,7 +81,7 @@
   <div class="facts">
     <div><b>Audience</b>All Vanderbilt staff who touch a spreadsheet, a report, or a dashboard</div>
     <div><b>Length</b>Classroom: 90 minutes (60-minute core path). Self-paced web edition: about 45 minutes</div>
-    <div><b>Format</b>Instructor-led, in person or virtual; learners join on their own devices via QR code. Private by design: exercises use roles and workflows (never names) and nothing typed is saved or transmitted</div>
+    <div><b>Format</b>Instructor-led, in person or virtual; learners join on their own devices via QR code. Private by design: exercises use roles and workflows, never names. Typed work stays on the learner’s screen (<a href="privacy.html">privacy note</a>)</div>
     <div><b>Group size</b>8 to 24 works best for the pair drills; scales larger with room votes</div>
   </div>
 
@@ -87,7 +89,7 @@
   <div class="pills"><span class="pill pill--core">Embodies an entrepreneurial spirit and leverages data and technology</span><span class="pill pill--core">Continuously strives for excellence</span><span class="pill">Data Analysis</span><span class="pill">Artificial Intelligence</span><span class="pill">Data Storytelling</span></div>
 
   <h2>About this course</h2>
-  <p>Vanderbilt runs on spreadsheets, Oracle reports, and end-of-month numbers, and most of that analysis is still done by hand. Gallup's workplace research puts data and analytics among the highest-payoff AI use cases, with roughly three in four users reporting clear productivity gains and one of the widest gaps between frequent and occasional users. This session teaches the Data Loop, four moves that make AI genuinely useful on real data: describe the file before asking anything, ask in a ladder from summary to comparison to outlier, check by recomputing the numbers that matter, and tell the finding in two plain sentences. A full section is spent on getting data safely into a tool, because a spreadsheet with names in it is red-light data no matter how useful the analysis would be. Learners work a realistic month-end analysis in the graded Analysis Lab, where the failure modes are the ones that actually happen: the total that never matched the row count, the retracted number, the privacy near-miss.</p>
+  <p>Vanderbilt runs on spreadsheets, Oracle reports, and end-of-month numbers, and most of that analysis is still done by hand. Gallup's workplace research puts data and analytics among the highest-payoff AI use cases, with roughly three in four users reporting clear productivity gains and one of the widest gaps between frequent and occasional users. This session teaches the Data Loop, the course's working method: four steps for using AI on a real spreadsheet without breaking the totals: describe the file before asking anything, ask in a ladder from summary to comparison to outlier, check by recomputing the numbers that matter, and tell the finding in two plain sentences. A full section is spent on getting data safely into a tool, because a spreadsheet with names in it is red-light data no matter how useful the analysis would be. Learners work a realistic month-end analysis in the graded Analysis Lab, where the failure modes are the ones that actually happen: the total that never matched the row count, the retracted number, the privacy near-miss.</p>
 
   <h2>Learning objectives</h2>
   <p>By the end of this session, participants will be able to:</p>
@@ -97,17 +99,26 @@
   <ul class="topics"><li><b>The case.</b> Where data work sits among AI use cases, and the specific ways AI gets numbers wrong: dropped rows, invented categories, confident bad math</li><li><b>Safe data in.</b> The traffic light applied to files: published data, internal aggregates, and anything identifying a person, plus practical de-identification</li><li><b>Ask the sheet.</b> Describe the columns before the first question, then the question ladder from summary to comparison to outlier to explanation</li><li><b>Check the math.</b> Recompute one figure by hand, reconcile totals and counts, trace surprising claims back to rows</li><li><b>The Analysis Lab.</b> A graded month-end analysis: prepare, ask, check, and tell, with outcomes at week four</li><li><b>Tell the story.</b> The two-sentence finding, chart briefs that specify the comparison and the takeaway, and the one thing never to outsource: the recommendation</li></ul>
 
   <h2>How you'll learn</h2>
-  <p>Four scenario trainers (a research guessing game, a green-yellow-red file sort, a catch-the-error drill, and a judge-the-finding drill), a private data mapper that turns a learner's real dataset into a Data Loop starter, the graded Analysis Lab with rerun, inline knowledge checks, a scored recap, and the My Data Loop Card capstone. Every section pairs teaching with something to do; nothing is watch-only. Private exercises stay on the learner's screen and are never collected.</p>
+  <p>Four scenario trainers (a research guessing game, a green-yellow-red file sort, a catch-the-error drill, and a judge-the-finding drill), a private data mapper that turns a learner's real dataset into a Data Loop starter, the graded Analysis Lab with rerun, inline knowledge checks, a scored recap, and the My Data Loop Card capstone. Exercises run on the learner’s own screen and are not collected; see the <a href="privacy.html">privacy note</a>.</p>
 
   <h2>Outcomes and how learning is measured</h2>
   <p>Learners leave with a dated card naming one real dataset, the first Data Loop move they will run on it, the check ritual they commit to, and a metric (minutes to answer, compared with before). Learning is measured in session through trainer scores, the graded lab, and a recap mapped to the objectives; at close through a confidence check and a spoken commitment; and afterward through a 7-day pulse on analyses actually run and numbers actually caught.</p>
 
-  <p class="frameworks">Built on Bloom's-verb objectives and instrumented with Kirkpatrick levels 1 to 3: a fist-to-five confidence check at close, a scored recap and per-section validation checks in session, and a capstone commitment card followed by a 7-day pulse and a 30-day re-poll. The facilitator edition follows an ATD runbook structure (Say, Do, Ask, Debrief, Transition) with Full 90 and Core 60 timed paths. Data rules follow Vanderbilt's approved-tool guidance and the shared traffic light: green for public or generic, yellow for internal work in approved VU tools only (ChatGPT EDU, Amplify, Copilot), red for private information about people, never.</p>
+  <p class="frameworks">Built on Bloom's-verb objectives and instrumented with Kirkpatrick Levels 1 and 2 in session (a fist-to-five confidence check at close is Level 1; the scored recap and per-section validation checks are Level 2), with the capstone commitment card plus a 7-day pulse and a 30-day re-poll serving as Level 3 indicators; they are self-reported, so they signal transfer rather than prove it. The facilitator edition follows an ATD runbook structure (Say, Do, Ask, Debrief, Transition) with Full 90 and Core 60 timed paths. Data rules follow Vanderbilt's approved-tool guidance and the shared traffic light: green for public or generic, yellow for internal work in approved VU tools only (ChatGPT EDU, Amplify, Copilot), red for private information about people, never.</p>
+
+  
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>Anderson, L.W. &amp; Krathwohl, D.R. (eds.) (2001). <i>A Taxonomy for Learning, Teaching, and Assessing</i>. Longman.</li>
+    <li>Gallup workplace research on AI adoption. <a href="https://www.gallup.com/workplace/" rel="noopener">gallup.com/workplace</a></li>
+    <li>Kirkpatrick, J.D. &amp; Kirkpatrick, W.K. (2016). <i>Kirkpatrick’s Four Levels of Training Evaluation</i>. ATD Press.</li>
+    <li>Vanderbilt University IT data classification and approved-tool guidance. <a href="https://www.vanderbilt.edu/it/policies/" rel="noopener">vanderbilt.edu/it/policies</a> (verify current policy URL with VU IT)</li>
+  </ul>
 
   <div class="links">
-    <b>Take the course:</b> <a href="courses/Numbers-Faster/">me5231979.github.io/Course_Library/courses/Numbers-Faster/</a><br>
-    <b>Deliver it (facilitator edition):</b> <a href="courses/Numbers-Faster/facilitator/">me5231979.github.io/Course_Library/courses/Numbers-Faster/facilitator/</a><br>
-    <b>Self-paced edition:</b> <a href="courses/Numbers-Faster/web/">me5231979.github.io/Course_Library/courses/Numbers-Faster/web/</a><br>
+    <b>Take the course:</b> <a href="courses/Numbers-Faster/">flh-learning-library.vercel.app/courses/Numbers-Faster/</a><br>
+    <b>Deliver it (facilitator edition):</b> <a href="courses/Numbers-Faster/facilitator/">flh-learning-library.vercel.app/courses/Numbers-Faster/facilitator/</a><br>
+    <b>Self-paced edition:</b> <a href="courses/Numbers-Faster/web/">flh-learning-library.vercel.app/courses/Numbers-Faster/web/</a><br>
     <b>Take-homes:</b> <a href="courses/Numbers-Faster/cheatsheet.html">Printable cheat sheet</a> · <a href="courses/Numbers-Faster/worksheet.html">Data Loop card</a> · <a href="courses/Numbers-Faster/web/">Self-paced web edition</a>
   </div>
 
@@ -120,7 +131,7 @@
   /* Printed syllabi show the course address; resolve it from wherever this site is served
      so the printout is correct on any domain. */
   document.querySelectorAll('a[href]').forEach(function (a) {
-    if (/^(me5231979\.github\.io|https?:\/\/)/.test(a.textContent.trim())) {
+    if (/^(me5231979\.github\.io|flh-learning-library\.vercel\.app|https?:\/\/)/.test(a.textContent.trim())) {
       a.textContent = a.href.replace(/^https?:\/\//, '');
     }
   });

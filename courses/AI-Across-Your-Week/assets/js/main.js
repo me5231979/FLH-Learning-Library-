@@ -504,7 +504,7 @@
       { q: 'The Week Map\'s first step, the inventory, asks you to write down...',
         opts: ['Every task you did last month, exhaustively', 'The colleagues who slow your week down', 'Your week\'s recurring blocks with an honest hour cost, kept to roles and workflows', 'The AI tools you would like to try'],
         correct: 2, why: 'Recurring blocks, honest hours, and no people\'s names. The inventory is the surface everything else runs on, and the traffic light applies from the first line you write.' },
-      { q: 'The matching rule for pairing a block with a CHART method is...',
+      { q: 'The matching rule for pairing a block with a method from this series is...',
         opts: ['Match the block\'s verb: what you are doing, whatever the topic', 'Match the block\'s topic: budget blocks take the numbers method', 'Always start with the method you know best', 'Use the newest method on the biggest block'],
         correct: 0, why: 'Verbs match; topics mislead. A budget block might be writing, presenting, or explaining, and each verb takes a different method.' },
       { q: 'The meeting ends and the same-day follow-up email has to carry the decisions accurately. The stack is...',

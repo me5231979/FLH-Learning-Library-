@@ -2,7 +2,7 @@
   "meta": {
     "program": "Across Your Week · Vanderbilt Learning Series",
     "totalMinutes": 93,
-    "audience": "Vanderbilt staff who have taken at least one or two CHART courses and want the pieces to add up: coordinators, analysts, managers, anyone whose week runs on recurring blocks. 8 to 24 works best (the inventory and matching drills run in pairs); scales larger with room votes. The traffic-light data rule from the AI courses is assumed and restated here.",
+    "audience": "Vanderbilt staff who have taken at least one or two AI-enabled Education Series courses and want the pieces to add up: coordinators, analysts, managers, anyone whose week runs on recurring blocks. 8 to 24 works best (the inventory and matching drills run in pairs); scales larger with room votes. The traffic-light data rule from the AI courses is assumed and restated here.",
     "roomSetup": "Projector plus presenter device; learners on their own devices via the Welcome-slide QR; movable seating for pairs. Ask learners to have last week's calendar reachable on their device; the inventory drill works best against the real thing. Virtual: breakouts of 2 for the inventory and matching swaps. Set the norm in the first minute: blocks and workflows, never people's names, and nothing typed is saved or sent.",
     "postSession": "Seven days out, send the pulse: 'Did the 30-minute calendar pass happen? How many assists are placed on next week's blocks? Where is the bank block, and what is it named?' At 30 days, send the re-poll: the same fist-to-five confidence question from the close, plus 'how many distinct AI uses did you run last week, and what did the banked time buy?' The count of calendar passes actually run, and the growth in distinct-use counts, are the program's headline Level 3 metrics.",
     "paths": {
@@ -32,7 +32,7 @@
         "Send the pre-work invite (template on this page) with the calendar invite: skim last week's calendar and arrive knowing your three biggest recurring blocks, held privately.",
         "Decide your path now: Full (90-minute slot) or Core (60). Mark which pair drills you keep versus run solo.",
         "Skim the current Gallup workplace AI research so the findings in Guess the Number are fresh; the game's reveals carry the framing, but you should be able to say 'the survey' with a straight face.",
-        "Know which CHART method courses your room has taken (ask in the invite if needed); section 03 lands differently when you can say 'most of you have the Minutes course already.'"
+        "Know which series method courses your room has taken (ask in the invite if needed); section 03 lands differently when you can say 'most of you have the Minutes course already.'"
       ],
       "dayBefore": [
         "Test the projector with the facilitator link; confirm the notes rail is readable from where you'll stand.",
@@ -67,7 +67,7 @@
         "then": "Protect the norm warmly: 'Hold that. Blocks and workflows, never names. The map works on the week's shape, not on people.' If it keeps happening, it usually means a real workload frustration is in the room; acknowledge it, point at the bank section as the honest answer, and move the person to a private follow-up."
       },
       {
-        "if": "The room has uneven CHART coverage: some have taken four courses, some only Start Smarter",
+        "if": "The room has uneven AI-enabled Education Series coverage: some have taken four courses, some only Start Smarter",
         "then": "Name it as the design, not a problem: the toolbox slide is deliberately self-contained, each card carrying the method's one-line move and its check. Pair broad users with narrow ones in the swaps; teaching a method's one-liner to a partner is the fastest review there is. Point everyone at the Course Library for the courses they're missing, and say plainly that a Week Map built from two methods is a real Week Map."
       },
       {
@@ -90,7 +90,7 @@
       },
       {
         "q": "I barely have time to do my job. When exactly do I learn seven methods?",
-        "a": "You don't, and the course says so explicitly. You need the two or three methods whose verbs dominate your inventory, and you already have at least one from the CHART course that brought you here. The seven-plus finding is about distinct uses, and one method covers several: the drafts method alone can run your status update, your inbox replies, and your announcement. Start with what you have, let the map tell you which course to take next, and take it when the map reaches for it."
+        "a": "You don't, and the course says so explicitly. You need the two or three methods whose verbs dominate your inventory, and you already have at least one from the AI-enabled Education Series course that brought you here. The seven-plus finding is about distinct uses, and one method covers several: the drafts method alone can run your status update, your inbox replies, and your announcement. Start with what you have, let the map tell you which course to take next, and take it when the map reaches for it."
       },
       {
         "q": "Is the seven-plus number magic? Do I fail if I only get to four?",
@@ -116,7 +116,7 @@
     "templates": [
       {
         "title": "Pre-work invite (paste into the calendar invite)",
-        "body": "Subject: Before our Across Your Week session. One thing to do: spend two minutes with last week's calendar and sent folder, and arrive knowing your three biggest recurring blocks of work, the things that happen every week and eat real hours. You will never be asked to name people; every exercise runs on blocks and workflows, and everything you type stays on your screen. If you remember which CHART courses you've taken, bring that too. That's it, no reading, no tools to install."
+        "body": "Subject: Before our Across Your Week session. One thing to do: spend two minutes with last week's calendar and sent folder, and arrive knowing your three biggest recurring blocks of work, the things that happen every week and eat real hours. You will never be asked to name people; every exercise runs on blocks and workflows, and everything you type stays on your screen. If you remember which AI-enabled Education Series courses you've taken, bring that too. That's it, no reading, no tools to install."
       },
       {
         "title": "7-day pulse (send one week after)",
@@ -144,7 +144,7 @@
       "watchFor": "Learners expecting a tools demo or a new-model showcase. The frame that resets them: today adds zero new tools; it takes the methods you already have and places them across a real week.",
       "coreMinutes": 2,
       "coreNote": "Core: one scan prompt, the norm stated once, move on.",
-      "say": "Welcome. Point your camera at that code before we start. Today is the course that makes the other CHART courses add up. You've each learned a method or two; the research says the payoff comes when several of them run across one week, and that's what we build today: your actual week, mapped. So one ground rule for the next ninety minutes: blocks and workflows, never people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.",
+      "say": "Welcome. Point your camera at that code before we start. Today is the course that makes the other AI-enabled Education Series courses add up. You've each learned a method or two; the research says the payoff comes when several of them run across one week, and that's what we build today: your actual week, mapped. So one ground rule for the next ninety minutes: blocks and workflows, never people's names. And everything you type today stays on your screen; nothing is saved or sent anywhere.",
       "ask": {
         "q": "Quick calibration, shout it out: how many distinct tasks did you use AI for last month? Not how often, how many different kinds.",
         "expect": [
@@ -164,13 +164,13 @@
       "facilitate": [
         "Read the five objectives briskly, in plain language.",
         "Land on the last one: this session ends with a REAL Week Map, five assists, one stack, one date.",
-        "Name the sources once for credibility: Gallup's workplace AI research for the breadth finding, and the CHART methods as the toolbox."
+        "Name the sources once for credibility: Gallup's workplace AI research for the breadth finding, and the method from this seriess as the toolbox."
       ],
       "validate": "Learners can say what the capstone will be (five blocks, one stack, one dated calendar pass with a named bank).",
       "watchFor": "Method questions arriving early ('wait, what's the numbers method?'). Park them gently: the whole toolbox gets one slide in section 03, with a one-line move and check for every method.",
       "coreMinutes": 1,
       "coreNote": "Core: objectives 1 and 5 out loud; the rest on screen.",
-      "say": "Five things by the end: you'll know why breadth of use, more distinct tasks, predicts real gains better than mastering any single trick. You'll inventory your real week into blocks with honest hours on them. You'll match each block to the CHART method that fits its verb. You'll stack two methods on one task without losing the checks. And it all lands in one artifact: a Week Map for the week you actually live, with a date on the calendar pass that places the assists.",
+      "say": "Five things by the end: you'll know why breadth of use, more distinct tasks, predicts real gains better than mastering any single trick. You'll inventory your real week into blocks with honest hours on them. You'll match each block to the method from this series that fits its verb. You'll stack two methods on one task without losing the checks. And it all lands in one artifact: a Week Map for the week you actually live, with a date on the calendar pass that places the assists.",
       "transition": "One page before the plan: why the university needs your week, specifically, to get wider."
     },
     {
@@ -204,7 +204,7 @@
       "watchFor": "Don't teach here; every concept has its own slide.",
       "coreMinutes": 0,
       "coreNote": "Core: skip entirely; the deck's structure carries it.",
-      "say": "The arc is simple: first the evidence for breadth, then learning to see your week as blocks, then the whole CHART toolbox on one slide with the matching rule, then the stack, two methods chained on one task. Then you'll plan a coordinator's real week in the lab and finish with the move almost everyone skips: banking the saved time so it doesn't evaporate.",
+      "say": "The arc is simple: first the evidence for breadth, then learning to see your week as blocks, then the whole AI-enabled Education Series toolbox on one slide with the matching rule, then the stack, two methods chained on one task. Then you'll plan a coordinator's real week in the lab and finish with the move almost everyone skips: banking the saved time so it doesn't evaporate.",
       "transition": "Start with the evidence, because most of us have been optimizing exactly the wrong thing."
     },
     {
@@ -286,7 +286,7 @@
       "id": "s-match",
       "title": "03 · The method match",
       "minutes": 12,
-      "purpose": "Put the whole CHART toolbox on one visible surface and install the matching rule (match the block's verb, never its topic), then drill it on real week-blocks. Also the section that names the sibling courses and the Course Library.",
+      "purpose": "Put the whole AI-enabled Education Series toolbox on one visible surface and install the matching rule (match the block's verb, never its topic), then drill it on real week-blocks. Also the section that names the sibling courses and the Course Library.",
       "facilitate": [
         "Walk the seven toolbox cards fast, verb first: asking is Answers, writing is First Drafts, capturing is Minutes, presenting is Slides, inventing is Ideas, choosing is Decisions, explaining data is Numbers. Fill the verbs on your whiteboard skeleton as you go.",
         "Land the matching rule with the budget example: the same topic can be a writing block, a presenting block, or an explaining block, and each takes a different method.",
@@ -298,7 +298,7 @@
       "watchFor": "Topic-matching relapse ('it's about data, so numbers') and tool questions ('but which AI does minutes?'). For the first, re-ask the verb question. For the second, stay tool-agnostic: every method runs in the approved VU tools, and the method survives any tool swap.",
       "coreMinutes": 9,
       "coreNote": "Core: toolbox cards and verb rule at full strength, trainer on devices; the pair swap becomes a solo pass on your own three blocks with the verb said under your breath.",
-      "say": "Here is the whole CHART toolbox on one slide: seven methods, one course each. And here is the rule that makes it usable: match the verb, not the topic. Ignore what the block is about and ask what you are DOING in it. Writing a status update is a writing verb, so the drafts method. Working out what the policy allows is an asking verb, so answers. A meeting that produces decisions nobody remembers is a capturing verb, so minutes. The topic will mislead you; a budget block might be writing, presenting, or explaining, and each verb takes a different method. Every method here keeps its own check, and every one is its own course in the Course Library. You do not need all seven; you need the two or three whose verbs dominate the inventory you just wrote.",
+      "say": "Here is the whole AI-enabled Education Series toolbox on one slide: seven methods, one course each. And here is the rule that makes it usable: match the verb, not the topic. Ignore what the block is about and ask what you are DOING in it. Writing a status update is a writing verb, so the drafts method. Working out what the policy allows is an asking verb, so answers. A meeting that produces decisions nobody remembers is a capturing verb, so minutes. The topic will mislead you; a budget block might be writing, presenting, or explaining, and each verb takes a different method. Every method here keeps its own check, and every one is its own course in the Course Library. You do not need all seven; you need the two or three whose verbs dominate the inventory you just wrote.",
       "ask": {
         "q": "From the swap: where did you and your partner disagree on a match, and what was the disagreement actually about?",
         "expect": [

@@ -32,7 +32,7 @@
   no JS both variants render, each under its own label.
   Storage: decisions-page (last open page), decisions-mode ('class'|'web'), and
   decisions-progress-<section> booleans. The Reset control in the footer
-  clears every decisions-* key. Nothing typed is ever stored or sent.
+  clears every decisions-* key. Typed text stays on this device until Reset; nothing is ever sent.
   PRINT: "Print your takeaway" swaps the app for #printSummary via
   @media print — one clean page with the method, template, prompts,
   guardrails, tools, and a mode-aware notes block.
@@ -2370,7 +2370,7 @@ document.querySelectorAll('.copy-btn').forEach(function(b){
 
 /* ══════════ PROGRESS: per-page completion, saved in this browser only ══════════
    localStorage keys decisions-progress-<page> hold booleans; decisions-page holds
-   the last open page. Nothing typed is ever stored, nothing is ever sent. */
+   the last open page. Typed text stays on this device until Reset; nothing is ever sent. */
 var PROG_KEY = 'decisionsf-progress-';
 var PROG_SECTIONS = [
   { k:'prep',        no:'01', name:'Run this course' },

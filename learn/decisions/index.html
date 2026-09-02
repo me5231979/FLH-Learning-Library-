@@ -22,7 +22,7 @@
   no JS both variants render, each under its own label.
   Storage: decisions-page (last open page), decisions-mode ('class'|'web'), and
   decisions-progress-<section> booleans. The Reset control in the footer
-  clears every decisions-* key. Nothing typed is ever stored or sent.
+  clears every decisions-* key. Typed text stays on this device until Reset; nothing is ever sent.
   PRINT: "Print your takeaway" swaps the app for #printSummary via
   @media print — one clean page with the method, template, prompts,
   guardrails, tools, and a mode-aware notes block.
@@ -785,7 +785,7 @@ a.bb-dot:focus-visible{ outline:2px solid var(--vu-highlight); outline-offset:1p
           finish by laying out a real decision you own. In Deloitte&rsquo;s latest survey of 3,235 leaders, <b>60% named better decision-making</b> among the benefits they&rsquo;re seeing from AI<sup class="cite"><a href="#src1" aria-label="Source 1">1</a></sup>.</p>
         <p class="meta-line">Part of the AI-enabled Education Series &middot; A Managers Voyage course</p>
         <div class="lframe">
-          <span class="lf-chip"><b>Time</b data-duration-line>Self-paced: Core ~40 min &middot; Full ~40 min</span>
+          <span class="lf-chip"><b>Time</b data-duration-line>Self-paced: Core ~45 min &middot; Full ~50 min</span>
           <span class="lf-chip"><b>You&rsquo;ll leave with</b>A three-step method for testing a decision before you make it</span>
         </div>
         <ol class="hw-mini mode-web" aria-label="How this course works, self-paced">
@@ -2106,7 +2106,7 @@ document.querySelectorAll('.copy-btn').forEach(function(b){
 
 /* ══════════ PROGRESS: per-page completion, saved in this browser only ══════════
    localStorage keys decisions-progress-<page> hold booleans; decisions-page holds
-   the last open page. Nothing typed is ever stored, nothing is ever sent. */
+   the last open page. Typed text stays on this device until Reset; nothing is ever sent. */
 var PROG_KEY = 'decisions-progress-';
 var PROG_SECTIONS = [
   { k:'home',        no:'01', name:'Welcome' },

@@ -97,7 +97,7 @@
   <span class="bottombar__title" id="barTitle"></span>
   <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
   <div class="bottombar__ctrl">
-    <span class="bottombar__count" id="deckCount">1 / 15</span>
+    <span class="bottombar__count" id="deckCount">1 / 16</span>
     <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
     <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
@@ -218,6 +218,24 @@
       </ol>
     </div>
   </section>
+  <!-- ============ THE DATA RULE (shared card) ============ -->
+  <section class="slide on-dark" id="s-datarule" data-title="The data rule">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Before any tool &middot; every AI course</p>
+      <h2 class="h2" data-reveal>One rule, <em>every course</em>.</h2>
+      <p class="lead" data-reveal>Every AI course in this library teaches the same data rule, on the same card, so it is the one thing you never have to relearn.</p>
+      <div class="card" data-reveal id="datarule-card" style="margin-top:2rem;border-color:rgba(207,174,112,.5)" role="region" aria-label="The Vanderbilt data rule">
+        <span class="tag">The data rule &middot; the same card in every AI course</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Before anything goes into an AI tool, one three-second question: <b>what color is this?</b></p>
+        <div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟢</span><div><b>Green &middot; Public or generic</b><br><span class="muted">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟡</span><div><b>Yellow &middot; Internal work</b><br><span class="muted">Your drafts, internal announcements, budgets, grant drafts, internal policies. Approved Vanderbilt tools only, signed in with your VU account. Never a personal account or a random free site.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🔴</span><div><b>Red &middot; Private information about people</b><br><span class="muted">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop.</span></div></div>
+        <p style="margin:1rem 0 0" class="measure">Inside the light: Vanderbilt classifies data in levels, and each approved tool has a ceiling. <b>ChatGPT EDU</b> (VU account) is approved up to <b>Level 2</b>. <b>Amplify</b> and <b>Microsoft Copilot</b> (VU account) are approved for <b>Level 3</b> work. Children's names, photos, and records go in <b>no AI tool</b>.</p>
+        <p style="margin:.75rem 0 0" class="measure">The hard cases: ask "who is this about" before "how sensitive does it feel." A student's essay is about a student. Meeting notes naming colleagues are about colleagues until the names come out. A recommendation letter is about its subject.</p>
+        <p style="margin:.75rem 0 0" class="measure"><b>Never, in any tool:</b> Social Security numbers &middot; Student records or grades (FERPA) &middot; Health information (HIPAA) &middot; Children's names, photos, and records &middot; Salaries and personnel files &middot; Passwords and credentials &middot; Anything confidential about a real person.</p>
+        <p style="margin:.75rem 0 0;font-size:.85rem;opacity:.75">This card is the working shorthand for Vanderbilt IT's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</p>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ============ 3 · 01 THE COST OF BELIEF ============ -->
   <section class="slide on-light" id="s-cost" data-count data-title="The cost of belief">
@@ -641,6 +659,13 @@
         </div>
         <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
       </div>
+    
+      <div class="card" data-reveal id="tell-manager" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Tell your manager</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Commitments kept in private fade. Copy this two-line message, fill in the brackets from your card, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+        <p style="margin:0 0 .75rem;font-style:italic" class="measure">&ldquo;I just took Trust, Then Verify from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</p>
+        <button type="button" class="btn" data-copytext="I just took Trust, Then Verify from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button>
+      </div>
     </div>
   </section>
 
@@ -716,7 +741,7 @@
       </div>
     </div>
     <div class="footer__legal">
-      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning. Sources reviewed September 2026.</span>
       <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Trust, Then Verify · A Vanderbilt learning experience</span>
     </div>
   </div>
@@ -729,5 +754,19 @@
 
 <script src="assets/js/qrcode.js?v=1"></script>
 <script src="assets/js/main.js?v=1"></script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
+})();
+</script>
 </body>
 </html>

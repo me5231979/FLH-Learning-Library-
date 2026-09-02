@@ -485,8 +485,8 @@ details.pl-opt{ margin:0 0 18px; max-width:none; }
 .dim-bars{ display:flex; flex-direction:column; gap:14px; margin-top:26px; }
 .dim{ display:grid; grid-template-columns:130px 1fr 44px; gap:12px; align-items:center; }
 .dim .dl{ font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--tx2); text-align:right; }
-.dim .rail{ height:10px; border-radius:2px; background:rgba(207,174,112,.12); border:1px solid var(--bd); overflow:hidden; }
-.dim .fill{ height:100%; width:0%; background:var(--vu-gold); transition:width .38s ease-out; }
+.dim .rail{ display:block; height:10px; border-radius:2px; background:rgba(207,174,112,.12); border:1px solid var(--bd); overflow:hidden; }
+.dim .fill{ display:block; height:100%; width:0%; background:var(--vu-gold); transition:width .38s ease-out; }
 .dim .dv{ font-family:var(--cond); font-weight:700; font-size:.78rem; color:var(--tx3); }
 .sugg{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
 .sugg li{ list-style:none; display:flex; gap:12px; align-items:flex-start; color:var(--tx2); font-size:.9375rem;
@@ -1187,7 +1187,7 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
   .hero-video{ display:none !important; }
   .marquee .track{ animation:none !important; flex-wrap:wrap; width:auto; justify-content:center; }
   .marquee .set:nth-child(2){ display:none; }
-  .pbar .fill,.meter .fill,.dim .fill{ transition:none !important; }
+  .pbar .fill,.meter .fill,.dim .fill{ display:block; transition:none !important; }
 }
 </style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
@@ -1290,7 +1290,7 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
     </ul>
     <p class="lead closer">This is not a course about AI. It is <em>practice</em> for the way you will work next.</p>
     
-    <p class="meta-line" aria-label="60 to 90 minutes, in class or self-paced, nothing reported, progress stays in your browser"><b>60&ndash;90 minutes</b> &middot; in class or self-paced &middot; nothing reported &middot; progress stays in your browser</p><!-- [EDIT: hero lead above says "self-paced AI course" and is owner-dictated; decide whether it should also say "in class or self-paced"] -->
+    <p class="meta-line" aria-label="Core about 170 minutes, Full about 175 minutes, self-paced, nothing reported, progress stays in your browser"><b>Core ~170 &middot; Full ~175 min</b> &middot; in class or self-paced &middot; nothing reported &middot; progress stays in your browser</p><!-- [EDIT: hero lead above says "self-paced AI course" and is owner-dictated; decide whether it should also say "in class or self-paced"] -->
     <div class="cta-row">
       <a class="btn btn-gold" href="#start">Start learning
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -1305,8 +1305,8 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
 </section>
 
 <!-- ═══════════════════ TOPIC BAR ═══════════════════ -->
-<div class="topics th-light" role="img" aria-label="One system. Three tools. 60 to 90 minutes. Topics: prompt writing, next-word prediction, data safety, tool choice, myth-busting, responsible AI, everyday wins, FERPA-aware habits">
-  <div class="wrap"><p class="tlabel mono">One system. Three tools. 60&ndash;90 minutes.</p></div>
+<div class="topics th-light" role="img" aria-label="One system. Three tools. Core about 170 minutes, Full about 175 minutes, every module skippable. Topics: prompt writing, next-word prediction, data safety, tool choice, myth-busting, responsible AI, everyday wins, FERPA-aware habits">
+  <div class="wrap"><p class="tlabel mono">One system. Three tools. Core ~170 min &middot; Full ~175 min, every module skippable.</p></div>
   <div class="marquee" aria-hidden="true">
     <div class="track">
       <div class="set">
@@ -1545,6 +1545,11 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
         <span class="e-label">The research</span>
         <p><b>453 professionals, randomized: with ChatGPT they finished 40% faster, with quality rated 18% higher.</b> The machine in the video, and in the demo on the next page, is the one behind those numbers.</p>
         <span class="e-src">Noy &amp; Zhang, &ldquo;Experimental evidence on the productivity effects of generative artificial intelligence,&rdquo; <a href="https://www.science.org/doi/10.1126/science.adh2586" target="_blank" rel="noopener"><em>Science</em>, 2023</a></span>
+      </div>
+      <div class="evidence reveal">
+        <span class="e-label">The whole picture</span>
+        <p><b>Randomized trials measure the task in front of you, and the gains there are large. The largest field study so far, 25,000 Danish workers over two years, finds average time savings of about 3% of hours and no measurable change to earnings or hours.</b> The gap between those numbers is where the gains actually go: to workplaces that redesign the work and managers who actively support use. That is why this course teaches the method and the library pairs it with courses on workflow redesign and manager leadership.</p>
+        <span class="e-src">Humlum &amp; Vestergaard, &ldquo;Large Language Models, Small Labor Market Effects,&rdquo; <a href="https://www.nber.org/papers/w33777" target="_blank" rel="noopener">NBER Working Paper 33777</a></span>
       </div>
       <div class="reveal" style="margin-top:20px">
         <div class="yt reveal" data-embed="https://www.youtube-nocookie.com/embed/LPZh9BOjkQs" data-title="Watch: the best 8 minutes on how LLMs work">
@@ -2857,6 +2862,16 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
         <span>Done with this section</span></button>
     </div>
+    
+    <div class="evidence reveal" id="datarule-card" role="region" aria-label="The Vanderbilt data rule" style="border-color:rgba(207,174,112,.5)">
+      <span class="e-label">The data rule &middot; the same card in every AI course</span>
+      <p>Before anything goes into an AI tool, one three-second question: <b>what color is this?</b></p>
+      <div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid var(--bd)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟢</span><div><b>Green &middot; Public or generic</b><br><span style="color:var(--tx2)">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid var(--bd)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟡</span><div><b>Yellow &middot; Internal work</b><br><span style="color:var(--tx2)">Your drafts, internal announcements, budgets, grant drafts, internal policies. Approved Vanderbilt tools only, signed in with your VU account. Never a personal account or a random free site.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid var(--bd)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🔴</span><div><b>Red &middot; Private information about people</b><br><span style="color:var(--tx2)">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop.</span></div></div>
+      <p style="margin-top:14px">Inside the light: Vanderbilt classifies data in levels, and each approved tool has a ceiling. <b>ChatGPT EDU</b> (VU account) is approved up to <b>Level 2</b>. <b>Amplify</b> and <b>Microsoft Copilot</b> (VU account) are approved for <b>Level 3</b> work. Children's names, photos, and records go in <b>no AI tool</b>.</p>
+      <p>The hard cases: ask "who is this about" before "how sensitive does it feel." A student's essay is about a student. Meeting notes naming colleagues are about colleagues until the names come out. A recommendation letter is about its subject.</p>
+      <p><b>Never, in any tool:</b> Social Security numbers &middot; Student records or grades (FERPA) &middot; Health information (HIPAA) &middot; Children's names, photos, and records &middot; Salaries and personnel files &middot; Passwords and credentials &middot; Anything confidential about a real person.</p>
+      <span class="e-src">This card is the working shorthand for Vanderbilt IT's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</span>
+    </div>
     <div class="bridge reveal"><span class="b-label">Next</span><p>Guardrails set; now see what <em>stuck</em>.</p></div>
   </div>
 </section>
@@ -3145,6 +3160,14 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
       </div>
       <a class="btn btn-gold btn-sm" href="https://ecsr.fa.us2.oraclecloud.com:443/fscmUI/redwood/learner/learn/redirect?learningItemId=300003130886194&amp;learningItemType=ORA_CLASS" target="_blank" rel="noopener noreferrer">Open the course in Oracle Learning
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+    </div>
+    
+    <div class="moment" id="tell-manager">
+      <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v12H5.2L4 17.2V4z"/><path d="M8 9h8M8 12h5"/></svg></span>
+      <div><span class="m-label">Tell your manager</span>
+      <p>Commitments kept in private fade. Copy this two-line message, fill in the brackets from your commitment above, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+      <p><em>&ldquo;I just took Working Smarter from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</em></p>
+      <button type="button" class="btn btn-ghost btn-sm" data-copytext="I just took Working Smarter from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button></div>
     </div>
     <div class="md-wrap">
       <button type="button" class="btn btn-ghost btn-sm md-btn" data-prog="nextstep" aria-pressed="false">
@@ -5964,6 +5987,20 @@ Array.prototype.slice.call(document.querySelectorAll('.print-btn')).forEach(func
     window.print();
   });
 });
+})();
+</script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
 })();
 </script>
 </body>

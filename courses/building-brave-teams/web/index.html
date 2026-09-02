@@ -100,6 +100,7 @@
       <p class="eyebrow" data-reveal>Building Brave Teams · Vanderbilt</p>
       <h1 class="h-hero" data-reveal>You can meet.<br><em class="gold-text">Now say the hard thing.</em></h1>
       <p class="lead" data-reveal style="margin-top:1.5rem">Why does the smartest person in the room stay quiet? Why does a team see the flaw in the plan and let it ship anyway? And why do the best teams report <em>more</em> mistakes, not fewer? Today you get the mechanism, and the moves.</p>
+      <p class="eyebrow" data-reveal data-duration-line style="margin-top:1rem">Self-paced &middot; Core ~45 min &middot; Full ~60 min <span style="opacity:.7;text-transform:none;letter-spacing:0;font-family:inherit">(Core is the numbered sections, lab, and card; Full adds every Go deeper panel and the glossary)</span></p>
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
@@ -501,7 +502,7 @@
 
       <div class="card" data-reveal style="margin-top:2.5rem;border-color:rgba(207,174,112,.5)">
         <p class="eyebrow" style="margin-bottom:.35rem">Play · Build your Open quadrant</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> the window only moves two ways, disclosure and feedback, and this is your disclosure rep, the same decision you'll make with paper and stickies in the room. Nothing you tap leaves your screen.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the window only moves two ways, disclosure and feedback, and this is your disclosure rep, the same decision a team makes with paper and stickies in a workshop. Nothing you tap leaves your screen.</p>
         <ol style="margin:.9rem 0 .35rem;padding-left:1.2rem;font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.85);display:grid;gap:.35rem">
           <li><b>Tap a word once</b> (solid gold) to <b>claim it</b> for your Open pane, pick 5 to 6 you would stand behind in front of your team.</li>
           <li><b>Tap it again</b> (dashed outline) to mark it <b>true of you, but held back</b>; it files under Hidden, up to 3. A third tap clears it.</li>
@@ -538,6 +539,12 @@
           <p class="why"><b>Do this now:</b> Send your 5 to 6 words to two colleagues and ask each for two words back, from the same list. Sort what returns. That's the whole exercise, asynchronously.</p></div>
         </div>
       </details>
+    
+      <div class="card" data-reveal style="margin-top:1.5rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Get the feedback half</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Disclosure was yours to do alone. The Blind Spot only shrinks with feedback, so send these three questions to one colleague you trust and ask for straight answers. Their reply is the other half of the window.</p>
+        <button type="button" class="btn" data-copytext="Three questions from the Johari Window, and I would value straight answers:\n1. What is one strength you see in how I work that I may not see myself?\n2. What is one habit of mine that gets in the way, that you suspect I don't notice?\n3. What is one thing you wish I would say out loud more often?">Copy the three questions</button>
+      </div>
     </div>
   </section>
 
@@ -711,6 +718,13 @@
         </div>
         <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
       </div>
+    
+      <div class="card" data-reveal id="tell-manager" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Tell your manager</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Commitments kept in private fade. Copy this two-line message, fill in the brackets from your card, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+        <p style="margin:0 0 .75rem;font-style:italic" class="measure">&ldquo;I just took Building Brave Teams: Self-Paced from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</p>
+        <button type="button" class="btn" data-copytext="I just took Building Brave Teams: Self-Paced from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button>
+      </div>
     </div>
   </section>
 
@@ -847,7 +861,7 @@
       </div>
     </div>
     <div class="footer__legal">
-      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning. Sources reviewed September 2026.</span>
       <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Building Brave Teams · A Vanderbilt learning experience</span>
     </div>
   </div>
@@ -860,5 +874,19 @@
 
 <script src="../assets/js/qrcode.js?v=1"></script>
 <script src="../assets/js/main.js?v=11"></script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -163,7 +163,7 @@ body.fac-hide .facshow { display: inline-flex; }
   <span class="bottombar__title" id="barTitle"></span>
   <div class="dots" id="dots" role="navigation" aria-label="Slide navigation"></div>
   <div class="bottombar__ctrl">
-    <span class="bottombar__count" id="deckCount">1 / 13</span>
+    <span class="bottombar__count" id="deckCount">1 / 14</span>
     <button id="deckPrev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
     <button id="deckNext" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
   </div>
@@ -302,6 +302,24 @@ body.fac-hide .facshow { display: inline-flex; }
     </div>
     <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 1 min · Core skip</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Orient: principle, practice, boundary.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;The arc: first the line, prep versus outsource. Then the craft: your notes into feedback worth giving. Then the boundary: signals that make you a better coach, and the ones that make you a surveillance program.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three items in one breath each.</li></ol></div><p class="facnote__meta"><b>Validate:</b> None needed.</p><p class="facnote__meta"><b>Watch for:</b> Don't teach here.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;The line first, because everything else depends on it.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: skip; the deck carries it.</p></aside>
   </section>
+  <!-- ============ THE DATA RULE (shared card) ============ -->
+  <section class="slide on-dark" id="s-datarule" data-title="The data rule">
+    <div class="wrap">
+      <p class="eyebrow" data-reveal>Before any tool &middot; every AI course</p>
+      <h2 class="h2" data-reveal>One rule, <em>every course</em>.</h2>
+      <p class="lead" data-reveal>Every AI course in this library teaches the same data rule, on the same card, so it is the one thing you never have to relearn.</p>
+      <div class="card" data-reveal id="datarule-card" style="margin-top:2rem;border-color:rgba(207,174,112,.5)" role="region" aria-label="The Vanderbilt data rule">
+        <span class="tag">The data rule &middot; the same card in every AI course</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Before anything goes into an AI tool, one three-second question: <b>what color is this?</b></p>
+        <div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟢</span><div><b>Green &middot; Public or generic</b><br><span class="muted">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟡</span><div><b>Yellow &middot; Internal work</b><br><span class="muted">Your drafts, internal announcements, budgets, grant drafts, internal policies. Approved Vanderbilt tools only, signed in with your VU account. Never a personal account or a random free site.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🔴</span><div><b>Red &middot; Private information about people</b><br><span class="muted">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop.</span></div></div>
+        <p style="margin:1rem 0 0" class="measure">Inside the light: Vanderbilt classifies data in levels, and each approved tool has a ceiling. <b>ChatGPT EDU</b> (VU account) is approved up to <b>Level 2</b>. <b>Amplify</b> and <b>Microsoft Copilot</b> (VU account) are approved for <b>Level 3</b> work. Children's names, photos, and records go in <b>no AI tool</b>.</p>
+        <p style="margin:.75rem 0 0" class="measure">The hard cases: ask "who is this about" before "how sensitive does it feel." A student's essay is about a student. Meeting notes naming colleagues are about colleagues until the names come out. A recommendation letter is about its subject.</p>
+        <p style="margin:.75rem 0 0" class="measure"><b>Never, in any tool:</b> Social Security numbers &middot; Student records or grades (FERPA) &middot; Health information (HIPAA) &middot; Children's names, photos, and records &middot; Salaries and personnel files &middot; Passwords and credentials &middot; Anything confidential about a real person.</p>
+        <p style="margin:.75rem 0 0;font-size:.85rem;opacity:.75">This card is the working shorthand for Vanderbilt IT's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</p>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ============ 3 · 01 PREP, NOT OUTSOURCE ============ -->
   <section class="slide on-light" id="s-prep" data-count data-title="Prep, not outsource">
@@ -518,7 +536,14 @@ body.fac-hide .facshow { display: inline-flex; }
         <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
       </div>
     </div>
-    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated prep commitment for a real conversation. The transfer artifact and Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every manager in this room has a conversation coming. Name it, role and topic, never a name. Pick the prep move: the rehearsal, the SBI draft, the notes mine, or the themes move. Then the honest field: what you will NOT do, because you know your failure mode. And the date. A named conversation with a chosen prep and a date is a practice change; everything less is a good intention.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: one conversation, one prep move, one date.</li><li>Repeat the privacy norm before anyone types.</li><li>Give quiet time; circulate for stuck learners: everyone owes someone a conversation.</li><li>Point at field 3, the NOT field, as the honest one.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the prep, and what's your plan for that?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time before the meeting</li><li>The conversation feels too small to prep</li><li>Fear of over-scripting</li></ul><p class="facnote__mini">Respond: No time: 'The rehearsal is ten minutes; the unprepped version of this conversation costs more.' Too small: 'Small conversations are where the habit gets built cheap.' Over-scripting: 'The prep ends when the door closes; the card literally says so.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One conversation is about to get a better-prepared, more human version of you. That's the entire promise of the tool.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields).</p><p class="facnote__meta"><b>Watch for:</b> Vague conversations ('my team, generally'). Push to ONE role and ONE topic.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf, then the send-off.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 5 min · Core 5</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated prep commitment for a real conversation. The transfer artifact and Level 3 seed.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Every manager in this room has a conversation coming. Name it, role and topic, never a name. Pick the prep move: the rehearsal, the SBI draft, the notes mine, or the themes move. Then the honest field: what you will NOT do, because you know your failure mode. And the date. A named conversation with a chosen prep and a date is a practice change; everything less is a good intention.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: one conversation, one prep move, one date.</li><li>Repeat the privacy norm before anyone types.</li><li>Give quiet time; circulate for stuck learners: everyone owes someone a conversation.</li><li>Point at field 3, the NOT field, as the honest one.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;What's most likely to make you skip the prep, and what's your plan for that?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>No time before the meeting</li><li>The conversation feels too small to prep</li><li>Fear of over-scripting</li></ul><p class="facnote__mini">Respond: No time: 'The rehearsal is ten minutes; the unprepped version of this conversation costs more.' Too small: 'Small conversations are where the habit gets built cheap.' Over-scripting: 'The prep ends when the door closes; the card literally says so.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">One conversation is about to get a better-prepared, more human version of you. That's the entire promise of the tool.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all four fields).</p><p class="facnote__meta"><b>Watch for:</b> Vague conversations ('my team, generally'). Push to ONE role and ONE topic.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Reference shelf, then the send-off.&rdquo;</p>
+      <div class="card" data-reveal id="tell-manager" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Tell your manager</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Commitments kept in private fade. Copy this two-line message, fill in the brackets from your card, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+        <p style="margin:0 0 .75rem;font-style:italic" class="measure">&ldquo;I just took Feedback, Ready, Facilitator Edition from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</p>
+        <button type="button" class="btn" data-copytext="I just took Feedback, Ready, Facilitator Edition from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button>
+      </div>
+    </div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: protect at full length; never cut the capstone.</p></aside>
   </section>
 
   <!-- ============ 9 · GLOSSARY ============ -->
@@ -589,7 +614,7 @@ body.fac-hide .facshow { display: inline-flex; }
       </div>
     </div>
     <div class="footer__legal">
-      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning. Sources reviewed September 2026.</span>
       <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Feedback, Ready · Facilitator Edition · learner link: <a href="../../ai-coaching-feedback/" style="color:rgba(255,255,255,.7);text-decoration:underline">flh-learning-library.vercel.app/ai-coaching-feedback/</a></span>
     </div>
   </div>
@@ -620,6 +645,20 @@ body.fac-hide .facshow { display: inline-flex; }
   });
   show.addEventListener('click', function () { set(false); });
   try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
 })();
 </script>
 </body>

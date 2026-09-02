@@ -34,6 +34,26 @@
     padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
     color: rgba(255,255,255,.85); }
   .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+
+/* Prompt Grader (shared with Working Smarter) */
+.grader textarea{ font:inherit; font-size:.95rem; color:inherit; background:rgba(0,0,0,.04); border:1px solid rgba(0,0,0,.18); border-radius:6px; padding:10px 12px; width:100%; min-height:130px; resize:vertical; }
+.on-dark .grader textarea{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.25); color:#fff; }
+.grader .gr-nudge{ display:none; margin:.5rem 0 0; opacity:.8; }
+.grader .gr-nudge.show{ display:block; }
+.grade-out{ margin-top:1rem; }
+.grade-badge{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.grade-letter{ width:68px; height:68px; border-radius:8px; display:grid; place-items:center; font-family:var(--font-condensed,'Antonio',sans-serif); font-weight:700; font-size:2.3rem; color:#1C1C1C; background:#CFAE70; }
+.grade-badge .gword{ font-weight:600; font-size:1.1rem; }
+.grade-badge .gword .soft{ opacity:.65; font-weight:400; }
+.grade-badge .gsub{ margin:0; opacity:.85; max-width:420px; }
+.dim-bars{ display:flex; flex-direction:column; gap:8px; margin-top:1rem; }
+.dim{ display:grid; grid-template-columns:104px 1fr 36px; gap:10px; align-items:center; }
+.dim .dl{ font-family:var(--font-condensed,'Antonio',sans-serif); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; text-align:right; opacity:.8; }
+.dim .rail{ display:block; height:9px; border-radius:2px; background:rgba(207,174,112,.15); border:1px solid rgba(207,174,112,.4); overflow:hidden; }
+.dim .fill{ display:block; height:100%; width:0%; background:#CFAE70; transition:width .38s ease-out; }
+.dim .dv{ font-family:var(--font-condensed,'Antonio',sans-serif); font-weight:700; font-size:.78rem; opacity:.7; }
+.sugg{ margin:1rem 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.sugg li{ list-style:none; padding:10px 12px; border-radius:6px; border:1px solid rgba(207,174,112,.4); }
 </style>
 
 <style>
@@ -491,6 +511,16 @@ body.fac-hide .facshow { display: inline-flex; }
     </div>
     <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 2</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the traffic light as a three-second reflex (green/yellow/red) plus the fact-checking habit: the session's entire safety payload.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;AI is wonderful for drafts, ideas, summaries, and explanations. It is not the place for private information about real people, and it's not a decision-maker. So here's the only safety system you need, and it takes three seconds: before you paste anything, ask: what color is this? Green: public or generic, go ahead. Yellow: internal work content: fine, but only in Vanderbilt-approved tools, like Copilot signed in with your VU account. Never a random free website. Red: private information about real people: names with grades, health details, personnel issues. That never goes in. Describe the situation without the names, or don't use AI for it. Let's practice until it's a reflex.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Walk the three cards slowly; this is the most important slide of the hour.</li><li>Make yellow concrete: name the approved tool (Copilot with VU sign-in) and the anti-example (a random free website).</li><li>Make red vivid: names with grades, health, personnel issues. The fix: describe the situation without names, or don't.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;Popcorn round: name a real task from your week, and the room calls the color.&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>Easy greens: icebreakers, explanations, generic drafts</li><li>Yellows: internal announcements, meeting notes</li><li>A juicy borderline: 'summarize my performance review notes'</li></ul><p class="facnote__mini">Respond: Let the room rule; only referee. On the borderline one: 'Hear the debate? That hesitation is the skill working. When in doubt: leave the names and details out: or leave it out entirely.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Three colors, three seconds, plus one more habit: check any fact that matters, because AI sounds confident even when it's wrong. That's the entire safety course.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; quick check correct; the popcorn round shows the room calling colors without your help.</p><p class="facnote__meta"><b>Watch for:</b> The borderline debates ARE the learning: let two run for thirty seconds each. And keep the tone empowering, not scary: the light exists so they can use AI confidently, not so they fear it.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Time to drill it. Five situations: call the color.&rdquo;</p>
       <p data-reveal style="font-size:.85rem;opacity:.75;margin-top:1.5rem">The traffic light is this course's working shorthand for Vanderbilt's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</p>
+    
+      <div class="card" data-reveal id="datarule-card" style="margin-top:2rem;border-color:rgba(207,174,112,.5)" role="region" aria-label="The Vanderbilt data rule">
+        <span class="tag">The data rule &middot; the same card in every AI course</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Before anything goes into an AI tool, one three-second question: <b>what color is this?</b></p>
+        <div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟢</span><div><b>Green &middot; Public or generic</b><br><span class="muted">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟡</span><div><b>Yellow &middot; Internal work</b><br><span class="muted">Your drafts, internal announcements, budgets, grant drafts, internal policies. Approved Vanderbilt tools only, signed in with your VU account. Never a personal account or a random free site.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🔴</span><div><b>Red &middot; Private information about people</b><br><span class="muted">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop.</span></div></div>
+        <p style="margin:1rem 0 0" class="measure">Inside the light: Vanderbilt classifies data in levels, and each approved tool has a ceiling. <b>ChatGPT EDU</b> (VU account) is approved up to <b>Level 2</b>. <b>Amplify</b> and <b>Microsoft Copilot</b> (VU account) are approved for <b>Level 3</b> work. Children's names, photos, and records go in <b>no AI tool</b>.</p>
+        <p style="margin:.75rem 0 0" class="measure">The hard cases: ask "who is this about" before "how sensitive does it feel." A student's essay is about a student. Meeting notes naming colleagues are about colleagues until the names come out. A recommendation letter is about its subject.</p>
+        <p style="margin:.75rem 0 0" class="measure"><b>Never, in any tool:</b> Social Security numbers &middot; Student records or grades (FERPA) &middot; Health information (HIPAA) &middot; Children's names, photos, and records &middot; Salaries and personnel files &middot; Passwords and credentials &middot; Anything confidential about a real person.</p>
+        <p style="margin:.75rem 0 0;font-size:.85rem;opacity:.75">This card is the working shorthand for Vanderbilt IT's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</p>
+      </div>
     </div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: three cards + trainer stay (this is the safety payload), quick check stays, popcorn round becomes two examples.</p></aside>
   </section>
 
@@ -715,7 +745,18 @@ body.fac-hide .facshow { display: inline-flex; }
         </div>
       </details>
     </div>
-    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Every learner assembles a real, copyable prompt for their real chore: and ideally runs it in the room. This is the session's conversion moment.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole recipe for a good request. Tell it the job: draft an email, summarize this, give me ideas, explain this. Give it your details: who it's for, what it's about, what it should sound like. And say what shape you want back: short, bullets, step by step. Job, details, shape. That's everything. Build yours right now, for the chore you just picked: and when you hit assemble, you're holding your first prompt. The empty box, the hardest part of starting? You just left with it filled in.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the recipe in one line: the job, your details, the shape. That's the whole anatomy of a good request.</li><li>Give quiet time on the builder: pick the job, type the details for THEIR chore, pick the shape, assemble, copy.</li><li>Circulate for the stuck: their details just need who it's for, what it's about, how it should sound.</li><li>If devices allow, run the in-room first try: paste into the approved tool, send, hands up when answers arrive.</li><li>Have two volunteers read results aloud: deliberately including one mediocre one, improved live with one follow-up.</li><li>Point at the Go deeper: where to go (Copilot, VU sign-in) and the two moves (add a detail; check what matters).</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For the volunteers who ran it: read us what came back. Was it good, or does it need the follow-up?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A surprisingly good draft, delight in the voice</li><li>A mediocre one, which is the gold: improve it live</li><li>Someone got a wrong detail, which is even better: the checking lesson, live</li></ul><p class="facnote__mini">Respond: For the good one: 'Four minutes ago that was a blank box.' For the mediocre one: ask the room what detail to add, run the follow-up live, watch it improve. For the wrong detail: 'And THAT is why we check what matters: you just saw the whole course in one answer.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Job, details, shape: then add a detail if it's close, and check it if it matters. You now know everything this course has to teach; the rest is reps.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has an assembled, copied prompt. If devices allowed, most ran it. This is the objective-5 evidence and the session's core outcome.</p><p class="facnote__meta"><b>Watch for:</b> Perfectionism stalling the builder. 'good enough, send it' is the coaching. And celebrate the mediocre live result loudly: improving it with one follow-up is a better lesson than a perfect first answer.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quick knowledge check, then you make it official.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: recipe in one line, builder at full length (protect it, it IS the outcome), in-room try only if devices are instant, one volunteer read-aloud.</p></aside>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 9 min · Core 6</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Every learner assembles a real, copyable prompt for their real chore: and ideally runs it in the room. This is the session's conversion moment.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Here's the whole recipe for a good request. Tell it the job: draft an email, summarize this, give me ideas, explain this. Give it your details: who it's for, what it's about, what it should sound like. And say what shape you want back: short, bullets, step by step. Job, details, shape. That's everything. Build yours right now, for the chore you just picked: and when you hit assemble, you're holding your first prompt. The empty box, the hardest part of starting? You just left with it filled in.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Teach the recipe in one line: the job, your details, the shape. That's the whole anatomy of a good request.</li><li>Give quiet time on the builder: pick the job, type the details for THEIR chore, pick the shape, assemble, copy.</li><li>Circulate for the stuck: their details just need who it's for, what it's about, how it should sound.</li><li>If devices allow, run the in-room first try: paste into the approved tool, send, hands up when answers arrive.</li><li>Have two volunteers read results aloud: deliberately including one mediocre one, improved live with one follow-up.</li><li>Point at the Go deeper: where to go (Copilot, VU sign-in) and the two moves (add a detail; check what matters).</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;For the volunteers who ran it: read us what came back. Was it good, or does it need the follow-up?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>A surprisingly good draft, delight in the voice</li><li>A mediocre one, which is the gold: improve it live</li><li>Someone got a wrong detail, which is even better: the checking lesson, live</li></ul><p class="facnote__mini">Respond: For the good one: 'Four minutes ago that was a blank box.' For the mediocre one: ask the room what detail to add, run the follow-up live, watch it improve. For the wrong detail: 'And THAT is why we check what matters: you just saw the whole course in one answer.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Job, details, shape: then add a detail if it's close, and check it if it matters. You now know everything this course has to teach; the rest is reps.</p></div><p class="facnote__meta"><b>Validate:</b> Every learner has an assembled, copied prompt. If devices allowed, most ran it. This is the objective-5 evidence and the session's core outcome.</p><p class="facnote__meta"><b>Watch for:</b> Perfectionism stalling the builder. 'good enough, send it' is the coaching. And celebrate the mediocre live result loudly: improving it with one follow-up is a better lesson than a perfect first answer.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Quick knowledge check, then you make it official.&rdquo;</p>
+      <div class="card grader" data-reveal id="promptGrader" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Grade it &middot; the same grader as Working Smarter</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Paste the prompt you just assembled. The grader checks the four parts a strong request has (context, role, an invitation to ask questions, a named task) plus how concrete the wording is, and gives you three fixes. Apply one and grade again; the second grade is the learning.</p>
+        <textarea id="grText" rows="6" aria-label="Prompt to grade" placeholder="Paste your prompt here, then press Grade."></textarea>
+        <div style="margin-top:.75rem;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button type="button" class="btn" id="grBtn">Grade my prompt</button>
+          <p class="gr-nudge" id="grNudge">Give me a prompt to chew on first. Even one sentence works.</p>
+        </div>
+        <div class="grade-out" id="grOut" role="status" aria-live="polite"></div>
+      </div>
+    </div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: recipe in one line, builder at full length (protect it, it IS the outcome), in-room try only if devices are instant, one volunteer read-aloud.</p></aside>
   </section>
 
   <!-- ============ 9 · RECAP QUIZ ============ -->
@@ -778,7 +819,14 @@ body.fac-hide .facshow { display: inline-flex; }
         <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
       </div>
     </div>
-    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: the chore, the superpower, the day. The transfer artifact and the 7-day pulse's target.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Name the chore: the real one. Pick the superpower. Pick the day, and I'll tell you now: today beats tomorrow, and tomorrow beats 'this week.' Your prompt is already built; the card just puts a date on it. That's the entire distance between someone who heard about AI and someone who uses it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: reading about AI changes nothing; one real try changes everything.</li><li>Give quiet time: chore typed, superpower picked, day picked, card built and copied.</li><li>Push for 'today' or 'tomorrow': first tries scheduled for 'someday this week' evaporate.</li><li>Remind: nothing typed is saved or sent; the card is theirs.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all three parts). The card plus the 7-day pulse is the evidence chain, and the pulse's first-try count is the program metric.</p><p class="facnote__meta"><b>Watch for:</b> The chore quietly shrinking to something trivial. The best first try is the chore they named in Idea 04: the one they actually resent.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. Go time.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: build the card in sixty focused seconds; it survives every cut.</p></aside>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 4 min · Core 1</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Convert the session into one dated commitment: the chore, the superpower, the day. The transfer artifact and the 7-day pulse's target.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Name the chore: the real one. Pick the superpower. Pick the day, and I'll tell you now: today beats tomorrow, and tomorrow beats 'this week.' Your prompt is already built; the card just puts a date on it. That's the entire distance between someone who heard about AI and someone who uses it.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Frame it: reading about AI changes nothing; one real try changes everything.</li><li>Give quiet time: chore typed, superpower picked, day picked, card built and copied.</li><li>Push for 'today' or 'tomorrow': first tries scheduled for 'someday this week' evaporate.</li><li>Remind: nothing typed is saved or sent; the card is theirs.</li></ol></div><p class="facnote__meta"><b>Validate:</b> Every learner builds a card (all three parts). The card plus the 7-day pulse is the evidence chain, and the pulse's first-try count is the program metric.</p><p class="facnote__meta"><b>Watch for:</b> The chore quietly shrinking to something trivial. The best first try is the chore they named in Idea 04: the one they actually resent.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;Last slide. Go time.&rdquo;</p>
+      <div class="card" data-reveal id="tell-manager" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Tell your manager</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Commitments kept in private fade. Copy this two-line message, fill in the brackets from your card, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+        <p style="margin:0 0 .75rem;font-style:italic" class="measure">&ldquo;I just took Start Smarter: Facilitator Edition from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</p>
+        <button type="button" class="btn" data-copytext="I just took Start Smarter: Facilitator Edition from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button>
+      </div>
+    </div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: build the card in sixty focused seconds; it survives every cut.</p></aside>
   </section>
 
   <!-- ============ 11 · CLOSING ============ -->
@@ -830,7 +878,7 @@ body.fac-hide .facshow { display: inline-flex; }
       </div>
     </div>
     <div class="footer__legal">
-      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning. Sources reviewed September 2026.</span>
       <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Start Smarter · Facilitator Edition · learner link: <a href="../../../courses/start-smarter/" style="color:rgba(255,255,255,.7);text-decoration:underline">flh-learning-library.vercel.app/courses/start-smarter/</a></span>
     </div>
   </div>
@@ -861,6 +909,96 @@ body.fac-hide .facshow { display: inline-flex; }
   });
   show.addEventListener('click', function () { set(false); });
   try { if (localStorage.getItem(KEY) === '1') set(true); } catch (e) {}
+})();
+</script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
+})();
+</script>
+
+<script>
+/* Prompt Grader: the same scoring as Working Smarter, so a grade means the same thing in every course */
+(function(){
+  var ta = document.getElementById('grText'), btn = document.getElementById('grBtn'),
+      out = document.getElementById('grOut'), nudge = document.getElementById('grNudge');
+  if(!ta || !btn || !out) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+  var TIPS = {
+    context:{ label:'Context', tip:'<b>Add context.</b> Who is this for, what is going on, what is the deadline? The AI only knows what you tell it.' },
+    role:{ label:'Role', tip:'<b>Give it a job.</b> Start with "You are a...": an editor, an analyst, a coach. A role reshapes the entire answer.' },
+    interview:{ label:'Interview', tip:'<b>Invite questions first.</b> Add "before you answer, ask me up to five clarifying questions, then wait." The gaps surface before the draft instead of after.' },
+    task:{ label:'Task', tip:'<b>Name the deliverable.</b> Say what to produce and how it should look: "a 200-word email," "a table," "three bullet options."' },
+    specificity:{ label:'Specificity', tip:'<b>Swap vague for concrete.</b> Replace "some," "stuff," and "good" with how many, which ones, and by when.' }
+  };
+  var EXTRA = [
+    '<b>Ask for options.</b> "Give me three versions" costs nothing and triples your odds of a keeper.',
+    '<b>Add guardrails or an example.</b> "Avoid jargon," "no more than 150 words," or paste a sample you like.',
+    '<b>Flag uncertainty.</b> Ask it to say clearly when it is not sure. It will, if invited.'
+  ];
+  function grade(t){
+    var words = t.split(/\s+/).filter(Boolean), n = words.length, s = {};
+    var ctxBase = n >= 60 ? 90 : n >= 35 ? 75 : n >= 20 ? 55 : n >= 10 ? 35 : 15;
+    if(/\b(audience|for (our|my|the) |background|we are|i work|deadline|goal|because|so that)\b/i.test(t)) ctxBase = Math.min(100, ctxBase + 15);
+    s.context = ctxBase;
+    s.role = /\b(you are|you're|act as|as an? [a-z]+|imagine you|pretend (you|to be)|take the role)\b/i.test(t) ? 100 : 8;
+    s.interview = /\b(ask me|clarifying questions?|interview me|question at a time|before (you )?answer(ing)?|wait for my)\b/i.test(t) ? 100 : 12;
+    var taskScore = /\b(write|draft|create|summari[sz]e|list|make|build|explain|rewrite|analy[sz]e|give me|generate|translate|compare|outline|map|review|edit)\b/i.test(t) ? 70 : 15;
+    if(/\b(bullet|list|table|step[- ]?by[- ]?step|steps|outline|heading|numbered|json|paragraph|memo|email|summary|one[- ]pager?|page|section|word(s)? or (less|fewer)|under \d+|\d+ words)\b/i.test(t)) taskScore += 30;
+    s.task = clamp(taskScore, 5, 100);
+    var spec = 60;
+    var vague = t.match(/\b(some|stuff|things?|good|nice|better|great|a lot|lots|maybe|whatever|etc\.?)\b/gi);
+    if(vague) spec -= vague.length * 12;
+    if(/\d/.test(t)) spec += 14;
+    if(n >= 25) spec += 10;
+    if(/\b(don'?t|do not|avoid|must|only|no more than|at most|under \d|limit|fewer than|exclude|without|e\.g\.|for example|example:|such as|in the style|tone)\b/i.test(t)) spec += 12;
+    var isQuestionOnly = /\?\s*$/.test(t.trim()) && !/\b(write|draft|create|summarize|list|make|build|explain|rewrite|analyze)\b/i.test(t);
+    if(isQuestionOnly) spec -= 15;
+    s.specificity = clamp(Math.round(spec), 5, 100);
+    var overall = s.context*.25 + s.role*.15 + s.interview*.15 + s.task*.25 + s.specificity*.2;
+    if(n < 6) overall = Math.min(overall, 30);
+    var letter = overall >= 85 ? 'A' : overall >= 70 ? 'B' : overall >= 55 ? 'C' : overall >= 40 ? 'D' : 'F';
+    return { scores:s, overall:Math.round(overall), letter:letter };
+  }
+  var WORDS = { A:'Outstanding prompt.', B:'Strong prompt.', C:'Decent bones.', D:'Needs seasoning.', F:'A whisper, not a prompt.' };
+  var SUBS = {
+    A:'Context, role, interview, task: all covered. Take it straight into your tool.',
+    B:'You would get a useful answer; one or two tweaks below make it excellent.',
+    C:'The AI will guess at too much. The suggestions below are quick wins.',
+    D:'Right idea, not enough to work with yet. Two minutes of detail pays off.',
+    F:'The AI will fill every gap with assumptions. Give it something to hold onto.'
+  };
+  btn.addEventListener('click', function(){
+    var t = ta.value.trim();
+    if(t.length < 4){ if(nudge) nudge.classList.add('show'); out.innerHTML = ''; ta.focus(); return; }
+    if(nudge) nudge.classList.remove('show');
+    var g = grade(t);
+    var keys = ['context','role','interview','task','specificity'];
+    var weak = keys.slice().sort(function(a,b){ return g.scores[a]-g.scores[b]; }).filter(function(k){ return g.scores[k] < 70; }).slice(0,3);
+    var tips = weak.map(function(k){ return TIPS[k].tip; });
+    var e = 0; while(tips.length < 3 && e < EXTRA.length){ tips.push(EXTRA[e++]); }
+    var h = '<div class="grade-badge"><span class="grade-letter">' + g.letter + '</span><div>';
+    h += '<div class="gword">' + WORDS[g.letter] + ' <span class="soft">' + g.overall + '/100</span></div>';
+    h += '<p class="gsub">' + SUBS[g.letter] + '</p></div></div><div class="dim-bars">';
+    keys.forEach(function(k){ h += '<div class="dim"><span class="dl">' + TIPS[k].label + '</span><span class="rail"><span class="fill" data-w="' + g.scores[k] + '"></span></span><span class="dv">' + g.scores[k] + '</span></div>'; });
+    h += '</div><ul class="sugg">';
+    tips.forEach(function(tp){ h += '<li><span>' + tp + '</span></li>'; });
+    h += '</ul>';
+    out.innerHTML = h;
+    var fills = out.querySelectorAll('.dim .fill');
+    var apply = function(){ fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; }); };
+    if(reduce){ apply(); } else { requestAnimationFrame(function(){ requestAnimationFrame(apply); }); }
+  });
 })();
 </script>
 </body>

@@ -97,6 +97,7 @@
       <p class="eyebrow" data-reveal>Navigating Difficult Conversations · Vanderbilt · Manager Voyage</p>
       <h1 class="h-hero" data-reveal>Say the hard thing,<br><em class="gold-text">and keep the trust.</em></h1>
       <p class="lead" data-reveal style="margin-top:1.5rem">You already know what needs to be said. This session is about how: a shared, research-backed toolkit for the conversations you've been putting off.</p>
+      <p class="eyebrow" data-reveal data-duration-line style="margin-top:1rem">Self-paced &middot; Core ~40 min &middot; Full ~55 min <span style="opacity:.7;text-transform:none;letter-spacing:0;font-family:inherit">(Core is the numbered sections, lab, and card; Full adds every Go deeper panel and the glossary)</span></p>
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
@@ -400,7 +401,7 @@
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
-          <div><h3>In practice</h3><p>Pair with a neighbor. One of you reads the opener on this slide aloud; the other listens for one thing only: did it feel safe, or did it feel like an accusation? Then swap. The listener's ear, not the speaker's intent, is the measure. You'll use the same test on your own opener in the capstone.</p></div>
+          <div><h3>In practice</h3><p>Read the opener on this slide aloud and record it on your phone. Play it back and listen for one thing only: did it feel safe, or did it feel like an accusation? The listener's ear, not the speaker's intent, is the measure, and a recording lets you be the listener. You'll use the same test on your own opener in the capstone.</p></div>
           <div class="deeper__ask"><h3><span class="mode">On your own</span></h3>
           <p class="why"><b>Do this now:</b> Say your opener out loud to the mirror or record it on your phone, then listen as the receiver. Same test: safe, or accusation?</p></div>
         </div>
@@ -663,6 +664,13 @@
         </div>
         <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
       </div>
+    
+      <div class="card" data-reveal id="tell-manager" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Tell your manager</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Commitments kept in private fade. Copy this two-line message, fill in the brackets from your card, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+        <p style="margin:0 0 .75rem;font-style:italic" class="measure">&ldquo;I just took Navigating Difficult Conversations: Self-Paced from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</p>
+        <button type="button" class="btn" data-copytext="I just took Navigating Difficult Conversations: Self-Paced from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button>
+      </div>
     </div>
   </section>
 
@@ -742,7 +750,7 @@
       </div>
     </div>
     <div class="footer__legal">
-      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning. Sources reviewed September 2026.</span>
       <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Navigating Difficult Conversations · A Vanderbilt learning experience</span>
     </div>
   </div>
@@ -755,5 +763,19 @@
 
 <script src="../assets/js/qrcode.js?v=1"></script>
 <script src="../assets/js/main.js?v=12"></script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
+})();
+</script>
 </body>
 </html>

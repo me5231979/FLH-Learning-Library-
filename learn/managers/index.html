@@ -446,8 +446,8 @@ details.deeper .d-body b{ color:var(--tx); font-weight:600; }
 .dim-bars{ display:flex; flex-direction:column; gap:14px; margin-top:26px; }
 .dim{ display:grid; grid-template-columns:130px 1fr 44px; gap:12px; align-items:center; }
 .dim .dl{ font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--tx2); text-align:right; }
-.dim .rail{ height:10px; border-radius:2px; background:rgba(207,174,112,.12); border:1px solid var(--bd); overflow:hidden; }
-.dim .fill{ height:100%; width:0%; background:var(--vu-gold); transition:width .38s ease-out; }
+.dim .rail{ display:block; height:10px; border-radius:2px; background:rgba(207,174,112,.12); border:1px solid var(--bd); overflow:hidden; }
+.dim .fill{ display:block; height:100%; width:0%; background:var(--vu-gold); transition:width .38s ease-out; }
 .dim .dv{ font-family:var(--cond); font-weight:700; font-size:.78rem; color:var(--tx3); }
 .sugg{ margin-top:26px; display:flex; flex-direction:column; gap:12px; }
 .sugg li{ list-style:none; display:flex; gap:12px; align-items:flex-start; color:var(--tx2); font-size:.9375rem;
@@ -800,7 +800,7 @@ footer{ background:var(--vu-black); color:#fff; border-top:1px solid rgba(207,17
   .hero-video{ display:none !important; }
   .marquee .track{ animation:none !important; flex-wrap:wrap; width:auto; justify-content:center; }
   .marquee .set:nth-child(2){ display:none; }
-  .pbar .fill,.meter .fill,.dim .fill{ transition:none !important; }
+  .pbar .fill,.meter .fill,.dim .fill{ display:block; transition:none !important; }
 }
 </style>
 <style>

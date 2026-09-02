@@ -34,6 +34,26 @@
     padding: .3rem .65rem; border-radius: 999px; border: 1px solid rgba(207,174,112,.55);
     color: rgba(255,255,255,.85); }
   .skillpill--core { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+
+/* Prompt Grader (shared with Working Smarter) */
+.grader textarea{ font:inherit; font-size:.95rem; color:inherit; background:rgba(0,0,0,.04); border:1px solid rgba(0,0,0,.18); border-radius:6px; padding:10px 12px; width:100%; min-height:130px; resize:vertical; }
+.on-dark .grader textarea{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.25); color:#fff; }
+.grader .gr-nudge{ display:none; margin:.5rem 0 0; opacity:.8; }
+.grader .gr-nudge.show{ display:block; }
+.grade-out{ margin-top:1rem; }
+.grade-badge{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+.grade-letter{ width:68px; height:68px; border-radius:8px; display:grid; place-items:center; font-family:var(--font-condensed,'Antonio',sans-serif); font-weight:700; font-size:2.3rem; color:#1C1C1C; background:#CFAE70; }
+.grade-badge .gword{ font-weight:600; font-size:1.1rem; }
+.grade-badge .gword .soft{ opacity:.65; font-weight:400; }
+.grade-badge .gsub{ margin:0; opacity:.85; max-width:420px; }
+.dim-bars{ display:flex; flex-direction:column; gap:8px; margin-top:1rem; }
+.dim{ display:grid; grid-template-columns:104px 1fr 36px; gap:10px; align-items:center; }
+.dim .dl{ font-family:var(--font-condensed,'Antonio',sans-serif); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; text-align:right; opacity:.8; }
+.dim .rail{ display:block; height:9px; border-radius:2px; background:rgba(207,174,112,.15); border:1px solid rgba(207,174,112,.4); overflow:hidden; }
+.dim .fill{ display:block; height:100%; width:0%; background:#CFAE70; transition:width .38s ease-out; }
+.dim .dv{ font-family:var(--font-condensed,'Antonio',sans-serif); font-weight:700; font-size:.78rem; opacity:.7; }
+.sugg{ margin:1rem 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.sugg li{ list-style:none; padding:10px 12px; border-radius:6px; border:1px solid rgba(207,174,112,.4); }
 </style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>
@@ -95,6 +115,7 @@
       <p class="eyebrow" data-reveal>Start Smarter · Vanderbilt</p>
       <h1 class="h-hero" data-reveal>Never used AI?<br><em class="gold-text">Start here.</em></h1>
       <p class="lead" data-reveal style="margin-top:1.5rem">No jargon, no code, no assumptions. In the next half hour you'll learn what AI actually is, how to talk to it, when to keep things away from it, and you'll build your first request, ready to try today.</p>
+      <p class="eyebrow" data-reveal data-duration-line style="margin-top:1rem">Self-paced &middot; Core ~30 min &middot; Full ~35 min <span style="opacity:.7;text-transform:none;letter-spacing:0;font-family:inherit">(Core is the numbered sections, lab, and card; Full adds every Go deeper panel and the glossary)</span></p>
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end, you will be able to</p>
         <ol class="objectives__list">
@@ -342,6 +363,16 @@
       </details>
     
       <p data-reveal style="font-size:.85rem;opacity:.75;margin-top:1.5rem">The traffic light is this course's working shorthand for Vanderbilt's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</p>
+    
+      <div class="card" data-reveal id="datarule-card" style="margin-top:2rem;border-color:rgba(207,174,112,.5)" role="region" aria-label="The Vanderbilt data rule">
+        <span class="tag">The data rule &middot; the same card in every AI course</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Before anything goes into an AI tool, one three-second question: <b>what color is this?</b></p>
+        <div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟢</span><div><b>Green &middot; Public or generic</b><br><span class="muted">Questions about public topics, generic drafts, brainstorming, "explain this to me." Any approved tool.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🟡</span><div><b>Yellow &middot; Internal work</b><br><span class="muted">Your drafts, internal announcements, budgets, grant drafts, internal policies. Approved Vanderbilt tools only, signed in with your VU account. Never a personal account or a random free site.</span></div></div><div style="display:grid;grid-template-columns:2.2rem 1fr;gap:.6rem;align-items:start;padding:.6rem 0;border-top:1px solid rgba(207,174,112,.25)"><span style="font-size:1.4rem;line-height:1" aria-hidden="true">🔴</span><div><b>Red &middot; Private information about people</b><br><span class="muted">Names with grades, health details, personnel issues, passwords, anything confidential about a real person. No AI tool, full stop.</span></div></div>
+        <p style="margin:1rem 0 0" class="measure">Inside the light: Vanderbilt classifies data in levels, and each approved tool has a ceiling. <b>ChatGPT EDU</b> (VU account) is approved up to <b>Level 2</b>. <b>Amplify</b> and <b>Microsoft Copilot</b> (VU account) are approved for <b>Level 3</b> work. Children's names, photos, and records go in <b>no AI tool</b>.</p>
+        <p style="margin:.75rem 0 0" class="measure">The hard cases: ask "who is this about" before "how sensitive does it feel." A student's essay is about a student. Meeting notes naming colleagues are about colleagues until the names come out. A recommendation letter is about its subject.</p>
+        <p style="margin:.75rem 0 0" class="measure"><b>Never, in any tool:</b> Social Security numbers &middot; Student records or grades (FERPA) &middot; Health information (HIPAA) &middot; Children's names, photos, and records &middot; Salaries and personnel files &middot; Passwords and credentials &middot; Anything confidential about a real person.</p>
+        <p style="margin:.75rem 0 0;font-size:.85rem;opacity:.75">This card is the working shorthand for Vanderbilt IT's data classification and approved-tool guidance: <a href="https://www.vanderbilt.edu/it/policies/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">vanderbilt.edu/it/policies</a>. When the two ever disagree, the policy wins.</p>
+      </div>
     </div>
   </section>
 
@@ -539,6 +570,17 @@
           </ol></div>
         </div>
       </details>
+    
+      <div class="card grader" data-reveal id="promptGrader" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Grade it &middot; the same grader as Working Smarter</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Paste the prompt you just assembled. The grader checks the four parts a strong request has (context, role, an invitation to ask questions, a named task) plus how concrete the wording is, and gives you three fixes. Apply one and grade again; the second grade is the learning.</p>
+        <textarea id="grText" rows="6" aria-label="Prompt to grade" placeholder="Paste your prompt here, then press Grade."></textarea>
+        <div style="margin-top:.75rem;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button type="button" class="btn" id="grBtn">Grade my prompt</button>
+          <p class="gr-nudge" id="grNudge">Give me a prompt to chew on first. Even one sentence works.</p>
+        </div>
+        <div class="grade-out" id="grOut" role="status" aria-live="polite"></div>
+      </div>
     </div>
   </section>
 
@@ -600,6 +642,13 @@
         </div>
         <div class="lab__outcome" id="planOut" hidden aria-live="polite"></div>
       </div>
+    
+      <div class="card" data-reveal id="tell-manager" style="margin-top:2rem;border-color:rgba(207,174,112,.5)">
+        <span class="tag">Tell your manager</span>
+        <p style="margin:.5rem 0 .75rem" class="measure">Commitments kept in private fade. Copy this two-line message, fill in the brackets from your card, and send it to your manager today; a named person asking on a named date is the single strongest predictor that a course changes what you do.</p>
+        <p style="margin:0 0 .75rem;font-style:italic" class="measure">&ldquo;I just took Start Smarter: Self-Paced from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].&rdquo;</p>
+        <button type="button" class="btn" data-copytext="I just took Start Smarter: Self-Paced from the Vanderbilt Staff Learning Collection. My commitment is [what I will do] by [date]. Ask me about it on [date].">Copy the message</button>
+      </div>
     </div>
   </section>
 
@@ -651,7 +700,7 @@
       </div>
     </div>
     <div class="footer__legal">
-      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning.</span>
+      <span>© <span id="year">2026</span> Vanderbilt University. For classroom and self-paced learning. Sources reviewed September 2026.</span>
       <span>Questions? <a href="mailto:chart@vanderbilt.edu" style="color:rgba(255,255,255,.7);text-decoration:underline">chart@vanderbilt.edu</a><!-- [EDIT] program contact --> · Start Smarter · A Vanderbilt learning experience</span>
     </div>
   </div>
@@ -664,5 +713,95 @@
 
 <script src="../assets/js/qrcode.js?v=1"></script>
 <script src="../assets/js/main.js?v=13"></script>
+
+<script>
+/* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */
+(function () {
+  document.querySelectorAll('[data-copytext]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var txt = b.getAttribute('data-copytext').replace(/\\n/g, '\n');
+      var done = function () { var o = b.textContent; b.textContent = 'Copied'; setTimeout(function () { b.textContent = o; }, 1600); };
+      if (navigator.clipboard) { navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this:', txt); }); }
+      else { window.prompt('Copy this:', txt); }
+    });
+  });
+})();
+</script>
+
+<script>
+/* Prompt Grader: the same scoring as Working Smarter, so a grade means the same thing in every course */
+(function(){
+  var ta = document.getElementById('grText'), btn = document.getElementById('grBtn'),
+      out = document.getElementById('grOut'), nudge = document.getElementById('grNudge');
+  if(!ta || !btn || !out) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+  var TIPS = {
+    context:{ label:'Context', tip:'<b>Add context.</b> Who is this for, what is going on, what is the deadline? The AI only knows what you tell it.' },
+    role:{ label:'Role', tip:'<b>Give it a job.</b> Start with "You are a...": an editor, an analyst, a coach. A role reshapes the entire answer.' },
+    interview:{ label:'Interview', tip:'<b>Invite questions first.</b> Add "before you answer, ask me up to five clarifying questions, then wait." The gaps surface before the draft instead of after.' },
+    task:{ label:'Task', tip:'<b>Name the deliverable.</b> Say what to produce and how it should look: "a 200-word email," "a table," "three bullet options."' },
+    specificity:{ label:'Specificity', tip:'<b>Swap vague for concrete.</b> Replace "some," "stuff," and "good" with how many, which ones, and by when.' }
+  };
+  var EXTRA = [
+    '<b>Ask for options.</b> "Give me three versions" costs nothing and triples your odds of a keeper.',
+    '<b>Add guardrails or an example.</b> "Avoid jargon," "no more than 150 words," or paste a sample you like.',
+    '<b>Flag uncertainty.</b> Ask it to say clearly when it is not sure. It will, if invited.'
+  ];
+  function grade(t){
+    var words = t.split(/\s+/).filter(Boolean), n = words.length, s = {};
+    var ctxBase = n >= 60 ? 90 : n >= 35 ? 75 : n >= 20 ? 55 : n >= 10 ? 35 : 15;
+    if(/\b(audience|for (our|my|the) |background|we are|i work|deadline|goal|because|so that)\b/i.test(t)) ctxBase = Math.min(100, ctxBase + 15);
+    s.context = ctxBase;
+    s.role = /\b(you are|you're|act as|as an? [a-z]+|imagine you|pretend (you|to be)|take the role)\b/i.test(t) ? 100 : 8;
+    s.interview = /\b(ask me|clarifying questions?|interview me|question at a time|before (you )?answer(ing)?|wait for my)\b/i.test(t) ? 100 : 12;
+    var taskScore = /\b(write|draft|create|summari[sz]e|list|make|build|explain|rewrite|analy[sz]e|give me|generate|translate|compare|outline|map|review|edit)\b/i.test(t) ? 70 : 15;
+    if(/\b(bullet|list|table|step[- ]?by[- ]?step|steps|outline|heading|numbered|json|paragraph|memo|email|summary|one[- ]pager?|page|section|word(s)? or (less|fewer)|under \d+|\d+ words)\b/i.test(t)) taskScore += 30;
+    s.task = clamp(taskScore, 5, 100);
+    var spec = 60;
+    var vague = t.match(/\b(some|stuff|things?|good|nice|better|great|a lot|lots|maybe|whatever|etc\.?)\b/gi);
+    if(vague) spec -= vague.length * 12;
+    if(/\d/.test(t)) spec += 14;
+    if(n >= 25) spec += 10;
+    if(/\b(don'?t|do not|avoid|must|only|no more than|at most|under \d|limit|fewer than|exclude|without|e\.g\.|for example|example:|such as|in the style|tone)\b/i.test(t)) spec += 12;
+    var isQuestionOnly = /\?\s*$/.test(t.trim()) && !/\b(write|draft|create|summarize|list|make|build|explain|rewrite|analyze)\b/i.test(t);
+    if(isQuestionOnly) spec -= 15;
+    s.specificity = clamp(Math.round(spec), 5, 100);
+    var overall = s.context*.25 + s.role*.15 + s.interview*.15 + s.task*.25 + s.specificity*.2;
+    if(n < 6) overall = Math.min(overall, 30);
+    var letter = overall >= 85 ? 'A' : overall >= 70 ? 'B' : overall >= 55 ? 'C' : overall >= 40 ? 'D' : 'F';
+    return { scores:s, overall:Math.round(overall), letter:letter };
+  }
+  var WORDS = { A:'Outstanding prompt.', B:'Strong prompt.', C:'Decent bones.', D:'Needs seasoning.', F:'A whisper, not a prompt.' };
+  var SUBS = {
+    A:'Context, role, interview, task: all covered. Take it straight into your tool.',
+    B:'You would get a useful answer; one or two tweaks below make it excellent.',
+    C:'The AI will guess at too much. The suggestions below are quick wins.',
+    D:'Right idea, not enough to work with yet. Two minutes of detail pays off.',
+    F:'The AI will fill every gap with assumptions. Give it something to hold onto.'
+  };
+  btn.addEventListener('click', function(){
+    var t = ta.value.trim();
+    if(t.length < 4){ if(nudge) nudge.classList.add('show'); out.innerHTML = ''; ta.focus(); return; }
+    if(nudge) nudge.classList.remove('show');
+    var g = grade(t);
+    var keys = ['context','role','interview','task','specificity'];
+    var weak = keys.slice().sort(function(a,b){ return g.scores[a]-g.scores[b]; }).filter(function(k){ return g.scores[k] < 70; }).slice(0,3);
+    var tips = weak.map(function(k){ return TIPS[k].tip; });
+    var e = 0; while(tips.length < 3 && e < EXTRA.length){ tips.push(EXTRA[e++]); }
+    var h = '<div class="grade-badge"><span class="grade-letter">' + g.letter + '</span><div>';
+    h += '<div class="gword">' + WORDS[g.letter] + ' <span class="soft">' + g.overall + '/100</span></div>';
+    h += '<p class="gsub">' + SUBS[g.letter] + '</p></div></div><div class="dim-bars">';
+    keys.forEach(function(k){ h += '<div class="dim"><span class="dl">' + TIPS[k].label + '</span><span class="rail"><span class="fill" data-w="' + g.scores[k] + '"></span></span><span class="dv">' + g.scores[k] + '</span></div>'; });
+    h += '</div><ul class="sugg">';
+    tips.forEach(function(tp){ h += '<li><span>' + tp + '</span></li>'; });
+    h += '</ul>';
+    out.innerHTML = h;
+    var fills = out.querySelectorAll('.dim .fill');
+    var apply = function(){ fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; }); };
+    if(reduce){ apply(); } else { requestAnimationFrame(function(){ requestAnimationFrame(apply); }); }
+  });
+})();
+</script>
 </body>
 </html>

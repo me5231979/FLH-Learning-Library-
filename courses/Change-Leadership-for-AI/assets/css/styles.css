@@ -804,3 +804,31 @@ body { overflow: hidden; }
 
 /* solid top bar on every slide */
 .nav { background: rgba(20,20,20,.97); border-bottom: 1px solid rgba(207,174,112,.18); }
+
+/* ---------- Choose the next line (branching dialogue) ---------- */
+.dialogue__log { display: grid; gap: .65rem; margin-top: .75rem; padding: 1rem 1.1rem; border-radius: var(--radius);
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); min-height: 3.5rem; }
+.on-light .dialogue__log, .on-cream .dialogue__log { background: rgba(28,28,28,.04); border-color: var(--vu-gray-light); }
+.dialogue__line { display: grid; grid-template-columns: 96px 1fr; gap: .75rem; font-size: 1rem; line-height: 1.5;
+  animation: dialogueIn .3s var(--ease) both; }
+.dialogue__line p { margin: 0; }
+.dialogue__who { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+  font-size: .72rem; padding-top: .3rem; opacity: .7; }
+.dialogue__line--you { color: var(--vu-gold-flat); }
+.dialogue__line--you .dialogue__who { opacity: 1; }
+.dialogue__stage { font-style: italic; opacity: .75; }
+.dialogue .opt { width: 100%; margin-bottom: .5rem; }
+.dialogue .opt[aria-pressed="true"] { border-color: var(--vu-gold-flat); background: rgba(207,174,112,.16); }
+.dialogue .opt[aria-pressed="true"] .mark { border-color: var(--vu-gold-flat); background: var(--vu-gold-flat); color: var(--vu-black); }
+.dialogue .lab__outcome:focus { outline: 2px solid var(--vu-gold-flat); outline-offset: 2px; }
+@keyframes dialogueIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .dialogue__line { animation: none; } }
+@media (max-width: 640px) { .dialogue__line { grid-template-columns: 1fr; gap: .15rem; } }
+
+/* ---------- INTERACTIVE: branching lab (situation per slot) ---------- */
+.slot__situation { font-size: .98rem; line-height: 1.5; margin: 0 0 .75rem; padding: .7rem .9rem;
+  border-left: 2px solid var(--vu-gold-flat); background: rgba(207,174,112,.08); color: inherit; }
+.slot__situation:empty { display: none; }
+.on-dark .slot__situation { background: rgba(255,255,255,.05); color: rgba(255,255,255,.9); }
+.lab__carry { margin: .9rem 0 0; font-size: .98rem; color: rgba(255,255,255,.85); }
+.lab__carry b { color: var(--vu-gold-flat); }

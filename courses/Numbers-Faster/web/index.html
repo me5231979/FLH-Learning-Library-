@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -111,7 +111,7 @@
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain where AI genuinely speeds up data work and where it fails with confidence</li>
+          <li>Decide, task by task, where AI speeds up data work and where its confident answer has to be recomputed</li>
           <li>Prepare a dataset safely for AI, applying the traffic light to data files and de-identifying people data</li>
           <li>Apply the Data Loop, Describe, Ask, Check, Tell, to interrogate a real spreadsheet</li>
           <li>Build a comparison and a chart brief with AI from your own numbers</li>
@@ -316,6 +316,8 @@
         </div>
       </div>
 
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Practice sheet:</b> <a class="dl-link" href="../assets/data/program-enrollment-sample.csv" download>Download the practice sheet (CSV, fictional)</a>. It holds forty rows of made-up program enrollment with no names or personal data, so it is fictional and safe to paste into any approved tool. Describe it, then climb: one monthly total, this term against last, the two rows that break the pattern, and what changed in September.</p>
+
       <div class="plan" id="dlMap" data-reveal style="margin-top:2.5rem">
         <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your Data Loop starter, privately</p>
         <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this session runs best on a dataset you actually own, and naming it is the loop's first pass. Nothing you type is saved or sent anywhere.</p>
@@ -386,6 +388,22 @@
         <p class="quiz__feedback" aria-live="polite"></p>
       </div>
 
+      <div class="recompute" id="recompute" data-reveal>
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Recompute drill</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the model wrote the sentence and did the sum, and it will get one of them wrong without changing its tone. Read the rows, call each claim, and add the column yourself.</p>
+        <p class="quiz__progress" id="rcRound" style="margin-top:1rem"></p>
+        <p class="why" id="rcRule" style="margin-top:.35rem"></p>
+        <div class="recompute__grid">
+          <div id="rcTable"></div>
+          <div class="rcclaims" id="rcClaims"></div>
+        </div>
+        <div class="lab__runrow">
+          <button type="button" class="btn btn--dark" id="rcCheck" disabled>Check my arithmetic</button>
+          <span class="quiz__progress" id="rcStatus">Call all three claims and enter your total</span>
+        </div>
+        <div class="lab__outcome" id="rcOut" hidden aria-live="polite"></div>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -406,7 +424,7 @@
 
       <div class="lab" id="analysisLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Analysis Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on your real dataset this week, and the failure modes are the ones that actually happen. Choose how each step runs, then run the month.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on your real dataset this week, and the failure modes are the ones that actually happen. Choose how each step runs, then run the month. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run four weeks</button>
@@ -512,6 +530,7 @@
       <h2 class="h2" data-reveal>One dataset. One loop. <em>This week.</em></h2>
       <p class="lead" data-reveal>Sessions don't change how anyone works with numbers; a named dataset and a date do. Pick the spreadsheet or report, choose your first move, name what you refuse to do, and put a day on the first run.</p>
       <p class="why" data-reveal><b>Why this matters:</b> a named dataset with a chosen first move and a date is a plan; everything less is a good intention. Datasets and columns, never names or personal records, and nothing you type here is saved or sent anywhere.</p>
+      <p class="why" data-reveal><b>No dataset of your own yet?</b> <a class="dl-link" href="../assets/data/program-enrollment-sample.csv" download>Download the practice sheet (CSV, fictional)</a> and run the first loop on it; it is fictional and safe to paste into any approved tool.</p>
 
       <div class="plan" id="dlPlan" data-reveal>
         <div class="plan__form">
@@ -646,7 +665,7 @@
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=1"></script>
+<script src="../assets/js/main.js?v=2"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

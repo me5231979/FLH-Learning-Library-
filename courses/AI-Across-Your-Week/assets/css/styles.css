@@ -804,3 +804,45 @@ body { overflow: hidden; }
 
 /* solid top bar on every slide */
 .nav { background: rgba(20,20,20,.97); border-bottom: 1px solid rgba(207,174,112,.18); }
+
+/* ---------- INTERACTIVE: exemplar compare ---------- */
+/* Appears only after the learner builds. Light panel on light and cream
+   slides, .on-dark variant on dark ones. */
+.exemplar { margin-top: 1.25rem; max-width: 860px; background: var(--vu-white); color: var(--vu-black);
+  border: 1px solid var(--vu-gray-light); border-left: 3px solid var(--vu-gold-flat);
+  border-radius: var(--radius); padding: 1.5rem 1.6rem; }
+.on-dark .exemplar { background: #262626; color: #fff; border-color: rgba(255,255,255,.12);
+  border-left-color: var(--vu-gold-flat); }
+.exemplar__intro { margin: .85rem 0 0; font-size: .98rem; color: var(--vu-gray-dark); max-width: 62ch; }
+.on-dark .exemplar__intro { color: rgba(255,255,255,.72); }
+.exemplar__grid { display: grid; gap: .85rem; margin-top: 1rem; }
+.exemplar__grid .row { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; font-size: .98rem; }
+.exemplar__grid .row b { color: var(--vu-oak); font-family: var(--font-condensed); text-transform: uppercase;
+  letter-spacing: .05em; font-weight: 700; font-size: .8rem; padding-top: 2px; }
+.on-dark .exemplar__grid .row b { color: var(--vu-gold-flat); }
+.exemplar__rubric { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--vu-gray-light); }
+.on-dark .exemplar__rubric { border-top-color: rgba(255,255,255,.12); }
+.exemplar__lead { margin: 0; font-size: 1rem; max-width: 62ch; }
+.exemplar__item { margin-top: 1.1rem; }
+.exemplar__q { margin: 0 0 .5rem; font-size: 1rem; }
+.exemplar__toggles { display: flex; gap: .5rem; flex-wrap: wrap; }
+.exemplar__toggles .opt { width: auto; padding: .55rem .95rem .55rem .7rem; font-size: .92rem; gap: .6rem; }
+.exemplar__toggles .opt .mark { width: 22px; height: 22px; font-size: .8rem; }
+.exemplar__toggles .opt[aria-pressed="true"] { border-color: var(--vu-gold-flat); background: rgba(207,174,112,.16); }
+.exemplar__toggles .opt[aria-pressed="true"] .mark { border-color: var(--vu-gold-flat); background: var(--vu-gold-flat); color: var(--vu-black); }
+.exemplar__nudge { margin: .6rem 0 0; font-size: .92rem; max-width: 62ch;
+  border-left: 2px solid #c76b5a; padding-left: .75rem; }
+.exemplar__nudge b { color: var(--vu-oak); }
+.on-dark .exemplar__nudge b { color: var(--vu-gold-flat); }
+.exemplar__tally { margin: 1.25rem 0 0; font-family: var(--font-condensed); text-transform: uppercase;
+  letter-spacing: .05em; font-size: .9rem; color: var(--vu-oak); }
+.on-dark .exemplar__tally { color: var(--vu-gold-flat); }
+@media (max-width: 640px) { .exemplar__grid .row { grid-template-columns: 1fr; gap: .15rem; } }
+
+/* ---------- INTERACTIVE: branching lab (situation per slot) ---------- */
+.slot__situation { font-size: .98rem; line-height: 1.5; margin: 0 0 .75rem; padding: .7rem .9rem;
+  border-left: 2px solid var(--vu-gold-flat); background: rgba(207,174,112,.08); color: inherit; }
+.slot__situation:empty { display: none; }
+.on-dark .slot__situation { background: rgba(255,255,255,.05); color: rgba(255,255,255,.9); }
+.lab__carry { margin: .9rem 0 0; font-size: .98rem; color: rgba(255,255,255,.85); }
+.lab__carry b { color: var(--vu-gold-flat); }

@@ -322,27 +322,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Week one. No rule went out, so the team is drafting wherever they already were. One person is using a personal account, and nobody has asked what they pasted in. The first FAQ answers are back, full of dates and requirements. They read fine. Who reads them before they post?", "Week one. Your kickoff email asked for care, and the team took it six ways. One person avoids the tool entirely. Another pastes in whatever helps. The first FAQ answers are back, full of dates and requirements, and they read fine. Who reads them before they post?", "Week one. The written line is up: yellow work, approved tools, no names. Two people asked questions on day one and got answers. The first FAQ answers are back, drafted the right way, full of dates and requirements. They read fine. Who reads them before they post?"], 2: ["Week two. The newsletter has gone out twice with AI help, and nobody outside the team knows. Nobody inside the team is sure which tools were used either, because no rule said. A professor emails to ask whether the FAQ is AI-written. What do readers get told?", "Week two. The newsletter has gone out twice with AI help. Your one-line email said be careful, and it said nothing about telling readers. Each person is guessing what the office would want. A professor emails to ask whether the FAQ is AI-written. What do readers get told?", "Week two. The newsletter has gone out twice, drafted inside the written line. The team trusts what went in. Now the question moves outward. A professor emails to ask whether the FAQ is AI-written. The answer is not printed anywhere yet. What do readers get told?"], 3: ["Week four. A colleague glances at a draft and spots a student's email pasted into it. Nothing shipped, this time. But nobody can name the line it crossed, because no line was written. The team wants to know what happens when something does ship wrong. Who answers for it?", "Week four. Two people have been drafting in personal accounts, sure that counted as careful. A third refuses to use the tool at all. Nothing has shipped wrong yet, and nobody could say what wrong looks like. The team wants to know what happens when something does. Who answers for it?", "Week four. The written line has held: nothing naming a person has gone into a tool. The quiet users are asking questions instead of hiding. A wrong date still slipped into one FAQ draft this week. The team wants to know what happens when something ships wrong. Who answers for it?"] };
+    var CARRY = ["No written line meant six people drew six lines, and the near-miss found the gap.", "One vague line in an email left every judgment call to whoever was rushing.", "The written first line decided the hard case early and gave the team a rule to trust."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the month' :
             'Write ' + picks.filter(function (p) { return p === null; }).length + ' more line(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Month one: a trusted rollout. The newsletter ships in half the time. The FAQ check caught an answer citing last year\'s deadline before it posted, and the catch made the team trust the process more, because the safety net visibly works. The disclosure line has drawn zero complaints and one compliment, and when a professor asked whether the FAQ was AI-written, the answer was already printed at the bottom of the page.',
       mid: 'Month one: a quiet near-miss. A draft prepped in someone\'s personal AI account turned out to have a student\'s email pasted into it, caught by luck when a colleague glanced over. Nothing left the building, this time. But nobody can point to the line it crossed, because the line was never written, and the team\'s quiet users just got quieter, which is the opposite of what a policy is for.',
@@ -360,6 +384,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> rewrite your weakest line and rerun the month. Watch the near-miss disappear.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper walks one of YOUR outputs down the four lines.</p>');
@@ -386,6 +411,79 @@
     });
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (self-explanation) ---------- */
+  /* Renders a model answer plus a three-question self-score under a private
+     builder. Called only after the learner builds; each call re-renders from
+     scratch, so a rebuild resets the score. */
+  function makeExemplar(cfg) {
+    var box = $(cfg.root);
+    if (!box) return { show: function () {}, hide: function () {} };
+    var idBase = cfg.root.slice(1);
+    function render() {
+      var n = cfg.rubric.length;
+      var html = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        '<div class="exemplar__grid">' +
+        cfg.rows.map(function (r) { return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') +
+        '</div>' +
+        '<div class="exemplar__rubric" role="group" aria-label="Score your own answer">' +
+        '<p class="exemplar__lead"><b>Score yourself.</b> ' + cfg.ask + '</p>';
+      cfg.rubric.forEach(function (item, i) {
+        var qid = idBase + 'Q' + (i + 1);
+        html += '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + (i + 1) + ' · ' + item.q + '</p>' +
+          '<div class="exemplar__toggles" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="1" aria-pressed="false"><span class="mark" aria-hidden="true">✓</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="0" aria-pressed="false"><span class="mark" aria-hidden="true"></span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>Add this:</b> ' + item.nudge + '</p>' +
+          '</div>';
+      });
+      html += '<p class="exemplar__tally" aria-live="polite">Score all ' + n + ' to see your tally.</p></div>';
+      box.innerHTML = html;
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (it, i) {
+        var nudge = $('.exemplar__nudge', it);
+        $$('.opt', it).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === '1';
+            answers[i] = yes;
+            $$('.opt', it).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var got = answers.filter(function (a) { return a === true; }).length;
+            var left = answers.filter(function (a) { return a === null; }).length;
+            tally.textContent = 'You scored ' + got + ' of ' + n +
+              (left ? ' so far. ' + left + ' left to score.' : '. ' + (got === n ? cfg.strong : cfg.weak));
+          });
+        });
+      });
+      box.hidden = false;
+    }
+    return { show: render, hide: function () { box.hidden = true; } };
+  }
+
+  var flEx = makeExemplar({
+    root: '#flExemplar',
+    intro: 'A fictional advising team drafted the same lines. Read theirs beside yours, then score your own draft.',
+    rows: [
+      ['1 · What goes in', 'Drafts, agendas, and internal how-to documents go into ChatGPT EDU only. Nothing that names a student or a colleague enters any tool, ever.'],
+      ['2 · Who verifies', 'Anything student-facing, anything with a number in it, and anything sent outside the team is checked against the source by the person who sends it, before it goes.'],
+      ['3 · When we disclose', 'We disclose whenever the university\'s voice or a judgment of a person\'s work is involved. When unsure, we say so and ask the policy owner.']
+    ],
+    ask: 'Three questions about your own lines. Yes or not yet; nobody else sees it.',
+    rubric: [
+      { q: 'Does each line name a behaviour, not an attitude?',
+        nudge: 'Write what someone does: which data, which tool, who checks. "Be careful with AI" is an attitude, and nobody can follow it.' },
+      { q: 'Does line one name both the kind of data and the tool it may enter?',
+        nudge: 'Write the tool by name and the kind of data that may go in, plus the kind that never does.' },
+      { q: 'Does line two say who checks, against what, and before what?',
+        nudge: 'Write a role, a source to check against, and the moment the check happens: before the output reaches anyone who acts on it.' }
+    ],
+    strong: 'All three. Now the real thing: bring this draft to your team as something to edit, and set the quarterly revisit.',
+    weak: 'Edit the lines above and draft again. A line that survives this check will survive the team meeting.'
+  });
+
   /* ---------- INTERACTIVE: private Four Lines builder (Section 06) ---------- */
   var flb = $('#flBuild');
   if (flb) {
@@ -410,6 +508,7 @@
         flDisc = b.getAttribute('data-disc');
         $$('.opt', discGroup).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
         flOut.hidden = true;
+        flEx.hide();
         flReady();
       });
     });
@@ -425,6 +524,7 @@
         '<div class="row"><b>The next move</b><span>Bring this page to your team as a draft to edit, never a decree. Pick its home, put the quarterly revisit on the calendar, and the capstone card two pages ahead sets the date.</span></div>' +
         '</div>';
       flOut.hidden = false;
+      flEx.show();
       flOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
     });
   }
@@ -679,7 +779,10 @@
 
   // keyboard
   document.addEventListener('keydown', function (e) {
-    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    var focusTag = document.activeElement.tagName;
+    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(focusTag) > -1) return;
+    // let Space activate a focused control instead of turning the page
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(focusTag) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

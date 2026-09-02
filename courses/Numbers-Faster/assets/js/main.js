@@ -350,27 +350,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["The upload finishes. The full sheet sits in the chat window, names and IDs included. The tool is one your unit never approved. The clock says Wednesday. You have not told the AI anything about the columns yet. The prompt box is empty and waiting for your first question.", "You have retyped six totals into the chat, one per line. No file went anywhere, and no columns exist for the AI to read. The deadline has not moved. Whatever you ask next, the tool can only work from those six numbers. Choose how you ask.", "The clean copy is uploaded: twelve months, program names, monthly counts, no people in it. It took five minutes. The tool is an approved one, and the whole sheet is now in front of it. Friday is still Friday. Time to decide how you ask for the analysis."], 2: ["The reply arrives, and it looks good: tidy tables, a headline number, a surprise dip in March. Somewhere in that same chat history sit the student names and IDs you uploaded. That part cannot be undone. The numbers can still be checked. Decide how much checking you do.", "The reply comes back thin. Six totals gave the AI six totals, so it summarized them and guessed at the rest. There is a headline number and a trend it says it sees. Nothing in the reply touched your actual rows. Decide what checking looks like now.", "The answers come back one rung at a time. A summary, then a comparison to last term, then one outlier month. Each one is short and points at something you can find in the file. Leadership will quote the headline number by Friday. Decide how you check it before it travels."], 3: ["The report is nearly ready and the checks are done, whatever they were. One thing has not changed. A file of student names and IDs still sits in an unapproved tool's history. Someone will ask about it. What reaches leadership by Friday is the last thing in your control.", "It is Thursday. The analysis was safe, and it was shallow. The AI never saw the rows, so the pattern took longer to find by hand. You have a finding now, most of it yours. Leadership expects the story tomorrow. Decide what you send.", "It is Thursday afternoon and the work is done early. A safe file, a ladder of short answers, a checked headline number. The loop bought you the afternoon. Leadership will get the story a day ahead. What they read, and remember, depends on how you tell it."] };
+    var CARRY = ["The file went up with names and IDs, so the privacy conversation outlasts everything else this month, and it cannot be rerun.", "You kept the people out of the tool, and you kept most of the data out too; the AI worked from six numbers.", "The clean copy in an approved tool turned red to yellow, and every later step had the whole sheet to work with."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the month' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more step(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Week four: the month-end that used to eat an afternoon now takes forty minutes, and leadership actually read it: two sentences, one chart, a recommendation with your name on it. When someone challenged the headline number in the meeting, you said "I recomputed it against the export," and the conversation moved on. The loop is quietly becoming how your unit does numbers.',
       mid: 'Week four: faster, technically. But one figure nobody recomputed turned out to be wrong, the correction email went to the same list as the report, and now someone upstairs quietly re-checks everything you send. The hours the AI saved are being spent buying back trust in your numbers.',
@@ -389,6 +413,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' + ferpa +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest step and rerun the month. Watch week four change.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper walks YOUR dataset through these same four steps.</p>');
@@ -574,6 +599,168 @@
     });
   });
 
+  /* ---------- INTERACTIVE: Recompute drill (Section 04) ---------- */
+  var rcRoot = $('#recompute');
+  if (rcRoot) {
+    // Rows come from assets/data/program-enrollment-sample.csv (fictional).
+    var RC_ROUNDS = [
+      { label: 'Round 1 of 2 · Data Skills Bootcamp',
+        rule: 'The AI read eight rows of the practice sheet and wrote three sentences. Add the enrolled column yourself before you call the first one.',
+        caption: 'Data Skills Bootcamp, eight monthly cohorts (practice sheet, fictional)',
+        cols: ['Month', 'Enrolled', 'Waitlist', 'Completed'],
+        rows: [['Aug 2025', 48, 3, 41], ['Sep 2025', 52, 5, 45], ['Oct 2025', 55, 4, 47], ['Nov 2025', 50, 2, 44],
+               ['Jan 2026', 46, 0, 38], ['Feb 2026', 60, 74, 49], ['Mar 2026', 58, 6, 50], ['Apr 2026', 52, 2, 45]],
+        sumCol: 1, sumName: 'Enrolled',
+        claims: [
+          { ai: 'Across the eight cohorts, 412 people enrolled in Data Skills Bootcamp.', ok: false, input: true, said: 412,
+            right: 'The rows add to 421 and the AI said 412. Nine seats off, on the number your director would have quoted. Any arithmetic the model did itself gets redone.',
+            wrong: 'The rows add to 421. The AI said 412, and it said it in the same calm tone it uses when it is right. Confidence is not a check. Any arithmetic the model did itself gets redone.' },
+          { ai: 'The largest cohort was February 2026, with 60 enrolled.', ok: true,
+            right: 'February is 60 and no other month reaches it. A claim that survives the rows is allowed to travel.',
+            wrong: 'Scan the enrolled column: February is 60, and nothing else gets there. This one was right. The check exists to sort the numbers, not to reject all of them.' },
+          { ai: 'Waitlist demand was steady at about 12 a month.', ok: false,
+            right: 'The mean is right and the sentence is wrong. Seven months sit between 0 and 6, and February sits at 74. That is one cohort with a line out the door, and the average hid it.',
+            wrong: 'The arithmetic holds: 96 waitlisted over eight months is 12 a month. Now read the rows. Seven of them sit between 0 and 6, and February is 74. An average is a claim about the middle, and these rows have no middle.' }
+        ] },
+      { label: 'Round 2 of 2 · Leadership Foundations',
+        rule: 'Round two, and the rule this time is the one to keep: recompute before you repeat. Nothing the model added up goes into your memo until you have added it too.',
+        caption: 'Leadership Foundations, eight monthly cohorts (practice sheet, fictional)',
+        cols: ['Month', 'Enrolled', 'Completed', 'Cost center'],
+        rows: [['Aug 2025', 22, 20, 'CC-4410'], ['Sep 2025', 30, 26, 'CC-4470'], ['Oct 2025', 31, 27, 'CC-4470'], ['Nov 2025', 28, 25, 'CC-4470'],
+               ['Jan 2026', 18, 15, 'CC-4470'], ['Feb 2026', 36, 31, 'CC-4470'], ['Mar 2026', 34, 30, 'CC-4470'], ['Apr 2026', 29, 26, 'CC-4470']],
+        sumCol: 1, sumName: 'Enrolled',
+        claims: [
+          { ai: 'Leadership Foundations enrolled 282 people across the eight cohorts.', ok: false, input: true, said: 282,
+            right: 'The rows add to 228. The AI said 282: the same digits in a different order, which is exactly the kind of error that reads as right. You recomputed before you repeated.',
+            wrong: 'The rows add to 228, not 282. Two digits swapped, and the sentence still sounded fine. Recompute before you repeat, every time.' },
+          { ai: 'The program\'s cost center changed in September 2025, from CC-4410 to CC-4470.', ok: true,
+            right: 'August reads CC-4410, and September onward reads CC-4470. The rows back the claim, so it can travel.',
+            wrong: 'Read the cost center column: CC-4410 in August, CC-4470 from September on. The claim matches the rows. Letting a verified number through is part of the ritual too.' },
+          { ai: 'Enrollment held steady at about 29 a month.', ok: false,
+            right: 'The average is 28.5 and the rows run from 18 to 36. The range is the finding, and the average erased it.',
+            wrong: 'The mean of 28.5 is real. So is the range: January at 18, February at 36, twice as many. "Held steady" averages away the one thing a reader would want to know.' }
+        ] }
+    ];
+    var rcRound = 0, rcVerdicts = [], rcGraded = false;
+    var rcLabel = $('#rcRound'), rcRule = $('#rcRule'), rcTable = $('#rcTable'), rcClaims = $('#rcClaims'),
+        rcCheck = $('#rcCheck'), rcStatus = $('#rcStatus'), rcOut = $('#rcOut');
+    function rcSum(R) { return R.rows.reduce(function (t, r) { return t + r[R.sumCol]; }, 0); }
+    function rcReady() {
+      var R = RC_ROUNDS[rcRound];
+      var missing = R.claims.filter(function (c, i) { return !rcVerdicts[i]; }).length;
+      var num = $('#rcNum');
+      var needNum = num && num.value.trim() === '';
+      var ok = missing === 0 && !needNum;
+      rcCheck.disabled = !ok || rcGraded;
+      if (rcGraded) return ok;
+      rcStatus.textContent = ok ? 'Ready, check it' :
+        missing > 0 ? 'Call ' + missing + ' more claim(s)' + (needNum ? ' and enter your total' : '') : 'Enter your total';
+      return ok;
+    }
+    function rcRender() {
+      var R = RC_ROUNDS[rcRound];
+      rcVerdicts = R.claims.map(function () { return null; });
+      rcGraded = false;
+      rcOut.hidden = true; rcOut.innerHTML = '';
+      rcLabel.textContent = R.label;
+      rcRule.textContent = R.rule;
+      var head = R.cols.map(function (c, i) {
+        return '<th scope="col"' + (i > 0 && typeof R.rows[0][i] === 'number' ? ' class="num"' : '') + '>' + c + '</th>';
+      }).join('');
+      var body = R.rows.map(function (r) {
+        return '<tr>' + r.map(function (v, i) {
+          if (i === 0) return '<th scope="row">' + v + '</th>';
+          return '<td' + (typeof v === 'number' ? ' class="num"' : '') + '>' + v + '</td>';
+        }).join('') + '</tr>';
+      }).join('');
+      rcTable.innerHTML = '<div class="rctable-wrap"><table class="rctable"><caption>' + R.caption + '</caption>' +
+        '<thead><tr>' + head + '</tr></thead><tbody>' + body + '</tbody></table></div>';
+      rcClaims.innerHTML = '';
+      R.claims.forEach(function (c, i) {
+        var d = document.createElement('div');
+        d.className = 'rcclaim';
+        d.innerHTML = '<p class="rcclaim__ai"><span class="tag">AI says</span>' + c.ai + '</p>' +
+          '<div class="rcclaim__btns" role="group" aria-label="Claim ' + (i + 1) + ' verdict">' +
+          '<button type="button" class="opt" aria-pressed="false" data-v="match"><span class="mark" aria-hidden="true">✓</span><span>Matches the rows</span></button>' +
+          '<button type="button" class="opt" aria-pressed="false" data-v="no"><span class="mark" aria-hidden="true">✗</span><span>Does not match</span></button></div>' +
+          (c.input ? '<label class="rcclaim__label" for="rcNum">Add the ' + R.sumName.toLowerCase() + ' column yourself. Your total:</label>' +
+            '<input type="number" id="rcNum" inputmode="numeric" min="0" step="1" autocomplete="off">' : '') +
+          '<p class="rcclaim__verdict" aria-live="polite"></p>';
+        $$('.opt', d).forEach(function (b) {
+          b.addEventListener('click', function () {
+            if (rcGraded) return;
+            rcVerdicts[i] = b.getAttribute('data-v');
+            $$('.opt', d).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            rcReady();
+          });
+        });
+        var num = $('#rcNum', d);
+        if (num) num.addEventListener('input', rcReady);
+        rcClaims.appendChild(d);
+      });
+      rcReady();
+    }
+    rcCheck.addEventListener('click', function () {
+      if (!rcReady()) return;
+      var R = RC_ROUNDS[rcRound];
+      var total = rcSum(R);
+      var num = $('#rcNum');
+      var typed = num ? parseInt(num.value, 10) : NaN;
+      var typedOk = typed === total;
+      var called = 0;
+      var coach = '';
+      $$('.rcclaim', rcClaims).forEach(function (d, i) {
+        var c = R.claims[i];
+        var want = c.ok ? 'match' : 'no';
+        var right = rcVerdicts[i] === want;
+        if (right) called++;
+        d.classList.add(right ? 'is-right' : 'is-wrong');
+        $$('.opt', d).forEach(function (b) {
+          b.setAttribute('disabled', 'true');
+          if (b.getAttribute('data-v') === want) b.classList.add('correct');
+          else if (b.getAttribute('aria-pressed') === 'true') b.classList.add('wrong');
+        });
+        $('.rcclaim__verdict', d).textContent = right ? '✓ Called right' : '✗ Called wrong: the rows say "' + (c.ok ? 'matches' : 'does not match') + '"';
+        coach += '<div><b>Claim ' + (i + 1) + ':</b> ' + (right ? c.right : c.wrong) + '</div>';
+      });
+      if (num) num.setAttribute('disabled', 'true');
+      rcGraded = true;
+      rcCheck.disabled = true;
+      rcStatus.textContent = 'Checked';
+      var wrongClaim = R.claims.filter(function (c) { return c.input; })[0];
+      var working = R.sumName + ', row by row: ' + R.rows.map(function (r) { return r[R.sumCol]; }).join(' + ') +
+        ' = <b>' + total + '</b>. The AI said ' + wrongClaim.said + '.';
+      var recomp = isNaN(typed) ? 'You left the total blank. The adding is the drill.' :
+        typedOk ? 'Your recompute: <b>' + typed + '</b>. Matches the rows.' :
+        'Your recompute: <b>' + typed + '</b>. The rows add to ' + total + '; run the column once more, one row at a time.';
+      var clean = called === R.claims.length && typedOk;
+      var headline = clean ? 'Clean run. Every claim called, and the total recomputed by your own hand.' :
+        called + ' of ' + R.claims.length + ' claims called right' + (typedOk ? ', and your recompute matches.' : ', and the recompute needs another pass.');
+      var last = rcRound === RC_ROUNDS.length - 1;
+      rcOut.innerHTML = '<span class="tag">' + R.label + ' · ' + called + ' / ' + R.claims.length + ' called' + (typedOk ? ' · recompute matches' : '') + '</span>' +
+        '<p style="margin:.75rem 0 0;color:#fff;font-weight:500">' + headline + '</p>' +
+        '<div class="recompute__work">' + working + '<br>' + recomp + '</div>' +
+        '<div class="lab__coach">' + coach + '</div>' +
+        (last ? '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> open the practice sheet or your own de-identified export, ask an approved tool for one total, and add the column yourself before that number goes anywhere.</p>'
+              : '<p class="why" style="margin-top:1rem"><b>Round two</b> brings a different program and a different wrong figure. Keep the rule: recompute before you repeat.</p>') +
+        '<div class="lab__runrow">' +
+        (last ? '' : '<button type="button" class="btn" id="rcNext">Round two</button>') +
+        '<button type="button" class="btn btn--ghost" id="rcRetry">Run it again</button></div>';
+      rcOut.hidden = false;
+      var nextB = $('#rcNext');
+      if (nextB) nextB.addEventListener('click', function () {
+        rcRound++; rcRender();
+        rcLabel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+      $('#rcRetry').addEventListener('click', function () {
+        rcRound = 0; rcRender();
+        rcLabel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+      rcOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    rcRender();
+  }
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -669,6 +856,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

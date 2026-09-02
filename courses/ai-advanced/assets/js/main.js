@@ -239,7 +239,7 @@
     });
   });
 
-  /* ---------- Generic scenario trainer (used five times) ---------- */
+  /* ---------- Generic scenario trainer (used four times) ---------- */
   function makeTrainer(cfg) {
     var root = $(cfg.root);
     if (!root) return;
@@ -363,31 +363,6 @@
         answer: 3, why: 'No failure, and notice the tell of a healthy trace: it ends at a checkpoint instead of at "sent." That design choice is the whole lesson.' },
       { q: 'Goal: remove duplicate rows from a spreadsheet. Trace: agent deletes EVERY row that appears more than once, including all the originals, and reports success.',
         answer: 1, why: 'Misread instructions: "remove duplicates" became "remove everything that has a duplicate." Plausible reading, destructive result, and exactly why destructive steps get a checkpoint.' }
-    ]
-  });
-
-  /* Spot the hallucination (Section 06) */
-  makeTrainer({
-    root: '#hallSpot', q: '#hsQ', options: '#hsOptions', feedback: '#hsFeedback',
-    progress: '#hsProgress', next: '#hsNext', result: '#hsResult',
-    progressWord: 'Answer', goodColor: 'var(--vu-gold-flat)',
-    resultColor: 'rgba(255,255,255,.85)', passAt: 5,
-    passMsg: 'Sharp detector. Now the humbling part: the ones you caught had tells, and production hallucinations often don\'t. The habit beats the instinct.',
-    failMsg: 'The point exactly: some of these fooled you, and they were TRYING to be catchable. Fluency and accuracy are separate qualities; verify facts, dates, numbers, names, and citations at the source.',
-    labels: ['Accurate', 'Hallucinated'],
-    items: [
-      { q: 'AI answer: "According to the 2023 Harvard Business Review article \'The Meeting Audit\' by R. Chen, managers waste 31% of meeting time on recaps for latecomers."',
-        answer: 1, why: 'Hallucinated: that article and author don\'t exist. The tell is a suspiciously specific citation you can\'t find; fabricated sources are the classic hallucination.' },
-      { q: 'AI answer: "Excel\'s VLOOKUP searches the first column of a range and returns a value from a column you specify in the same row."',
-        answer: 0, why: 'Accurate, and checkable in ten seconds against documentation. Notice it sounds no more or less confident than the fabricated ones.' },
-      { q: 'AI answer: "The average office worker receives about 1,200 emails per day, which is why inbox-zero strategies fail."',
-        answer: 1, why: 'Hallucinated: real estimates land near 100 to 120. Off by 10x, delivered smoothly, with a plausible-sounding conclusion attached to the fake number.' },
-      { q: 'AI answer: "FERPA is a U.S. federal law that protects the privacy of student education records."',
-        answer: 0, why: 'Accurate, and load-bearing for this campus. Grounding, citations, and your own verification all still apply when you act on it.' },
-      { q: 'AI answer: "In Outlook, you can recall any sent email as long as you do it within 24 hours, regardless of the recipient\'s organization."',
-        answer: 1, why: 'Hallucinated: recall only works inside the same organization, and only on unread mail. Absolute rules ("any," "regardless") where reality has exceptions are a tell.' },
-      { q: 'AI answer: "Python is named after the snake, which is why its logo shows two intertwined snakes."',
-        answer: 1, why: 'Hallucinated, subtly: the logo does show two snakes, but the language is named after Monty Python. Half-true answers are the hardest kind, because the checkable half checks out.' }
     ]
   });
 
@@ -594,6 +569,206 @@
     });
   });
 
+  /* ---------- INTERACTIVE: planted-error read ---------- */
+  /* One AI paragraph, one button per sentence. Mark what you distrust, check
+     the marks, then size the check. Same engine in every deck-family course;
+     the paragraphs live in the config below. */
+  function makePlantedRead(cfg) {
+    var root = $(cfg.root);
+    if (!root) return;
+    var setEl = $('.perr__set', root), promptEl = $('.perr__prompt', root), textEl = $('.perr__text', root),
+        checkBtn = $('.perr__check', root), statusEl = $('.perr__status', root), resEl = $('.perr__result', root),
+        sizeEl = $('.perr__size', root), sizeQ = $('.perr__sizeq', root), optsEl = $('.perr__opts', root),
+        verdictEl = $('.perr__verdict', root), afterEl = $('.perr__after', root), nudgeEl = $('.perr__nudge', root),
+        retryBtn = $('.perr__retry', root), nextBtn = $('.perr__next', root);
+    var si = 0, checked = false;
+    var GRADE = { best: ['Best', 'correct'], ok: ['The minimum', 'partial'], bad: ['Not enough', 'wrong'] };
+
+    function markedCount() {
+      return $$('.perr__s[aria-pressed="true"]', textEl).length;
+    }
+    function setStatus() {
+      var n = markedCount();
+      statusEl.textContent = n === 0 ? 'Mark the sentences you distrust, then check' :
+        n + ' sentence' + (n === 1 ? '' : 's') + ' marked';
+    }
+    function render() {
+      var S = cfg.sets[si];
+      checked = false;
+      setEl.textContent = (cfg.sets.length > 1 ? 'Paragraph ' + (si + 1) + ' of ' + cfg.sets.length + ' · ' : '') + S.label;
+      promptEl.innerHTML = '<b>' + S.ask + '</b> ' + S.prompt;
+      textEl.innerHTML = '';
+      S.sentences.forEach(function (s, i) {
+        if (s.para && i > 0) {
+          var gap = document.createElement('span');
+          gap.className = 'perr__gap'; gap.setAttribute('aria-hidden', 'true');
+          textEl.appendChild(gap);
+        } else if (i > 0) {
+          textEl.appendChild(document.createTextNode(' '));
+        }
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'perr__s';
+        b.setAttribute('aria-pressed', 'false');
+        b.textContent = s.t;
+        b.addEventListener('click', function () {
+          if (checked) return;
+          b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+          setStatus();
+        });
+        textEl.appendChild(b);
+      });
+      checkBtn.disabled = false;
+      resEl.hidden = true; resEl.innerHTML = '';
+      sizeEl.hidden = true; optsEl.innerHTML = ''; verdictEl.textContent = ''; verdictEl.className = 'quiz__feedback perr__verdict';
+      afterEl.hidden = true; nudgeEl.hidden = true; nudgeEl.innerHTML = '';
+      if (nextBtn) {
+        nextBtn.hidden = cfg.sets.length < 2;
+        nextBtn.textContent = si === cfg.sets.length - 1 ? 'Back to the first paragraph' : 'Try the second paragraph';
+      }
+      setStatus();
+    }
+    function check() {
+      if (checked) return;
+      checked = true;
+      var S = cfg.sets[si];
+      var btns = $$('.perr__s', textEl);
+      var planted = 0, caught = 0, alarms = 0, rows = '';
+      S.sentences.forEach(function (s, i) {
+        var b = btns[i];
+        var on = b.getAttribute('aria-pressed') === 'true';
+        b.disabled = true;
+        if (s.planted) {
+          planted++;
+          if (on) { caught++; b.classList.add('hit'); } else { b.classList.add('miss'); }
+          rows += '<div class="perr__find"><b>' + (on ? 'Caught' : 'Missed') + ' · ' + s.kind + '</b>' +
+            '<span>' + s.why + ' <i>The tell:</i> ' + s.tell + '</span></div>';
+        } else if (on) {
+          alarms++;
+          b.classList.add('alarm');
+          rows += '<div class="perr__find"><b>False alarm</b><span>' + (s.note || cfg.alarmNote) + '</span></div>';
+        }
+      });
+      resEl.innerHTML = '<p class="perr__score">Caught ' + caught + ' of ' + planted + ', ' +
+        alarms + ' false alarm' + (alarms === 1 ? '' : 's') + '.</p>' + rows +
+        '<p class="why" style="margin-top:.9rem">' + (caught === planted ? cfg.allNote : cfg.missNote) + '</p>';
+      resEl.hidden = false;
+      checkBtn.disabled = true;
+      statusEl.textContent = 'Marks locked. Now size the check.';
+      sizeQ.textContent = S.size.q;
+      optsEl.innerHTML = '';
+      S.size.opts.forEach(function (o, oi) {
+        var ob = document.createElement('button');
+        ob.type = 'button'; ob.className = 'opt';
+        ob.setAttribute('aria-pressed', 'false');
+        ob.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
+        ob.addEventListener('click', function () {
+          var g = GRADE[o.grade] || GRADE.bad;
+          $$('.opt', optsEl).forEach(function (x) {
+            x.setAttribute('aria-pressed', String(x === ob));
+            x.classList.remove('correct', 'partial', 'wrong');
+          });
+          ob.classList.add(g[1]);
+          verdictEl.className = 'quiz__feedback perr__verdict perr__verdict--' + o.grade;
+          verdictEl.textContent = g[0] + ': ' + o.verdict;
+          nudgeEl.innerHTML = '<b>Now the real thing:</b> ' + cfg.nudge;
+          nudgeEl.hidden = false;
+        });
+        optsEl.appendChild(ob);
+      });
+      sizeEl.hidden = false;
+      afterEl.hidden = false;
+      resEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    }
+    checkBtn.addEventListener('click', check);
+    retryBtn.addEventListener('click', function () {
+      render();
+      textEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        si = (si + 1) % cfg.sets.length;
+        render();
+        textEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+    }
+    render();
+  }
+
+  /* Spot the planted errors (Section 06) */
+  makePlantedRead({
+    root: '#plantedRead',
+    alarmNote: 'This one holds against the policy. A false alarm costs a minute to check; a miss costs more. Suspicion is cheap.',
+    allNote: 'All three. Now the humbling part: these had tells, and production hallucinations often do not. The habit beats the instinct.',
+    missNote: 'The sentences you missed read exactly as smoothly as the ones you caught. That is the lesson: fluency is not accuracy, and the check is a habit, not a feeling.',
+    nudge: 'the next AI answer you paste into a memo, mark the sentences you distrust before you read it for flow.',
+    sets: [
+      { label: 'A travel reimbursement question',
+        ask: 'Staff question:',
+        prompt: '"How does travel reimbursement work for staff now?" The AI answered with the paragraph below. The policy behind it is invented for practice.',
+        sentences: [
+          { t: 'Here is how travel reimbursement works for staff under the current policy.' },
+          { t: 'You submit expenses through the University expense system after the trip ends.' },
+          { t: 'Reports are due within 90 days of your return date, and late reports need a written exception.', planted: true, kind: 'Wrong number',
+            why: 'The policy gives you 60 days, not 90. Thirty days of slack that does not exist is how a report gets rejected.',
+            tell: 'a round, confident deadline. Dates and deadlines are the first numbers to check.' },
+          { t: 'Original itemized receipts are required for any single expense over $75.',
+            note: 'Holds: the $75 receipt line is in the policy. Distrusting a dollar figure is a good reflex, and this one checks out.' },
+          { t: 'Meals are reimbursed at the federal per diem rate for the city you visited.' },
+          { t: 'Mileage is reimbursed at 58 cents per mile under the 2022 rate memo.', planted: true, kind: 'Stale detail',
+            why: 'Stale. The 2022 memo was replaced by this year\'s rate memo, and the model answered from the old one. Check the current memo before you quote a rate.',
+            tell: 'a dated source inside a rule that changes every year.' },
+          { t: 'Airfare should be booked in economy class unless an accommodation is on file.' },
+          { t: 'The full rules are in Travel Policy 4.7, section 3.2, "Extended Travel Allowances."', planted: true, kind: 'Invented citation',
+            why: 'Invented. Travel Policy 4.7 exists in this scenario, but it has no section 3.2 and no heading called "Extended Travel Allowances." The model built a citation from the shape of real ones.',
+            tell: 'a precise citation you cannot find in the table of contents.' },
+          { t: 'Your department\'s business officer approves the report before finance releases payment.' },
+          { t: 'Questions go to the travel help desk, which answers within two business days.',
+            note: 'Holds: the two-day turnaround is on the help desk page. Worth a glance, not a worry.' }
+        ],
+        size: { q: 'This answer is about to be pasted into a memo for your whole department. How much checking does it get?',
+          opts: [
+            { t: 'Ship it. It reads clean and most of it is right.', grade: 'bad',
+              verdict: 'three wrong sentences travel to the whole department with your name on them, and the deadline error costs someone a reimbursement.' },
+            { t: 'Quick check: open the policy and confirm the sentences you marked.', grade: 'ok',
+              verdict: 'your marks point the check at the right sentences, and it takes five minutes. It only catches what you marked.' },
+            { t: 'Full trace: every number, date, and citation against the policy before it travels.', grade: 'best',
+              verdict: 'a memo that travels earns the full check. Every fact, date, number, name, and citation gets opened, marked or not.' }
+          ] }
+      },
+      { label: 'A student records question',
+        ask: 'Staff question:',
+        prompt: '"A parent emailed asking for their student\'s grades. What can I share?" The AI answered with the paragraph below. The campus guidance behind it is invented for practice.',
+        sentences: [
+          { t: 'Here is what the University\'s student records guidance says about a request like this.' },
+          { t: 'Grades are part of the student\'s education record, so they are protected information.' },
+          { t: 'A parent gets full access automatically once the student turns 21.', planted: true, kind: 'Wrong number',
+            why: 'Wrong. Rights over the record belong to the student from the day they enroll, at any age. There is no line at 21; the model borrowed a number from a different rule.',
+            tell: 'a specific age inside a rule that is about status, not age.' },
+          { t: 'Ask the parent to have the student grant access, and route the request to the Registrar\'s office.' },
+          { t: 'Under the 2019 campus guidance, a signed paper release is the only way a student can authorize sharing.', planted: true, kind: 'Stale detail',
+            why: 'Stale. The 2019 guidance was replaced. Students now authorize sharing through the online consent form in the student portal, and paper is one option among several.',
+            tell: '"the only way," anchored to a dated document.' },
+          { t: 'Do not confirm or deny the grades over email while the request is open.' },
+          { t: 'Directory information, such as enrollment status, follows a separate rule and may be released unless the student opted out.',
+            note: 'Holds, and it is a good one to distrust: it is the kind of nuance a model gets half right. Here it matches the guidance.' },
+          { t: 'See Registrar Bulletin 12-B, "Parental Access Standards," for the full list of exceptions.', planted: true, kind: 'Invented citation',
+            why: 'Invented. There is no Bulletin 12-B and no document called "Parental Access Standards." The exceptions live in the guidance itself.',
+            tell: 'a numbered bulletin with a formal title that nobody in your office has heard of.' },
+          { t: 'A health or safety emergency is handled by the Registrar and Student Affairs, not by you.' }
+        ],
+        size: { q: 'This answer is about to go back to the parent, with a copy to your supervisor. How much checking does it get?',
+          opts: [
+            { t: 'Ship it. The tone is right and it says no politely.', grade: 'bad',
+              verdict: 'the age line and the paper-only rule are both wrong, and a wrong answer about a student record is a complaint waiting to happen.' },
+            { t: 'Quick check: confirm the marked sentences against the Registrar\'s guidance.', grade: 'ok',
+              verdict: 'five minutes, and it fixes what you caught. Anything you did not mark still ships.' },
+            { t: 'Full trace: check every rule and citation with the Registrar before you reply.', grade: 'best',
+              verdict: 'student records carry real consequences, so the answer earns the full check, and one call to the Registrar settles it.' }
+          ] }
+      }
+    ]
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -689,6 +864,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

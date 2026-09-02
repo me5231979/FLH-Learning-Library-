@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -130,7 +130,7 @@
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain why a manager's visible AI use predicts team adoption better than mandates, licenses, or memos</li>
+          <li>Choose the visible AI use that will move your team, knowing why modeling beats mandates, licenses, and memos</li>
           <li>Model your own AI use out loud, including the checks you ran and the misses you caught</li>
           <li>Give your team explicit permission and explicit limits, with the traffic light as the hard edge</li>
           <li>Install AI norms into the 1:1s and team meetings you already run, without adding a single meeting</li>
@@ -403,6 +403,20 @@
         <div class="lab__outcome" id="ptOut" hidden aria-live="polite"></div>
       </div>
 
+      <div class="quiz" id="sayTalk" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · The question in the meeting</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the permission talk usually starts before you planned it, because someone asks. In your team meeting, an analyst on your team admits they have been using AI for first drafts and asks if that is allowed. Three turns; pick your next line each time, and watch what the whole table learns from it.</p>
+        <p class="quiz__progress" id="stTurn"></p>
+        <div class="growsim__log" id="stLog" aria-live="polite" aria-label="The conversation so far" hidden></div>
+        <div class="growsim__coachee" id="stLine" aria-live="polite"></div>
+        <div class="quiz__options" id="stOptions" role="group" aria-label="What do you say next?"></div>
+        <p class="quiz__feedback" id="stFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button type="button" class="btn btn--dark" id="stNext" style="visibility:hidden">Continue the conversation</button>
+        </div>
+        <div id="stResult" hidden aria-live="polite"></div>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -499,7 +513,7 @@
 
       <div class="lab" id="adoptLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Adoption Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make with your real team this month, and the failure modes are the ones that actually happen. Choose all four moves, then run the ninety days.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make with your real team this month, and the failure modes are the ones that actually happen. Choose all four moves, then run the ninety days. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run ninety days</button>
@@ -751,7 +765,7 @@
 
 
 <script src="assets/js/qrcode.js?v=1"></script>
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=2"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

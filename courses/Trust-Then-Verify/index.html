@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<link rel="stylesheet" href="assets/css/styles.css?v=3">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -403,6 +403,32 @@
         <div id="flResult" hidden aria-live="polite"></div>
       </div>
 
+      <div class="perr" id="plantedRead" data-reveal>
+        <p class="eyebrow" style="margin-bottom:.5rem">Lab · The planted-error read</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the claim read only pays off if your underlining lands on the sentences that break. Read the briefing excerpt below, mark every sentence you would trace, then check your marks. Three errors are planted.</p>
+        <p class="quiz__progress perr__set" style="margin-top:1.25rem"></p>
+        <p class="perr__prompt"></p>
+        <p class="perr__text" role="group" aria-label="The AI draft, one button per sentence. Press a sentence to mark it as distrusted; press again to clear the mark."></p>
+        <div class="lab__runrow">
+          <button class="btn perr__check" type="button">Check my marks</button>
+          <span class="quiz__progress perr__status" aria-live="polite">Mark the sentences you distrust, then check</span>
+        </div>
+        <div class="perr__result" hidden aria-live="polite"></div>
+        <div class="perr__size" hidden>
+          <p class="eyebrow" style="margin:1.75rem 0 .5rem">Step 2 · Size the check</p>
+          <p class="perr__sizeq"></p>
+          <div class="perr__opts" role="group" aria-label="Size the verification budget"></div>
+          <p class="quiz__feedback perr__verdict" aria-live="polite"></p>
+        </div>
+        <div class="perr__after" hidden>
+          <p class="why perr__nudge" hidden></p>
+          <div class="lab__runrow" style="margin-top:1rem">
+            <button class="btn btn--dark perr__retry" type="button">Run it again</button>
+            <button class="btn perr__next" type="button">Try the second paragraph</button>
+          </div>
+        </div>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -502,7 +528,7 @@
 
       <div class="lab" id="verifyLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Verification Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will face this month, under the same time pressure, with the same fluent draft in front of you. Choose all four, then run it forward.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will face this month, under the same time pressure, with the same fluent draft in front of you. Make each move in turn; what you choose first changes what comes next. Then run it forward. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Send it and see</button>
@@ -753,7 +779,7 @@
 
 
 <script src="assets/js/qrcode.js?v=1"></script>
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=3"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

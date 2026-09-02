@@ -484,6 +484,77 @@
     });
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (after the work audit) ---------- */
+  function mountExemplar(cfg) {
+    var root = $(cfg.root), out = $(cfg.out), btn = $(cfg.btn);
+    if (!root || !out || !btn) return;
+    var remove = function () { var old = $('#' + cfg.id); if (old) old.parentNode.removeChild(old); };
+    // choice chips (where the builder has them) hide the old result; drop the old comparison too
+    $$('.plan__chips .opt', root).forEach(function (b) { b.addEventListener('click', remove); });
+    // registered after the builder's own handler, so the learner's result renders first
+    btn.addEventListener('click', function () {
+      remove();
+      if (out.hidden) return;
+      var box = document.createElement('div');
+      box.className = 'exemplar';
+      box.id = cfg.id;
+      var model = cfg.rows.map(function (r) {
+        return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>';
+      }).join('');
+      var items = cfg.rubric.map(function (r, i) {
+        var qid = cfg.id + 'Q' + i;
+        return '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + r.q + '</p>' +
+          '<div class="exemplar__toggle" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="yes" aria-pressed="false"><span class="mark" aria-hidden="true">Y</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="no" aria-pressed="false"><span class="mark" aria-hidden="true">N</span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>To fix it:</b> ' + r.nudge + '</p>' +
+          '</div>';
+      }).join('');
+      box.innerHTML = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        (cfg.quote ? '<p class="exemplar__quote">' + cfg.quote + '</p>' : '') +
+        '<div class="exemplar__model">' + model + '</div>' +
+        '<p class="exemplar__head">Now score your own</p>' +
+        '<div class="exemplar__rubric">' + items + '</div>' +
+        '<p class="exemplar__tally" aria-live="polite">Answer all three to see your score.</p>';
+      out.parentNode.insertBefore(box, out.nextSibling);
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (item, i) {
+        var nudge = $('.exemplar__nudge', item);
+        $$('.opt', item).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === 'yes';
+            answers[i] = yes;
+            $$('.opt', item).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var done = answers.filter(function (a) { return a !== null; }).length;
+            var score = answers.filter(function (a) { return a === true; }).length;
+            tally.innerHTML = 'You scored ' + score + ' of ' + answers.length + (done < answers.length ? ' so far.' : '.') +
+              (done === answers.length ? '<span class="exemplar__next">' + (score === answers.length ? cfg.strong : cfg.retry) + '</span>' : '');
+          });
+        });
+      });
+    });
+  }
+  mountExemplar({
+    root: '#workAudit', out: '#auOut', btn: '#auRun', id: 'auExemplar',
+    intro: 'Here is one strong answer to question 1, the repeated work. Read it next to yours, then score your own. The four scored questions stay yours; the model answer only covers the part you typed.',
+    rows: [
+      ['The repeated work', 'The Friday status update for the director, first-pass replies to routine inbox requests, and the monthly summary for the department head.'],
+      ['Why it works', 'Each output has a cadence and an audience. Each one starts with a gather or draft step a tool could take on, with a person checking the result.']
+    ],
+    rubric: [
+      { q: 'Are all three outputs things your team produces on a schedule, not one-off projects?', nudge: 'Swap any project for something with a cadence: weekly, monthly, or every ticket.' },
+      { q: 'Is each output specific enough that you could point to the last one?', nudge: 'Add the audience or the deadline. The Friday update for the director, not updates.' },
+      { q: 'Does at least one output have a gather or draft step a tool could take on?', nudge: 'Pick an output where someone spends hours pulling numbers or writing a first pass.' }
+    ],
+    strong: 'All three. One of these outputs becomes your first designed workflow. The capstone asks you to pick it.',
+    retry: 'Fix each Not yet line above, score your audit again, and rescore this list.'
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -579,6 +650,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

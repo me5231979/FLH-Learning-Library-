@@ -725,6 +725,21 @@ em, .italic { font-style: italic; }
 .growsim__coachee b { font-family: var(--font-condensed); font-style: normal; text-transform: uppercase;
   letter-spacing: .06em; font-size: .8rem; color: var(--vu-oak); margin-right: .4rem; }
 
+/* ---------- 25. The question in the meeting (Making It Normal, Section 03 Say) ---------- */
+/* running transcript: the conversation so far, the learner's lines in gold */
+.growsim__log { display: grid; gap: .5rem; margin: 1rem 0 0; padding: .9rem 1.1rem;
+  background: rgba(255,255,255,.55); border: 1px solid var(--line, #E4E4E4); border-radius: var(--radius);
+  font-size: .95rem; line-height: 1.5; color: #444; }
+.growsim__log[hidden] { display: none; }
+.growsim__log p { margin: 0; }
+.growsim__log b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; font-size: .75rem; color: var(--vu-gray-dark); margin-right: .4rem; }
+.growsim__log .you { color: var(--vu-oak); padding-left: .75rem; border-left: 3px solid var(--vu-gold-flat); }
+.growsim__log .you b { color: var(--vu-oak); }
+.saytalk__notes { display: grid; gap: .5rem; margin-top: 1rem; font-size: .95rem; line-height: 1.5; }
+.saytalk__notes div { padding-left: .75rem; border-left: 2px solid var(--vu-gray-light); }
+.saytalk__notes b { color: var(--vu-oak); }
+
 /* ---------- 25. Context window simulator (AI 201) ---------- */
 .ctxsim { margin-top: 2.25rem; max-width: 860px; }
 .ctxsim__stack { display: grid; gap: .4rem; margin: 1rem 0 1.25rem; }
@@ -804,3 +819,11 @@ body { overflow: hidden; }
 
 /* solid top bar on every slide */
 .nav { background: rgba(20,20,20,.97); border-bottom: 1px solid rgba(207,174,112,.18); }
+
+/* ---------- INTERACTIVE: branching lab (situation per slot) ---------- */
+.slot__situation { font-size: .98rem; line-height: 1.5; margin: 0 0 .75rem; padding: .7rem .9rem;
+  border-left: 2px solid var(--vu-gold-flat); background: rgba(207,174,112,.08); color: inherit; }
+.slot__situation:empty { display: none; }
+.on-dark .slot__situation { background: rgba(255,255,255,.05); color: rgba(255,255,255,.9); }
+.lab__carry { margin: .9rem 0 0; font-size: .98rem; color: rgba(255,255,255,.85); }
+.lab__carry b { color: var(--vu-gold-flat); }

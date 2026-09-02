@@ -237,6 +237,46 @@ body.menu-open{ overflow:hidden; }
   text-align:center; font-family:var(--serif); font-size:clamp(1.02rem,2vw,1.3rem); color:#1C1C1C; letter-spacing:.02em; max-width:none; }
 .acr-line b{ font-weight:400; color:var(--vu-oak); }
 
+/* ── ROUTER: five-question entry diagnostic (How Working Smarter works) ── */
+.route{ margin-top:clamp(40px,6vw,64px); border:1px solid var(--bd); border-left:3px solid var(--vu-gold); border-radius:var(--r); background:var(--card2); padding:clamp(22px,3.5vw,36px); }
+.route-head h3{ font-family:var(--serif); font-weight:400; font-size:clamp(1.35rem,2.4vw,1.8rem); margin-top:12px; }
+.route-head h3 em{ font-family:var(--serif-i); font-style:italic; color:var(--strong); }
+.route-head p{ color:var(--tx2); margin-top:10px; max-width:66ch; }
+.route-qs{ display:flex; flex-direction:column; gap:14px; margin-top:24px; }
+.route-q{ border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:18px 20px; }
+.route-q .qn{ font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--eyebrow); margin-right:10px; }
+.route-qt{ font-weight:600; color:var(--tx); font-size:1rem; }
+.route-opts{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; }
+.route-opts button{ text-align:left; border:1px solid var(--field-bd); background:var(--field); color:var(--tx2);
+  border-radius:var(--r); min-height:46px; padding:11px 14px; font-size:.875rem; line-height:1.45; cursor:pointer;
+  transition:border-color .2s ease-out,color .2s ease-out,background-color .2s ease-out; }
+.route-opts button:hover{ border-color:var(--bdg); color:var(--tx); }
+.route-opts button[aria-pressed="true"]{ border-color:var(--strong); color:var(--tx); background:rgba(207,174,112,.14); font-weight:600; }
+.route-act{ display:flex; align-items:center; flex-wrap:wrap; gap:12px 18px; margin-top:22px; }
+.route-hint{ font-size:.875rem; color:var(--tx3); }
+.route-out:empty{ display:none; }
+.route-out{ margin-top:26px; padding-top:22px; border-top:1px solid var(--bd); }
+.route-out h4{ font-family:var(--serif); font-weight:400; font-size:1.25rem; }
+.route-out h4 em{ font-family:var(--serif-i); font-style:italic; color:var(--strong); }
+.route-cols{ display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:16px; }
+.route-col{ border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:16px 18px; }
+.route-col.route-do{ border-top:3px solid var(--vu-oak); }
+.route-col.route-skip{ border-top:3px dashed var(--vu-sage); } /* not ".skip": that is the skip-nav link, parked off screen */
+.route-col .mono{ display:block; }
+.route-col ul{ list-style:none; margin-top:10px; }
+.route-col li{ display:flex; align-items:baseline; gap:10px; padding:8px 0; border-top:1px solid var(--bd); font-size:.9375rem; }
+.route-col li:first-child{ border-top:0; }
+.route-col li .no{ font-family:var(--cond); font-weight:700; font-size:.78rem; color:var(--eyebrow); letter-spacing:.04em; flex-shrink:0; }
+.route-col li a{ color:var(--link); border-bottom:1px solid var(--bdg); }
+.route-col li a:hover{ color:var(--strong); }
+.route-col li .why{ display:block; font-size:.8125rem; color:var(--tx3); margin-top:2px; }
+.route-col .none{ color:var(--tx3); font-size:.9rem; margin-top:10px; }
+.route-time{ margin-top:16px; color:var(--tx2); font-size:.9375rem; max-width:70ch; }
+.route-time b{ color:var(--tx); font-weight:600; }
+.route-end{ margin-top:8px; color:var(--tx3); font-size:.875rem; }
+.route-end a{ color:var(--link); border-bottom:1px solid var(--bdg); }
+@media (max-width:640px){ .route-opts{ grid-template-columns:1fr; } .route-cols{ grid-template-columns:1fr; } }
+
 /* ═══════════════════ SECTIONS / SHARED ═══════════════════ */
 section{ position:relative; padding:clamp(64px,10vw,150px) 0; }
 section + section{ border-top:1px solid transparent; }
@@ -1282,7 +1322,7 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
     <p class="lead"><b>Working Smarter</b> is Vanderbilt&rsquo;s
       self-paced AI course for staff. AI is showing up in more staff work every year; the skill is using it well. By the end of this course, you will be able to:</p>
     <ul class="outcomes" aria-label="By the end of this course, you will be able to">
-      <li><b>Explain</b> what AI tools like ChatGPT are and why they sometimes state made-up things as fact</li>
+      <li><b>Tell</b> a real answer from an invented one, knowing what tools like ChatGPT are and why they state made-up things as fact</li>
       <li><b>Identify</b> which of your own job tasks AI can help with, and build a 30/60/90 development plan from them</li>
       <li><b>Write</b> clear, complete prompts using the CRIT framework: Context, Role, Interview, Task</li>
       <li><b>Choose</b> the right approved tool for any task based on how sensitive the data is: ChatGPT EDU, Amplify, or Copilot</li>
@@ -1410,10 +1450,70 @@ html.paged .hero .hw-mini li::before{ content:counter(hm,decimal-leading-zero); 
         <span class="chip">~18 min</span>
       </div>
     </div>
-    <p class="hw-meta reveal">About 60&ndash;90 minutes for the core path &middot; every module is skippable, in class or on your own &middot; embedded videos are optional extras.</p>
+    <p class="hw-meta reveal">About 60 minutes of reading on the core path, closer to 170 with every exercise done &middot; every module is skippable, in class or on your own, and the route below trims it &middot; embedded videos are optional extras.</p>
     <p class="hw-meta reveal" id="progTopLine" style="margin-top:10px">Section tracking: you have 10 sections ahead. Progress saves only in this browser.</p>
     <!-- [EDIT] program name — Working Smarter is a working title; the tagline below updates with any rename -->
     <p class="acr-line reveal">Learn the new tools <b>by using them.</b></p>
+
+    <!-- ── ROUTER: five-question entry diagnostic. Every module is skippable; this is the
+         part that makes the promise true. Each answer points at one or two sections, and
+         a confident answer marks that section "skip for now". The route is stored as
+         chart-route (this browser only) and the footer Reset clears it. ── -->
+    <div class="route reveal" id="routeBox">
+      <div class="route-head">
+        <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Your route</span></span>
+        <h3>Five questions, then your <em>own</em> path.</h3>
+        <p>Every module is skippable. Answer five quick questions and the course draws your route: which sections to start with, and which to skip for now. Your answers stay in this browser, and the footer Reset clears them.</p>
+      </div>
+      <div class="route-qs" id="routeQs">
+        <div class="route-q" data-rq="0">
+          <p class="route-qt" id="routeQt0"><span class="qn" aria-hidden="true">01</span>How often do you already use an AI tool for work?</p>
+          <div class="route-opts" role="group" aria-labelledby="routeQt0">
+            <button type="button" data-rv="0" aria-pressed="false">Never, or once or twice</button>
+            <button type="button" data-rv="1" aria-pressed="false">A few times a month</button>
+            <button type="button" data-rv="2" aria-pressed="false">Most weeks, on real tasks</button>
+          </div>
+        </div>
+        <div class="route-q" data-rq="1">
+          <p class="route-qt" id="routeQt1"><span class="qn" aria-hidden="true">02</span>Can you say what the four letters in CRIT stand for?</p>
+          <div class="route-opts" role="group" aria-labelledby="routeQt1">
+            <button type="button" data-rv="0" aria-pressed="false">No, I would have to look</button>
+            <button type="button" data-rv="1" aria-pressed="false">Some of them</button>
+            <button type="button" data-rv="2" aria-pressed="false">Yes, all four</button>
+          </div>
+        </div>
+        <div class="route-q" data-rq="2">
+          <p class="route-qt" id="routeQt2"><span class="qn" aria-hidden="true">03</span>Of Vanderbilt&rsquo;s three tools, do you know which ones can take internal data?</p>
+          <div class="route-opts" role="group" aria-labelledby="routeQt2">
+            <button type="button" data-rv="0" aria-pressed="false">I would have to guess</button>
+            <button type="button" data-rv="1" aria-pressed="false">I know one safe choice</button>
+            <button type="button" data-rv="2" aria-pressed="false">Yes, and which one has the lower ceiling</button>
+          </div>
+        </div>
+        <div class="route-q" data-rq="3">
+          <p class="route-qt" id="routeQt3"><span class="qn" aria-hidden="true">04</span>Have you run a prompt, read the answer, and rewritten the prompt once?</p>
+          <div class="route-opts" role="group" aria-labelledby="routeQt3">
+            <button type="button" data-rv="0" aria-pressed="false">Not yet</button>
+            <button type="button" data-rv="1" aria-pressed="false">Once or twice</button>
+            <button type="button" data-rv="2" aria-pressed="false">Yes, it is a habit</button>
+          </div>
+        </div>
+        <div class="route-q" data-rq="4">
+          <p class="route-qt" id="routeQt4"><span class="qn" aria-hidden="true">05</span>Could you call the data light (green, yellow, or red) for a real task from your desk?</p>
+          <div class="route-opts" role="group" aria-labelledby="routeQt4">
+            <button type="button" data-rv="0" aria-pressed="false">I do not know the lights</button>
+            <button type="button" data-rv="1" aria-pressed="false">Probably, with a look at the rules</button>
+            <button type="button" data-rv="2" aria-pressed="false">Yes, without looking anything up</button>
+          </div>
+        </div>
+      </div>
+      <div class="route-act">
+        <button type="button" class="btn btn-primary" id="routeShow" disabled>Show my route</button>
+        <span class="route-hint" id="routeHint">Answer all five to see your route.</span>
+      </div>
+      <div class="route-out" id="routeOut" aria-live="polite"></div>
+    </div>
+
     <div class="bridge reveal"><span class="b-label">Next</span><p>First, the words: everything that follows builds on <em>one</em> idea.</p></div>
   </div>
 </section>
@@ -4066,9 +4166,169 @@ if(progReset) progReset.addEventListener('click', function(){
   oracleSetAttested(false); /* the completion reminder resets with progress */
   oracleSeen = false;
   focusSet(''); /* the focus task clears with progress */
+  routeReset(); /* the saved route clears with progress */
   progRender();
-  if(progStatus) progStatus.textContent = 'Progress reset. 0 of ' + PROG_SECTIONS.length + ' sections complete, and your focus task is cleared.';
+  if(progStatus) progStatus.textContent = 'Progress reset. 0 of ' + PROG_SECTIONS.length + ' sections complete; your focus task and your route are cleared.';
 });
+
+/* ══════════ ROUTER: five-question entry diagnostic (How Working Smarter works) ══════════
+   Each question points at one or two tracked sections; the third (confident) answer
+   marks those sections "skip for now". The knowledge check is skippable only when
+   every answer is confident. One stored value, chart-route (a JSON array of the five
+   answers), lives beside the progress flags and clears with the footer Reset. Time
+   phrasing reads the stop chips already on the page; no minutes are invented. */
+var ROUTE_KEY = 'chart-route';
+var ROUTE_QS = [
+  { secs:['learn','readiness'], why:'You already use the tools, so the fundamentals and the role map are a refresher.' },
+  { secs:['crit'],              why:'You can name all four parts of CRIT.' },
+  { secs:['tools','simulator'], why:'You know which tools take internal data, so tool choice is a refresher.' },
+  { secs:['playground'],        why:'Rewriting a prompt after the first answer is already your habit.' },
+  { secs:['responsible'],       why:'You can call the data light on a real task.' }
+];
+/* the four stops on the path above, in order, each with the sections it covers */
+var ROUTE_STOPS = [ ['learn','readiness'], ['crit','playground'], ['tools','simulator'], ['responsible','quiz'] ];
+var ROUTE_DIAG = ['learn','readiness','crit','playground','tools','simulator','responsible','quiz'];
+var routeBox = document.getElementById('routeBox'), routeQs = document.getElementById('routeQs'),
+    routeShow = document.getElementById('routeShow'), routeHint = document.getElementById('routeHint'),
+    routeOut = document.getElementById('routeOut');
+var routeAns = [null, null, null, null, null];
+function routeRead(){
+  if(!progStore) return null;
+  try{
+    var raw = progStore.getItem(ROUTE_KEY);
+    if(!raw) return null;
+    var v = JSON.parse(raw);
+    if(!v || !Array.isArray(v.a) || v.a.length !== 5) return null;
+    for(var i = 0; i < 5; i++){ if(v.a[i] !== 0 && v.a[i] !== 1 && v.a[i] !== 2) return null; }
+    return v.a;
+  }catch(e){ return null; }
+}
+function routeWrite(a){
+  if(!progStore) return;
+  try{ a ? progStore.setItem(ROUTE_KEY, JSON.stringify({ a:a })) : progStore.removeItem(ROUTE_KEY); }catch(e){}
+}
+function routeSecName(k){
+  var s = null;
+  PROG_SECTIONS.forEach(function(x){ if(x.k === k) s = x; });
+  return s || { k:k, no:'', name:k };
+}
+function routeHref(k){
+  /* the pager's own hash scheme; plain ids stand in if the book failed to build */
+  return document.documentElement.classList.contains('paged') ? '#p/' + k + '/1' : '#' + k;
+}
+function routeStopMinutes(){
+  /* minutes come only from the ~NN min chips on the four stops above; null when any is missing */
+  var chips = document.querySelectorAll('section.howworks .hw-list .hw-step .chip'), out = [];
+  if(chips.length !== ROUTE_STOPS.length) return null;
+  for(var i = 0; i < chips.length; i++){
+    var m = /(\d+)\s*min/.exec(chips[i].textContent || '');
+    if(!m) return null;
+    out.push(parseInt(m[1], 10));
+  }
+  return out;
+}
+function routeSync(){
+  var all = true;
+  for(var i = 0; i < 5; i++){ if(routeAns[i] === null) all = false; }
+  if(routeShow) routeShow.disabled = !all;
+  if(routeHint){
+    var n = routeAns.filter(function(v){ return v !== null; }).length;
+    routeHint.textContent = all ? 'All five answered.' : (n === 0 ? 'Answer all five to see your route.' : n + ' of 5 answered.');
+  }
+}
+function routeRender(){
+  if(!routeOut) return;
+  var skip = {}, why = {};
+  ROUTE_QS.forEach(function(q, i){
+    if(routeAns[i] === 2) q.secs.forEach(function(k){ skip[k] = true; why[k] = q.why; });
+  });
+  var allSure = routeAns.every(function(v){ return v === 2; });
+  if(allSure){ skip.quiz = true; why.quiz = 'Every answer was confident. Take it anyway if you want the proof: it takes five minutes.'; }
+  var doList = [], skipList = [];
+  ROUTE_DIAG.forEach(function(k){ (skip[k] ? skipList : doList).push(k); });
+  function row(k){
+    var s = routeSecName(k);
+    return '<li><span class="no" aria-hidden="true">' + s.no + '</span><span><a href="' + routeHref(k) + '">' + s.name + '</a>' +
+      (skip[k] ? '<span class="why">' + why[k] + '</span>' : '') + '</span></li>';
+  }
+  var html = '<h4>Your route, in <em>two</em> lists.</h4><div class="route-cols">';
+  html += '<div class="route-col route-do"><span class="mono">Start here</span>' +
+    (doList.length ? '<ul>' + doList.map(row).join('') + '</ul>'
+      : '<p class="none">Nothing on this list. You answered every question with confidence.</p>') + '</div>';
+  html += '<div class="route-col route-skip"><span class="mono">Skip for now</span>' +
+    (skipList.length ? '<ul>' + skipList.map(row).join('') + '</ul>'
+      : '<p class="none">Nothing yet. Do the full core path; you can redo this after any section.</p>') + '</div>';
+  html += '</div>';
+  /* time: proportion phrasing from the section count, plus chip minutes only for stops skipped whole */
+  var n = skipList.length, tot = ROUTE_DIAG.length, time;
+  if(n === 0) time = 'Your route is the <b>full core path</b>.';
+  else if(n <= 2) time = 'Your route is <b>a little shorter</b> than the core path.';
+  else if(n <= 4) time = 'Your route is <b>about a third shorter</b> than the core path.';
+  else if(n < tot) time = 'Your route is <b>about half as long</b> as the core path.';
+  else time = 'Your route is <b>the last three sections</b>: the summary, your next step, and the resources.';
+  time += ' You skip ' + n + ' of the ' + tot + ' sections this diagnostic covers.';
+  var mins = routeStopMinutes(), saved = 0, wholeStops = [];
+  if(mins){
+    ROUTE_STOPS.forEach(function(st, i){
+      if(st.every(function(k){ return skip[k]; })){ saved += mins[i]; wholeStops.push('0' + (i + 1)); }
+    });
+  }
+  if(saved > 0){
+    time += ' The ' + (wholeStops.length === 1 ? 'stop' : 'stops') + ' you skip whole (' + wholeStops.join(' and ') +
+      ') add up to about <b>' + saved + ' minutes</b>, by the estimates above.';
+  }
+  html += '<p class="route-time">' + time + '</p>';
+  html += '<p class="route-end">Whatever you skip, end with <a href="' + routeHref('summary') + '">the summary</a>, <a href="' + routeHref('nextstep') + '">your next step</a>, and <a href="' + routeHref('resources') + '">keep learning</a>.' +
+    (progStore ? ' This route is saved in this browser.' : ' Your browser is blocking saved progress, so the route resets when you close this tab.') + '</p>';
+  html += '<div class="route-act"><button type="button" class="btn btn-ghost btn-sm" id="routeRedo">Redo the diagnostic</button></div>';
+  routeOut.innerHTML = html;
+  var redo = document.getElementById('routeRedo');
+  if(redo) redo.addEventListener('click', function(){
+    routeReset();
+    var first = routeQs ? routeQs.querySelector('button') : null;
+    if(first) first.focus();
+  });
+}
+function routeReset(){
+  routeAns = [null, null, null, null, null];
+  routeWrite(null);
+  if(routeQs) routeQs.querySelectorAll('button[data-rv]').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
+  if(routeOut) routeOut.innerHTML = '';
+  routeSync();
+}
+if(routeBox && routeQs && routeShow){
+  routeQs.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('button[data-rv]') : null;
+    if(!b) return;
+    var q = b.closest('.route-q'), qi = q ? parseInt(q.getAttribute('data-rq'), 10) : -1;
+    if(qi < 0 || qi > 4) return;
+    routeAns[qi] = parseInt(b.getAttribute('data-rv'), 10);
+    q.querySelectorAll('button[data-rv]').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    routeSync();
+  });
+  routeShow.addEventListener('click', function(){
+    if(routeAns.some(function(v){ return v === null; })) return;
+    routeWrite(routeAns.slice());
+    routeRender();
+    var h = routeOut ? routeOut.querySelector('h4') : null;
+    if(h){ h.tabIndex = -1; h.focus({ preventScroll:true }); try{ h.scrollIntoView({ block:'start', behavior: reduce ? 'auto' : 'smooth' }); }catch(e){} }
+  });
+  /* restore a saved route so it survives a reload */
+  var savedRoute = routeRead();
+  if(savedRoute){
+    routeAns = savedRoute.slice();
+    routeQs.querySelectorAll('.route-q').forEach(function(q){
+      var qi = parseInt(q.getAttribute('data-rq'), 10);
+      q.querySelectorAll('button[data-rv]').forEach(function(x){
+        x.setAttribute('aria-pressed', parseInt(x.getAttribute('data-rv'), 10) === routeAns[qi] ? 'true' : 'false');
+      });
+    });
+    routeSync();
+    routeRender();
+  } else {
+    routeSync();
+  }
+}
 
 /* ══════════ ORACLE COMPLETION MODAL ══════════
    Fires once, the moment the last tracked section completes; if the page loads

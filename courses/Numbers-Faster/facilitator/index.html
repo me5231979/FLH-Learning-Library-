@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -227,7 +227,7 @@ body.fac-hide .facshow { display: inline-flex; }
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain where AI genuinely speeds up data work and where it fails with confidence</li>
+          <li>Decide, task by task, where AI speeds up data work and where its confident answer has to be recomputed</li>
           <li>Prepare a dataset safely for AI, applying the traffic light to data files and de-identifying people data</li>
           <li>Apply the Data Loop, Describe, Ask, Check, Tell, to interrogate a real spreadsheet</li>
           <li>Build a comparison and a chart brief with AI from your own numbers</li>
@@ -450,6 +450,8 @@ body.fac-hide .facshow { display: inline-flex; }
         </div>
       </div>
 
+      <p class="why" data-reveal style="margin-top:1.5rem"><b>Practice sheet:</b> <a class="dl-link" href="../assets/data/program-enrollment-sample.csv" download>Download the practice sheet (CSV, fictional)</a>. It holds forty rows of made-up program enrollment with no names or personal data, so it is fictional and safe to paste into any approved tool. Describe it, then climb: one monthly total, this term against last, the two rows that break the pattern, and what changed in September.</p>
+
       <div class="plan" id="dlMap" data-reveal style="margin-top:2.5rem">
         <p class="eyebrow" style="margin-bottom:.75rem">Play · Build your Data Loop starter, privately</p>
         <p class="why" style="margin-top:0"><b>Why this matters:</b> the rest of this session runs best on a dataset you actually own, and naming it is the loop's first pass. Nothing you type is saved or sent anywhere.</p>
@@ -527,6 +529,22 @@ body.fac-hide .facshow { display: inline-flex; }
         <p class="quiz__feedback" aria-live="polite"></p>
       </div>
 
+      <div class="recompute" id="recompute" data-reveal>
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Recompute drill</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the model wrote the sentence and did the sum, and it will get one of them wrong without changing its tone. Read the rows, call each claim, and add the column yourself.</p>
+        <p class="quiz__progress" id="rcRound" style="margin-top:1rem"></p>
+        <p class="why" id="rcRule" style="margin-top:.35rem"></p>
+        <div class="recompute__grid">
+          <div id="rcTable"></div>
+          <div class="rcclaims" id="rcClaims"></div>
+        </div>
+        <div class="lab__runrow">
+          <button type="button" class="btn btn--dark" id="rcCheck" disabled>Check my arithmetic</button>
+          <span class="quiz__progress" id="rcStatus">Call all three claims and enter your total</span>
+        </div>
+        <div class="lab__outcome" id="rcOut" hidden aria-live="polite"></div>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -542,7 +560,7 @@ body.fac-hide .facshow { display: inline-flex; }
         </div>
       </details>
     </div>
-    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the check ritual (recompute one number, totals and counts, row trace on surprises) as a non-negotiable step, with the SHRM four-hours finding as the cost of checking too late.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Now the step that protects your name. AI analysis fails differently from human analysis: it hands you a total that matches nothing, a category your file never had, an average computed after a month quietly fell out of its read, all in perfect formatting and a confident tone. So the loop's third step is a ritual, and it runs every time. One: recompute one number by hand, the one your reader will quote. Two: check the totals and counts, do the parts sum to the whole, does the row count match the file? Three: trace the surprise, any claim that would change a decision gets 'show me the rows that came from' before you believe it. Minutes, not hours. And skipping it doesn't save time: SHRM finds workers spending around four hours a week fixing AI output. That's what checking costs when it happens after the number traveled.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the three failure textures on the projector or whiteboard: totals that match nothing, categories that were never in the file, averages computed after a month silently dropped.</li><li>Walk the check ritual card: one recompute, totals and counts, row trace. Do a live recompute with the calculator prop; the physicality lands.</li><li>Cite the cost of skipping: SHRM finds workers averaging around four hours a week fixing AI output. Checking happens either way; early is minutes, late is hours with an audience.</li><li>Send them to Catch the Error: five outputs, let it through or stop it. The clean item matters; the lesson is calibration, not paranoia.</li><li>Run the quick check, then the pair drill: the ritual against the 4,180-tickets output, and surface what pairs caught.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the drill: what did your pair catch in that output, and which of the three checks caught it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The average: 380 a month times twelve is nowhere near 4,180, caught by the recompute</li><li>The Facilities category: was that even in the file? Caught by the row trace</li><li>Someone asks how many rows the model read at all, the counts check</li></ul><p class="facnote__mini">Respond: Celebrate the coverage: 'Between you, the room ran the whole ritual: recompute, counts, trace. That's the point, three cheap moves that each catch a different failure. Alone, each check misses something; together they cover the board.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Recompute, totals and counts, row trace: minutes of checking that catch broken math, dropped data, and inventions. From here on, no generated number travels naked.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; pairs catch the broken average in the drill and at least some question the Facilities category; the room can recite the ritual's three moves unprompted.</p><p class="facnote__meta"><b>Watch for:</b> The over-correction: learners concluding every AI answer needs a full manual redo. Keep the budget idea alive: the ritual is three targeted moves in minutes, and a check that costs what the work did means the step gained nothing. The trainer's trustworthy item exists to make letting a verified number through feel legitimate.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;You now have the whole loop in pieces. Time to run it whole, on a month-end with a deadline.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: failure textures in one breath, ritual card verbatim with the live recompute kept, trainer on devices; the pair drill becomes a solo pass on the 4,180 output.</p></aside>
+    <aside class="facnote" aria-label="Facilitator notes"><div class="facnote__head"><span>Facilitator script</span><span class="facnote__time">Full 11 min · Core 8</span><button class="facnote__hide" type="button" aria-label="Hide the facilitator script">Hide</button></div><p class="facnote__purpose">Install the check ritual (recompute one number, totals and counts, row trace on surprises) as a non-negotiable step, with the SHRM four-hours finding as the cost of checking too late.</p><div class="facnote__blk"><span class="facnote__tag t-say">Say</span><p class="facnote__script">&ldquo;Now the step that protects your name. AI analysis fails differently from human analysis: it hands you a total that matches nothing, a category your file never had, an average computed after a month quietly fell out of its read, all in perfect formatting and a confident tone. So the loop's third step is a ritual, and it runs every time. One: recompute one number by hand, the one your reader will quote. Two: check the totals and counts, do the parts sum to the whole, does the row count match the file? Three: trace the surprise, any claim that would change a decision gets 'show me the rows that came from' before you believe it. Minutes, not hours. And skipping it doesn't save time: SHRM finds workers spending around four hours a week fixing AI output. That's what checking costs when it happens after the number traveled.&rdquo;</p></div><div class="facnote__blk"><span class="facnote__tag t-do">Do</span><ol class="facnote__steps"><li>Open with the three failure textures on the projector or whiteboard: totals that match nothing, categories that were never in the file, averages computed after a month silently dropped.</li><li>Walk the check ritual card: one recompute, totals and counts, row trace. Do a live recompute with the calculator prop; the physicality lands.</li><li>Cite the cost of skipping: SHRM finds workers averaging around four hours a week fixing AI output. Checking happens either way; early is minutes, late is hours with an audience.</li><li>Send them to Catch the Error: five outputs, let it through or stop it. The clean item matters; the lesson is calibration, not paranoia.</li><li>Run the quick check, then the pair drill: the ritual against the 4,180-tickets output, and surface what pairs caught.</li><li>Recompute drill: put round one on the projector, let the room call the three claims, and have one person add the enrolled column aloud before you reveal the working. Round two goes to devices.</li></ol></div><div class="facnote__blk"><span class="facnote__tag t-ask">Ask</span><p class="facnote__script">&ldquo;From the drill: what did your pair catch in that output, and which of the three checks caught it?&rdquo;</p><p class="facnote__mini">Expect:</p><ul class="facnote__steps"><li>The average: 380 a month times twelve is nowhere near 4,180, caught by the recompute</li><li>The Facilities category: was that even in the file? Caught by the row trace</li><li>Someone asks how many rows the model read at all, the counts check</li></ul><p class="facnote__mini">Respond: Celebrate the coverage: 'Between you, the room ran the whole ritual: recompute, counts, trace. That's the point, three cheap moves that each catch a different failure. Alone, each check misses something; together they cover the board.'</p></div><div class="facnote__blk"><span class="facnote__tag t-deb">Debrief</span><p class="facnote__mini">Recompute, totals and counts, row trace: minutes of checking that catch broken math, dropped data, and inventions. From here on, no generated number travels naked.</p></div><p class="facnote__meta"><b>Validate:</b> 4+ of 5 on the trainer; pairs catch the broken average in the drill and at least some question the Facilities category; the room can recite the ritual's three moves unprompted.</p><p class="facnote__meta"><b>Watch for:</b> The over-correction: learners concluding every AI answer needs a full manual redo. Keep the budget idea alive: the ritual is three targeted moves in minutes, and a check that costs what the work did means the step gained nothing. The trainer's trustworthy item exists to make letting a verified number through feel legitimate.</p><div class="facnote__blk"><span class="facnote__tag t-tra">Transition</span><p class="facnote__script">&ldquo;You now have the whole loop in pieces. Time to run it whole, on a month-end with a deadline.&rdquo;</p></div><p class="facnote__meta facnote__core"><b>60-min core:</b> Core: failure textures in one breath, ritual card verbatim with the live recompute kept, trainer on devices; the pair drill becomes a solo pass on the 4,180 output.</p></aside>
   </section>
 
   <!-- ============ 8 · 05 THE ANALYSIS LAB ============ -->
@@ -554,7 +572,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
       <div class="lab" id="analysisLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Analysis Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on your real dataset this week, and the failure modes are the ones that actually happen. Choose how each step runs, then run the month.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on your real dataset this week, and the failure modes are the ones that actually happen. Choose how each step runs, then run the month. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run four weeks</button>
@@ -675,6 +693,7 @@ body.fac-hide .facshow { display: inline-flex; }
       <h2 class="h2" data-reveal>One dataset. One loop. <em>This week.</em></h2>
       <p class="lead" data-reveal>Sessions don't change how anyone works with numbers; a named dataset and a date do. Pick the spreadsheet or report, choose your first move, name what you refuse to do, and put a day on the first run.</p>
       <p class="why" data-reveal><b>Why this matters:</b> a named dataset with a chosen first move and a date is a plan; everything less is a good intention. Datasets and columns, never names or personal records, and nothing you type here is saved or sent anywhere.</p>
+      <p class="why" data-reveal><b>No dataset of your own yet?</b> <a class="dl-link" href="../assets/data/program-enrollment-sample.csv" download>Download the practice sheet (CSV, fictional)</a> and run the first loop on it; it is fictional and safe to paste into any approved tool.</p>
 
       <div class="plan" id="dlPlan" data-reveal>
         <div class="plan__form">
@@ -812,7 +831,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=1"></script>
+<script src="../assets/js/main.js?v=2"></script>
 
 <script>
 (function () {

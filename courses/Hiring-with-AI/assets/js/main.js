@@ -304,6 +304,79 @@
     ]
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (self-explanation) ---------- */
+  /* Renders a model answer plus a three-question self-score under a private
+     builder. Called only after the learner builds; each call re-renders from
+     scratch, so a rebuild resets the score. */
+  function makeExemplar(cfg) {
+    var box = $(cfg.root);
+    if (!box) return { show: function () {}, hide: function () {} };
+    var idBase = cfg.root.slice(1);
+    function render() {
+      var n = cfg.rubric.length;
+      var html = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        '<div class="exemplar__grid">' +
+        cfg.rows.map(function (r) { return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') +
+        '</div>' +
+        '<div class="exemplar__rubric" role="group" aria-label="Score your own answer">' +
+        '<p class="exemplar__lead"><b>Score yourself.</b> ' + cfg.ask + '</p>';
+      cfg.rubric.forEach(function (item, i) {
+        var qid = idBase + 'Q' + (i + 1);
+        html += '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + (i + 1) + ' · ' + item.q + '</p>' +
+          '<div class="exemplar__toggles" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="1" aria-pressed="false"><span class="mark" aria-hidden="true">✓</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="0" aria-pressed="false"><span class="mark" aria-hidden="true"></span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>Add this:</b> ' + item.nudge + '</p>' +
+          '</div>';
+      });
+      html += '<p class="exemplar__tally" aria-live="polite">Score all ' + n + ' to see your tally.</p></div>';
+      box.innerHTML = html;
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (it, i) {
+        var nudge = $('.exemplar__nudge', it);
+        $$('.opt', it).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === '1';
+            answers[i] = yes;
+            $$('.opt', it).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var got = answers.filter(function (a) { return a === true; }).length;
+            var left = answers.filter(function (a) { return a === null; }).length;
+            tally.textContent = 'You scored ' + got + ' of ' + n +
+              (left ? ' so far. ' + left + ' left to score.' : '. ' + (got === n ? cfg.strong : cfg.weak));
+          });
+        });
+      });
+      box.hidden = false;
+    }
+    return { show: render, hide: function () { box.hidden = true; } };
+  }
+
+  var spEx = makeExemplar({
+    root: '#spExemplar',
+    intro: 'A fictional hiring manager for an enrollment team filled in the same three fields. Read theirs beside yours, then score your own plan.',
+    rows: [
+      ['The role', 'A data analyst for the enrollment team, reporting to the director of enrollment operations.'],
+      ['The real tasks', 'Builds the weekly enrollment dashboard; cleans messy exports from three source systems; explains what the numbers mean to staff who do not work with data.'],
+      ['The probe', 'How they handle being wrong in front of others: one real example, what they said in the moment, and what they changed afterward.']
+    ],
+    ask: 'Three questions about your own plan. Yes or not yet; nobody else sees it.',
+    rubric: [
+      { q: 'Are the tasks things the role actually does in a normal month, not traits?',
+        nudge: 'Write concrete work, like "builds the weekly dashboard." Not "team player" or "detail-oriented."' },
+      { q: 'Could each task become a "tell me about a time" question, asked in the same words to every candidate?',
+        nudge: 'Write a task specific enough to ask about: a thing they made, fixed, or explained.' },
+      { q: 'Does the probe ask for evidence a stranger could score from 1 to 5?',
+        nudge: 'Write what a strong answer would show: a specific moment, what the person did, and what changed because of it.' }
+    ],
+    strong: 'All three. Now the real thing: write the 1-to-5 anchors for each row before the first application is read.',
+    weak: 'Edit the fields above and build the plan again. Every task you sharpen now becomes a fairer question later.'
+  });
+
   /* ---------- INTERACTIVE: private structure plan builder (Section 04) ---------- */
   var spb = $('#structPlan');
   if (spb) {
@@ -328,6 +401,7 @@
         '<div class="row"><b>The rule</b><span>All of it is built before the first application is read, then frozen. That timing is what keeps the help fair, and green.</span></div>' +
         '</div>';
       sOut.hidden = false;
+      spEx.show();
       sOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
     });
   }
@@ -355,27 +429,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["The old posting went up as it was. Two weeks later, the applications look like the last pool: same schools, same titles. The old degree line filtered out the rest. The pile is smaller than the season deserves. Your calendar is already full. How does the screen run?", "The punched-up posting went live and read well. Two weeks later, the pile is the usual size, with the same profiles in it. The exciting language drew clicks, not new kinds of candidates. The season is busy and your calendar is full. How does the screen run?", "The audited posting went live, naming the real gap in plain words. Two weeks later, the pile is bigger and less familiar. It holds people from places the old post never reached. That is what you wanted, and it is more to read. The season is busy. How does the screen run?"], 2: ["Interviews start Monday. The shortlist looks a lot like the team you already have. The old posting asked for the same things it always did. Several interviewers are lined up, each with their own habits. Nobody has agreed on questions yet. How do the interviews run?", "Interviews start Monday. The shortlist is solid and familiar. The livelier posting still filtered the pool the same way. Several interviewers are lined up. Each has their own habits and a strong sense of what an analyst sounds like. How do the interviews run?", "Interviews start Monday. The shortlist has range in it: different backgrounds, different paths to the same skills. The posting asked for skills, and it got them. That range makes comparing harder, not easier. Several interviewers are lined up, each with their own habits. How do the interviews run?"], 3: ["Decision day. Two finalists, and one of them reminds everyone of the analyst who just left. The old posting was built to find that person again, and it did. The hiring team is leaning that way, and the season is busy. How does the decision get made?", "Decision day. Two finalists, both strong, both familiar. The punched-up posting drew a livelier pool that still looked like the old one. The choice is between two versions of the same profile. The hiring team wants to be done. How does the decision get made?", "Decision day. Two finalists who look nothing alike on paper, both there because the audited posting asked for skills. One interviews smoothly. The other has the stronger record on the actual gap. The hiring team is split, and the season is busy. How does the decision get made?"] };
+    var CARRY = ["The recycled posting refilled the old pool, so every later step chose among the same people.", "A livelier posting marketed the same narrow door, so the pool never widened.", "The audited posting widened the pool, and every later step had real range to work with."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the hire' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more moment(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       violation: 'The offer went out, and it doesn\'t matter. Candidate materials sat in an unapproved tool, and an unauditable system shaped who made the shortlist: a privacy violation nobody can undo and a screen nobody can defend. When a candidate, a colleague, or a regulator asks how the pool was narrowed, there is no good answer, and every careful step you took afterward inherits the problem.',
       strong: 'The defensible hire. The audited posting pulled applicants from places the old one never reached, the rubric screened them against the job instead of against each other, the interviews produced evidence you could lay side by side, and the debrief caught the one score a gut read would have inflated. You can explain this decision to anyone who asks, including the people who didn\'t get the offer.',
@@ -396,6 +494,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> change your weakest moment and run the hire again. Watch what becomes defensible.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper finds the weak moment in YOUR last real hire.</p>');
@@ -671,7 +770,10 @@
 
   // keyboard
   document.addEventListener('keydown', function (e) {
-    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    var focusTag = document.activeElement.tagName;
+    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(focusTag) > -1) return;
+    // let Space activate a focused control instead of turning the page
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(focusTag) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

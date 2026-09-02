@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -350,6 +350,37 @@
         <p style="margin:.75rem 0 0" class="measure">If a task touches private information about people, performance notes, salaries, health, anything, the AI lane is closed, whatever the volume question says. The light outranks the test.</p>
       </div>
 
+      <div class="board" id="routeBoard" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · The Routing Board</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> one task at a time is easy. A month of them arriving together is where the order slips. Nine tasks from one fictional team's month, roles only. Drag each card into a lane, or use the three buttons on the card. Growth first, judgment second, volume last.</p>
+        <div class="board__bank" id="rbBank">
+          <p class="board__label">Unrouted tasks</p>
+          <div class="board__cards" id="rbBankCards"></div>
+        </div>
+        <div class="board__lanes" id="rbLanes">
+          <div class="board__lane" data-lane="ai">
+            <h3>AI drafts it</h3>
+            <p class="board__hint">Volume: mechanical repetition, catchable errors, a named verifier every time.</p>
+            <div class="board__cards" id="rbLaneAi"></div>
+          </div>
+          <div class="board__lane" data-lane="person">
+            <h3>A person grows on it</h3>
+            <p class="board__hint">Growth: stretch beats speed, so the rep goes to the person who needs it.</p>
+            <div class="board__cards" id="rbLanePerson"></div>
+          </div>
+          <div class="board__lane" data-lane="keep">
+            <h3>I keep it</h3>
+            <p class="board__hint">Judgment: context, a relationship, or your name on the outcome.</p>
+            <div class="board__cards" id="rbLaneKeep"></div>
+          </div>
+        </div>
+        <div class="lab__runrow">
+          <button class="btn" id="rbCheck" disabled>Check my routing</button>
+          <span class="quiz__progress" id="rbCount" aria-live="polite">0 of 9 routed</span>
+        </div>
+        <div class="lab__outcome" id="rbOut" hidden aria-live="polite"></div>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -494,7 +525,7 @@
 
       <div class="lab" id="routingLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Routing Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every routing here is one you will make on real work this month, and the quarter-end outcomes are the ones that actually happen. Route each task, then run the quarter.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every routing here is one you will make on real work this month, and the quarter-end outcomes are the ones that actually happen. Route each task, then run the quarter. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run the quarter</button>
@@ -745,7 +776,7 @@
 
 
 <script src="assets/js/qrcode.js?v=1"></script>
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=2"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

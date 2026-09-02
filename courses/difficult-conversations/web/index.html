@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<link rel="stylesheet" href="../assets/css/styles.css?v=12">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -343,7 +343,7 @@
       <p class="eyebrow" data-reveal>Practice · Feedback Lab</p>
       <h2 class="h2" data-reveal>Build one that <em>lands</em>.</h2>
       <p class="lead" data-reveal>Your task: a teammate has come to your last two planning meetings unprepared, and you need to say so. Choose one option for each part of the feedback, then deliver it and see how it lands.</p>
-      <p class="why" data-reveal><b>Why this matters:</b> feeling the reaction change as each part sharpens is the fastest way to internalize SBI before you write your own. The graded reactions are illustrative, not a simulation of any real person.</p>
+      <p class="why" data-reveal><b>Why this matters:</b> feeling the reaction change as each part sharpens is the fastest way to internalize SBI before you write your own. The graded reactions are illustrative, not a simulation of any real person. Moves open one at a time, and your first move shapes what comes next.</p>
       <div class="lab" id="feedbackLab" data-reveal>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
@@ -588,6 +588,21 @@
         <p class="quiz__feedback" aria-live="polite"></p>
       </div>
 
+      <div class="quiz dialogue" id="sidewaysDialogue" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Choose the next line</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> a contrast statement has to be practiced before the adrenaline, not during it. You have just given a direct report SBI feedback about three missed Monday status updates. Three turns; their next line depends on yours. The reactions are illustrative, not a simulation of any real person.</p>
+        <p class="quiz__progress" id="sdProgress"></p>
+        <div class="dialogue__log" id="sdLog" role="log" aria-live="polite" aria-label="The conversation so far"></div>
+        <p class="quiz__q" id="sdAsk" style="margin-top:1.25rem">Your next line:</p>
+        <div class="quiz__options" id="sdOptions" role="group" aria-label="Your next line"></div>
+        <p class="quiz__feedback" id="sdFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="sdNext" type="button" style="visibility:hidden">Next turn</button>
+        </div>
+        <div class="lab__outcome" id="sdResult" hidden aria-live="polite" tabindex="-1"></div>
+        <p class="why" id="sdNudge" hidden style="margin-top:1rem"><b>Now the real thing:</b> predict the reaction to the conversation you named in Section 01, then write your contrast statement into <a href="#s-plan">your conversation plan</a>.</p>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -762,7 +777,7 @@
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=12"></script>
+<script src="../assets/js/main.js?v=13"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

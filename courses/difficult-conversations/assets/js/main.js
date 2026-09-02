@@ -359,27 +359,51 @@
     ];
     var picks = [null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["You open with \"You always do this.\" Their shoulders go up before you finish the sentence. They are already searching for the one time it was not true. Whatever you say next lands on someone who has started defending. Choose what you name as the behavior.", "You open with \"Lately, in meetings.\" They nod slowly, waiting. Nothing to argue with yet, and nothing to hold onto either. Which meetings, and when, is still fog. They are listening, half on guard. Choose what you name as the behavior.", "You open with \"In our last two Monday planning meetings.\" They know exactly which meetings you mean. No verdict has been passed, so there is nothing to push back on yet. They are listening, and the room is still calm. Choose what you name as the behavior."], 2: ["Whatever you named, it arrived after \"always.\" They are half listening and half building a case. The Thursday they stayed late, the week they covered for someone. The actual problem is still fighting for space in the conversation. Say what it cost, and see if it gets heard.", "Whatever you named, it came wrapped in \"lately.\" They are not fighting, but they are not sure what you mean either. The fog gave them room to shrug. Now comes the cost. What you say here decides whether they fix something or wait you out.", "The time and place were plain, and they are still with you. Nothing so far gave them anything to defend. The conversation is about the work, and it can stay that way. Now say what it cost. This is where it stays about the work, or stops."] };
+    var CARRY = ["\"You always\" put them on trial before the behavior was named, so every part after it landed on a defense.", "\"Lately\" gave them nothing to argue with and nothing to picture, so the deflection had room to grow.", "Two named meetings gave them a fact instead of a feeling, so the rest landed on someone still listening."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, deliver it' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more part(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: '“Oh. I didn’t realize the doc was stale going into those meetings. That’s on me. Can we add a Friday reminder? I’ll have it current before Monday.” They’re solving, not defending.',
       mid: '“I mean… okay, I guess I could be more on top of it. It’s been a crazy month for everyone though.” Partial ownership, plus a deflection. You’ll be having this talk again.',
@@ -397,6 +421,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> upgrade your weakest part and re-deliver. Watch the reaction change.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> apply the same three-part structure to the conversation you named in Section 01.</p>');
@@ -629,6 +654,188 @@
     });
   });
 
+  /* ---------- INTERACTIVE: Choose the next line (branching dialogue) ----------
+     Shared engine (house rule: the same engine lives in every deck course).
+     turns[0].line is a string; later turns' line (and any option's reply) may be
+     an array of three strings indexed by the PREVIOUS turn's chosen option. */
+  function makeDialogue(cfg) {
+    var root = $(cfg.root);
+    if (!root) return;
+    var logEl = $(cfg.log, root), optEl = $(cfg.options, root), fbEl = $(cfg.feedback, root),
+        progEl = $(cfg.progress, root), nextBtn = $(cfg.next, root), resEl = $(cfg.result, root),
+        nudgeEl = $(cfg.nudge, root), askEl = $(cfg.ask, root), navEl = $('.quiz__nav', root);
+    var turn = 0, picks = [], locked = false;
+    var branch = function () { return turn > 0 ? picks[turn - 1] : 0; };
+    var byBranch = function (v) { return Array.isArray(v) ? v[branch()] : v; };
+    var esc = function (t) { return String(t).replace(/</g, '&lt;'); };
+    var stage = function (t) { return esc(t).replace(/\(([^)]+)\)/g, '<i class="dialogue__stage">($1)</i>'); };
+    function addLine(who, text, you) {
+      var d = document.createElement('div');
+      d.className = 'dialogue__line' + (you ? ' dialogue__line--you' : '');
+      d.innerHTML = '<span class="dialogue__who">' + who + '</span><p>' + stage(text) + '</p>';
+      logEl.appendChild(d);
+    }
+    function render() {
+      locked = false;
+      var T = cfg.turns[turn];
+      progEl.textContent = 'Turn ' + (turn + 1) + ' of ' + cfg.turns.length + ' · your move';
+      addLine(cfg.them, byBranch(T.line), false);
+      fbEl.textContent = '';
+      nextBtn.style.visibility = 'hidden';
+      nextBtn.textContent = turn === cfg.turns.length - 1 ? 'See how it ended' : 'Next turn';
+      optEl.innerHTML = '';
+      T.opts.forEach(function (o, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'opt';
+        b.setAttribute('aria-pressed', 'false');
+        b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + i) + '</span><span>' + o.t + '</span>';
+        b.addEventListener('click', function () {
+          if (locked) return; locked = true;
+          $$('.opt', optEl).forEach(function (x, xi) {
+            x.setAttribute('disabled', 'true');
+            x.setAttribute('aria-pressed', String(xi === i));
+          });
+          addLine(cfg.you, o.t, true);
+          addLine(cfg.them, byBranch(o.reply), false);
+          picks.push(i);
+          var g = cfg.grades[o.pts];
+          fbEl.textContent = g.word + ' ' + o.note;
+          fbEl.style.color = g.color;
+          nextBtn.style.visibility = 'visible';
+          nextBtn.focus();
+        });
+        optEl.appendChild(b);
+      });
+    }
+    function showResult() {
+      var score = picks.reduce(function (t, p, i) { return t + cfg.turns[i].opts[p].pts; }, 0); // 3..9
+      var max = cfg.turns.length * 3;
+      var pct = Math.round((score / max) * 100);
+      var tier = score >= max - 1 ? 'strong' : score >= max - 3 ? 'mid' : 'weak';
+      var coach = picks.map(function (p, i) {
+        return '<div><b>Turn ' + (i + 1) + ':</b> ' + cfg.turns[i].opts[p].note + '</div>';
+      }).join('');
+      navEl.style.display = 'none';
+      optEl.innerHTML = '';
+      fbEl.textContent = '';
+      if (askEl) askEl.hidden = true;
+      progEl.textContent = 'The conversation ends';
+      resEl.innerHTML = '<span class="tag">How it ended · ' + score + ' / ' + max + '</span>' +
+        '<div class="lab__meter"><span style="width:0"></span></div>' +
+        '<p style="margin:0;color:#fff;font-weight:500">' + cfg.endings[tier].head + '</p>' +
+        '<div class="sample">' + cfg.endings[tier].text + '</div>' +
+        '<div class="lab__coach">' + coach + '</div>' +
+        '<button class="btn btn--ghost" type="button" data-retry style="margin-top:1.25rem">Run it again</button>';
+      resEl.hidden = false;
+      if (nudgeEl) nudgeEl.hidden = false;
+      $('[data-retry]', resEl).addEventListener('click', function () {
+        turn = 0; picks = [];
+        logEl.innerHTML = '';
+        resEl.hidden = true;
+        if (nudgeEl) nudgeEl.hidden = true;
+        if (askEl) askEl.hidden = false;
+        navEl.style.display = '';
+        render();
+        var first = $('.opt', optEl); if (first) first.focus();
+      });
+      requestAnimationFrame(function () {
+        var bar = $('.lab__meter span', resEl);
+        if (bar) requestAnimationFrame(function () { bar.style.width = pct + '%'; });
+      });
+      resEl.focus();
+    }
+    nextBtn.addEventListener('click', function () {
+      turn++;
+      if (turn >= cfg.turns.length) { showResult(); return; }
+      render();
+      var first = $('.opt', optEl); if (first) first.focus();
+    });
+    render();
+  }
+
+  /* When it goes sideways (Section 08): a direct report reacts to SBI feedback */
+  makeDialogue({
+    root: '#sidewaysDialogue', log: '#sdLog', options: '#sdOptions', feedback: '#sdFeedback',
+    progress: '#sdProgress', next: '#sdNext', result: '#sdResult', nudge: '#sdNudge', ask: '#sdAsk',
+    them: 'Direct report', you: 'You',
+    grades: {
+      3: { word: '✓ Strong move.', color: 'var(--vu-gold-flat)' },
+      2: { word: '~ Half a move.', color: 'rgba(255,255,255,.85)' },
+      1: { word: '✗ Costly move.', color: '#c76b5a' }
+    },
+    turns: [
+      { line: 'So you’re saying I’m bad at my job? I’ve been here past six every night this month.',
+        opts: [
+          { t: 'Nobody said that. But if you’d sent the updates, we wouldn’t be having this talk.', pts: 1,
+            reply: 'Right. So it is about me. Do you want to know what else I’ve been carrying, or is this just about the doc?',
+            note: '“If you’d sent the updates” is blame wearing a fact costume. They heard the verdict, not the fact, and now they are defending their character.' },
+          { t: 'No. I don’t think you’re bad at your job. I do think the last three Monday updates didn’t go out, and I want to understand why. What was going on?', pts: 3,
+            reply: '(Silence. They look at the table.)',
+            note: 'A contrast statement, then a real question. You killed the wrong conclusion, kept the message, and asked about intent instead of guessing it. The silence is processing. Count to six.' },
+          { t: 'No, no, sorry, I didn’t mean it like that. The updates aren’t a huge deal, I just noticed.', pts: 2,
+            reply: 'Okay. Good. Because honestly I thought this was going somewhere else.',
+            note: 'You restored safety by taking the message back. That is Ruinous Empathy: they heard “not a huge deal,” and the missed updates just became weather.' }
+        ]},
+      { line: [
+          'Look, the doc obviously matters to you. But I’m the one covering the intake queue, and nobody asked how that was going.',
+          '(You count to six. Then, quietly:) I didn’t realize it had been three weeks. The queue eats the mornings, and the update just slides.',
+          'Honestly, it’s just the month. Two launches plus the intake queue, and the update doc is the first thing that drops. It’ll settle.'
+        ],
+        opts: [
+          { t: 'So what I’m hearing is that the update is the first thing to drop when the week gets heavy. What else should I know?', pts: 3,
+            reply: [
+              'Yeah. That’s it, actually. It’s not that I don’t care about the doc.',
+              'Yeah. I kept thinking I’d catch up on Friday, and Friday never came.',
+              'Yeah. And I probably should have said something instead of letting it go.'
+            ],
+            note: 'Paraphrase before you reply, then one real follow-up. You proved you heard it before you answered it, and the defending stopped.' },
+          { t: 'Okay. Let’s fix it: block fifteen minutes every Monday at nine for the update. Problem solved.', pts: 2,
+            reply: [
+              'Fine. Monday at nine. (Arms crossed.)',
+              'Okay. I can do that.',
+              'Sure, I can try. It’s more that the queue is unpredictable, but okay.'
+            ],
+            note: 'A plan before a paraphrase. The fix is reasonable, but it is yours, and they had not finished talking. Question 3 gets built together, not delivered.' },
+          { t: 'Everyone’s busy. The rest of the team gets their updates in.', pts: 1,
+            reply: [
+              'The rest of the team isn’t covering intake. But sure, I’ll be more like them.',
+              '(Silence again, longer this time.) Okay.',
+              'Right. Okay. Never mind, then.'
+            ],
+            note: 'Countering before acknowledging, with a comparison on top. You are back in the What Happened battle, and their identity is the stake.' }
+        ]},
+      { line: [
+          'Honestly? The intake queue doubled in August, and I didn’t say anything because I figured I should handle it. Sending the update felt like admitting I couldn’t.',
+          'Sure. Monday at nine. Fine.',
+          'Then maybe give the queue to someone on the rest of the team.'
+        ],
+        opts: [
+          { t: 'That makes sense from where you sit. I’d rather hear that early than find out from the doc. What would make the update easy enough to send even in a heavy week?', pts: 3,
+            reply: [
+              'Three bullets instead of the full doc. And if I flag the queue on a Monday, you’ll actually hear it?',
+              'Um. Okay. Maybe three bullets instead of the whole doc? I could do that.',
+              'I don’t know. Three bullets, maybe. If that’s enough.'
+            ],
+            note: 'Acknowledge before you counter, then build the plan together. Whoever writes the plan owns it, and notice who proposed the fix.' },
+          { t: 'Okay. Send it every Monday from now on, and let me know if the queue gets bad again.', pts: 2,
+            reply: ['Okay. I’ll try.', 'Fine. Monday.', 'Fine.'],
+            note: 'A clear standard, and still your plan alone. They will comply at best, and “let me know” hands the next hard conversation back to them.' },
+          { t: 'Well, we all have a lot on our plates. I need the updates. Let’s leave it there.', pts: 1,
+            reply: ['Sure. (They pick up their laptop.)', 'Right.', 'Got it. (They are already at the door.)'],
+            note: 'You closed the conversation on your terms and lost the answer you were about to get. The problem is still there, and now so is the wall.' }
+        ]}
+    ],
+    endings: {
+      strong: { head: 'It held. Safety came back and the message survived.',
+        text: 'You killed the wrong conclusion, kept the real one, listened before you answered, and let them write the fix. The update goes out Monday, and the queue problem, which you did not know about ten minutes ago, is on the table too.' },
+      mid: { head: 'Half held. The message survived, but one turn went one-sided.',
+        text: 'Either you took the message back to end the discomfort, or you delivered a plan instead of building one. Expect the Monday update for two weeks. Then watch for the slide, because the reason for it never came up.' },
+      weak: { head: 'It went sideways and stayed there.',
+        text: 'Each turn met defensiveness with a verdict or a retreat, so you were both defending identities and nobody was solving anything. The update is still missing, and next time they will bring a lawyer’s answer.' }
+    }
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -724,6 +931,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

@@ -753,6 +753,30 @@ em, .italic { font-style: italic; }
 .ragsim__source b { color: #8BA18E; font-family: var(--font-condensed); text-transform: uppercase;
   letter-spacing: .06em; font-size: .72rem; }
 
+/* ---------- 27. Inbox Triage card sort (Admin, Automated, Section 02) ---------- */
+.triage { margin-top: 1.75rem; }
+.triage__list { display: grid; gap: .9rem; grid-template-columns: 1fr; margin-top: 1.25rem; }
+@media (min-width: 900px) { .triage__list { grid-template-columns: 1fr 1fr; } }
+.triage__card { background: #262626; border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius);
+  padding: 1.1rem 1.2rem; display: grid; gap: .8rem; align-content: start;
+  transition: border-color .3s var(--ease); }
+.triage__card.is-right { border-color: var(--vu-sage); }
+.triage__card.is-wrong { border-color: #c76b5a; }
+.triage__from { display: block; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; font-size: .72rem; color: var(--vu-gold-flat); }
+.triage__subj { display: block; font-family: var(--font-serif); font-weight: 400; font-size: 1.2rem; line-height: 1.25;
+  margin-top: .3rem; color: #fff; }
+.triage__prev { margin: .35rem 0 0; font-size: .92rem; line-height: 1.45; color: rgba(255,255,255,.72); }
+.triage__piles { display: grid; gap: .4rem; grid-template-columns: 1fr 1fr; }
+.triage__piles .opt { padding: .55rem .7rem; font-size: .88rem; gap: .6rem; background: var(--vu-black); }
+.triage__piles .opt .mark { width: 22px; height: 22px; font-size: .78rem; }
+.triage__piles .opt[aria-pressed="true"] { border-color: var(--vu-gold-flat); background: rgba(207,174,112,.16); }
+.triage__piles .opt.correct { border-color: var(--vu-sage); background: rgba(139,161,142,.16); }
+.triage__piles .opt.wrong { border-color: #c76b5a; background: rgba(199,107,90,.12); }
+.triage__note { margin: 0; font-size: .9rem; line-height: 1.45; color: rgba(255,255,255,.85); }
+.triage__note b { color: var(--vu-gold-flat); }
+@media (max-width: 480px) { .triage__piles { grid-template-columns: 1fr; } }
+
 /* ============ horizontal deck (advance left to right) ============ */
 html, body { height: 100%; }
 body { overflow: hidden; }
@@ -804,3 +828,11 @@ body { overflow: hidden; }
 
 /* solid top bar on every slide */
 .nav { background: rgba(20,20,20,.97); border-bottom: 1px solid rgba(207,174,112,.18); }
+
+/* ---------- INTERACTIVE: branching lab (situation per slot) ---------- */
+.slot__situation { font-size: .98rem; line-height: 1.5; margin: 0 0 .75rem; padding: .7rem .9rem;
+  border-left: 2px solid var(--vu-gold-flat); background: rgba(207,174,112,.08); color: inherit; }
+.slot__situation:empty { display: none; }
+.on-dark .slot__situation { background: rgba(255,255,255,.05); color: rgba(255,255,255,.9); }
+.lab__carry { margin: .9rem 0 0; font-size: .98rem; color: rgba(255,255,255,.85); }
+.lab__carry b { color: var(--vu-gold-flat); }

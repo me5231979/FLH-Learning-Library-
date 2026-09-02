@@ -475,6 +475,79 @@
   });
 
 
+  /* ---------- INTERACTIVE: exemplar compare (self-explanation) ---------- */
+  /* Renders a model answer plus a three-question self-score under a private
+     builder. Called only after the learner builds; each call re-renders from
+     scratch, so a rebuild resets the score. */
+  function makeExemplar(cfg) {
+    var box = $(cfg.root);
+    if (!box) return { show: function () {}, hide: function () {} };
+    var idBase = cfg.root.slice(1);
+    function render() {
+      var n = cfg.rubric.length;
+      var html = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        '<div class="exemplar__grid">' +
+        cfg.rows.map(function (r) { return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') +
+        '</div>' +
+        '<div class="exemplar__rubric" role="group" aria-label="Score your own answer">' +
+        '<p class="exemplar__lead"><b>Score yourself.</b> ' + cfg.ask + '</p>';
+      cfg.rubric.forEach(function (item, i) {
+        var qid = idBase + 'Q' + (i + 1);
+        html += '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + (i + 1) + ' · ' + item.q + '</p>' +
+          '<div class="exemplar__toggles" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="1" aria-pressed="false"><span class="mark" aria-hidden="true">✓</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="0" aria-pressed="false"><span class="mark" aria-hidden="true"></span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>Add this:</b> ' + item.nudge + '</p>' +
+          '</div>';
+      });
+      html += '<p class="exemplar__tally" aria-live="polite">Score all ' + n + ' to see your tally.</p></div>';
+      box.innerHTML = html;
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (it, i) {
+        var nudge = $('.exemplar__nudge', it);
+        $$('.opt', it).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === '1';
+            answers[i] = yes;
+            $$('.opt', it).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var got = answers.filter(function (a) { return a === true; }).length;
+            var left = answers.filter(function (a) { return a === null; }).length;
+            tally.textContent = 'You scored ' + got + ' of ' + n +
+              (left ? ' so far. ' + left + ' left to score.' : '. ' + (got === n ? cfg.strong : cfg.weak));
+          });
+        });
+      });
+      box.hidden = false;
+    }
+    return { show: render, hide: function () { box.hidden = true; } };
+  }
+
+  var gcEx = makeExemplar({
+    root: '#gcExemplar',
+    intro: 'A fictional team lead in a research support unit filled in the same three rings. Read theirs beside yours, then score your own circle.',
+    rows: [
+      ['Why', 'I watched a good analyst go quiet for a year after one meeting where their idea got talked over, and I am not doing that to anyone on this team.'],
+      ['How', 'I ask "what am I missing?" before I give my own view, and I count to ten before I speak again.'],
+      ['What', 'Meetings where the newest person talks in the first ten minutes, and a decision log that names who raised the concern that changed the call.']
+    ],
+    ask: 'Three questions about your own circle. Yes or not yet; nobody else sees it.',
+    rubric: [
+      { q: 'Does the why name a real person or a real moment?',
+        nudge: 'Write the moment: who went quiet, what you saw, and why it stayed with you.' },
+      { q: 'Is the how a behaviour you could do this week, not a value?',
+        nudge: 'Write something a colleague could watch you do: a question you ask, a pause you take, a thing you say first.' },
+      { q: 'Is the what something the team could see or get without being told?',
+        nudge: 'Write what changes on an ordinary Tuesday: who speaks, what gets written down, what stops happening.' }
+    ],
+    strong: 'All three. Now the real thing: keep this circle where day nine can find it, and bring the why to the commitment card.',
+    weak: 'Edit the rings above and build the circle again. A why with a person in it survives the hard week.'
+  });
+
   /* ---------- INTERACTIVE: Golden Circle builder (Why section) ---------- */
   var gcEl = $('#circleBuild');
   if (gcEl) {
@@ -502,6 +575,7 @@
         '<button class="btn" id="gcCopy">Copy my circle</button>' +
         '<span class="quiz__progress" id="gcCopied" style="color:rgba(255,255,255,.6)">The WHY ring returns at the commitment card</span></div>';
       gcOut.hidden = false;
+      gcEx.show();
       $('#gcCopy').addEventListener('click', function () {
         var text = 'MY GOLDEN CIRCLE (Building Brave Teams, Vanderbilt)\n' +
           'WHY: ' + w + '\nHOW: ' + h + '\nWHAT: ' + t + '\n' +
@@ -840,7 +914,10 @@
 
   // keyboard
   document.addEventListener('keydown', function (e) {
-    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    var focusTag = document.activeElement.tagName;
+    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(focusTag) > -1) return;
+    // let Space activate a focused control instead of turning the page
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(focusTag) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

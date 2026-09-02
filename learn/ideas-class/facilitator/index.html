@@ -758,6 +758,55 @@ html.paged #pgMore{ right:calc(clamp(10px,2vw,22px) + 122px); }
 .sugg{ margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
 .sugg li{ list-style:none; display:flex; gap:12px; align-items:flex-start; color:var(--tx2); font-size:.9375rem; padding:12px 14px; border-radius:var(--r); border:1px solid var(--bd); background:var(--card); }
 .sugg li b{ color:var(--tx); font-weight:600; }
+
+/* ═══════════════════ MODULE: the filter step (tag twenty AI options, compare with the exemplar) ═══════════════════ */
+.filt{ margin-top:26px; }
+html.paged .filt{ margin-top:18px; }
+.filt-lead{ color:var(--tx2); font-size:.9375rem; max-width:72ch; }
+.filt-lead b{ color:var(--tx); font-weight:600; }
+.filt-count{ font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.05em; text-transform:uppercase; color:var(--eyebrow); }
+.filt-grid{ list-style:none; margin:16px 0 0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.filt-card{ display:flex; flex-direction:column; gap:8px; border:1px solid var(--bd); border-left:3px solid var(--bd); border-radius:var(--r);
+  background:var(--card); padding:10px 12px; transition:border-color .2s ease-out, background-color .2s ease-out; }
+.filt-txt{ font-size:.9rem; color:var(--tx); line-height:1.45; max-width:none; display:flex; gap:8px; align-items:baseline; }
+.filt-no{ font-family:var(--cond); font-weight:700; font-size:.78rem; letter-spacing:.04em; color:var(--eyebrow); flex-shrink:0; min-width:1.4em; }
+.filt-btns{ display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
+.filt-tag{ display:inline-flex; align-items:center; gap:6px; font-family:var(--cond); font-weight:700; font-size:.7rem; letter-spacing:.05em; text-transform:uppercase;
+  min-height:36px; padding:6px 10px; border:1px solid var(--bd); border-radius:var(--r); background:transparent; color:var(--tx2); cursor:pointer;
+  transition:border-color .2s ease-out, background-color .2s ease-out, color .2s ease-out; }
+.filt-tag:hover{ border-color:var(--bdg); color:var(--tx); }
+.filt-tag[aria-pressed="true"]{ background:var(--vu-gold); border-color:var(--vu-gold); color:#1C1C1C; }
+.filt-tag[aria-pressed="true"]::before{ content:'\2713'; } /* a mark, so colour is never the only signal */
+.filt-tag[data-tag="only"][aria-pressed="true"]{ background:var(--vu-black); border-color:var(--vu-black); color:#FFFFFF; }
+.filt-tag[disabled]{ opacity:.6; cursor:default; }
+.filt-card[data-state="dev"]{ border-left-color:var(--vu-gold); background:rgba(207,174,112,.10); }
+.filt-card[data-state="only"]{ border-left-color:var(--vu-black); }
+.filt-mark{ display:none; font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-oak); }
+.filt-card[data-mark] .filt-mark{ display:inline-block; }
+.filt-card[data-mark="exemplar"]{ border-color:var(--vu-gold); }
+.filt-card[data-mark="same"]{ border-style:dashed; }
+.filt-card[data-mark="same"] .filt-mark{ color:#c76b5a; }
+.filt-hint{ margin-top:8px; min-height:1.2em; }
+.filt-row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top:14px; }
+.filt-row .btn[hidden]{ display:none; }
+.filt-out{ margin-top:16px; }
+.filt-out:focus{ outline:none; }
+.filt-out:focus-visible{ outline:2px solid var(--focus); outline-offset:4px; }
+.filt-res{ border-top:1px solid var(--bd); padding-top:16px; }
+.filt-res .c-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:8px; }
+.filt-score{ font-family:var(--serif); font-size:clamp(1.15rem,2.4vw,1.5rem); line-height:1.3; color:var(--tx); max-width:none; }
+.filt-score em{ font-family:var(--serif-i); font-style:italic; color:var(--strong); }
+.filt-res h4{ font-size:.95rem; margin-top:18px; }
+.filt-res p{ color:var(--tx2); font-size:.9rem; margin-top:6px; max-width:72ch; }
+.filt-res p b, .filt-res li b{ color:var(--tx); font-weight:600; }
+.filt-res ul{ list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.filt-res li{ font-size:.9rem; color:var(--tx2); line-height:1.5; padding:10px 12px; border:1px solid var(--bd); border-left:3px solid var(--vu-gold); border-radius:var(--r); background:var(--card2); }
+.filt-res li.same{ border-left-color:#c76b5a; }
+.filt-res li.pass{ border-left-color:var(--bd); }
+.filt-res .filt-v{ display:inline-block; font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-oak); margin-right:6px; }
+.filt-res li.same .filt-v{ color:#c76b5a; }
+.filt-next{ margin-top:16px; padding-top:12px; border-top:1px solid var(--bd); }
+@media (max-width:720px){ .filt-grid{ grid-template-columns:1fr; } }
 </style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>
@@ -1079,6 +1128,188 @@ html.paged #pgMore{ right:calc(clamp(10px,2vw,22px) + 122px); }
     </div>
     <div class="rule-strip" role="note">
       <p class="r">The AI supplies the options, and <b>you supply the judgment about what is worth doing</b>.</p>
+    </div>
+
+    <!-- ═══ MODULE: the filter step (interactive). Tag twenty AI options, then compare with the exemplar. ═══ -->
+    <div class="filt" id="filterLab">
+      <div class="pcard">
+        <div class="pc-head">
+          <span class="mono">Try the filter step</span>
+          <span class="filt-count" id="filtCount" aria-live="polite">Develop: 0 of 2 &middot; Only I would think of this: 0 of 1</span>
+        </div>
+        <p class="filt-lead">A fictional stuck problem: <b>only about a third of the department opens the weekly staff newsletter.</b>
+          Someone asked an AI for 20 ways to get more people to open it, and the 20 options below came back. Now do the filter step.
+          Tag exactly <b>two</b> as <b>Develop</b> (worth a real test next week). Tag exactly <b>one</b> as <b>Only I would think of this</b>
+          (the one that needs someone who knows the building). Then compare your picks with the exemplar.</p>
+        <ol class="filt-grid" id="filtGrid" aria-label="Twenty AI-generated options">
+      <li class="filt-card" data-n="1">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">1</span><span class="sr">Option 1. </span>Rewrite the subject line each week so it names the one thing people need to do.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="2">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">2</span><span class="sr">Option 2. </span>Add a staff spotlight with a photo and three fun facts about a colleague.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="3">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">3</span><span class="sr">Option 3. </span>Send it on Tuesday at 8:10 a.m. instead of Friday at 4 p.m.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="4">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">4</span><span class="sr">Option 4. </span>Run a monthly prize drawing for people who click a hidden link inside it.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="5">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">5</span><span class="sr">Option 5. </span>Shorten it: five bullets, one link, under 150 words.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="6">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">6</span><span class="sr">Option 6. </span>Survey the department about what they would like to read.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="7">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">7</span><span class="sr">Option 7. </span>Add more images, GIFs, and emoji to the layout.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="8">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">8</span><span class="sr">Option 8. </span>Move it from email to a post in the department Teams channel.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="9">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">9</span><span class="sr">Option 9. </span>Have the department head record a 60-second video intro each week.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="10">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">10</span><span class="sr">Option 10. </span>Split it into two newsletters: one for managers, one for everyone else.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="11">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">11</span><span class="sr">Option 11. </span>Put last week&rsquo;s most-clicked item at the top of this week&rsquo;s issue.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="12">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">12</span><span class="sr">Option 12. </span>Print copies and leave them in the break room.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="13">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">13</span><span class="sr">Option 13. </span>Write the top item on the whiteboard next to the break-room coffee machine.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="14">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">14</span><span class="sr">Option 14. </span>Send a text-message alert the moment the newsletter goes out.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="15">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">15</span><span class="sr">Option 15. </span>Let staff submit their own items through a shared form.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="16">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">16</span><span class="sr">Option 16. </span>Rename it from &ldquo;Weekly Update&rdquo; to something with personality.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="17">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">17</span><span class="sr">Option 17. </span>Stop sending it for two weeks and see who asks where it went.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="18">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">18</span><span class="sr">Option 18. </span>Ask three people who never open it what would make them open it, then change one thing.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="19">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">19</span><span class="sr">Option 19. </span>Put a two-question poll at the top that shows results live.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+      <li class="filt-card" data-n="20">
+        <p class="filt-txt"><span class="filt-no" aria-hidden="true">20</span><span class="sr">Option 20. </span>Read the top item aloud at the start of the Monday staff meeting.</p>
+        <span class="filt-mark"></span>
+        <div class="filt-btns">
+          <button type="button" class="filt-tag" data-tag="dev" aria-pressed="false">Develop</button>
+          <button type="button" class="filt-tag" data-tag="only" aria-pressed="false">Only I would think of this</button>
+        </div>
+      </li>
+        </ol>
+        <p class="hinttxt filt-hint" id="filtHint" aria-live="polite"></p>
+        <div class="filt-row">
+          <button type="button" class="btn btn-primary btn-sm" id="filtCompare" disabled>Compare with the exemplar</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="filtRetry" hidden>Try again</button>
+        </div>
+        <div class="filt-out" id="filtOut" aria-live="polite" tabindex="-1"></div>
+      </div>
     </div>
     <div class="moment mode-class">
       <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
@@ -2410,12 +2641,13 @@ var NOTES = {
       'Walk the three cards left to right, spending most of your time on the Frame card.',
       'Read the four CRIT chips out loud and say in one line what each one buys you.',
       'Run the Together card: pairs explain Frame, Flood, Filter back to each other in under a minute.',
-      'Point at the gold rule strip and read it word for word: the AI supplies the options, and you supply the judgment.'
+      'Point at the gold rule strip and read it word for word: the AI supplies the options, and you supply the judgment.',
+      'Run the filter step: give the room two minutes to tag two Develop and one Only-I-would-think-of-this, then compare with the exemplar on the projector and ask who picked something the exemplar missed.'
     ],
     validate: 'Cold-call one pair afterward: they can name the three steps and say what the Interview line does.',
     watch: 'People hearing Flood as “take the first answer.” Say now that twenty options is the ask, and that the live demo on the next page will show why quantity changes what you end up picking.',
     transition: 'Enough theory. Let’s flood a real problem, live, and see what twenty options actually looks like.',
-    core: '25-min core: keep everything but the pair activity. Name the steps yourself, then cold-call one person.'
+    core: '25-min core: keep everything but the pair activity and the filter step. Name the steps yourself, then cold-call one person.'
   },
   'ex-blank': {
     time: 'Full 8 min · Core 7',
@@ -2822,6 +3054,163 @@ if(guideBtn && guideBox){
     var apply = function(){ fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; }); };
     if(reduce){ apply(); } else { requestAnimationFrame(function(){ requestAnimationFrame(apply); }); }
   });
+})();
+</script>
+<script>
+/* The filter step: tag two options to develop and one only you would think of,
+   then compare with the exemplar. Storage: ideasf-filter holds the tags so a
+   reload keeps them; the footer Reset clears it. Nothing leaves the browser. */
+(function(){
+  var root = document.getElementById('filterLab'); if(!root) return;
+  var cards = Array.prototype.slice.call(root.querySelectorAll('.filt-card'));
+  var count = document.getElementById('filtCount'), hint = document.getElementById('filtHint'),
+      cmp = document.getElementById('filtCompare'), retry = document.getElementById('filtRetry'), out = document.getElementById('filtOut');
+  if(!cards.length || !count || !cmp || !retry || !out) return;
+  var EX_DEV = [1, 3], EX_ONLY = 13, SAME = [2, 4, 5, 6, 7, 16];
+  /* why the exemplar developed its two: cheap to test, reversible, closest to what the audience actually does */
+  var WHY = {
+    1: 'Cheap to test (one line, this week), reversible (change it back next week), and closest to what people actually do with an inbox: scan the subject line and decide.',
+    3: 'Costs nothing, takes one week to test, and is easy to undo. The exemplar checked the send tool&rsquo;s open-time report: most opens happen before the first meeting of the day.'
+  };
+  /* one line on every other option, for whichever ones the learner tags Develop */
+  var NOTE = {
+    2: 'Every model suggests this. It adds work every week and does not touch why people skip the email.',
+    4: 'Every model suggests this. Prizes lift opens for a month, then opens fall back.',
+    5: 'Every model suggests this. Worth doing, but every department makes this change, so it will not set yours apart.',
+    6: 'Every model suggests this. People who do not open the newsletter do not open the survey either.',
+    7: 'Every model suggests this. It changes the look, not the reason to open.',
+    8: 'Moves the problem instead of solving it. The people who skip email skip Teams too.',
+    9: 'Costs an hour a week and is hard to stop once people expect it.',
+    10: 'Doubles the work before you know why the one you have goes unread.',
+    11: 'Cheap and reversible. The exemplar nearly chose it; it needs a month of click data first.',
+    12: 'Cheap, but nobody reads the break-room pile either.',
+    13: 'This was the exemplar&rsquo;s &ldquo;only I would think of this&rdquo; pick, not a Develop pick. A fair choice either way.',
+    14: 'Reversible, but it asks for phone numbers, and that is a bigger change than the problem needs.',
+    15: 'Fixes the writing, not the opening. Try it once open rates move.',
+    16: 'Every model suggests this. A new name buys one week of curiosity.',
+    17: 'Cheap and reversible, but it tests curiosity, not the newsletter. A wild card worth keeping in the pile.',
+    18: 'Cheap and close to real behaviour. The exemplar would run this alongside its two picks.',
+    19: 'Needs a tool the department may not have, and it only reaches people who already opened.',
+    20: 'Reaches only the people in that meeting, and most of the department is not.'
+  };
+  var KEY = 'ideasf-filter', locked = false;
+  var store = (function(){ try{ var t = KEY + '-test'; window.localStorage.setItem(t, '1'); window.localStorage.removeItem(t); return window.localStorage; }catch(e){ return null; } })();
+  function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function num(c){ return parseInt(c.getAttribute('data-n'), 10); }
+  function txt(c){ var t = c.querySelector('.filt-txt'); return t ? t.textContent.replace(/^\s*\d+\s*Option \d+\.\s*/, '').trim() : ''; }
+  function state(c){ return c.getAttribute('data-state') || ''; }
+  function setState(c, s){
+    if(s) c.setAttribute('data-state', s); else c.removeAttribute('data-state');
+    c.querySelectorAll('.filt-tag').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-tag') === s ? 'true' : 'false'); });
+  }
+  function counts(){
+    var n = { dev:0, only:0 };
+    cards.forEach(function(c){ var s = state(c); if(s === 'dev') n.dev++; else if(s === 'only') n.only++; });
+    return n;
+  }
+  function picks(s){ return cards.filter(function(c){ return state(c) === s; }).map(num); }
+  function save(){
+    if(!store) return;
+    try{
+      var d = picks('dev'), o = picks('only');
+      if(d.length || o.length) store.setItem(KEY, JSON.stringify({ dev:d, only:o })); else store.removeItem(KEY);
+    }catch(e){}
+  }
+  function render(){
+    var n = counts();
+    count.textContent = 'Develop: ' + n.dev + ' of 2 · Only I would think of this: ' + n.only + ' of 1';
+    cmp.disabled = !(n.dev === 2 && n.only === 1);
+    save();
+  }
+  function say(m){ if(hint) hint.textContent = m; }
+  cards.forEach(function(c){
+    c.querySelectorAll('.filt-tag').forEach(function(b){
+      b.addEventListener('click', function(){
+        if(locked) return;
+        var tag = b.getAttribute('data-tag'), cur = state(c), n = counts();
+        if(cur === tag){ setState(c, ''); say(''); render(); return; }
+        if(tag === 'dev' && n.dev >= 2){ say('Two Develop tags already. Untag one to change your pick.'); return; }
+        if(tag === 'only' && n.only >= 1){ say('One “only I would think of this” tag already. Untag it to change your pick.'); return; }
+        setState(c, tag);
+        n = counts();
+        say(n.dev === 2 && n.only === 1 ? 'Two and one. Compare when you are ready.' : '');
+        render();
+      });
+    });
+  });
+  function inList(n, list){ return list.indexOf(n) !== -1; }
+  function compare(){
+    var n = counts(); if(!(n.dev === 2 && n.only === 1)) return;
+    locked = true;
+    var dev = picks('dev'), only = picks('only')[0];
+    var match = dev.filter(function(x){ return inList(x, EX_DEV); }).length;
+    var sameHits = dev.filter(function(x){ return inList(x, SAME); }).length;
+    var byNum = {};
+    cards.forEach(function(c){
+      var k = num(c); byNum[k] = c;
+      var m = c.querySelector('.filt-mark');
+      var mark = inList(k, EX_DEV) ? 'exemplar' : inList(k, SAME) ? 'same' : (k === EX_ONLY ? 'exonly' : '');
+      if(mark){ c.setAttribute('data-mark', mark); if(m) m.textContent = mark === 'exemplar' ? 'Exemplar developed' : mark === 'same' ? 'Sameness trap' : 'The exemplar’s own pick'; }
+      c.querySelectorAll('.filt-tag').forEach(function(b){ b.disabled = true; });
+    });
+    var h = '<div class="filt-res"><span class="c-label">Compared with the exemplar</span>';
+    h += '<p class="filt-score">' + (match === 2 ? 'Both of your Develop picks <em>match</em> the exemplar.' :
+      match === 1 ? 'One of your two Develop picks <em>matches</em> the exemplar.' :
+      'Neither of your Develop picks matches the exemplar, and that is <em>not a fail</em>.') + '</p>';
+    h += '<p>Overlap score: <b>' + match + ' of 2</b>. Read why the exemplar chose what it chose, then decide whether you agree.</p>';
+    h += '<h4>What the exemplar developed, and why</h4><ul>';
+    EX_DEV.forEach(function(k){ h += '<li><span class="filt-v">Exemplar developed</span><b>' + k + '. ' + esc(txt(byNum[k])) + '</b> ' + WHY[k] + '</li>'; });
+    h += '</ul><p>The same three tests every time: <b>cheap to test</b>, <b>reversible</b>, and <b>closest to what the audience actually does</b>. Your picks are marked below against those tests.</p>';
+    h += '<h4>Your Develop picks</h4><ul>';
+    dev.forEach(function(k){
+      var cls = inList(k, EX_DEV) ? '' : inList(k, SAME) ? ' class="same"' : ' class="pass"';
+      var v = inList(k, EX_DEV) ? 'Matches the exemplar' : inList(k, SAME) ? 'Sameness trap' : 'The exemplar passed';
+      h += '<li' + cls + '><span class="filt-v">' + v + '</span><b>' + k + '. ' + esc(txt(byNum[k])) + '</b> ' + (inList(k, EX_DEV) ? 'The same call the exemplar made, for the reasons above.' : NOTE[k]) + '</li>';
+    });
+    h += '</ul><h4>The sameness trap</h4>';
+    h += '<p>Six of the twenty show up almost word for word whenever anyone asks a model this question: ' +
+      SAME.map(function(k){ return '<b>' + k + '</b>'; }).join(', ') + '. They are not bad ideas. They are the ideas every other department already has, which is the risk the study on this page describes.' +
+      (sameHits ? ' You tagged ' + (sameHits === 1 ? 'one' : 'two') + ' of them to develop. If you keep ' + (sameHits === 1 ? 'it' : 'them') + ', make ' + (sameHits === 1 ? 'it' : 'them') + ' specific to your team so it stops being generic.' : ' None of your Develop picks came from that list.') + '</p>';
+    h += '<h4>Your &ldquo;only I would think of this&rdquo; pick: ' + only + '</h4>';
+    h += '<p><b>' + only + '. ' + esc(txt(byNum[only])) + '</b></p>';
+    h += '<p>There is no wrong answer in this slot, and the exemplar does not grade it. The flood is generic by design: the model has never walked your hallway. The filter is where your knowledge of the building comes in. The exemplar chose <b>13</b> (the whiteboard by the coffee machine) because the whole floor stands there at 9 a.m. Your pick counts for the same reason: you know something the model cannot.</p>';
+    h += '<p class="filt-next"><b>Now the real thing.</b> Next time you flood a real problem, tag the survivors the same way: two to develop, one only you would think of.</p>';
+    h += '</div>';
+    out.innerHTML = h;
+    cmp.hidden = true; retry.hidden = false;
+    say('');
+    try{ out.focus({ preventScroll:false }); }catch(e){}
+  }
+  function reset(){
+    locked = false;
+    cards.forEach(function(c){
+      setState(c, '');
+      c.removeAttribute('data-mark');
+      var m = c.querySelector('.filt-mark'); if(m) m.textContent = '';
+      c.querySelectorAll('.filt-tag').forEach(function(b){ b.disabled = false; });
+    });
+    out.innerHTML = '';
+    cmp.hidden = false; retry.hidden = true;
+    say('');
+    render();
+    var first = root.querySelector('.filt-tag'); if(first) first.focus();
+  }
+  cmp.addEventListener('click', compare);
+  retry.addEventListener('click', reset);
+  /* restore saved tags (never the reveal), then render the counter */
+  if(store){
+    try{
+      var saved = JSON.parse(store.getItem(KEY) || 'null');
+      if(saved && saved.dev){
+        cards.forEach(function(c){
+          var k = num(c);
+          if(saved.dev.indexOf(k) !== -1) setState(c, 'dev');
+          else if(saved.only && saved.only.indexOf(k) !== -1) setState(c, 'only');
+        });
+      }
+    }catch(e){}
+  }
+  render();
 })();
 </script>
 </body>

@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -423,6 +423,7 @@
           </div>
         </div>
         <div class="lab__outcome" id="spOut" hidden aria-live="polite"></div>
+        <div class="exemplar" id="spExemplar" hidden></div>
       </div>
 
       <div class="quiz" data-quiz data-reveal style="margin-top:2.5rem">
@@ -455,7 +456,7 @@
 
       <div class="lab" id="hireLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Hiring Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on a real requisition, and the failure modes are the ones that actually happen, including the one nobody can undo. Choose all four, then run the hire.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you'll make on a real requisition, and the failure modes are the ones that actually happen, including the one nobody can undo. Choose all four, then run the hire. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run the hire</button>
@@ -700,7 +701,7 @@
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=1"></script>
+<script src="../assets/js/main.js?v=2"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<link rel="stylesheet" href="../assets/css/styles.css?v=12">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -213,11 +213,11 @@ body.fac-hide .facshow { display: inline-flex; }
     <div class="wrap">
       <p class="eyebrow" data-reveal>Coaching for Performance · Vanderbilt · Manager Voyage</p>
       <h1 class="h-hero" data-reveal>The best managers don't tell.<br><em class="gold-text">They ask.</em></h1>
-      <p class="lead" data-reveal style="margin-top:1.5rem">You were promoted for having answers. Google's biggest study of its own managers found the number one behavior of the very best is something else entirely: they coach. This session rewires the default.</p>
+      <p class="lead" data-reveal style="margin-top:1.5rem">You were promoted for having answers. Project Oxygen, Google's study of its own managers (<a href="https://rework.withgoogle.com/en/guides/managers-identify-what-makes-a-great-manager" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Google re:Work</a>), found the number one behavior of the very best is something else entirely: they coach. This session rewires the default.</p>
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain why coaching, not directing, is the top predictor of great management, and spot your own telling default</li>
+          <li>Catch your own telling default mid-conversation and swap it for a coaching question, knowing why coaching predicts great management</li>
           <li>Structure a full coaching conversation with the GROW model, from goal to committed action</li>
           <li>Convert closed, leading, and advice-loaded lines into open, powerful questions</li>
           <li>Give and receive future-focused Feedforward suggestions without judgment or defense</li>
@@ -309,6 +309,7 @@ body.fac-hide .facshow { display: inline-flex; }
       <div class="split">
         <div data-reveal>
           <p class="lead">Project Oxygen, Google's decade-long study of its own managers, ranked the behaviors of the highest-rated ones. Number one wasn't technical skill or decisiveness. It was <b>"is a good coach."</b> McKinsey describes the same shift: from <em>controller</em>, who has the answers, to <em>coach</em>, who operates with a mindset of discovery.</p>
+          <p class="muted" style="margin-top:.75rem;font-size:.85rem">Source: <a href="https://rework.withgoogle.com/en/guides/managers-identify-what-makes-a-great-manager" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Google re:Work, &ldquo;Identify what makes a great manager&rdquo; (Project Oxygen)</a>; <a href="https://hbr.org/2013/12/how-google-sold-its-engineers-on-management" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Garvin, D. (2013), &ldquo;How Google Sold Its Engineers on Management&rdquo;, Harvard Business Review</a>.</p>
           <p class="measure muted" style="margin-top:1rem">Start with an honest mirror. Think of your last five one-on-ones and drag the slider: in how many did THEY do the discovering, rather than you doing the telling?</p>
         </div>
         <div class="temp card" id="ratio" data-reveal>
@@ -466,6 +467,7 @@ body.fac-hide .facshow { display: inline-flex; }
         <p class="eyebrow" style="margin-bottom:.5rem">Play · Coach Jordan</p>
         <p class="why" style="margin-top:0"><b>Why this matters:</b> the fastest way to learn coaching is to feel a conversation open up, or shut down, based on what you say. Jordan, a capable analyst on your team, just said they're overwhelmed. Coach them through one full GROW conversation.</p>
         <p class="quiz__progress" id="growStage"></p>
+        <div class="growsim__log" id="growLog" aria-live="polite" aria-label="The conversation so far" hidden></div>
         <div class="growsim__coachee" id="growCoachee" aria-live="polite"></div>
         <div class="quiz__options" id="growOptions" role="group" aria-label="What do you say next?"></div>
         <p class="quiz__feedback" id="growFeedback" aria-live="polite"></p>
@@ -878,7 +880,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=12"></script>
+<script src="../assets/js/main.js?v=13"></script>
 
 <script>
 (function () {

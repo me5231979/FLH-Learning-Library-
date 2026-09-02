@@ -274,27 +274,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["The tool now holds the analyst's name, role, and a year of 1:1 notes. The draft will read well. It will also sit on a server nobody at your organization approved, tied to a real person. That cannot be undone. The next choice is what you ask the tool to do with it.", "Your notes are clean: roles, not names. But every line describes the two bad weeks. Nothing about the months when this analyst was reliable. The tool has half a person to work with. Now decide what you ask it to make from that half.", "Your notes are de-identified and describe behavior, good weeks and bad. The two missed handoffs sit next to a year of reliable work. The tool has an honest picture. Whatever it produces will only be as useful as the request you make. Decide what you ask for."], 2: ["The draft is back and it is fluent. It quotes your notes in detail, and it knows exactly who it is about. A copy of that now exists outside approved systems. You still have a conversation to prepare. Decide what to do with the draft in front of you.", "The draft is back, and it reads like a case file. Every example is a miss. It is organized, and it is one-sided, because that is all you gave it. The analyst you know is not in it. Decide what happens between this draft and Thursday.", "The draft is back, and it is close. The examples are ones you saw, in order, with the impact spelled out. It sounds like a document, not like you. Thursday is two days away. Decide what you do with the draft before it becomes the conversation."], 3: ["Thursday. You have a polished write-up and a problem nobody has named yet. The analyst's name and history went into a tool your organization never approved. That stays true whatever happens in this room. The prep already cost more than you planned. Decide how the feedback is delivered.", "Thursday. Whatever you did with the draft, it started from the two bad weeks only. That shows in its shape. It reads like a case, not a conversation. The analyst walks in expecting a normal 1:1. Decide how the feedback gets delivered, and whether their side gets in.", "Thursday. Your prep was clean: safe input, an honest picture, a draft you understand. You know the message. The analyst walks in relaxed. They may have context you do not, about why the handoffs slipped. Decide how you deliver the feedback, and how much room their side gets."] };
+    var CARRY = ["Identifying details in an unapproved tool created a problem that outlives the conversation, whatever happened on Thursday.", "Safe input drawn only from the bad weeks gave every later step a one-sided draft to work from.", "Clean, whole-picture input meant every later step started from something you could stand behind."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the 1:1' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more step(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Thursday, ten minutes in: they add context you didn\'t have, the missed handoffs turn out to have a fixable cause, and you leave with a plan and a stronger relationship. The notes stayed de-identified, the draft stayed a draft, and the person felt talked with, never processed.',
       mid: 'Thursday: the feedback is clearer than it would have been unprepped, but it still lands a little like a form letter, and when they push back with new facts you catch yourself defending the draft. Better than winging it; the rewrite pass and the listening plan would have finished the job.',
@@ -312,6 +336,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> upgrade your weakest step and rerun the 1:1. Watch what changes in the room.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the capstone points this prep at a conversation you actually owe someone.</p>');
@@ -584,6 +609,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

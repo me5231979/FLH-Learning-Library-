@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -232,7 +232,7 @@ body.fac-hide .facshow { display: inline-flex; }
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain why breadth of AI use predicts productivity gains better than mastery of any single trick</li>
+          <li>Decide which blocks of a real week get an AI method, using breadth of use, not mastery of one trick, as the test</li>
           <li>Inventory a real week into recurring, AI-matchable blocks with an honest hour cost on each</li>
           <li>Match each block to the method from this series that fits its verb: drafts, answers, minutes, slides, ideas, decisions, numbers</li>
           <li>Stack two methods on one task while every link in the chain keeps its own check</li>
@@ -481,6 +481,7 @@ body.fac-hide .facshow { display: inline-flex; }
           </div>
         </div>
         <div class="lab__outcome" id="wiOut" hidden aria-live="polite"></div>
+        <div class="exemplar" id="wiExemplar" hidden></div>
       </div>
 
       <details class="deeper" data-reveal>
@@ -629,7 +630,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
       <div class="lab" id="weekLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Week Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make on your own map this week, and the failure modes are the ones that actually happen. Set all four blocks, then run the month.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make on your own map this week, and the failure modes are the ones that actually happen. Set all four blocks, then run the month. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run four weeks</button>
@@ -873,7 +874,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=1"></script>
+<script src="../assets/js/main.js?v=2"></script>
 
 <script>
 (function () {

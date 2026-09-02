@@ -414,27 +414,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["You lead with \"never.\" Your colleague's face changes before you finish. They have been covering for two people and they know it. Now they are counting the times they did tell you. You have their attention and their guard. Say what you are feeling.", "You lead with \"communication has been bad.\" Your colleague pauses. Bad by whose standard is the question on their face, though they do not say it. They are not fighting yet. They are waiting to see if this is a complaint or a conversation. Say what you are feeling.", "You lead with two weeks and no status update. Your colleague thinks about it and does not argue, because there is nothing to argue with. Maybe a small wince. The door is open and nobody has been accused of anything. Say what you are feeling."], 2: ["Whatever feeling you named, it followed \"never.\" Your colleague is still working on that word. The times they did tell you, the two people they are covering for. They are hearing you, but they are hearing a case against them. Now say what you need.", "Whatever feeling you named, \"bad\" is still hanging in the air. Your colleague is half listening and half wondering whose standard that was. They have not pushed back yet. They are waiting to hear what this is really about. Now say what you need.", "Your colleague heard a fact and a feeling, and neither one blamed them. They look like someone who wants to help and does not yet know how. This is the moment the conversation turns toward a fix, or away from one. Now say what you need."], 3: ["Your colleague has heard the feeling and the need, and \"never\" is still in the room. They are already composing their answer, and it starts with how slammed they have been. Whatever you ask for now has to get past that. Make your request.", "Your colleague has heard the feeling and the need, and \"bad\" is still sitting between you. They are not defensive, exactly. They are unsure what would count as better. The conversation can still go either way. Make your request.", "Your colleague has heard a fact, a feeling, and a need, and nothing to defend against. They are leaning in. They want to fix this, and they are waiting to hear how. Make your request."] };
+    var CARRY = ["\"Never\" handed them a verdict to fight, and they were still fighting it when your request arrived.", "\"Bad\" was a judgment in a lab coat, so they spent the conversation wondering whose standard it was.", "A camera-true observation gave them nothing to defend, so every part after it was heard as a need, not a charge."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, say it' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more part(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: '"Oh. I honestly didn\'t realize it had been two weeks. Friday check-ins work; I\'ll send the invite." They\'re solving with you, and notice: nobody had to lose.',
       mid: '"Okay… I mean, I can try to communicate more, I guess." Partial movement, mild defensiveness. The vague parts of your message left them guessing at what would actually help.',
@@ -452,6 +476,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> upgrade your weakest part and say it again. Watch the reply change.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper converts two fresh accusations, out loud.</p>');
@@ -635,6 +660,79 @@
     });
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (after the Johari mapper) ---------- */
+  function mountExemplar(cfg) {
+    var root = $(cfg.root), out = $(cfg.out), btn = $(cfg.btn);
+    if (!root || !out || !btn) return;
+    var remove = function () { var old = $('#' + cfg.id); if (old) old.parentNode.removeChild(old); };
+    // choice chips (where the builder has them) hide the old result; drop the old comparison too
+    $$('.plan__chips .opt', root).forEach(function (b) { b.addEventListener('click', remove); });
+    // registered after the builder's own handler, so the learner's result renders first
+    btn.addEventListener('click', function () {
+      remove();
+      if (out.hidden) return;
+      var box = document.createElement('div');
+      box.className = 'exemplar';
+      box.id = cfg.id;
+      var model = cfg.rows.map(function (r) {
+        return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>';
+      }).join('');
+      var items = cfg.rubric.map(function (r, i) {
+        var qid = cfg.id + 'Q' + i;
+        return '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + r.q + '</p>' +
+          '<div class="exemplar__toggle" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="yes" aria-pressed="false"><span class="mark" aria-hidden="true">Y</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="no" aria-pressed="false"><span class="mark" aria-hidden="true">N</span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>To fix it:</b> ' + r.nudge + '</p>' +
+          '</div>';
+      }).join('');
+      box.innerHTML = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        (cfg.quote ? '<p class="exemplar__quote">' + cfg.quote + '</p>' : '') +
+        '<div class="exemplar__model">' + model + '</div>' +
+        '<p class="exemplar__head">Now score your own</p>' +
+        '<div class="exemplar__rubric">' + items + '</div>' +
+        '<p class="exemplar__tally" aria-live="polite">Answer all three to see your score.</p>';
+      out.parentNode.insertBefore(box, out.nextSibling);
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (item, i) {
+        var nudge = $('.exemplar__nudge', item);
+        $$('.opt', item).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === 'yes';
+            answers[i] = yes;
+            $$('.opt', item).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var done = answers.filter(function (a) { return a !== null; }).length;
+            var score = answers.filter(function (a) { return a === true; }).length;
+            tally.innerHTML = 'You scored ' + score + ' of ' + answers.length + (done < answers.length ? ' so far.' : '.') +
+              (done === answers.length ? '<span class="exemplar__next">' + (score === answers.length ? cfg.strong : cfg.retry) + '</span>' : '');
+          });
+        });
+      });
+    });
+  }
+  mountExemplar({
+    root: '#johariMap', out: '#johOut', btn: '#johBuild', id: 'johExemplar',
+    intro: 'Here is one strong window, filled in the same three places. Read it next to yours, then score your own map.',
+    rows: [
+      ['Open', 'I stay steady when a deadline slips, and my team has told me they count on that.'],
+      ['Hidden', 'I rewrite hard emails four or five times before I send them.'],
+      ['Blind', 'Two colleagues have said, in different months, that I finish their sentences in meetings.'],
+      ['Why it works', 'Each line is a behavior someone could watch, not a label. The blind spot quotes real feedback. The hidden item would cost a little to share.']
+    ],
+    rubric: [
+      { q: 'Is each item a behavior someone could watch, not a label like nice or organized?', nudge: 'Swap the label for one thing you do: when it happens and what people see.' },
+      { q: 'Is the blind spot feedback you have actually heard, more than once, in someone else\'s words?', nudge: 'Write the words the last person used. If nobody has said it yet, it belongs in Hidden, not Blind.' },
+      { q: 'Would sharing the hidden item cost you a little?', nudge: 'Choose something that would change how a colleague sees you. Safe facts do not shrink the Hidden quadrant.' }
+    ],
+    strong: 'All three. Your map is honest enough to use. Ask the Eurich question this week and add the answer to Blind.',
+    retry: 'Fix each Not yet line above, map your window again, and score it again.'
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -730,6 +828,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

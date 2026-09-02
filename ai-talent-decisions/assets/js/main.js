@@ -274,27 +274,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["The rubric starts from your gut. You know a strong performer when you see one, and you are about to write that down. Nothing on the page yet ties to what these roles actually deliver. Now you have to name the criteria. Whatever you write is what raters will argue about.", "The template is on the page: nine boxes, two axes, headings from someone else's organization. It looks finished. It says nothing about what your roles are for. Now the boxes need criteria. You can keep the template's words or write your own.", "The AI draft came back with twelve proposed criteria. Each was built from the JD and the role's real outcomes. You cut four that nobody could observe. Eight remain, each tied to actual work. Now decide how the criteria are worded on the page."], 2: ["The criteria are written, and they came from instinct. Two raters have already asked what one of them means. Without a shared source, every question comes back to you. Now each criterion needs levels. Decide what a score looks like, and whether a stranger could apply it.", "The borrowed template gave you criteria that fit the average organization. Raters keep asking how a heading applies to their roles. You are patching definitions on the fly. Now each criterion needs levels. Decide what separates one score from the next, and how a new rater would know.", "The criteria are grounded, and raters can see the work behind them. Questions so far have been about evidence, not meaning. Now each criterion needs levels. Decide how a rater tells developing from exceptional, and what it takes to make that call repeatable."], 3: ["Review week. Raters have found that your criteria mean different things to different people. They came from one person's instinct. Two placements are already in dispute, and no source settles it. Now the grid has to be filled. Decide who scores, and how.", "Review week. The template's headings have held, mostly. Raters keep translating them into what your roles actually do, and each does it differently. The grid can be filled, and each cell will need explaining. Decide who does the scoring, and where the grid lives.", "Review week. The rubric has held up: criteria tied to outcomes, and raters asking about evidence rather than meaning. Someone asks how a placement was made and gets an answer. One step left, and it is about people. Decide who scores, and how disagreements get handled."] };
+    var CARRY = ["A rubric built on instinct gave raters no shared source, so every later disagreement came back to opinion.", "A borrowed template fit the average organization, so every later step needed translating for your roles.", "Criteria grounded in real outcomes meant every later step could point at the work behind a placement."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the review' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more step(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'The talent review runs differently: placements come with evidence, two raters catch a star the old process kept missing, and when someone asks "why that box," the answer is anchors and examples instead of seniority and silence. The grid is finally a development tool, and HR can stand behind every cell of it.',
       mid: 'The review is better than last year, and the soft spots show: the undefined labels turn two placements into debates about adjectives, and the solo scoring means one person\'s blind spots are now official. The instrument is half built; the calibration meeting pays for the missing half.',
@@ -312,6 +336,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest step and rerun the review. Watch what becomes defensible.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the anchor-writing drill in Go deeper builds the muscle on a criterion you actually use.</p>');
@@ -584,6 +609,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

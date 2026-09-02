@@ -804,3 +804,52 @@ body { overflow: hidden; }
 
 /* solid top bar on every slide */
 .nav { background: rgba(20,20,20,.97); border-bottom: 1px solid rgba(207,174,112,.18); }
+
+/* ---------- INTERACTIVE: exemplar compare ---------- */
+.exemplar { margin-top: 1.25rem; background: var(--vu-cream); color: var(--vu-black);
+  border: 1px solid var(--vu-sand); border-left: 4px solid var(--vu-gold-flat);
+  border-radius: var(--radius); padding: 1.5rem 1.75rem; }
+.on-cream .exemplar { background: var(--vu-white); }
+.on-dark .exemplar { background: #262626; color: #fff; border-color: rgba(255,255,255,.14);
+  border-left-color: var(--vu-gold-flat); }
+.exemplar__intro { margin: .75rem 0 0; font-size: .98rem; max-width: 62ch; }
+.exemplar__quote { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.45;
+  border-left: 2px solid var(--vu-gold-flat); padding-left: 1rem; margin: 1rem 0 0; max-width: 62ch; }
+.exemplar__model { display: grid; gap: .75rem; margin-top: 1rem; }
+.exemplar__model .row { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; font-size: .98rem; }
+.exemplar__model .row b { color: var(--vu-oak); font-family: var(--font-condensed); text-transform: uppercase;
+  letter-spacing: .05em; font-weight: 700; font-size: .8rem; padding-top: 2px; }
+.on-dark .exemplar__model .row b { color: var(--vu-gold-flat); }
+.on-dark .exemplar__model .row span { color: rgba(255,255,255,.85); }
+.exemplar__head { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; font-size: .85rem; color: var(--vu-oak); margin: 1.5rem 0 .25rem; }
+.on-dark .exemplar__head { color: var(--vu-gold-flat); }
+.exemplar__item { padding: .85rem 0; border-top: 1px solid var(--vu-gray-light); }
+.on-dark .exemplar__item { border-top-color: rgba(255,255,255,.14); }
+.exemplar__q { margin: 0 0 .6rem; font-size: 1rem; font-weight: 500; }
+.exemplar__toggle { display: flex; gap: .5rem; flex-wrap: wrap; }
+.exemplar__toggle .opt { width: auto; padding: .55rem .9rem; font-size: .92rem; gap: .6rem; cursor: pointer; }
+.exemplar__toggle .opt .mark { width: 22px; height: 22px; font-size: .78rem; }
+.exemplar__toggle .opt[aria-pressed="true"] { border-color: var(--vu-gold-flat); background: rgba(207,174,112,.16); }
+.exemplar__toggle .opt[aria-pressed="true"] .mark { background: var(--vu-gold-flat); border-color: var(--vu-gold-flat); color: var(--vu-black); }
+.exemplar__toggle .opt[data-val="no"][aria-pressed="true"] { border-color: #c76b5a; background: rgba(199,107,90,.12); }
+.exemplar__toggle .opt[data-val="no"][aria-pressed="true"] .mark { background: #c76b5a; border-color: #c76b5a; color: #fff; }
+.exemplar__nudge { margin: .6rem 0 0; font-size: .92rem; color: var(--vu-oak); max-width: 62ch;
+  border-left: 2px solid #c76b5a; padding-left: .75rem; }
+.exemplar__nudge b { font-weight: 600; }
+.on-dark .exemplar__nudge { color: var(--vu-gold-flat); }
+.exemplar__tally { margin: 1rem 0 0; font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; font-size: .9rem; color: var(--vu-oak); }
+.on-dark .exemplar__tally { color: var(--vu-gold-flat); }
+.exemplar__next { display: block; margin-top: .35rem; font-family: var(--font-sans); font-weight: 400;
+  text-transform: none; letter-spacing: 0; font-size: .95rem; color: var(--vu-black); max-width: 62ch; }
+.on-dark .exemplar__next { color: rgba(255,255,255,.85); }
+@media (max-width: 640px) { .exemplar__model .row { grid-template-columns: 1fr; gap: .15rem; } }
+
+/* ---------- INTERACTIVE: branching lab (situation per slot) ---------- */
+.slot__situation { font-size: .98rem; line-height: 1.5; margin: 0 0 .75rem; padding: .7rem .9rem;
+  border-left: 2px solid var(--vu-gold-flat); background: rgba(207,174,112,.08); color: inherit; }
+.slot__situation:empty { display: none; }
+.on-dark .slot__situation { background: rgba(255,255,255,.05); color: rgba(255,255,255,.9); }
+.lab__carry { margin: .9rem 0 0; font-size: .98rem; color: rgba(255,255,255,.85); }
+.lab__carry b { color: var(--vu-gold-flat); }

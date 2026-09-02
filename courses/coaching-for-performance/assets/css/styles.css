@@ -724,6 +724,16 @@ em, .italic { font-style: italic; }
   font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.5; color: #333; }
 .growsim__coachee b { font-family: var(--font-condensed); font-style: normal; text-transform: uppercase;
   letter-spacing: .06em; font-size: .8rem; color: var(--vu-oak); margin-right: .4rem; }
+/* running transcript: the conversation so far, the learner's lines in gold */
+.growsim__log { display: grid; gap: .5rem; margin: 1rem 0 0; padding: .9rem 1.1rem;
+  background: rgba(255,255,255,.55); border: 1px solid var(--line, #E4E4E4); border-radius: var(--radius);
+  font-size: .95rem; line-height: 1.5; color: #444; }
+.growsim__log[hidden] { display: none; }
+.growsim__log p { margin: 0; }
+.growsim__log b { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; font-size: .75rem; color: var(--vu-gray-dark); margin-right: .4rem; }
+.growsim__log .you { color: var(--vu-oak); padding-left: .75rem; border-left: 3px solid var(--vu-gold-flat); }
+.growsim__log .you b { color: var(--vu-oak); }
 
 /* ============ horizontal deck (advance left to right) ============ */
 html, body { height: 100%; }

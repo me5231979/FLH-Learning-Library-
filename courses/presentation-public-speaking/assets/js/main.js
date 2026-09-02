@@ -439,27 +439,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["You are thirty seconds in and still in 2019. The CFO checks the clock. The COO is scrolling. Nobody in the room has heard a fact about today yet. Your next sentence has to give them a reason to keep listening. What makes now different from every other quarter?", "The room nods along, loosely. \"A lot\" and \"lately\" landed as mood, not as facts. Nobody is arguing, but nobody is leaning in either. The CFO is waiting for a number. Now you need the thing that turns a vague trend into a problem. Put a clock on it.", "Two facts, one sentence, and the room is with you. The CFO makes a note. Nobody asks what you mean. You have credibility and about three sentences of attention left. Now they need the change that makes the current setup untenable. What breaks, and when?"], 2: ["You have spent most of your four sentences on backstory. Whatever complication you just named arrived late, without shared ground under it. The COO leans back. The room is trying to work out why this meeting exists. Your next sentence has to hand them the decision, plainly.", "The room accepts that support is under strain, in a general sort of way. Your complication had to do double duty, filling in facts the opening left out. Attention is holding, barely. Now the tension needs a point. The room wants to know what it is being asked.", "Situation and complication have done their work. The CFO's pen is moving. The room can feel a decision forming and is waiting for you to name it. Whatever you say next becomes the frame for your answer. Make it the question your recommendation is built to answer."], 3: ["Ninety seconds in, and the COO has already interrupted once to ask what this is about. The history lesson spent the room's patience, and every part since has been recovering lost ground. You get one more sentence. Whatever it is, it has to be something they can decide.", "The room is polite and slightly tired. Your opening was soft, and every part since has carried a little of that fog. The CFO glances at the deck, looking for the number. There is still a decision to be had here, if you state it clearly enough.", "Your opening bought trust, and you have spent it well. The room is asking your question with you. The CFO is looking straight at you, ready to fund something or kill it. This is the moment SCQA was built for. Say the answer, and make it decidable."] };
+    var CARRY = ["The history lesson spent the room's patience before your first real fact, and every later part had to pay it back.", "A soft opening left the room without a shared fact, so every later part carried a little of that fog.", "Two accepted facts up front bought the room's trust, and every later part could build on solid ground."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, brief them' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more part(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'The CFO nods before you reach slide two: "Clear. If automation covers the top five types, what\'s the risk on type six?" — a REAL question, about the substance. You\'ve been promoted from presenter to advisor, and you\'re four sentences in.',
       mid: 'Polite attention, some phone glances. At the end: "Can you send the deck? We\'ll discuss and get back to you." The pieces were there, but the fog in your weakest parts made the room work to find the decision — and rooms don\'t do your work for you.',
@@ -477,6 +501,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> upgrade your weakest part and re-brief. Watch the room change.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the storyboard drill in Go deeper runs YOUR Big Idea through this structure.</p>');
@@ -663,6 +688,79 @@
     });
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (after the Big Idea drafter) ---------- */
+  function mountExemplar(cfg) {
+    var root = $(cfg.root), out = $(cfg.out), btn = $(cfg.btn);
+    if (!root || !out || !btn) return;
+    var remove = function () { var old = $('#' + cfg.id); if (old) old.parentNode.removeChild(old); };
+    // choice chips (where the builder has them) hide the old result; drop the old comparison too
+    $$('.plan__chips .opt', root).forEach(function (b) { b.addEventListener('click', remove); });
+    // registered after the builder's own handler, so the learner's result renders first
+    btn.addEventListener('click', function () {
+      remove();
+      if (out.hidden) return;
+      var box = document.createElement('div');
+      box.className = 'exemplar';
+      box.id = cfg.id;
+      var model = cfg.rows.map(function (r) {
+        return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>';
+      }).join('');
+      var items = cfg.rubric.map(function (r, i) {
+        var qid = cfg.id + 'Q' + i;
+        return '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + r.q + '</p>' +
+          '<div class="exemplar__toggle" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="yes" aria-pressed="false"><span class="mark" aria-hidden="true">Y</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="no" aria-pressed="false"><span class="mark" aria-hidden="true">N</span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>To fix it:</b> ' + r.nudge + '</p>' +
+          '</div>';
+      }).join('');
+      box.innerHTML = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        (cfg.quote ? '<p class="exemplar__quote">' + cfg.quote + '</p>' : '') +
+        '<div class="exemplar__model">' + model + '</div>' +
+        '<p class="exemplar__head">Now score your own</p>' +
+        '<div class="exemplar__rubric">' + items + '</div>' +
+        '<p class="exemplar__tally" aria-live="polite">Answer all three to see your score.</p>';
+      out.parentNode.insertBefore(box, out.nextSibling);
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (item, i) {
+        var nudge = $('.exemplar__nudge', item);
+        $$('.opt', item).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === 'yes';
+            answers[i] = yes;
+            $$('.opt', item).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var done = answers.filter(function (a) { return a !== null; }).length;
+            var score = answers.filter(function (a) { return a === true; }).length;
+            tally.innerHTML = 'You scored ' + score + ' of ' + answers.length + (done < answers.length ? ' so far.' : '.') +
+              (done === answers.length ? '<span class="exemplar__next">' + (score === answers.length ? cfg.strong : cfg.retry) + '</span>' : '');
+          });
+        });
+      });
+    });
+  }
+  mountExemplar({
+    root: '#bigIdea', out: '#biOut', btn: '#biBuild', id: 'biExemplar',
+    intro: 'Here is one strong Big Idea, built from the same two halves. Read it next to yours, then score your own draft.',
+    quote: '&ldquo;We should give every new hire a named peer guide for their first 30 days, because the people who leave in year one tell us in exit interviews that nobody was assigned to them.&rdquo;',
+    rows: [
+      ['Point of view', 'We should give every new hire a named peer guide for their first 30 days. A manager could argue against it, which is what makes it a stance.'],
+      ['What is at stake', 'The people who leave in year one say in exit interviews that nobody was assigned to them. The room loses people it already paid to hire.'],
+      ['Why it works', 'One idea, one verb that asks for a decision, and a cost the audience already feels. You could repeat it after one hearing.']
+    ],
+    rubric: [
+      { q: 'Does it state a point of view, not a topic?', nudge: 'Add a verb that asks for a decision, such as should, stop, move, or fund. If nobody could disagree, it is still a topic.' },
+      { q: 'Does it say what is at stake for this audience?', nudge: 'Name what this room loses if it does nothing: time, money, people, or trust. A number makes it stronger.' },
+      { q: 'Could someone repeat it after hearing it once?', nudge: 'Cut it until it fits in one breath. Drop the second clause or the qualifier.' }
+    ],
+    strong: 'All three. This sentence is your opening line. Say it out loud once before you move on.',
+    retry: 'Fix each Not yet line above, rebuild your Big Idea, and score it again.'
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -758,6 +856,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

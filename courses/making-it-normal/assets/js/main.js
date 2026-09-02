@@ -352,27 +352,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Week two. Your drafts go out faster and nobody knows why. The two curious people are experimenting quietly. The three watchers are watching you and seeing nothing. The skeptic reads the silence as a rule. Nobody has asked what is allowed. Decide what you tell them.", "Week two. You said in the meeting that you have been using AI and like it. A few nods, one raised eyebrow from the skeptic. Nobody saw what you did with it, so nobody knows what good looks like yet. Now the question of what is allowed. Decide how you answer it.", "Week two. The ninety seconds you spent narrating one draft is still being talked about. So are the two things you fixed. One of the watchers tried the same prompt. The skeptic noticed the fixes. The team now has a picture. Next they need to know what is allowed. Decide how you tell them."], 2: ["Week five. Your own use is still invisible. The team is guessing at both your practice and your rules. The two curious people compare notes in private. The three in the middle have not tried anything. The calendar is full. Decide whether adoption gets a home on it.", "Week five. The team knows you like the tool; they have never seen you use it. Whatever rules you set, people are unsure how seriously to take them. Two people run ahead, three wait. The calendar is full. Decide whether adoption gets a home on it.", "Week five. Your narrated draft gave the team a standard to copy. The middle three have each tried something. Two showed you results. One is not sure theirs was any good. The calendar is full. Decide whether the team's use gets a home on it."], 3: ["Day 60. Two power users, three people who use it when reminded, and the skeptic. They have said out loud that this is a fad. Two of the watchers have started agreeing in the hallway. They have never seen you use it once. Decide what you do about them.", "Day 60. Usage is up and lopsided. The skeptic heard you say you like the tool and heard it as pressure. They have opted out politely, and one of the middle three is drifting toward them. Decide what you do about the skeptic.", "Day 60. The skeptic saw you fix two errors in your own draft the day you narrated it. They have said so. They are not converted. They think the checking is the interesting part. That is an opening, and it will not stay open. Decide what you do with it."] };
+    var CARRY = ["Nobody could see you use it, so every rule and ritual after that asked the team to trust something they never watched.", "An endorsement without a demonstration read as pressure, so the skeptic dug in and the watchers had nothing to copy.", "One narrated draft gave the team a standard, a check, and a reason to trust the rules that followed."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the ninety days' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more move(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Day 90: five of six use AI weekly, and the sixth, your skeptic, wrote the team\'s verification checklist. The share-one round surfaced a use you never would have thought of, the miss log has nine entries and zero drama, and your permission talk gets quoted back to you in 1:1s. Adoption looks like habit now, and it started the day you narrated one imperfect draft.',
       mid: 'Day 90: usage is up, and it\'s lopsided. Two people run ahead, three dabble when reminded, one is waiting you out. The rules technically exist, and nobody is sure they\'re real, because the follow-through faded when the quarter got busy. The distance between this team and whole-team practice is exactly the moves you softened.',
@@ -390,6 +414,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest move and rerun the ninety days. Watch what changes for the three people in the middle.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the group drill in Go deeper finds which of these four choices your actual team is living today.</p>');
@@ -573,6 +598,151 @@
     });
   });
 
+  /* ---------- INTERACTIVE: the question in the meeting (Section 03, Say) ---------- */
+  var sayTalk = $('#sayTalk');
+  if (sayTalk) {
+    /* Turn 1 opens with one line. Turns 2 and 3 open with an array indexed by the points of the
+       previous pick: [after the quiet discouragement, after the vague blessing, after the strong move]. */
+    var TURNS = [
+      { name: 'The question',
+        line: '“Can I ask something? I’ve been using ChatGPT for first drafts of the weekly status report for about two months. Is that… actually allowed? Nobody has ever said.”',
+        opts: [
+          { t: '“Let’s take that offline. For now I’d keep the drafts your own; we don’t need any surprises.”', pts: 1,
+            reply: '“Sure. Sorry, forget I asked.” They close the laptop halfway.',
+            note: 'A no with a smile on it, and the whole table heard it. AI use on this team just went underground, and the next question will not get asked.' },
+          { t: '“Oh, totally fine. Use whatever helps; we’re all adults here.”', pts: 2,
+            reply: '“Okay… great.” They wait for more. Nothing comes.',
+            note: 'Permission with no edges. They still don’t know which tools, what stays out, or what to check. Half the table heard “anything goes,” and the other half is not sure you meant it.' },
+          { t: '“Yes, and thank you for asking out loud. I use it for first drafts too; my Monday summary started as a prompt. Two things matter: approved VU tools only, signed in with your VU account, and nothing about identifiable people goes in.”', pts: 3,
+            reply: 'They sit up. “Okay. I’ve been using my personal account, so I should switch to ChatGPT EDU?”',
+            note: 'Show and Say in one breath: your own use, the rule, and the tool by name. The question they asked back is the permission gap closing in real time.' }
+        ]},
+      { name: 'The gray zone',
+        line: [
+          'A pause. Then, quietly: “Okay. Should I stop using it on the status report, or just not mention it? It’s mostly tracker numbers and who is behind on what.”',
+          '“So, um, is it okay if I paste in the numbers from the tracker? That’s where the draft comes from, that and the list of who is behind on what.”',
+          '“Got it, ChatGPT EDU with my VU login. What about the tracker numbers, though? The status report is mostly those, plus who is behind on what.”'
+        ],
+        opts: [
+          { t: '“Honestly, the less that goes into it, the better. Just write the report yourself for now.”', pts: 1,
+            reply: '“Right. Okay.” They write something down and don’t look up.',
+            note: 'A gray-zone question answered with retreat. “Less” is not a rule anyone can run, and the table just learned that asking gets you a smaller job.' },
+          { t: '“Sure, whatever gets it done faster. Just make sure it’s right.”', pts: 2,
+            reply: '“Okay, will do.” Two people at the table trade a look.',
+            note: '“Make sure it’s right” is not a check anyone can run. Nobody heard which tool, which data, or what right looks like, so each of them will decide alone.' },
+          { t: '“Project numbers are internal work, so yes, in an approved tool. The part that names who is behind on what is about people, and that stays out, whatever the deadline. Draft the structure with AI, then add the people part yourself.”', pts: 3,
+            reply: '“That makes sense. So yellow for the numbers, red for the names.” They write it down.',
+            note: 'The traffic light, said plainly and applied to their real task: yellow for internal numbers in an approved tool, red for anything about a person. That is a rule they can run without you in the room.' }
+        ]},
+      { name: 'What happens next',
+        line: [
+          'As the meeting wraps up, they linger: “I’ll just keep it to myself from now on. Less hassle for everyone.”',
+          'As the meeting wraps up: “Cool, I’ll keep doing what I’m doing, then. Should I tell the others how I set it up, or is that a bad idea?”',
+          'As the meeting wraps up: “One more. If something comes up that isn’t clearly yellow or red, who do I ask? I don’t want to guess again.”'
+        ],
+        opts: [
+          { t: '“Let’s leave it there for today. We’ve got a lot on.”', pts: 1,
+            reply: '“Sure.” They nod and go. The question does not come back.',
+            note: 'You closed the door the norm needed to walk through. No routing, no ritual, no promise: the next unclear case gets decided in silence, and the team just watched that happen.' },
+          { t: '“You’re fine, honestly. Use your judgment, and come find me if anything weird comes up.”', pts: 2,
+            reply: '“Okay, thanks.” They smile, a little unsure, and go.',
+            note: 'Warm, and still vague. “Use your judgment” hands the gray zone back to the person who just asked you to settle it, and “come find me” has no slot on the calendar.' },
+          { t: '“Ask me, and ask in the open. Bring the next unclear case to our 1:1, and next week take two minutes in this meeting to show the prompt and what you fixed. Asking is exactly what I want on this team.”', pts: 3,
+            reply: '“Really? Okay. Yeah, I can do that.” They leave with the laptop open.',
+            note: 'Set and Sustain: routing, a ritual, and the safety promise in one breath. The gray zone has a home (the 1:1), the use has a stage (the share-one round), and the whole table heard that asking is applauded.' }
+        ]}
+    ];
+    var stIdx = 0, stScore = 0, stLocked = false;
+    var stLast = 3;                 // points of the previous pick; selects the analyst's next line
+    var stLog = [], stPending = [], stNotes = [];
+    var stTurnEl = $('#stTurn'), stLogEl = $('#stLog'), stLineEl = $('#stLine'), stOpts = $('#stOptions'),
+        stFb = $('#stFeedback'), stNext = $('#stNext'), stRes = $('#stResult');
+    var stNav = $('#sayTalk .quiz__nav');
+    function stOpening(T) {
+      if (!Array.isArray(T.line)) return T.line;
+      return T.line[Math.max(0, Math.min(T.line.length - 1, stLast - 1))];
+    }
+    function stDrawLog() {
+      stLogEl.innerHTML = stLog.map(function (l) {
+        return '<p class="' + (l.you ? 'you' : 'them') + '"><b>' + (l.you ? 'You' : 'Analyst') + ':</b> ' + l.text + '</p>';
+      }).join('');
+      stLogEl.hidden = stLog.length === 0;
+    }
+    function stRender() {
+      stLocked = false;
+      var T = TURNS[stIdx];
+      var opening = stOpening(T);
+      stTurnEl.textContent = 'Turn ' + (stIdx + 1) + ' of 3 · ' + T.name;
+      stLineEl.innerHTML = '<b>Analyst:</b> ' + opening;
+      stPending = [{ text: opening }];
+      stFb.textContent = '';
+      stNext.style.visibility = 'hidden';
+      stNext.textContent = stIdx === TURNS.length - 1 ? 'See what the table learned' : 'Continue the conversation';
+      stOpts.innerHTML = '';
+      T.opts.forEach(function (o, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'opt';
+        b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + i) + '</span><span>' + o.t + '</span>';
+        b.addEventListener('click', function () {
+          if (stLocked) return; stLocked = true;
+          stScore += o.pts;
+          stLast = o.pts;
+          stPending.push({ you: true, text: o.t }, { text: o.reply });
+          stNotes.push({ name: T.name, pts: o.pts, note: o.note });
+          var best = T.opts.reduce(function (m, x) { return x.pts > m.pts ? x : m; }, T.opts[0]);
+          $$('.opt', stOpts).forEach(function (x, xi) {
+            x.setAttribute('disabled', 'true');
+            if (T.opts[xi] === best) x.classList.add('correct');
+          });
+          if (o !== best) b.classList.add('wrong');
+          stLineEl.innerHTML = '<b>Analyst:</b> ' + o.reply;
+          stFb.textContent = (o.pts === 3 ? '✓ ' : o.pts === 2 ? '△ ' : '✗ ') + o.note;
+          stFb.style.color = o.pts === 3 ? 'var(--vu-oak)' : o.pts === 2 ? '#946E24' : '#c76b5a';
+          stNext.style.visibility = 'visible';
+        });
+        stOpts.appendChild(b);
+      });
+    }
+    stNext.addEventListener('click', function () {
+      stLog = stLog.concat(stPending); stPending = [];
+      stDrawLog();
+      stIdx++;
+      if (stIdx >= TURNS.length) {
+        stNav.style.display = 'none';
+        stTurnEl.textContent = ''; stLineEl.innerHTML = ''; stOpts.innerHTML = ''; stFb.textContent = '';
+        var tier = stScore >= 8 ? 'strong' : stScore >= 6 ? 'mid' : 'weak';
+        var head = tier === 'strong' ? 'The question got a yes with edges, a rule they can run, and a place to bring the next one. That analyst is now your first visible user, and the rest of the table heard every word.'
+                 : tier === 'mid' ? 'They have permission and not much else. Nobody at the table could repeat the rule, so each of them will write their own. Warm is not the same as clear.'
+                 : 'The question went back underground. AI use on this team continues in personal accounts and hallway disclaimers, and the next person to wonder will not ask.';
+        var notes = stNotes.map(function (n, i) {
+          return '<div><b>Turn ' + (i + 1) + ' · ' + n.name + ' · ' + (n.pts === 3 ? '✓' : n.pts === 2 ? '△' : '✗') + ' ' + n.pts + ' of 3:</b> ' + n.note + '</div>';
+        }).join('');
+        var nudge = tier === 'strong'
+          ? '<b>Now the real thing:</b> put the permission talk on a date in your <a href="#s-plan">adoption plan</a>, and give it before someone has to ask.'
+          : '<b>Run it again:</b> this time pick the line that names the tool, the data, and the place to bring the next question. Then put the talk on a date in your <a href="#s-plan">adoption plan</a>.';
+        stRes.hidden = false;
+        stRes.innerHTML = '<div class="quiz__score gold-text">' + stScore + ' / 9</div>' +
+          '<p style="margin-top:.75rem;color:var(--ink-soft,#555)">' + head + '</p>' +
+          '<div class="saytalk__notes">' + notes + '</div>' +
+          '<p class="why" style="margin-top:1rem">' + nudge + '</p>' +
+          '<button type="button" class="btn btn--ghost" id="stRetry" style="margin-top:1rem">Run it again</button>';
+        var planLink = $('a[href="#s-plan"]', stRes);
+        if (planLink) planLink.addEventListener('click', function (e) {
+          var target = document.getElementById('s-plan');
+          if (target && slides && slides.indexOf(target) > -1) { e.preventDefault(); goTo(slides.indexOf(target)); }
+        });
+        $('#stRetry').addEventListener('click', function () {
+          stIdx = 0; stScore = 0; stLast = 3; stLog = []; stPending = []; stNotes = []; stRes.hidden = true;
+          stDrawLog();
+          stNav.style.display = '';
+          stRender();
+        });
+      } else stRender();
+    });
+    stRender();
+  }
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -668,6 +838,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

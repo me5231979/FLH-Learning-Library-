@@ -78,7 +78,7 @@ COURSES = [
             ("The first 30 seconds", "SHRM's three questions and one assembled opening line"),
             ("Sideways and listening", "Recovering from tears, anger, and silence; contrast statements; the listening turn")
         ],
-        "activities": "An avoidance-cost meter, a conversation labeler, a graded SBI Feedback Lab, tap-to-explore SBI and STATE anatomies, a private BRAVING scorecard, a Radical Candor quadrant sort, out-loud pair practice with partner verdicts, a six-question scored recap, and the My Conversation Plan capstone.",
+        "activities": "An avoidance-cost meter, a conversation labeler, a graded SBI Feedback Lab, tap-to-explore SBI and STATE anatomies, a private BRAVING scorecard, a Radical Candor quadrant sort, a choose-the-next-line branching dialogue for when feedback goes sideways, out-loud pair practice with partner verdicts, a six-question scored recap, and the My Conversation Plan capstone.",
         "outcomes": "Learners leave with a written opener for a real conversation, a recovery line for when it gets heated, a listening plan, and a date within seven days, plus a shared team vocabulary (SBI, STATE, BRAVING, Radical Candor). Learning is measured in session (checks and a recap mapped to objectives), at close (readiness check and public commitment), and after (a seven-day follow-up pulse).",
         "takehomes": [
             ("Printable cheat sheet", "courses/difficult-conversations/cheatsheet.html"),
@@ -115,7 +115,7 @@ COURSES = [
             ("Choose your model", "GROW vs CLEAR vs OSKAR, matched to real coaching situations"),
             ("When NOT to coach", "Situational judgment: when directing is right, and how to default back to coaching")
         ],
-        "activities": "A coaching-ratio meter (the baseline for a 30-day re-measure), a style-spotting trainer, the Coach Jordan GROW conversation simulator, a powerful-question converter, a feedforward classifier, a model matcher, live pair and triad practice, a six-question scored recap, and the My Coaching Plan capstone.",
+        "activities": "A coaching-ratio meter (the baseline for a 30-day re-measure), a style-spotting trainer, the Coach Jordan GROW conversation simulator (branching on every choice, with a running transcript), a powerful-question converter, a feedforward classifier, a model matcher, live pair and triad practice, a six-question scored recap, and the My Coaching Plan capstone.",
         "outcomes": "Learners leave with a chosen coaching model, a written opening question for a real team member, a counter-move for their personal telling trap, and a date within seven days. Learning is measured in session (trainer scores, simulator outcomes, and a recap mapped to objectives), at close (readiness check and public commitment), and after (a seven-day pulse and a 30-day coaching-ratio re-poll against the in-session baseline).",
         "takehomes": [
             ("Printable cheat sheet", "courses/coaching-for-performance/cheatsheet.html"),

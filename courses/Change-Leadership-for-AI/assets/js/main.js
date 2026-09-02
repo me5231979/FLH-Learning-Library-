@@ -361,27 +361,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Week two. The memo went out Friday, and the weekend did its work. Monday was quiet in the wrong way. Now your most worried team member closes your door. They ask it straight: is this how my job goes away? They are watching your face. What do you say?", "Week two. The team meeting covered the features and the timeline, and the questions slot got silence. Since then the enthusiasts have been trying the tool, and the rest have been quiet. Now your most worried team member closes your door. They ask it straight: is this how my job goes away? What do you say?", "Week two. You named the job question on day one, with honest edges around what you did not know. It bought some quiet, not an ending. Now your most worried team member closes your door. They ask it straight: is this how my job goes away? What do you say?"], 2: ["Month two. A team member's AI-drafted analysis carried a bad number, and a stakeholder caught it, not you. The team already half expects the tool to be blamed, or them. Nobody has said the word mistake out loud since the memo. The person is waiting to hear from you. What happens next?", "Month two. A team member's AI-drafted analysis carried a bad number, and a stakeholder caught it, not you. The rollout meeting sold benefits, so this is the first sign that the tool can be wrong. The team is watching how a miss gets treated. What happens next?", "Month two. A team member's AI-drafted analysis carried a bad number, and a stakeholder caught it, not you. The team heard you promise honesty on day one. This is the first real test of it. The person who drafted it is embarrassed and waiting. What happens next?"], 3: ["Month four. Usage is drifting, and half the team has quietly gone back to the old way. Nobody told you. You found it in the numbers. The forwarded memo set the tone, and it never got replaced: this is something done to them. The dashboard still looks fine from above. What do you do?", "Month four. Usage is drifting, and half the team has quietly gone back to the old way. The enthusiasts are still in. The watchful three never said why they left, because the room never asked them to. The dashboard still looks fine from above. What do you do?", "Month four. Usage is drifting, and half the team has quietly gone back to the old way. The difference is that they will tell you why, if asked. Day one bought that much: the team still expects honesty from you and offers it back. The dashboard looks fine from above. What do you do?"] };
+    var CARRY = ["A forwarded memo cast you as messenger, and the team filled the silence with dread.", "A benefits presentation kept the fear under the table, where it quietly steered the team.", "Naming the job question on day one made honesty the team's expectation, and their habit."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the six months' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more moment(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Month six: the team runs the tool their own way and keeps improving it. Misses surface in the open, the ethics page is on version three because they keep updating it, and when last week\'s capability update landed, two people brought it to you with a plan. The change belongs to them now, which was the goal all along.',
       mid: 'Month six: the dashboard looks fine. In the room, the questions have stopped, your two most careful people do their real work the old way after hours, and nobody has mentioned the tool\'s last mistake to you. You have compliance. Trust is still deciding, and it is not leaning your way.',
@@ -399,6 +423,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest moment and rerun the six months. Watch what changes at month six.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper finds the moment YOU would most likely fumble, before it arrives.</p>');
@@ -580,6 +605,188 @@
     });
   });
 
+  /* ---------- INTERACTIVE: Choose the next line (branching dialogue) ----------
+     Shared engine (house rule: the same engine lives in every deck course).
+     turns[0].line is a string; later turns' line (and any option's reply) may be
+     an array of three strings indexed by the PREVIOUS turn's chosen option. */
+  function makeDialogue(cfg) {
+    var root = $(cfg.root);
+    if (!root) return;
+    var logEl = $(cfg.log, root), optEl = $(cfg.options, root), fbEl = $(cfg.feedback, root),
+        progEl = $(cfg.progress, root), nextBtn = $(cfg.next, root), resEl = $(cfg.result, root),
+        nudgeEl = $(cfg.nudge, root), askEl = $(cfg.ask, root), navEl = $('.quiz__nav', root);
+    var turn = 0, picks = [], locked = false;
+    var branch = function () { return turn > 0 ? picks[turn - 1] : 0; };
+    var byBranch = function (v) { return Array.isArray(v) ? v[branch()] : v; };
+    var esc = function (t) { return String(t).replace(/</g, '&lt;'); };
+    var stage = function (t) { return esc(t).replace(/\(([^)]+)\)/g, '<i class="dialogue__stage">($1)</i>'); };
+    function addLine(who, text, you) {
+      var d = document.createElement('div');
+      d.className = 'dialogue__line' + (you ? ' dialogue__line--you' : '');
+      d.innerHTML = '<span class="dialogue__who">' + who + '</span><p>' + stage(text) + '</p>';
+      logEl.appendChild(d);
+    }
+    function render() {
+      locked = false;
+      var T = cfg.turns[turn];
+      progEl.textContent = 'Turn ' + (turn + 1) + ' of ' + cfg.turns.length + ' · your move';
+      addLine(cfg.them, byBranch(T.line), false);
+      fbEl.textContent = '';
+      nextBtn.style.visibility = 'hidden';
+      nextBtn.textContent = turn === cfg.turns.length - 1 ? 'See how it ended' : 'Next turn';
+      optEl.innerHTML = '';
+      T.opts.forEach(function (o, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'opt';
+        b.setAttribute('aria-pressed', 'false');
+        b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + i) + '</span><span>' + o.t + '</span>';
+        b.addEventListener('click', function () {
+          if (locked) return; locked = true;
+          $$('.opt', optEl).forEach(function (x, xi) {
+            x.setAttribute('disabled', 'true');
+            x.setAttribute('aria-pressed', String(xi === i));
+          });
+          addLine(cfg.you, o.t, true);
+          addLine(cfg.them, byBranch(o.reply), false);
+          picks.push(i);
+          var g = cfg.grades[o.pts];
+          fbEl.textContent = g.word + ' ' + o.note;
+          fbEl.style.color = g.color;
+          nextBtn.style.visibility = 'visible';
+          nextBtn.focus();
+        });
+        optEl.appendChild(b);
+      });
+    }
+    function showResult() {
+      var score = picks.reduce(function (t, p, i) { return t + cfg.turns[i].opts[p].pts; }, 0); // 3..9
+      var max = cfg.turns.length * 3;
+      var pct = Math.round((score / max) * 100);
+      var tier = score >= max - 1 ? 'strong' : score >= max - 3 ? 'mid' : 'weak';
+      var coach = picks.map(function (p, i) {
+        return '<div><b>Turn ' + (i + 1) + ':</b> ' + cfg.turns[i].opts[p].note + '</div>';
+      }).join('');
+      navEl.style.display = 'none';
+      optEl.innerHTML = '';
+      fbEl.textContent = '';
+      if (askEl) askEl.hidden = true;
+      progEl.textContent = 'The conversation ends';
+      resEl.innerHTML = '<span class="tag">How it ended · ' + score + ' / ' + max + '</span>' +
+        '<div class="lab__meter"><span style="width:0"></span></div>' +
+        '<p style="margin:0;color:#fff;font-weight:500">' + cfg.endings[tier].head + '</p>' +
+        '<div class="sample">' + cfg.endings[tier].text + '</div>' +
+        '<div class="lab__coach">' + coach + '</div>' +
+        '<button class="btn btn--ghost" type="button" data-retry style="margin-top:1.25rem">Run it again</button>';
+      resEl.hidden = false;
+      if (nudgeEl) nudgeEl.hidden = false;
+      $('[data-retry]', resEl).addEventListener('click', function () {
+        turn = 0; picks = [];
+        logEl.innerHTML = '';
+        resEl.hidden = true;
+        if (nudgeEl) nudgeEl.hidden = true;
+        if (askEl) askEl.hidden = false;
+        navEl.style.display = '';
+        render();
+        var first = $('.opt', optEl); if (first) first.focus();
+      });
+      requestAnimationFrame(function () {
+        var bar = $('.lab__meter span', resEl);
+        if (bar) requestAnimationFrame(function () { bar.style.width = pct + '%'; });
+      });
+      resEl.focus();
+    }
+    nextBtn.addEventListener('click', function () {
+      turn++;
+      if (turn >= cfg.turns.length) { showResult(); return; }
+      render();
+      var first = $('.opt', optEl); if (first) first.focus();
+    });
+    render();
+  }
+
+  /* Name the fear (Section 02): the job question, asked in a 1:1 */
+  makeDialogue({
+    root: '#fearDialogue', log: '#fdLog', options: '#fdOptions', feedback: '#fdFeedback',
+    progress: '#fdProgress', next: '#fdNext', result: '#fdResult', nudge: '#fdNudge', ask: '#fdAsk',
+    them: 'Coordinator', you: 'You',
+    grades: {
+      3: { word: '✓ Strong move.', color: 'var(--vu-gold-flat)' },
+      2: { word: '~ Half a move.', color: 'rgba(255,255,255,.85)' },
+      1: { word: '✗ Costly move.', color: '#c76b5a' }
+    },
+    turns: [
+      { line: 'Can I ask you something straight? This AI drafting thing. Is this how my job goes away? I’ve been doing these reports for twelve years.',
+        opts: [
+          { t: 'No. Absolutely not. Nobody is losing their job over a drafting tool. You have nothing to worry about.', pts: 1,
+            reply: 'You can’t actually know that, though. Can you?',
+            note: 'False certainty. You cannot know it, they know you cannot know it, and the first change of any size will spend the credibility this answer borrowed.' },
+          { t: 'That’s a fair question, and I’d rather you ask it than carry it. What I know: the drafting part of the reports changes first, and there is no role decision on the table. What I don’t know yet: what the job looks like in a year. What I can promise: any role news, you hear from me first.', pts: 3,
+            reply: '(A pause.) Okay. That’s more than anyone else has said.',
+            note: 'Named, then framed with both parts: what you know, what you do not, and a promise you can keep. Every claim is checkable, which is what makes it believable.' },
+          { t: 'That’s really a leadership question. I’ll find out what the plan is and get back to you.', pts: 2,
+            reply: 'Sure. That’s what they said at my last place, right before the reorg.',
+            note: 'Honest about your limits, and still a dodge. You confirmed the fear and answered nothing, and now the coordinator is alone with it.' }
+        ]},
+      { line: [
+          'And when it does save time? Same output, fewer hours. I’ve seen that math before.',
+          'Then here’s the real question. If the tool saves me ten hours a week, what are those hours for?',
+          'Fine. But when it starts saving time, someone upstairs is going to notice. What then?'
+        ],
+        opts: [
+          { t: 'Those hours have a name: the backlog we keep skipping and the intake follow-ups nobody gets to. And I want you in the room deciding what goes first, because you know this work better than anyone.', pts: 3,
+            reply: [
+              'Huh. The follow-ups. Nobody has touched those in a year. (A beat.) Okay. I’d want to be in that room.',
+              'The follow-ups. Yeah. I’ve been saying that for two years.',
+              'In the room. Okay. I’ll believe it when the invite shows up, but okay.'
+            ],
+            note: 'The saved-hours question, answered before fear answered it, plus an invitation into the design. Hours with a name do not get quietly cut.' },
+          { t: 'Honestly? I don’t know yet. I’ll be straight with you when I do.', pts: 2,
+            reply: [
+              'That’s at least honest. (They do not look reassured.)',
+              'Okay. I appreciate that. (A long pause.)',
+              'Right.'
+            ],
+            note: 'Honest, and only half. Bare uncertainty leaves them alone with the fear you just confirmed. The missing half is where the hours go and what you promise.' },
+          { t: 'Think of it as freeing you up for higher-value work. This is going to make your life easier.', pts: 1,
+            reply: [
+              '“Higher-value work.” That’s what the email said too.',
+              'Easier. Sure. (The openness from a moment ago is gone.)',
+              'That’s the line from the town hall.'
+            ],
+            note: 'Happy talk. “Higher-value work” has nothing checkable in it, and a twelve-year coordinator has heard it before. Fear did the interpreting.' }
+        ]},
+      { line: [
+          'One more thing. If a role decision does come, ever. Do I hear it from you, or from an email?',
+          'Then the one thing I need to know. If a role decision comes, do I hear it from you, or from an email?',
+          'Okay. Last question, and then I’ll drop it. If a role decision comes, do I hear it from you, or from an email?'
+        ],
+        opts: [
+          { t: 'From me, first, in person, with the team in the room. And I’m not answering this once. I’ll ask how it’s landing at every 1:1, and you can ask me this question as many times as you need.', pts: 3,
+            reply: [
+              'Okay. (They breathe out.) I’ll hold you to the 1:1 part.',
+              'Okay. That helps. I might ask again next month.',
+              'Okay. That’s the first thing today I actually believe.'
+            ],
+            note: 'A promise you can keep, and the fourth move, Hold, said out loud. Fear does not file your previous answers, so you told them the question stays open.' },
+          { t: 'From me. I’ll make sure of it.', pts: 2,
+            reply: ['Okay. Good.', 'Okay.', 'Okay. I guess we’ll see.'],
+            note: 'The right promise, and it is checkable. What is missing is the hold: the question will come back, and you have not said it is welcome.' },
+          { t: 'Let’s not get ahead of ourselves. There’s no decision, so there’s nothing to hear.', pts: 1,
+            reply: ['There it is. (They close their notebook.)', 'Right. Sorry I asked.', 'Sure. Never mind.'],
+            note: 'A deflection dressed as calm. They asked for one promise you could keep, and you gave them a reason to stop asking.' }
+        ]}
+    ],
+    endings: {
+      strong: { head: 'The container held. Nothing you said needs taking back.',
+        text: 'You named the fear, framed it with both parts, put a name on the saved hours, invited them into the design, and kept the question open. The coordinator left with something checkable, which is the only reassurance that survives the next announcement.' },
+      mid: { head: 'Half a container. Some truth, and one dodge.',
+        text: 'One turn was a bare “I don’t know,” a deflection, or a promise without a hold. The coordinator heard some truth and is still deciding whether to believe it. The question will come back. Answer it fresh, both parts.' },
+      weak: { head: 'Compliance over trust. They nodded, and that was all.',
+        text: 'False certainty, happy talk, or a deflection at each turn, and a twelve-year coordinator has heard every one of them before. They will now make sure there are no saved hours, and the next change you announce starts from here.' }
+    }
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -675,6 +882,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

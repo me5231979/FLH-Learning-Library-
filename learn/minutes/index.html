@@ -656,6 +656,46 @@ a.bb-dot:focus-visible{ outline:2px solid var(--vu-highlight); outline-offset:1p
 .sugg{ margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
 .sugg li{ list-style:none; display:flex; gap:12px; align-items:flex-start; color:var(--tx2); font-size:.9375rem; padding:12px 14px; border-radius:var(--r); border:1px solid var(--bd); background:var(--card); }
 .sugg li b{ color:var(--tx); font-weight:600; }
+
+/* Confirm drill: find the mismatches (worked example one) */
+.cdrill .cd-lead{ color:var(--tx2); font-size:.9375rem; max-width:none; }
+.cdrill .cd-lead b{ color:var(--tx); font-weight:600; }
+.cd-round{ color:var(--tx3); }
+.cd-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:16px; margin-top:14px; align-items:start; }
+@media (max-width:860px){ .cd-grid{ grid-template-columns:1fr; } }
+.cd-grid .c-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:8px; }
+.cd-tx{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px; }
+.cd-tx li{ display:grid; grid-template-columns:1.6rem 1fr; gap:8px; align-items:start; padding:6px 10px; border:1px solid var(--bd); border-left:3px solid var(--bd);
+  border-radius:var(--r); background:var(--card); font-size:.84rem; line-height:1.5; color:var(--tx2); transition:border-color .2s ease-out, background-color .2s ease-out; }
+.cd-tx li .cd-n{ font-family:var(--cond); font-weight:700; font-size:.7rem; letter-spacing:.04em; color:var(--eyebrow); padding-top:3px; }
+.cd-tx li b{ color:var(--tx); font-weight:600; }
+.cd-tx li.ref{ border-left-color:var(--vu-gold); background:rgba(207,174,112,.14); color:var(--tx); }
+.cd-sum{ display:flex; flex-direction:column; gap:7px; }
+.cd-line{ display:flex; gap:10px; align-items:flex-start; width:100%; text-align:left; font:inherit; font-size:.875rem; line-height:1.5; color:var(--tx2);
+  background:var(--card); border:1px solid var(--bd); border-radius:var(--r); padding:9px 12px; cursor:pointer;
+  transition:border-color .2s ease-out, background-color .2s ease-out; }
+.cd-line:hover{ border-color:var(--bdg); }
+.cd-line .cd-mark{ flex-shrink:0; min-width:4.6rem; font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-oak); padding-top:4px; }
+.cd-line .cd-mark:empty::before{ content:'\2610'; font-family:var(--sans); font-size:.95rem; letter-spacing:0; color:var(--tx3); }
+.cd-line[aria-pressed="true"]{ border-color:var(--vu-oak); background:rgba(207,174,112,.16); color:var(--tx); }
+.cd-line[aria-pressed="true"] > span:last-child{ text-decoration:line-through; text-decoration-color:var(--vu-oak); text-decoration-thickness:1.5px; }
+.cdrill.locked .cd-line{ cursor:default; }
+.cd-line.hit{ border-color:var(--vu-gold); border-left-width:3px; background:rgba(207,174,112,.2); color:var(--tx); }
+.cd-line.miss{ border-color:#c76b5a; border-left-width:3px; color:var(--tx); }
+.cd-line.miss .cd-mark{ color:#c76b5a; }
+.cd-line.false{ border-style:dashed; background:transparent; }
+.cd-line.false > span:last-child{ text-decoration:none; }
+.cd-row{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:14px; }
+.cd-out:empty{ display:none; }
+.cd-out{ margin-top:14px; border-left:3px solid var(--vu-gold); padding:2px 0 2px 16px; font-size:.9rem; color:var(--tx2); }
+.cd-out .cd-score{ display:block; font-family:var(--serif); font-size:1.25rem; color:var(--tx); margin-bottom:8px; }
+.cd-out ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.cd-out li b{ color:var(--tx); font-weight:600; }
+.cd-out li .cd-q{ display:block; margin-top:3px; color:var(--tx3); font-size:.85rem; }
+.cd-out .cd-soft{ margin-top:10px; font-size:.85rem; color:var(--tx3); max-width:none; }
+.cd-coach{ margin-top:14px; padding-top:12px; border-top:1px solid var(--bd); }
+.cd-dl{ color:var(--vu-oak); text-decoration:underline; text-decoration-color:var(--vu-gold); text-decoration-thickness:1px; text-underline-offset:3px; }
+.cd-dl:hover{ color:var(--tx); text-decoration-thickness:2px; }
 </style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>
@@ -956,6 +996,51 @@ Task: Turn the transcript into minutes with three sections: decisions made, acti
           </ul>
         </div>
       </div>
+    </div>
+    <!-- Confirm drill: find the mismatches. Excerpt and answers come from
+         learn/assets/practice/staff-meeting-transcript.txt (fictional). -->
+    <div class="pcard cdrill" id="confirmDrill" style="margin-top:14px">
+      <div class="pc-head">
+        <span class="mono">Confirm drill &middot; find the mismatches</span>
+        <span class="mono cd-round" id="cdRound">Round 1 of 2</span>
+      </div>
+      <p class="cd-lead">This is what the confirm pass looks like in practice. On the left, ten lines from a fictional staff meeting (the same one you can download on the Practice page). On the right, the AI&rsquo;s summary of them. <b>Two summary lines do not match the transcript.</b> Click the lines you think are wrong, then press Check.</p>
+      <div class="cd-grid">
+        <div>
+          <span class="c-label">Transcript excerpt &middot; fictional</span>
+          <ol class="cd-tx" id="cdTx">
+            <li><span class="cd-n">1</span><span class="cd-t"><b>[09:03] Ops lead:</b> Registration is at 41. The catering order goes in by Wednesday the 17th, and I&rsquo;ll send the final headcount with it.</span></li>
+            <li><span class="cd-n">2</span><span class="cd-t"><b>[09:05] Chair:</b> Then let&rsquo;s decide it: orientation stays a half day, nine to noon, and the afternoon lab is dropped. Decided.</span></li>
+            <li><span class="cd-n">3</span><span class="cd-t"><b>[09:06] Comms:</b> I&rsquo;ll send the welcome email on Friday the 19th, once the headcount is in.</span></li>
+            <li><span class="cd-n">4</span><span class="cd-t"><b>[09:08] Finance:</b> The badge printers. The current vendor quoted $3,400 for two. I want a second quote before we commit.</span></li>
+            <li><span class="cd-n">5</span><span class="cd-t"><b>[09:09] Chair:</b> Agreed. The printer order is parked until Finance has the second quote. Tuesday the 23rd?</span></li>
+            <li><span class="cd-n">6</span><span class="cd-t"><b>[09:09] Finance:</b> Tuesday the 23rd works.</span></li>
+            <li><span class="cd-n">7</span><span class="cd-t"><b>[09:12] Ops lead:</b> Facilities cannot do the move the week of the 29th. They offered the week of October 6.</span></li>
+            <li><span class="cd-n">8</span><span class="cd-t"><b>[09:13] Chair:</b> Then it&rsquo;s the week of October 6. Ops, the packing guide goes out by Friday the 26th.</span></li>
+            <li><span class="cd-n">9</span><span class="cd-t"><b>[09:38] Comms:</b> Can we decide the newsletter cadence today? I&rsquo;d like to go to every other week.</span></li>
+            <li><span class="cd-n">10</span><span class="cd-t"><b>[09:39] Chair:</b> Not today. Bring the open rates next week and we&rsquo;ll decide then.</span></li>
+          </ol>
+        </div>
+        <div>
+          <span class="c-label">The AI summary &middot; click the lines that are wrong</span>
+          <div class="cd-sum" id="cdSum" role="group" aria-label="Summary lines. Press a line to flag it as wrong.">
+            <button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>Decision: orientation stays a half day (nine to noon); the afternoon lab is dropped.</span></button>
+            <button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>Decision: the badge printer order goes to the current vendor at $3,400.</span></button>
+            <button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>Action: Comms sends the final headcount and catering order by Wednesday the 17th.</span></button>
+            <button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>Action: Comms sends the welcome email on Friday the 19th.</span></button>
+            <button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>Decision: the third-floor move happens the week of October 6.</span></button>
+            <button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>Action: the Ops lead sends the packing guide by Friday the 26th.</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="cd-row">
+        <button type="button" class="btn btn-primary btn-sm" id="cdCheck">Check</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="cdRetry">Try again</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="cdNext" hidden>Round 2: a different pair</button>
+        <span class="hinttxt" id="cdNudge" hidden>Flag at least one summary line first.</span>
+      </div>
+      <div class="cd-out" id="cdOut" role="status" aria-live="polite"></div>
+      <p class="hinttxt cd-coach">Confirm before it circulates. The mismatches are always in the same three places: who owns it, when it is due, and whether the decision was made or parked. Read those three against the transcript every time.</p>
     </div>
       <div class="pcard" style="margin-top:14px">
         <div class="pc-head">
@@ -1281,6 +1366,7 @@ Role: ___
 Interview: Ask me up to three questions before you draft.
 Task: ___</pre>
       <p class="hinttxt">Safe data only: transcripts and internal reports go in Amplify or Copilot through your Vanderbilt account. What you type stays in this browser, appears on your printed takeaway, and is never sent anywhere; Reset in the footer clears it.</p>
+      <p class="hinttxt" style="margin-top:8px">No real transcript yet? <a class="cd-dl" href="../assets/practice/staff-meeting-transcript.txt" download>Download the practice transcript (fictional, safe to paste anywhere)</a> and run your brief on it. It is the same meeting as the confirm drill in worked example one.</p>
       <div class="launch-row">
         <a class="btn btn-ghost btn-sm" href="https://www.vanderbilt.ai/" target="_blank" rel="noopener">Open Amplify
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
@@ -2275,6 +2361,91 @@ modeRender();
     var apply = function(){ fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; }); };
     if(reduce){ apply(); } else { requestAnimationFrame(function(){ requestAnimationFrame(apply); }); }
   });
+})();
+</script>
+
+<script>
+/* Confirm drill: find the mismatches. Two rounds over the same excerpt; every
+   answer points at the transcript line it contradicts. Nothing leaves the page. */
+(function(){
+  'use strict';
+  var root = document.getElementById('confirmDrill'); if(!root) return;
+  var sum = document.getElementById('cdSum'), tx = document.getElementById('cdTx'), out = document.getElementById('cdOut'),
+      check = document.getElementById('cdCheck'), retry = document.getElementById('cdRetry'), next = document.getElementById('cdNext'),
+      nudge = document.getElementById('cdNudge'), roundLab = document.getElementById('cdRound');
+  if(!sum || !tx || !out || !check || !retry || !next) return;
+  var ROUNDS = [
+    [ { t:'Decision: orientation stays a half day (nine to noon); the afternoon lab is dropped.' },
+      { t:'Decision: the badge printer order goes to the current vendor at $3,400.', ref:5, why:'Decision status. The chair parked the order until Finance brings a second quote. Nothing was decided.' },
+      { t:'Action: Comms sends the final headcount and catering order by Wednesday the 17th.', ref:1, why:'Wrong owner. The Ops lead owns the headcount and the catering order, not Comms.' },
+      { t:'Action: Comms sends the welcome email on Friday the 19th.' },
+      { t:'Decision: the third-floor move happens the week of October 6.' },
+      { t:'Action: the Ops lead sends the packing guide by Friday the 26th.' } ],
+    [ { t:'Decision: orientation stays a half day; the afternoon lab is dropped.' },
+      { t:'Action: the Ops lead sends the final headcount and catering order by Wednesday the 17th.' },
+      { t:'Action: Finance brings the second printer quote by Friday the 26th.', ref:6, why:'Wrong date. Finance agreed to Tuesday the 23rd. The 26th is the packing guide.' },
+      { t:'Decision: the third-floor move happens the week of October 6.' },
+      { t:'Decision: the newsletter moves to every other week.', ref:10, why:'Decision status. The chair said not today. It waits for the open rates next week.' },
+      { t:'Action: Comms sends the welcome email on Friday the 19th.' } ]
+  ];
+  var round = 0, locked = false;
+  function txLine(n){ var li = tx.children[n - 1]; return li ? li.querySelector('.cd-t').textContent : ''; }
+  function render(){
+    locked = false;
+    root.classList.remove('locked');
+    out.innerHTML = '';
+    next.hidden = true;
+    if(nudge) nudge.hidden = true;
+    check.disabled = false;
+    if(roundLab) roundLab.textContent = 'Round ' + (round + 1) + ' of ' + ROUNDS.length;
+    Array.prototype.forEach.call(tx.children, function(li){ li.classList.remove('ref'); });
+    sum.innerHTML = ROUNDS[round].map(function(l){
+      return '<button type="button" class="cd-line" aria-pressed="false"><span class="cd-mark"></span><span>' + l.t + '</span></button>';
+    }).join('');
+  }
+  sum.addEventListener('click', function(e){
+    var b = e.target && e.target.closest ? e.target.closest('.cd-line') : null;
+    if(!b || locked) return;
+    var on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', on ? 'false' : 'true');
+    b.querySelector('.cd-mark').textContent = on ? '' : 'Flagged';
+    if(nudge) nudge.hidden = true;
+  });
+  check.addEventListener('click', function(){
+    if(locked) return;
+    var lines = ROUNDS[round], btns = sum.querySelectorAll('.cd-line');
+    var flagged = Array.prototype.filter.call(btns, function(b){ return b.getAttribute('aria-pressed') === 'true'; });
+    if(!flagged.length){ if(nudge) nudge.hidden = false; return; }
+    locked = true; root.classList.add('locked'); check.disabled = true;
+    var found = 0, total = 0, falseMarks = [], h = '<ul>';
+    lines.forEach(function(l, i){
+      var b = btns[i], on = b.getAttribute('aria-pressed') === 'true', mark = b.querySelector('.cd-mark');
+      if(l.ref){
+        total += 1;
+        tx.children[l.ref - 1].classList.add('ref');
+        if(on){ found += 1; b.classList.add('hit'); mark.textContent = 'Mismatch'; }
+        else { b.classList.add('miss'); mark.textContent = 'Missed'; }
+        h += '<li><b>' + (on ? 'You caught it: ' : 'You missed this one: ') + l.t + '</b> ' + l.why +
+             '<span class="cd-q">Contradicts line ' + l.ref + ': &ldquo;' + txLine(l.ref) + '&rdquo;</span></li>';
+      } else if(on){
+        falseMarks.push(l.t); b.classList.add('false'); mark.textContent = 'Matches';
+      } else { mark.textContent = 'Matches'; }
+    });
+    h += '</ul>';
+    if(falseMarks.length){
+      h += '<p class="cd-soft">You also flagged ' + (falseMarks.length === 1 ? 'one line that does match' : falseMarks.length + ' lines that do match') +
+           ' the transcript. No harm done here. In real minutes it means a reread, which is still cheaper than a wrong owner going out.</p>';
+    }
+    var score = '<span class="cd-score">You found ' + found + ' of ' + total + '.</span>';
+    out.innerHTML = score + h;
+    next.hidden = false;
+    next.textContent = round + 1 < ROUNDS.length ? 'Round 2: a different pair' : 'Back to round 1';
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    try{ out.scrollIntoView({ block:'nearest', behavior:'smooth' }); }catch(e){}
+  });
+  retry.addEventListener('click', function(){ render(); sum.querySelector('.cd-line').focus(); });
+  next.addEventListener('click', function(){ round = (round + 1) % ROUNDS.length; render(); sum.querySelector('.cd-line').focus(); });
+  render();
 })();
 </script>
 </body>

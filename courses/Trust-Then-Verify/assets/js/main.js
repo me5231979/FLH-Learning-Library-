@@ -360,27 +360,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["You read the two pages once, and they read well. Fifty minutes remain. On the second page, a benchmark citation catches your eye only because the formatting is so clean. You try the link, then the title, then the author. Nothing turns up. Decide what to do with it.", "You checked the three numbers that stood out, and they held. Forty-five minutes remain. The external benchmark was not one of them. Now you look for it: a report title, a year, a page number. A quick search finds nothing by that name. Decide what to do with it.", "The claim read took five minutes and left a dozen underlines. The three load-bearing numbers trace cleanly to the enrollment system. Half an hour remains. One underline is still open: the benchmark citation. It looks perfect and you cannot find it anywhere. Decide what to do with it."], 2: ["Thirty minutes remain. The enrollment figures have still not been traced to anything. They read well, and that was your test. Now the closing paragraph. It argues for more support, and it argues hard, leaning on the strongest reading of every number. Decide what happens to it.", "Thirty minutes remain. The three numbers you spot-checked held. The rest are still on trust. The closing paragraph argues for more support and does not hedge. Every number gets its most favorable reading. The other side never appears. Decide what happens to it.", "Twenty-five minutes remain, and the numbers are solid: traced, checked, yours to defend. The closing paragraph is the last thing on the page. Every fact in it survived the reads. The framing did not: it takes the strongest reading everywhere and names no counter-case. Decide what happens to it."], 3: ["Ten minutes left. The briefing is polished, and you still cannot say which numbers in it are true. The dean will quote from it in a room you are not in. Whatever the email says about how this was made and checked is the last claim you make. Write it.", "Ten minutes left. Three numbers checked, the rest on trust, and you know the difference. The dean does not. Whatever the email says about your checking is what the dean's office will believe. It is also the one claim you can still control. Write it.", "Ten minutes left, and you do not need them. Numbers traced to the enrollment system, benchmark resolved, closing paragraph fair. The dean will take this into a leadership meeting. One thing remains: what you tell the dean about where your checking ended. Write the sign-off."] };
+    var CARRY = ["One read for flow left every number on trust, so the hour went to sentences and the errors kept their confidence.", "Spot-checking three numbers protected three numbers; the ones the dean leaned on were never on your list.", "The claim read found every fault line early, so each later move started from checked numbers with half an hour to spare."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, send it' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more move(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Two weeks later: the dean quotes your briefing in the leadership meeting and every number holds. The invented benchmark died on your desk instead of in that room, the counter-case paragraph preempted the one hard question, and your one-line sign-off meant the dean spent review time on the decision instead of the arithmetic. Your briefings now get read as reliable, which is the quietest possible promotion.',
       mid: 'Two weeks later: mostly fine, with one bruise. The claims you checked held, and the thing you handled halfway surfaced: a soft spot the dean\'s office found on its own. Nothing exploded, and the dean now reads your work a little more slowly, which costs you both time. The fix was fifteen more minutes of the reads; the reputation repair takes longer.',
@@ -398,6 +422,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest move and rerun it. Watch what changes in the meeting two weeks out.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the next AI draft that lands on your desk gets this exact treatment, and the hour will be enough.</p>');
@@ -580,6 +605,175 @@
     });
   });
 
+  /* ---------- INTERACTIVE: planted-error read ---------- */
+  /* One AI paragraph, one button per sentence. Mark what you distrust, check
+     the marks, then size the check. Same engine in every deck-family course;
+     the paragraphs live in the config below. */
+  function makePlantedRead(cfg) {
+    var root = $(cfg.root);
+    if (!root) return;
+    var setEl = $('.perr__set', root), promptEl = $('.perr__prompt', root), textEl = $('.perr__text', root),
+        checkBtn = $('.perr__check', root), statusEl = $('.perr__status', root), resEl = $('.perr__result', root),
+        sizeEl = $('.perr__size', root), sizeQ = $('.perr__sizeq', root), optsEl = $('.perr__opts', root),
+        verdictEl = $('.perr__verdict', root), afterEl = $('.perr__after', root), nudgeEl = $('.perr__nudge', root),
+        retryBtn = $('.perr__retry', root), nextBtn = $('.perr__next', root);
+    var si = 0, checked = false;
+    var GRADE = { best: ['Best', 'correct'], ok: ['The minimum', 'partial'], bad: ['Not enough', 'wrong'] };
+
+    function markedCount() {
+      return $$('.perr__s[aria-pressed="true"]', textEl).length;
+    }
+    function setStatus() {
+      var n = markedCount();
+      statusEl.textContent = n === 0 ? 'Mark the sentences you distrust, then check' :
+        n + ' sentence' + (n === 1 ? '' : 's') + ' marked';
+    }
+    function render() {
+      var S = cfg.sets[si];
+      checked = false;
+      setEl.textContent = (cfg.sets.length > 1 ? 'Paragraph ' + (si + 1) + ' of ' + cfg.sets.length + ' · ' : '') + S.label;
+      promptEl.innerHTML = '<b>' + S.ask + '</b> ' + S.prompt;
+      textEl.innerHTML = '';
+      S.sentences.forEach(function (s, i) {
+        if (s.para && i > 0) {
+          var gap = document.createElement('span');
+          gap.className = 'perr__gap'; gap.setAttribute('aria-hidden', 'true');
+          textEl.appendChild(gap);
+        } else if (i > 0) {
+          textEl.appendChild(document.createTextNode(' '));
+        }
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'perr__s';
+        b.setAttribute('aria-pressed', 'false');
+        b.textContent = s.t;
+        b.addEventListener('click', function () {
+          if (checked) return;
+          b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+          setStatus();
+        });
+        textEl.appendChild(b);
+      });
+      checkBtn.disabled = false;
+      resEl.hidden = true; resEl.innerHTML = '';
+      sizeEl.hidden = true; optsEl.innerHTML = ''; verdictEl.textContent = ''; verdictEl.className = 'quiz__feedback perr__verdict';
+      afterEl.hidden = true; nudgeEl.hidden = true; nudgeEl.innerHTML = '';
+      if (nextBtn) {
+        nextBtn.hidden = cfg.sets.length < 2;
+        nextBtn.textContent = si === cfg.sets.length - 1 ? 'Back to the first paragraph' : 'Try the second paragraph';
+      }
+      setStatus();
+    }
+    function check() {
+      if (checked) return;
+      checked = true;
+      var S = cfg.sets[si];
+      var btns = $$('.perr__s', textEl);
+      var planted = 0, caught = 0, alarms = 0, rows = '';
+      S.sentences.forEach(function (s, i) {
+        var b = btns[i];
+        var on = b.getAttribute('aria-pressed') === 'true';
+        b.disabled = true;
+        if (s.planted) {
+          planted++;
+          if (on) { caught++; b.classList.add('hit'); } else { b.classList.add('miss'); }
+          rows += '<div class="perr__find"><b>' + (on ? 'Caught' : 'Missed') + ' · ' + s.kind + '</b>' +
+            '<span>' + s.why + ' <i>The tell:</i> ' + s.tell + '</span></div>';
+        } else if (on) {
+          alarms++;
+          b.classList.add('alarm');
+          rows += '<div class="perr__find"><b>False alarm</b><span>' + (s.note || cfg.alarmNote) + '</span></div>';
+        }
+      });
+      resEl.innerHTML = '<p class="perr__score">Caught ' + caught + ' of ' + planted + ', ' +
+        alarms + ' false alarm' + (alarms === 1 ? '' : 's') + '.</p>' + rows +
+        '<p class="why" style="margin-top:.9rem">' + (caught === planted ? cfg.allNote : cfg.missNote) + '</p>';
+      resEl.hidden = false;
+      checkBtn.disabled = true;
+      statusEl.textContent = 'Marks locked. Now size the check.';
+      sizeQ.textContent = S.size.q;
+      optsEl.innerHTML = '';
+      S.size.opts.forEach(function (o, oi) {
+        var ob = document.createElement('button');
+        ob.type = 'button'; ob.className = 'opt';
+        ob.setAttribute('aria-pressed', 'false');
+        ob.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
+        ob.addEventListener('click', function () {
+          var g = GRADE[o.grade] || GRADE.bad;
+          $$('.opt', optsEl).forEach(function (x) {
+            x.setAttribute('aria-pressed', String(x === ob));
+            x.classList.remove('correct', 'partial', 'wrong');
+          });
+          ob.classList.add(g[1]);
+          verdictEl.className = 'quiz__feedback perr__verdict perr__verdict--' + o.grade;
+          verdictEl.textContent = g[0] + ': ' + o.verdict;
+          nudgeEl.innerHTML = '<b>Now the real thing:</b> ' + cfg.nudge;
+          nudgeEl.hidden = false;
+        });
+        optsEl.appendChild(ob);
+      });
+      sizeEl.hidden = false;
+      afterEl.hidden = false;
+      resEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    }
+    checkBtn.addEventListener('click', check);
+    retryBtn.addEventListener('click', function () {
+      render();
+      textEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        si = (si + 1) % cfg.sets.length;
+        render();
+        textEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+    }
+    render();
+  }
+
+  /* The planted-error read (Section 03) */
+  makePlantedRead({
+    root: '#plantedRead',
+    alarmNote: 'This one holds against the enrollment system. A false alarm costs one trace; a miss costs the meeting.',
+    allNote: 'All three, and the reads did it: the arithmetic, the date question, and the source you could not open.',
+    missNote: 'The sentences you missed read exactly like the ones that held. That is why the claim read underlines every fault line before you decide which to trace.',
+    nudge: 'the next draft that lands on your desk gets the claim read before you read it for flow.',
+    sets: [
+      { label: 'The dean\'s enrollment briefing',
+        ask: 'The draft:',
+        prompt: 'an excerpt from the AI-drafted enrollment briefing for the dean. Two paragraphs, ten sentences. Run the claim read and mark every sentence you would trace. The program and its numbers are invented for practice.',
+        sentences: [
+          { t: 'Program enrollment over the last four fall terms was 212, 228, 245, and 263 students.' },
+          { t: 'That is an average of 251 students per term, with growth in every year.', planted: true, kind: 'Faked math',
+            why: 'The four figures average 237, not 251. The model produced a number that sounds like a summary and leans toward the argument.',
+            tell: 'an average sitting next to the figures it claims to summarize. Twenty seconds of arithmetic.' },
+          { t: 'Year-over-year growth ran between seven and eight percent each term.',
+            note: 'Holds: 7.5, 7.5, and 7.3 percent. A percentage next to raw figures is worth the arithmetic, and this one passes.' },
+          { t: 'Most of the growth came from transfer students, who now make up a third of new entrants.' },
+          { t: 'First-to-second-year retention held steady at 88 percent across the period.' },
+          { t: 'The regional transfer rate is currently rising at 4 percent a year, which supports continued growth.', planted: true, kind: 'Undated rate', para: true,
+            why: '"Currently" has no date. The only regional figure on file is two years old, and the model attached today\'s word to an old number.',
+            tell: 'a moving rate with no date attached. Ask "as of when?"' },
+          { t: 'Peer programs average 190 students, according to the 2024 National Program Enrollment Benchmark Survey.', planted: true, kind: 'Invented source',
+            why: 'There is no such survey. The name is built from the pieces real benchmark reports use, and the number has nothing under it.',
+            tell: 'a formal citation you cannot open.' },
+          { t: 'Advising capacity was built for 200 students, so the current cohort already exceeds it.' },
+          { t: 'The request is for one additional advisor and a part-time coordinator starting next fall.' },
+          { t: 'Without this support, the program\'s momentum will stall.',
+            note: 'Not a checkable claim, so not a planted error. Good instinct, though: this sentence belongs to the slant read. It is the draft arguing your case for you.' }
+        ],
+        size: { q: 'This briefing goes to the dean and from there into a budget meeting. Size the verification budget.',
+          opts: [
+            { t: 'Claim read only: the fault lines are marked, so send it.', grade: 'bad',
+              verdict: 'the claim read only finds the fault lines. Nothing has been traced, and the average and the benchmark travel as written.' },
+            { t: 'Source read on the load-bearing claims: the average, the benchmark, the regional rate.', grade: 'ok',
+              verdict: 'the three claims the dean will quote get traced to the enrollment system and a source you opened. The closing frame still ships unread.' },
+            { t: 'All three reads before it travels: claim, source, and slant.', grade: 'best',
+              verdict: 'the budget for anything that travels. The invented survey dies on your desk, and the closing paragraph names the counter-case.' }
+          ] }
+      }
+    ]
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -675,6 +869,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

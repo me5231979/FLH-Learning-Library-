@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -445,6 +445,18 @@ body.fac-hide .facshow { display: inline-flex; }
         <div class="lab__outcome" id="raOut" hidden aria-live="polite"></div>
       </div>
 
+      <div class="triage" id="inboxTriage" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Inbox Triage</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the audit's moves only save time once you can call them on sight. Eight inbox items, each from a role, never a name. Give each one its move: <b>Template it</b> (you produce it the same way every time), <b>Route it</b> (it arrives, and a rule or an AI summary handles it before you decide), <b>Retire it</b> (a recurring obligation nobody needs), or <b>Keep it</b> (judgment, a relationship, or private details about a person). Sort in any order, then check your calls against the exemplar.</p>
+        <p class="why" style="margin-top:.4rem"><b>Facilitation:</b> give the room three minutes to sort on their own devices, then check together; the "Keep it" card is the one to debrief out loud.</p>
+        <div class="triage__list" id="itList" role="list"></div>
+        <div class="lab__runrow">
+          <button class="btn" id="itCheck" type="button" disabled>Check my triage</button>
+          <span class="quiz__progress" id="itStatus">0 of 8 sorted</span>
+        </div>
+        <div class="lab__outcome" id="itOut" hidden aria-live="polite"></div>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -586,7 +598,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
       <div class="lab" id="autoLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Automation Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make on your own task this week, and the failure modes are the real ones. Choose how each step runs, then run two months.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every choice here is one you will make on your own task this week, and the failure modes are the real ones. Choose how each step runs, then run two months. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run two months</button>
@@ -830,7 +842,7 @@ body.fac-hide .facshow { display: inline-flex; }
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=1"></script>
+<script src="../assets/js/main.js?v=2"></script>
 
 <script>
 (function () {

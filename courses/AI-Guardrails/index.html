@@ -23,7 +23,7 @@
 <link rel="preload" href="assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="assets/css/styles.css?v=1">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -130,7 +130,7 @@
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain why written guardrails protect a team in ways good intentions can't once AI use scales</li>
+          <li>Decide which of four AI outputs needs a named human check before it ships, and write the guardrail that makes that check routine</li>
           <li>Classify data with the traffic light, including the hard cases: student work, meeting notes, letters about people</li>
           <li>Decide which outputs need a named human check and when AI use must be disclosed to the reader</li>
           <li>Assign ownership of every AI-assisted output to the human who ships it</li>
@@ -528,7 +528,7 @@
 
       <div class="lab" id="guardLab" data-reveal style="margin-top:2.5rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Guardrails Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> your team is rolling out AI help on two regular outputs: the weekly staff newsletter and a student-facing FAQ page. Write the four lines for the rollout, then see where the team stands at month one. Every choice here is one a real team has made, one way or the other.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> your team is rolling out AI help on two regular outputs: the weekly staff newsletter and a student-facing FAQ page. Write the four lines for the rollout, then see where the team stands at month one. Every choice here is one a real team has made, one way or the other. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run month one</button>
@@ -592,6 +592,7 @@
           </div>
         </div>
         <div class="lab__outcome" id="flOut" hidden aria-live="polite"></div>
+        <div class="exemplar" id="flExemplar" hidden></div>
       </div>
 
       <details class="deeper" data-reveal>
@@ -769,7 +770,7 @@
 
 
 <script src="assets/js/qrcode.js?v=1"></script>
-<script src="assets/js/main.js?v=1"></script>
+<script src="assets/js/main.js?v=2"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

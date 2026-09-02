@@ -369,8 +369,14 @@
             reply: 'Jordan pauses, then sits back. “…A way to decide what actually matters this quarter. That’s what I need.”',
             note: 'A goal, named by them, in their words. The conversation now has a destination they own.' }
         ]},
+      /* From Reality on, Jordan's opening line is an array indexed by the points of the previous pick:
+         [after a directive line (compliant, passive), after a closed question (flat), after an open question (thinking)]. */
       { name: 'R · Reality',
-        coachee: '“It’s just… the requests never stop. Three teams think I work for them.”',
+        coachee: [
+          '“Okay. The Henderson report. So… do I drop the other stuff, or just do it after? Whatever you think.”',
+          '“I mean, yeah, it’s workload. The requests never stop. Three teams think I work for them.” Jordan checks the time.',
+          '“Okay, so, what actually matters this quarter. Honest answer: I don’t know, because the requests never stop. Three teams think I work for them.”'
+        ],
         opts: [
           { t: '“You’re overcommitted. That’s the reality, plain and simple.”', pts: 1,
             reply: '“I mean… maybe? It’s more complicated than that.”',
@@ -383,7 +389,11 @@
             note: 'Advice wearing a question mark, and slightly beneath their capability. Notice the temperature drop.' }
         ]},
       { name: 'O · Options',
-        coachee: '“So I guess I need to push back on some of this. Somehow.”',
+        coachee: [
+          '“Right. Overcommitted. So… what do you want me to cut?”',
+          '“The list is still the list. I guess I need to push back on some of this. Somehow.”',
+          'Jordan is still looking at the list. “Two of these can wait. So it’s the other four. I need to push back somewhere, I just don’t know where yet.”'
+        ],
         opts: [
           { t: '“Here’s what I’d do: tell the ops team you’re out until Q3.”', pts: 1,
             reply: '“Oh. Okay, if you think that’s best, I can do that.”',
@@ -396,7 +406,11 @@
             note: 'One option, yours, framed for a yes or no. It shrank the option space instead of growing it.' }
         ]},
       { name: 'W · Will',
-        coachee: '“Okay. I think I know what to do about this quarter.”',
+        coachee: [
+          '“Okay. I’ll tell ops I’m out until Q3. Do you want me to copy you on that, or…?”',
+          '“Maybe Sam, if Sam has time. So… I guess I’ll see how it goes.”',
+          'Jordan taps the fourth option. “This one. If I take the priority list to my leads, the rest sorts itself out. I think I know what to do about this quarter.”'
+        ],
         opts: [
           { t: '“Great, so we’re agreed: do the top three and drop the rest.”', pts: 1,
             reply: '“…Sure. Agreed.”',
@@ -410,25 +424,44 @@
         ]}
     ];
     var gsStage = 0, gsScore = 0, gsLocked = false;
+    var gsLast = 3;            // points of the previous pick; selects Jordan's next opening line
+    var gsLog = [], gsPending = [];   // the transcript so far, and the exchange still on screen
     var gsStageEl = $('#growStage'), gsCoachee = $('#growCoachee'), gsOpts = $('#growOptions'),
-        gsFb = $('#growFeedback'), gsNext = $('#growNext'), gsRes = $('#growResult');
+        gsFb = $('#growFeedback'), gsNext = $('#growNext'), gsRes = $('#growResult'), gsLogEl = $('#growLog');
     var gsNav = $('#growSim .quiz__nav');
+    var gsSolo = growSim.hasAttribute('data-solo');   // self-paced edition: no partner in the room
+    function gsOpening(S) {
+      if (!Array.isArray(S.coachee)) return S.coachee;
+      return S.coachee[Math.max(0, Math.min(S.coachee.length - 1, gsLast - 1))];
+    }
+    function gsDrawLog() {
+      if (!gsLogEl) return;
+      gsLogEl.innerHTML = gsLog.map(function (l) {
+        return '<p class="' + (l.you ? 'you' : 'them') + '"><b>' + (l.you ? 'You' : 'Jordan') + ':</b> ' + l.text + '</p>';
+      }).join('');
+      gsLogEl.hidden = gsLog.length === 0;
+    }
     function gsRender() {
       gsLocked = false;
       var S = STAGES[gsStage];
+      var opening = gsOpening(S);
       gsStageEl.textContent = 'Stage ' + (gsStage + 1) + ' of 4 · ' + S.name;
-      gsCoachee.innerHTML = '<b>Jordan:</b> ' + S.coachee;
+      gsCoachee.innerHTML = '<b>Jordan:</b> ' + opening;
+      gsPending = [{ text: opening }];
       gsFb.textContent = '';
       gsNext.style.visibility = 'hidden';
       gsNext.textContent = gsStage === STAGES.length - 1 ? 'See how the conversation went' : 'Continue the conversation';
       gsOpts.innerHTML = '';
       S.opts.forEach(function (o, i) {
         var b = document.createElement('button');
+        b.type = 'button';
         b.className = 'opt';
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + i) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           if (gsLocked) return; gsLocked = true;
           gsScore += o.pts;
+          gsLast = o.pts;
+          gsPending.push({ you: true, text: o.t }, { text: o.reply });
           var best = S.opts.reduce(function (m, x) { return x.pts > m.pts ? x : m; }, S.opts[0]);
           $$('.opt', gsOpts).forEach(function (x, xi) {
             x.setAttribute('disabled', 'true');
@@ -444,6 +477,8 @@
       });
     }
     gsNext.addEventListener('click', function () {
+      gsLog = gsLog.concat(gsPending); gsPending = [];
+      gsDrawLog();
       gsStage++;
       if (gsStage >= STAGES.length) {
         gsNav.style.display = 'none';
@@ -453,15 +488,19 @@
         var head = tier === 'strong' ? 'Jordan left owning a plan they built. That’s a coaching conversation.'
                  : tier === 'mid' ? 'A mixed session: some discovery, some directing. Jordan has next steps, but how many are really theirs?'
                  : 'Jordan left with your plan and your problem-ownership. Congratulations: their workload is now on your desk too.';
+        var nudge = gsSolo
+          ? '<b>Now the real thing:</b> your next 1:1 is this conversation with a human, and humans improvise.'
+          : '<b>Now the real thing:</b> the pair roleplay below runs this exact conversation with a human, and humans improvise.';
         gsRes.hidden = false;
         gsRes.innerHTML = '<div class="quiz__score gold-text">' + gsScore + ' / 12</div>' +
           '<p style="margin-top:.75rem;color:var(--ink-soft,#555)">' + head + '</p>' +
           '<p class="why" style="margin-top:.75rem">' + (tier === 'strong'
-            ? '<b>Now the real thing:</b> the pair roleplay below runs this exact conversation with a human, and humans improvise.'
+            ? nudge
             : '<b>Run it again:</b> this time, pick the option that keeps the thinking on Jordan’s side of the table.') + '</p>' +
-          '<button class="btn btn--ghost" id="growRetry" style="margin-top:1rem">Coach Jordan again</button>';
+          '<button type="button" class="btn btn--ghost" id="growRetry" style="margin-top:1rem">Coach Jordan again</button>';
         $('#growRetry').addEventListener('click', function () {
-          gsStage = 0; gsScore = 0; gsRes.hidden = true;
+          gsStage = 0; gsScore = 0; gsLast = 3; gsLog = []; gsPending = []; gsRes.hidden = true;
+          gsDrawLog();
           gsNav.style.display = '';
           gsRender();
         });
@@ -738,6 +777,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

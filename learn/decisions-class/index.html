@@ -654,6 +654,62 @@ a.bb-dot:focus-visible{ outline:2px solid var(--vu-highlight); outline-offset:1p
 .sugg{ margin:18px 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
 .sugg li{ list-style:none; display:flex; gap:12px; align-items:flex-start; color:var(--tx2); font-size:.9375rem; padding:12px 14px; border-radius:var(--r); border:1px solid var(--bd); background:var(--card); }
 .sugg li b{ color:var(--tx); font-weight:600; }
+/* ═══════════════════ PREMORTEM LAB (example two: the scenario test) ═══════════════════
+   Three steps: pick an option, write the failure story, compare with the exemplar and
+   self-score. Reuses .qopt, .btn, .c-label, .cf-l, .hinttxt. Motion stays under 400ms. */
+.pmlab{ margin-top:clamp(32px,5vw,48px); max-width:980px; border:1px solid var(--bdg); border-top:3px solid var(--vu-gold);
+  border-radius:var(--r); background:var(--card2); padding:clamp(20px,3vw,30px); }
+.pmlab .pm-head h3{ font-family:var(--serif); font-weight:400; font-size:clamp(1.45rem,2.8vw,2rem); line-height:1.15; letter-spacing:-.01em; color:var(--tx); margin-top:14px; }
+.pmlab .pm-head h3 em.s{ color:var(--strong); }
+.pmlab .pm-head p{ color:var(--tx2); font-size:.9575rem; line-height:1.7; max-width:70ch; margin-top:12px; }
+.pmlab .pm-del{ border-left:3px solid var(--vu-gold); padding-left:14px; }
+.pmlab .pm-del b, .pmlab .pm-q b{ color:var(--tx); font-weight:600; }
+.pm-step{ margin-top:22px; padding-top:18px; border-top:1px solid var(--bd); }
+.pm-step:focus{ outline:2px solid var(--vu-gold); outline-offset:4px; }
+.pm-no{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--vu-oak); margin-bottom:8px; }
+.pm-q{ color:var(--tx2); font-size:.9575rem; line-height:1.7; max-width:72ch; }
+.pm-opts{ display:flex; flex-direction:column; gap:0; max-width:720px; margin-top:6px; }
+.pm-opt{ display:flex; gap:8px; align-items:flex-start; }
+.pm-opt b{ color:var(--vu-oak); font-weight:700; flex-shrink:0; }
+.pm-opt[aria-pressed="true"]{ border-color:var(--vu-gold); background:rgba(207,174,112,.14); color:var(--tx); }
+.pm-opt[aria-pressed="true"]::after{ content:"Chosen"; margin-left:auto; font-family:var(--cond); font-weight:700; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-oak); }
+.pm-pick{ margin-top:10px; font-size:.9rem; color:var(--tx); }
+.pm-pick b{ color:var(--vu-oak); font-weight:700; }
+.pm-field{ display:flex; flex-direction:column; gap:5px; margin-top:12px; max-width:720px; }
+.pm-field textarea{ font:inherit; font-size:.9rem; line-height:1.6; color:var(--tx); background:var(--card); border:1px solid var(--bd); border-radius:var(--r);
+  padding:9px 12px; width:100%; resize:vertical; min-height:120px; }
+.pm-field textarea:focus{ outline:2px solid var(--vu-gold); outline-offset:1px; }
+.pm-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:14px; }
+.pm-nudge{ margin-top:10px; font-size:.875rem; color:var(--tx); display:flex; gap:8px; align-items:flex-start; max-width:60ch; }
+.pm-nudge .pm-x{ display:inline-grid; place-items:center; width:18px; height:18px; border-radius:50%; background:#c76b5a; color:#fff; font-family:var(--cond); font-weight:700; font-size:.75rem; flex-shrink:0; margin-top:3px; }
+.pm-compare{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px,3vw,28px); align-items:start; }
+@media (max-width:760px){ .pm-compare{ grid-template-columns:1fr; } }
+.pm-col{ padding:2px 0 2px 16px; border-left:3px solid var(--bd); }
+.pm-col.pm-ex{ border-left-color:var(--vu-gold); }
+.pm-col .c-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:8px; }
+.pm-yours, .pm-extext{ color:var(--tx2); font-size:.9375rem; line-height:1.7; max-width:none; }
+.pm-yours{ white-space:pre-wrap; overflow-wrap:anywhere; }
+.pm-key{ list-style:none; margin-top:12px; display:flex; flex-direction:column; gap:6px; }
+.pm-key li{ font-size:.85rem; color:var(--tx2); line-height:1.5; display:flex; gap:8px; align-items:flex-start; }
+.pm-key li b{ color:var(--vu-oak); font-family:var(--cond); font-weight:700; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; flex-shrink:0; min-width:104px; margin-top:3px; }
+.pm-rubric{ margin-top:22px; border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:16px 18px; }
+.pm-rubric > .c-label{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin-bottom:4px; }
+.pm-rub{ padding:12px 0; border-bottom:1px solid var(--bd); }
+.pm-rub:last-of-type{ border-bottom:0; }
+.pm-rq{ font-size:.9375rem; color:var(--tx); max-width:64ch; }
+.pm-tog{ display:flex; gap:8px; margin-top:8px; }
+.pm-yn{ display:inline-flex; align-items:center; gap:6px; min-height:40px; padding:6px 14px; font:inherit; font-size:.875rem; font-weight:500; color:var(--tx2);
+  background:var(--card2); border:1px solid var(--bd); border-radius:var(--r); cursor:pointer; transition:border-color .15s ease-out, background-color .15s ease-out; }
+.pm-yn:hover{ border-color:var(--bdg); }
+.pm-yn .pm-mark{ display:none; font-weight:700; }
+.pm-yn[aria-pressed="true"] .pm-mark{ display:inline; }
+.pm-yn[data-val="yes"][aria-pressed="true"]{ border-color:var(--vu-gold); background:rgba(207,174,112,.18); color:var(--tx); }
+.pm-yn[data-val="no"][aria-pressed="true"]{ border-color:#c76b5a; background:rgba(199,107,90,.10); color:var(--tx); }
+.pm-add{ margin-top:10px; font-size:.875rem; color:var(--tx2); border-left:3px solid #c76b5a; padding-left:12px; max-width:62ch; }
+.pm-add b{ color:var(--tx); font-weight:600; }
+.pm-tally{ margin-top:12px; font-family:var(--cond); font-weight:700; font-size:.8rem; letter-spacing:.04em; text-transform:uppercase; color:var(--vu-oak); }
+.pm-tally.done{ color:var(--tx); }
+@media (prefers-reduced-motion: reduce){ .pm-yn{ transition:none; } }
 </style>
 <!-- Vercel Web Analytics (vercel-analytics): served only by Vercel, so it is skipped on GitHub Pages -->
 <script>
@@ -1058,6 +1114,87 @@ Task: Give me the best case, the expected case, and the worst case for this chan
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Walk the second-order effects to real roles.</b> Which student worker loses hours, who covers the late shift. If you can&rsquo;t name the role, the thinking isn&rsquo;t finished.</span></li>
           </ul>
         </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PREMORTEM LAB: pick an option, write the failure story, compare with the exemplar ═══════════ -->
+    <div class="pmlab" id="pmLab">
+      <div class="pm-head">
+        <span class="eyebrow"><span class="tick" aria-hidden="true"></span><span class="mono">Premortem lab &middot; about four minutes</span></span>
+        <h3>Now you write the <em class="s">failure</em> story.</h3>
+        <p>A fictional decision with three ways to go. Pick one, write the premortem yourself, then compare it with a strong one and score your own. Roles, never names: the scenario uses roles only, and so should your story.</p>
+        <p class="pm-del"><b>One call comes first.</b> Whether AI belongs in this decision at all is the first call you make (the Delegation competency), and the premortem is where you make it: if the failure story turns on a personnel matter, the AI stays out and you decide alone.</p>
+      </div>
+
+      <div class="pm-step" id="pmStep1">
+        <span class="pm-no">Step 1 of 3 &middot; Pick an option</span>
+        <p class="pm-q"><b>The decision.</b> Your department&rsquo;s shared drive is full, slow, and nobody trusts the folder names. IT has offered a move to a new platform. The move touches every staff member&rsquo;s files, the two student workers who keep the folders tidy, and a records retention rule your director has to sign off on. You can:</p>
+        <div class="pm-opts" role="group" aria-label="The three options">
+          <button type="button" class="qopt pm-opt" data-pm="now" aria-pressed="false"><b>A.</b> Move the whole department now, before the fall rush.</button>
+          <button type="button" class="qopt pm-opt" data-pm="pilot" aria-pressed="false"><b>B.</b> Pilot with one team first, then decide about everyone else.</button>
+          <button type="button" class="qopt pm-opt" data-pm="wait" aria-pressed="false"><b>C.</b> Wait a year and look again when the platform has settled.</button>
+        </div>
+      </div>
+
+      <div class="pm-step" id="pmStep2" hidden>
+        <span class="pm-no">Step 2 of 3 &middot; Write the premortem</span>
+        <p class="pm-q"><b>It is twelve months later and this failed.</b> Write the failure story in three or four sentences. Say what broke first, what broke because of that, and which role noticed.</p>
+        <p class="pm-pick" id="pmPick"></p>
+        <label class="pm-field" for="pmText"><span class="cf-l">Your failure story</span>
+          <textarea id="pmText" rows="5" placeholder="Twelve months on, this failed because&hellip;"></textarea></label>
+        <p class="hinttxt">Saved on this device only, until you press Reset in the footer. Nothing you type is sent anywhere.</p>
+        <p class="pm-nudge" id="pmNudge" hidden><span class="pm-x" aria-hidden="true">!</span> Give it at least two full sentences first. A premortem with nothing in it teaches nothing.</p>
+        <div class="pm-row">
+          <button type="button" class="btn btn-primary btn-sm" id="pmCompare">Compare with the exemplar</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="pmBack">Change option</button>
+        </div>
+      </div>
+
+      <div class="pm-step" id="pmStep3" hidden tabindex="-1">
+        <span class="pm-no">Step 3 of 3 &middot; Compare and score</span>
+        <div class="pm-compare" aria-live="polite">
+          <div class="pm-col">
+            <span class="c-label">Yours</span>
+            <p class="pm-yours" id="pmYours"></p>
+          </div>
+          <div class="pm-col pm-ex">
+            <span class="c-label" id="pmExLabel">The exemplar</span>
+            <p class="pm-extext" id="pmExemplar"></p>
+            <ul class="pm-key" id="pmKey" aria-label="What makes the exemplar strong"></ul>
+          </div>
+        </div>
+        <div class="pm-rubric">
+          <span class="c-label">Score yours. Be honest; nobody else sees this.</span>
+          <div class="pm-rub" data-rub="trigger">
+            <p class="pm-rq" id="pmRq1">Did yours name a specific trigger, not a vague risk?</p>
+            <div class="pm-tog" role="group" aria-labelledby="pmRq1">
+              <button type="button" class="pm-yn" data-val="yes" aria-pressed="false"><span class="pm-mark" aria-hidden="true">&#10003;</span>Yes</button>
+              <button type="button" class="pm-yn" data-val="no" aria-pressed="false"><span class="pm-mark" aria-hidden="true">&#8594;</span>Not yet</button>
+            </div>
+            <p class="pm-add" hidden><b>Add the moment it broke.</b> Not &ldquo;adoption was low,&rdquo; but &ldquo;the migration dropped permissions on a fifth of the folders in week one.&rdquo;</p>
+          </div>
+          <div class="pm-rub" data-rub="second">
+            <p class="pm-rq" id="pmRq2">Did it include a second-order effect (something that failed because of the first failure)?</p>
+            <div class="pm-tog" role="group" aria-labelledby="pmRq2">
+              <button type="button" class="pm-yn" data-val="yes" aria-pressed="false"><span class="pm-mark" aria-hidden="true">&#10003;</span>Yes</button>
+              <button type="button" class="pm-yn" data-val="no" aria-pressed="false"><span class="pm-mark" aria-hidden="true">&#8594;</span>Not yet</button>
+            </div>
+            <p class="pm-add" hidden><b>Add the failure behind the failure.</b> What did people do to cope with the first problem, and what did that break next?</p>
+          </div>
+          <div class="pm-rub" data-rub="notice">
+            <p class="pm-rq" id="pmRq3">Did it name who would notice first?</p>
+            <div class="pm-tog" role="group" aria-labelledby="pmRq3">
+              <button type="button" class="pm-yn" data-val="yes" aria-pressed="false"><span class="pm-mark" aria-hidden="true">&#10003;</span>Yes</button>
+              <button type="button" class="pm-yn" data-val="no" aria-pressed="false"><span class="pm-mark" aria-hidden="true">&#8594;</span>Not yet</button>
+            </div>
+            <p class="pm-add" hidden><b>Add the role that sees it first, and when.</b> If you cannot name the role, the thinking is not finished.</p>
+          </div>
+          <p class="pm-tally" id="pmTally" role="status" aria-live="polite">0 of 3 scored.</p>
+        </div>
+        <div class="pm-row">
+          <button type="button" class="btn btn-ghost btn-sm" id="pmRetry">Try another option</button>
+        </div>
+        <p class="hinttxt">Now the real thing: put the next decision you owe someone through the same three questions before you commit.</p>
       </div>
     </div>
   </div>
@@ -2231,6 +2368,172 @@ modeRender();
     var apply = function(){ fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; }); };
     if(reduce){ apply(); } else { requestAnimationFrame(function(){ requestAnimationFrame(apply); }); }
   });
+})();
+</script>
+<script>
+/* ══════════ PREMORTEM LAB ══════════
+   Pick an option, write the failure story, compare with the exemplar for that
+   option, then self-score three lines (Yes / Not yet). Typed text is escaped
+   before it touches innerHTML. Storage (optional): decisions-pm-opt and
+   decisions-pm-text, cleared by the footer Reset like every decisions-* key. */
+(function(){
+  'use strict';
+  var lab = document.getElementById('pmLab');
+  if(!lab) return;
+  var step1 = document.getElementById('pmStep1'), step2 = document.getElementById('pmStep2'), step3 = document.getElementById('pmStep3');
+  var opts = Array.prototype.slice.call(lab.querySelectorAll('.pm-opt'));
+  var pick = document.getElementById('pmPick'), ta = document.getElementById('pmText'), nudge = document.getElementById('pmNudge');
+  var cmpBtn = document.getElementById('pmCompare'), backBtn = document.getElementById('pmBack'), retryBtn = document.getElementById('pmRetry');
+  var yours = document.getElementById('pmYours'), exLabel = document.getElementById('pmExLabel'), exText = document.getElementById('pmExemplar'), exKey = document.getElementById('pmKey');
+  var rubs = Array.prototype.slice.call(lab.querySelectorAll('.pm-rub')), tally = document.getElementById('pmTally');
+  if(!step1 || !step2 || !step3 || !ta || !cmpBtn || !yours || !exText) return;
+
+  var EX = {
+    now: {
+      label: 'Option A: move the whole department now',
+      text: 'We moved everyone the week before the fall rush, and the migration tool dropped permissions on about a fifth of the shared folders. Staff could not open the forms they needed in the busiest week of the year, so they emailed copies to each other, and within a month nobody knew which version was current. The two student workers spent the whole term rebuilding permissions instead of keeping the folders tidy. The front desk coordinator noticed first, on day two, when a visitor asked for a form nobody could find.',
+      key: [
+        ['Trigger', 'The migration tool dropped permissions on a fifth of the folders, in the week before the rush.'],
+        ['Second order', 'Emailed copies, then three versions of every form and no current one.'],
+        ['Who noticed', 'The front desk coordinator, on day two.']
+      ]
+    },
+    pilot: {
+      label: 'Option B: pilot with one team first',
+      text: 'We piloted with the one team that volunteered, which was the team that already kept its folders tidy, so the pilot went smoothly and told us nothing. When we rolled out to everyone in the spring, the retention rule turned out to cover folders the pilot never touched, and the director paused the move halfway through. Half the department lived on the old drive and half on the new, so people stopped filing anything and kept documents on their desktops. The records coordinator noticed first, when a records request came in and the responsive files were in four places.',
+      key: [
+        ['Trigger', 'The pilot team was the tidy team, so the pilot proved nothing about the messy folders.'],
+        ['Second order', 'A paused rollout left two drives, so people stopped filing and kept files on desktops.'],
+        ['Who noticed', 'The records coordinator, at the first records request.']
+      ]
+    },
+    wait: {
+      label: 'Option C: wait a year',
+      text: 'We waited a year, and the old drive ran out of space twice in that year. Staff started keeping files in personal cloud accounts to get their work done, which put department records outside the retention rule and outside anything IT could back up. When a laptop was lost in the spring, the files on it were the only copies. The business manager noticed first, when an audit asked for a document that lived only on that laptop.',
+      key: [
+        ['Trigger', 'The old drive ran out of space twice while we waited.'],
+        ['Second order', 'Files moved to personal cloud accounts, so records left the retention rule and the backups.'],
+        ['Who noticed', 'The business manager, when an audit asked for a document.']
+      ]
+    }
+  };
+  var store = (function(){
+    try{ var t = 'decisions-pm-test'; window.localStorage.setItem(t, '1'); window.localStorage.removeItem(t); return window.localStorage; }
+    catch(e){ return null; }
+  })();
+  function save(k, v){ if(!store) return; try{ v ? store.setItem('decisions-pm-' + k, v) : store.removeItem('decisions-pm-' + k); }catch(e){} }
+  function load(k){ if(!store) return ''; try{ return store.getItem('decisions-pm-' + k) || ''; }catch(e){ return ''; } }
+  function esc(s){ return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function show(el){ el.removeAttribute('hidden'); }
+  function hide(el){ el.setAttribute('hidden', ''); }
+
+  var chosen = '';
+
+  function choose(key, quiet){
+    chosen = (key in EX) ? key : '';
+    opts.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-pm') === chosen ? 'true' : 'false'); });
+    if(!chosen){ hide(step2); hide(step3); return; }
+    save('opt', chosen);
+    if(pick) pick.innerHTML = '<b>You chose:</b> ' + esc(EX[chosen].label) + '.';
+    show(step2);
+    hide(step3);
+    resetRubric();
+    if(!quiet) ta.focus();
+  }
+  opts.forEach(function(b){
+    b.addEventListener('click', function(){ choose(b.getAttribute('data-pm')); });
+  });
+
+  ta.addEventListener('input', function(){
+    if(nudge && ta.value.trim().length) hide(nudge);
+    save('text', ta.value.trim() ? ta.value : '');
+  });
+
+  function sentenceCount(t){
+    return t.split(/[.!?]+(\s|$)/).filter(function(s){ return s.trim().split(/\s+/).length >= 3; }).length;
+  }
+
+  cmpBtn.addEventListener('click', function(){
+    var t = ta.value.trim();
+    if(!chosen){ choose(opts[0] ? opts[0].getAttribute('data-pm') : 'now'); return; }
+    if(sentenceCount(t) < 2 || t.split(/\s+/).length < 12){ if(nudge) show(nudge); ta.focus(); return; }
+    if(nudge) hide(nudge);
+    var ex = EX[chosen];
+    yours.innerHTML = esc(t).replace(/\n/g, '<br>');
+    if(exLabel) exLabel.textContent = 'The exemplar for ' + ex.label.toLowerCase();
+    exText.textContent = ex.text;
+    if(exKey){
+      exKey.innerHTML = ex.key.map(function(k){ return '<li><b>' + esc(k[0]) + '</b><span>' + esc(k[1]) + '</span></li>'; }).join('');
+    }
+    resetRubric();
+    show(step3);
+    step3.focus();
+  });
+
+  if(backBtn) backBtn.addEventListener('click', function(){
+    hide(step3);
+    var first = opts.filter(function(b){ return b.getAttribute('aria-pressed') === 'true'; })[0] || opts[0];
+    if(first) first.focus();
+  });
+
+  /* rubric: three Yes / Not yet toggles, each "Not yet" shows its nudge; the tally counts Yes */
+  function resetRubric(){
+    rubs.forEach(function(r){
+      r.querySelectorAll('.pm-yn').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
+      var add = r.querySelector('.pm-add'); if(add) hide(add);
+    });
+    renderTally();
+  }
+  function renderTally(){
+    if(!tally) return;
+    var scored = 0, yes = 0;
+    rubs.forEach(function(r){
+      var on = r.querySelector('.pm-yn[aria-pressed="true"]');
+      if(on){ scored++; if(on.getAttribute('data-val') === 'yes') yes++; }
+    });
+    tally.classList.toggle('done', scored === rubs.length);
+    if(scored < rubs.length){
+      tally.textContent = scored + ' of ' + rubs.length + ' scored.';
+    } else if(yes === rubs.length){
+      tally.textContent = yes + ' of ' + rubs.length + ' yes. This premortem is ready to use as a to-check list.';
+    } else {
+      tally.textContent = yes + ' of ' + rubs.length + ' yes. Add what the nudges ask for, then compare again.';
+    }
+  }
+  rubs.forEach(function(r){
+    var add = r.querySelector('.pm-add');
+    r.querySelectorAll('.pm-yn').forEach(function(b){
+      b.addEventListener('click', function(){
+        r.querySelectorAll('.pm-yn').forEach(function(o){ o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
+        if(add){ if(b.getAttribute('data-val') === 'no') show(add); else hide(add); }
+        renderTally();
+      });
+    });
+  });
+
+  /* retry: everything back to step one */
+  function resetAll(){
+    chosen = '';
+    ta.value = '';
+    save('opt', ''); save('text', '');
+    if(nudge) hide(nudge);
+    opts.forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
+    resetRubric();
+    hide(step2); hide(step3);
+    if(opts[0]) opts[0].focus();
+  }
+  if(retryBtn) retryBtn.addEventListener('click', resetAll);
+  var progReset = document.getElementById('progReset');
+  if(progReset) progReset.addEventListener('click', function(){
+    chosen = ''; ta.value = '';
+    opts.forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
+    resetRubric(); hide(step2); hide(step3);
+  });
+
+  /* restore what this device saved */
+  var savedOpt = load('opt'), savedText = load('text');
+  if(savedText) ta.value = savedText;
+  if(savedOpt && (savedOpt in EX)) choose(savedOpt, true);
 })();
 </script>
 </body>

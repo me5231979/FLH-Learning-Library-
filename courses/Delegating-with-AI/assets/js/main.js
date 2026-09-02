@@ -350,27 +350,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Monday's pull is done, by you, like always. It took the morning. The new client's kickoff deck is due Friday, and it is their first look at the team. Your calendar has no open block before then. The proposal is on file. Who builds the deck?", "Monday's pull ran through AI in minutes and nobody looked at it. That is the point, you tell yourself. The morning it gave back is open. The new client's kickoff deck is due Friday, and it is their first look at the team. The proposal is on file. Who builds the deck?", "Monday's pull ran through AI, and the junior checked two figures against source. They found nothing wrong and learned what to look for. Your morning is open. The new client's kickoff deck is due Friday, and it is their first look at the team. The proposal is on file. Who builds the deck?"], 2: ["Week three. The data pull is still yours, every Monday, and your week is shaped around it. The process documentation nobody owns has come up in two handoffs already. It is still in the backlog. The junior has open capacity this week. Where does the documentation go?", "Week three. The data pull runs on its own now, and nobody has checked one since it started. So far, no complaints. The process documentation nobody owns has come up in two handoffs already. The junior has open capacity this week. Where does the documentation go?", "Week three. The junior caught a stale field in Monday's pull and flagged it before it circulated. Small catch, real rep. Now the process documentation nobody owns has come up in two handoffs already, still in the backlog. The junior is busy and the senior is stretched. Where does the documentation go?"], 3: ["Week eight. A partner is angry and wants someone senior, today. Your afternoon is already gone to the Monday pull's follow-ups, because it is still yours. You are the bottleneck on three things, and this just became a fourth. The senior analyst is at the next desk. How do you handle the call?", "Week eight. A partner is angry and wants someone senior, today. Part of what set them off: a figure that traced back to an unchecked Monday pull. Nobody caught it because nobody was assigned to. The senior analyst is at the next desk. How do you handle the call?", "Week eight. A partner is angry and wants someone senior, today. Your calendar has room for it, because the Monday pull stopped costing you mornings weeks ago. The junior's verification log has two real catches in it now. The senior analyst is at the next desk. How do you handle the call?"] };
+    var CARRY = ["Keeping the pull kept your mornings booked, and every later task had to fit around it.", "Handing the pull to AI with no verifier saved hours and left a bad number waiting.", "Routing the pull to AI with the junior verifying freed your mornings and started a rep."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the quarter' :
             'Route ' + picks.filter(function (p) { return p === null; }).length + ' more task(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Quarter end: the data pull costs minutes and the junior\'s verification log has real catches in it. The senior analyst has a client deck and a de-escalation follow-up on their record, and asks for harder work in the next one-on-one. The documentation debt is gone. And your calendar has judgment hours in it again, which the whole team can feel.',
       mid: 'Quarter end: everything shipped, and the quarter is lopsided. At least one task landed where it was easy instead of where it built something, so either somebody\'s growth got skipped or something circulates unverified. A quarter with no new rep in it is invisible now and expensive later; the routing worked for the tasks and not yet for the team.',
@@ -388,6 +412,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> rethink your weakest routing and rerun the quarter. Watch what changes at quarter end.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper runs the same test on the task you think is least routable.</p>');
@@ -398,6 +423,216 @@
       });
       outEl.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
     });
+  }
+
+  /* ---------- INTERACTIVE: The Routing Board (Section 02) ---------- */
+  var board = $('#routeBoard');
+  if (board) {
+    var LANES = [
+      { key: 'ai', name: 'AI drafts it', short: 'AI', zone: '#rbLaneAi' },
+      { key: 'person', name: 'A person grows on it', short: 'Person', zone: '#rbLanePerson' },
+      { key: 'keep', name: 'I keep it', short: 'Keep', zone: '#rbLaneKeep' }
+    ];
+    var LANE_BY = {};
+    LANES.forEach(function (l) { LANE_BY[l.key] = l; });
+    // Each task carries the three answers of the Routing Test, in order.
+    var TASKS = [
+      { t: 'Turning 80 support tickets into a themed summary table, the third month in a row.', lane: 'ai',
+        grow: 'No. Month three of the same sort teaches nothing month one did not.',
+        judge: 'No. No relationship is listening and no name rides on the table.',
+        vol: 'Yes. Mechanical repetition with catchable errors, so AI drafts it and a named verifier traces a few themes back to the raw tickets.' },
+      { t: 'The new coordinator\'s first project brief, the one the director will read.', lane: 'person',
+        grow: 'Yes, loudly. A first brief with the director reading is the rep this role is built on, and the test is over.',
+        judge: 'Shared. They write, you coach the drafts before it goes up.',
+        vol: 'AI would draft it faster and steal the exact struggle that builds the skill.' },
+      { t: 'Telling a long-time vendor their contract will not be renewed.', lane: 'keep',
+        grow: 'No. Nobody learns the trade by delivering someone else\'s bad news.',
+        judge: 'Yes. A relationship ends here and your name is on the decision.',
+        vol: 'No. The message is the sender, and a drafted apology fumbles even when every word is right.' },
+      { t: 'Reformatting the Friday status notes into the template leadership asked for.', lane: 'ai',
+        grow: 'No. Rep 30 of moving text into a template teaches nothing rep 3 did not.',
+        judge: 'No. The judgment happened when the notes were written.',
+        vol: 'Yes. Formatting is mechanical and the errors are easy to catch, so AI drafts it and whoever wrote the notes skims before it posts.' },
+      { t: 'Presenting the quarterly numbers to the department head for the first time, with you in the room and silent.', lane: 'person',
+        grow: 'Yes. A first time in front of the department head, with feedback the same afternoon, is stretch by definition.',
+        judge: 'Shared, which is why you stay in the room. The judgment is yours to back up; the rep is theirs.',
+        vol: 'No. Nothing about a first presentation is repetition.' },
+      { t: 'Deciding which of two team members gets the single conference seat this year.', lane: 'keep',
+        grow: 'No. Choosing between two colleagues is not a rep anyone should practice on.',
+        judge: 'Yes. Two people will hear the answer and remember who gave it, and the call needs your read on their growth.',
+        vol: 'No. And it touches private information about people, so the light closes the AI lane anyway.' },
+      { t: 'A first-pass FAQ for the new expense tool, drafted from last year\'s answered emails.', lane: 'ai',
+        grow: 'No. Nobody grows on retyping answers that already exist.',
+        judge: 'No. The answers were settled last year.',
+        vol: 'Yes. Repetition with catchable errors, so AI drafts it and the person who owns the tool checks each answer against the current policy.' },
+      { t: 'Checking the AI-drafted grant report against the source spreadsheets and signing off before it goes out.', lane: 'person',
+        grow: 'Yes. Checking a draft against the source and signing off is a judgment rep with a signature on it: the new stretch.',
+        judge: 'Yes, and that is the point. The check is theirs, with the power to reject.',
+        vol: 'No. Verification is the opposite of volume; it is where a person learns what wrong looks like.' },
+      { t: 'Explaining to your director why the project slipped a month.', lane: 'keep',
+        grow: 'No. A slipped month is your account to give, not a rep to hand out.',
+        judge: 'Yes. Context, a relationship with your director, and a name on the outcome: yours.',
+        vol: 'No. AI can assemble the timeline upstream; the explanation is accountability, and that never delegates.' }
+    ];
+    var placed = TASKS.map(function () { return null; });
+    var checked = false;
+    var bankEl = $('#rbBank'), bankCards = $('#rbBankCards'), countEl = $('#rbCount'),
+        checkBtn = $('#rbCheck'), boardOut = $('#rbOut');
+    var cardEls = [];
+    var zoneFor = function (lane) { return lane ? $(LANE_BY[lane].zone) : bankCards; };
+
+    function clearMarks() {
+      if (!checked) return;
+      checked = false;
+      cardEls.forEach(function (c) {
+        c.classList.remove('rcard--right', 'rcard--wrong');
+        var m = $('.rcard__mark', c); if (m) m.remove();
+      });
+      boardOut.hidden = true;
+    }
+    function updateCount() {
+      var n = placed.filter(function (p) { return p !== null; }).length;
+      countEl.textContent = n + ' of ' + TASKS.length + ' routed' + (n === TASKS.length ? '. Check it.' : '');
+      checkBtn.disabled = n !== TASKS.length;
+    }
+    function moveCard(i, lane) {
+      var card = cardEls[i];
+      placed[i] = lane;
+      $$('.rcard__btn', card).forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-lane') === lane));
+      });
+      zoneFor(lane).appendChild(card);
+      if (!reduce) {
+        card.classList.remove('rcard--landed');
+        void card.offsetWidth; // restart the landing animation
+        card.classList.add('rcard--landed');
+      }
+      clearMarks();
+      updateCount();
+    }
+
+    TASKS.forEach(function (task, i) {
+      var card = document.createElement('div');
+      card.className = 'rcard';
+      card.setAttribute('draggable', 'true');
+      card.setAttribute('data-task', String(i));
+      card.innerHTML = '<p class="rcard__t">' + task.t + '</p>' +
+        '<div class="rcard__routes" role="group" aria-label="Route this task"></div>';
+      var routes = $('.rcard__routes', card);
+      LANES.forEach(function (l) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'rcard__btn';
+        b.setAttribute('data-lane', l.key);
+        b.setAttribute('aria-pressed', 'false');
+        b.setAttribute('aria-label', l.name);
+        b.textContent = l.short;
+        b.addEventListener('click', function () {
+          // pressing the active lane again sends the card back to the bank
+          moveCard(i, placed[i] === l.key ? null : l.key);
+          b.focus();
+        });
+        b.addEventListener('keydown', function (e) {
+          // the deck advances on Space; keep Space on a route button local
+          if (e.key === ' ') { e.preventDefault(); e.stopPropagation(); b.click(); }
+        });
+        routes.appendChild(b);
+      });
+      card.addEventListener('dragstart', function (e) {
+        card.classList.add('dragging');
+        if (e.dataTransfer) {
+          e.dataTransfer.effectAllowed = 'move';
+          e.dataTransfer.setData('text/plain', String(i));
+        }
+      });
+      card.addEventListener('dragend', function () { card.classList.remove('dragging'); });
+      cardEls.push(card);
+      bankCards.appendChild(card);
+    });
+
+    var dragging = function () {
+      var c = $('.rcard.dragging', board);
+      return c ? parseInt(c.getAttribute('data-task'), 10) : -1;
+    };
+    var zones = $$('.board__lane', board).concat([bankEl]);
+    zones.forEach(function (z) {
+      var lane = z.getAttribute('data-lane') || null;
+      z.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        if (e.dataTransfer) e.dataTransfer.dropEffect = 'move';
+        z.classList.add('over');
+      });
+      z.addEventListener('dragleave', function (e) {
+        if (!z.contains(e.relatedTarget)) z.classList.remove('over');
+      });
+      z.addEventListener('drop', function (e) {
+        e.preventDefault();
+        z.classList.remove('over');
+        var i = dragging();
+        if (i < 0 && e.dataTransfer) i = parseInt(e.dataTransfer.getData('text/plain'), 10);
+        if (isNaN(i) || i < 0 || i >= TASKS.length) return;
+        moveCard(i, lane);
+      });
+    });
+
+    checkBtn.addEventListener('click', function () {
+      if (placed.some(function (p) { return p === null; })) return;
+      checked = true;
+      var right = 0, misses = [];
+      TASKS.forEach(function (task, i) {
+        var ok = placed[i] === task.lane;
+        var card = cardEls[i];
+        card.classList.remove('rcard--right', 'rcard--wrong');
+        var old = $('.rcard__mark', card); if (old) old.remove();
+        var mark = document.createElement('span');
+        mark.className = 'rcard__mark';
+        mark.textContent = ok ? '✓ Routed well' : '✗ Rethink this one';
+        card.insertBefore(mark, card.firstChild);
+        card.classList.add(ok ? 'rcard--right' : 'rcard--wrong');
+        if (ok) right++;
+        else misses.push('<div><b>' + task.t + '</b> You routed it to "' + LANE_BY[placed[i]].name + '". ' +
+          'Grow someone? ' + task.grow + ' Need judgment? ' + task.judge + ' Volume? ' + task.vol +
+          ' Lane: ' + LANE_BY[task.lane].name + '.</div>');
+      });
+      var pct = Math.round((right / TASKS.length) * 100);
+      var tier = right >= 8 ? 'strong' : right >= 5 ? 'mid' : 'weak';
+      var head = tier === 'strong' ? 'You ran the test in order. The growth question went first, and the machine got only what nobody grows on.'
+               : tier === 'mid' ? 'Half the board is routed by the test and half by reflex. Read the misses: each one skipped a question or asked them out of order.'
+               : 'Most of these went where habit sent them. Run the questions in order on each miss: growth, then judgment, then volume.';
+      boardOut.innerHTML = '<span class="tag">Routing check · ' + right + ' of ' + TASKS.length + '</span>' +
+        '<div class="lab__meter"><span style="width:0"></span></div>' +
+        '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
+        (misses.length ? '<div class="lab__coach">' + misses.join('') + '</div>'
+                       : '<div class="sample">Nine for nine. Every card went through the three questions in order, and the AI lane got a verifier on every task in it.</div>') +
+        (tier === 'strong'
+          ? '<p class="why board__nudge" style="margin-top:1rem"><b>Now the real thing:</b> pick the card you would hand off first and write its brief in Section 06. <a href="#s-handoff" id="rbGoHandoff">Go to the handoff</a>.</p>'
+          : '<p class="why" style="margin-top:1rem"><b>Try again:</b> move the cards marked "Rethink this one" and check the board again.</p>') +
+        '<button class="btn btn--ghost" id="rbRetry" style="margin-top:1rem">Run it again</button>';
+      boardOut.hidden = false;
+      requestAnimationFrame(function () {
+        var bar = $('.lab__meter span', boardOut);
+        if (bar) requestAnimationFrame(function () { bar.style.width = pct + '%'; });
+      });
+      var go = $('#rbGoHandoff');
+      if (go) go.addEventListener('click', function (e) {
+        var target = $('#s-handoff');
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', inline: 'start', block: 'nearest' });
+      });
+      $('#rbRetry').addEventListener('click', function () {
+        checked = true; clearMarks();
+        TASKS.forEach(function (t, i) { placed[i] = null; });
+        cardEls.forEach(function (c) {
+          $$('.rcard__btn', c).forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+          bankCards.appendChild(c);
+        });
+        updateCount();
+        board.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+      boardOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    updateCount();
   }
 
   /* ---------- In-flow video embeds (click-to-load, privacy-friendly) ---------- */
@@ -664,6 +899,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

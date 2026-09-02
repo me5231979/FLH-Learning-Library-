@@ -420,6 +420,50 @@ a.ttry-card:hover{ border-color:var(--bdg); }
 .rule-strip .r{ font-family:var(--serif); font-size:clamp(1.1rem,2.4vw,1.5rem); color:var(--tx); max-width:none; }
 .rule-strip .r b{ font-weight:400; color:var(--strong); font-family:var(--serif-i); font-style:italic; }
 
+/* cut it hard drill (method page): nine outline cards, keep exactly five, compare with the exemplar */
+.cd{ margin-top:28px; border:1px solid var(--bdg); border-radius:var(--r); background:var(--card2); padding:clamp(18px,3vw,26px); max-width:1000px; }
+.cd .cd-lead{ color:var(--tx2); font-size:.9375rem; max-width:72ch; margin-bottom:16px; }
+.cd .cd-lead b{ color:var(--tx); font-weight:600; }
+.cd-count{ color:var(--tx); }
+.cd-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.cd-card{ display:flex; flex-direction:column; gap:4px; text-align:left; cursor:pointer; min-height:44px; width:100%;
+  background:var(--card); border:1px solid var(--bd); border-left:3px solid var(--vu-gold); border-radius:var(--r); padding:12px 14px;
+  transition:border-color .15s ease-out, background-color .15s ease-out, opacity .15s ease-out; }
+.cd-card:hover{ border-color:var(--bdg); border-left-color:var(--vu-gold); }
+.cd-card .cd-no{ font-size:.66rem; color:var(--tx3); }
+.cd-card .cd-title{ font-weight:600; font-size:.95rem; color:var(--tx); line-height:1.3; }
+.cd-card .cd-note{ font-size:.83rem; color:var(--tx2); line-height:1.5; }
+.cd-card .cd-state{ margin-top:auto; padding-top:8px; font-family:var(--cond); font-weight:700; font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--vu-oak); }
+.cd-card .cd-state::before{ content:"\2713\00a0"; }
+.cd-card[aria-pressed="false"]{ border-left-color:#c76b5a; background:transparent; opacity:.72; }
+.cd-card[aria-pressed="false"]:hover{ border-left-color:#c76b5a; }
+.cd-card[aria-pressed="false"] .cd-title{ text-decoration:line-through; text-decoration-color:#c76b5a; color:var(--tx2); }
+.cd-card[aria-pressed="false"] .cd-state{ color:#c76b5a; }
+.cd-card[aria-pressed="false"] .cd-state::before{ content:"\2715\00a0"; }
+.cd-card[disabled]{ cursor:default; }
+.cd-row{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:16px; }
+.cd-row .hinttxt{ margin:0; }
+.cd-row .btn[hidden]{ display:none; } /* .btn is inline-flex, which would beat the UA [hidden] rule */
+.cd-out{ margin-top:18px; }
+.cd-out:empty{ display:none; }
+.cd-res{ font-family:var(--serif); font-size:clamp(1.15rem,2.4vw,1.5rem); line-height:1.25; color:var(--tx); max-width:none; }
+.cd-res b{ font-weight:400; font-family:var(--serif-i); font-style:italic; color:var(--strong); }
+.cd-out .cd-sub{ color:var(--tx2); font-size:.9375rem; margin-top:8px; max-width:70ch; }
+.cd-h{ display:block; font-family:var(--cond); font-weight:700; font-size:.72rem; letter-spacing:.07em; text-transform:uppercase; color:var(--eyebrow); margin:18px 0 8px; }
+.cd-list{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+.cd-list li{ border:1px solid var(--bd); border-radius:var(--r); background:var(--card); padding:10px 14px; font-size:.9rem; color:var(--tx2); }
+.cd-list li b{ color:var(--tx); font-weight:600; }
+.cd-list .cd-tag{ display:inline-block; font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.05em; text-transform:uppercase; color:var(--vu-oak);
+  border:1px solid var(--vu-gold); border-radius:2px; padding:2px 8px; margin-right:8px; vertical-align:middle; }
+.cd-list .cd-m{ display:inline-block; font-family:var(--cond); font-weight:700; font-size:.66rem; letter-spacing:.05em; text-transform:uppercase; margin-left:8px; vertical-align:middle; }
+.cd-list .cd-m.hit{ color:var(--vu-oak); }
+.cd-list .cd-m.miss{ color:#c76b5a; }
+.cd-list .cd-yk{ margin-top:8px; padding-left:12px; border-left:3px solid var(--vu-gold); color:var(--tx); font-size:.9rem; max-width:none; }
+.cd-out .cd-next{ margin-top:16px; color:var(--tx2); font-size:.9375rem; max-width:70ch; }
+.cd-out .cd-next b{ color:var(--tx); font-weight:600; }
+@media (max-width:760px){ .cd-grid{ grid-template-columns:1fr; } }
+@media (prefers-reduced-motion: reduce){ .cd-card{ transition:none; } }
+
 /* ═══════════════════ WORKED EXAMPLES ═══════════════════ */
 .ex-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(22px,4vw,44px); align-items:start; }
 .pcard{ border:1px solid var(--bdg); border-radius:var(--r); background:var(--card2); padding:clamp(18px,3vw,26px); }
@@ -896,6 +940,80 @@ a.bb-dot:focus-visible{ outline:2px solid var(--vu-highlight); outline-offset:1p
       <p class="r">The AI builds the rough deck, and <b>you make it worth the room&rsquo;s time</b>.</p>
     </div>
 
+    <!-- ═══ CUT IT HARD drill: nine AI-outline slides, keep exactly five, compare with the exemplar. Nothing typed, nothing stored, nothing sent. ═══ -->
+    <div class="cd" id="cutDrill" role="region" aria-labelledby="cdTitle">
+      <div class="pc-head">
+        <span class="mono" id="cdTitle">Drill &middot; Cut it hard</span>
+        <span class="mono cd-count" id="cdCount" role="status" aria-live="polite">9 of 9 kept</span>
+      </div>
+      <p class="cd-lead">The AI drafted a nine-slide outline for a fictional proposal. A department wants to open its front desk an hour later
+        and close an hour later (8 to 5 instead of 7 to 4). The room is the department&rsquo;s leadership team, they have ten minutes,
+        and they need to say yes or no. <b>Cut the outline to five slides.</b> Select a slide to cut it; select it again to keep it.
+        Then compare your cut with the exemplar.</p>
+      <div class="cd-grid" id="cdGrid">
+        <button type="button" class="cd-card" data-id="agenda" aria-pressed="true">
+          <span class="cd-no mono">Slide 1</span>
+          <span class="cd-title">Agenda</span>
+          <span class="cd-note">Five bullets listing what the next eight slides cover.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="history" aria-pressed="true">
+          <span class="cd-no mono">Slide 2</span>
+          <span class="cd-title">How the front desk got its hours</span>
+          <span class="cd-note">The desk schedule since 2014 and who set it.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="ask" aria-pressed="true">
+          <span class="cd-no mono">Slide 3</span>
+          <span class="cd-title">The ask: move the desk to 8 to 5</span>
+          <span class="cd-note">The decision you need, in one sentence, with a start date of next term.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="counts" aria-pressed="true">
+          <span class="cd-no mono">Slide 4</span>
+          <span class="cd-title">What the door counts show</span>
+          <span class="cd-note">One chart of visits by hour across the fall term; the 7 to 8 a.m. hour is nearly empty.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="survey" aria-pressed="true">
+          <span class="cd-no mono">Slide 5</span>
+          <span class="cd-title">Full survey results</span>
+          <span class="cd-note">A twelve-row table with every question from the staff survey and its counts.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="changes" aria-pressed="true">
+          <span class="cd-no mono">Slide 6</span>
+          <span class="cd-title">What changes for students and staff</span>
+          <span class="cd-note">The two groups the change touches and what each one gains or loses.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="options" aria-pressed="true">
+          <span class="cd-no mono">Slide 7</span>
+          <span class="cd-title">Staffing options we considered</span>
+          <span class="cd-note">Three schedule options, with pros and cons for each.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="cost" aria-pressed="true">
+          <span class="cd-no mono">Slide 8</span>
+          <span class="cd-title">Cost and coverage</span>
+          <span class="cd-note">No new hires; one shift moves an hour later; who covers 4 to 5 p.m.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+        <button type="button" class="cd-card" data-id="again" aria-pressed="true">
+          <span class="cd-no mono">Slide 9</span>
+          <span class="cd-title">The ask again, and what waiting costs</span>
+          <span class="cd-note">The decision restated, the start date, and another term of thin mornings if we wait.</span>
+          <span class="cd-state" aria-hidden="true">Kept</span>
+        </button>
+      </div>
+      <div class="cd-row">
+        <button type="button" class="btn btn-primary" id="cdCompare" disabled>Compare with the exemplar</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="cdRetry" hidden>Retry</button>
+        <p class="hinttxt" id="cdHint">Cut four more to compare.</p>
+      </div>
+      <div class="cd-out" id="cdOut" aria-live="polite" tabindex="-1"></div>
+    </div>
+
     <div class="moment mode-web">
       <span class="m-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></span>
       <div><span class="m-label">Pause + reflect</span>
@@ -1190,7 +1308,7 @@ Task: Give me three title options, a 10-slide outline with one headline sentence
       <div class="rstep">
         <span class="rno">Rule 03</span>
         <h5>The template and the credit are yours</h5>
-        <p>Put the deck on your unit&rsquo;s template, add alt text (PowerPoint can generate it; <b>you confirm it</b>), and disclose substantive AI help where it matters.</p>
+        <p>Put the deck on your unit&rsquo;s template, add alt text (PowerPoint can generate it; <b>you confirm it</b>, against the WCAG 2.2 text-alternative rule and Vanderbilt&rsquo;s accessibility guidance<sup class="cite"><a href="#src7" aria-label="Source 7">7</a>, <a href="#src8" aria-label="Source 8">8</a></sup>), and disclose substantive AI help where it matters.</p>
       </div>
       <div class="rstep">
         <span class="rno">Rule 04</span>
@@ -1414,6 +1532,14 @@ Task: ___</pre>
         <p>Chancellor Daniel Diermeier, &ldquo;Daring to Grow,&rdquo; Vanderbilt University (July 2022).
           <span class="e-src">Cited for: the vision the Chancellor&rsquo;s charge page draws from: Vanderbilt will define the great university of the 21st Century and be it, operating at uncommon speed, agility, and scale; the three focus areas; and the reputation flywheel. <a href="https://news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century/" target="_blank" rel="noopener">news.vanderbilt.edu/2022/07/01/daring-to-grow-together-we-are-building-the-great-university-of-the-21st-century</a></span></p>
       </li>
+      <li class="src" id="src7">
+        <p>W3C, &ldquo;Web Content Accessibility Guidelines (WCAG) 2.2,&rdquo; W3C Recommendation (2023, updated 2024).
+          <span class="e-src">Cited for: the alt-text rule. Success Criterion 1.1.1, Non-text Content, requires a text alternative that serves the same purpose as the image, which is why you confirm generated alt text rather than accept it. <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener">w3.org/TR/WCAG22</a></span></p>
+      </li>
+      <li class="src" id="src8">
+        <p>Vanderbilt University, &ldquo;Accessibility at Vanderbilt&rdquo; (university accessibility resources, accessed September 2026).
+          <span class="e-src">Cited for: the campus reference for accessible digital content. Check it before a deck goes out, and when it and this course ever disagree, the university guidance wins. <a href="https://www.vanderbilt.edu/accessibility/" target="_blank" rel="noopener">vanderbilt.edu/accessibility</a></span></p>
+      </li>
     </ol>
     <p class="prov"><b>CRIT</b> (Context, Role, Interview, Task) comes from Geoff Woods, best-selling author of <em>The AI-Driven Leader</em>; companion resources at <a href="https://aileadership.com" target="_blank" rel="noopener">aileadership.com</a>. The framework is taught in full, with the builder and grader, in <a href="../">the Working Smarter course</a>.</p>
   </div>
@@ -1488,7 +1614,7 @@ Task: Give me three title options, a 10-slide outline with one headline sentence
   </div>
   <h2>Keep learning</h2>
   <p class="ps-kl">In Oracle Learning (search the name or OLC number): Copilot in PowerPoint: From Prompt to Presentation (OLC4587330) &middot; AI-Powered Presentations: Crafting Compelling PowerPoints with ChatGPT and Copilot (OLC3783121) &middot; Designing your slides in PowerPoint 365 (OLC3099091) &middot; Capturing the Attention of Senior Executives (OLC958368). Online: this course &middot; me5231979.github.io/estesstite/learn/slides &nbsp;&bull;&nbsp; the Working Smarter program &middot; me5231979.github.io/estesstite/learn<!-- [EDIT · SCORM] swap both printed URLs for the LMS links --></p>
-  <p class="ps-fine">Sources: 1&nbsp;Gallup, &ldquo;Organizational AI Adoption Jumps Six Points&rdquo; (2026) &middot; 2&nbsp;Noy &amp; Zhang, Science 381, 187&ndash;192 (2023) &middot; 3&nbsp;Dell&rsquo;Acqua et al., HBS Working Paper 24-013 (2023) &middot; 4&nbsp;Microsoft Support, &ldquo;Create a new presentation with Copilot in PowerPoint&rdquo; &middot; 5&nbsp;Microsoft Support, &ldquo;Create professional slide layouts with Designer.&rdquo; &middot; 6&nbsp;Chancellor Diermeier, &ldquo;Daring to Grow&rdquo; (2022). CRIT: Geoff Woods, The AI-Driven Leader (aileadership.com). Internal training prototype; not an official Vanderbilt University site.</p>
+  <p class="ps-fine">Sources: 1&nbsp;Gallup, &ldquo;Organizational AI Adoption Jumps Six Points&rdquo; (2026) &middot; 2&nbsp;Noy &amp; Zhang, Science 381, 187&ndash;192 (2023) &middot; 3&nbsp;Dell&rsquo;Acqua et al., HBS Working Paper 24-013 (2023) &middot; 4&nbsp;Microsoft Support, &ldquo;Create a new presentation with Copilot in PowerPoint&rdquo; &middot; 5&nbsp;Microsoft Support, &ldquo;Create professional slide layouts with Designer.&rdquo; &middot; 6&nbsp;Chancellor Diermeier, &ldquo;Daring to Grow&rdquo; (2022) &middot; 7&nbsp;W3C, WCAG 2.2 (w3.org/TR/WCAG22) &middot; 8&nbsp;Vanderbilt University, Accessibility at Vanderbilt (vanderbilt.edu/accessibility). CRIT: Geoff Woods, The AI-Driven Leader (aileadership.com). Internal training prototype; not an official Vanderbilt University site.</p>
 </div>
 
 <!-- ═══════════════════ BOTTOM BOOK BAR ═══════════════════ -->
@@ -2228,6 +2354,107 @@ modeRender();
     var apply = function(){ fills.forEach(function(f){ f.style.width = f.getAttribute('data-w') + '%'; }); };
     if(reduce){ apply(); } else { requestAnimationFrame(function(){ requestAnimationFrame(apply); }); }
   });
+})();
+</script>
+<script>
+/* Cut it hard drill (method page): nine AI-outline slides, keep exactly five, compare with the
+   exemplar. The overlap and the per-slide notes are computed here; nothing is stored or sent. */
+(function(){
+'use strict';
+var root = document.getElementById('cutDrill'); if(!root) return;
+var cards = Array.prototype.slice.call(root.querySelectorAll('.cd-card'));
+var count = document.getElementById('cdCount'), cmp = document.getElementById('cdCompare'),
+    retry = document.getElementById('cdRetry'), out = document.getElementById('cdOut'), hint = document.getElementById('cdHint');
+if(!cards.length || !count || !cmp || !out) return;
+var KEEP = 5, TOTAL = cards.length;
+/* the exemplar: five kept (why each earns its slide) and four cut (the reason, plus the
+   note the learner sees if they kept a slide the exemplar cut) */
+var EX = {
+  ask:     { keep:true, why:'The decision comes first. The room knows what it is deciding before anything else appears.' },
+  counts:  { keep:true, why:'One chart, one idea: the early hour is nearly empty.' },
+  changes: { keep:true, why:'Who the change touches and what each group gains or loses. That is the room&rsquo;s first worry.' },
+  cost:    { keep:true, why:'Coverage and cost on one slide, because that is the room&rsquo;s second question.' },
+  again:   { keep:true, why:'The ask restated, with the cost of waiting, so the last thing the room sees is the decision.' },
+  agenda:  { keep:false, tag:'Decoration', why:'A five-slide deck needs no map. Say the shape out loud in one sentence and start.',
+             note:'You kept the agenda. With five slides the room does not need a map. Put the decision on slide one and the deck explains itself.' },
+  history: { keep:false, tag:'Not the audience&rsquo;s question', why:'The room is deciding what happens next term. How the schedule came to be is a spoken sentence if anyone asks.',
+             note:'You kept the history. The audience&rsquo;s question comes first: they are deciding next term, not judging the past. One spoken sentence covers it.' },
+  survey:  { keep:false, tag:'Moved to backup', why:'One row of that table supports the door-count chart. The other eleven go to the appendix or the handout.',
+             note:'You kept the full survey table. Twelve rows is a handout, not a slide. Keep the one row that proves the point and move the rest to backup.' },
+  options: { keep:false, tag:'Merged', why:'The option you are asking for already lives on the cost-and-coverage slide. Name the other two out loud.',
+             note:'You kept the options slide. One idea per slide: the option you are asking for is the idea. Say the other two out loud on the cost slide, or the room debates all three.' }
+};
+function titleOf(id){
+  var c = null;
+  cards.forEach(function(x){ if(x.getAttribute('data-id') === id) c = x; });
+  var t = c && c.querySelector('.cd-title');
+  return t ? t.textContent : id;
+}
+function isKept(c){ return c.getAttribute('aria-pressed') === 'true'; }
+function setKept(c, v){
+  c.setAttribute('aria-pressed', v ? 'true' : 'false');
+  var s = c.querySelector('.cd-state'); if(s) s.textContent = v ? 'Kept' : 'Cut';
+}
+function render(){
+  var n = cards.filter(isKept).length;
+  count.textContent = n + ' of ' + TOTAL + ' kept';
+  cmp.disabled = (n !== KEEP);
+  if(hint){
+    hint.textContent = n === KEEP ? 'Five kept. Compare when you are ready.'
+      : n > KEEP ? 'Cut ' + (n - KEEP) + ' more to compare.'
+      : 'Keep ' + (KEEP - n) + ' more to compare.';
+  }
+}
+cards.forEach(function(c){
+  c.addEventListener('click', function(){
+    if(c.disabled) return;
+    setKept(c, !isKept(c));
+    render();
+  });
+});
+cmp.addEventListener('click', function(){
+  var keptIds = cards.filter(isKept).map(function(c){ return c.getAttribute('data-id'); });
+  if(keptIds.length !== KEEP) return;
+  var exKeep = cards.map(function(c){ return c.getAttribute('data-id'); }).filter(function(id){ return EX[id] && EX[id].keep; });
+  var exCut  = cards.map(function(c){ return c.getAttribute('data-id'); }).filter(function(id){ return EX[id] && !EX[id].keep; });
+  var hits = exKeep.filter(function(id){ return keptIds.indexOf(id) !== -1; }).length;
+  var h = '<p class="cd-res">You matched <b>' + hits + ' of ' + exKeep.length + '</b> of the exemplar&rsquo;s keeps.</p>';
+  h += '<p class="cd-sub">' + (hits === exKeep.length
+    ? 'Same five slides. Your cut answers the room&rsquo;s question first and gives each slide one idea.'
+    : 'There is no single right cut, but the exemplar follows two rules: the audience&rsquo;s question comes first, and each slide carries one idea. Check where yours differs.') + '</p>';
+  h += '<span class="cd-h">The five the exemplar kept</span><ul class="cd-list">';
+  exKeep.forEach(function(id){
+    var mine = keptIds.indexOf(id) !== -1;
+    h += '<li><b>' + titleOf(id).replace(/</g,'&lt;') + '</b>' +
+         '<span class="cd-m ' + (mine ? 'hit' : 'miss') + '">' + (mine ? '&#10003; you kept it too' : '&#10005; you cut it') + '</span>' +
+         '<br>' + EX[id].why + '</li>';
+  });
+  h += '</ul><span class="cd-h">The four cuts, and why each one went</span><ul class="cd-list">';
+  exCut.forEach(function(id){
+    var mine = keptIds.indexOf(id) !== -1;
+    h += '<li><span class="cd-tag">' + EX[id].tag + '</span><b>' + titleOf(id).replace(/</g,'&lt;') + '</b>' +
+         '<span class="cd-m ' + (mine ? 'miss' : 'hit') + '">' + (mine ? '&#10005; you kept it' : '&#10003; you cut it too') + '</span>' +
+         '<br>' + EX[id].why;
+    if(mine) h += '<p class="cd-yk">' + EX[id].note + '</p>';
+    h += '</li>';
+  });
+  h += '</ul>';
+  h += '<p class="cd-next"><b>Now the real thing.</b> Open the last deck the AI built for you, ask what the room&rsquo;s first question is, and cut until every slide that is left answers one thing.</p>';
+  out.innerHTML = h;
+  cards.forEach(function(c){ c.disabled = true; });
+  cmp.disabled = true;
+  if(retry) retry.hidden = false;
+  if(hint) hint.textContent = 'Retry resets the outline.';
+  try{ out.focus({ preventScroll:true }); }catch(e){}
+});
+if(retry) retry.addEventListener('click', function(){
+  out.innerHTML = '';
+  cards.forEach(function(c){ c.disabled = false; setKept(c, true); });
+  retry.hidden = true;
+  render();
+  if(cards[0]) cards[0].focus();
+});
+render();
 })();
 </script>
 </body>

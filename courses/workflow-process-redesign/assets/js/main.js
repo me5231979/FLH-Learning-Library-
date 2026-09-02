@@ -373,27 +373,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Monday, 11 a.m. The analyst is still copying figures from the third system into the template. The numbers will be right, but the morning is gone and the writing has not started. Whatever you decide about drafting now starts late and under pressure. How does the update get written?", "Monday, 9:20 a.m. The numbers are in the template before anyone finishes coffee. Nobody has looked at them against the source systems, and nobody plans to. They look fine. The morning is wide open. Now decide who writes the update, and from what.", "Monday, 9:40 a.m. The template is filled, and the analyst has checked two figures against the source. One was off by a decimal and got fixed. The team has most of the morning back. Now the update needs writing. Decide who drafts it and where judgment stays."], 2: ["It is after lunch and the update exists. The numbers took the morning, so the writing was rushed. Whoever wrote it is tired of looking at it. Nobody has reviewed anything yet. Decide what a check looks like here, and whether anyone actually owns it.", "The update is ready by mid-morning, faster than the old process ever managed. The figures inside it came straight from the systems, and no person has checked them. Whatever review happens now is the only line between those figures and the client. Design that review.", "The update is ready by mid-morning, built on numbers a person already verified. One bad figure never reached the draft. The team is starting to believe in this. Now decide how the finished update gets checked, by whom and against what. It carries the team's name to a client."], 3: ["Week three, Monday, 3 p.m. The report is late again. The analyst spent the morning on manual pulls. Writing and checking got squeezed into what was left. Nothing in this workflow got faster. The team is asking what the redesign was for. Decide how the report goes out.", "Week three, Friday. A client replies to last week's update with a question about a figure. It was wrong: one system had stale data, and nothing in your design was built to catch it. The team is now re-checking everything by hand. Decide how sending works from here.", "Week three. The spot check has caught two bad numbers so far, both before any client saw them. Monday costs the team under an hour. Trust in the process is real and growing. One decision is left: who sends the report, and who owns what the client hears."] };
+    var CARRY = ["Keeping the pull manual spent the whole morning on mechanical work, and every step after it ran late and under pressure.", "Unchecked numbers flowed into every later step, and a wrong figure was on its way to a client before anyone looked.", "A spot-checked pull gave the team its morning back and caught bad numbers before any client saw them."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the month' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more step(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Week four: Monday costs 40 minutes instead of half a day. The analyst\'s spot check caught two bad numbers before any client saw them, the miss log has real entries, and the account lead spends the recovered time on the two accounts that are wobbling. The team trusts the process because they can see it working.',
       mid: 'Week four: faster, technically. But a wrong figure reached a client in week three, and now everyone quietly re-checks everything, so the saved hours are gone. The team\'s verdict is forming: the weak parts of the design are deciding the whole redesign\'s reputation.',
@@ -411,6 +435,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest step and rerun the month. Watch week three change.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper finds the week-three failure in YOUR workflow.</p>');
@@ -594,6 +619,79 @@
     });
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (after the workflow mapper) ---------- */
+  function mountExemplar(cfg) {
+    var root = $(cfg.root), out = $(cfg.out), btn = $(cfg.btn);
+    if (!root || !out || !btn) return;
+    var remove = function () { var old = $('#' + cfg.id); if (old) old.parentNode.removeChild(old); };
+    // choice chips (where the builder has them) hide the old result; drop the old comparison too
+    $$('.plan__chips .opt', root).forEach(function (b) { b.addEventListener('click', remove); });
+    // registered after the builder's own handler, so the learner's result renders first
+    btn.addEventListener('click', function () {
+      remove();
+      if (out.hidden) return;
+      var box = document.createElement('div');
+      box.className = 'exemplar';
+      box.id = cfg.id;
+      var model = cfg.rows.map(function (r) {
+        return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>';
+      }).join('');
+      var items = cfg.rubric.map(function (r, i) {
+        var qid = cfg.id + 'Q' + i;
+        return '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + r.q + '</p>' +
+          '<div class="exemplar__toggle" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="yes" aria-pressed="false"><span class="mark" aria-hidden="true">Y</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="no" aria-pressed="false"><span class="mark" aria-hidden="true">N</span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>To fix it:</b> ' + r.nudge + '</p>' +
+          '</div>';
+      }).join('');
+      box.innerHTML = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        (cfg.quote ? '<p class="exemplar__quote">' + cfg.quote + '</p>' : '') +
+        '<div class="exemplar__model">' + model + '</div>' +
+        '<p class="exemplar__head">Now score your own</p>' +
+        '<div class="exemplar__rubric">' + items + '</div>' +
+        '<p class="exemplar__tally" aria-live="polite">Answer all three to see your score.</p>';
+      out.parentNode.insertBefore(box, out.nextSibling);
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (item, i) {
+        var nudge = $('.exemplar__nudge', item);
+        $$('.opt', item).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === 'yes';
+            answers[i] = yes;
+            $$('.opt', item).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var done = answers.filter(function (a) { return a !== null; }).length;
+            var score = answers.filter(function (a) { return a === true; }).length;
+            tally.innerHTML = 'You scored ' + score + ' of ' + answers.length + (done < answers.length ? ' so far.' : '.') +
+              (done === answers.length ? '<span class="exemplar__next">' + (score === answers.length ? cfg.strong : cfg.retry) + '</span>' : '');
+          });
+        });
+      });
+    });
+  }
+  mountExemplar({
+    root: '#wfMap', out: '#wfOut', btn: '#wfBuild', id: 'wfExemplar',
+    intro: 'Here is one strong map, filled in the same three places. Read it next to yours, then score your own.',
+    rows: [
+      ['The workflow', 'The monthly department budget update, due to the director on the first Friday of each month.'],
+      ['The grind', 'Copying spend figures from the finance system and two team spreadsheets into the update template.'],
+      ['The judgment', 'Deciding which overruns the director needs to hear about, and what the note beside each one should say.'],
+      ['Why it works', 'The workflow has a trigger and a deadline. The grind is pure gather and transform. The judgment names a decision with an owner.']
+    ],
+    rubric: [
+      { q: 'Is the workflow one repeating output with a trigger and a deadline?', nudge: 'Add when it starts and when it ships. Reports is a category; the Monday client report is a workflow.' },
+      { q: 'Is the grind a gather or transform step, with no decision inside it?', nudge: 'If the step includes a choice, split it. Keep only the mechanical part here.' },
+      { q: 'Does the judgment step name a decision a person should own?', nudge: 'Write the choice being made and who answers for it if it goes wrong.' }
+    ],
+    strong: 'All three. This map is ready for Section 03, where each step gets an owner.',
+    retry: 'Fix each Not yet line above, map the workflow again, and score it again.'
+  });
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -689,6 +787,8 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

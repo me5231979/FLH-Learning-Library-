@@ -350,27 +350,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Day three of the month. The last program lead finally replied, and the summary table is rebuilt by hand. You are behind before the writing starts, and leadership expects the report by end of week. The inputs are in front of you, uneven and late. How does the report get written?", "Day two of the month. The templated forms came back in the same shape, which is new. You still spent a morning assembling them into one summary by hand. The inputs are clean and in front of you, and the writing starts now. How does the report get written?", "Day one, before lunch. The forms came back in one shape. AI drafted the combined summary, and you checked the numbers against source. The gather step cost an hour. The inputs are clean, checked, and in front of you, with the month barely started. How does the report get written?"], 2: ["The draft is done, late and tired. It is day four, and the numbers in it came from a table you rebuilt under pressure. Leadership has already asked once where the report is. The send button is right there. How does it go out?", "The draft is done on day three. The templated inputs made it faster, though every number still passed through your hands once, by keyboard. The report looks like last month's, which is the point. The send button is right there. How does it go out?", "The draft is done on day two. The numbers in it were checked against source before the writing began. That check makes the send feel safe. It is the first time this report has been ready early. The send button is right there. How does it go out?"], 3: ["Month two starts, and the chase starts with it. Three days went to gathering again, so no time came back at all. Meanwhile meeting requests keep arriving, and each one lands on a week that already has no room. The calendar is filling on its own. What is the rule?", "Month two. The template saved you a day of chasing, and that day has already been claimed. Two meeting requests arrived the same afternoon it opened up, and both are waiting for an answer. The saved time is real, and it has no address yet. What is the rule?", "Month two. The gather step took an hour instead of three days. A quiet afternoon has appeared on your calendar. It is the first one in a year. Two meeting requests are already pointed at it. The recovered time is real and has no home yet. What is the rule?"] };
+    var CARRY = ["Chasing inputs by hand ate three days, so nothing downstream had any time to save.", "The template fixed the shape of the inputs and left the assembling, and its hour, on you.", "Template, AI first pass, and your check turned three days of gathering into one owned hour."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run two months' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more step(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Month two: the report went out on day two instead of day five, correct, and in your voice. The quiet afternoon reappeared, and because two focus blocks were waiting for it, it went to the backlog project instead of back into the inbox. Your program leads noticed exactly one change: you stopped chasing them.',
       mid: 'Month two: faster, mostly. But one stale number slipped out in month one, or a focus block got surrendered to a meeting, and now you re-check everything by hand, so half the saved time is already gone. The steps you designed held; the steps running on good intentions are where the month leaked.',
@@ -388,6 +412,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest step and rerun the two months. Watch what changes.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper runs this same design on YOUR task.</p>');
@@ -571,6 +596,136 @@
     });
   });
 
+  /* ---------- INTERACTIVE: Inbox Triage card sort (Section 02) ---------- */
+  var itRoot = $('#inboxTriage');
+  if (itRoot) {
+    var IT_PILES = [
+      { key: 'template', label: 'Template it' },
+      { key: 'route', label: 'Route it' },
+      { key: 'retire', label: 'Retire it' },
+      { key: 'keep', label: 'Keep it' }
+    ];
+    var IT_ITEMS = [
+      { from: 'A colleague in another department', subj: 'Reimbursement question, again',
+        prev: 'Sorry, I know you have told me before: how do I get reimbursed for conference travel?',
+        answer: 'template', why: 'You have answered this the same way a dozen times. That is Tell 3, the echo, and a saved reply with slots answers it in one minute.' },
+      { from: 'A vendor mailing list', subj: 'Webinar next Thursday',
+        prev: 'Join us for a look at what is new this quarter.',
+        answer: 'route', why: 'No decision, no deadline, nothing addressed to you. A sweep rule files it on arrival and you never see it.' },
+      { from: 'Your own recurring reminder', subj: 'Send the monthly activity report',
+        prev: 'Due Friday. Nobody has replied to, referenced, or asked about it in three years.',
+        answer: 'retire', why: 'Three years without a reply is the audit\'s signature find. With your manager in the loop, skip one cycle and watch who notices.' },
+      { from: 'A program lead', subj: 'My numbers for the monthly report',
+        prev: 'Here are this month\'s figures, in a slightly different layout from last time.',
+        answer: 'template', why: 'Inputs arriving in a new shape every month are Tell 2, the rebuild. A templated request form makes them arrive the same way, so the table stops being rebuilt by hand.' },
+      { from: 'Your manager', subj: 'Quick word about a team member',
+        prev: 'Can we find ten minutes? Something came up that I would rather talk through in person.',
+        answer: 'keep', why: 'Judgment, a relationship, and private details about a person. No template, no rule, no AI summary: the traffic light is red, and this is what the recovered hours are for.' },
+      { from: 'An automated system notice', subj: 'Backup completed',
+        prev: 'Last night\'s scheduled backup finished with no errors.',
+        answer: 'route', why: 'A machine telling you a machine worked. A rule sweeps it, and your weekly scan of the swept folder catches the rare miss.' },
+      { from: 'A calendar reminder', subj: 'Weekly sync for the spring project',
+        prev: 'Automatic reminder. The project wrapped up months ago, and nobody has attended since.',
+        answer: 'retire', why: 'A standing obligation with no audience left. Cancel the series with your manager aware; restart stays one email away.' },
+      { from: 'A long thread you are copied on', subj: 'Re: Re: Re: Spring event logistics',
+        prev: 'Fourteen replies so far, and nobody has asked you anything.',
+        answer: 'route', why: 'Copied, never asked. A rule files the threads you are only copied on, and AI can summarize the one you want to skim.' }
+    ];
+    var itList = $('#itList'), itCheck = $('#itCheck'), itStatus = $('#itStatus'), itOut = $('#itOut');
+    var itPicks = [], itLocked = false;
+    function itLabel(key) {
+      for (var i = 0; i < IT_PILES.length; i++) { if (IT_PILES[i].key === key) return IT_PILES[i].label; }
+      return '';
+    }
+    function itCount() { return itPicks.filter(function (p) { return p !== null; }).length; }
+    function itStatusUpdate() {
+      var n = itCount(), all = n === IT_ITEMS.length;
+      itCheck.disabled = !all;
+      itStatus.textContent = n + ' of ' + IT_ITEMS.length + ' sorted' + (all ? ', check it' : '');
+    }
+    function itRender() {
+      itLocked = false;
+      itPicks = IT_ITEMS.map(function () { return null; });
+      itList.innerHTML = '';
+      itOut.hidden = true;
+      IT_ITEMS.forEach(function (item, i) {
+        var card = document.createElement('div');
+        card.className = 'triage__card';
+        card.setAttribute('role', 'listitem');
+        card.innerHTML = '<div class="triage__msg"><span class="triage__from">From: ' + item.from + '</span>' +
+          '<b class="triage__subj">' + item.subj + '</b><p class="triage__prev">' + item.prev + '</p></div>' +
+          '<div class="triage__piles" role="group" aria-label="Pile for: ' + item.subj + '"></div>' +
+          '<p class="triage__note" hidden></p>';
+        var piles = $('.triage__piles', card);
+        IT_PILES.forEach(function (pile, pi) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'opt';
+          b.setAttribute('aria-pressed', 'false');
+          b.setAttribute('data-pile', pile.key);
+          b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + pi) + '</span><span>' + pile.label + '</span>';
+          b.addEventListener('click', function () {
+            if (itLocked) return;
+            itPicks[i] = pile.key;
+            $$('.opt', piles).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            itStatusUpdate();
+          });
+          piles.appendChild(b);
+        });
+        itList.appendChild(card);
+      });
+      itStatusUpdate();
+    }
+    itCheck.addEventListener('click', function () {
+      if (itLocked || itCount() < IT_ITEMS.length) return;
+      itLocked = true;
+      var score = 0, misses = [];
+      $$('.triage__card', itList).forEach(function (card, i) {
+        var item = IT_ITEMS[i], pick = itPicks[i], right = pick === item.answer, label = itLabel(item.answer);
+        if (right) score++;
+        $$('.opt', card).forEach(function (o) {
+          o.setAttribute('disabled', 'true');
+          var k = o.getAttribute('data-pile');
+          if (k === item.answer) o.classList.add('correct');
+          else if (k === pick) o.classList.add('wrong');
+        });
+        card.classList.add(right ? 'is-right' : 'is-wrong');
+        var note = $('.triage__note', card);
+        note.innerHTML = (right ? '✓ <b>' + label + '.</b> ' : '✗ <b>Really: ' + label + '.</b> ') + item.why;
+        note.hidden = false;
+        if (!right) misses.push('<div><b>' + item.subj + ':</b> ' + label + '. ' + item.why + '</div>');
+      });
+      var total = IT_ITEMS.length;
+      var pct = Math.round((score / total) * 100);
+      var tier = score === total ? 'strong' : score >= 6 ? 'mid' : 'weak';
+      var head = tier === 'strong' ? 'Eight of eight. You can call the move on sight, which is the whole point of the first move.'
+               : tier === 'mid' ? 'Nearly there. The misses below are the calls that cost you the most, because each one comes back next week.'
+               : 'Worth a second pass. The moves are still blurring together; the note on each card says which tell you missed.';
+      var close = tier === 'strong' ? 'Seven of these eight items arrive again next week wearing a fresh date. Each one now has a move waiting: a template, a rule, or a retirement. That is the repeat tax turning into time you get to keep.'
+                : tier === 'mid' ? 'Every miss is a repeat you would keep paying for by hand: the echo answered again, the notice read again, the report nobody needs sent again. Sort it once, correctly, and the repeat tax stops charging you for it every week.'
+                : 'The repeat tax lives in exactly these calls. Each item you sorted by hand today comes back next week, and the week after. Read the notes, then run it again; the sorting gets instant with practice, and instant is what makes it pay.';
+      itOut.innerHTML = '<span class="tag">Inbox Triage · ' + score + ' of ' + total + '</span>' +
+        '<div class="lab__meter"><span style="width:0"></span></div>' +
+        '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
+        (misses.length ? '<div class="lab__coach">' + misses.join('') + '</div>' : '') +
+        '<div class="sample">' + close + '</div>' +
+        '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> open your own inbox and give the last eight messages the same four moves. Everything in your template pile belongs in the inventory above.</p>' +
+        '<button class="btn btn--ghost" id="itRetry" type="button" style="margin-top:1rem">Run it again</button>';
+      itOut.hidden = false;
+      itCheck.disabled = true;
+      itStatus.textContent = score + ' of ' + total + ' right';
+      $('#itRetry').addEventListener('click', function () {
+        itRender();
+        itList.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+      });
+      requestAnimationFrame(function () {
+        var bar = $('.lab__meter span', itOut);
+        if (bar) requestAnimationFrame(function () { bar.style.width = pct + '%'; });
+      });
+      itOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+    });
+    itRender();
+  }
+
   /* ---------- Deck navigation: dots, arrows, keyboard, progress ---------- */
   var slides = $$('.slide');
   var dotWrap = $('#dots');
@@ -666,6 +821,9 @@
   // keyboard
   document.addEventListener('keydown', function (e) {
     if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space activates a focused button, link, or summary; it only turns the page otherwise
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(document.activeElement.tagName) > -1) return;
+    // Space on a focused button activates the button (option picks, checks, retries), never the deck
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

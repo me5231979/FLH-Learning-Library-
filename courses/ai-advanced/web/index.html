@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=11">
+<link rel="stylesheet" href="../assets/css/styles.css?v=13">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -101,7 +101,7 @@
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain how context and attention shape an answer, and why long conversations lose the thread</li>
+          <li>Decide when a long conversation has lost the thread, and restart it with only the context that matters</li>
           <li>Describe what Retrieval-Augmented Generation fixes, and what it doesn't</li>
           <li>Choose between prompting, RAG, and fine-tuning for a task, weighing cost, data, and maintenance</li>
           <li>Apply four advanced prompt patterns: Few-Shot, Chain-of-Thought, Template, and Flipped Interaction</li>
@@ -177,7 +177,7 @@
         <li data-reveal><span class="num">03</span><div><h3>Choosing your method</h3><p>Prompting, RAG, or fine-tuning: a decision framework that starts cheap.</p></div></li>
         <li data-reveal><span class="num">04</span><div><h3>Advanced prompt patterns</h3><p>Few-Shot, Chain-of-Thought, Template, and Flipped Interaction.</p></div></li>
         <li data-reveal><span class="num">05</span><div><h3>Multimodal &amp; agentic AI</h3><p>The plan, act, observe loop, and the specific ways it breaks.</p></div></li>
-        <li data-reveal><span class="num">06</span><div><h3>Spot the hallucination</h3><p>Fluency is not accuracy. Six answers; you call real or invented.</p></div></li>
+        <li data-reveal><span class="num">06</span><div><h3>Spot the hallucination</h3><p>Fluency is not accuracy. One confident paragraph; you find the three planted errors.</p></div></li>
         <li data-reveal><span class="num">07</span><div><h3>Governance that scales</h3><p>Red-teaming, the NIST AI RMF, and the tiering habit that prevents incidents.</p></div></li>
       </ol>
     </div>
@@ -482,19 +482,32 @@
     <div class="wrap">
       <p class="eyebrow" data-reveal>Section 06 · Evaluation</p>
       <h2 class="h2" data-reveal>Fluency is not <em>accuracy</em>.</h2>
-      <p class="lead" data-reveal>A hallucinated answer sounds exactly as confident as a correct one; that's why it's dangerous, and why organizations red-team AI systems: structured testing to find the flaws before users do. Time to calibrate your own detector.</p>
+      <p class="lead" data-reveal>A hallucinated answer sounds exactly as confident as a correct one. That is why it is dangerous, and why organizations red-team AI systems: structured testing to find the flaws before users do. Time to run that test yourself, on one confident paragraph with three errors planted inside it.</p>
 
-      <div class="quiz" id="hallSpot" data-reveal style="margin-top:2.5rem">
-        <p class="eyebrow" style="margin-bottom:.5rem">Play · Spot the hallucination</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> you can't verify everything, so you need a calibrated sense of WHERE models fail. Six AI answers; call each one accurate or hallucinated.</p>
-        <p class="quiz__progress" id="hsProgress"></p>
-        <p class="quiz__q" id="hsQ" style="margin-top:.4rem"></p>
-        <div class="quiz__options" id="hsOptions" role="group" aria-label="Real or hallucinated"></div>
-        <p class="quiz__feedback" id="hsFeedback" aria-live="polite"></p>
-        <div class="quiz__nav">
-          <button class="btn" id="hsNext" style="visibility:hidden">Next answer</button>
+      <div class="perr" id="plantedRead" data-reveal>
+        <p class="eyebrow" style="margin-bottom:.5rem">Lab · Spot the planted errors</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> real hallucinations hide inside paragraphs that are mostly right. Read the answer below, mark every sentence you distrust, then check your marks. Three errors are planted.</p>
+        <p class="quiz__progress perr__set" style="margin-top:1.25rem"></p>
+        <p class="perr__prompt"></p>
+        <p class="perr__text" role="group" aria-label="The AI answer, one button per sentence. Press a sentence to mark it as distrusted; press again to clear the mark."></p>
+        <div class="lab__runrow">
+          <button class="btn perr__check" type="button">Check my marks</button>
+          <span class="quiz__progress perr__status" aria-live="polite">Mark the sentences you distrust, then check</span>
         </div>
-        <div id="hsResult" hidden aria-live="polite"></div>
+        <div class="perr__result" hidden aria-live="polite"></div>
+        <div class="perr__size" hidden>
+          <p class="eyebrow" style="margin:1.75rem 0 .5rem">Step 2 · Size the check</p>
+          <p class="perr__sizeq"></p>
+          <div class="perr__opts" role="group" aria-label="How much checking does this answer get"></div>
+          <p class="quiz__feedback perr__verdict" aria-live="polite"></p>
+        </div>
+        <div class="perr__after" hidden>
+          <p class="why perr__nudge" hidden></p>
+          <div class="lab__runrow" style="margin-top:1rem">
+            <button class="btn btn--ghost perr__retry" type="button">Run it again</button>
+            <button class="btn perr__next" type="button">Try the second paragraph</button>
+          </div>
+        </div>
       </div>
 
       <div class="card" data-reveal style="margin-top:2rem;border-color:rgba(236,183,72,.4)">
@@ -732,7 +745,7 @@
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=12"></script>
+<script src="../assets/js/main.js?v=14"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

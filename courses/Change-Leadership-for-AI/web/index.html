@@ -23,7 +23,7 @@
 <link rel="preload" href="../assets/fonts/libre-caslon-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="../assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-<link rel="stylesheet" href="../assets/css/styles.css?v=1">
+<link rel="stylesheet" href="../assets/css/styles.css?v=2">
 <style>
   /* skill pills (course-level) */
   .skills { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-top: 1.5rem; }
@@ -111,7 +111,7 @@
       <div class="objectives" data-reveal>
         <p class="objectives__label">By the end of this session, you will be able to</p>
         <ol class="objectives__list">
-          <li>Explain why AI change fails on human ground rather than technical ground, and what the effective minority do differently</li>
+          <li>Diagnose whether a stalled AI change is failing on human ground or technical ground, and pick the move the effective minority make</li>
           <li>Name the fear and the job-security question directly, without false promises, using the honesty rules</li>
           <li>Build psychological safety around experimenting with AI: public experiments, no-blame misses, and going first</li>
           <li>Facilitate your team's own ethics and governance conversation instead of outsourcing it to a policy document</li>
@@ -306,6 +306,21 @@
         <p style="margin:.5rem 0 0" class="measure"><b>Never promise that nothing will change.</b> You can't keep it, and when anything changes, your credibility goes with it. <b>Promise how change will be handled:</b> with the team in the room, visibly, with any role news heard from you first. <b>Answer the saved-hours question out loud:</b> if AI buys back time, say what that time is for. A team that suspects saved hours convert into cut roles will make sure there are no saved hours.</p>
       </div>
 
+      <div class="quiz dialogue" id="fearDialogue" data-reveal style="margin-top:2.5rem">
+        <p class="eyebrow" style="margin-bottom:.5rem">Play · Choose the next line</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> the job question arrives in a 1:1, without warning, and the honest answer has to be ready. A coordinator who has run the team's reports for twelve years asks it point blank. Three turns; their next line depends on yours. The reactions are illustrative, not a simulation of any real person.</p>
+        <p class="quiz__progress" id="fdProgress"></p>
+        <div class="dialogue__log" id="fdLog" role="log" aria-live="polite" aria-label="The conversation so far"></div>
+        <p class="quiz__q" id="fdAsk" style="margin-top:1.25rem">Your next line:</p>
+        <div class="quiz__options" id="fdOptions" role="group" aria-label="Your next line"></div>
+        <p class="quiz__feedback" id="fdFeedback" aria-live="polite"></p>
+        <div class="quiz__nav">
+          <button class="btn" id="fdNext" type="button" style="visibility:hidden">Next turn</button>
+        </div>
+        <div class="lab__outcome" id="fdResult" hidden aria-live="polite" tabindex="-1"></div>
+        <p class="why" id="fdNudge" hidden style="margin-top:1rem"><b>Now the real thing:</b> put the honest job answer, both parts, on <a href="#s-plan">your change card</a> and give it a date.</p>
+      </div>
+
       <details class="deeper" data-reveal>
         <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg> Go deeper</summary>
         <div class="deeper__body">
@@ -461,7 +476,7 @@
 
       <div class="lab" id="changeLab" data-reveal style="margin-top:2rem">
         <p class="eyebrow" style="margin-bottom:.5rem">Practice · The Change Lab</p>
-        <p class="why" style="margin-top:0"><b>Why this matters:</b> every one of these moments is coming for you in some form, and the weak plays feel reasonable in the moment. Choose all four, then run the six months.</p>
+        <p class="why" style="margin-top:0"><b>Why this matters:</b> every one of these moments is coming for you in some form, and the weak plays feel reasonable in the moment. Choose all four, then run the six months. Moves open one at a time, and your first move shapes what comes next.</p>
         <div class="lab__slots" id="labSlots"></div>
         <div class="lab__runrow">
           <button class="btn" id="labRun" disabled>Run six months</button>
@@ -705,7 +720,7 @@
 
 
 <script src="../assets/js/qrcode.js?v=1"></script>
-<script src="../assets/js/main.js?v=1"></script>
+<script src="../assets/js/main.js?v=2"></script>
 
 <script>
 /* copy-to-clipboard for the solo-rep cards; falls back to selecting the text */

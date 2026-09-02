@@ -309,6 +309,79 @@
     ]
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (self-explanation) ---------- */
+  /* Renders a model answer plus a three-question self-score under a private
+     builder. Called only after the learner builds; each call re-renders from
+     scratch, so a rebuild resets the score. */
+  function makeExemplar(cfg) {
+    var box = $(cfg.root);
+    if (!box) return { show: function () {}, hide: function () {} };
+    var idBase = cfg.root.slice(1);
+    function render() {
+      var n = cfg.rubric.length;
+      var html = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        '<div class="exemplar__grid">' +
+        cfg.rows.map(function (r) { return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') +
+        '</div>' +
+        '<div class="exemplar__rubric" role="group" aria-label="Score your own answer">' +
+        '<p class="exemplar__lead"><b>Score yourself.</b> ' + cfg.ask + '</p>';
+      cfg.rubric.forEach(function (item, i) {
+        var qid = idBase + 'Q' + (i + 1);
+        html += '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + (i + 1) + ' · ' + item.q + '</p>' +
+          '<div class="exemplar__toggles" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="1" aria-pressed="false"><span class="mark" aria-hidden="true">✓</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="0" aria-pressed="false"><span class="mark" aria-hidden="true"></span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>Add this:</b> ' + item.nudge + '</p>' +
+          '</div>';
+      });
+      html += '<p class="exemplar__tally" aria-live="polite">Score all ' + n + ' to see your tally.</p></div>';
+      box.innerHTML = html;
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (it, i) {
+        var nudge = $('.exemplar__nudge', it);
+        $$('.opt', it).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === '1';
+            answers[i] = yes;
+            $$('.opt', it).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var got = answers.filter(function (a) { return a === true; }).length;
+            var left = answers.filter(function (a) { return a === null; }).length;
+            tally.textContent = 'You scored ' + got + ' of ' + n +
+              (left ? ' so far. ' + left + ' left to score.' : '. ' + (got === n ? cfg.strong : cfg.weak));
+          });
+        });
+      });
+      box.hidden = false;
+    }
+    return { show: render, hide: function () { box.hidden = true; } };
+  }
+
+  var wiEx = makeExemplar({
+    root: '#wiExemplar',
+    intro: 'A fictional program coordinator filled in the same three fields. Read theirs beside yours, then score your own three blocks.',
+    rows: [
+      ['The heaviest block', 'The Monday enrollment report: pulling the export, writing the summary, and formatting it. Most of Monday morning, about three hours.'],
+      ['The most repetitive block', 'Inbox replies to the same five questions about deadlines and forms. About 40 minutes a day, every day.'],
+      ['The block I always postpone', 'Updating the program handbook after each policy change. Two hours that slide from Friday to the next week, most weeks.']
+    ],
+    ask: 'Three questions about your own inventory. Yes or not yet; nobody else sees it.',
+    rubric: [
+      { q: 'Does each block name a recurring task, not a whole job and not a person?',
+        nudge: 'Write the task itself, like "the Monday report." Not "admin," and never a colleague\'s name.' },
+      { q: 'Does each block carry an honest hour cost for a normal week?',
+        nudge: 'Write the time it really takes, in hours or minutes. The calendar tells the truth; memory flatters the week.' },
+      { q: 'Could you name the verb in each block: write, ask, capture, explain, or choose?',
+        nudge: 'Write what you are doing in the block. The verb picks the method in section 03.' }
+    ],
+    strong: 'All three. Now the real thing: carry these blocks into section 03 and match a method to each.',
+    weak: 'Edit the fields above and read your week back again. The block you fix now is the one that matches fastest.'
+  });
+
   /* ---------- INTERACTIVE: private week inventory (Section 02) ---------- */
   var wkInv = $('#wkInv');
   if (wkInv) {
@@ -333,6 +406,7 @@
         '<div class="row"><b>The move</b><span>Hold onto these three. Section 03 matches the methods, section 04 builds the stack, and the capstone puts a date on the calendar pass.</span></div>' +
         '</div>';
       iOut.hidden = false;
+      wiEx.show();
       iOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
     });
   }
@@ -360,27 +434,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["Monday's report went out by hand, late in the afternoon. The coordinator starts Wednesday already behind, with Tuesday's work still open. The team meeting runs long and ends with several decisions and two new owners. Nobody has written anything down yet. How does the record get made?", "Monday's report went out fast and unread. Nobody has flagged it yet, and the coordinator feels the win. Wednesday's meeting ends with several decisions and two new owners. The recording is sitting in the tool, and the same fast path is right there. How does the record get made?", "Monday's report went out before ten, and the three checked figures held. The coordinator has a spare hour and a little trust in the method. Wednesday's meeting ends with several decisions and two new owners. The recording is in the tool. How does the record get made?"], 2: ["It is Wednesday evening. Monday's report took the whole morning by hand, and the week never caught up. The committee deck is due Thursday. The numbers sit in Monday's spreadsheet and nowhere else. The coordinator is tired, and the deck tool is open. Where does the deck come from?", "It is Wednesday evening. Monday's AI-drafted numbers are still unchecked, and nobody has questioned them. The committee deck is due Thursday, and it will be built on those figures. The coordinator has time this week. What goes into the deck, and who checks what?", "It is Wednesday evening. Monday's figures were checked against the source file, so the deck can trust them. The committee deck is due Thursday morning. The coordinator has the time Monday gave back, and numbers that already survived a check. How does the deck get built?"], 3: ["Friday. The inbox has grown all week while Monday's report ate the morning and nothing was reclaimed. The same five questions are in there again. The director is asking why the report landed late. The coordinator opens the inbox at the top. How does the inbox get handled?", "Friday. Monday's unread report has been forwarded twice, and a program lead just replied asking about one figure. The coordinator does not know yet whether it is right. The inbox is full of the usual routine questions, and now this one. How does the inbox get handled?", "Friday. Monday's checked report has drawn no questions. The morning it gave back is still on the calendar. The inbox is the last block standing. The same routine questions are in rotation, plus a few that need a real answer. The coordinator has the hour. How does the inbox get handled?"] };
+    var CARRY = ["Monday by hand cost the morning, and the week never got it back.", "Monday's unchecked report went out fast, and every later step inherited a figure nobody traced.", "Monday's three-minute check bought the week a trusted number and a spare morning."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the month' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more block(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Week four: about six hours a week are coming back, and they have names. Monday costs 25 minutes, the minutes ship before lunch, the deck starts Thursday morning from a checked brief, and the inbox takes 40 minutes instead of the morning. The bank line in her one-on-one is one sentence long, and her manager repeats it in the next staff meeting.',
       mid: 'Week four: faster, and strangely no lighter. A wrong figure rode the chain in week three, from an unchecked link into something people read, and the cleanup ate the savings. The rest of the reclaimed time was never named, so the calendar absorbed it without a receipt. The methods worked; the design around them leaked.',
@@ -398,6 +496,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest block and rerun the month. Watch the week-four story change.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the drill in Go deeper translates the coordinator\'s week into yours.</p>');
@@ -675,7 +774,10 @@
 
   // keyboard
   document.addEventListener('keydown', function (e) {
-    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    var focusTag = document.activeElement.tagName;
+    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(focusTag) > -1) return;
+    // let Space activate a focused control instead of turning the page
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(focusTag) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

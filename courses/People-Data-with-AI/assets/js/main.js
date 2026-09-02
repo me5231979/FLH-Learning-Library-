@@ -299,6 +299,79 @@
     ]
   });
 
+  /* ---------- INTERACTIVE: exemplar compare (self-explanation) ---------- */
+  /* Renders a model answer plus a three-question self-score under a private
+     builder. Called only after the learner builds; each call re-renders from
+     scratch, so a rebuild resets the score. */
+  function makeExemplar(cfg) {
+    var box = $(cfg.root);
+    if (!box) return { show: function () {}, hide: function () {} };
+    var idBase = cfg.root.slice(1);
+    function render() {
+      var n = cfg.rubric.length;
+      var html = '<span class="tag">Compare with a model answer</span>' +
+        '<p class="exemplar__intro">' + cfg.intro + '</p>' +
+        '<div class="exemplar__grid">' +
+        cfg.rows.map(function (r) { return '<div class="row"><b>' + r[0] + '</b><span>' + r[1] + '</span></div>'; }).join('') +
+        '</div>' +
+        '<div class="exemplar__rubric" role="group" aria-label="Score your own answer">' +
+        '<p class="exemplar__lead"><b>Score yourself.</b> ' + cfg.ask + '</p>';
+      cfg.rubric.forEach(function (item, i) {
+        var qid = idBase + 'Q' + (i + 1);
+        html += '<div class="exemplar__item">' +
+          '<p class="exemplar__q" id="' + qid + '">' + (i + 1) + ' · ' + item.q + '</p>' +
+          '<div class="exemplar__toggles" role="group" aria-labelledby="' + qid + '">' +
+          '<button type="button" class="opt" data-val="1" aria-pressed="false"><span class="mark" aria-hidden="true">✓</span><span>Yes</span></button>' +
+          '<button type="button" class="opt" data-val="0" aria-pressed="false"><span class="mark" aria-hidden="true"></span><span>Not yet</span></button>' +
+          '</div>' +
+          '<p class="exemplar__nudge" hidden><b>Add this:</b> ' + item.nudge + '</p>' +
+          '</div>';
+      });
+      html += '<p class="exemplar__tally" aria-live="polite">Score all ' + n + ' to see your tally.</p></div>';
+      box.innerHTML = html;
+      var answers = cfg.rubric.map(function () { return null; });
+      var tally = $('.exemplar__tally', box);
+      $$('.exemplar__item', box).forEach(function (it, i) {
+        var nudge = $('.exemplar__nudge', it);
+        $$('.opt', it).forEach(function (b) {
+          b.addEventListener('click', function () {
+            var yes = b.getAttribute('data-val') === '1';
+            answers[i] = yes;
+            $$('.opt', it).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+            nudge.hidden = yes;
+            var got = answers.filter(function (a) { return a === true; }).length;
+            var left = answers.filter(function (a) { return a === null; }).length;
+            tally.textContent = 'You scored ' + got + ' of ' + n +
+              (left ? ' so far. ' + left + ' left to score.' : '. ' + (got === n ? cfg.strong : cfg.weak));
+          });
+        });
+      });
+      box.hidden = false;
+    }
+    return { show: render, hide: function () { box.hidden = true; } };
+  }
+
+  var intEx = makeExemplar({
+    root: '#intExemplar',
+    intro: 'A fictional manager of a student services team filled in the same three fields. Read theirs beside yours, then score your own plan.',
+    rows: [
+      ['The signal', 'Recognition scored lowest on the team survey for the second cycle in a row, at team level, head count checked.'],
+      ['The suspicion', 'We ship small things every week and I only celebrate the big launches, so most of the work goes unmentioned. I could be wrong about that.'],
+      ['The mystery', 'In the same cycle, the workload score improved, and in 1:1s the team says it feels busier than ever.']
+    ],
+    ask: 'Three questions about your own plan. Yes or not yet; nobody else sees it.',
+    rubric: [
+      { q: 'Is the signal a team-level pattern with no individual attached?',
+        nudge: 'Write the team-level number or trend, and take out anything that points at one person.' },
+      { q: 'Is the suspicion written as a guess the data could knock down?',
+        nudge: 'Write it as a hypothesis, not a verdict. If the data cannot disprove it, it goes to the team as a question.' },
+      { q: 'Does the mystery name a real contradiction, one fact that does not fit your story?',
+        nudge: 'Write the piece that surprised you. If nothing did, look for the score that moved the other way.' }
+    ],
+    strong: 'All three. Now the real thing: run the three questions on your own de-identified results this week, in an approved VU tool.',
+    weak: 'Edit the fields above and build the plan again. The mystery is usually where the real story hides.'
+  });
+
   /* ---------- INTERACTIVE: private interrogation-plan builder (Section 03) ---------- */
   var ipb = $('#intPlan');
   if (ipb) {
@@ -324,6 +397,7 @@
         '<div class="row"><b>The rule</b><span>All of this happens at team level, names out, head count checked, in an approved VU tool. The light outranks the plan.</span></div>' +
         '</div>';
       iOut.hidden = false;
+      intEx.show();
       iOut.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
     });
   }
@@ -351,27 +425,51 @@
     ];
     var picks = [null, null, null, null];
     var slotsEl = $('#labSlots'), runBtn = $('#labRun'), statusEl = $('#labStatus'), outEl = $('#labOutcome');
+    // Branching: slots open one at a time, and every slot after the first carries a
+    // situation set by the learner's first move, so that move stays in the room.
+    var BRANCH = { 1: ["It is the first weekend of the two weeks. Your evidence is what you remember. The last six weeks, the two loud incidents, the person who talks most in meetings. The quiet performer's year is mostly blank in your head. Eight reviews are due. Decide how the drafts get written.", "You spent Saturday reading a year of 1:1 notes in one sitting. The recent months are vivid, the spring is a blur, and the quiet performer's file is thin. The evidence is real and it is unsorted. Eight reviews are due. Decide how the drafts get written.", "The themes are in front of you, one page per person. Each is tied to dated examples you checked yourself. Roles only, no names, all inside an approved tool. The quiet performer's file turned out fuller than you expected. Eight reviews are due. Decide how the drafts get written."], 2: ["Eight drafts exist, and eight ratings with them. Every rating traces back to memory. The loud incidents pulled some down and the recent wins pushed some up. No dated example backs any of them yet. You have time for one more pass before the meetings. Decide what that pass is.", "Eight drafts and eight ratings. The notes gave you real examples. The ones you read last are the ones you rated on. Two ratings feel high, one feels low, and you are not sure why. There is time for one more pass. Decide what it looks like.", "Eight drafts and eight ratings. Each judgment sentence is in your own words, each backed by a dated example. The evidence is solid person by person. Nobody has looked across all eight yet, and drift across a set is quiet. There is time for one more pass. Decide what it is."], 3: ["The meetings start Monday. Two of the eight will be hard. Both of those people keep better records than you do. If they bring dates, you have memory. Whatever the ratings say, the conversations are where fairness gets decided now. Decide how you walk in.", "The meetings start Monday. Two of the eight will be hard. Your evidence is real, but it is a weekend's reading. The strong spring you skimmed may come up. The document is done; the conversations are not. Decide how you prepare for the two that matter.", "The meetings start Monday. Two of the eight will be hard, and you already know which two. The reviews cite dated examples and the bar is the same across the set. You can say why each rating landed. That bought you time. Decide how you spend it."] };
+    var CARRY = ["Reviews built from memory rated the last six weeks, so every later stage had to defend evidence that was never kept.", "A weekend of reading gave you real evidence, read recency-first, and the thin files stayed thin all the way through.", "A year of de-identified notes, checked against dated examples, gave every later stage evidence to stand on."];
+    var slotEls = [];
+    function openSlots() {
+      var open = 0;
+      while (open < SLOTS.length && picks[open] !== null) open++;
+      slotEls.forEach(function (el, k) {
+        el.hidden = k > open;
+        var sit = $('[data-situation]', el);
+        if (sit) sit.textContent = (picks[0] !== null && BRANCH[k]) ? BRANCH[k][picks[0]] : '';
+      });
+    }
     SLOTS.forEach(function (slot, si) {
       var d = document.createElement('div');
       d.className = 'slot';
-      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>';
+      d.innerHTML = '<h3>' + (si + 1) + ' · ' + slot.key + '</h3>' + (BRANCH[si] ? '<p class="slot__situation" data-situation aria-live="polite"></p>' : '');
       slot.opts.forEach(function (o, oi) {
         var b = document.createElement('button');
-        b.className = 'opt'; b.setAttribute('aria-pressed', 'false');
+        b.className = 'opt'; b.type = 'button'; b.setAttribute('aria-pressed', 'false');
         b.innerHTML = '<span class="mark">' + String.fromCharCode(65 + oi) + '</span><span>' + o.t + '</span>';
         b.addEventListener('click', function () {
           picks[si] = oi;
           $$('.opt', d).forEach(function (x, xi) { x.setAttribute('aria-pressed', String(xi === oi)); });
+          for (var k = si + 1; k < SLOTS.length; k++) {
+            picks[k] = null;
+            $$('.opt', slotEls[k]).forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+          }
+          openSlots();
           var ready = picks.every(function (p) { return p !== null; });
           runBtn.disabled = !ready;
           statusEl.textContent = ready ? 'Ready, run the cycle' :
             'Choose ' + picks.filter(function (p) { return p === null; }).length + ' more stage(s)';
           outEl.hidden = true;
+          if (slotEls[si + 1] && !slotEls[si + 1].hidden) {
+            slotEls[si + 1].scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+          }
         });
         d.appendChild(b);
       });
+      slotEls.push(d);
       slotsEl.appendChild(d);
     });
+    openSlots();
     var REACTIONS = {
       strong: 'Two weeks later: the cycle people called fair. Reviews cite dated examples, the ratings hold one bar across all eight people, and the two hard conversations landed because you had already heard the hard version once. One person disagreed with a rating, read the evidence, and said so without appealing. That is what fair sounds like.',
       mid: 'Two weeks later: no disaster, and no trust either. Two reviews read thinner than the year deserved, one rating got walked back when someone produced evidence you had missed, and the hardest conversation ran long and ended vague. Fairness leaked out through the stages you left soft.',
@@ -389,6 +487,7 @@
         '<div class="lab__meter"><span style="width:0"></span></div>' +
         '<p style="margin:0;color:#fff;font-weight:500">' + head + '</p>' +
         '<div class="sample">' + REACTIONS[tier] + '</div>' +
+        (CARRY[picks[0]] ? '<p class="lab__carry"><b>What your first move set in motion:</b> ' + CARRY[picks[0]] + '</p>' : '') +
         '<div class="lab__coach">' + coach + '</div>' +
         (tier !== 'strong' ? '<p class="why" style="margin-top:1rem"><b>Try again:</b> strengthen your weakest stage and rerun the cycle. Watch what changes in the outcome.</p>'
                            : '<p class="why" style="margin-top:1rem"><b>Now the real thing:</b> the pair drill in Go deeper scores your actual review prep against these same four stages.</p>');
@@ -666,7 +765,10 @@
 
   // keyboard
   document.addEventListener('keydown', function (e) {
-    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(document.activeElement.tagName) > -1) return;
+    var focusTag = document.activeElement.tagName;
+    if (['INPUT', 'TEXTAREA', 'SELECT'].indexOf(focusTag) > -1) return;
+    // let Space activate a focused control instead of turning the page
+    if (e.key === ' ' && ['BUTTON', 'A', 'SUMMARY'].indexOf(focusTag) > -1) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
       e.preventDefault(); goTo(current + 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {

@@ -753,6 +753,45 @@ em, .italic { font-style: italic; }
 .ragsim__source b { color: #8BA18E; font-family: var(--font-condensed); text-transform: uppercase;
   letter-spacing: .06em; font-size: .72rem; }
 
+/* ---------- 27. Recompute drill + practice-sheet link (Numbers, Faster, Section 04) ---------- */
+.recompute { margin-top: 2.5rem; }
+.recompute__grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; margin-top: 1.25rem; align-items: start; }
+@media (min-width: 960px) { .recompute__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); } }
+.rctable-wrap { overflow-x: auto; }
+.rctable { border-collapse: collapse; width: 100%; font-size: .95rem; background: var(--vu-white);
+  border: 1px solid var(--vu-gray-light); }
+.rctable caption { caption-side: top; text-align: left; font-family: var(--font-condensed); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; font-size: .78rem; color: var(--vu-oak); padding: 0 0 .5rem; }
+.rctable th, .rctable td { padding: .55rem .8rem; border-bottom: 1px solid var(--vu-gray-light); text-align: left; }
+.rctable thead th { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .05em;
+  font-size: .78rem; color: var(--vu-oak); background: var(--vu-cream); }
+.rctable tbody th { font-weight: 500; white-space: nowrap; }
+.rctable .num { text-align: right; font-variant-numeric: tabular-nums; }
+.rcclaims { display: grid; gap: .9rem; }
+.rcclaim { background: var(--vu-white); border: 1px solid var(--vu-gray-light); border-left: 3px solid var(--vu-gold-flat);
+  border-radius: var(--radius); padding: 1rem 1.1rem; transition: border-color .25s var(--ease); }
+.rcclaim__ai { margin: 0 0 .75rem; font-family: var(--font-serif); font-size: 1.08rem; line-height: 1.45; }
+.rcclaim__ai .tag { margin-right: .5rem; vertical-align: middle; }
+.rcclaim__btns { display: flex; gap: .5rem; flex-wrap: wrap; }
+.rcclaim__btns .opt { width: auto; padding: .6rem .9rem; font-size: .92rem; }
+.rcclaim__btns .opt[aria-pressed="true"] { border-color: var(--vu-gold-flat); background: rgba(207,174,112,.16); }
+.rcclaim__btns .opt[aria-pressed="true"] .mark { border-color: var(--vu-gold-flat); background: var(--vu-gold-flat); color: var(--vu-black); }
+.rcclaim__label { display: block; margin: .8rem 0 .4rem; font-size: .95rem; }
+.rcclaim input[type="number"] { width: 9rem; font-family: var(--font-sans); font-size: 1.05rem; color: var(--vu-black);
+  background: var(--vu-white); border: 1px solid var(--vu-gray-light); border-radius: var(--radius); padding: .6rem .8rem; }
+.rcclaim input[type="number"]:focus { outline: 3px solid var(--vu-highlight); outline-offset: 1px; border-color: var(--vu-gold-flat); }
+.rcclaim__verdict { display: none; margin: .7rem 0 0; font-family: var(--font-condensed); font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; font-size: .78rem; }
+.rcclaim.is-right { border-left-color: var(--vu-sage); }
+.rcclaim.is-right .rcclaim__verdict { display: block; color: var(--vu-oak); }
+.rcclaim.is-wrong { border-left-color: #c76b5a; }
+.rcclaim.is-wrong .rcclaim__verdict { display: block; color: #c76b5a; }
+.recompute__work { font-variant-numeric: tabular-nums; font-size: .98rem; line-height: 1.6;
+  border-left: 2px solid var(--vu-gold-flat); padding-left: 1rem; margin: 1rem 0; color: rgba(255,255,255,.9); }
+.recompute__work b { color: var(--vu-gold-flat); }
+.dl-link { text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+.dl-link:hover { color: var(--vu-highlight); }
+
 /* ============ horizontal deck (advance left to right) ============ */
 html, body { height: 100%; }
 body { overflow: hidden; }
@@ -804,3 +843,11 @@ body { overflow: hidden; }
 
 /* solid top bar on every slide */
 .nav { background: rgba(20,20,20,.97); border-bottom: 1px solid rgba(207,174,112,.18); }
+
+/* ---------- INTERACTIVE: branching lab (situation per slot) ---------- */
+.slot__situation { font-size: .98rem; line-height: 1.5; margin: 0 0 .75rem; padding: .7rem .9rem;
+  border-left: 2px solid var(--vu-gold-flat); background: rgba(207,174,112,.08); color: inherit; }
+.slot__situation:empty { display: none; }
+.on-dark .slot__situation { background: rgba(255,255,255,.05); color: rgba(255,255,255,.9); }
+.lab__carry { margin: .9rem 0 0; font-size: .98rem; color: rgba(255,255,255,.85); }
+.lab__carry b { color: var(--vu-gold-flat); }

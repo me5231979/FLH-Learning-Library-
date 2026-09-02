@@ -4274,7 +4274,7 @@ function routeRender(){
     });
   }
   if(saved > 0){
-    time += ' The ' + (wholeStops.length === 1 ? 'stop' : 'stops') + ' you skip whole (' + wholeStops.join(' and ') +
+    time += ' The ' + (wholeStops.length === 1 ? 'stop' : 'stops') + ' you skip whole (' + (wholeStops.length > 2 ? wholeStops.slice(0, -1).join(', ') + ', and ' + wholeStops[wholeStops.length - 1] : wholeStops.join(' and ')) +
       ') add up to about <b>' + saved + ' minutes</b>, by the estimates above.';
   }
   html += '<p class="route-time">' + time + '</p>';
